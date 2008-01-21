@@ -48,21 +48,18 @@ namespace Common.Utilities
         public const long LimitLevel = 6565;
         public const long IdleMetrics = 2729;
 
-        /// <summary>Match up payload metric samples.</summary>
-        public static long PairPayloadMetricCount(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)hits == (0.3 / 3.0))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
