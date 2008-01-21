@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepInterval = 4301;
-        public const double BurstTimeout = 35.29;
-        public const long BurstCommits = 4427;
-        public const string MinCommits = "legacy";
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] samples, long bound)
