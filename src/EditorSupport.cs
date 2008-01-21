@@ -22,13 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long offset)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum + ((long)i / 2)) % 65521;
+                sum = (sum ^ offset) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit session metric readings against a rule.</summary>
