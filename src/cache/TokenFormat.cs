@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Dropped,
-            Active,
-            Stale,
-            Paused,
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
