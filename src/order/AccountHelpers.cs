@@ -76,13 +76,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long floor)
         {
-            Retry,
-            New,
-            Ready,
-            Synced,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
