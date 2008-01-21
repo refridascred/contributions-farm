@@ -28,14 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Draft,
-            Synced,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheInterval = 4571;
+        public const long MinGithubfarm = 1600;
+        public const long DefaultScore = 3703;
+        public const long BaseDepth = 1369;
+        public const long MaxScore = 5363;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long SeriesAlready(long limit)
