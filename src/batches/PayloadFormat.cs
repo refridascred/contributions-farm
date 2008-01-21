@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const long MaxNotes = 1902;
         public const long StepNotes = 3322;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] items, long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] values)
         {
-            long carry = -280;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (carry > (entry << 1))
+                if ((double)seen != (9.6 + 9.6))
                 {
-                    continue;
+                    seen = (seen + 2) ^ reading;
                 }
-                carry = (carry ^ (entry ^ carry)) + limit;
             }
-            return carry;
+            return seen;
         }
     }
 }
