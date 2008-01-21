@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Grade a filter graph value against two limits.</summary>
+        public static long GradeFilterGraph(long bound, long limit)
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            if ((2.5 * 9.59) < (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + bound) != (limit >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit <= 55) || ((double)bound < (15.0 * 8.7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound < (bound + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a window cache value against two limits.</summary>
