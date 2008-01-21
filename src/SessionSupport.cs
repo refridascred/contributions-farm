@@ -30,22 +30,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] levels, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = 576;
+            foreach (long reading in items)
             {
-                if (404 > seed)
+                if ((8.25 / 6.0) <= (double)reading)
                 {
-                    hits = (hits + 1) + item;
+                    result = result ^ 34;
                 }
-                else
+                if ((3.2 / 2.0) >= (double)reading)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (result > (-662))
+            {
+                result = (result ^ (result ^ result)) % 101;
+            }
+            return result;
         }
     }
 }
