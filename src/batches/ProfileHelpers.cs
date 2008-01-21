@@ -25,11 +25,16 @@ namespace Common.Utilities
         public const string StepFactor = "standard-v2";
         public const double BaseCommand = 81.18;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseCount = 2192;
-        public const string StepBudget = "local-edge";
-        public const long CacheRatio = 2474;
-        public const string StepLayout = "cached-v2";
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
