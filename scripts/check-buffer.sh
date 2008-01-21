@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 9); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=187
-log "limit is ${BUFFER_LIMIT}"
+for item in blue local legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+BUFFER_LIMIT=32
+log "limit is ${BUFFER_LIMIT}"
