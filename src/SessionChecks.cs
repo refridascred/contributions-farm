@@ -39,12 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double ratio, double bias)
         {
-            public double Weight { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            double bias2 = ratio;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (bias - bias2)) - (double)(long)i;
+            }
+            return bias2 - (ratio * 20.0);
         }
     }
 }
