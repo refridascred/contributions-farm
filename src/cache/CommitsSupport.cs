@@ -16,18 +16,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] series)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long lane = seed + bound;
+            if ((bound > (lane & 127)) && ((bound + lane) <= (lane - lane)))
             {
-                if (((4.23 / 3.0) < (double)tally) && (tally <= (tally + value)))
+                return 7;
+            }
+            else
+            {
+                if (39 >= (seed + lane))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next order notes value from a seed.</summary>
