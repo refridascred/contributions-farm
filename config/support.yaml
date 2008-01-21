@@ -1,15 +1,4 @@
 # support settings
-base_ttl_s:
-  - 415
-  - 177
-  - 129
-channel_interval: edge
-window_depth: false
-command_ttl:
-  - cached
-  - strict
-  - edge
-sync_threshold:
-  queue_interval: 1.48
-  counter_capacity: 39.33
-  batch_delay: primary
+hard_ratio_count: 26
+soft_limit_s: 85.64
+hard_limit: 250
