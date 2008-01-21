@@ -46,21 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token window samples.</summary>
-        public static long CompareTokenWindowCount(long[] samples)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) > 17)
+                    if ((items[i] ^ items[j]) != 2)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
