@@ -1,14 +1,26 @@
 # entry settings
-sync_ttl:
-  enabled: false
-  readonly: 80.85
-  session_timeout: 8.72
-  hard_capacity:
-    - primary
-    - eu-west
-    - eu-west
-contributi_delay: latest
-queue_interval:
-  - 218
-  - 441
-batch_window_pct: 250
+flush_capacity_ms: 3373
+burst_interval: 50.72
+enabled: 100
+hard_timeout_ms:
+  dry_run: standard
+  verbose:
+    soft_timeout_ms:
+      - 263
+      - 288
+    soft_interval_ms: standard
+    metric_limit: true
+    persist:
+      - latest
+      - eu-west
+      - latest
+      - stable
+    soft_interval: 31.69
+    queue_ttl: 30
+  editor_delay:
+    - edge
+    - local
+    - green
+    - standard
+poll_limit: 3591
+strict: 500
