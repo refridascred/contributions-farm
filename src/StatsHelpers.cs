@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] samples, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            long sum = 366;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((value >> 1) != (floor + floor)) || (sum > (value + 84)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + (sum / 4)) % 101;
+                    if ((values[i] + values[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
