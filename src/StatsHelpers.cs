@@ -30,39 +30,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long origin)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long span = target - origin;
-            if ((5.0 + 8.7) >= (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)span > (0.66 * 2.56))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((3.57 - 20.0) < (double)span) && ((4 % 12) <= (target % 12)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((0 + origin) <= (8 >> 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
