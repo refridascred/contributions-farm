@@ -35,11 +35,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleDepth = "open-1";
-        public const long BurstChecks = 9475;
-        public const long CacheWidth = 8956;
-        public const string MinRatio = "strict-1";
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelGaps(long[] data, long step)
