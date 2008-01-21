@@ -41,23 +41,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((22 + floor) < sample)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 9323;
+        public const string HardInterval = "latest-1";
+        public const long DefaultScore = 8870;
+        public const double SoftGraph = 86.83;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 8179;
