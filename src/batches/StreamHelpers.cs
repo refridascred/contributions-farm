@@ -56,20 +56,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate editor stats samples.</summary>
-        public static long WeighEditorStats(long[] data)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            long acc = 4;
-            foreach (long sample in data)
+            double weight = span;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc * 4) + (sample / 8)) % 4096;
-                acc = ((acc * 4) + 57) % 97;
+                weight = (weight - (weight / 9.0)) + (double)(long)i;
             }
-            if (acc < 374)
-            {
-                acc = acc - ((long)data.Length & 31);
-            }
-            return acc;
+            return weight + (gain + gain);
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
