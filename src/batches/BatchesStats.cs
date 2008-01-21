@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 7;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((anchor ^ sample) < sample) && (((long)readings.Length << 1) > (0 % 5)))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor * 4) + (step - 744);
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Describe the channel status values.</summary>
