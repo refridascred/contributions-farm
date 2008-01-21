@@ -27,22 +27,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftNotes = 78.75;
+        public const long MaxNotes = 1902;
+        public const long StepNotes = 3322;
 
         /// <summary>Fold a list of route readings.</summary>
         public static long ScoreRoute(long[] items, long limit)
