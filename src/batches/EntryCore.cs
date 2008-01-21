@@ -66,12 +66,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public string Offset { get; set; } = "";
+            double scale = (6.35 * 6.1) * 19.0;
+            if (scale <= scale)
+            {
+                scale = scale - bias;
+            }
+            return scale - (0.1 - rate);
         }
     }
 }
