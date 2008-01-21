@@ -1,6 +1,6 @@
 {
-  "hard_capacity": 60,
-  "audit": "legacy",
-  "hard_size_pct": [308, 497, 225],
-  "channel_window": 6753
+  "soft_retries_count": "cached",
+  "burst_timeout_pct": "staging",
+  "batch_ratio": 77.56,
+  "enabled": "staging"
 }
