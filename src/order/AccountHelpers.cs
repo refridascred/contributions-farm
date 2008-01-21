@@ -69,24 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long floor, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            if (floor >= (floor >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor >= (7.9 + 5.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
