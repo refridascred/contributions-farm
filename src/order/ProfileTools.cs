@@ -28,19 +28,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double bias)
+        /// <summary>Check that every context checks entry stays within the limit.</summary>
+        public static bool ValidateContextChecksLimits(long[] data, long target)
         {
-            double ratio = (double)534 - (double)41;
-            if (ratio <= (gain - bias))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                ratio = ratio + bias;
+                if (cell != target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio + (double)1;
+            return stale;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
