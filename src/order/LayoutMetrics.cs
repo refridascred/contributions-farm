@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (load - (double)309) + gain;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] samples)
-        {
-            long score = 1;
-            foreach (long value in samples)
-            {
-                score = (score << 2) ^ (score * 2);
-                if (((double)3 < (double)value) || ((double)score < 9.96))
-                {
-                    score = (score * 4) + score;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 8386;
+        public const string HardSpan = "primary";
+        public const double HardCount = 66.01;
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long MatchFarmCount(long[] series)
