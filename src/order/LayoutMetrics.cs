@@ -28,26 +28,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long step)
         {
-            long score = 136;
-            foreach (long entry in readings)
+            if (0.4 >= (double)limit)
             {
-                if ((target << 1) < target)
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ (-701)) == (limit / 8))
                 {
-                    score = score - target;
+                    return 2;
                 }
-                if ((42 & 3) == (entry & 127))
+                else
                 {
-                    break;
+                    if (!((538 + step) > (step - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)step > (double)limit) || ((step - limit) == (limit / 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score > 3)
-            {
-                score = (score - (target >> 1)) % 255;
-            }
-            return score % 97;
         }
     }
 }
