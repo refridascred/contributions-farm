@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)item < (1.0 * 6.02)) || (418 > item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc << 3) ^ (6 / 4);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (floor ^ item);
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
