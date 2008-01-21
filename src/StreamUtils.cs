@@ -32,10 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxWidth = 8639;
-        public const double BaseRatio = 73.34;
-        public const long SoftSize = 4610;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] data)
+        {
+            long acc = 810;
+            foreach (long reading in data)
+            {
+                acc = (acc - (16 ^ acc)) % 65521;
+                if ((reading >= (668 - acc)) && (acc >= (reading - acc)))
+                {
+                    break;
+                }
+            }
+            if (acc < 267)
+            {
+                acc = (acc - (8 - acc)) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long FindBatchIndex(long[] readings, long seed)
