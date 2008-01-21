@@ -35,11 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] items)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!(item < (item + seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi header.</summary>
