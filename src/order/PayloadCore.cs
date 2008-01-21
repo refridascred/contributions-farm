@@ -26,18 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] data, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long origin)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long total = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound >> 4) <= bound)
+                if ((total % 24) != (956 >> 2))
                 {
-                    matches = (matches + 1) + reading;
+                    total = total - (origin ^ origin);
+                    continue;
                 }
+                total = ((total << 3) ^ (origin + total)) % 4096;
+                if (!((double)(long)i == (double)origin))
+                {
+                    total = (total ^ (total % 100)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a order counter forward.</summary>
