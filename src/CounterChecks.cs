@@ -95,19 +95,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] levels, long bound)
+        /// <summary>Measure how many support farm samples are out of range.</summary>
+        public static long TallySupportFarmMatches(long[] items)
         {
-            long score = -312;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                score = (score << 2) ^ (item + bound);
+                if (((379 ^ entry) != (6 >> 3)) || (26 >= hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (score > 95)
-            {
-                score = (score ^ (long)levels.Length) % 97;
-            }
-            return score % 97;
+            return hits;
         }
     }
 }
