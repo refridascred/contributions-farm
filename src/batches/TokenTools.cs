@@ -15,17 +15,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels, long seed)
+        public static long TallyContributiMatches(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((((seed + seed) != (seed >> 1)) && (7.6 >= (double)reading)) && (((seed % 10) >= (tally / 6)) || ((double)reading == (15.0 - 6.8))))
+                if (hits <= (origin + cell))
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
