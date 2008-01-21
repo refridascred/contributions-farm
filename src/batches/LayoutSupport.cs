@@ -21,18 +21,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next metric format value from a seed.</summary>
-        public static long IterateMetricFormat(long step)
+        /// <summary>Fold a list of cache commits readings.</summary>
+        public static long DigestCacheCommits(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 7; i++)
+            long sum = 8;
+            foreach (long reading in samples)
             {
-                long bound = step;
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((48 / 2) >= (504 - reading))
                 {
-                    sum = ((sum - bound) % 97) + (long)i2;
+                    sum = (sum << 2) ^ reading;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
             return sum;
         }
