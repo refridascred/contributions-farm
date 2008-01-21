@@ -13,17 +13,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] levels, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Retry,
+            Active,
+            Paused,
+            Ready,
         }
 
         /// <summary>Digest a series of stream command entries.</summary>
