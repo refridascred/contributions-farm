@@ -43,24 +43,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long floor, long floor2)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long offset)
         {
-            if (((floor2 + 32) < (floor + floor2)) && ((floor2 & 127) <= (555 / 7)))
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                mark = (mark + offset) % 97;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((9.03 - 0.3) >= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mark;
         }
     }
 }
