@@ -47,11 +47,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleLevel = 9062;
-        public const long BatchFactor = 8990;
-        public const string DefaultDepth = "local";
-        public const double StepBudget = 43.33;
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long floor, long origin)
+        {
+            if ((floor + origin) < origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor < (origin + (-884)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor < 5.96)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatRange(long[] series, long offset)
