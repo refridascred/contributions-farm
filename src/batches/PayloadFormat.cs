@@ -46,16 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long mark = 529;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark - (mark + item)) % 101;
-                mark = ((mark << 2) ^ (mark << 2)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
