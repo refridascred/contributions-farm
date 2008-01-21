@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] levels, long floor)
+        /// <summary>Measure how many record counter samples are out of range.</summary>
+        public static long TallyRecordCounterMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (cell != floor)
+                if ((value <= (value + 459)) || !((double)value < (double)360))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
