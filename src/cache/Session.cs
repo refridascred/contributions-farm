@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Synced,
-            Pending,
-            Draft,
-            Idle,
-            Failed,
+            public double Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next farm batch value.</summary>
