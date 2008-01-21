@@ -28,12 +28,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Stale,
+            Closed,
+            Synced,
+            Locked,
             Active,
-            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
