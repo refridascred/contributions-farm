@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] series, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (sample > limit)
+                if ((item & 127) < count)
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
