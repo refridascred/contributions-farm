@@ -59,21 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCacheCount(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((9 > (item / 6)) && (((3.0 * 2.4) > (double)limit) || ((item + limit) != (limit + seen))))
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
