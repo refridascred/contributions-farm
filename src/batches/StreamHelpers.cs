@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowBudget = 5209;
-        public const string MinNotes = "stable";
-        public const long CacheTimeout = 4497;
-        public const long RetryNotes = 7472;
-        public const string BurstSpan = "latest-edge";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Audit profile token readings against a rule.</summary>
         public static long CountProfileTokenOutliers(long[] samples)
