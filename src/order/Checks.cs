@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] readings)
+        /// <summary>Measure how many layout stats samples are out of range.</summary>
+        public static long AuditLayoutStatsMatches(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((double)value >= 5.3) && (tally < (tally - value)))
+                if ((count * 5) >= value)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
