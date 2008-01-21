@@ -37,22 +37,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] items, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target & 31) == (hits >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
