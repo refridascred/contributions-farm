@@ -20,16 +20,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                state = state + (offset - offset);
-                state = ((state * 4) + (long)i) % 101;
+                total = ((total << 2) ^ ((long)i + total)) % 4096;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
