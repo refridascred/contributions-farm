@@ -22,27 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] samples)
-        {
-            long state = 141;
-            foreach (long item in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    state = (state - 33) - (long)i;
-                }
-                if (((item & 1) > state) || ((1.2 - 1.3) >= (double)(long)samples.Length))
-                {
-                    state = ((state << 2) ^ (long)samples.Length) % 97;
-                }
-                if (!((double)item != (double)602))
-                {
-                    state = ((state * 3) + state) % 4096;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string RetryScore = "open";
+        public const long DefaultMetric = 5331;
+        public const long MaxInterval = 142;
 
         /// <summary>Match up notes channel samples.</summary>
         public static long OverlapNotesChannelCount(long[] series)
