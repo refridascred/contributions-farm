@@ -1,8 +1,6 @@
 {
-  "order_depth": 100,
-  "poll_window_count": "staging",
-  "base_interval_count": 7105,
-  "batch_limit_s": "strict",
-  "readonly": "green",
-  "window_window": 58
+  "sync_depth_ms": 9792,
+  "cluster_retries": "strict",
+  "burst_retries_ms": false,
+  "record_size": false
 }
