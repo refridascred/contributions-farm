@@ -45,19 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry stats series from a seed.</summary>
-        public static long DeriveEntryStats(long bound)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (acc >= (bound << 2))
-                {
-                    acc = ((acc << 3) ^ (bound >> 1)) % 255;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Failed,
+            Active,
+            Draft,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
