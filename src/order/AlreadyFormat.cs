@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long datum in levels)
             {
-                if ((tally ^ tally) == (95 << 1))
+                if (14.0 >= (double)tally)
                 {
-                    tally = ((tally + 3) - value) + origin;
+                    tally = (tally + 3) ^ datum;
                 }
             }
             return tally;
