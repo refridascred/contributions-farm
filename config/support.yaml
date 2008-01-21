@@ -1,10 +1,24 @@
 # support settings
-min_threshold_ms: 30.75
-sync_ratio_pct: green
-retry_window_ms: staging
-schema_size:
-  - 52
-  - 251
-  - 361
-  - 474
-warm_delay: 30
+channel_retries: 17
+cache_size_ms:
+  - local
+  - cached
+  - fallback
+base_timeout_pct:
+  min_delay:
+    - edge
+    - green
+    - green
+    - standard
+  poll_threshold_ms:
+    - 369
+    - 275
+    - 319
+  min_timeout_s: false
+  readonly:
+    - 122
+    - 53
+    - 280
+    - 11
+  max_interval_ms: false
+  persist: cached
