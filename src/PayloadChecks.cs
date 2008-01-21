@@ -66,18 +66,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] levels)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((((tally + item) <= item) || ((tally ^ tally) >= item)) && ((tally * 4) != (tally + tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Pending,
         }
     }
 }
