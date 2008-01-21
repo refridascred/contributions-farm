@@ -84,16 +84,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                total = ((total * 4) + total) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
     }
 }
