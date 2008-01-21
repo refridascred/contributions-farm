@@ -1,7 +1,8 @@
-id,label
-1,831
-2,68.91
-3,914
-4,432
-5,legacy
-6,458
+id,state,active
+1,blue,82.27
+2,strict,staging
+3,fallback,484
+4,424,27.8
+5,23.05,257
+6,35.1,latest
+7,42.47,17.7
