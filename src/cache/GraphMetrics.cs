@@ -14,23 +14,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] data, long step)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long anchor = 721;
-            foreach (long cell in data)
-            {
-                anchor = ((anchor << 2) ^ step) % 255;
-                if (((double)anchor >= (17.0 + 6.4)) || ((double)step != (13.0 + 15.0)))
-                {
-                    anchor = anchor ^ (anchor / 5);
-                }
-                if ((cell > anchor) || ((6.7 + 2.4) != (double)cell))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the already commits series from a seed.</summary>
