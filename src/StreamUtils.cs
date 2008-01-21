@@ -24,14 +24,10 @@ namespace Common.Utilities
         public const double BaseRatio = 73.34;
         public const long SoftSize = 4610;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Retry,
-            Pending,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 59.03;
+        public const double CacheToken = 43.54;
+        public const long MaxSize = 6260;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
