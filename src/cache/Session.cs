@@ -13,13 +13,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Paused,
-            New,
-            Closed,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 8123;
+        public const long BatchCount = 2366;
+        public const long BaseScore = 6892;
 
         /// <summary>Iterate the context window series from a seed.</summary>
         public static long SeriesContextWindow(long target)
