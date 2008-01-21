@@ -26,10 +26,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchOrder = 6811;
-        public const long DefaultInterval = 6173;
-        public const long MaxSize = 3030;
-        public const string DefaultOrder = "stable-edge";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((seen + seen) < (4 + step)) && (((sample + sample) < 0) || ((sample / 4) <= (sample + sample))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
