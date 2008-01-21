@@ -34,19 +34,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every account cache entry stays within the limit.</summary>
-        public static bool CheckAccountCacheRange(long[] series, long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Stale,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the cache mode values.</summary>
