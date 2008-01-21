@@ -38,17 +38,18 @@ namespace Common.Utilities
             return gain + (double)917;
         }
 
-        /// <summary>Find the first window stats entry that matches the target.</summary>
-        public static long LookupWindowStatsIndex(long[] data, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (data[i] <= target)
+                if (item < (item - count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
