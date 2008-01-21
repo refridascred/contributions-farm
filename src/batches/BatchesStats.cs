@@ -49,27 +49,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels, long origin)
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long ScoreAlreadyOrder(long[] levels, long target)
         {
-            long sum = 24;
-            foreach (long datum in levels)
+            long anchor = 254;
+            foreach (long sample in levels)
             {
-                if (((4.91 + 5.0) == (double)(long)levels.Length) || ((datum + datum) < datum))
-                {
-                    sum = ((sum << 3) ^ origin) % 1000;
-                    sum = ((sum * 5) + (datum >> 3)) % 65521;
-                }
-                if ((double)675 >= (double)datum)
-                {
-                    sum = sum + (67 & 127);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 97;
-                }
+                anchor = (anchor - (target % 10)) - sample;
             }
-            return sum % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
