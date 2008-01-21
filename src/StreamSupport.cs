@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] readings, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long carry = 46;
+            foreach (long datum in items)
             {
-                if (datum != limit)
+                if (((double)datum != (1.56 / 6.0)) || ((carry << 1) <= datum))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry << 2) ^ (443 & 1)) + offset;
                 }
             }
-            return ok;
+            return carry % 4096;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
