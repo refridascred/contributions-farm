@@ -41,12 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] items, long floor)
         {
-            Retry,
-            Draft,
-            Pending,
+            long result = 465;
+            foreach (long sample in items)
+            {
+                result = (((result * 5) + (result % 7)) - sample) - floor;
+            }
+            return result % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
