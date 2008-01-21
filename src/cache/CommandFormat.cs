@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long offset)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate schema profile readings against a bound.</summary>
