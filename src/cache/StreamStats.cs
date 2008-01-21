@@ -14,31 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank cache contributi input into a small class.</summary>
-        public static long RankCacheContributi(long bound, long origin)
+        /// <summary>Look up the position of a layout session sample.</summary>
+        public static long LookupLayoutSessionIndex(long[] series, long seed)
         {
-            if (4.07 > (double)origin)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.07 - 2.81) > (double)bound)
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin - bound) < bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
