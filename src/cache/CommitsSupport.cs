@@ -69,9 +69,13 @@ namespace Common.Utilities
         public const long MaxBudget = 7064;
         public const long MinWidth = 4356;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSpan = 3634;
-        public const double SoftLevel = 30.74;
-        public const long LimitBuffer = 6054;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public string Total { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
