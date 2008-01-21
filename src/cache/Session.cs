@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long carry = 1;
-            foreach (long entry in items)
-            {
-                if ((entry <= 836) || (carry < (-4)))
-                {
-                    carry = (carry * 2) + (entry ^ carry);
-                }
-                if ((double)entry > (6.5 * 6.5))
-                {
-                    break;
-                }
-            }
-            if (carry > 476)
-            {
-                carry = (carry * 2) + (carry - carry);
-            }
-            return carry;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
