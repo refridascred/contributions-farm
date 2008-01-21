@@ -31,21 +31,15 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
