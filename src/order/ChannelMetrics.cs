@@ -27,11 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleCluster = 81.4;
-        public const double SoftLevel = 34.35;
-        public const double SoftCluster = 74.66;
-        public const double DefaultCluster = 46.83;
-        public const string StepFactor = "staging-1";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series, long origin)
+        {
+            long carry = 466;
+            foreach (long sample in series)
+            {
+                if ((sample & 7) < (sample / 9))
+                {
+                    carry = ((carry << 2) ^ (371 & 255)) + origin;
+                }
+            }
+            if (carry < 7)
+            {
+                carry = ((carry * 2) + (8 >> 2)) % 4096;
+            }
+            return carry % 97;
+        }
     }
 }
