@@ -46,15 +46,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
-        public static long SeriesGithubfarmChannel(long target)
+        /// <summary>Iterate the report format series from a seed.</summary>
+        public static long StepReportFormat(long seed)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                score = ((score * 5) + (long)i) % 97;
+                mark = (mark * 2) + mark;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
     }
 }
