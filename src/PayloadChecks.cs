@@ -66,12 +66,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Done,
-            Paused,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
     }
 }
