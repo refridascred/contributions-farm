@@ -28,9 +28,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstInterval = "staging";
-        public const string BaseFactor = "staging";
-        public const long BurstBatches = 5350;
+        /// <summary>Accumulate already account samples.</summary>
+        public static long CombineAlreadyAccount(long[] items, long target)
+        {
+            long carry = -81;
+            foreach (long item in items)
+            {
+                carry = carry ^ (item - target);
+                carry = (carry + target) % 255;
+            }
+            if (carry > 5)
+            {
+                carry = ((carry << 2) ^ (long)items.Length) % 4096;
+            }
+            return carry;
+        }
     }
 }
