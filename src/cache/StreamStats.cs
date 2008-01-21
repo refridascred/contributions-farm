@@ -13,17 +13,27 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a layout session sample.</summary>
-        public static long LookupLayoutSessionIndex(long[] series, long seed)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 212;
+            foreach (long item in values)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum << 3)) - (long)i;
+                }
+                sum = (sum * 2) + (item + step);
+                if ((step >> 1) == (item << 1))
+                {
+                    sum = sum ^ (4 - (-841));
+                }
+                else
+                {
+                    sum = sum ^ (item << 1);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define report limits and defaults.</summary>
