@@ -32,17 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = anchor - (anchor << 1);
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "standard";
+        public const long HardBudget = 1126;
+        public const long SoftRatio = 4534;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] values, long limit)
