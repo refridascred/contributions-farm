@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cache account readings.</summary>
-        public static long CombineCacheAccount(long[] values)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long sum = 14;
-            foreach (long cell in values)
-            {
-                if ((339 / 8) > cell)
-                {
-                    sum = ((sum * 4) + (sum - sum)) % 4096;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = ((sum * 3) + (427 ^ sum)) % 65521;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
