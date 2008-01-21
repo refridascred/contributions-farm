@@ -10,20 +10,15 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Derive the next batches tools value from a seed.</summary>
+        public static long StepBatchesTools(long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 14; i++)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (bound < (mix ^ mix))
-                {
-                    mix = (mix + (bound + bound)) % 65521;
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Describe the farm mode values.</summary>
