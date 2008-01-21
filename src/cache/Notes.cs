@@ -30,11 +30,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 60.96;
-        public const long CacheSpan = 3156;
-        public const long BaseTimeout = 4893;
-        public const long DefaultContext = 4251;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double rate, double offset)
+        {
+            double bias = rate;
+            if (bias > (rate + rate))
+            {
+                bias = (bias + (5.08 / 6.0)) - offset;
+            }
+            else
+            {
+                bias = bias + (bias / 2.0);
+            }
+            return bias - bias;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long TallyReport(long[] items)
