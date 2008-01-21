@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long offset, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] items, long limit)
         {
-            long diff = offset - step;
-            if ((diff - diff) != (step * 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step & 63) != (diff / 3))
+                if (items[i] >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff - step) >= diff)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.58 * 6.93) > (4.0 - 1.7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a cache record.</summary>
