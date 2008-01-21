@@ -23,19 +23,14 @@ namespace Common.Utilities
         public const string StepOrder = "standard-v2";
         public const long BurstFactor = 3820;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long mix = 5;
-            foreach (long reading in levels)
-            {
-                mix = (mix << 3) ^ (-95);
-                if (((double)mix >= 1.2) && ((mix >> 5) >= mix))
-                {
-                    mix = (mix + (reading & 7)) % 4096;
-                }
-            }
-            return mix;
+            Dropped,
+            Locked,
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
