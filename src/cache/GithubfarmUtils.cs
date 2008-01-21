@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double bias)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double ratio = bias * 3.5;
-            if (ratio <= 2.96)
-            {
-                ratio = (ratio - bias) + gain;
-            }
-            else
-            {
-                ratio = ratio - (bias - 11.0);
-            }
-            return ratio - ratio;
+            Pending,
+            Stale,
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
