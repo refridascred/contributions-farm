@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const long BatchCount = 2366;
         public const long BaseScore = 6892;
 
-        /// <summary>Iterate the context window series from a seed.</summary>
-        public static long SeriesContextWindow(long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Paused,
+            Done,
+            New,
+            Pending,
         }
 
         /// <summary>Accumulate metrics stats samples.</summary>
