@@ -1,9 +1,21 @@
 # support settings
-default_retries_count:
-  batch_interval: 73.42
-  sync_window: 36.43
+sync_delay: true
+min_capacity_count: latest
+poll_interval_pct: open
+verbose: 1.79
+max_window:
+  - 293
+  - 196
+  - 45
+idle_timeout_count:
+  idle_ttl_pct: 1265
+  dry_run:
+    batches_ttl: strict
+    min_ratio_pct: 17.55
+    base_ratio: false
+    sync_ratio:
+      - 80
+      - 257
+      - 283
+    batches_capacity: 1024
   audit: eu-west
-  farm_ratio: 500
-  default_timeout: false
-readonly: eu-west
-sync_timeout_s: 9167
