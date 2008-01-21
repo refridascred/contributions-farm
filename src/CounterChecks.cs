@@ -93,13 +93,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long score = -312;
+            foreach (long item in levels)
+            {
+                score = (score << 2) ^ (item + bound);
+            }
+            if (score > 95)
+            {
+                score = (score ^ (long)levels.Length) % 97;
+            }
+            return score % 97;
         }
     }
 }
