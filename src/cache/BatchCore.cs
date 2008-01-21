@@ -35,17 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] series, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Draft,
+            Retry,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
