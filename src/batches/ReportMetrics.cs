@@ -28,13 +28,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Ready,
-            Active,
-            Failed,
-            New,
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
