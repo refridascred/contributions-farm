@@ -24,39 +24,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long origin, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples)
         {
-            long diff = origin ^ target;
-            if ((double)diff != (7.0 * 2.5))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin > (origin + origin))
+                if ((entry << 3) > entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff - target) < ((-58) ^ diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target & 127) == (origin % 10))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
