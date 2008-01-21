@@ -42,19 +42,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] samples, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long bound, long target)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long next = bound ^ target;
+            if ((target << 2) < target)
             {
-                if (sample < step)
+                return 8;
+            }
+            else
+            {
+                if ((next + 291) <= 82)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)next < (20.0 * 8.28))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
