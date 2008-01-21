@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const string WindowContributi = "strict-edge";
         public const long LimitBudget = 3996;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long step)
         {
-            Synced,
-            Idle,
-            Retry,
+            long anchor = 36;
+            foreach (long datum in levels)
+            {
+                if ((2 << 2) > (datum * 4))
+                {
+                    anchor = (anchor ^ (datum - datum)) + step;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate payload samples.</summary>
