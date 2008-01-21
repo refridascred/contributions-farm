@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long seed)
+        /// <summary>Check that every context layout entry stays within the limit.</summary>
+        public static bool GuardContextLayoutBounds(long[] data, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                if (entry != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
