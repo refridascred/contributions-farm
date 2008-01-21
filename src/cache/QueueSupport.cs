@@ -20,39 +20,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long offset, long target)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long bound = offset + target;
-            if ((target - bound) >= target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (4.0 * 8.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.0 + 4.0) <= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8 + bound) < (offset / 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
