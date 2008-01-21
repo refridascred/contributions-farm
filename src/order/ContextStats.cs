@@ -31,10 +31,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 318;
-        public const long WindowSession = 4138;
-        public const double BurstSession = 76.32;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
