@@ -35,21 +35,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((cell + acc) >= (acc << 2)) && ((cell ^ acc) == (acc + acc)))
                 {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ cell) % 4096;
+                }
+                else
+                {
+                    acc = acc - (acc & 3);
+                }
+                if ((acc + acc) <= (acc & 15))
+                {
+                    acc = ((acc * 4) + (acc << 2)) % 255;
                 }
             }
-            return seen;
+            if (acc > 2)
+            {
+                acc = ((acc << 3) ^ acc) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
