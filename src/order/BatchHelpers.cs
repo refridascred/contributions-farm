@@ -25,10 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "alpha-1";
-        public const long WindowSpan = 2440;
-        public const long BatchStats = 375;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long seed, long target)
+        {
+            if (seed > (2 << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((651 > target) && ((double)seed >= 2.7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target > (target ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target >= seed) || ((seed >> 3) <= (target >> 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count stats cache pairs that satisfy a relation.</summary>
         public static long OverlapStatsCacheCount(long[] values)
