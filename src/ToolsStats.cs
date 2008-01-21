@@ -52,11 +52,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxScore = 5752;
-        public const long HardScore = 8524;
-        public const double MaxLevel = 54.15;
-        public const double BurstFarm = 76.52;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Active,
+            Locked,
+            Done,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheGaps(long[] levels)
