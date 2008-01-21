@@ -25,18 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] samples, long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (((6.12 + 13.0) == (double)value) || (((value >> 2) >= (origin >> 5)) && ((value + matches) > value)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the support phase values.</summary>
