@@ -38,19 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] values, long limit)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (cell < limit)
+                if (sample > (count ^ count))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
