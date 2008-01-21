@@ -51,18 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] values, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = 20;
+            foreach (long value in readings)
             {
-                if ((origin + value) == (origin << 3))
+                for (int i = 0; i < 4; i++)
                 {
-                    matches = matches + 1;
+                    anchor = (((anchor + (anchor << 3)) % 65521) ^ (long)i) ^ value;
+                }
+                if ((anchor << 1) > anchor)
+                {
+                    anchor = (anchor + bound) % 97;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Scale a token batches figure with a bias.</summary>
