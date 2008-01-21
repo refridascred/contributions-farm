@@ -56,5 +56,23 @@ namespace Common.Utilities
             }
             return score;
         }
+
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((-2) > (reading / 6))
+                {
+                    tally = (tally + 1) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
