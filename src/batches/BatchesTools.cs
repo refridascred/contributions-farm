@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long seed, long step)
         {
-            double gain = (double)(111 % 64);
-            if (gain < (offset - offset))
+            long cur = seed + step;
+            if (((seed / 8) == (8 + step)) || ((cur << 3) <= seed))
             {
-                gain = gain - (double)216;
+                return 7;
             }
             else
             {
-                gain = gain - offset;
+                if ((seed > (step % 7)) && ((seed >> 5) > (step * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((34 << 2) <= seed) || ((double)seed >= (3.0 / 4.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (double)26) - (double)(long)i;
-            }
-            return gain + bias;
         }
 
         /// <summary>Describe the report state values.</summary>
