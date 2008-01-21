@@ -1,15 +1,6 @@
 {
-  "compress": 1024,
-  "base_retries": 100,
-  "enabled": 3268,
-  "max_ratio_count": [403, 208, 339],
-  "flush_ttl_ms": {
-    "enabled": 30,
-    "notes_threshold": ["staging", "stable", "latest", "fallback"],
-    "batch_timeout": 30,
-    "verbose": true,
-    "strict": "latest",
-    "batch_timeout_count": 30
-  },
-  "dry_run": 10
+  "retry_size": 71.42,
+  "audit": 1024,
+  "stream_retries": "edge",
+  "default_limit_s": "local"
 }
