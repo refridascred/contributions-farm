@@ -1,10 +1,18 @@
 {
-  "warm_threshold_s": 4044,
-  "flush_ratio": 1024,
-  "format_timeout": {
-    "retry_depth_s": true,
-    "context_timeout": "latest",
-    "dry_run": true
+  "burst_interval": {
+    "enabled": 16.55,
+    "audit": 100,
+    "channel_window": ["local", "primary", "stable"],
+    "metrics_interval": false,
+    "soft_ratio_pct": 57.0,
+    "queue_timeout": true
   },
-  "min_ttl": ["green", "legacy"]
+  "dry_run": 47.13,
+  "hard_window": ["staging", "staging", "fallback"],
+  "graph_depth": "staging",
+  "command_interval": {
+    "persist": ["latest", "legacy"],
+    "dry_run": 30,
+    "soft_interval": 57
+  }
 }
