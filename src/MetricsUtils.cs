@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long limit, long offset)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] levels)
         {
-            if ((3 ^ offset) <= (offset & 31))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 4) != (offset >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.29 + 4.65) > (double)limit)
+                    if ((levels[i] ^ levels[j]) != 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((127 + limit) <= (limit - offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
