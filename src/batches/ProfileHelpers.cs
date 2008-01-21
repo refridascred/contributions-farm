@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long WindowSchema = 6997;
         public const long DefaultTimeout = 9111;
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double weight, double bias)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double rate = (double)(68 >> 1);
-            return ((rate + (17.0 / 6.0)) + weight) + bias;
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
