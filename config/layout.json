@@ -1,5 +1,17 @@
 {
-  "farm_size": 8203,
-  "token_depth": 97,
-  "soft_ratio_s": [132, 213, 289, 394]
+  "max_timeout_s": {
+    "enabled": {
+      "default_ratio_s": "fallback",
+      "batch_limit": [232, 381, 133, 263],
+      "default_ttl_pct": "eu-west",
+      "enabled": "green",
+      "poll_delay": 2817,
+      "readonly": 89.28
+    },
+    "persist": "edge",
+    "githubfarm_threshold": 33.15
+  },
+  "readonly": "strict",
+  "min_interval_ms": 498,
+  "retry_threshold_s": ["local", "blue", "edge"]
 }
