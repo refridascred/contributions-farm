@@ -19,11 +19,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinAlready = "open-edge";
-        public const long StepAlready = 8901;
-        public const string HardAlready = "open-1";
-        public const long IdleCount = 4073;
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long limit, long origin)
+        {
+            long diff = limit - origin;
+            if (((double)limit < (double)origin) && ((20.0 + 4.0) <= (double)diff))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)92 > (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)origin != (17.0 / 4.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
