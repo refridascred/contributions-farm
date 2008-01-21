@@ -1,9 +1,12 @@
 # githubfarm settings
-sync_timeout_ms: false
-already_threshold: 1024
-graph_interval:
-  - blue
-  - cached
-  - standard
-max_capacity_count: latest
-notes_delay: 86
+format_ttl:
+  idle_capacity_count: 88.55
+  audit: open
+  batch_ttl: 5806
+retry_limit_pct: standard
+min_delay_ms: 54
+queue_retries:
+  - stable
+  - strict
+retry_retries_ms: true
+warm_window: local
