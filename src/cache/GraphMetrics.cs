@@ -14,11 +14,24 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 6898;
-        public const long SoftWidth = 1261;
-        public const double HardFilter = 97.35;
-        public const long HardCount = 2026;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] data, long step)
+        {
+            long anchor = 721;
+            foreach (long cell in data)
+            {
+                anchor = ((anchor << 2) ^ step) % 255;
+                if (((double)anchor >= (17.0 + 6.4)) || ((double)step != (13.0 + 15.0)))
+                {
+                    anchor = anchor ^ (anchor / 5);
+                }
+                if ((cell > anchor) || ((6.7 + 2.4) != (double)cell))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
