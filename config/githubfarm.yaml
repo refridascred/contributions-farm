@@ -1,34 +1,15 @@
 # githubfarm settings
-verbose:
-  soft_depth: 81.45
-  idle_ttl: true
-  cache_capacity: 71.58
-  warm_depth_ms:
-    channel_retries: true
-    hard_size: green
-    format_retries: cached
-compress: 100
-batches_interval:
-  flush_retries: true
-  burst_ttl_s: 5299
-  warm_timeout: 96
-farm_limit:
-  base_delay_pct:
-    - latest
-    - blue
-    - primary
-  cache_timeout_pct: strict
-  retry_size:
-    - 417
-    - 370
-    - 130
-  command_size:
-    - 251
-    - 240
-    - 80
-    - 414
-commits_limit:
-  - 62
-  - 16
-  - 22
-  - 396
+dry_run:
+  - green
+  - eu-west
+batch_retries:
+  report_interval: stable
+  base_retries: primary
+  profile_ratio: 60
+  entry_capacity: standard
+  cache_size: 9214
+stats_ratio: 7396
+soft_interval_count: true
+idle_depth_count:
+  - fallback
+  - latest
