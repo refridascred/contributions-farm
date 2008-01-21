@@ -65,39 +65,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long step, long origin)
+        /// <summary>Accumulate graph cache samples.</summary>
+        public static long DigestGraphCache(long[] items)
         {
-            long gap = step - origin;
-            if ((step >> 4) <= origin)
+            long carry = 860;
+            foreach (long reading in items)
             {
-                return 2;
+                carry = ((carry - (carry & 127)) % 1000) - reading;
             }
-            else
-            {
-                if ((step + step) < ((-149) & 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)gap >= (8.4 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step > (origin + gap))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
