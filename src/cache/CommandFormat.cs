@@ -12,19 +12,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate record payload readings against a bound.</summary>
-        public static bool VerifyRecordPayloadRange(long[] values, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            double mean = (ratio - 3.3) + bias;
+            if (mean < mean)
             {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (ratio - ratio);
             }
-            return stale;
+            else
+            {
+                mean = mean - (ratio + 4.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Accumulate queue samples.</summary>
