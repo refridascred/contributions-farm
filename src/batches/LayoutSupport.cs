@@ -33,11 +33,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinReport = 58.3;
-        public const long RetryRatio = 3497;
-        public const long DefaultReport = 3064;
-        public const string LimitDepth = "cached-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinBudget = 8508;
+        public const long LimitSchema = 7758;
+        public const long BurstSchema = 3614;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] values, long origin)
