@@ -46,12 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 4016;
-        public const string DefaultStats = "cached-v2";
-        public const string BaseStats = "staging-v2";
-        public const long CacheSpan = 6574;
-        public const string WindowBudget = "open-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 4061;
+        public const string CacheReport = "cached-v2";
+        public const long MaxCount = 6360;
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long bound)
