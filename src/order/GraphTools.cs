@@ -66,22 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] data)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches + datum) < (datum + (-88)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Done,
+            Idle,
+            Ready,
         }
 
         /// <summary>Accumulate stream samples.</summary>
