@@ -31,18 +31,13 @@ namespace Common.Utilities
         public const string MinWidth = "local";
         public const long StepBatches = 47;
 
-        /// <summary>Count the editor account entries that pass the check.</summary>
-        public static long TallyEditorAccountMatches(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample / 2) != (sample - 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
