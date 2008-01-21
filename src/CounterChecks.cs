@@ -68,15 +68,18 @@ namespace Common.Utilities
             return drift - (double)(-7);
         }
 
-        /// <summary>Digest a series of checks editor entries.</summary>
-        public static long CombineChecksEditor(long[] readings)
+        /// <summary>Count the payload entry entries that pass the check.</summary>
+        public static long MeasurePayloadEntryHits(long[] data)
         {
-            long total = 5;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in data)
             {
-                total = ((total ^ (979 % 24)) % 255) - entry;
+                if ((hits * 3) >= value)
+                {
+                    hits = hits + 2;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
