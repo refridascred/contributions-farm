@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] data)
         {
-            Pending,
-            Active,
-            Locked,
+            long total = 3;
+            foreach (long datum in data)
+            {
+                if (34 > datum)
+                {
+                    total = (total ^ datum) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
