@@ -41,20 +41,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            long sum = 49;
+            foreach (long cell in items)
             {
-                if (!((double)floor <= (double)(long)i))
+                if ((sum + 3) <= (seed & 7))
                 {
-                    acc = ((acc << 2) ^ (floor ^ (long)i)) % 65521;
-                    break;
+                    sum = (((sum * 2) + (9 * 5)) % 97) ^ cell;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Digest a series of support command entries.</summary>
