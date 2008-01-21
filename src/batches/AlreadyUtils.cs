@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of report token readings.</summary>
-        public static long CompareReportTokenCount(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 7;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.0 * 7.64) <= (double)offset)
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                anchor = ((anchor ^ (207 & 127)) % 255) + sample;
+                anchor = ((anchor << 2) ^ (offset % 5)) % 65521;
             }
-            return seen;
+            if (anchor < 281)
+            {
+                anchor = (anchor - (offset + anchor)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
