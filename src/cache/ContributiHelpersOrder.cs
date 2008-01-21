@@ -27,14 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
+            New,
+            Ready,
+            Locked,
             Idle,
-            Synced,
-            Retry,
-            Dropped,
-            Paused,
+            Queued,
         }
     }
 }
