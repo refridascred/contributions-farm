@@ -48,12 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] values, long seed)
         {
-            Stale,
-            Pending,
-            Active,
+            long sum = 73;
+            foreach (long value in values)
+            {
+                if (!((45 << 1) < value))
+                {
+                    sum = ((sum * 3) + 8) % 65521;
+                }
+                sum = (sum * 4) + (580 & 63);
+                sum = (sum + (seed * 5)) % 4096;
+            }
+            return sum;
         }
     }
 }
