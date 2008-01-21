@@ -41,11 +41,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 9323;
-        public const string HardInterval = "latest-1";
-        public const long DefaultScore = 8870;
-        public const double SoftGraph = 86.83;
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 8179;
