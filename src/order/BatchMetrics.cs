@@ -23,23 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] data, long step)
+        /// <summary>Locate a schema graph reading by value.</summary>
+        public static long LookupSchemaGraphIndex(long[] readings, long bound)
         {
-            long state = 71;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - item) % 255;
-                if (!(item <= (step * 5)))
+                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
                 {
-                    state = (state << 3) ^ (item + item);
+                    return (long)i;
                 }
             }
-            if (state > 906)
-            {
-                state = (state + step) % 1000;
-            }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
