@@ -14,12 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Active,
-            Failed,
-            Paused,
+            public double Level { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the buffer status values.</summary>
