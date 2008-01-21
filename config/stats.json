@@ -1,8 +1,8 @@
 {
-  "retry_size_s": "eu-west",
-  "support_timeout": 56.36,
-  "max_window": false,
-  "default_interval_count": true,
-  "idle_threshold_s": 55,
-  "max_timeout": 52.14
+  "audit": 62,
+  "poll_timeout_ms": 82.4,
+  "counter_depth": ["cached", "local", "latest"],
+  "cache_window_s": [299, 462],
+  "verbose": "blue",
+  "cache_ttl_count": 60
 }
