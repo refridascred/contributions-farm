@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            New,
+            Ready,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Compare every pair of already readings.</summary>
