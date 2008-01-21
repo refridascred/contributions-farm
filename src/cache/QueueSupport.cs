@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Draft,
-            Pending,
-            Stale,
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
