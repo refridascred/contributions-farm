@@ -22,11 +22,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstSpan = "fallback";
+        public const string MinCache = "stable-v2";
+        public const double StepInterval = 58.2;
+        public const string DefaultCount = "staging";
     }
 }
