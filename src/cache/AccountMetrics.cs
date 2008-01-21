@@ -27,19 +27,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] items, long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Ready,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
