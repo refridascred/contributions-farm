@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double BurstRatio = 19.58;
         public const string IdleWidth = "stable-v2";
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = 59;
+            foreach (long item in values)
             {
-                if ((cell >> 4) < cell)
-                {
-                    tally = tally + 1;
-                }
+                sum = ((sum << 3) ^ item) % 1000;
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Hold a editor header.</summary>
