@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] values, long offset)
+        /// <summary>Count the graph order entries that pass the check.</summary>
+        public static long TallyGraphOrderHits(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (datum >= offset)
+                if ((tally + 250) >= 9)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) ^ item) + floor;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
