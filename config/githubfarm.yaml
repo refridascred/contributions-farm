@@ -1,7 +1,9 @@
 # githubfarm settings
-payload_delay: true
-min_retries: 86
-burst_ttl_s: 4.31
-batch_interval_count: stable
-max_timeout_ms: true
-idle_delay_pct: true
+sync_timeout_ms: false
+already_threshold: 1024
+graph_interval:
+  - blue
+  - cached
+  - standard
+max_capacity_count: latest
+notes_delay: 86
