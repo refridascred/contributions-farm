@@ -31,22 +31,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches format entries that pass the check.</summary>
-        public static long MeasureBatchesFormatGaps(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (hits < (value * 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
