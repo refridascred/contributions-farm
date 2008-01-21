@@ -20,33 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long limit, long origin)
-        {
-            long diff = limit - origin;
-            if (((double)limit < (double)origin) && ((20.0 + 4.0) <= (double)diff))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)92 > (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)origin != (17.0 / 4.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "alpha-edge";
+        public const double IdleLayout = 51.76;
+        public const long DefaultWidth = 5157;
+        public const string BurstLayout = "standard-1";
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
