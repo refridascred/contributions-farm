@@ -1,26 +1,4 @@
 # entry settings
-flush_capacity_ms: 3373
-burst_interval: 50.72
-enabled: 100
-hard_timeout_ms:
-  dry_run: standard
-  verbose:
-    soft_timeout_ms:
-      - 263
-      - 288
-    soft_interval_ms: standard
-    metric_limit: true
-    persist:
-      - latest
-      - eu-west
-      - latest
-      - stable
-    soft_interval: 31.69
-    queue_ttl: 30
-  editor_delay:
-    - edge
-    - local
-    - green
-    - standard
-poll_limit: 3591
-strict: 500
+window_threshold: 58.07
+checks_interval: primary
+poll_interval: latest
