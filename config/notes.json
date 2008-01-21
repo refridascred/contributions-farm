@@ -1,5 +1,8 @@
 {
-  "retry_ttl": 60,
-  "strict": [42, 271],
-  "graph_depth": "eu-west"
+  "min_limit": 4134,
+  "burst_threshold_ms": "primary",
+  "readonly": ["open", "staging", "strict", "legacy"],
+  "token_delay": [57, 250, 382],
+  "batch_size": 7625,
+  "format_ttl": 250
 }
