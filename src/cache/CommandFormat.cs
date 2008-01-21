@@ -28,13 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] series, long bound)
         {
-            New,
-            Locked,
-            Active,
-            Synced,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
