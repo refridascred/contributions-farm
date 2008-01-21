@@ -1,13 +1,5 @@
 {
-  "buffer_size": 30,
-  "retry_timeout_pct": 7934,
-  "default_capacity_count": "primary",
-  "sync_retries_count": {
-    "strict": 7,
-    "burst_capacity_s": 500,
-    "verbose": "standard",
-    "base_timeout": 500,
-    "readonly": 6147
-  },
-  "verbose": 51.19
+  "queue_retries": false,
+  "metrics_window": 34,
+  "batch_size": 13.79
 }
