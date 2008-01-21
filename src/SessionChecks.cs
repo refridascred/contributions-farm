@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] series, long offset)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account level values.</summary>
