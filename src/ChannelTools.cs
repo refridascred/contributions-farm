@@ -50,10 +50,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 32;
-        public const double MaxScore = 43.42;
-        public const string BatchWidth = "staging-v2";
-        public const long IdleQueue = 9102;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
