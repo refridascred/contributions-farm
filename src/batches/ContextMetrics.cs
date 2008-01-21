@@ -16,15 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long seed)
+        /// <summary>Audit metric channel readings against a rule.</summary>
+        public static long TallyMetricChannelOutliers(long[] levels)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((datum + matches) == (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
