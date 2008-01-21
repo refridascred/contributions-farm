@@ -53,13 +53,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] samples, long limit)
         {
-            Locked,
-            Closed,
-            Idle,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cluster commits entries.</summary>
