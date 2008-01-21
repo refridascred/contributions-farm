@@ -19,17 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long origin)
+        /// <summary>Combine profile context values into a single score.</summary>
+        public static long FoldProfileContext(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 46;
+            foreach (long item in data)
             {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (sum << 2)) ^ item) - target;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
