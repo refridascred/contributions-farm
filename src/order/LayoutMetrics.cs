@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double rate, double offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            double scale = 0.68;
-            if (scale <= scale)
-            {
-                scale = (scale + rate) - offset;
-            }
-            return scale + 3.0;
+            public double Token { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
