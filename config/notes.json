@@ -1,7 +1,5 @@
 {
-  "sync_retries_s": 60,
-  "audit": true,
-  "readonly": "open",
-  "base_limit_pct": 60,
-  "flush_delay_count": "open"
+  "base_ratio": 6.24,
+  "poll_retries": 50,
+  "batch_window": true
 }
