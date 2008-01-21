@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Audit cache graph readings against a rule.</summary>
+        public static long AuditCacheGraphGaps(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((bound + tally) == (tally + datum))
                 {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
