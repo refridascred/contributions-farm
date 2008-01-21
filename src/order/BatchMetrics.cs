@@ -37,12 +37,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 40.38;
+        public const long WindowBudget = 2222;
+        public const double MinFactor = 22.73;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long GradeStream(long limit, long seed)
