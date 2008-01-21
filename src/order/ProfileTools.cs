@@ -47,15 +47,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long limit)
         {
-            double drift = (span + rate) * 7.6;
-            if (drift <= drift)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                drift = drift + drift;
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (drift * 9.9);
+            return ready;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
