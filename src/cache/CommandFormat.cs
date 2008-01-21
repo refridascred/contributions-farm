@@ -34,35 +34,18 @@ namespace Common.Utilities
         public const long IdleInterval = 2918;
         public const long BatchBudget = 1921;
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data, long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] samples, long limit)
         {
-            long sum = 902;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((981 >> 4) > (sample - sample))
+                if ((limit % 60) >= (matches << 2))
                 {
-                    sum = sum ^ ((long)data.Length & 127);
-                    continue;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((sum << 3) ^ (sample % 97)) + (long)i;
-                }
-                if (0.5 <= (double)floor)
-                {
-                    sum = (sum - (sample + floor)) % 101;
-                }
-                else
-                {
-                    sum = (sum ^ (sample + 75)) % 101;
+                    matches = (matches + 3) + item;
                 }
             }
-            if (sum < (-4))
-            {
-                sum = ((sum << 3) ^ (24 % 5)) % 97;
-            }
-            return sum;
+            return matches;
         }
     }
 }
