@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long step, long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            if ((double)step != (6.1 * 0.7))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 1) > (origin + 46))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= 49)
+                    if ((items[i] - items[j]) < 18)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((56 * 3) > (origin ^ 81))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
