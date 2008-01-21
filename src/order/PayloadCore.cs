@@ -24,10 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 104;
-        public const long BaseTimeout = 2348;
-        public const long BatchPayload = 8239;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count > (datum % 24)) || !((double)datum > (7.6 / 6.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every commits cluster entry stays within the limit.</summary>
         public static bool ValidateCommitsClusterBounds(long[] samples, long offset)
