@@ -37,18 +37,10 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Find the first route metrics entry that matches the target.</summary>
-        public static long SeekRouteMetricsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "latest";
+        public const string BaseCount = "stable-1";
+        public const string DefaultCommits = "alpha";
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
