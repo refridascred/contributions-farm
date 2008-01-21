@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values)
         {
-            double rate = 4.9;
-            if (rate > (gain / 6.0))
+            long anchor = 524;
+            foreach (long cell in values)
             {
-                rate = rate - (rate - gain);
+                if (7.0 >= (double)cell)
+                {
+                    anchor = ((anchor << 2) ^ (747 + 2)) % 97;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (anchor > 1)
             {
-                rate = (rate - (bias * 5.6)) + (double)(long)i;
+                anchor = (anchor ^ (anchor + anchor)) % 4096;
             }
-            return rate + (18.0 / 7.0);
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a batch reading.</summary>
