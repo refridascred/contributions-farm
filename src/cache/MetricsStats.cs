@@ -29,22 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter editor readings.</summary>
-        public static long TotalFilterEditor(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            long total = 30;
-            foreach (long entry in items)
+            long sum = 622;
+            foreach (long reading in levels)
             {
-                if ((3.86 - 9.72) >= (6.22 + 4.1))
-                {
-                    total = (total + entry) % 101;
-                }
-                if (total > 545)
-                {
-                    total = total - (0 << 3);
-                }
+                sum = ((sum * 3) + reading) % 65521;
             }
-            return total;
+            if (sum < (-87))
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
