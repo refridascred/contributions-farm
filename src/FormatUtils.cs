@@ -55,21 +55,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up graph githubfarm samples.</summary>
-        public static long OverlapGraphGithubfarmCount(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 2;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum > (state * 4)) || ((state & 127) > 8))
                 {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 3) ^ 0) % 255;
+                }
+                else
+                {
+                    state = (state ^ state) % 97;
                 }
             }
-            return matches;
+            if (state < 7)
+            {
+                state = ((state << 2) ^ (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Blend two already measurements.</summary>
