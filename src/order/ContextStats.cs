@@ -14,10 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 32.33;
-        public const long MaxScore = 3040;
-        public const long BurstContributi = 1582;
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardDepth = 8941;
