@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Active,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 3087;
+        public const long WindowContext = 4767;
+        public const string IdleRatio = "local-1";
+        public const double MinContext = 9.23;
+        public const string MaxTimeout = "standard";
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ProjectBatches(double ratio, double offset)
