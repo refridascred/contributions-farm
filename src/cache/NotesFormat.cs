@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many editor counter samples are out of range.</summary>
-        public static long CountEditorCounterOutliers(long[] levels)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 2) <= (reading & 31))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
