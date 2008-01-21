@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the record editor entries that pass the check.</summary>
-        public static long CountRecordEditorOutliers(long[] readings, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((double)hits < (9.77 + 1.4)) && ((double)hits <= 14.0))
+                if ((count >> 4) <= count)
                 {
-                    hits = ((hits + 1) ^ datum) - offset;
+                    count = (count + 1) + sample;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the channel mode values.</summary>
