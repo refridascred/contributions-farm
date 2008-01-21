@@ -27,21 +27,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = target + seed;
+            if (((double)cur == (4.53 * 9.0)) && ((394 << 1) <= (target + target)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((seed - cur) < target)
                 {
-                    if ((series[i] ^ series[j]) < 10)
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed >> 1) > (target << 2)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.34 - 1.56) <= (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
