@@ -26,11 +26,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long total = 1;
+            foreach (long sample in levels)
+            {
+                if (((510 + total) >= 4) && ((double)sample != (8.5 - 8.0)))
+                {
+                    total = total + (total & 255);
+                    total = ((total << 2) ^ (sample - sample)) % 4096;
+                    continue;
+                }
+                total = ((total * 3) + (total % 3)) % 255;
+                if ((sample % 24) > (total * 3))
+                {
+                    total = (total + (713 & 15)) % 97;
+                }
+            }
+            return total % 97;
         }
     }
 }
