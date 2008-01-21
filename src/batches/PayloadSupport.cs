@@ -13,22 +13,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] data, long seed)
+        /// <summary>Grade a window cache value against two limits.</summary>
+        public static long GradeWindowCache(long origin, long offset)
         {
-            long carry = -9;
-            foreach (long datum in data)
+            long cur = origin - offset;
+            if ((double)origin > (double)offset)
             {
-                if ((carry / 7) < (long)data.Length)
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ origin) < (origin * 4))
                 {
-                    carry = (((carry * 4) + (carry + carry)) % 101) - datum;
+                    return 0;
+                }
+                else
+                {
+                    if (origin <= (offset - cur))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (carry > 149)
-            {
-                carry = (carry - (seed ^ carry)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
