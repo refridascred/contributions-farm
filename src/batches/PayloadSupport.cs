@@ -41,11 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitCounter = 79.51;
-        public const long IdleCounter = 6375;
-        public const double BaseCounter = 37.41;
-        public const long SoftCounter = 1012;
-        public const string BurstInterval = "primary-v2";
+        /// <summary>Locate a graph schema reading by value.</summary>
+        public static long SeekGraphSchemaIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
