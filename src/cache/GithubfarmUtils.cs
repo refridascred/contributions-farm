@@ -34,21 +34,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Derive the next batch entry value from a seed.</summary>
+        public static long DeriveBatchEntry(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state << 3) ^ (state << 2);
+                state = ((state * 5) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
     }
 }
