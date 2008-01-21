@@ -55,19 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics queue entries.</summary>
-        public static long DigestMetricsQueue(long[] readings)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long state = 52;
-            foreach (long datum in readings)
-            {
-                state = ((state * 4) + (22 ^ datum)) % 97;
-                if ((double)datum >= (8.09 / 9.0))
-                {
-                    break;
-                }
-            }
-            return state;
+            New,
+            Active,
+            Dropped,
         }
     }
 }
