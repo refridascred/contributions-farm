@@ -59,22 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] readings, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((double)item >= 15.0)
+                if (sample > limit)
                 {
-                    tally = (tally + 1) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Match up tools samples.</summary>
