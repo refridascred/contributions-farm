@@ -11,10 +11,15 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftLevel = 40.67;
-        public const long BatchSpan = 7791;
-        public const long IdleLevel = 3535;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Dropped,
+            Retry,
+            Draft,
+            Stale,
+            Done,
+        }
 
         /// <summary>Adjust a route reading.</summary>
         public static double BlendRoute(double gain, double span)
