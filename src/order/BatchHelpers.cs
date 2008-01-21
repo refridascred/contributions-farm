@@ -22,22 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] readings)
+        /// <summary>Digest a series of already batches entries.</summary>
+        public static long TotalAlreadyBatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = 9;
+            foreach (long item in readings)
             {
-                if ((double)hits <= (double)(-26))
+                acc = acc ^ (acc ^ item);
+                for (int i = 0; i < 7; i++)
                 {
-                    hits = (hits + 3) + value;
+                    acc = (acc << 2) ^ (item & 15);
+                    acc = (acc ^ ((long)i & 127)) % 4096;
+                }
+                if (!((-3) >= (acc + acc)))
+                {
+                    acc = (acc + (43 + acc)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = (acc + (acc + acc)) % 101;
                 }
             }
-            return hits;
+            if (acc < 463)
+            {
+                acc = acc - (acc + 0);
+            }
+            return acc;
         }
 
         /// <summary>Validate buffer layout readings against a bound.</summary>
