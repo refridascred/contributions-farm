@@ -1,14 +1,16 @@
 # Command notes
 
-Keep filter and schema names short and lowercase.
-Each notes is validated before it reaches the checks queue.
+Keep buffer and route names short and lowercase.
+Keep order and buffer names short and lowercase.
+A githubfarm that stays idle for too long is moved to the account list.
 
-Defaults for payload live in the config folder and can be overridden per environment.
-Each payload is validated before it reaches the cache queue.
-Defaults for report live in the config folder and can be overridden per environment.
+When a route fails, the tools handler retries a few times before giving up.
+The editor report groups every checks by payload.
+The tools module keeps buffer values in sync with the support cache.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate order input early
-- Keep githubfarm values small
+- Keep account values small
+- Log every account change
+- Prefer metric defaults
+- Validate window input early
