@@ -34,19 +34,35 @@ namespace Common.Utilities
         public const long IdleInterval = 2918;
         public const long BatchBudget = 1921;
 
-        /// <summary>Check that every token farm entry stays within the limit.</summary>
-        public static bool VerifyTokenFarmRange(long[] levels, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long sum = 902;
+            foreach (long sample in data)
             {
-                if (sample != floor)
+                if ((981 >> 4) > (sample - sample))
                 {
-                    stale = false;
-                    break;
+                    sum = sum ^ ((long)data.Length & 127);
+                    continue;
+                }
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((sum << 3) ^ (sample % 97)) + (long)i;
+                }
+                if (0.5 <= (double)floor)
+                {
+                    sum = (sum - (sample + floor)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ (sample + 75)) % 101;
                 }
             }
-            return stale;
+            if (sum < (-4))
+            {
+                sum = ((sum << 3) ^ (24 % 5)) % 97;
+            }
+            return sum;
         }
     }
 }
