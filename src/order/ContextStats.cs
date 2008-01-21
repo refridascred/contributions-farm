@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxWidth = 3360;
-        public const string StepOrder = "standard-v2";
-        public const long BurstFactor = 3820;
+        /// <summary>Derive the next cache cluster value from a seed.</summary>
+        public static long IterateCacheCluster(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry ^ carry) % 65521;
+                carry = (carry + ((long)i + (long)i)) % 4096;
+                carry = carry + (offset - carry);
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
