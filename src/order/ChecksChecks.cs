@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] items, long seed)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a tools record.</summary>
