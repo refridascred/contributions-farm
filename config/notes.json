@@ -1,6 +1,15 @@
 {
-  "payload_threshold": ["legacy", "standard", "primary", "strict"],
-  "min_ttl_s": "staging",
-  "support_ttl": "fallback",
-  "compress": false
+  "audit": "legacy",
+  "idle_interval": 30.49,
+  "min_capacity_pct": {
+    "poll_ratio_ms": 78.88,
+    "retry_timeout_s": 713,
+    "tools_threshold": 4343
+  },
+  "readonly": 14.27,
+  "verbose": {
+    "warm_capacity": 53.76,
+    "base_size": 47.01,
+    "support_interval": true
+  }
 }
