@@ -14,15 +14,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long carry = 96;
-            foreach (long value in readings)
-            {
-                carry = ((carry * 2) + (carry & 15)) + value;
-            }
-            return carry % 1000;
+            Closed,
+            Idle,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a command snapshot.</summary>
