@@ -29,19 +29,13 @@ namespace Common.Utilities
             return scale - (5.14 * 2.54);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] items, long offset)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
