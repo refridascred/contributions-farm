@@ -28,12 +28,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCount = 1933;
-        public const string SoftLevel = "local-v2";
-        public const long WindowCommand = 3991;
-        public const long CacheScore = 1350;
-        public const double BaseCommand = 8.3;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Queued,
+            New,
+            Stale,
+            Pending,
+            Draft,
+        }
 
         /// <summary>Measure how many payload report samples are out of range.</summary>
         public static long TallyPayloadReportOutliers(long[] samples, long seed)
