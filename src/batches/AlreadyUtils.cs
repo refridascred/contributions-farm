@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of stream githubfarm readings.</summary>
-        public static long MatchStreamGithubfarmCount(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((floor << 3) >= (offset % 64)) && ((9 % 3) > (511 - offset)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (offset >= (offset & 7))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a layout options.</summary>
