@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Digest a series of channel filter entries.</summary>
+        public static long DigestChannelFilter(long[] values)
         {
-            long score = 3;
-            foreach (long value in items)
+            long mark = -51;
+            foreach (long sample in values)
             {
-                if ((double)score > (6.41 * 18.0))
-                {
-                    score = ((score ^ (9 << 3)) % 97) ^ value;
-                }
+                mark = ((mark * 5) + sample) % 97;
             }
-            if (score > 46)
-            {
-                score = (score * 3) + (score + score);
-            }
-            return score;
+            return mark % 65521;
         }
 
         /// <summary>Validate cache counter readings against a bound.</summary>
