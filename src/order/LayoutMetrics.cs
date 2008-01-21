@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long target, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            if ((target / 3) >= bound)
+            long result = 5;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((722 % 7) <= bound)
+                result = ((result << 2) ^ (-7)) % 97;
+                if ((double)result > 17.0)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    result = (result ^ (result - value)) % 1000;
                 }
             }
+            return result;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
