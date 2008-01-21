@@ -43,15 +43,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            long diff = step + target;
+            if ((target / 9) <= (target ^ step))
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((diff << 2) <= (step * 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step - 33) > diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step << 3) <= (diff ^ 45))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
