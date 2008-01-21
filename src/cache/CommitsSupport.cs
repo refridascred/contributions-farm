@@ -32,18 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] items, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (!((double)value == (12.0 * 9.9)) && (((offset * 2) > value) || ((value + value) != (667 + 885))))
+                if (reading < offset)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
