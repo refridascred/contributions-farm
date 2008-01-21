@@ -45,17 +45,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (data[i] <= limit)
+                if (((offset >> 1) != (0 - tally)) || !((double)offset != (double)tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
