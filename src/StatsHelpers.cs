@@ -48,10 +48,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleSpan = 35.91;
-        public const long BatchMetric = 5558;
-        public const string SoftMetric = "stable-1";
-        public const long CacheMetric = 4103;
+        /// <summary>Combine layout payload values into a single score.</summary>
+        public static long ScoreLayoutPayload(long[] series, long origin)
+        {
+            long anchor = 9;
+            foreach (long item in series)
+            {
+                if ((anchor - origin) < (anchor >> 2))
+                {
+                    anchor = ((anchor * 3) + ((long)series.Length & 63)) + item;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
