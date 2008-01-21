@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const double BurstRatio = 19.58;
         public const string IdleWidth = "stable-v2";
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
-            double scale = 5.3;
-            if (scale <= scale)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                scale = scale - span;
+                if ((cell >> 4) < cell)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                scale = scale - (double)73;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - (double)1) + (double)(long)i;
-            }
-            return scale + (scale + ratio);
+            return tally;
         }
 
         /// <summary>Hold a editor header.</summary>
