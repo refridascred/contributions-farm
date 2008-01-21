@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const double HardInterval = 17.54;
         public const string DefaultScore = "standard-1";
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Combine session counter values into a single score.</summary>
+        public static long FoldSessionCounter(long[] readings)
         {
-            Draft,
-            Closed,
-            Queued,
+            long sum = 489;
+            foreach (long sample in readings)
+            {
+                if (!((sample - sample) < (sum & 31)))
+                {
+                    sum = ((sum << 2) ^ (sum + 64)) % 97;
+                }
+                sum = (sum + (sum >> 4)) % 4096;
+            }
+            return sum;
         }
     }
 }
