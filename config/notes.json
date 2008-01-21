@@ -1,8 +1,19 @@
 {
-  "min_limit": 4134,
-  "burst_threshold_ms": "primary",
-  "readonly": ["open", "staging", "strict", "legacy"],
-  "token_delay": [57, 250, 382],
-  "batch_size": 7625,
-  "format_ttl": 250
+  "soft_ratio_s": "legacy",
+  "verbose": {
+    "persist": "fallback",
+    "readonly": "primary",
+    "dry_run": "strict",
+    "sync_size_s": [462, 206, 456],
+    "channel_limit": 9359
+  },
+  "schema_timeout": 2670,
+  "cache_limit": 6544,
+  "order_threshold": {
+    "flush_limit": false,
+    "enabled": 30,
+    "batches_depth": 30,
+    "batch_threshold": 8535,
+    "burst_window": 62.03
+  }
 }
