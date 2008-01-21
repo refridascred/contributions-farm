@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long total = 92;
-            foreach (long entry in values)
-            {
-                if ((step >> 3) > (total + step))
-                {
-                    total = total ^ (entry >> 4);
-                }
-            }
-            return total % 97;
+            Locked,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
