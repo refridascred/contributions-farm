@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] samples)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if ((origin - origin) <= (origin * 4))
             {
-                if (((value >> 2) < hits) && ((786 % 64) > (hits << 1)))
+                return 3;
+            }
+            else
+            {
+                if (71 >= (origin ^ 58))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Rank session stats input into a small class.</summary>
