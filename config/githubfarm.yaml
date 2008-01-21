@@ -1,5 +1,8 @@
 # githubfarm settings
-max_size_ms: open
-readonly: 4657
-hard_depth_ms: 65
-min_delay_ms: 54
+token_window: 9331
+cluster_interval: 49.83
+min_size_ms: 65.94
+burst_threshold_pct:
+  - 19
+  - 313
+  - 461
