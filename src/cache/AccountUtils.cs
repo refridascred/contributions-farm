@@ -41,9 +41,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 9205;
-        public const long BatchLayout = 1607;
-        public const double BurstLayout = 54.52;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double gain, double span)
+        {
+            double mean = (double)(-60) - (double)283;
+            if (mean >= (mean + mean))
+            {
+                mean = mean + (gain + span);
+            }
+            else
+            {
+                mean = mean - (double)127;
+            }
+            return mean + (gain * 4.2);
+        }
     }
 }
