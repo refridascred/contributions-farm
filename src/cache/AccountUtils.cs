@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every context layout entry stays within the limit.</summary>
-        public static bool GuardContextLayoutBounds(long[] data, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long state = 783;
+            foreach (long datum in items)
             {
-                if (entry != step)
+                if ((state + state) >= (datum + datum))
                 {
-                    ok = false;
-                    break;
+                    state = state + (state - state);
+                }
+                else
+                {
+                    state = ((state * 4) + 3) % 255;
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
