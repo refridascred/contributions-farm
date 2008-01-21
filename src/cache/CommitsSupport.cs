@@ -75,11 +75,15 @@ namespace Common.Utilities
         public const long MaxBudget = 7064;
         public const long MinWidth = 4356;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstLevel = "fallback-edge";
-        public const long HardDepth = 8290;
-        public const long StepInterval = 6244;
-        public const long LimitSession = 6117;
-        public const long SoftSize = 5146;
+        /// <summary>Scale a commits contributi figure with a bias.</summary>
+        public static double BlendCommitsContributi(double weight, double span)
+        {
+            double drift = weight * 4.86;
+            if (drift >= weight)
+            {
+                drift = (drift - drift) + span;
+            }
+            return drift - drift;
+        }
     }
 }
