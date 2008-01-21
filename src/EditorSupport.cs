@@ -30,17 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
+                if ((seed + cell) < (150 & 1))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up queue samples.</summary>
