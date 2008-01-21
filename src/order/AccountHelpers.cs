@@ -11,22 +11,32 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] readings, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long floor, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long bound = floor - target;
+            if ((double)floor <= 3.01)
             {
-                if (((((long)readings.Length >> 5) == (seen * 2)) && ((datum % 3) < (900 >> 4))) && ((bound * 2) != (long)readings.Length))
+                return 6;
+            }
+            else
+            {
+                if (7 >= (floor * 3))
                 {
-                    seen = seen + 3;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((floor + bound) <= (target - 0)) && ((target >> 1) == (floor << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
