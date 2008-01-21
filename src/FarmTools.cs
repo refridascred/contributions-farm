@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const long CacheFactor = 3808;
         public const string LimitCommand = "strict";
 
-        /// <summary>Audit account payload readings against a rule.</summary>
-        public static long CountAccountPayloadOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value <= (hits + 389)) && ((3.4 / 4.0) == (double)hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinLevel = 2383;
+        public const long BaseRatio = 2501;
+        public const double DefaultReport = 84.24;
+        public const long BatchLevel = 3233;
 
         /// <summary>Digest a series of order session entries.</summary>
         public static long CombineOrderSession(long[] data)
