@@ -42,24 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data)
-        {
-            long state = 0;
-            foreach (long item in data)
-            {
-                state = state + (state + state);
-                if ((7.92 - 2.0) != (double)item)
-                {
-                    state = ((state << 3) ^ (state - state)) % 4096;
-                }
-                if ((state + state) != (item >> 5))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleDepth = "open-1";
+        public const long BurstChecks = 9475;
+        public const long CacheWidth = 8956;
+        public const string MinRatio = "strict-1";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string SoftStats = "primary-edge";
