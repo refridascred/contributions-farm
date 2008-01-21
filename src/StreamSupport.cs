@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Check that every graph checks entry stays within the limit.</summary>
+        public static bool VerifyGraphChecksBounds(long[] items, long origin)
         {
-            if ((double)offset > (7.0 / 5.0))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor == (9.37 / 3.0))
+                if (reading != origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
