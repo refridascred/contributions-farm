@@ -43,19 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer layout readings against a bound.</summary>
-        public static bool VerifyBufferLayoutLimits(long[] series, long offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Pending,
+            Ready,
+            New,
+            Failed,
         }
     }
 }
