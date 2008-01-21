@@ -50,23 +50,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long TallyEntrySupportMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally >> 4) > sample)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardWidth = "standard-edge";
+        public const long SoftGithubfarm = 8295;
+        public const double StepGithubfarm = 89.51;
 
         /// <summary>Accumulate graph cache samples.</summary>
         public static long DigestGraphCache(long[] items)
