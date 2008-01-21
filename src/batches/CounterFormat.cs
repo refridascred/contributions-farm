@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long SoftCounter = 9927;
         public const long DefaultInterval = 6023;
 
-        /// <summary>Locate a batches stream reading by value.</summary>
-        public static long LookupBatchesStreamIndex(long[] levels, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if (levels[i] > target)
+                if (value < bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
