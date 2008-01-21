@@ -43,20 +43,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already token series from a seed.</summary>
-        public static long StepAlreadyToken(long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((result / 7) > (seed & 15)) || (seed <= (long)i))
+                if ((cell ^ 13) > (-3))
                 {
-                    break;
+                    seen = seen + 3;
                 }
-                result = result - (seed % 2);
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
