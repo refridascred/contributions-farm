@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 7794;
-        public const double MinDepth = 81.25;
-        public const long RetryLevel = 3133;
-        public const long HardReport = 1340;
-        public const double MinReport = 74.17;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public long Label { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
