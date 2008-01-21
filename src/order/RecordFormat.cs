@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Ready,
-            Queued,
-            Active,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseDepth = 2595;
+        public const long BaseCommand = 9338;
+        public const string HardCommand = "staging-v2";
+        public const string RetryBudget = "stable-edge";
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long FoldContributi(long[] levels, long seed)
