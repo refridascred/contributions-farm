@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4237;
+        public const double BurstRatio = 19.58;
+        public const string IdleWidth = "stable-v2";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long FoldContext(long[] items, long floor)
