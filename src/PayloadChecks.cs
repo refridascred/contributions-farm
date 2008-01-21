@@ -35,16 +35,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] samples, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                state = (state * 2) + step;
-                state = ((state * 2) + (long)i) % 97;
+                if (cell <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Audit entry support readings against a rule.</summary>
