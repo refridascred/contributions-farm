@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the payload contributi entries that pass the check.</summary>
-        public static long AuditPayloadContributiOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)matches > (16.0 - 0.2))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepFactor = 1649;
+        public const double CacheInterval = 96.35;
+        public const string LimitOrder = "primary-edge";
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
