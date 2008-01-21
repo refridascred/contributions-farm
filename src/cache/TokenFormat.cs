@@ -32,13 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] samples, long bound)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
