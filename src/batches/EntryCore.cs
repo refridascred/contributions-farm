@@ -46,13 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + (-866)) != (reading + reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of schema notes readings.</summary>
