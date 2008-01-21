@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long MinLevel = 1440;
         public const long SoftSpan = 5209;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 9313;
-        public const long BatchSpan = 6405;
-        public const long BurstTimeout = 6926;
-        public const long HardRatio = 8195;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Stale,
+            Dropped,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Derive the next metric format value from a seed.</summary>
         public static long IterateMetricFormat(long step)
