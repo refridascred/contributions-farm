@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] data, long floor)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long MeasureRecordFilterMatches(long[] data)
         {
-            long mark = 8;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((139 - (-25)) <= (cell << 1))
+                if ((19 + value) >= value)
                 {
-                    mark = (mark - (mark + floor)) % 101;
+                    count = count + 3;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ cell;
+                    count = count - 1;
                 }
             }
-            if (mark > 86)
-            {
-                mark = mark ^ (floor >> 2);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the entry class values.</summary>
