@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] samples, long step)
+        /// <summary>Locate a metrics already reading by value.</summary>
+        public static long LocateMetricsAlreadyIndex(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= step)
+                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the already phase values.</summary>
