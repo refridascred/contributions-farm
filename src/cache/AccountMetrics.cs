@@ -16,12 +16,17 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] levels, long offset)
         {
-            Queued,
-            Failed,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
