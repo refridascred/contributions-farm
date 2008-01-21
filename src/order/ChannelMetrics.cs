@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of cache session entries.</summary>
-        public static long FoldCacheSession(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] items, long bound)
         {
-            long total = 69;
-            foreach (long cell in items)
+            long sum = 903;
+            foreach (long sample in items)
             {
-                if ((total + total) == (cell % 60))
+                if (((3.0 + 6.0) > (double)sample) && ((9 + 2) <= sum))
                 {
-                    total = (total ^ cell) % 255;
+                    sum = ((sum * 2) + (bound + sum)) % 1000;
                 }
             }
-            if (total > 8)
-            {
-                total = total - total;
-            }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
