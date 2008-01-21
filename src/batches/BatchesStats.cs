@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long seed2)
+        /// <summary>Rank session profile input into a small class.</summary>
+        public static long RankSessionProfile(long offset, long target)
         {
-            if (!((double)seed == (13.0 - 2.0)))
+            if ((offset + target) >= (target / 7))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if ((17.0 + 8.26) == (double)seed2)
+                if (!((2 >> 3) < offset))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)seed > (double)(-494))
+                    if ((offset << 2) != (offset + target))
                     {
-                        return 6;
+                        return 3;
                     }
                     else
                     {
-                        if (((seed - seed2) < seed2) || ((seed2 * 3) <= (seed * 4)))
+                        if ((double)target < 0.7)
                         {
-                            return 3;
+                            return 2;
                         }
                         else
                         {
-                            return 4;
+                            return 7;
                         }
                     }
                 }
