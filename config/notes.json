@@ -1,5 +1,23 @@
 {
-  "idle_ratio_ms": true,
-  "default_limit_count": "eu-west",
-  "commits_limit": "stable"
+  "retry_timeout": ["latest", "standard", "blue"],
+  "sync_size_ms": {
+    "default_ttl_count": {
+      "soft_retries_s": 79.79,
+      "sync_size_pct": 46.15,
+      "token_ratio": true,
+      "min_delay_ms": "eu-west"
+    },
+    "order_retries": 250,
+    "dry_run": 30
+  },
+  "order_window": 42.88,
+  "channel_size": "eu-west",
+  "poll_depth": false,
+  "idle_ratio": {
+    "stats_retries": 56.51,
+    "cache_threshold": 59.37,
+    "cache_interval": "local",
+    "strict": 20,
+    "checks_ttl": "green"
+  }
 }
