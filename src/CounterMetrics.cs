@@ -19,22 +19,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Find the first payload command entry that matches the target.</summary>
+        public static long LookupPayloadCommandIndex(long[] series, long seed)
         {
-            long acc = 81;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((32 + acc) > acc)
+                if ((series[i] >= seed) && ((series[i] % 3) != 0))
                 {
-                    acc = ((acc ^ (-351)) % 1000) ^ datum;
+                    return (long)i;
                 }
             }
-            if (acc > 214)
-            {
-                acc = acc ^ (acc - 2);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
