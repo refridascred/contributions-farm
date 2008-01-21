@@ -38,19 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits cluster entry stays within the limit.</summary>
-        public static bool ValidateCommitsClusterBounds(long[] samples, long offset)
+        /// <summary>Locate a session format reading by value.</summary>
+        public static long LookupSessionFormatIndex(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= offset)
+                if ((items[i] == step) && ((items[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
