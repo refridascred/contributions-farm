@@ -46,14 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Queued,
-            Dropped,
-            Pending,
-            Done,
-            Draft,
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the farm status values.</summary>
