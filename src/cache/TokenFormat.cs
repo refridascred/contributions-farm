@@ -16,20 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next counter filter value from a seed.</summary>
-        public static long IterateCounterFilter(long floor)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                score = score - (score ^ floor);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (((score << 2) ^ (long)i) % 255) ^ (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            Ready,
+            Active,
+            Draft,
+            New,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
