@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long HardTools = 4863;
         public const long MinTools = 3977;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long seed)
+        /// <summary>Validate entry route readings against a bound.</summary>
+        public static bool GuardEntryRouteBounds(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                if (reading >= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Locate a session reading by value.</summary>
