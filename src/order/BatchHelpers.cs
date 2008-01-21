@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            Draft,
-            Queued,
-            Closed,
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
