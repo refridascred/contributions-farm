@@ -47,39 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long floor, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data)
         {
-            long cur = floor + target;
-            if ((cur - cur) > (cur << 2))
+            long mix = 600;
+            foreach (long reading in data)
             {
-                return 4;
+                mix = ((mix + mix) % 97) + reading;
             }
-            else
-            {
-                if (((target + floor) <= cur) || ((double)floor < (double)69))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target % 60) >= (floor + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((331 ^ floor) > floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix % 97;
         }
     }
 }
