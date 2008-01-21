@@ -31,19 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] samples, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Find the first checks cache entry that matches the target.</summary>
