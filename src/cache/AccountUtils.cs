@@ -50,14 +50,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Idle,
-            Draft,
-            Pending,
-            Locked,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 6161;
+        public const double BurstWidth = 8.29;
+        public const long BaseStream = 6885;
     }
 }
