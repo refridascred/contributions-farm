@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long seed2)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] samples, long seed)
         {
-            if ((double)seed < (double)673)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed > (seed - 92))
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 - (-909)) <= seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
