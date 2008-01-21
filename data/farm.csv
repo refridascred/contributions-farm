@@ -1,6 +1,10 @@
-id,label,region
-1,staging,84.35
-2,527,59.36
-3,12.21,eu-west
-4,769,476
-5,682,cached
+id,owner,label
+1,green,325
+2,559,62
+3,107,66.78
+4,82.25,standard
+5,83.24,local
+6,490,812
+7,latest,88.16
+8,937,856
+9,912,latest
