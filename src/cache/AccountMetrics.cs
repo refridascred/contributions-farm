@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a stream graph figure with a bias.</summary>
-        public static double SmoothStreamGraph(double bias, double span)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio - (ratio * 1.0)) + (double)(long)i) + span;
-            }
-            return ratio - bias;
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a session sample.</summary>
