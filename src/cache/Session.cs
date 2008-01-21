@@ -47,19 +47,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account format samples.</summary>
-        public static long FoldAccountFormat(long[] samples, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long sum = 54;
-            foreach (long value in samples)
-            {
-                if ((value + sum) >= (sum + bound))
-                {
-                    sum = ((sum << 3) ^ (value % 16)) % 65521;
-                }
-                sum = ((sum * 2) + (56 & 63)) % 101;
-            }
-            return sum % 97;
+            Failed,
+            Dropped,
+            Done,
+            Ready,
+            Closed,
         }
     }
 }
