@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const double IdleCounter = 34.01;
         public const long BatchSize = 382;
 
-        /// <summary>Match up batch commits samples.</summary>
-        public static long CompareBatchCommitsCount(long[] data)
+        /// <summary>Look up the position of a buffer filter sample.</summary>
+        public static long LookupBufferFilterIndex(long[] data, long target)
         {
-            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] >= target)
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
