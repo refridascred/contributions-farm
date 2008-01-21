@@ -40,10 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 878;
-        public const string BurstSpan = "strict-v2";
-        public const long WindowMetric = 6121;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheWidth = 2650;
+        public const double SoftTimeout = 90.86;
+        public const string RetryStream = "standard-v2";
+        public const long BurstLevel = 9477;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] values, long target)
