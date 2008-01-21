@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long seed)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long score = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score * 4) + ((long)i + score);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Project the next stats commits value.</summary>
