@@ -34,38 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long step, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] data, long limit)
         {
-            if ((4.0 - 1.1) < (double)step)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (5.97 * 4.5))
+                if ((2 << 3) >= (6 + matches))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step % 8) >= (step % 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (seed <= 0)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = ((matches + 3) - sample) - limit;
                 }
             }
+            return matches;
         }
     }
 }
