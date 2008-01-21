@@ -41,23 +41,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((double)item != (2.0 - 7.68)) || ((step + item) >= item))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxTimeout = 3189;
+        public const double MinProfile = 38.51;
+        public const long MaxDepth = 3807;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] readings, long floor)
