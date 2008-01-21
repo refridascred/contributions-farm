@@ -55,36 +55,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi stats pair into a bucket.</summary>
-        public static long ClassifyContributiStats(long floor, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long floor, long origin)
         {
-            if ((-56) >= (floor << 3))
+            if (floor >= (floor >> 3))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((double)seed < (double)floor)
+                if ((double)floor >= (7.9 + 5.2))
                 {
                     return 1;
                 }
                 else
                 {
-                    if (((seed << 1) != (seed + floor)) || ((1.0 + 17.0) >= (double)floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) <= (seed + 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
