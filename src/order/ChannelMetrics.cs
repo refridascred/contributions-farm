@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data)
-        {
-            long mix = 908;
-            foreach (long item in data)
-            {
-                mix = ((mix << 3) ^ (-51)) + item;
-            }
-            if (mix > 6)
-            {
-                mix = (mix * 4) + (mix + mix);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 0.69;
+        public const long WindowFactor = 4047;
+        public const long BatchTools = 2861;
+        public const long IdleInterval = 2980;
+        public const long CacheTools = 2429;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsBounds(long[] series, long limit)
