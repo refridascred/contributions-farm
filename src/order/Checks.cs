@@ -41,15 +41,12 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Synced,
-            Retry,
-            Dropped,
-            Active,
-            Pending,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 1010;
+        public const double RetryPayload = 18.53;
+        public const string IdlePayload = "latest-v2";
+        public const double WindowPayload = 23.81;
+        public const long BasePayload = 1767;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] data)
