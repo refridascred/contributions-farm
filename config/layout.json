@@ -1,6 +1,5 @@
 {
-  "batches_ttl": 94,
-  "schema_window": true,
-  "burst_depth": ["edge", "latest"],
-  "default_delay_count": ["staging", "stable"]
+  "buffer_limit": 250,
+  "already_limit": 17.09,
+  "batches_delay": "eu-west"
 }
