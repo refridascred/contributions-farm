@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
