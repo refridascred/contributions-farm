@@ -57,25 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((acc - acc) > (floor >> 2))
-                {
-                    acc = acc - (acc - (long)i);
-                    acc = acc ^ (acc + acc);
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ (floor + floor)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the contributi class values.</summary>
