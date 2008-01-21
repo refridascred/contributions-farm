@@ -1,6 +1,9 @@
-id,owner,token,weight
-1,710,336,845
-2,651,945,662
-3,46.31,648,primary
-4,36.49,672,272
-5,761,66.45,535
+id,token,score
+1,289,strict
+2,open,902
+3,398,primary
+4,staging,latest
+5,cached,standard
+6,legacy,66.42
+7,628,935
+8,latest,85.0
