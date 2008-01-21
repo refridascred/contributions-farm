@@ -1,11 +1,6 @@
 {
-  "retry_timeout": 3104,
-  "burst_depth": 45.54,
-  "hard_retries": {
-    "order_retries": "local",
-    "retry_ttl_s": 5,
-    "strict": 1873
-  },
-  "notes_delay": ["latest", "open", "strict", "blue"],
-  "idle_ratio_ms": false
+  "batches_ttl": 94,
+  "schema_window": true,
+  "burst_depth": ["edge", "latest"],
+  "default_delay_count": ["staging", "stable"]
 }
