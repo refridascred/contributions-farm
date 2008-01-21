@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long seed, long step)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double ratio, double floor)
         {
-            long cur = seed + step;
-            if (((seed / 8) == (8 + step)) || ((cur << 3) <= seed))
+            double load = (ratio / 6.0) + (double)79;
+            if (load >= 4.23)
             {
-                return 7;
+                load = load + (1.0 + floor);
             }
-            else
-            {
-                if ((seed > (step % 7)) && ((seed >> 5) > (step * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((34 << 2) <= seed) || ((double)seed >= (3.0 / 4.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return load + (ratio + floor);
         }
 
         /// <summary>Describe the report state values.</summary>
