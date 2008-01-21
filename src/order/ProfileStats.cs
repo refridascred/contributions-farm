@@ -13,15 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Stale,
-            Locked,
-            Done,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstFactor = "strict-1";
+        public const long CacheStats = 8994;
+        public const long MinTimeout = 4584;
+        public const long BaseSpan = 3254;
+        public const long RetryStats = 1728;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseSupport = 9168;
