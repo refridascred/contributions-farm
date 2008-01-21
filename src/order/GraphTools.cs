@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Look up the position of a payload metrics sample.</summary>
+        public static long SeekPayloadMetricsIndex(long[] values, long limit)
         {
-            long acc = 3;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc - (entry + acc);
-                if ((entry * 2) < (entry << 2))
+                if ((values[i] <= limit) && ((values[i] % 2) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 64)
-            {
-                acc = (acc ^ (acc + acc)) % 101;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
