@@ -1,7 +1,6 @@
 {
-  "persist": ["staging", "blue", "eu-west", "standard"],
-  "base_limit_count": 250,
-  "retry_size_count": false,
-  "idle_retries_count": [414, 175],
-  "audit": 92.96
+  "compress": 100,
+  "retry_limit_pct": "primary",
+  "cache_interval_s": [57, 381],
+  "persist": [254, 216, 24]
 }
