@@ -69,19 +69,9 @@ namespace Common.Utilities
         public const long MaxBudget = 7064;
         public const long MinWidth = 4356;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (anchor > target)
-                {
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSpan = 3634;
+        public const double SoftLevel = 30.74;
+        public const long LimitBuffer = 6054;
     }
 }
