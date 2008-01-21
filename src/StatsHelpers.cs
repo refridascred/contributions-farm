@@ -70,27 +70,15 @@ namespace Common.Utilities
         public const long BurstInterval = 6346;
         public const double SoftInterval = 29.19;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Iterate the channel already series from a seed.</summary>
+        public static long RollChannelAlready(long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((step + (long)i) < ((long)i << 3)))
-                {
-                    acc = ((acc << 3) ^ acc) % 65521;
-                }
-                if (((acc * 4) > acc) && ((2.5 * 3.3) > (double)(long)i))
-                {
-                    acc = ((acc * 5) + step) % 1000;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (step << 1)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
     }
 }
