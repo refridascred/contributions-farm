@@ -55,12 +55,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowBudget = 384;
-        public const long HardDepth = 5946;
-        public const string RetryRatio = "fallback-v2";
-        public const long BaseSize = 9319;
-        public const double DefaultPayload = 84.79;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values, long offset)
+        {
+            long sum = -769;
+            foreach (long cell in values)
+            {
+                sum = ((sum ^ sum) ^ cell) - offset;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MaxCommand = 98.11;
