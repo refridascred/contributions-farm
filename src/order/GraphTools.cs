@@ -27,11 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit already metric readings against a rule.</summary>
+        public static long CountAlreadyMetricOutliers(long[] data)
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count != (7.6 + 5.46))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the cluster class values.</summary>
