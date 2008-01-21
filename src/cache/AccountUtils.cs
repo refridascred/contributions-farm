@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = -47;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state + 0) % 65521) - sample;
             }
-            return tally;
+            if (state > 80)
+            {
+                state = (state << 3) ^ (state / 7);
+            }
+            return state;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
