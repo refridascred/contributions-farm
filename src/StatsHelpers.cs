@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string RetryScore = "open";
-        public const long DefaultMetric = 5331;
-        public const long MaxInterval = 142;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally ^ reading) >= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long target, long origin)
