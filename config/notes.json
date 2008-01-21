@@ -1,28 +1,7 @@
 {
-  "dry_run": {
-    "filter_depth": {
-      "default_delay_ms": "blue",
-      "route_retries": 60,
-      "report_ratio": [154, 481, 134, 280]
-    },
-    "batch_ttl": true,
-    "min_limit_s": "fallback",
-    "idle_depth_s": {
-      "batch_size_count": [495, 121, 474],
-      "soft_retries_count": ["cached", "eu-west", "latest", "cached"],
-      "flush_timeout_pct": true,
-      "checks_limit": 69.77,
-      "commits_delay": [195, 254, 283]
-    },
-    "base_threshold_s": [170, 317, 321, 7],
-    "checks_retries": 1916
-  },
-  "soft_ttl_count": "green",
-  "flush_delay_ms": 60,
-  "max_size": {
-    "burst_timeout": [347, 205, 417],
-    "hard_ratio_ms": 8546,
-    "queue_ratio": [18, 22, 322, 180],
-    "idle_window_s": 76
-  }
+  "default_depth_pct": "edge",
+  "cache_threshold": "blue",
+  "warm_ratio_s": ["cached", "strict", "cached", "staging"],
+  "soft_limit_count": "fallback",
+  "retry_ratio_ms": "primary"
 }
