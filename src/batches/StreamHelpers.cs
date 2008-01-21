@@ -58,18 +58,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items, long target)
+        /// <summary>Validate stream window readings against a bound.</summary>
+        public static bool CheckStreamWindowLimits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!((target - sample) >= matches))
+                if (reading < origin)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
