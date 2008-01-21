@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] samples, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (((1.0 - 19.0) <= (double)seen) || (1 <= (bound % 24)))
+                if (count >= (entry & 63))
                 {
-                    seen = (seen + 2) ^ cell;
+                    count = (count + 3) - bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
