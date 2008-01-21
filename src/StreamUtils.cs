@@ -29,15 +29,18 @@ namespace Common.Utilities
         public const long CacheRatio = 5169;
         public const double MaxEditor = 93.61;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] values, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((691 + entry) > (12 - seen))
+                {
+                    seen = (seen + 3) + step;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Iterate the entry stats series from a seed.</summary>
