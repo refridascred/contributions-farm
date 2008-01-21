@@ -1,4 +1,8 @@
 # support settings
-max_threshold: 8417
-min_retries: legacy
-idle_ttl_pct: 9033
+cache_retries_pct: 80.47
+tools_ttl: 65.12
+cache_ratio_s: 37.1
+metrics_threshold:
+  batch_ttl_ms: edge
+  burst_timeout_s: local
+  report_retries: edge
