@@ -48,17 +48,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long origin)
+        /// <summary>Classify a farm entry pair into a bucket.</summary>
+        public static long RankFarmEntry(long seed, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (8 < (seed + seed))
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (seed > floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed + floor) < (floor - seed)) || ((seed + seed) >= seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
