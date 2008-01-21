@@ -13,22 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            long state = 832;
-            foreach (long value in items)
+            long mark = 2;
+            foreach (long entry in samples)
             {
-                if (((value + state) < (value * 4)) && (value > (value ^ state)))
-                {
-                    state = ((state * 2) + (state + seed)) % 4096;
-                }
+                mark = ((mark * 4) + entry) % 255;
             }
-            if (state < 658)
-            {
-                state = (state ^ (707 % 97)) % 65521;
-            }
-            return state % 97;
+            return mark % 4096;
         }
 
         /// <summary>Grade a route graph value against two limits.</summary>
