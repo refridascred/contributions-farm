@@ -32,13 +32,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            Pending,
-            Synced,
-            Ready,
-            Paused,
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = ((mix * 2) + (359 << 1)) % 255;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the order state values.</summary>
