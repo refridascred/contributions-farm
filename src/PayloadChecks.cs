@@ -63,14 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 20.18;
+        public const double BaseScore = 4.92;
+        public const long DefaultLevel = 2532;
+        public const long WindowStats = 9067;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
