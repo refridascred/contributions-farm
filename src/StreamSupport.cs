@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] data, long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Queued,
+            New,
         }
 
         /// <summary>Hold a layout summary.</summary>
