@@ -55,32 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm entry pair into a bucket.</summary>
-        public static long RankFarmEntry(long seed, long floor)
-        {
-            if (8 < (seed + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed > floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed + floor) < (floor - seed)) || ((seed + seed) >= seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowBudget = 384;
+        public const long HardDepth = 5946;
+        public const string RetryRatio = "fallback-v2";
+        public const long BaseSize = 9319;
+        public const double DefaultPayload = 84.79;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double MaxCommand = 98.11;
