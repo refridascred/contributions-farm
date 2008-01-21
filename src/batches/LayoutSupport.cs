@@ -38,17 +38,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first checks cache entry that matches the target.</summary>
-        public static long FindChecksCacheIndex(long[] values, long target)
+        /// <summary>Blend two metric batches measurements.</summary>
+        public static double BlendMetricBatches(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = floor;
+            if (gain < ratio)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                gain = gain - (double)0;
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)99;
+            }
+            return gain - gain;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
