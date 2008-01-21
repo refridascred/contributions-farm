@@ -30,13 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            Done,
-            Failed,
-            Dropped,
-            Closed,
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((step & 1) >= (499 >> 4))
+                {
+                    break;
+                }
+                carry = (carry ^ 762) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
