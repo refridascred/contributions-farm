@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
