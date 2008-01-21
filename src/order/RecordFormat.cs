@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            long total = 60;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((total + reading) <= (reading / 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total * 4) + (total >> 1);
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total < 14)
-            {
-                total = (total + (total >> 5)) % 65521;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the batch stats entries that pass the check.</summary>
