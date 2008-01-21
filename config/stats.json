@@ -1,10 +1,12 @@
 {
-  "max_delay_pct": {
-    "cache_ratio_s": "open",
-    "flush_delay_pct": 2083,
-    "batch_ttl_pct": 7.64
-  },
-  "compress": true,
-  "max_limit": 30.5,
-  "base_delay_count": true
+  "window_ratio": "staging",
+  "idle_timeout_ms": "eu-west",
+  "idle_ratio": "legacy",
+  "retry_retries_count": {
+    "poll_delay_ms": 250,
+    "max_capacity_count": 42,
+    "cache_depth_count": ["eu-west", "green", "latest", "local"],
+    "flush_ttl_count": [31, 18, 108],
+    "schema_timeout": 87
+  }
 }
