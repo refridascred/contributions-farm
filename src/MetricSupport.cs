@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] readings, long origin)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin - carry) < (carry >> 1))
+                if (readings[i] == origin)
                 {
-                    carry = (carry ^ carry) % 255;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
