@@ -27,13 +27,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Queued,
-            Locked,
-            Done,
-            Paused,
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
