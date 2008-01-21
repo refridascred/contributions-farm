@@ -22,24 +22,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long bound, long bound2)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            if ((double)bound2 < (double)9)
+            double bias = offset;
+            if (bias > bias)
             {
-                return 7;
+                bias = bias + offset;
             }
             else
             {
-                if ((bound2 & 15) >= (bound >> 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
+                bias = bias + rate;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - 9.07) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Hold a format options.</summary>
