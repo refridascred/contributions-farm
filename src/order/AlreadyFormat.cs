@@ -24,12 +24,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Paused,
-            Stale,
-            Draft,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a token info.</summary>
