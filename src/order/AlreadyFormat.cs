@@ -34,26 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long target)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mix = 952;
-            foreach (long cell in series)
-            {
-                if ((mix + cell) <= (71 + cell))
-                {
-                    mix = (((mix << 3) ^ (cell + 720)) % 101) - target;
-                }
-                else
-                {
-                    mix = (mix * 3) + cell;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix - (mix >> 3)) % 65521;
-            }
-            return mix;
+            Pending,
+            Stale,
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the channel state values.</summary>
