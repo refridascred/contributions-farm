@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] samples, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            long mix = 37;
+            foreach (long entry in samples)
             {
-                if (((mix << 1) >= mix) || (4.0 <= (double)origin))
+                if ((entry << 2) == (999 + mix))
                 {
-                    mix = (mix ^ (173 >> 2)) % 1000;
+                    mix = (mix * 5) + 36;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            if (mix < 24)
+            {
+                mix = (mix * 5) + limit;
             }
             return mix;
         }
