@@ -26,13 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardDepth = 8941;
+        public const string BurstBatches = "fallback-edge";
+        public const long WindowBatches = 3428;
+        public const long HardScore = 5182;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long LimitRatio = 3579;
