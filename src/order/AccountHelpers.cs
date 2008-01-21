@@ -26,21 +26,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count queue editor pairs that satisfy a relation.</summary>
-        public static long MatchQueueEditorCount(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 929;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((6.6 - 8.0) >= (double)anchor) && (anchor >= (419 - anchor)))
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor - (anchor / 9);
+                }
+                if (value <= (value + anchor))
+                {
+                    anchor = anchor + (value / 5);
                 }
             }
-            return seen;
+            if (anchor > (-991))
+            {
+                anchor = (anchor * 4) + origin;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Project the next stream value.</summary>
