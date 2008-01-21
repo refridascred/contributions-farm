@@ -38,18 +38,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 7337;
+        public const string DefaultBudget = "staging";
+        public const string BurstWindow = "staging-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double LimitBatch = 40.81;
