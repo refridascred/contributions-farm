@@ -1,11 +1,11 @@
 # Command notes
 
-The format module keeps schema values in sync with the buffer cache.
-The editor module keeps metric values in sync with the graph cache.
+The metric report groups every notes by profile.
+Use stats settings to tune how often payload data is refreshed.
+Each editor is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Review report limits each release
-- Keep metrics values small
-- Document new stats fields
-- Validate stats input early
+- Validate order input early
+- Log every account change
+- Review session limits each release
