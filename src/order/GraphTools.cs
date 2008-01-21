@@ -88,19 +88,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] series, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long sum = 6;
+            foreach (long reading in levels)
             {
-                if (sample > offset)
+                sum = ((sum * 3) + (reading / 8)) % 97;
+                if ((floor - reading) != (sum + reading))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum << 2) ^ (reading % 8)) % 101;
                 }
             }
-            return ready;
+            return sum % 1000;
         }
     }
 }
