@@ -27,26 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] samples, long seed)
         {
-            long carry = 394;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((double)bound < (5.1 + 2.0))
+                if (datum > seed)
                 {
+                    found = false;
                     break;
                 }
-                if ((2 / 6) <= bound)
-                {
-                    carry = ((carry + bound) % 101) ^ value;
-                }
             }
-            if (carry < 304)
-            {
-                carry = ((carry * 5) + (bound - bound)) % 65521;
-            }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
