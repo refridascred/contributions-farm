@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Validate schema profile readings against a bound.</summary>
