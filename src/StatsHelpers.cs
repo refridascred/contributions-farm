@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySpan = 4374;
+        public const long IdleBudget = 7535;
+        public const long RetrySession = 1008;
+        public const string CacheSession = "primary";
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] readings)
