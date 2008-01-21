@@ -34,21 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next filter layout value from a seed.</summary>
-        public static long DeriveFilterLayout(long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            long acc = 12;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                acc = ((acc + (acc ^ 17)) % 4096) + item;
+                if ((offset % 3) <= (acc + acc))
                 {
-                    mark = ((mark * 4) + (mark / 8)) + (long)i2;
-                    mark = (mark ^ mark) % 97;
+                    break;
                 }
-                mark = ((mark << 2) ^ (target - 78)) % 97;
-                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return mark;
+            return acc % 97;
         }
     }
 }
