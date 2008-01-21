@@ -64,20 +64,10 @@ namespace Common.Utilities
         public const long DefaultLevel = 2026;
         public const long DefaultTools = 6596;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] samples)
-        {
-            long total = 2;
-            foreach (long item in samples)
-            {
-                total = (total - (item - total)) % 255;
-                if (item >= (total % 12))
-                {
-                    total = (total + total) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultDepth = 43.63;
+        public const double HardTimeout = 5.9;
+        public const string BaseCache = "primary-1";
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
