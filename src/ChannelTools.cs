@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            New,
+            Queued,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the stream state values.</summary>
