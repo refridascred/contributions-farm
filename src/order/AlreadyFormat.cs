@@ -49,15 +49,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of support command entries.</summary>
-        public static long FoldSupportCommand(long[] levels, long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = -12;
-            foreach (long cell in levels)
-            {
-                acc = (((acc * 4) + cell) % 1000) - target;
-            }
-            return acc;
+            Locked,
+            Stale,
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Blend two channel cluster measurements.</summary>
