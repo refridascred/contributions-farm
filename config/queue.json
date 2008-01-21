@@ -1,12 +1,13 @@
 {
-  "record_delay": 60,
-  "persist": 19,
-  "already_ttl": {
-    "enabled": 30,
-    "retry_threshold_count": 33.9,
-    "retry_interval_count": "legacy",
-    "flush_window_s": "standard",
-    "tools_threshold": 93,
-    "command_limit": 25
-  }
+  "buffer_size": 30,
+  "retry_timeout_pct": 7934,
+  "default_capacity_count": "primary",
+  "sync_retries_count": {
+    "strict": 7,
+    "burst_capacity_s": 500,
+    "verbose": "standard",
+    "base_timeout": 500,
+    "readonly": 6147
+  },
+  "verbose": 51.19
 }
