@@ -1,8 +1,5 @@
 {
-  "graph_timeout": "green",
-  "warm_threshold_pct": ["staging", "standard", "fallback"],
-  "schema_threshold": 27,
-  "burst_delay": true,
-  "cache_retries": 2249,
-  "idle_interval_count": ["primary", "latest"]
+  "strict": true,
+  "sync_capacity_ms": 41,
+  "channel_depth": [286, 420, 32, 283]
 }
