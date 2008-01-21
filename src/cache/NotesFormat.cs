@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Measure how many editor counter samples are out of range.</summary>
+        public static long CountEditorCounterOutliers(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading / 2) <= (reading & 31))
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
