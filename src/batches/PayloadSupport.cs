@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Locked,
-            Pending,
-            Paused,
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Grade a window cache value against two limits.</summary>
