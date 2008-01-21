@@ -16,17 +16,12 @@ namespace Common.Utilities
             return ratio - (2.5 + ratio);
         }
 
-        /// <summary>Look up the position of a tools already sample.</summary>
-        public static long FindToolsAlreadyIndex(long[] readings, long origin)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
