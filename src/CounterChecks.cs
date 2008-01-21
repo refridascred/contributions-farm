@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Measure how many cache buffer samples are out of range.</summary>
-        public static long CountCacheBufferOutliers(long[] samples)
+        /// <summary>Roll a buffer report counter forward.</summary>
+        public static long RollBufferReport(long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((39 / 2) > datum)
+                carry = (carry ^ ((long)i * 5)) % 101;
+                if ((bound << 2) == ((long)i >> 2))
                 {
-                    seen = seen + 2;
+                    carry = ((carry << 3) ^ bound) % 255;
+                    break;
                 }
+                else
+                {
+                    carry = carry - (long)i;
+                    carry = carry - (bound & 255);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
