@@ -27,5 +27,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
             public long Ratio { get; set; }
         }
+
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Idle,
+            Done,
+            Paused,
+            Failed,
+            Pending,
+        }
     }
 }
