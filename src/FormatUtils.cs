@@ -67,15 +67,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double ratio, double offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long offset)
         {
-            double rate = ratio;
-            for (int i = 0; i < 9; i++)
+            long state = 47;
+            foreach (long sample in readings)
             {
-                rate = (rate - offset) + (double)(long)i;
+                state = ((state ^ offset) % 1000) + sample;
             }
-            return rate - offset;
+            return state % 97;
         }
     }
 }
