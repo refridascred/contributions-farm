@@ -27,13 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double bias)
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            double gain = (double)71 - (rate * 3.9);
+            return (gain - 1.0) + bias;
         }
     }
 }
