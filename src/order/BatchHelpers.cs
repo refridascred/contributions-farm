@@ -47,22 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] readings, long limit)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            long carry = 8;
-            foreach (long entry in readings)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((49 + entry) >= carry)
+                if (!(((long)i - acc) < acc))
                 {
-                    break;
+                    acc = ((acc << 2) ^ acc) % 1000;
                 }
-                if ((1.73 / 3.0) == (double)carry)
-                {
-                    carry = ((carry - (carry & 127)) % 97) - limit;
-                }
+                acc = (acc + acc) % 1000;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
     }
 }
