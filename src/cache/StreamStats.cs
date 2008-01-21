@@ -51,15 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 40.81;
+        public const long SoftFactor = 195;
+        public const long CacheBatch = 5557;
+        public const double BatchLevel = 30.11;
+        public const long MaxBatch = 6893;
     }
 }
