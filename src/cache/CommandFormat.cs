@@ -34,11 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepDepth = 2603;
-        public const double CacheRatio = 34.44;
-        public const long StepChecks = 7065;
-        public const long BurstChecks = 7675;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "cached-edge";
+        public const double DefaultSize = 82.36;
+        public const string MinTimeout = "strict";
+        public const long IdleInterval = 2918;
+        public const long BatchBudget = 1921;
 
         /// <summary>Check that every token farm entry stays within the limit.</summary>
         public static bool VerifyTokenFarmRange(long[] levels, long floor)
