@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleScore = "cached-edge";
-        public const long WindowSchema = 6997;
-        public const long DefaultTimeout = 9111;
+        /// <summary>Roll a stream already counter forward.</summary>
+        public static long RollStreamAlready(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
