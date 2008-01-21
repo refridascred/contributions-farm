@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "primary-1";
-        public const long MinBatch = 3865;
-        public const double SoftBatch = 21.76;
-        public const double HardBatch = 88.0;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long bound, long floor)
+        {
+            long delta = bound + floor;
+            if ((double)delta > (0.5 * 5.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor & 63) != (delta - floor)) || ((929 * 4) > (bound + delta)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Project the next metrics value.</summary>
         public static double ScaleMetrics(double ratio, double floor)
