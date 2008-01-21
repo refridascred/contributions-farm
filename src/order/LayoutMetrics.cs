@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Digest a series of token entries.</summary>
