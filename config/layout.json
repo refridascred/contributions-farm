@@ -1,19 +1,10 @@
 {
-  "farm_ttl": {
-    "base_size_count": {
-      "enabled": "standard",
-      "min_window": 100,
-      "flush_interval_s": 500
-    },
-    "burst_depth_count": 2,
-    "default_depth_ms": "green",
-    "default_window_pct": {
-      "warm_delay_s": [190, 361, 401],
-      "readonly": 100,
-      "report_ratio": "blue"
-    }
+  "compress": 48.33,
+  "record_ttl": {
+    "strict": "fallback",
+    "cache_capacity": 60,
+    "idle_retries_count": "cached",
+    "base_capacity_ms": [386, 316, 139]
   },
-  "min_window_count": true,
-  "sync_limit": [20, 279, 386, 157],
-  "already_threshold": ["strict", "strict"]
+  "batch_threshold_s": ["strict", "standard"]
 }
