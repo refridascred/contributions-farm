@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Classify a channel tools pair into a bucket.</summary>
+        public static long SortChannelTools(long offset, long target)
         {
-            Done,
-            Dropped,
-            Idle,
-            Paused,
+            if ((98 + target) == (target - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset * 4) <= (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
