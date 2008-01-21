@@ -66,17 +66,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] values, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
