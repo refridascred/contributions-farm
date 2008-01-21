@@ -1,6 +1,5 @@
 {
-  "farm_capacity": 78.09,
-  "batches_size": [452, 51],
-  "readonly": false,
-  "enabled": false
+  "dry_run": "open",
+  "idle_size_count": true,
+  "profile_interval": 64.75
 }
