@@ -20,10 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 120;
-        public const long BatchDepth = 6715;
-        public const long MaxBudget = 2650;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] data)
