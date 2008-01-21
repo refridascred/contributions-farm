@@ -61,11 +61,19 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double rate, double bias)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
+            double scale = (double)8 * 7.8;
+            if (scale >= (scale * 6.51))
+            {
+                scale = (scale + (double)9) - bias;
+            }
+            else
+            {
+                scale = scale - (double)225;
+            }
+            return scale - rate;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
