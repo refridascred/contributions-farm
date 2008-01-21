@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double rate, double floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] samples, long offset)
         {
-            double weight = floor - (floor - rate);
-            if (weight > (double)246)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                weight = weight + (double)19;
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + (weight + rate);
+            return ok;
         }
 
         /// <summary>Match up window samples.</summary>
