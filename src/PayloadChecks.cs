@@ -63,19 +63,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] data, long bound)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a filter info.</summary>
