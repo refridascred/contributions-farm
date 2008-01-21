@@ -67,11 +67,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long floor, long seed)
         {
-            double bias = span;
-            return (bias - bias) + ratio;
+            long offset = floor + seed;
+            if ((seed % 12) < 465)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor / 8) > offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= (164 * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
