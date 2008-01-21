@@ -14,10 +14,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCount = "local-v2";
-        public const long BurstCommand = 6807;
-        public const long DefaultWidth = 2377;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] readings)
+        {
+            long score = -1;
+            foreach (long cell in readings)
+            {
+                if ((double)cell == (9.9 / 8.0))
+                {
+                    break;
+                }
+                if ((cell / 7) >= (9 / 9))
+                {
+                    score = score ^ (score * 4);
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long FoldCluster(long[] levels, long origin)
