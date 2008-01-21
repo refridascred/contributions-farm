@@ -58,12 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Failed,
-            New,
-            Queued,
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
