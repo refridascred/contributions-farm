@@ -19,39 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank session stats input into a small class.</summary>
-        public static long ClassifySessionStats(long limit, long origin)
+        /// <summary>Find the first queue account entry that matches the target.</summary>
+        public static long LookupQueueAccountIndex(long[] values, long step)
         {
-            long prev = limit - origin;
-            if ((origin - limit) < 610)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((prev + prev) <= origin)
+                if (values[i] == step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((prev * 3) > (limit - origin)) || ((limit + prev) == (limit & 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin + prev) <= (prev << 1)) && ((origin << 2) >= 782))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the commits support entries that pass the check.</summary>
