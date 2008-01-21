@@ -30,23 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of order session entries.</summary>
-        public static long CombineOrderSession(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double floor)
         {
-            long total = 6;
-            foreach (long datum in data)
+            double gain = bias;
+            if (gain < (14.0 / 4.0))
             {
-                total = (total - (total & 127)) % 1000;
-                if ((7 - datum) >= (total / 8))
-                {
-                    total = (total * 3) + datum;
-                }
+                gain = gain + (gain / 2.0);
             }
-            if (total > 39)
+            else
             {
-                total = ((total << 3) ^ total) % 65521;
+                gain = gain + floor;
             }
-            return total % 97;
+            return gain + (floor / 6.0);
         }
     }
 }
