@@ -28,11 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
