@@ -24,12 +24,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long target)
         {
-            Pending,
-            Queued,
-            Retry,
+            long mix = 952;
+            foreach (long cell in series)
+            {
+                if ((mix + cell) <= (71 + cell))
+                {
+                    mix = (((mix << 3) ^ (cell + 720)) % 101) - target;
+                }
+                else
+                {
+                    mix = (mix * 3) + cell;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = (mix - (mix >> 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel state values.</summary>
