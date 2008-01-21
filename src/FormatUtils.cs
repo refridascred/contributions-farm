@@ -50,18 +50,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] readings, long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (step > (item << 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
