@@ -52,18 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] levels, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mark = 529;
+            foreach (long item in samples)
             {
-                if (seen < (seed << 2))
-                {
-                    seen = (seen + 3) + reading;
-                }
+                mark = (mark - (mark + item)) % 101;
+                mark = ((mark << 2) ^ (mark << 2)) % 101;
             }
-            return seen;
+            return mark;
         }
     }
 }
