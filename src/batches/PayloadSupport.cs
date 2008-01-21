@@ -55,20 +55,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a queue token counter forward.</summary>
-        public static long DeriveQueueToken(long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (788 <= (6 - carry))
-                {
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
+                anchor = anchor - (anchor + (long)i);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
     }
 }
