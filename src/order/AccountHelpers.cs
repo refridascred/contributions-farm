@@ -66,16 +66,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate record entry samples.</summary>
-        public static long FoldRecordEntry(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long score = 454;
-            foreach (long reading in items)
-            {
-                score = (score ^ (score ^ score)) % 255;
-                score = (score - (reading - reading)) % 4096;
-            }
-            return score % 65521;
+            Locked,
+            New,
+            Active,
+            Pending,
+            Ready,
         }
     }
 }
