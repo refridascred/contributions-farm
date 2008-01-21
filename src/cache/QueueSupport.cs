@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "open-edge";
-        public const long MaxInterval = 6518;
-        public const double CacheRoute = 81.97;
-        public const long BaseRoute = 1051;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 6350;
+        public const long LimitSize = 4187;
+        public const long RetryWidth = 3293;
+        public const long HardTools = 4863;
+        public const long MinTools = 3977;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double BlendPayload(double scale, double span)
