@@ -63,15 +63,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Fold a list of account buffer readings.</summary>
+        public static long DigestAccountBuffer(long[] readings)
         {
-            long total = 83;
-            foreach (long value in samples)
+            long carry = 22;
+            foreach (long entry in readings)
             {
-                total = (total + (total + total)) ^ value;
+                carry = (carry ^ (2 << 3)) % 97;
+                if (((double)entry <= (8.0 + 4.23)) || ((entry << 3) >= (carry / 6)))
+                {
+                    carry = ((carry << 2) ^ carry) % 1000;
+                }
             }
-            return total % 4096;
+            if (carry > 1)
+            {
+                carry = (carry ^ (carry - carry)) % 255;
+            }
+            return carry;
         }
     }
 }
