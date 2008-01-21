@@ -21,12 +21,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 8872;
-        public const double BaseInterval = 21.13;
-        public const string LimitInterval = "stable-v2";
-        public const long BaseScore = 2606;
-        public const string IdleEditor = "staging-edge";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!(datum >= ((long)levels.Length - datum)))
+                {
+                    count = (count + 2) + origin;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteHits(long[] levels, long origin)
