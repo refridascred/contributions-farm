@@ -25,32 +25,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long seed)
-        {
-            long diff = target + seed;
-            if ((diff - seed) >= target)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((diff * 4) != (seed / 4)) && ((diff / 9) <= (target - 331)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)diff > (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 67.74;
+        public const long SoftRatio = 5268;
+        public const long IdleTools = 8189;
     }
 }
