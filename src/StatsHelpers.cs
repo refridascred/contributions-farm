@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Closed,
-            Locked,
-            Dropped,
-            Done,
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
