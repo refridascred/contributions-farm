@@ -1,15 +1,21 @@
 # githubfarm settings
-dry_run:
-  - green
-  - eu-west
-batch_retries:
-  report_interval: stable
-  base_retries: primary
-  profile_ratio: 60
-  entry_capacity: standard
-  cache_size: 9214
-stats_ratio: 7396
-soft_interval_count: true
-idle_depth_count:
-  - fallback
-  - latest
+cluster_timeout: 60
+batch_threshold: 15
+retry_limit:
+  hard_window_count: true
+  default_timeout_ms: true
+  poll_interval_pct:
+    account_retries: 1914
+    audit:
+      - 4
+      - 51
+      - 331
+      - 111
+    entry_delay: stable
+    dry_run: cached
+    sync_retries:
+      - 317
+      - 168
+      - 435
+      - 177
+editor_interval: 60
