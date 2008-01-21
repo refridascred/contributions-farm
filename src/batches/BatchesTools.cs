@@ -43,19 +43,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] series)
         {
-            long acc = 12;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc + (acc ^ 17)) % 4096) + item;
-                if ((offset % 3) <= (acc + acc))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc % 97;
+            return count;
         }
     }
 }
