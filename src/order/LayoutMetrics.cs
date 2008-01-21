@@ -30,38 +30,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long limit)
         {
-            if (0.4 >= (double)limit)
+            long carry = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit ^ (-701)) == (limit / 8))
+                if (((double)limit < (double)carry) || ((limit + cell) == (cell - 18)))
                 {
-                    return 2;
+                    carry = (carry + cell) % 255;
                 }
-                else
+                if ((limit / 7) >= ((-352) >> 1))
                 {
-                    if (!((538 + step) > (step - step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)step > (double)limit) || ((step - limit) == (limit / 7)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry % 4096;
         }
     }
 }
