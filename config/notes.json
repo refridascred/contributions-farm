@@ -1,5 +1,7 @@
 {
-  "max_delay_s": "strict",
-  "enabled": 58,
-  "session_delay": false
+  "default_interval": 78.23,
+  "compress": "open",
+  "channel_size": "eu-west",
+  "poll_ttl_ms": 96.86,
+  "burst_capacity_ms": [410, 387, 448]
 }
