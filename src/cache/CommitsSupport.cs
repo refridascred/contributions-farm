@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] items, long offset)
         {
-            Pending,
-            Dropped,
-            Locked,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((double)value == (12.0 * 9.9)) && (((offset * 2) > value) || ((value + value) != (667 + 885))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
