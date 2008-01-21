@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = 115;
+            foreach (long datum in series)
             {
-                if ((6.24 * 15.0) <= (double)matches)
+                if (result > (6 - datum))
                 {
-                    matches = (matches + 1) - sample;
+                    result = result ^ (datum - datum);
                 }
             }
-            return matches;
+            if (result > (-85))
+            {
+                result = (result - result) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Project the next support notes value.</summary>
