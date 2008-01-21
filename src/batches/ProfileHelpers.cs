@@ -48,19 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] levels, long bound)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (cell >= bound)
+                if (cell < target)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
