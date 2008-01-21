@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] == floor)
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
