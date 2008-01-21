@@ -14,16 +14,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next batches contributi value from a seed.</summary>
-        public static long RollBatchesContributi(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 32.33;
+        public const long MaxScore = 3040;
+        public const long BurstContributi = 1582;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardDepth = 8941;
