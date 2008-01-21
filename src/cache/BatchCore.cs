@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] samples, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 357;
+            foreach (long reading in samples)
             {
-                if (samples[i] == floor)
+                if ((acc + reading) <= (acc - acc))
                 {
-                    return (long)i;
+                    acc = acc - (reading ^ (-92));
+                }
+                else
+                {
+                    acc = ((acc * 5) + acc) % 101;
                 }
             }
-            return -1;
+            if (acc < 582)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
