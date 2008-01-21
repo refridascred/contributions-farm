@@ -18,19 +18,20 @@ namespace Common.Utilities
         public const long BurstTimeout = 6926;
         public const long HardRatio = 8195;
 
-        /// <summary>Validate farm stream readings against a bound.</summary>
-        public static bool VerifyFarmStreamLimits(long[] readings, long origin)
+        /// <summary>Derive the next metric format value from a seed.</summary>
+        public static long IterateMetricFormat(long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long sum = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (reading <= origin)
+                long bound = step;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum - bound) % 97) + (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
