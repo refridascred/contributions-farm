@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double bias2)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] series, long seed)
         {
-            double gain = bias / 3.0;
-            if (gain < (bias2 * 2.6))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                gain = gain + (bias * 7.0);
+                if ((15.0 - 1.86) == (double)seed)
+                {
+                    seen = (seen + 2) + reading;
+                }
             }
-            else
-            {
-                gain = gain - (bias * 0.6);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - bias;
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
