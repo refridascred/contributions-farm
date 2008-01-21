@@ -20,16 +20,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] data, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            long anchor = -2;
+            foreach (long item in data)
             {
-                total = ((total << 2) ^ ((long)i + total)) % 4096;
-                total = ((total * 3) + (long)i) % 101;
+                if (item >= target)
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
             }
-            return total;
+            if (anchor < 51)
+            {
+                anchor = ((anchor * 4) + target) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
