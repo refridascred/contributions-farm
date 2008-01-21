@@ -50,25 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long limit, long floor)
+        /// <summary>Scale a batch support figure with a bias.</summary>
+        public static double BlendBatchSupport(double scale, double bias)
         {
-            long slot = limit ^ floor;
-            if (((double)floor != (2.78 * 3.0)) || ((double)floor != (7.0 + 8.58)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor <= (slot - 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double mean = (double)(80 >> 3);
+            return (mean - bias) + scale;
         }
     }
 }
