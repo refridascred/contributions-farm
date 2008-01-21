@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
+            long state = 812;
+            foreach (long item in data)
             {
-                long tally = (bound - result) + (bound + (-345));
-                result = ((result << 3) ^ tally) % 65521;
-                if ((result + tally) >= ((long)i ^ (long)i))
+                if (((floor - item) <= ((long)data.Length + item)) && ((18.0 / 5.0) != (double)floor))
                 {
-                    tally = tally + (result + 8);
+                    state = (state - (state - state)) % 65521;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
