@@ -34,24 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score << 2) ^ (score ^ (long)i)) % 4096;
-                if ((((long)i - score) <= target) || (target <= (target ^ (long)i)))
-                {
-                    score = ((score << 3) ^ (310 - score)) % 4096;
-                }
-                else
-                {
-                    score = ((score * 3) + ((-48) + target)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
