@@ -21,19 +21,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a account window reading.</summary>
-        public static double AdjustAccountWindow(double scale, double offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            double bias = (double)(-10) * 4.5;
-            if (bias >= (double)(-67))
+            long total = 40;
+            foreach (long item in samples)
             {
-                bias = (bias + offset) + scale;
+                if ((item - total) >= item)
+                {
+                    total = ((total << 3) ^ item) % 4096;
+                }
+                if (total <= (total ^ item))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (total < 4)
             {
-                bias = (bias + offset) + (double)(long)i;
+                total = (total ^ (6 + total)) % 65521;
             }
-            return bias - (offset + 8.5);
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
