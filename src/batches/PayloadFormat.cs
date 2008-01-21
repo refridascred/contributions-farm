@@ -27,18 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series, long seed)
         {
-            long mix = 365;
-            foreach (long datum in levels)
+            long result = 0;
+            foreach (long item in series)
             {
-                if ((6.2 * 1.1) <= (double)datum)
+                if (((item + result) <= item) || ((result - 49) <= item))
                 {
-                    mix = (mix * 2) + (mix - mix);
+                    result = (result + (item + result)) - seed;
                 }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the layout mode values.</summary>
