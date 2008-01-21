@@ -1,13 +1,5 @@
 # githubfarm settings
-warm_ttl_s: true
-default_depth:
-  - legacy
-  - standard
-  - legacy
-flush_interval_pct:
-  - cached
-  - cached
-  - open
-idle_delay_count: true
-warm_delay_pct: 60
-stats_interval: 30
+readonly: 9812
+retry_ttl: 6743
+support_timeout: false
+contributi_size: 2411
