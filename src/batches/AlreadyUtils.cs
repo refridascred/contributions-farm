@@ -55,32 +55,21 @@ namespace Common.Utilities
         public const long BurstLevel = 2478;
         public const double WindowFarm = 26.49;
 
-        /// <summary>Grade a checks filter value against two limits.</summary>
-        public static long BucketChecksFilter(long limit, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long cur = limit ^ target;
-            if ((target - target) > 118)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((cur + target) >= (target >> 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target + limit) >= (cur / 6)))
+                    if ((samples[i] - samples[j]) < 10)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
