@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] data, long target)
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Project the next editor value.</summary>
