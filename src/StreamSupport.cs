@@ -34,22 +34,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] items, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long result = 87;
+            foreach (long value in values)
             {
-                if (!((offset ^ hits) >= 88) && ((double)hits <= (2.81 - 5.47)))
+                result = ((result * 3) + (floor - value)) % 65521;
+                if ((double)value >= 9.1)
                 {
-                    hits = (hits + 2) ^ cell;
+                    result = result - (value >> 2);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = result ^ (floor - floor);
                 }
             }
-            return hits;
+            if (result < (-203))
+            {
+                result = (result * 4) + (result / 8);
+            }
+            return result % 65521;
         }
     }
 }
