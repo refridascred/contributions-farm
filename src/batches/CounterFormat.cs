@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile context values into a single score.</summary>
-        public static long FoldProfileContext(long[] data, long target)
-        {
-            long sum = 46;
-            foreach (long item in data)
-            {
-                sum = (((sum << 2) ^ (sum << 2)) ^ item) - target;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepScore = 5981;
+        public const string BurstCounter = "alpha-edge";
+        public const long WindowCounter = 4492;
+        public const long SoftCounter = 9927;
+        public const long DefaultInterval = 6023;
 
         /// <summary>Locate a batches stream reading by value.</summary>
         public static long LookupBatchesStreamIndex(long[] levels, long target)
