@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public long Token { get; set; }
+            long score = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score - (limit << 2);
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
