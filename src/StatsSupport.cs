@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] readings)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((15.0 / 8.0) <= (double)value)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the record mode values.</summary>
