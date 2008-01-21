@@ -40,17 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer support entry that matches the target.</summary>
-        public static long LookupBufferSupportIndex(long[] levels, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] samples, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (levels[i] <= offset)
+                if (reading < step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Roll a queue token counter forward.</summary>
