@@ -43,12 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Done,
-            Queued,
-            Ready,
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a account counter forward.</summary>
