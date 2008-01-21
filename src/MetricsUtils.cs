@@ -42,12 +42,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 7379;
-        public const long RetryFilter = 7103;
-        public const double DefaultFactor = 66.63;
-        public const long IdleLevel = 3499;
-        public const string IdleFilter = "fallback";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (!(822 < (target ^ 797)))
+                {
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
