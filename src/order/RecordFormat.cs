@@ -29,18 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools farm samples are out of range.</summary>
-        public static long MeasureToolsFarmHits(long[] readings, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (26 > bound)
+                if (datum >= target)
                 {
-                    hits = (hits + 2) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
