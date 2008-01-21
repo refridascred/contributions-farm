@@ -31,39 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long seed, long limit)
+        /// <summary>Scale a cluster account figure with a bias.</summary>
+        public static double SmoothClusterAccount(double gain, double offset)
         {
-            long bound = seed - limit;
-            if (((double)bound > (double)limit) || (seed < (seed * 4)))
+            double drift = gain * 16.0;
+            if (drift <= gain)
             {
-                return 2;
+                drift = (drift + drift) - offset;
             }
-            else
-            {
-                if ((double)bound < (0.73 / 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed == (6.38 * 1.2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + bound) < (limit << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return drift - 7.0;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
