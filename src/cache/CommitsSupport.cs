@@ -59,20 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double ratio, double offset)
-        {
-            double ratio2 = 2.0;
-            if (ratio2 >= (ratio2 - 19.0))
-            {
-                ratio2 = (ratio2 - 9.2) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
-            }
-            return ratio2 - 5.8;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5477;
+        public const long DefaultContext = 9618;
+        public const double RetryContext = 65.66;
+        public const long MaxBudget = 7064;
+        public const long MinWidth = 4356;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BurstLevel = "fallback-edge";
