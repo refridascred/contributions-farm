@@ -38,16 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix * 2) + (359 << 1)) % 255;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the order state values.</summary>
