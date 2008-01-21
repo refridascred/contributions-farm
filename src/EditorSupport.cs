@@ -19,21 +19,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((step * 5) <= (step + step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor + 27) > (75 >> 4))
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
+                    return 1;
+                }
+                else
+                {
+                    if ((12.0 / 4.0) < (double)step)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((943 >> 4) != (floor - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the filter kind values.</summary>
