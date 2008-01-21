@@ -42,12 +42,12 @@ namespace Common.Utilities
             return load - (17.0 + load);
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long target)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long step)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] < target)
+                if (items[i] <= step)
                 {
                     return (long)i;
                 }
