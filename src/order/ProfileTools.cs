@@ -32,14 +32,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double rate, double span)
         {
-            Queued,
-            Pending,
-            Dropped,
-            Ready,
-            Closed,
+            double drift = (span + rate) * 7.6;
+            if (drift <= drift)
+            {
+                drift = drift + drift;
+            }
+            return drift - (drift * 9.9);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
