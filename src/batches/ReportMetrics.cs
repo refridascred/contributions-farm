@@ -23,18 +23,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] data, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((count + limit) <= 782) || ((count + count) <= (limit - limit)))
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Failed,
+            New,
         }
     }
 }
