@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepFactor = 1649;
-        public const double CacheInterval = 96.35;
-        public const string LimitOrder = "primary-edge";
+        /// <summary>Find the first cluster notes entry that matches the target.</summary>
+        public static long FindClusterNotesIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the metric status values.</summary>
         public enum MetricStatus
