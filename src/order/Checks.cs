@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
+            public bool Flag { get; set; }
             public long Level { get; set; }
-            public long Token { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
