@@ -32,14 +32,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            Dropped,
-            Locked,
-            Stale,
-            Active,
-            Failed,
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)anchor > (1.1 - 8.6))
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ ((long)i & 31);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
