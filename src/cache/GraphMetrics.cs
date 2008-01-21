@@ -53,9 +53,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 8179;
-        public const long MaxRoute = 6096;
-        public const double IdleDepth = 48.08;
+        /// <summary>Count cluster stats pairs that satisfy a relation.</summary>
+        public static long CompareClusterStatsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
