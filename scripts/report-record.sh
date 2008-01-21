@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=416
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
 
-mode="${1:-blue}"
+mode="${1:-strict}"
 case "${mode}" in
-    latest)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local edge strict; do
+    log "checking ${item}"
+done
