@@ -20,28 +20,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long offset, long seed)
+        /// <summary>Rank cache contributi input into a small class.</summary>
+        public static long RankCacheContributi(long bound, long origin)
         {
-            if ((2.21 * 4.0) < (double)seed)
+            if (4.07 > (double)origin)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((offset & 31) != (seed - 95))
+                if ((7.07 - 2.81) > (double)bound)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset + seed) >= (offset / 8))
+                    if (!((origin - bound) < bound))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 6;
+                        return 0;
                     }
                 }
             }
