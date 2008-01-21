@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long DefaultMetric = 6815;
         public const long MinRatio = 2988;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] levels, long seed)
         {
-            Idle,
-            Stale,
-            Pending,
-            Ready,
-            Retry,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + hits) < (seed + 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count cache window pairs that satisfy a relation.</summary>
