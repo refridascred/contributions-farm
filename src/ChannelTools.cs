@@ -31,15 +31,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowSpan = 4303;
+        public const double BurstCommand = 28.05;
+        public const string BaseInterval = "latest";
     }
 }
