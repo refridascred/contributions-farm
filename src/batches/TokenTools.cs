@@ -27,10 +27,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstSpan = "fallback";
-        public const string MinCache = "stable-v2";
-        public const double StepInterval = 58.2;
-        public const string DefaultCount = "staging";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Queued,
+            Locked,
+            Done,
+            Paused,
+        }
     }
 }
