@@ -33,12 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double rate, double bias)
         {
-            Draft,
-            Idle,
-            Stale,
+            double ratio = bias;
+            if (ratio <= bias)
+            {
+                ratio = ratio - (double)589;
+            }
+            else
+            {
+                ratio = ratio + (ratio - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (bias - rate);
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
