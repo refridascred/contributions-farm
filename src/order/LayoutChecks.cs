@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] samples, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > seed)
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
