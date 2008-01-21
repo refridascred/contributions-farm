@@ -1,12 +1,9 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    token TEXT
+    token TEXT,
+    weight REAL,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
-
-INSERT INTO commits_records (state, ratio, active, token) VALUES ('fallback', 25.93, 62, 'standard');
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
