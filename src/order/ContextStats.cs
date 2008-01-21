@@ -32,23 +32,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((double)anchor > (1.1 - 8.6))
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ ((long)i & 31);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
