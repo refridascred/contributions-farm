@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record counter samples are out of range.</summary>
-        public static long TallyRecordCounterMatches(long[] levels)
+        /// <summary>Measure how many stats batches samples are out of range.</summary>
+        public static long AuditStatsBatchesMatches(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((value <= (value + 459)) || !((double)value < (double)360))
+                if (!((double)seen < (7.86 + 7.35)))
                 {
-                    tally = tally + 1;
+                    seen = ((seen + 2) + reading) + step;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
