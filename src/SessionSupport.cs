@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long SoftToken = 550;
         public const long RetryCount = 1752;
 
-        /// <summary>Find the first support tools entry that matches the target.</summary>
-        public static long SeekSupportToolsIndex(long[] levels, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 4;
+            foreach (long item in readings)
             {
-                if (levels[i] == offset)
+                if (((double)item < (1.0 * 6.02)) || (418 > item))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (6 / 4);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (floor ^ item);
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Match up batches samples.</summary>
