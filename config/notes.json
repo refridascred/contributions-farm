@@ -1,20 +1,5 @@
 {
-  "hard_window_count": {
-    "sync_retries_pct": {
-      "min_depth_s": ["staging", "primary", "strict"],
-      "route_limit": ["standard", "strict"],
-      "checks_delay": false,
-      "min_interval_ms": 2296
-    },
-    "strict": {
-      "payload_delay": "cached",
-      "cluster_ratio": "primary",
-      "already_depth": [401, 327]
-    },
-    "queue_depth": "standard"
-  },
-  "burst_ttl": true,
-  "session_depth": 15.38,
-  "idle_depth_ms": 250,
-  "warm_window": true
+  "cluster_delay": 71.83,
+  "burst_ratio": [357, 207, 453],
+  "verbose": 100
 }
