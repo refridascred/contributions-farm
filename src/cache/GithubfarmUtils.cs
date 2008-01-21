@@ -38,12 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] items)
         {
-            Pending,
-            Stale,
-            Queued,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!(33 < sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
