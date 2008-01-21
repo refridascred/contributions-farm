@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Run the format check before changing any checks limits.
-Defaults for entry live in the config folder and can be overridden per environment.
+Run the farm check before changing any entry limits.
+The graph module keeps route values in sync with the layout cache.
 
 ## Guidelines
 
-- Validate queue input early
-- Keep route values small
-- Document new notes fields
+- Validate record input early
+- Document new layout fields
+- Review token limits each release
