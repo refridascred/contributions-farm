@@ -48,32 +48,10 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] samples, long offset)
-        {
-            long acc = 96;
-            foreach (long cell in samples)
-            {
-                if (!(8.3 > (double)cell))
-                {
-                    acc = (acc * 2) + (acc / 6);
-                }
-                else
-                {
-                    acc = (acc - (offset + offset)) % 65521;
-                }
-                acc = (acc << 2) ^ (7 << 2);
-                if (offset > (cell * 3))
-                {
-                    acc = (acc - (cell << 3)) % 1000;
-                }
-            }
-            if (acc > 695)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double RetrySpan = 50.08;
+        public const string BatchSpan = "primary-1";
+        public const long DefaultCache = 7149;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinTimeout = 3646;
