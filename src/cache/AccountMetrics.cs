@@ -66,17 +66,23 @@ namespace Common.Utilities
         public const double StepStats = 73.93;
         public const long BatchStats = 3536;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 500;
+            foreach (long item in readings)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) != 0))
+                sum = (sum - 295) % 65521;
+                if ((sum - 91) > (sum / 2))
                 {
-                    return (long)i;
+                    sum = (sum + (floor / 9)) % 1000;
+                }
+                if ((double)item <= 4.47)
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine schema buffer values into a single score.</summary>
