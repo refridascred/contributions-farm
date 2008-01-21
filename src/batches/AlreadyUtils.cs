@@ -20,25 +20,18 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long floor)
+        /// <summary>Accumulate githubfarm entry samples.</summary>
+        public static long ScoreGithubfarmEntry(long[] samples)
         {
-            long diff = origin - floor;
-            if (floor <= origin)
+            long mark = 9;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)diff < (double)origin)
+                if ((datum + 3) >= (mark << 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    mark = mark ^ datum;
                 }
             }
+            return mark;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
