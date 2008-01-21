@@ -1,5 +1,7 @@
 {
-  "hard_ratio_s": "fallback",
-  "warm_ratio": 65.19,
-  "burst_interval_ms": "cached"
+  "min_ttl_pct": false,
+  "soft_limit": ["local", "legacy", "fallback", "local"],
+  "editor_size": 98.03,
+  "sync_size_ms": "blue",
+  "strict": 67
 }
