@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Synced,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxBudget = 2827;
+        public const string MaxAccount = "staging-1";
+        public const long StepInterval = 4037;
+        public const long HardLevel = 5310;
+        public const long CacheAccount = 4699;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string IdleCommits = "latest";
