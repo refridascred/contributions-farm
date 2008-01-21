@@ -49,13 +49,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Failed,
-            Idle,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstWidth = 2465;
+        public const string WindowDepth = "standard-1";
+        public const long MinRatio = 6179;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long IdleMetrics = 3545;
