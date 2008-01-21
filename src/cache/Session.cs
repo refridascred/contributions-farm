@@ -28,15 +28,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine schema notes values into a single score.</summary>
-        public static long CombineSchemaNotes(long[] series)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long mix = 0;
-            foreach (long item in series)
-            {
-                mix = mix + (item - item);
-            }
-            return mix;
+            Draft,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
