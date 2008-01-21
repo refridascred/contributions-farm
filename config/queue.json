@@ -1,13 +1,8 @@
 {
-  "filter_interval": [200, 23],
-  "warm_size_s": {
-    "readonly": 60,
-    "sync_interval_count": "eu-west",
-    "max_timeout": "open",
-    "soft_window": true
-  },
-  "idle_timeout": false,
-  "dry_run": 20.02,
-  "base_ttl": "blue",
-  "support_threshold": true
+  "hard_size_pct": 3995,
+  "retry_ttl": [407, 288, 186],
+  "batch_retries_count": true,
+  "session_timeout": "standard",
+  "batch_ratio_pct": "primary",
+  "flush_depth": "staging"
 }
