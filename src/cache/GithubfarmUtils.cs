@@ -34,16 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch entry value from a seed.</summary>
-        public static long DeriveBatchEntry(long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state << 3) ^ (state << 2);
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Retry,
+            Synced,
         }
     }
 }
