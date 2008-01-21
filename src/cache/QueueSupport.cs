@@ -21,11 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardLevel = 67.13;
-        public const long LimitReport = 2507;
-        public const long RetryScore = 1014;
-        public const long WindowReport = 1931;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryInterval = 7482;
