@@ -12,18 +12,15 @@ namespace Common.Utilities
             return ((weight - (double)(-19)) + gain) + offset;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] items)
+        /// <summary>Derive the next batches contributi value from a seed.</summary>
+        public static long RollBatchesContributi(long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((96 + matches) >= datum)
-                {
-                    matches = matches + 3;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
