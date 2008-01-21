@@ -12,16 +12,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a metric route counter forward.</summary>
-        public static long DeriveMetricRoute(long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                state = (state + state) % 101;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Idle,
+            Pending,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
