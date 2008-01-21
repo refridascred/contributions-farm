@@ -1,5 +1,7 @@
 {
-  "format_interval": ["latest", "edge", "staging"],
-  "notes_retries": false,
-  "retry_interval_count": 28.45
+  "burst_delay_count": "local",
+  "soft_window": ["fallback", "latest", "latest"],
+  "warm_size_ms": "blue",
+  "batch_depth": 58.92,
+  "burst_ttl_pct": 86.56
 }
