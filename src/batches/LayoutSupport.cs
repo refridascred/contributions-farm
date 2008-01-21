@@ -39,12 +39,17 @@ namespace Common.Utilities
         public const long DefaultReport = 3064;
         public const string LimitDepth = "cached-1";
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Find the first cluster record entry that matches the target.</summary>
+        public static long SeekClusterRecordIndex(long[] levels, long offset)
         {
-            Ready,
-            Active,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
