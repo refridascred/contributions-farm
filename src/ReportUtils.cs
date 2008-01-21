@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data)
+        /// <summary>Measure how many order buffer samples are out of range.</summary>
+        public static long MeasureOrderBufferMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((((-564) < reading) || ((matches + (-746)) >= 27)) || (((double)matches >= 14.0) || ((691 - matches) <= (matches - reading))))
+                if ((2.0 - 17.0) == (double)hits)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 3) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the editor phase values.</summary>
