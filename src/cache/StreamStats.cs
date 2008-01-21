@@ -46,22 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 4016;
+        public const string DefaultStats = "cached-v2";
+        public const string BaseStats = "staging-v2";
+        public const long CacheSpan = 6574;
+        public const string WindowBudget = "open-v2";
 
         /// <summary>Derive the next batches value from a seed.</summary>
         public static long RollBatches(long bound)
