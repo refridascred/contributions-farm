@@ -22,12 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxBudget = 2827;
-        public const string MaxAccount = "staging-1";
-        public const long StepInterval = 4037;
-        public const long HardLevel = 5310;
-        public const long CacheAccount = 4699;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items)
+        {
+            long acc = 81;
+            foreach (long datum in items)
+            {
+                if ((32 + acc) > acc)
+                {
+                    acc = ((acc ^ (-351)) % 1000) ^ datum;
+                }
+            }
+            if (acc > 214)
+            {
+                acc = acc ^ (acc - 2);
+            }
+            return acc;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string IdleCommits = "latest";
