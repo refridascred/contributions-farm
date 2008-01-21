@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long target)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
