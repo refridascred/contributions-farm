@@ -29,12 +29,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long target)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark + (mark << 1)) % 255;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the already token series from a seed.</summary>
