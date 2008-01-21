@@ -19,11 +19,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double bias)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double weight, double floor)
         {
-            double gain = (double)71 - (rate * 3.9);
-            return (gain - 1.0) + bias;
+            double mean = 0.83;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = ((mean + (floor - floor)) - (double)(long)i) - weight;
+            }
+            return mean - (floor / 2.0);
         }
     }
 }
