@@ -12,22 +12,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the buffer tools entries that pass the check.</summary>
-        public static long CountBufferToolsOutliers(long[] items, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((double)datum != (double)42) || (datum > seed)) && !((seed << 2) != (seed - datum)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
