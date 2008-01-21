@@ -61,19 +61,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((sum - offset) > (offset % 100))
-                {
-                    sum = sum - (67 >> 1);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 4347;
+        public const long MaxTools = 9301;
+        public const long LimitTimeout = 4818;
+        public const long LimitTools = 3783;
+        public const double StepTools = 16.23;
     }
 }
