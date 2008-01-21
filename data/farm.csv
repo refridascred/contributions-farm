@@ -1,6 +1,9 @@
-id,active,owner
-1,641,eu-west
-2,green,staging
-3,open,latest
-4,448,17.65
-5,97.84,473
+id,weight,owner,rank
+1,44.16,274,open
+2,edge,legacy,13.03
+3,strict,strict,fallback
+4,latest,57.72,225
+5,54.61,39.02,316
+6,98.75,921,59.92
+7,strict,23.81,676
+8,open,543,latest
