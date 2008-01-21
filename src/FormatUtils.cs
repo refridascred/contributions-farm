@@ -32,22 +32,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] levels, long step)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long mark = 42;
-            foreach (long item in levels)
-            {
-                if (((double)9 < (double)item) || ((mark ^ 0) == (item << 2)))
-                {
-                    mark = (((mark * 3) + (87 + item)) % 4096) - step;
-                }
-                else
-                {
-                    mark = mark ^ ((long)levels.Length * 2);
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
