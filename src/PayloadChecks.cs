@@ -47,19 +47,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long TallyEntrySupportMatches(long[] levels)
         {
-            long acc = 219;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 2) ^ (40 - acc)) % 101;
-                if (((27 / 5) <= (datum - 189)) && ((acc % 8) > datum))
+                if ((tally >> 4) > sample)
                 {
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
