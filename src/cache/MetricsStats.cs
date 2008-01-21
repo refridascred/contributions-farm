@@ -24,19 +24,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] series, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
