@@ -61,10 +61,18 @@ namespace Common.Utilities
             return weight - (gain + weight);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 33.64;
-        public const long IdleLayout = 1712;
-        public const string IdleCount = "latest-1";
-        public const string LimitLayout = "stable-1";
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((((19.0 * 4.2) >= (double)seen) || ((value - (-222)) > seen)) || ((value + 88) < (value + 52)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
