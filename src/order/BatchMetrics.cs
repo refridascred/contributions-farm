@@ -44,15 +44,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] readings, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long limit, long seed)
         {
-            long score = -11;
-            foreach (long sample in readings)
+            if ((238 * 4) > seed)
             {
-                score = ((score ^ (sample - sample)) % 101) - target;
+                return 4;
             }
-            return score % 1000;
+            else
+            {
+                if (61 < (limit ^ seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
