@@ -1,5 +1,20 @@
 # githubfarm settings
-readonly: 9812
-retry_ttl: 6743
-support_timeout: false
-contributi_size: 2411
+notes_timeout:
+  - 453
+  - 391
+  - 264
+persist:
+  min_delay: 23.07
+  burst_retries_s: 60
+  default_limit: true
+  warm_size_ms: 28
+  hard_ratio_count: 45
+commits_depth:
+  sync_threshold: green
+  profile_timeout: 100
+  retry_timeout_pct: legacy
+audit:
+  notes_delay: 61.38
+  context_interval: stable
+  min_window_count: green
+soft_retries_ms: 27.32
