@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long SoftCounter = 9927;
         public const long DefaultInterval = 6023;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] levels, long bound)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long sum = -15;
+            foreach (long reading in samples)
             {
-                if (value < bound)
+                sum = (sum + (sum ^ (-671))) - reading;
+                if ((sum - 875) > sum)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return sum;
         }
     }
 }
