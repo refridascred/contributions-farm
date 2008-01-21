@@ -36,11 +36,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultScore = 1357;
-        public const long StepRatio = 9281;
-        public const double HardEntry = 72.92;
-        public const long BaseCount = 1854;
-        public const long StepEntry = 4123;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstInterval = "staging";
+        public const string BaseFactor = "staging";
+        public const long BurstBatches = 5350;
     }
 }
