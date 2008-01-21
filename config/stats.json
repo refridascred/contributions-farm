@@ -1,6 +1,16 @@
 {
-  "compress": 100,
-  "retry_limit_pct": "primary",
-  "cache_interval_s": [57, 381],
-  "persist": [254, 216, 24]
+  "editor_threshold": 914,
+  "min_capacity_s": "latest",
+  "readonly": 500,
+  "base_capacity_pct": {
+    "buffer_limit": 4547,
+    "batch_retries_ms": "green",
+    "burst_size": 1898
+  },
+  "buffer_limit": {
+    "min_size": 56.66,
+    "warm_window_count": [474, 462],
+    "readonly": 1423,
+    "batches_retries": 56.91
+  }
 }
