@@ -43,11 +43,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
