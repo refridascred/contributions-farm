@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long FoldTools(long[] data, long step)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long state = 76;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5 - state) < state) || (datum <= (step % 64)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state * 3) + (step + datum);
+                    if ((readings[i] - readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (state < 45)
-            {
-                state = (state ^ step) % 4096;
-            }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
