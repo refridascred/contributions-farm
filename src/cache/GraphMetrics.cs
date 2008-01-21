@@ -15,22 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 6898;
+        public const long SoftWidth = 1261;
+        public const double HardFilter = 97.35;
+        public const long HardCount = 2026;
 
         /// <summary>Find the first contributi session entry that matches the target.</summary>
         public static long SeekContributiSessionIndex(long[] series, long seed)
