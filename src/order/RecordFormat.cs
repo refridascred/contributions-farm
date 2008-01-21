@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long LimitCommand = 7276;
         public const long SoftCommand = 5276;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseInterval = 5359;
-        public const long MaxWidth = 718;
-        public const long BatchEditor = 1010;
-        public const long StepEditor = 7003;
-        public const long SoftEditor = 968;
+        /// <summary>Count the batch stats entries that pass the check.</summary>
+        public static long CountBatchStatsHits(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (66 > (step - 680))
+                {
+                    count = (count + 3) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string WindowGraph = "alpha-v2";
