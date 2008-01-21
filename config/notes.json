@@ -1,11 +1,5 @@
 {
-  "retry_ttl": [320, 45, 70],
-  "flush_capacity_s": {
-    "cache_capacity": ["stable", "standard", "standard", "green"],
-    "entry_retries": [28, 392, 43],
-    "already_threshold": false,
-    "retry_retries": ["strict", "legacy"]
-  },
-  "support_threshold": 20.22,
-  "cache_ttl": "edge"
+  "retry_ttl": 60,
+  "strict": [42, 271],
+  "graph_depth": "eu-west"
 }
