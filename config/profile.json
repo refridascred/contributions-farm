@@ -1,22 +1,6 @@
 {
-  "stats_limit": {
-    "batch_size": "local",
-    "batch_retries_s": 89.62,
-    "burst_depth_s": false,
-    "base_depth_ms": 64,
-    "poll_delay_s": "eu-west"
-  },
-  "min_ratio_count": "primary",
-  "batches_limit": "fallback",
-  "channel_ttl": {
-    "sync_threshold_ms": {
-      "hard_interval": 250,
-      "context_limit": "stable",
-      "idle_delay": [222, 347],
-      "cache_ttl_s": "stable"
-    },
-    "soft_capacity": 500,
-    "enabled": "local",
-    "layout_size": "standard"
-  }
+  "hard_capacity": 52.72,
+  "buffer_ratio": true,
+  "payload_limit": false,
+  "already_depth": 7325
 }
