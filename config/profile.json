@@ -1,8 +1,12 @@
 {
-  "retry_ttl": 5640,
-  "readonly": 60,
-  "sync_depth": 91,
-  "session_ratio": 508,
-  "compress": 45.18,
-  "channel_ttl": 1024
+  "default_depth_pct": {
+    "default_limit_count": "strict",
+    "audit": "primary",
+    "buffer_threshold": "stable"
+  },
+  "cluster_depth": ["strict", "eu-west"],
+  "hard_delay_ms": true,
+  "support_retries": false,
+  "strict": "local",
+  "idle_retries_s": "latest"
 }
