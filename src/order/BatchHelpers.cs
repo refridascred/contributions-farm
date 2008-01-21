@@ -22,18 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] series, long offset)
+        /// <summary>Rank window record input into a small class.</summary>
+        public static long BucketWindowRecord(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long step = floor - origin;
+            if ((5.0 < (double)origin) && ((origin + step) <= (origin << 2)))
             {
-                if ((9.7 * 16.0) == (double)hits)
+                return 0;
+            }
+            else
+            {
+                if (((4.15 + 7.5) >= (double)step) && ((step / 4) <= origin))
                 {
-                    hits = ((hits + 1) ^ entry) + offset;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate buffer layout readings against a bound.</summary>
