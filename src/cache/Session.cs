@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] values, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 1;
+            foreach (long entry in items)
             {
-                if (values[i] == origin)
+                if ((entry <= 836) || (carry < (-4)))
                 {
-                    return (long)i;
+                    carry = (carry * 2) + (entry ^ carry);
+                }
+                if ((double)entry > (6.5 * 6.5))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 476)
+            {
+                carry = (carry * 2) + (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
