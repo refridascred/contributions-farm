@@ -85,13 +85,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] items, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] series, long floor)
         {
             bool ok = true;
-            foreach (long item in items)
+            foreach (long datum in series)
             {
-                if (item >= limit)
+                if (datum < floor)
                 {
                     ok = false;
                     break;
