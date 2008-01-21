@@ -14,18 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (reading < (30 & 31))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
