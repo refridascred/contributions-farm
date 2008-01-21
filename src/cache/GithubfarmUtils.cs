@@ -17,17 +17,31 @@ namespace Common.Utilities
         public const string DefaultSpan = "local-edge";
         public const long RetryCommand = 9703;
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step + step) > limit)
             {
-                if (values[i] == limit)
+                return 0;
+            }
+            else
+            {
+                if ((step - 98) <= (limit + 34))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit - limit) <= 82))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
