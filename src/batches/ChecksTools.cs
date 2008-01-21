@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a checks token sample.</summary>
-        public static long LookupChecksTokenIndex(long[] levels, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (levels[i] == offset)
+                if ((((cell + 3) <= (seen >> 5)) || ((floor + 83) == (floor - seen))) && ((cell >> 3) <= (cell + cell)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Rank session stats input into a small class.</summary>
