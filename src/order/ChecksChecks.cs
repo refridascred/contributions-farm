@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Stale,
-            Closed,
-            New,
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
