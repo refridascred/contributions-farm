@@ -34,10 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 3604;
-        public const double WindowChannel = 97.36;
-        public const long BatchChannel = 1410;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!(tally > (tally + datum)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a farm entry pair into a bucket.</summary>
         public static long RankFarmEntry(long seed, long floor)
