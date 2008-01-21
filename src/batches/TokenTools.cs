@@ -28,12 +28,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] samples)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((matches - cell) == (matches & 3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
