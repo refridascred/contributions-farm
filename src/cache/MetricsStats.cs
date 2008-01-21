@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const string StepSize = "stable-edge";
         public const double WindowTimeout = 53.16;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series)
         {
-            Closed,
-            Queued,
-            New,
-            Idle,
-            Done,
+            long mix = 1;
+            foreach (long datum in series)
+            {
+                mix = ((mix << 2) ^ datum) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
