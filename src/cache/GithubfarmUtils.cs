@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
+            Done,
+            Paused,
             Pending,
             Stale,
-            Closed,
-            Failed,
-            Idle,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
