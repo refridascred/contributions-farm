@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCount = 7362;
-        public const double BurstCounter = 23.89;
-        public const double StepFactor = 39.99;
-        public const long DefaultCounter = 4630;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] series, long seed)
