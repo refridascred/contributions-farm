@@ -40,10 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSize = 6994;
-        public const double HardCount = 98.7;
-        public const long MinFactor = 4518;
+        /// <summary>Grade a route batch value against two limits.</summary>
+        public static long ClassifyRouteBatch(long bound, long origin)
+        {
+            long bound2 = bound - origin;
+            if ((double)bound >= (9.43 / 4.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((origin + 6) < 5) || (bound2 > (331 / 9)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Roll a queue token counter forward.</summary>
         public static long DeriveQueueToken(long limit)
