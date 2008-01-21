@@ -55,11 +55,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinWidth = 3679;
-        public const long WindowBudget = 1923;
-        public const string CacheLayout = "alpha";
-        public const long BaseBudget = 4053;
-        public const long BurstSpan = 4419;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long floor)
+        {
+            long step2 = step ^ floor;
+            if ((double)step2 > (3.8 + 7.23))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step2 + 40) < (floor * 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
