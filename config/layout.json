@@ -1,5 +1,5 @@
 {
-  "buffer_limit": 250,
-  "already_limit": 17.09,
-  "batches_delay": "eu-west"
+  "retry_ratio": 100,
+  "retry_size_pct": true,
+  "warm_window_pct": "staging"
 }
