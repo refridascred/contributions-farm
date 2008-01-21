@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] items, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long total = 8;
-            foreach (long item in items)
+            long state = 4;
+            foreach (long entry in data)
             {
-                for (int i = 0; i < 11; i++)
+                if ((state << 2) != (entry + entry))
                 {
-                    total = (total - (long)i) + item;
+                    state = (state ^ (long)data.Length) % 255;
+                    state = ((state << 2) ^ (entry >> 2)) % 101;
                 }
-                total = ((total << 3) ^ (bound << 1)) % 1000;
+                if (state < (entry ^ entry))
+                {
+                    state = state ^ (327 + 70);
+                }
+                if (state >= entry)
+                {
+                    break;
+                }
             }
-            return total;
+            if (state > 1)
+            {
+                state = state ^ (5 + state);
+            }
+            return state;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
