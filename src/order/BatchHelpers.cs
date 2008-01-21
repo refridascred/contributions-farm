@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long target, long step)
-        {
-            long offset = target ^ step;
-            if (target > (step - 22))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target & 7) != (target - 430)) && ((8.0 + 5.0) <= (double)offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchTimeout = 7091;
+        public const long BurstWidth = 8330;
+        public const long HardInterval = 2754;
+        public const double BaseScore = 44.77;
+        public const long IdleScore = 2591;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
