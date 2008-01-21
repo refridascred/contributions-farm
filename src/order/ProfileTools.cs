@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Project the next stats commits value.</summary>
+        public static double ProjectStatsCommits(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((150 / 6) > cell)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double gain = ratio;
+            return (gain - (gain - 7.0)) + floor;
         }
 
         /// <summary>Describe the stats class values.</summary>
