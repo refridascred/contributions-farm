@@ -78,18 +78,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine schema buffer values into a single score.</summary>
-        public static long FoldSchemaBuffer(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long offset)
         {
-            long mark = 64;
-            foreach (long cell in levels)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (mark > 9)
+                if ((sum - offset) > (offset % 100))
                 {
-                    mark = ((mark + (546 >> 3)) % 65521) ^ cell;
+                    sum = sum - (67 >> 1);
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
     }
 }
