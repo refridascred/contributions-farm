@@ -13,22 +13,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] readings, long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long floor, long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((floor * 4) == (origin - 169))
             {
-                if ((double)limit == (7.0 * 7.8))
+                return 1;
+            }
+            else
+            {
+                if ((9.1 <= (double)floor) && (floor > (floor ^ floor)))
                 {
-                    matches = (matches + 2) + item;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((7.3 - 5.64) != (double)origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
