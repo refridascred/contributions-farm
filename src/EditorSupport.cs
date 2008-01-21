@@ -23,17 +23,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] samples)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                sum = (sum + ((long)i / 2)) % 65521;
-                sum = (sum ^ offset) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (((((long)samples.Length + 940) != (value - value)) || (count >= (value % 10))) && (((double)count < (10.0 / 7.0)) && ((count & 1) > (value * 2))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit session metric readings against a rule.</summary>
