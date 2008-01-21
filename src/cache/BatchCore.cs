@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] levels, long step)
         {
-            long mark = 15;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mark = (mark ^ (datum - datum)) % 4096;
+                if ((3.99 + 6.8) < (double)value)
+                {
+                    seen = (seen + 3) + step;
+                }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Validate graph githubfarm readings against a bound.</summary>
