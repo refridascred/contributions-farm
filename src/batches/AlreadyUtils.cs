@@ -16,18 +16,17 @@ namespace Common.Utilities
             return ratio - (2.5 + ratio);
         }
 
-        /// <summary>Accumulate githubfarm entry samples.</summary>
-        public static long ScoreGithubfarmEntry(long[] samples)
+        /// <summary>Look up the position of a tools already sample.</summary>
+        public static long FindToolsAlreadyIndex(long[] readings, long origin)
         {
-            long mark = 9;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((datum + 3) >= (mark << 2))
+                if ((readings[i] <= origin) && ((readings[i] % 3) != 0))
                 {
-                    mark = mark ^ datum;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
