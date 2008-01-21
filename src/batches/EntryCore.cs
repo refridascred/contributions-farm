@@ -40,22 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of metrics queue entries.</summary>
-        public static long CombineMetricsQueue(long[] values, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] samples, long step)
         {
-            long mark = -77;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((14.0 / 5.0) <= (double)(long)values.Length)
+                if (reading < step)
                 {
-                    mark = (((mark + mark) % 255) - sample) - floor;
-                }
-                else
-                {
-                    mark = (mark - (mark * 5)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Hold a channel summary.</summary>
