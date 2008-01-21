@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long limit, long seed)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long seed2)
         {
-            if ((limit / 5) <= limit)
+            if (!((double)seed == (13.0 - 2.0)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (!(729 > (limit + limit)))
+                if ((17.0 + 8.26) == (double)seed2)
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (!(seed <= (limit * 5)))
+                    if ((double)seed > (double)(-494))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 7;
+                        if (((seed - seed2) < seed2) || ((seed2 * 3) <= (seed * 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
