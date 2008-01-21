@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            long state = -47;
-            foreach (long sample in data)
+            double rate2 = rate;
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state + 0) % 65521) - sample;
+                rate2 = rate2 - (double)(long)i;
             }
-            if (state > 80)
-            {
-                state = (state << 3) ^ (state / 7);
-            }
-            return state;
+            return rate2 - (span * 6.5);
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
