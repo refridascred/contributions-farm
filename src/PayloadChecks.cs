@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Rank profile schema input into a small class.</summary>
-        public static long BucketProfileSchema(long seed, long limit)
+        /// <summary>Roll a metrics report counter forward.</summary>
+        public static long RollMetricsReport(long target)
         {
-            long next = seed + limit;
-            if (limit >= (next >> 3))
+            long acc = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)next != (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((next % 5) == (next + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
