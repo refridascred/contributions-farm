@@ -35,22 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items, long target)
+        /// <summary>Count the buffer batches entries that pass the check.</summary>
+        public static long MeasureBufferBatchesGaps(long[] items, long seed)
         {
-            long mark = 3;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (mark < (target << 1))
+                if ((13.0 * 0.63) < (double)seed)
                 {
-                    mark = ((mark + (2 + target)) % 97) - cell;
-                }
-                else
-                {
-                    mark = (mark ^ 3) % 101;
+                    seen = (seen + 2) - value;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
