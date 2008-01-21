@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] items)
         {
-            Pending,
-            Dropped,
-            Stale,
-            New,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((item - item) >= item)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
