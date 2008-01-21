@@ -16,13 +16,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Fold a list of farm batch readings.</summary>
+        public static long CombineFarmBatch(long[] samples, long floor)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            long total = 598;
+            foreach (long item in samples)
+            {
+                total = ((total ^ floor) % 65521) - item;
+                if ((double)total <= 1.3)
+                {
+                    total = ((total * 3) + (total >> 2)) % 255;
+                }
+                if (3.45 > (double)total)
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a stats header.</summary>
