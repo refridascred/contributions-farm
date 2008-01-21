@@ -1,6 +1,6 @@
 # githubfarm settings
-audit: latest
-default_window: stable
-poll_size_ms: true
-order_ttl: strict
-format_window: primary
+strict: open
+poll_retries_count: primary
+commits_threshold: latest
+channel_window: 67.42
+buffer_delay: 7268
