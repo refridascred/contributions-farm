@@ -43,11 +43,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepFactor = 23.6;
-        public const string RetrySize = "fallback";
-        public const long BatchSchema = 5345;
-        public const string WindowDepth = "alpha-edge";
-        public const long BaseDepth = 1242;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
