@@ -24,10 +24,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 8075;
-        public const string HardTimeout = "primary-v2";
-        public const string LimitFilter = "alpha-1";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorRange(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long FoldCache(long[] values, long floor)
