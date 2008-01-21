@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine tools entry values into a single score.</summary>
-        public static long WeighToolsEntry(long[] values)
-        {
-            long sum = 22;
-            foreach (long sample in values)
-            {
-                sum = ((sum << 3) ^ (sample - sum)) % 97;
-                if ((5.09 * 1.74) >= (double)sample)
-                {
-                    break;
-                }
-            }
-            if (sum > 60)
-            {
-                sum = (sum - (50 << 1)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 7794;
+        public const double MinDepth = 81.25;
+        public const long RetryLevel = 3133;
+        public const long HardReport = 1340;
+        public const double MinReport = 74.17;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
