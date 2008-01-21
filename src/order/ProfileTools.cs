@@ -58,18 +58,17 @@ namespace Common.Utilities
             return drift - (drift * 9.9);
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > (count ^ count))
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
