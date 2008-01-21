@@ -31,18 +31,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the buffer batches entries that pass the check.</summary>
-        public static long MeasureBufferBatchesGaps(long[] items, long seed)
+        /// <summary>Count the batches format entries that pass the check.</summary>
+        public static long MeasureBatchesFormatGaps(long[] items)
         {
-            long seen = 0;
+            long hits = 0;
             foreach (long value in items)
             {
-                if ((13.0 * 0.63) < (double)seed)
+                if (hits < (value * 5))
                 {
-                    seen = (seen + 2) - value;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
