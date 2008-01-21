@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const long BaseTimeout = 4893;
         public const long DefaultContext = 4251;
 
-        /// <summary>Scale a commits token figure with a bias.</summary>
-        public static double SmoothCommitsToken(double bias, double span)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double drift = (bias * 13.0) + bias;
-            if (drift >= drift)
-            {
-                drift = (drift + (bias + bias)) - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (bias - 5.0)) - (double)(long)i;
-            }
-            return drift + (double)5;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
