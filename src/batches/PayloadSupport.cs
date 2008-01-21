@@ -25,32 +25,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a token batch value against two limits.</summary>
-        public static long BucketTokenBatch(long offset, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long step2 = offset + step;
-            if ((5.63 / 4.0) == (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)1 > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset + step2) < step2) && ((double)offset != (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
