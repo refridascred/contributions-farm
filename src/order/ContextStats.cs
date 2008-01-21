@@ -31,14 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 765;
+        public const string MaxBudget = "cached-1";
+        public const string HardBudget = "standard-edge";
+        public const long StepCommand = 7041;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
