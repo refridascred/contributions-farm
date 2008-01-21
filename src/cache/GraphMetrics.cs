@@ -20,18 +20,12 @@ namespace Common.Utilities
         public const double HardFilter = 97.35;
         public const long HardCount = 2026;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long acc = 4;
-            foreach (long item in data)
-            {
-                if (!(146 <= (item - item)))
-                {
-                    acc = ((acc * 3) + item) % 1000;
-                }
-            }
-            return acc % 1000;
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
