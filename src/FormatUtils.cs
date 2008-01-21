@@ -91,18 +91,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many contributi metrics samples are out of range.</summary>
-        public static long MeasureContributiMetricsHits(long[] values)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double rate = ratio;
+            for (int i = 0; i < 9; i++)
             {
-                if ((1.7 / 7.0) == (double)matches)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                rate = (rate - offset) + (double)(long)i;
             }
-            return matches;
+            return rate - offset;
         }
     }
 }
