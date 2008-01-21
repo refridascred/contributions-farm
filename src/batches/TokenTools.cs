@@ -22,23 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long score = 4;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ (score * 5)) % 65521;
-                if ((value + value) <= ((long)levels.Length - value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score + (score << 1)) % 4096;
+                    if ((items[i] ^ items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score < (-3))
-            {
-                score = score - (14 & 63);
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the notes format entries that pass the check.</summary>
