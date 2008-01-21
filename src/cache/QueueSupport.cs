@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long HardTools = 4863;
         public const long MinTools = 3977;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double scale, double span)
+        /// <summary>Scale a counter buffer figure with a bias.</summary>
+        public static double AdjustCounterBuffer(double gain, double bias)
         {
-            double scale2 = (span - span) * 13.0;
-            return (scale2 - (span * 3.1)) + scale;
+            double drift = 1.0;
+            if (drift < (double)14)
+            {
+                drift = drift + (20.0 * 1.1);
+            }
+            else
+            {
+                drift = drift - (bias - drift);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (gain - bias)) + (double)(long)i;
+            }
+            return drift - (double)431;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
