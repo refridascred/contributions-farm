@@ -74,12 +74,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public bool Score { get; set; }
+            Paused,
+            Pending,
+            Draft,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
