@@ -27,24 +27,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long limit, long limit2)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((5.2 - 4.03) != (double)limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - limit2) >= (limit2 % 100))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
