@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Derive the next filter queue value from a seed.</summary>
+        public static long SeriesFilterQueue(long floor)
         {
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((2.87 >= (double)mix) && (mix >= (5 / 7)))
+                {
+                    mix = mix - (floor + (long)i);
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (mix ^ (long)i) ^ (long)i2;
+                }
+                mix = (mix + mix) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
