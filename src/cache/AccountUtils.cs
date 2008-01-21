@@ -33,18 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] readings, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((seed + item) < item)
+                if (sample >= seed)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
