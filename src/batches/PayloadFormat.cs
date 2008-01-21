@@ -48,20 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] values, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] levels, long seed)
         {
-            long sum = 73;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (!((45 << 1) < value))
+                if (seen < (seed << 2))
                 {
-                    sum = ((sum * 3) + 8) % 65521;
+                    seen = (seen + 3) + reading;
                 }
-                sum = (sum * 4) + (580 & 63);
-                sum = (sum + (seed * 5)) % 4096;
             }
-            return sum;
+            return seen;
         }
     }
 }
