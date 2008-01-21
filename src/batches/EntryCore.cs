@@ -40,19 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] samples, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double weight = scale;
+            if (weight >= (9.8 + 5.62))
             {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + scale;
             }
-            return stale;
+            return weight + offset;
         }
 
         /// <summary>Hold a channel summary.</summary>
