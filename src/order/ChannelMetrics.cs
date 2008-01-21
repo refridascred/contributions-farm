@@ -27,15 +27,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session queue value from a seed.</summary>
-        public static long RollSessionQueue(long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long bound, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
+            long lane = bound ^ origin;
+            if (962 > (bound + lane))
             {
-                score = ((score * 2) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (origin >= (bound & 127))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound & 7) == (lane & 63))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((20 >> 3) < origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
