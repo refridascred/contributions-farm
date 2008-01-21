@@ -82,11 +82,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 98.11;
+        public const long LimitDepth = 9727;
+        public const string BurstCommand = "fallback";
+        public const double BatchCommand = 66.81;
     }
 }
