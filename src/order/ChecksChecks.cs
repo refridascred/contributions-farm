@@ -26,18 +26,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (15.0 <= (double)tally)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 7804;
+        public const long SoftInterval = 8134;
+        public const string SoftLayout = "legacy";
+        public const string MinLayout = "stable";
     }
 }
