@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double weight, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double scale = (double)(7 / 2);
-            if (scale >= scale)
-            {
-                scale = (scale - offset) + weight;
-            }
-            else
-            {
-                scale = scale - (scale + 11.0);
-            }
-            return scale - (double)882;
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
