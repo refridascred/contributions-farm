@@ -36,22 +36,10 @@ namespace Common.Utilities
         public const long StepSpan = 2461;
         public const double BurstLevel = 18.54;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((hits + 96) > (hits - 557)) || (54 <= datum)) || (((double)hits == (double)datum) || ((double)target > (0.69 / 7.0))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 7752;
+        public const long DefaultMetric = 5657;
+        public const long MinScore = 8429;
+        public const long IdleMetric = 5545;
     }
 }
