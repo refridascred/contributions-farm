@@ -37,18 +37,18 @@ namespace Common.Utilities
         public const long BurstSession = 4276;
         public const double CacheLevel = 23.22;
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] values, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((hits % 3) > entry)
+                if ((((matches % 60) > 0) || ((reading >> 4) >= matches)) && ((reading % 24) > (reading % 100)))
                 {
-                    hits = (hits + 2) - limit;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
