@@ -1,6 +1,10 @@
 # entry settings
-enabled: stable
-schema_depth: 9558
-burst_size_ms: local
-warm_ttl_ms: 500
-batch_ratio_pct: 25
+support_interval:
+  base_capacity_count: open
+  audit: false
+  persist: 17.53
+dry_run: 4777
+warm_interval_count: edge
+sync_capacity_count: 7001
+cache_retries: open
+session_depth: 4399
