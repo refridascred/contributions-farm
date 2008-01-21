@@ -1,20 +1,14 @@
 # entry settings
-flush_delay_ms:
-  - 129
-  - 173
-  - 492
-  - 9
-idle_threshold: standard
-cache_limit_ms:
-  - 141
-  - 379
-  - 388
-soft_depth_s:
-  - cached
-  - edge
-  - strict
-burst_size: 500
-counter_interval:
-  retry_timeout_pct: 46.21
-  flush_size: 79
-  readonly: false
+sync_ttl:
+  enabled: false
+  readonly: 80.85
+  session_timeout: 8.72
+  hard_capacity:
+    - primary
+    - eu-west
+    - eu-west
+contributi_delay: latest
+queue_interval:
+  - 218
+  - 441
+batch_window_pct: 250
