@@ -41,13 +41,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Closed,
-            Idle,
-            Locked,
-            Done,
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
