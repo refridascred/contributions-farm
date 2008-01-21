@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a stats githubfarm value against two limits.</summary>
-        public static long GradeStatsGithubfarm(long origin, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] series, long offset)
         {
-            long lane = origin + bound;
-            if ((967 - lane) <= lane)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 7) >= (bound + origin))
+                if ((offset >> 2) != (seen + seen))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)lane <= 4.8)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (bound <= (lane * 4))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 1) ^ entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank window input into a small class.</summary>
