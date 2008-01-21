@@ -35,15 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long carry = 648;
-            foreach (long reading in items)
-            {
-                carry = (((carry << 3) ^ (carry >> 3)) % 101) ^ reading;
-            }
-            return carry % 97;
+            Closed,
+            Done,
+            Synced,
+            Active,
+            Idle,
         }
     }
 }
