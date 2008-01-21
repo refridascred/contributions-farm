@@ -46,10 +46,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "primary-edge";
-        public const long BurstTools = 8276;
-        public const double RetryTools = 10.55;
-        public const long DefaultDepth = 1130;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Dropped,
+            New,
+            Retry,
+        }
     }
 }
