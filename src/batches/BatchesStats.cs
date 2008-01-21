@@ -20,18 +20,13 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] series, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long score = 73;
-            foreach (long reading in series)
-            {
-                if ((double)floor > (double)reading)
-                {
-                    score = (score - score) % 65521;
-                }
-            }
-            return score;
+            Stale,
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
