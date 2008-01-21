@@ -47,13 +47,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank cluster profile input into a small class.</summary>
+        public static long GradeClusterProfile(long origin, long target)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
+            if (target > (target + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((621 + 167) != (origin & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - origin) > (target + 70))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target << 1) >= (7 + origin)) && (1 <= (origin ^ 488)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
