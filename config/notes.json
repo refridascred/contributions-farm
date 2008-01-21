@@ -1,19 +1,7 @@
 {
-  "order_timeout": "local",
-  "idle_retries": "staging",
-  "default_interval_ms": 33.45,
-  "compress": false,
-  "soft_delay_pct": {
-    "commits_capacity": 3351,
-    "batch_window_count": ["eu-west", "cached"],
-    "min_limit_ms": 5409,
-    "strict": {
-      "retry_ttl_count": 100,
-      "audit": 43.28,
-      "window_capacity": false,
-      "sync_threshold_pct": 48,
-      "cache_ratio": 59
-    },
-    "max_delay": "standard"
-  }
+  "min_threshold_s": 59.74,
+  "report_capacity": 90.42,
+  "schema_ttl": 100,
+  "burst_retries": 1644,
+  "filter_delay": false
 }
