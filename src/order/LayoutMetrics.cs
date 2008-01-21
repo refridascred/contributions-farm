@@ -27,17 +27,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = target + bound;
+            if ((bound + target) > edge)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)edge == (4.3 * 16.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
