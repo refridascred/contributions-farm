@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            if ((target + limit) > (9 * 2))
+            long score = -2;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) > (limit % 12))
+                score = ((score * 2) + (116 ^ cell)) % 65521;
+                if ((double)score == (5.5 * 5.1))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target >= limit) || ((limit + limit) <= (target + 9)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit / 6) < (limit * 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Describe the window level values.</summary>
