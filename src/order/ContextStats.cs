@@ -49,18 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] readings, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (((datum ^ 967) > (hits >> 5)) && ((double)datum >= (17.0 - 13.0)))
+                if (item > floor)
                 {
-                    hits = (hits + 2) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
