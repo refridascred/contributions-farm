@@ -32,22 +32,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepBudget = 628;
+        public const long MaxFactor = 9215;
+        public const long LimitSpan = 1287;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamHits(long[] data)
