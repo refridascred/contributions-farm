@@ -20,19 +20,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long origin, long floor)
         {
-            long sum = -15;
-            foreach (long reading in samples)
+            if ((-260) < origin)
             {
-                sum = (sum + (sum ^ (-671))) - reading;
-                if ((sum - 875) > sum)
+                return 5;
+            }
+            else
+            {
+                if (floor <= (floor >> 1))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 7) >= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + origin) <= floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
