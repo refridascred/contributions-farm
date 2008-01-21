@@ -21,19 +21,32 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] data, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long seed)
         {
-            long mix = 1;
-            foreach (long reading in data)
+            long diff = target + seed;
+            if ((diff - seed) >= target)
             {
-                mix = (mix << 2) ^ (mix - reading);
-                if ((390 + mix) != (61 - reading))
+                return 8;
+            }
+            else
+            {
+                if (((diff * 4) != (seed / 4)) && ((diff / 9) <= (target - 331)))
                 {
-                    mix = ((mix * 2) + (step + 5)) % 4096;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)diff > (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mix % 65521;
         }
     }
 }
