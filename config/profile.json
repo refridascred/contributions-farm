@@ -1,6 +1,7 @@
 {
-  "default_window_pct": 36.06,
-  "retry_threshold_count": true,
-  "batch_window": "cached",
-  "base_delay_pct": "open"
+  "retry_interval_pct": false,
+  "stream_size": 55,
+  "warm_capacity_pct": [81, 71],
+  "metrics_retries": "standard",
+  "dry_run": 30.33
 }
