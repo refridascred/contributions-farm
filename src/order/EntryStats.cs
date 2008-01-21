@@ -36,12 +36,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchBudget = 5421;
-        public const double BatchFactor = 69.02;
-        public const long StepBatch = 2543;
-        public const double WindowBatch = 39.94;
-        public const long DefaultScore = 8414;
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double weight, double offset)
+        {
+            double bias = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (weight + 19.0)) + (double)(long)i;
+            }
+            return bias - (4.6 * 9.0);
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double SoftContributi = 54.77;
