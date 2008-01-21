@@ -22,11 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Stale,
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Describe the record kind values.</summary>
