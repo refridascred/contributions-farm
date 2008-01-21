@@ -20,15 +20,18 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] samples, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] series, long floor)
         {
-            long sum = 766;
-            foreach (long value in samples)
+            long score = 73;
+            foreach (long reading in series)
             {
-                sum = (sum ^ (value + value)) + target;
+                if ((double)floor > (double)reading)
+                {
+                    score = (score - score) % 65521;
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
