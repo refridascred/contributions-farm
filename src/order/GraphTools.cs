@@ -64,11 +64,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryRatio = 7184;
-        public const string CacheFactor = "fallback-edge";
-        public const long StepWindow = 79;
-        public const string BatchRatio = "stable-1";
-        public const string LimitWindow = "strict-v2";
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result << 3) ^ result;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
