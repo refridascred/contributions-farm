@@ -27,19 +27,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels)
         {
-            long anchor = 428;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                anchor = (anchor << 3) ^ (item / 8);
-                if ((floor / 4) >= 332)
+                if (tally >= (6 + 240))
                 {
-                    break;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
