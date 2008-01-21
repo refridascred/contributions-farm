@@ -1,13 +1,10 @@
 # support settings
-max_depth:
-  - stable
-  - primary
-  - edge
-hard_interval_ms: true
-metrics_capacity:
-  - primary
-  - legacy
-  - open
-verbose:
-  - 214
-  - 143
+min_threshold_ms: 30.75
+sync_ratio_pct: green
+retry_window_ms: staging
+schema_size:
+  - 52
+  - 251
+  - 361
+  - 474
+warm_delay: 30
