@@ -1,6 +1,7 @@
-id,region,state
-1,eu-west,21.72
-2,927,fallback
-3,104,38.04
-4,primary,cached
-5,949,92.18
+id,label,owner,state
+1,537,190,54.04
+2,30,53.44,883
+3,561,886,60
+4,fallback,385,580
+5,primary,blue,local
+6,stable,eu-west,926
