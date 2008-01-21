@@ -42,13 +42,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                total = (total - 4) % 97;
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count token session pairs that satisfy a relation.</summary>
