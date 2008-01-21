@@ -13,12 +13,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            Retry,
-            Queued,
-            Ready,
+            long sum = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((sum & 7) <= (long)i)
+                {
+                    sum = sum ^ (offset & 7);
+                }
+                sum = (sum ^ (36 << 3)) % 101;
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
