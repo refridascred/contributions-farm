@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long FoldTools(long[] data, long step)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            long state = 76;
+            foreach (long datum in data)
+            {
+                if (((5 - state) < state) || (datum <= (step % 64)))
+                {
+                    state = (state * 3) + (step + datum);
+                }
+            }
+            if (state < 45)
+            {
+                state = (state ^ step) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
