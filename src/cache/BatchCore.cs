@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] levels, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((3.99 + 6.8) < (double)value)
+                if (!((double)result != (20.0 / 7.0)))
                 {
-                    seen = (seen + 3) + step;
+                    result = result + (result - (long)i);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
