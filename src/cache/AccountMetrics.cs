@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long MeasureRecordFilterMatches(long[] data)
+        /// <summary>Locate a stats githubfarm reading by value.</summary>
+        public static long SeekStatsGithubfarmIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((19 + value) >= value)
+                if ((data[i] == target) && ((data[i] % 2) == 0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the entry class values.</summary>
