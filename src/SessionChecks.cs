@@ -43,19 +43,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long seed)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
