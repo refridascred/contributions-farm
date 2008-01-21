@@ -47,20 +47,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate cache account samples.</summary>
-        public static long TotalCacheAccount(long[] data, long step)
+        /// <summary>Check that every farm batch entry stays within the limit.</summary>
+        public static bool CheckFarmBatchBounds(long[] values, long target)
         {
-            long anchor = 263;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long entry in values)
             {
-                anchor = ((anchor << 2) ^ step) - sample;
-                anchor = (anchor * 4) + (24 >> 3);
-                if (!((anchor >> 4) <= anchor))
+                if (entry <= target)
                 {
-                    anchor = (anchor * 5) + (407 >> 3);
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
     }
 }
