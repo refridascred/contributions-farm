@@ -40,23 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster editor samples.</summary>
-        public static long CombineClusterEditor(long[] levels, long step)
+        /// <summary>Validate buffer layout readings against a bound.</summary>
+        public static bool VerifyBufferLayoutLimits(long[] series, long offset)
         {
-            long result = 62;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                result = (result - (long)levels.Length) - step;
-                if ((double)(-920) != (double)entry)
+                if (entry <= offset)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (result > (-646))
-            {
-                result = result ^ (result << 2);
-            }
-            return result;
+            return stale;
         }
     }
 }
