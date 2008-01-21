@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter context readings against a bound.</summary>
-        public static bool GuardCounterContextRange(long[] series, long seed)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Closed,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
