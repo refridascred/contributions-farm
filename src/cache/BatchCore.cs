@@ -23,24 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] readings, long limit)
-        {
-            long acc = 6;
-            foreach (long datum in readings)
-            {
-                acc = (acc ^ acc) % 255;
-                if ((1 <= limit) || (acc < datum))
-                {
-                    break;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = (acc - 37) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetrySpan = 4937;
+        public const double BaseSpan = 3.06;
+        public const long CacheCounter = 1476;
+        public const long DefaultCounter = 8794;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionOutliers(long[] series)
