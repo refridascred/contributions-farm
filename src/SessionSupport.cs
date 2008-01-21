@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            double load = 3.0 * 9.0;
+            return (load + span) + ratio;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
