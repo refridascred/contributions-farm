@@ -54,21 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache window pairs that satisfy a relation.</summary>
-        public static long OverlapCacheWindowCount(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of buffer counter entries.</summary>
