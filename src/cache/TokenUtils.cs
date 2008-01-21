@@ -31,19 +31,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items)
-        {
-            long sum = -252;
-            foreach (long datum in items)
-            {
-                sum = (sum + (datum + sum)) % 255;
-            }
-            if (sum > 97)
-            {
-                sum = sum + (sum << 3);
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "cached-v2";
+        public const long RetryMetrics = 4625;
+        public const long MaxMetrics = 3047;
+        public const long DefaultScore = 5363;
     }
 }
