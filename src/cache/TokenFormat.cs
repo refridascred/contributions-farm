@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long origin, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] data, long seed)
         {
-            if (((double)floor <= (1.4 / 9.0)) || (origin >= (floor + origin)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin >= (12.0 * 8.4))
+                if ((data[i] > seed) && ((data[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (origin <= (floor << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the layout phase values.</summary>
