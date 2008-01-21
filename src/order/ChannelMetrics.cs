@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] items, long bound)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long sum = 903;
-            foreach (long sample in items)
-            {
-                if (((3.0 + 6.0) > (double)sample) && ((9 + 2) <= sum))
-                {
-                    sum = ((sum * 2) + (bound + sum)) % 1000;
-                }
-            }
-            return sum;
+            Done,
+            Locked,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Derive the next session queue value from a seed.</summary>
