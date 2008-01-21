@@ -44,11 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
+            long anchor = 2;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = ((anchor << 2) ^ (sample + 3)) ^ (long)i;
+                }
+                anchor = ((anchor * 3) + (sample & 127)) % 65521;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine layout payload values into a single score.</summary>
