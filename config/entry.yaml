@@ -1,7 +1,4 @@
 # entry settings
-poll_timeout: true
-dry_run: 39.0
-default_limit:
-  - local
-  - cached
-soft_ratio_ms: standard
+warm_size: true
+entry_capacity: 4669
+cache_interval: false
