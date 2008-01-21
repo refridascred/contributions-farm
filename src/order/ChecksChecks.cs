@@ -14,17 +14,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] values, long bound)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long seed, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((5.0 + 10.0) == (double)origin)
             {
-                if ((values[i] > bound) && ((values[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((seed % 16) <= seed)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + origin) <= ((-76) - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((seed + seed) < 459))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
