@@ -1,12 +1,5 @@
 # githubfarm settings
-format_ttl:
-  idle_capacity_count: 88.55
-  audit: open
-  batch_ttl: 5806
-retry_limit_pct: standard
-min_delay_ms: 54
-queue_retries:
-  - stable
-  - strict
-retry_retries_ms: true
-warm_window: local
+max_capacity_count: local
+warm_delay_count: false
+poll_threshold_pct: true
+default_capacity_s: legacy
