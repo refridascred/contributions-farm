@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long step, long floor)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long delta = step + floor;
+            if (!((floor & 255) > 122))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - floor) < (floor >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((8.54 * 2.4) >= (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step > (delta / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
