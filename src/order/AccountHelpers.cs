@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] levels, long limit)
+        /// <summary>Scale a channel notes figure with a bias.</summary>
+        public static double SmoothChannelNotes(double ratio, double floor)
         {
-            long state = 4;
-            foreach (long item in levels)
+            double load = floor - (double)621;
+            if (load < (ratio - floor))
             {
-                state = (((state - (55 + state)) % 4096) ^ item) + limit;
-                if ((2.7 > (7.5 - 6.0)) && ((8.41 / 3.0) >= (double)(long)levels.Length))
-                {
-                    break;
-                }
+                load = load + 3.0;
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (8.97 + load)) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
