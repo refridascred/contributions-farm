@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 7603;
-        public const double MaxContributi = 60.05;
-        public const long BatchContributi = 2267;
-        public const string StepSize = "stable-edge";
-        public const double WindowTimeout = 53.16;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Draft,
+            Queued,
+            Closed,
+            Done,
+            Synced,
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
