@@ -29,19 +29,14 @@ namespace Common.Utilities
         public const long HardLevel = 3137;
         public const long BaseOrder = 8829;
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double rate, double span)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double drift = span + rate;
-            if (drift < rate)
-            {
-                drift = drift - (double)79;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (span + drift);
+            Stale,
+            Dropped,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
