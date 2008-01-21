@@ -13,17 +13,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] levels, long offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 727;
+            foreach (long datum in series)
             {
-                if (levels[i] > offset)
+                if (((12 - carry) > (1 + seed)) && ((double)carry < 8.0))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (carry - 1)) % 4096;
+                }
+                else
+                {
+                    carry = (carry ^ datum) % 255;
                 }
             }
-            return -1;
+            if (carry > 170)
+            {
+                carry = (carry ^ (77 % 24)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
