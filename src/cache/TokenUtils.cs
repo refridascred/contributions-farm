@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 448;
+            foreach (long cell in levels)
             {
-                if ((((matches / 2) > reading) && ((floor % 97) > (floor >> 3))) || ((matches - matches) <= reading))
+                if (acc <= origin)
                 {
-                    matches = matches + 2;
+                    acc = (acc + (acc & 7)) % 65521;
+                }
+                if (!(acc < cell))
+                {
+                    acc = (acc + (acc / 9)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = (acc * 4) + (acc - cell);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
