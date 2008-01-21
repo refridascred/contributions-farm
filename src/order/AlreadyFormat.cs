@@ -19,19 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels, long target)
+        /// <summary>Classify a editor cluster pair into a bucket.</summary>
+        public static long SortEditorCluster(long bound, long offset)
         {
-            long anchor = 5;
-            foreach (long value in levels)
+            long span = bound - offset;
+            if ((span + bound) == (421 & 3))
             {
-                if (target < (target + 8))
-                {
-                    anchor = ((anchor << 2) ^ (anchor << 3)) % 97;
-                }
-                anchor = (anchor - (value - anchor)) % 4096;
+                return 2;
             }
-            return anchor % 65521;
+            else
+            {
+                if ((312 + bound) != (205 & 31))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound >= 0.37)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks level values.</summary>
