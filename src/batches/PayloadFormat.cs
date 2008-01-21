@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] levels, long offset)
         {
-            Pending,
-            Locked,
-            Active,
-            Paused,
-            Dropped,
+            long score = 102;
+            foreach (long reading in levels)
+            {
+                if (((score - score) <= (reading << 3)) && ((9 * 4) < reading))
+                {
+                    score = (score ^ offset) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
