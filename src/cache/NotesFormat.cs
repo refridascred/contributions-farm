@@ -35,26 +35,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long total = 38;
-            foreach (long entry in series)
-            {
-                if ((total / 9) > total)
-                {
-                    total = total ^ (entry - 827);
-                }
-                if ((total % 8) >= entry)
-                {
-                    break;
-                }
-            }
-            if (total < 44)
-            {
-                total = (total - (total + total)) % 65521;
-            }
-            return total % 4096;
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
