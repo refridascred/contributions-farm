@@ -14,19 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double offset)
         {
-            double gain = scale;
-            if (gain > floor)
+            double bias = offset;
+            if (bias >= bias)
             {
-                gain = gain + 0.5;
+                bias = (bias + (offset * 8.75)) + gain;
             }
             else
             {
-                gain = gain - (gain / 4.0);
+                bias = bias - (offset - offset);
             }
-            return gain + scale;
+            return bias - offset;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
