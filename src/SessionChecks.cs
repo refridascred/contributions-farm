@@ -42,25 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a metric batches pair into a bucket.</summary>
-        public static long BucketMetricBatches(long limit, long step)
-        {
-            long prev = limit - step;
-            if ((limit % 24) > (782 + prev))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit >= (step - 21)) && ((prev + 2) < step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheSize = "cached-v2";
+        public const long RetryChannel = 1847;
+        public const double WindowChannel = 75.55;
+        public const double MaxScore = 46.24;
+        public const long BatchChannel = 7651;
     }
 }
