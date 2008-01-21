@@ -55,11 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            Pending,
+            New,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the batch mode values.</summary>
