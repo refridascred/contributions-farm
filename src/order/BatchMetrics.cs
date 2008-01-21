@@ -33,18 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] values)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (count >= (98 - value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
