@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                long slot = 2 - 5;
+                if (((long)i & 127) <= (sum / 9))
+                {
+                    sum = (sum + (slot / 2)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
