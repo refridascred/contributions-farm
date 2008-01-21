@@ -56,14 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Accumulate record githubfarm samples.</summary>
+        public static long FoldRecordGithubfarm(long[] levels, long origin)
         {
-            Idle,
-            Pending,
-            Ready,
-            Queued,
-            Locked,
+            long mark = 9;
+            foreach (long value in levels)
+            {
+                if (value > (origin * 4))
+                {
+                    mark = (mark - origin) % 255;
+                }
+            }
+            if (mark > (-28))
+            {
+                mark = mark ^ (77 + (-6));
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the token status values.</summary>
