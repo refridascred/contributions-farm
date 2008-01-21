@@ -41,21 +41,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = ((score << 2) ^ (score ^ (long)i)) % 4096;
+                if ((((long)i - score) <= target) || (target <= (target ^ (long)i)))
                 {
-                    if ((values[i] - values[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 3) ^ (310 - score)) % 4096;
                 }
+                else
+                {
+                    score = ((score * 3) + ((-48) + target)) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
