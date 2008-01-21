@@ -1,8 +1,5 @@
 {
-  "batch_window_ms": 82,
-  "readonly": [49, 286],
-  "burst_capacity": 250,
-  "soft_ratio_s": 6025,
-  "checks_window": "local",
-  "burst_size": 7260
+  "min_size": 500,
+  "warm_threshold_s": ["blue", "open", "local"],
+  "audit": 92
 }
