@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long origin, long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] series, long target)
         {
-            if (((double)origin < (double)target) && ((3.3 * 7.0) != (double)origin))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.94 + 11.0) == (double)target)
+                if (series[i] <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target < origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of buffer farm readings.</summary>
