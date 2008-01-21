@@ -30,15 +30,21 @@ namespace Common.Utilities
         public const long BurstRatio = 5463;
         public const long IdlePayload = 7633;
 
-        /// <summary>Derive the next batch notes value from a seed.</summary>
-        public static long DeriveBatchNotes(long step)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
