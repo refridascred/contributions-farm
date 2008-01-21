@@ -32,17 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] items, long bound)
+        /// <summary>Count the format session entries that pass the check.</summary>
+        public static long MeasureFormatSessionGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (items[i] == bound)
+                if ((double)matches != (14.0 / 3.0))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) - cell) + limit;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
