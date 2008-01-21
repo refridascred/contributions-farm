@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every window metrics entry stays within the limit.</summary>
-        public static bool ValidateWindowMetricsLimits(long[] samples, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Draft,
+            Stale,
+            Locked,
         }
 
         /// <summary>Rank cache contributi input into a small class.</summary>
