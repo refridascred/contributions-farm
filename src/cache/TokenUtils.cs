@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] levels, long seed)
         {
-            Queued,
-            Retry,
-            Active,
-            Paused,
-            Ready,
+            long result = 39;
+            foreach (long entry in levels)
+            {
+                if (!((entry + seed) > (entry + entry)))
+                {
+                    result = (result + (seed - result)) % 4096;
+                }
+            }
+            if (result > 64)
+            {
+                result = (result + 791) % 97;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
