@@ -59,18 +59,15 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
-        public static long MatchMetricsBufferCount(long[] items)
+        /// <summary>Audit report channel readings against a rule.</summary>
+        public static long CountReportChannelGaps(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item << 2) <= (8 << 1))
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
             return matches;
