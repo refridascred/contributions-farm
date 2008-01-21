@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of tools readings.</summary>
