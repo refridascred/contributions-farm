@@ -16,14 +16,18 @@ namespace Common.Utilities
         public const string CacheFormat = "standard-1";
         public const string MaxFormat = "latest-edge";
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] series, long offset)
         {
-            Locked,
-            Dropped,
-            Draft,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (cell < ((long)series.Length - seen))
+                {
+                    seen = (seen + 2) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
