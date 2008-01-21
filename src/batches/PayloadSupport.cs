@@ -14,10 +14,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleDepth = 85.72;
-        public const double HardSize = 22.37;
-        public const long MaxChecks = 6317;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSize = 6994;
+        public const double HardCount = 98.7;
+        public const long MinFactor = 4518;
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long DeriveGithubfarm(long limit)
