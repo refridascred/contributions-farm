@@ -39,15 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Project the next entry stream value.</summary>
+        public static double ScaleEntryStream(double weight, double floor)
         {
-            double rate = gain;
-            if (rate <= (double)10)
+            double weight2 = floor;
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate + (gain + span);
+                weight2 = (weight2 - weight) + (double)(long)i;
             }
-            return rate + 2.54;
+            return weight2 + (double)(-5);
         }
     }
 }
