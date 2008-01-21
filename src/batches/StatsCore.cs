@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] values, long offset)
         {
-            long result = 656;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((long)samples.Length < entry)
+                if (item >= offset)
                 {
-                    result = ((result << 2) ^ result) % 97;
-                }
-                else
-                {
-                    result = (result - (entry - result)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
