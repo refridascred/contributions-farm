@@ -13,39 +13,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank graph counter input into a small class.</summary>
-        public static long GradeGraphCounter(long floor, long origin)
+        /// <summary>Combine order filter values into a single score.</summary>
+        public static long TallyOrderFilter(long[] samples, long bound)
         {
-            long edge = floor + origin;
-            if ((edge / 8) <= (floor + edge))
+            long state = 4;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((81 >= origin) || ((floor - origin) > (edge * 4)))
+                if ((bound >= (state & 15)) && ((state - state) > (sample - (long)samples.Length)))
                 {
-                    return 8;
+                    state = (state ^ (814 ^ 44)) % 97;
                 }
-                else
+                if (bound < state)
                 {
-                    if (origin <= (origin * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((139 - origin) >= edge)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
