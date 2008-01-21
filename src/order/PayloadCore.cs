@@ -40,38 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm batches value against two limits.</summary>
-        public static long SortGithubfarmBatches(long step, long seed)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long offset)
         {
-            if ((seed + seed) > (seed * 5))
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((863 + seed) == (seed + seed))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 8;
+                    mark = (mark ^ offset) ^ (long)i2;
                 }
-                else
-                {
-                    if ((double)seed >= (3.94 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((((-835) >> 4) != (step % 2)) || ((step + step) < (step ^ step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
+            return mark;
         }
     }
 }
