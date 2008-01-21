@@ -29,13 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long origin)
         {
-            Idle,
-            Retry,
-            Synced,
-            Dropped,
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((16.0 + 7.63) <= (double)origin) && (mix < ((long)i + (long)i)))
+                {
+                    mix = ((mix * 4) + (mix + 5)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
