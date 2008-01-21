@@ -29,10 +29,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftNotes = 78.75;
-        public const long MaxNotes = 1902;
-        public const long StepNotes = 3322;
+        /// <summary>Roll a window metrics counter forward.</summary>
+        public static long DeriveWindowMetrics(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordHits(long[] values)
