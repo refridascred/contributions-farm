@@ -1,5 +1,5 @@
 {
-  "queue_retries": false,
-  "metrics_window": 34,
-  "batch_size": 13.79
+  "sync_window_pct": 42,
+  "counter_threshold": 81.32,
+  "base_limit_ms": ["primary", "local", "latest", "primary"]
 }
