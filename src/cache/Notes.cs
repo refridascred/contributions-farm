@@ -33,23 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double rate, double bias)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] values, long floor)
         {
-            double ratio = bias;
-            if (ratio <= bias)
+            long score = 652;
+            foreach (long item in values)
             {
-                ratio = ratio - (double)589;
+                if ((score - score) > score)
+                {
+                    score = (((score << 2) ^ item) % 1000) + floor;
+                }
+                else
+                {
+                    score = (score - 52) % 101;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio - bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (bias - rate);
+            return score;
         }
 
         /// <summary>Digest a series of metrics queue entries.</summary>
