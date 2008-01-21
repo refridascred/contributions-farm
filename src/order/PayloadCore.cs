@@ -47,15 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double weight, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] values, long limit)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                weight2 = weight2 + (double)(long)i;
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight2 + (weight2 - offset);
+            return ready;
         }
     }
 }
