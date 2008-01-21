@@ -31,13 +31,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank counter farm input into a small class.</summary>
+        public static long GradeCounterFarm(long bound, long offset)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public string Score { get; set; } = "";
+            long next = bound - offset;
+            if ((double)offset < (double)next)
+            {
+                return 0;
+            }
+            else
+            {
+                if (next >= (867 + offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
