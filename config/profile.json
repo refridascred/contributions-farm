@@ -1,12 +1,6 @@
 {
-  "idle_timeout_ms": 67.74,
-  "poll_retries_pct": {
-    "verbose": "cached",
-    "schema_threshold": [369, 84, 310, 262],
-    "cache_delay_pct": false
-  },
-  "poll_window_ms": 68.68,
-  "verbose": true,
-  "compress": 30,
-  "poll_depth": ["cached", "legacy"]
+  "farm_capacity": 78.09,
+  "batches_size": [452, 51],
+  "readonly": false,
+  "enabled": false
 }
