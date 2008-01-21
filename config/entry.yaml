@@ -1,9 +1,11 @@
 # entry settings
-min_window_ms: 2434
-batch_limit_count:
-  - 279
-  - 500
-  - 15
-retry_interval_pct: staging
-flush_threshold: false
-idle_size_pct: true
+base_threshold_s:
+  cache_ttl:
+    default_depth: false
+    compress: primary
+    flush_threshold: 45
+  enabled: open
+  soft_interval: 5866
+  compress: 3831
+soft_depth_pct: green
+order_timeout: false
