@@ -59,13 +59,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Draft,
-            Active,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 3633;
+        public const long MaxRecord = 2511;
+        public const long DefaultRatio = 7444;
+        public const long MaxFactor = 4675;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
