@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BatchChannel = 87.07;
-        public const long HardChannel = 7432;
-        public const long MinDepth = 1012;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                long tally = (bound - result) + (bound + (-345));
+                result = ((result << 3) ^ tally) % 65521;
+                if ((result + tally) >= ((long)i ^ (long)i))
+                {
+                    tally = tally + (result + 8);
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] series, long seed)
