@@ -64,19 +64,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate account route readings against a bound.</summary>
-        public static bool ValidateAccountRouteLimits(long[] levels, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool valid = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Match up farm samples.</summary>
