@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] readings, long seed)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterRange(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (readings[i] == seed)
+                if (cell <= step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the already phase values.</summary>
