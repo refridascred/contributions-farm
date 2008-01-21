@@ -66,18 +66,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long total = 45;
+            foreach (long item in readings)
             {
-                if ((((19.0 * 4.2) >= (double)seen) || ((value - (-222)) > seen)) || ((value + 88) < (value + 52)))
+                if (((double)item < (double)(-884)) || ((item + total) == (total % 100)))
                 {
-                    seen = seen + 1;
+                    total = total - (total - item);
+                }
+                else
+                {
+                    total = total + (total * 5);
                 }
             }
-            return seen;
+            return total;
         }
     }
 }
