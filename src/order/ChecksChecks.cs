@@ -19,13 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long seed)
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally >= (reading - seed))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a token tools reading by value.</summary>
