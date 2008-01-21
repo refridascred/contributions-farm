@@ -1,11 +1,23 @@
 # entry settings
-max_delay_count:
-  - 493
-  - 477
-  - 29
-flush_limit: 19
-retry_retries_pct:
-  soft_threshold_s: 57
-  burst_ratio_count: false
-  profile_depth: cached
-  idle_retries_count: 7859
+cluster_timeout: false
+sync_delay_count: false
+cache_size: 40.7
+batch_limit:
+  max_size_s: 30
+  base_limit_count:
+    stream_interval: cached
+    dry_run: 94.14
+    retry_window:
+      - 489
+      - 320
+      - 222
+      - 412
+  batch_timeout: local
+  poll_delay_pct: edge
+  format_limit: true
+metric_depth: legacy
+warm_window_pct:
+  - fallback
+  - stable
+  - stable
+  - cached
