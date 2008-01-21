@@ -1,7 +1,12 @@
 {
-  "retry_interval_pct": false,
-  "stream_size": 55,
-  "warm_capacity_pct": [81, 71],
-  "metrics_retries": "standard",
-  "dry_run": 30.33
+  "burst_interval": "blue",
+  "burst_timeout_s": {
+    "sync_retries": false,
+    "batch_capacity": 69,
+    "poll_threshold_ms": true,
+    "context_delay": 250,
+    "batch_window_count": 100
+  },
+  "poll_depth": 1024,
+  "contributi_delay": false
 }
