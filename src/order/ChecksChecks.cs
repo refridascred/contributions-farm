@@ -17,18 +17,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (tally >= (reading - seed))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Active,
+            Queued,
+            Stale,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
