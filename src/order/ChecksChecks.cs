@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((offset - datum) <= (offset + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleSpan = "local-1";
+        public const long BaseDepth = 5837;
+        public const double BurstFormat = 58.51;
+        public const long WindowFormat = 6325;
+        public const string RetryFormat = "alpha-v2";
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
