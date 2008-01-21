@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const double MaxScore = 35.81;
         public const double DefaultBuffer = 20.14;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long origin)
         {
-            New,
-            Closed,
-            Queued,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
