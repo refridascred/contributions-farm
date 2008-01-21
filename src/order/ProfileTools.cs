@@ -59,9 +59,10 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepTimeout = 5045;
-        public const long MinMetric = 9353;
-        public const double DefaultMetric = 64.12;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinDepth = 17.8;
+        public const long DefaultLevel = 5201;
+        public const long WindowCount = 4185;
+        public const long StepCount = 1359;
     }
 }
