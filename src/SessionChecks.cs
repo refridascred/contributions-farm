@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] series, long offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
