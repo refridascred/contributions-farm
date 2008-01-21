@@ -40,16 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor - offset) % 255;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Paused,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
