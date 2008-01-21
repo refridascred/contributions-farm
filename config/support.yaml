@@ -1,11 +1,13 @@
 # support settings
-base_interval_ms: 250
-route_capacity:
+max_depth:
   - stable
   - primary
-  - latest
-  - latest
-flush_limit: true
-poll_window_pct: blue
-audit: 9911
-sync_timeout_count: 903
+  - edge
+hard_interval_ms: true
+metrics_capacity:
+  - primary
+  - legacy
+  - open
+verbose:
+  - 214
+  - 143
