@@ -23,22 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] data)
         {
-            long mix = 657;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((long)levels.Length < 445)
+                if (entry > (52 + 76))
                 {
-                    mix = ((mix * 2) + (step + reading)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ step) % 255;
+                    matches = matches + 3;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
