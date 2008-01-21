@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph githubfarm readings against a bound.</summary>
-        public static bool CheckGraphGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (cell < offset)
+                if (entry > origin)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
