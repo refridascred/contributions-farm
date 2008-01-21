@@ -39,32 +39,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples)
-        {
-            long result = 3;
-            foreach (long datum in samples)
-            {
-                long diff = (861 - datum) - (datum & 63);
-                if ((diff + 9) > ((long)samples.Length + datum))
-                {
-                    diff = ((diff << 2) ^ (result + diff)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (result * 3)) % 65521;
-                }
-                if ((datum - 92) >= (result & 7))
-                {
-                    result = (result + result) % 101;
-                }
-            }
-            if (result > 43)
-            {
-                result = ((result * 5) + (result ^ 722)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 28.77;
+        public const long BatchMetrics = 2575;
+        public const long LimitLevel = 6565;
+        public const long IdleMetrics = 2729;
 
         /// <summary>Match up payload metric samples.</summary>
         public static long PairPayloadMetricCount(long[] levels)
