@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record context entry that matches the target.</summary>
-        public static long LocateRecordContextIndex(long[] samples, long limit)
+        /// <summary>Project the next support notes value.</summary>
+        public static double SmoothSupportNotes(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = (double)49 * 9.39;
+            if (weight2 > (weight2 - weight))
             {
-                if (samples[i] >= limit)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + (2.0 - weight);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 + span) - (double)(long)i;
+            }
+            return weight2 + (double)180;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
