@@ -59,11 +59,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinBudget = 9213;
-        public const long CacheChannel = 972;
-        public const long BurstChannel = 3660;
-        public const long MaxBudget = 370;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double ratio, double offset)
+        {
+            double ratio2 = 2.0;
+            if (ratio2 >= (ratio2 - 19.0))
+            {
+                ratio2 = (ratio2 - 9.2) - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + offset) + (double)(long)i;
+            }
+            return ratio2 - 5.8;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BurstLevel = "fallback-edge";
