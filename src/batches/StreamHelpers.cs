@@ -28,19 +28,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long step, long offset)
         {
-            long mark = -50;
-            foreach (long datum in items)
+            if ((offset + step) > (-319))
             {
-                mark = ((mark << 3) ^ mark) % 101;
-                if (!(mark >= datum))
+                return 3;
+            }
+            else
+            {
+                if ((77 - step) >= 3)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset / 2) == (offset / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset > (34 + step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
