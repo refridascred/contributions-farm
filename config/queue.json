@@ -1,8 +1,16 @@
 {
-  "soft_ratio_count": 54,
-  "burst_delay_s": 8,
-  "max_limit": 47,
-  "sync_ttl_ms": "eu-west",
-  "persist": 15.43,
-  "burst_ttl_s": 82.53
+  "min_interval_count": 1024,
+  "batch_capacity_s": true,
+  "readonly": {
+    "default_ttl_ms": 60,
+    "min_size_s": {
+      "cache_window": "strict",
+      "flush_retries_pct": true,
+      "sync_limit_s": [242, 400, 56]
+    },
+    "editor_size": false
+  },
+  "max_depth": "cached",
+  "batch_retries_pct": true,
+  "burst_size": 64.52
 }
