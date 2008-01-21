@@ -52,15 +52,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Active,
-            Locked,
-            Done,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseTimeout = "latest-v2";
+        public const string BaseWidth = "legacy-edge";
+        public const long CacheQueue = 2301;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheGaps(long[] levels)
