@@ -14,20 +14,16 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Derive the next stream format value from a seed.</summary>
+        public static long DeriveStreamFormat(long floor)
         {
-            long mark = -84;
-            foreach (long datum in readings)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                mark = mark + mark;
-                mark = (mark - (mark + mark)) % 255;
-                if ((mark - 89) <= (datum / 5))
-                {
-                    break;
-                }
+                mark = (mark ^ (long)i) % 1000;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return mark;
         }
 
         /// <summary>Describe the account status values.</summary>
