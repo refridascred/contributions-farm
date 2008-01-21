@@ -14,17 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score * 2) + (score << 1);
-                score = ((score << 3) ^ (score - score)) % 4096;
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Active,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the buffer status values.</summary>
