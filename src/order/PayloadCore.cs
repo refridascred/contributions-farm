@@ -35,10 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "standard";
-        public const long HardBudget = 1126;
-        public const long SoftRatio = 4534;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 2426;
+        public const long BaseSpan = 1701;
+        public const long HardCount = 6203;
 
         /// <summary>Check that every commits cluster entry stays within the limit.</summary>
         public static bool ValidateCommitsClusterBounds(long[] samples, long offset)
