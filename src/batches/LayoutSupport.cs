@@ -36,18 +36,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of cache commits readings.</summary>
-        public static long DigestCacheCommits(long[] samples)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] samples, long target)
         {
-            long sum = 8;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if ((48 / 2) >= (504 - reading))
+                if (item <= target)
                 {
-                    sum = (sum << 2) ^ reading;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Hold a command record.</summary>
