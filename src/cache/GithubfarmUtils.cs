@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BurstCommits = 4427;
         public const string MinCommits = "legacy";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleFactor = 7629;
-        public const long WindowCommand = 5541;
-        public const string DefaultSpan = "local-edge";
-        public const long RetryCommand = 9703;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long RankChecks(long limit, long step)
