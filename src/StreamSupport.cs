@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxDepth = 15.37;
-        public const string SoftDepth = "standard";
-        public const double LimitTimeout = 66.41;
-        public const long SoftRatio = 7657;
+        /// <summary>Blend two route already measurements.</summary>
+        public static double ScaleRouteAlready(double ratio, double span)
+        {
+            double rate = (double)(95 << 3);
+            return ((rate - (rate / 8.0)) + ratio) + span;
+        }
     }
 }
