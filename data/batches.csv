@@ -1,9 +1,6 @@
-id,active,region,state,label
-1,31.77,primary,13.66,912
-2,strict,71.73,staging,42.26
-3,18.57,74.62,780,63.89
-4,open,484,80.37,72.84
-5,786,edge,eu-west,259
-6,973,827,open,93.56
-7,418,28.43,local,709
-8,open,16,strict,28.11
+id,score,owner,ratio,count
+1,primary,0.95,55.23,76.24
+2,36.77,47.55,343,edge
+3,23.16,792,193,723
+4,latest,267,910,128
+5,944,33.83,12.18,20.68
