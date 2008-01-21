@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double load = 3.0 * 9.0;
-            return (load + span) + ratio;
+            Stale,
+            Queued,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
