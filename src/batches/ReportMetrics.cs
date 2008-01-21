@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine context values into a single score.</summary>
