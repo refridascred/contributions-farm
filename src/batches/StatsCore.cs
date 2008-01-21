@@ -14,11 +14,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long offset, long origin)
         {
-            double load = offset;
-            return (load + (double)849) + scale;
+            long next = offset - origin;
+            if (17.0 >= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((next + origin) == (origin + next)) && (next > origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
