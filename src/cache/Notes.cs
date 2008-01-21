@@ -14,12 +14,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long target)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
+            if ((double)target <= (7.2 / 2.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target / 5) >= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Locate a record route reading by value.</summary>
