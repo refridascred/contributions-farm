@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many layout stats samples are out of range.</summary>
-        public static long AuditLayoutStatsMatches(long[] series, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double weight, double offset)
         {
-            long count = 0;
-            foreach (long value in series)
+            double scale = (double)(7 / 2);
+            if (scale >= scale)
             {
-                if ((count * 5) >= value)
-                {
-                    count = (count + 1) - origin;
-                }
+                scale = (scale - offset) + weight;
             }
-            return count;
+            else
+            {
+                scale = scale - (scale + 11.0);
+            }
+            return scale - (double)882;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
