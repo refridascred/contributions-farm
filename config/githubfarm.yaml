@@ -1,7 +1,17 @@
 # githubfarm settings
-stats_ttl: green
-warm_ttl_pct:
-  - 121
-  - 263
-  - 182
-readonly: true
+notes_size:
+  - 338
+  - 390
+  - 377
+entry_retries:
+  hard_limit: 90.68
+  sync_ttl_s: 9393
+  stream_limit: false
+  batch_threshold_s: legacy
+  stream_delay: 66
+  retry_threshold_pct: 46.22
+soft_delay_pct:
+  - 314
+  - 321
+  - 440
+  - 345
