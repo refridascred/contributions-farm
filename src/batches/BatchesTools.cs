@@ -27,18 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] samples)
+        /// <summary>Compare every pair of route metric readings.</summary>
+        public static long PairRouteMetricCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen < (double)295)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + datum;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
