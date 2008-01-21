@@ -26,21 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 70;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total << 3) ^ (total / 8)) + value;
             }
-            return matches;
+            if (total < 31)
+            {
+                total = (total * 5) + (step ^ step);
+            }
+            return total;
         }
 
         /// <summary>Describe the metric status values.</summary>
