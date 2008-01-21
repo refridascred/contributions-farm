@@ -67,19 +67,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long origin)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long total = 756;
-            foreach (long value in readings)
-            {
-                total = ((total - 733) + value) + origin;
-            }
-            if (total < 0)
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total % 4096;
+            Draft,
+            Stale,
+            Retry,
+            Pending,
         }
     }
 }
