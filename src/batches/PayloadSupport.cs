@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate session support samples.</summary>
-        public static long TotalSessionSupport(long[] samples, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings, long floor)
         {
-            long mix = 69;
-            foreach (long datum in samples)
+            long acc = 834;
+            foreach (long reading in readings)
             {
-                mix = (((mix ^ mix) % 1000) - datum) - offset;
+                acc = ((acc ^ (acc - acc)) % 65521) + reading;
             }
-            return mix % 4096;
+            if (acc > 63)
+            {
+                acc = (acc ^ (floor + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a layout options.</summary>
