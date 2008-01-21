@@ -47,14 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Synced,
-            Stale,
-            Active,
-            Pending,
-            Queued,
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a token info.</summary>
