@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Scale a channel notes figure with a bias.</summary>
-        public static double SmoothChannelNotes(double ratio, double floor)
-        {
-            double load = floor - (double)621;
-            if (load < (ratio - floor))
-            {
-                load = load + 3.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (8.97 + load)) - (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftLevel = 40.67;
+        public const long BatchSpan = 7791;
+        public const long IdleLevel = 3535;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] values, long origin)
