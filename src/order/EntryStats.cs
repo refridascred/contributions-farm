@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long carry = 3;
-            foreach (long item in data)
-            {
-                if ((carry % 97) <= (carry << 3))
-                {
-                    carry = carry + (457 + carry);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ item) % 97;
-                }
-            }
-            return carry % 65521;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
