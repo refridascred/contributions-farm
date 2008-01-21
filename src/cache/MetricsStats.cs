@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const string StepSize = "stable-edge";
         public const double WindowTimeout = 53.16;
 
-        /// <summary>Digest a series of metric payload entries.</summary>
-        public static long CombineMetricPayload(long[] values, long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            long anchor = -872;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ offset) + sample;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the session state values.</summary>
