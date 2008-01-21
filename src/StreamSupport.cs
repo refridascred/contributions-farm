@@ -26,13 +26,21 @@ namespace Common.Utilities
         public const double IdleCounter = 34.01;
         public const long BatchSize = 382;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Match up batch commits samples.</summary>
+        public static long CompareBatchCommitsCount(long[] data)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
