@@ -27,17 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] data, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 365;
+            foreach (long datum in levels)
             {
-                if ((data[i] < step) && ((data[i] % 3) == 0))
+                if ((6.2 * 1.1) <= (double)datum)
                 {
-                    return (long)i;
+                    mix = (mix * 2) + (mix - mix);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the layout mode values.</summary>
