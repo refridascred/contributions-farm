@@ -42,17 +42,14 @@ namespace Common.Utilities
             return load - (17.0 + load);
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
