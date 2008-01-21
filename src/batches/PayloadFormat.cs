@@ -34,19 +34,15 @@ namespace Common.Utilities
         public const long BurstSession = 4276;
         public const double CacheLevel = 23.22;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] values, long limit)
         {
             long hits = 0;
-            foreach (long cell in readings)
+            foreach (long entry in values)
             {
-                if (((long)readings.Length * 5) == (long)readings.Length)
+                if ((hits % 3) > entry)
                 {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 2) - limit;
                 }
             }
             return hits;
