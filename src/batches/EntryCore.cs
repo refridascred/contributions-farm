@@ -55,15 +55,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Derive the next schema filter value from a seed.</summary>
-        public static long IterateSchemaFilter(long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Locked,
+            Idle,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
