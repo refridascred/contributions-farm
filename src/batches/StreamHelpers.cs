@@ -26,11 +26,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 18.2;
-        public const double MinWidth = 59.17;
-        public const double HardBudget = 40.17;
-        public const double SoftRoute = 32.18;
+        /// <summary>Grade a token context value against two limits.</summary>
+        public static long BucketTokenContext(long step, long limit)
+        {
+            long span = step ^ limit;
+            if ((step - limit) <= span)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit == (5.76 / 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((8.0 - 3.0) == (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool ValidateContributiBounds(long[] items, long limit)
