@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a filter graph value against two limits.</summary>
-        public static long GradeFilterGraph(long bound, long limit)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] items, long floor)
         {
-            if ((2.5 * 9.59) < (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + bound) != (limit >> 1))
+                if (items[i] < floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit <= 55) || ((double)bound < (15.0 * 8.7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound < (bound + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a window cache value against two limits.</summary>
