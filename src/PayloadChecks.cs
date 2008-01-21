@@ -81,18 +81,13 @@ namespace Common.Utilities
             return gain2 - (gain * 13.0);
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] data, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 100) <= limit)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
