@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] levels)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long origin, long target)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if (((double)origin < (double)target) && ((3.3 * 7.0) != (double)origin))
             {
-                if ((double)count > (7.4 / 5.0))
+                return 3;
+            }
+            else
+            {
+                if ((0.94 + 11.0) == (double)target)
                 {
-                    count = (count + 2) - item;
+                    return 0;
+                }
+                else
+                {
+                    if (target < origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
