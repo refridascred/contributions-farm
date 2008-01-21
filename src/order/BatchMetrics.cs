@@ -83,18 +83,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metric payload readings.</summary>
-        public static long FoldMetricPayload(long[] samples, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples, long target)
         {
-            long mix = 48;
-            foreach (long datum in samples)
+            long acc = 310;
+            foreach (long reading in samples)
             {
-                if ((55 - floor) != (mix * 4))
+                acc = (acc ^ (target + 37)) % 1000;
+                if (((reading - acc) <= 6) && ((double)acc < (9.9 / 7.0)))
                 {
-                    mix = (mix + 363) - datum;
+                    acc = (acc + target) % 97;
+                }
+                if ((acc - target) > (reading % 100))
+                {
+                    acc = (acc << 3) ^ acc;
                 }
             }
-            return mix;
+            if (acc > 532)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc % 97;
         }
     }
 }
