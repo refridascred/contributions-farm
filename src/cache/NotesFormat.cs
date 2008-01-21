@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context queue readings.</summary>
-        public static long WeighContextQueue(long[] levels, long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 757;
-            foreach (long datum in levels)
-            {
-                long next = (0 * 3) + (offset >> 5);
-                result = (result ^ (next ^ datum)) % 4096;
-                result = ((result << 2) ^ result) % 65521;
-            }
-            if (result < 657)
-            {
-                result = (result - (result + result)) % 101;
-            }
-            return result;
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a metrics stats.</summary>
