@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long LimitCommand = 7276;
         public const long SoftCommand = 5276;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double weight, double floor)
-        {
-            double weight2 = 6.4;
-            for (int i = 0; i < 4; i++)
-            {
-                weight2 = (((weight2 - (weight2 * 1.6)) - (double)(long)i) + weight) - floor;
-            }
-            return weight2 + (double)95;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseInterval = 5359;
+        public const long MaxWidth = 718;
+        public const long BatchEditor = 1010;
+        public const long StepEditor = 7003;
+        public const long SoftEditor = 968;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] samples, long floor)
