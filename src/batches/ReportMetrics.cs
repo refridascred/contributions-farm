@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public double Total { get; set; }
             public string Ratio { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a metric route counter forward.</summary>
