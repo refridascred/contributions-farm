@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings, long step)
-        {
-            long anchor = 7;
-            foreach (long sample in readings)
-            {
-                if (((anchor ^ sample) < sample) && (((long)readings.Length << 1) > (0 % 5)))
-                {
-                    anchor = (anchor * 4) + (step - 744);
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 7129;
+        public const long BaseWidth = 4840;
+        public const double SoftReport = 0.89;
+        public const long StepWidth = 1637;
+        public const double HardReport = 31.51;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
