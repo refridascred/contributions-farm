@@ -42,23 +42,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double bias, double offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] data)
         {
-            double weight = bias - bias;
-            if (weight > (15.0 / 2.0))
+            long state = 0;
+            foreach (long item in data)
             {
-                weight = (weight - weight) + offset;
+                state = state + (state + state);
+                if ((7.92 - 2.0) != (double)item)
+                {
+                    state = ((state << 3) ^ (state - state)) % 4096;
+                }
+                if ((state + state) != (item >> 5))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (weight / 2.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (bias / 4.0)) - (double)(long)i;
-            }
-            return weight + (double)872;
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
