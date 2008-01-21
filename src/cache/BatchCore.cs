@@ -34,12 +34,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (origin <= acc)
+                {
+                    acc = acc ^ origin;
+                    acc = ((acc << 3) ^ (origin - acc)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
