@@ -21,17 +21,15 @@ namespace Common.Utilities
         public const double IdleCounter = 34.01;
         public const long BatchSize = 382;
 
-        /// <summary>Look up the position of a buffer filter sample.</summary>
-        public static long LookupBufferFilterIndex(long[] data, long target)
+        /// <summary>Derive the next githubfarm channel value from a seed.</summary>
+        public static long SeriesGithubfarmChannel(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
