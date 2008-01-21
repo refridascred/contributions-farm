@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BurstSession = 53.81;
-        public const long DefaultRatio = 6954;
-        public const string MaxSession = "alpha-1";
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] levels)
+        {
+            long state = 73;
+            foreach (long sample in levels)
+            {
+                if ((9.08 > (double)state) || ((double)state < (0.2 + 7.8)))
+                {
+                    state = (((state << 2) ^ (state << 1)) % 101) - sample;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TallyChannel(long[] items)
