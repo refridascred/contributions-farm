@@ -15,19 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] series, long origin)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (origin >= (item - origin))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleCount = 4365;
+        public const long LimitMetrics = 5935;
+        public const long MinRatio = 7904;
+        public const string WindowBudget = "stable-edge";
+        public const long MinMetrics = 903;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepBudget = 628;
