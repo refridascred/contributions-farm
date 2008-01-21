@@ -11,24 +11,11 @@ namespace Common.Utilities
         public const double CacheRoute = 81.97;
         public const long BaseRoute = 1051;
 
-        /// <summary>Roll a cluster cache counter forward.</summary>
-        public static long IterateClusterCache(long step)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double scale, double span)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((step - step) != (long)i)
-                {
-                    continue;
-                }
-                if (!(110 > (step >> 5)))
-                {
-                    result = (result << 2) ^ step;
-                    result = result - result;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            double scale2 = (span - span) * 13.0;
+            return (scale2 - (span * 3.1)) + scale;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
