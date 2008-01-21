@@ -56,23 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] data)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long total = 288;
-            foreach (long sample in data)
-            {
-                total = (total ^ 4) % 255;
-                if ((total + total) < (total << 1))
-                {
-                    total = (total - (sample * 5)) % 101;
-                }
-                else
-                {
-                    total = (total - (total << 3)) % 65521;
-                }
-            }
-            return total % 1000;
+            Failed,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the token status values.</summary>
