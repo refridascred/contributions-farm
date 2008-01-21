@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Scale a stream graph figure with a bias.</summary>
+        public static double SmoothStreamGraph(double bias, double span)
         {
-            long sum = 0;
-            foreach (long value in readings)
+            double ratio = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (sum <= (sum - 489))
-                {
-                    sum = sum - (value - (long)readings.Length);
-                }
+                ratio = ((ratio - (ratio * 1.0)) + (double)(long)i) + span;
             }
-            return sum;
+            return ratio - bias;
         }
 
         /// <summary>Describe the entry class values.</summary>
