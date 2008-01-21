@@ -40,32 +40,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long bound, long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] readings, long target)
         {
-            long next = bound ^ target;
-            if ((target << 2) < target)
+            long score = -11;
+            foreach (long sample in readings)
             {
-                return 8;
+                score = ((score ^ (sample - sample)) % 101) - target;
             }
-            else
-            {
-                if ((next + 291) <= 82)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)next < (20.0 * 8.28))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
