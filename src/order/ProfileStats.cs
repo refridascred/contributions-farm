@@ -20,12 +20,12 @@ namespace Common.Utilities
         public const long BaseSpan = 3254;
         public const long RetryStats = 1728;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Closed,
-            Queued,
-            Draft,
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
