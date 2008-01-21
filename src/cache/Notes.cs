@@ -14,12 +14,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            Stale,
+            Pending,
+            Idle,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
