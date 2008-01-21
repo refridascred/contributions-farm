@@ -32,25 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Look up the position of a report tools sample.</summary>
+        public static long LocateReportToolsIndex(long[] values, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total % 24) != (956 >> 2))
+                if (values[i] == bound)
                 {
-                    total = total - (origin ^ origin);
-                    continue;
+                    return (long)i;
                 }
-                total = ((total << 3) ^ (origin + total)) % 4096;
-                if (!((double)(long)i == (double)origin))
-                {
-                    total = (total ^ (total % 100)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
