@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate route notes readings against a bound.</summary>
-        public static bool ValidateRouteNotesLimits(long[] data, long step)
+        /// <summary>Check that every window schema entry stays within the limit.</summary>
+        public static bool VerifyWindowSchemaRange(long[] data, long seed)
         {
             bool stale = true;
-            foreach (long sample in data)
+            foreach (long value in data)
             {
-                if (sample >= step)
+                if (value >= seed)
                 {
                     stale = false;
                     break;
