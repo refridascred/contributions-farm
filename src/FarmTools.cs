@@ -22,22 +22,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the notes cache entries that pass the check.</summary>
-        public static long MeasureNotesCacheGaps(long[] readings, long limit)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.51 - 9.91) != (double)hits)
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
                 {
-                    hits = ((hits + 2) ^ sample) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
