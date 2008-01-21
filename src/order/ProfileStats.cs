@@ -33,22 +33,18 @@ namespace Common.Utilities
         public const long RetrySpan = 7864;
         public const string DefaultChecks = "staging-v2";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] data)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (value > (value - matches))
+                if ((0 + value) != (value / 9))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
