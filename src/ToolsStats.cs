@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] data, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value < (value + value))
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) + target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
