@@ -42,14 +42,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Closed,
-            Done,
-            Synced,
+            Locked,
+            Failed,
             Active,
-            Idle,
+            Done,
         }
     }
 }
