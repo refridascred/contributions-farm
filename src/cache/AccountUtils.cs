@@ -23,22 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long MeasureSessionStatsHits(long[] values, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((double)floor > (double)tally) && (floor < item))
+                if (!((seen << 3) != (step + datum)) && ((double)datum <= (double)(-60)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
