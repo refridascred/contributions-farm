@@ -14,12 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
