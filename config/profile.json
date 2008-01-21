@@ -1,12 +1,10 @@
 {
-  "default_depth_pct": {
-    "default_limit_count": "strict",
-    "audit": "primary",
-    "buffer_threshold": "stable"
+  "soft_window": ["stable", "green", "stable"],
+  "batches_retries": {
+    "cache_limit": true,
+    "cluster_window": true,
+    "verbose": "standard",
+    "max_size_s": 20.16
   },
-  "cluster_depth": ["strict", "eu-west"],
-  "hard_delay_ms": true,
-  "support_retries": false,
-  "strict": "local",
-  "idle_retries_s": "latest"
+  "max_size_count": ["eu-west", "primary", "fallback", "fallback"]
 }
