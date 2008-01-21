@@ -48,22 +48,15 @@ namespace Common.Utilities
         public const double WindowPayload = 23.81;
         public const long BasePayload = 1767;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long bound)
         {
-            long score = 1;
-            foreach (long value in data)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.53 + 8.14) <= (double)value)
-                {
-                    score = ((score << 2) ^ (score - value)) % 65521;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (score > 886)
-            {
-                score = (score << 2) ^ (score * 2);
-            }
-            return score % 97;
+            return mark;
         }
     }
 }
