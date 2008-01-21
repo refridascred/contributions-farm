@@ -1,12 +1,15 @@
 # Command notes
 
-Use token settings to tune how often cache data is refreshed.
-The contributi report groups every schema by token.
-The support helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often counter data is refreshed.
+A batch that stays idle for too long is moved to the route list.
+When a contributi fails, the graph handler retries a few times before giving up.
+
+Use buffer settings to tune how often tools data is refreshed.
+The editor report groups every graph by batches.
+Run the support check before changing any contributi limits.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Keep checks values small
-- Log every entry change
-- Validate payload input early
+- Document new tools fields
+- Review schema limits each release
+- Prefer cluster defaults
