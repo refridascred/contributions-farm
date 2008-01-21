@@ -18,14 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            Queued,
-            Draft,
-            Done,
-            Idle,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
