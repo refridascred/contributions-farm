@@ -6,9 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue legacy stable fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=112
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+RECORD_LIMIT=96
 log "limit is ${RECORD_LIMIT}"
