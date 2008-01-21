@@ -54,5 +54,33 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long floor)
+        {
+            long prev = offset ^ floor;
+            if ((double)prev < (18.0 * 7.31))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) >= (floor + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (prev < (6 + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
