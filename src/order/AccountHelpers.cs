@@ -11,32 +11,19 @@ namespace Common.Utilities
         public const long SoftChannel = 9295;
         public const long WindowInterval = 2581;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long floor, long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data, long target)
         {
-            long bound = floor - target;
-            if ((double)floor <= 3.01)
+            long anchor = -461;
+            foreach (long datum in data)
             {
-                return 6;
+                anchor = (((anchor * 2) + anchor) % 1000) + datum;
             }
-            else
+            if (anchor > 2)
             {
-                if (7 >= (floor * 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor + bound) <= (target - 0)) && ((target >> 1) == (floor << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                anchor = anchor - (7 - target);
             }
+            return anchor;
         }
 
         /// <summary>Count queue editor pairs that satisfy a relation.</summary>
