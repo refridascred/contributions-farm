@@ -33,18 +33,23 @@ namespace Common.Utilities
         public const long RetrySpan = 7864;
         public const string DefaultChecks = "staging-v2";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] values)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            double mean = scale;
+            if (mean < (mean * 2.0))
             {
-                if ((0 + value) != (value / 9))
-                {
-                    seen = seen + 1;
-                }
+                mean = (mean - (double)1) + floor;
             }
-            return seen;
+            else
+            {
+                mean = mean + (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
