@@ -41,19 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items, long limit)
-        {
-            long state = 35;
-            foreach (long item in items)
-            {
-                if ((7 - state) < (state >> 4))
-                {
-                    state = ((state << 3) ^ (limit + state)) + item;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchBudget = 5421;
+        public const double BatchFactor = 69.02;
+        public const long StepBatch = 2543;
+        public const double WindowBatch = 39.94;
+        public const long DefaultScore = 8414;
 
         /// <summary>Hold a channel header.</summary>
         public sealed class ChannelHeader
