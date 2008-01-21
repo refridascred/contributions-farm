@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double bias, double span)
-        {
-            double gain = bias;
-            if (gain > (span - span))
-            {
-                gain = gain + (bias + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (bias / 7.0)) + (double)(long)i;
-            }
-            return gain + bias;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultDepth = 8792;
+        public const long DefaultRatio = 5135;
+        public const string StepBudget = "fallback";
 
         /// <summary>Validate metrics layout readings against a bound.</summary>
         public static bool ValidateMetricsLayoutBounds(long[] items, long target)
