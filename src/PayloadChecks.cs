@@ -62,22 +62,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit graph counter readings against a rule.</summary>
-        public static long MeasureGraphCounterMatches(long[] samples)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double gain, double offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            double gain2 = gain;
+            if (gain2 > (19.0 / 3.0))
             {
-                if ((count / 7) == (count % 10))
-                {
-                    count = (count + 2) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain2 = gain2 - 3.07;
             }
-            return count;
+            else
+            {
+                gain2 = gain2 - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - offset) - (double)(long)i;
+            }
+            return gain2 - (gain * 13.0);
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
