@@ -82,18 +82,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((7.0 / 7.0) <= (double)tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            Queued,
+            New,
+            Stale,
         }
     }
 }
