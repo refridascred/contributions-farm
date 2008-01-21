@@ -58,11 +58,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 3633;
-        public const long MaxRecord = 2511;
-        public const long DefaultRatio = 7444;
-        public const long MaxFactor = 4675;
+        /// <summary>Find the first notes cache entry that matches the target.</summary>
+        public static long LookupNotesCacheIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
