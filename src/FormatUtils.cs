@@ -64,26 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data)
         {
-            long state = 2;
-            foreach (long datum in series)
+            long score = 56;
+            foreach (long value in data)
             {
-                if ((datum > (state * 4)) || ((state & 127) > 8))
-                {
-                    state = ((state << 3) ^ 0) % 255;
-                }
-                else
-                {
-                    state = (state ^ state) % 97;
-                }
+                score = ((score * 2) + (40 + value)) % 255;
             }
-            if (state < 7)
-            {
-                state = ((state << 2) ^ (state + state)) % 97;
-            }
-            return state;
+            return score % 4096;
         }
 
         /// <summary>Blend two already measurements.</summary>
