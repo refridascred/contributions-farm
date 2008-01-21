@@ -66,13 +66,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((7.0 / 7.0) <= (double)tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
