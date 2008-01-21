@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] data, long limit)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches - matches) > (limit >> 3))
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
