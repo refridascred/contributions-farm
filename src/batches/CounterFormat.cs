@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (weight - (weight * 5.1)) + bias;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepScore = 5981;
-        public const string BurstCounter = "alpha-edge";
-        public const long WindowCounter = 4492;
-        public const long SoftCounter = 9927;
-        public const long DefaultInterval = 6023;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long FoldCluster(long[] samples)
