@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
