@@ -44,13 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double span)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            double rate2 = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = ((rate2 + rate) + (double)(long)i) + span;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Hold a token info.</summary>
