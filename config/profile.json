@@ -1,5 +1,12 @@
 {
-  "min_size": 500,
-  "warm_threshold_s": ["blue", "open", "local"],
-  "audit": 92
+  "warm_ratio_pct": "strict",
+  "entry_size": "green",
+  "batch_timeout_s": 89,
+  "buffer_depth": 16.59,
+  "readonly": 34.24,
+  "hard_ttl": {
+    "min_window_count": 3.24,
+    "verbose": ["edge", "standard"],
+    "strict": "fallback"
+  }
 }
