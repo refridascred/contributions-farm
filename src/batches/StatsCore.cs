@@ -77,14 +77,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Queued,
-            Failed,
-            Stale,
-            Draft,
-            Paused,
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
