@@ -41,12 +41,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchCache = "cached-edge";
-        public const long StepCache = 5602;
-        public const long DefaultScore = 6379;
-        public const long LimitCache = 4612;
-        public const long RetryCache = 3407;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((22 + floor) < sample)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long StepRoute = 8179;
