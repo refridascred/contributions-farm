@@ -41,22 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] levels, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = 74;
+            foreach (long value in values)
             {
-                if (((item - count) < target) || (item > (target + 348)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = (anchor + (value + anchor)) % 101;
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
