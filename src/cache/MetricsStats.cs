@@ -42,11 +42,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 28.77;
-        public const long BatchMetrics = 2575;
-        public const long LimitLevel = 6565;
-        public const long IdleMetrics = 2729;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((item - count) < target) || (item > (target + 348)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadHits(long[] items)
