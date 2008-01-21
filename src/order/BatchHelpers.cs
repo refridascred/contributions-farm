@@ -34,15 +34,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 8013;
+        public const long MinChannel = 9035;
+        public const long BatchChannel = 9416;
+        public const long StepRatio = 6249;
     }
 }
