@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate command entry samples.</summary>
-        public static long FoldCommandEntry(long[] data, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long score = 4;
-            foreach (long reading in data)
-            {
-                if ((offset << 1) > reading)
-                {
-                    score = score - (reading ^ reading);
-                }
-                score = (score ^ (score + reading)) % 97;
-            }
-            if (score > 1)
-            {
-                score = (score - (offset * 4)) % 97;
-            }
-            return score;
+            public bool Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
