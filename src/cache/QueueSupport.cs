@@ -28,13 +28,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            New,
-            Closed,
-            Queued,
-            Retry,
+            public double Weight { get; set; }
+            public double Region { get; set; }
         }
     }
 }
