@@ -60,21 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = gain;
+            if (rate <= (double)10)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + (gain + span);
             }
-            return seen;
+            return rate + 2.54;
         }
     }
 }
