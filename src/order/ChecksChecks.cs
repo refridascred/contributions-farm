@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum ^ 878;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
