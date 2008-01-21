@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseTimeout = 85.23;
-        public const double MaxStream = 23.33;
-        public const long LimitSpan = 9564;
-        public const long StepTimeout = 7625;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double rate, double floor)
