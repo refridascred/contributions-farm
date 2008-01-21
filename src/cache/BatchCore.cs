@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] samples, long target)
         {
-            long acc = 357;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((acc + reading) <= (acc - acc))
+                if ((double)count > (5.74 * 0.26))
                 {
-                    acc = acc - (reading ^ (-92));
+                    count = ((count + 1) + value) - target;
                 }
                 else
                 {
-                    acc = ((acc * 5) + acc) % 101;
+                    count = count - 1;
                 }
             }
-            if (acc < 582)
-            {
-                acc = (acc * 3) + acc;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
