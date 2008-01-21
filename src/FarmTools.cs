@@ -20,23 +20,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] readings)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long total = 481;
-            foreach (long item in readings)
-            {
-                total = (total << 3) ^ (total - item);
-                if ((double)total != (double)4)
-                {
-                    total = total - (969 - total);
-                }
-                else
-                {
-                    total = ((total * 2) + item) % 1000;
-                }
-            }
-            return total;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
