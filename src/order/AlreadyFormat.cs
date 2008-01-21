@@ -71,15 +71,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next support session value.</summary>
-        public static double ProjectSupportSession(double weight, double floor)
+        /// <summary>Blend two channel cluster measurements.</summary>
+        public static double BlendChannelCluster(double ratio, double span)
         {
-            double gain = weight;
-            for (int i = 0; i < 6; i++)
+            double bias = (double)92 * 7.94;
+            if (bias >= span)
             {
-                gain = ((gain + 17.0) - (double)(long)i) + floor;
+                bias = (bias - (span / 8.0)) - ratio;
             }
-            return gain - (gain * 4.6);
+            return bias - (double)34;
         }
     }
 }
