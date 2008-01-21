@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const long BatchContext = 4629;
         public const string StepContext = "open";
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] series, long target)
+        /// <summary>Scale a report account figure with a bias.</summary>
+        public static double BlendReportAccount(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long reading in series)
+            double load = 4.4 - bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading <= (525 & 63))
-                {
-                    count = (count + 3) + target;
-                }
+                load = ((load + load) + (double)(long)i) + ratio;
             }
-            return count;
+            return load - (double)428;
         }
     }
 }
