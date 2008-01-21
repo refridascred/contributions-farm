@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Dropped,
-            Closed,
-            Queued,
+            Active,
+            Retry,
+            Paused,
+            Draft,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
