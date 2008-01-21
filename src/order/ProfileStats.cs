@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Locked,
-            Active,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 3763;
+        public const long DefaultCommits = 5213;
+        public const double DefaultTimeout = 50.78;
+        public const long BatchTimeout = 2272;
+        public const long HardCommits = 8803;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
