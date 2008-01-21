@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long HardLevel = 3137;
         public const long BaseOrder = 8829;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double rate, double span)
         {
-            long carry = 8;
-            foreach (long value in readings)
+            double drift = span + rate;
+            if (drift < rate)
             {
-                if (((3.64 / 5.0) != (double)value) && ((1.7 * 7.6) >= (double)value))
-                {
-                    continue;
-                }
-                carry = ((carry << 3) ^ (carry + 543)) % 97;
+                drift = drift - (double)79;
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (span + drift);
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
