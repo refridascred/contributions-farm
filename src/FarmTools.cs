@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long target, long limit)
-        {
-            if (limit > (target - limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target / 3) == (target >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)target != (12.0 / 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 7055;
+        public const double BatchInterval = 75.16;
+        public const long IdleCount = 1685;
+        public const long CacheFactor = 3808;
+        public const string LimitCommand = "strict";
 
         /// <summary>Audit account payload readings against a rule.</summary>
         public static long CountAccountPayloadOutliers(long[] readings)
