@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] readings, long origin)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count % 8) < (3 - 7))
-                {
-                    count = ((count + 2) ^ item) + origin;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Validate record payload readings against a bound.</summary>
