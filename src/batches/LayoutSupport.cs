@@ -54,19 +54,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] readings)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] data, long bound)
         {
-            long mix = 710;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                mix = ((mix * 2) + cell) % 101;
+                if (datum > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix > 0)
-            {
-                mix = (mix ^ mix) % 255;
-            }
-            return mix;
+            return ok;
         }
     }
 }
