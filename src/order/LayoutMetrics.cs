@@ -21,21 +21,13 @@ namespace Common.Utilities
         public const string HardSpan = "primary";
         public const double HardCount = 66.01;
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
