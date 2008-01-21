@@ -14,11 +14,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowSpan = 2.63;
-        public const double MaxScore = 16.15;
-        public const double StepCluster = 21.8;
-        public const double WindowCluster = 70.74;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFilter = 8075;
