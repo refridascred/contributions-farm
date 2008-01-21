@@ -41,17 +41,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long offset)
+        /// <summary>Digest a series of metrics queue entries.</summary>
+        public static long DigestMetricsQueue(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 52;
+            foreach (long datum in readings)
             {
-                if (levels[i] < offset)
+                state = ((state * 4) + (22 ^ datum)) % 97;
+                if ((double)datum >= (8.09 / 9.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
