@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] levels, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            long total = 4;
-            foreach (long datum in levels)
+            double scale = weight;
+            if (scale <= (scale * 3.1))
             {
-                total = (total << 3) ^ ((-2) & 3);
-                total = (total - (total - datum)) % 4096;
-                if ((offset > (total >> 5)) && ((double)total <= (19.0 + 8.99)))
-                {
-                    total = (total ^ (offset >> 2)) % 1000;
-                }
+                scale = (scale + scale) - bias;
             }
-            return total % 1000;
+            return scale - scale;
         }
 
         /// <summary>Combine window values into a single score.</summary>
