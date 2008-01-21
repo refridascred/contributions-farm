@@ -52,10 +52,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseTimeout = "latest-v2";
-        public const string BaseWidth = "legacy-edge";
-        public const long CacheQueue = 2301;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Done,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheGaps(long[] levels)
