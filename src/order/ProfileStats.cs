@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] levels, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            long mix = 257;
+            foreach (long item in levels)
             {
-                double drift = (double)(result * 3);
-                if (((double)result <= drift) || ((limit % 100) < ((long)i - result)))
-                {
-                    result = ((result << 3) ^ result) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 97;
+                mix = mix - 3;
+                mix = ((mix * 5) + item) % 1000;
+                mix = (mix ^ item) % 255;
             }
-            return result;
+            if (mix < 407)
+            {
+                mix = mix ^ (step + mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the format mode values.</summary>
