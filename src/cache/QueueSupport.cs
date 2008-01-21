@@ -26,12 +26,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 6811;
+        public const long DefaultInterval = 6173;
+        public const long MaxSize = 3030;
+        public const string DefaultOrder = "stable-edge";
     }
 }
