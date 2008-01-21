@@ -1,12 +1,5 @@
 # entry settings
-flush_depth_pct: 6307
-compress:
-  base_size: 46.33
-  poll_retries_pct: true
-  flush_window_s: standard
-  retry_size: 58
-  strict: 2242
-retry_ratio_pct:
-  - legacy
-  - fallback
-  - open
+idle_threshold_count: 60
+default_ratio_pct: legacy
+audit: cached
+retry_size_pct: stable
