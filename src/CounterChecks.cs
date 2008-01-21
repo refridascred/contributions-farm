@@ -44,11 +44,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 5629;
-        public const long SoftNotes = 8021;
-        public const string BatchRatio = "alpha";
-        public const double MaxNotes = 0.86;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels, long offset)
+        {
+            long mark = 397;
+            foreach (long datum in levels)
+            {
+                if (!((mark << 2) == (datum + mark)))
+                {
+                    mark = ((mark * 3) + (datum >> 1)) - offset;
+                    mark = ((mark << 3) ^ (mark - mark)) % 101;
+                }
+                mark = (mark - (datum + datum)) % 4096;
+                mark = (mark ^ (mark & 255)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long floor, long offset)
