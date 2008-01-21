@@ -38,18 +38,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 50.21;
+        public const long StepFilter = 8390;
+        public const long IdleFilter = 4941;
+        public const double SoftFilter = 38.62;
+        public const long DefaultFilter = 7410;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
