@@ -42,10 +42,22 @@ namespace Common.Utilities
             return drift - 7.0;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultSize = 34.48;
-        public const double BatchInterval = 3.04;
-        public const long RetryChannel = 8240;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepSize = 63.96;
