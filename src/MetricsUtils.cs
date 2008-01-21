@@ -28,18 +28,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long anchor = 2;
+            foreach (long item in levels)
             {
-                if (((long)levels.Length == (hits & 31)) && ((hits <= value) || ((4.19 / 3.0) == (double)hits)))
+                if ((item ^ anchor) >= anchor)
                 {
-                    hits = hits + 3;
+                    anchor = anchor + (item >> 3);
+                    anchor = (anchor - origin) % 65521;
+                    continue;
+                }
+                if (((item - item) != (item + origin)) && ((item * 5) <= 1))
+                {
+                    anchor = (anchor + (origin ^ item)) % 101;
+                }
+                if ((double)item < (19.0 / 5.0))
+                {
+                    anchor = (anchor << 2) ^ anchor;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
