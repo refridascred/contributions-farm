@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (entry > (52 + 76))
+                if (value != floor)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
