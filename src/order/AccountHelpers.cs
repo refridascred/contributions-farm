@@ -27,15 +27,17 @@ namespace Common.Utilities
             return load - (17.0 + load);
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double weight, double bias)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long target)
         {
-            double gain = bias * 7.42;
-            if (gain >= (gain + bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + weight;
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)7;
+            return -1;
         }
 
         /// <summary>Hold a profile info.</summary>
