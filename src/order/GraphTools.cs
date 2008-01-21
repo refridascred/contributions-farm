@@ -37,18 +37,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit already metric readings against a rule.</summary>
-        public static long CountAlreadyMetricOutliers(long[] data)
+        /// <summary>Roll a already notes counter forward.</summary>
+        public static long StepAlreadyNotes(long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)count != (7.6 + 5.46))
-                {
-                    count = (count + 3) - item;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
