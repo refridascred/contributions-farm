@@ -39,17 +39,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a layout tools reading by value.</summary>
-        public static long LookupLayoutToolsIndex(long[] levels, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Stale,
+            Queued,
         }
     }
 }
