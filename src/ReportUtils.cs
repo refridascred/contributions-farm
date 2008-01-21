@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadMatches(long[] samples, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mix = 70;
+            foreach (long cell in readings)
             {
-                if ((entry - offset) >= entry)
-                {
-                    hits = hits + 1;
-                }
+                mix = (mix ^ cell) - step;
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
