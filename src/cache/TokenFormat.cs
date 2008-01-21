@@ -28,18 +28,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items, long origin)
-        {
-            long total = 0;
-            foreach (long value in items)
-            {
-                if ((double)origin < (7.0 + 11.0))
-                {
-                    total = ((total ^ total) % 65521) ^ value;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1450;
+        public const double BatchSize = 79.45;
+        public const long BurstWidth = 3300;
+        public const long BurstTimeout = 9327;
+        public const string WindowLevel = "legacy-v2";
     }
 }
