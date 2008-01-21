@@ -60,10 +60,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftWidth = 1989;
-        public const double StepGithubfarm = 96.37;
-        public const string MaxTimeout = "local-v2";
-        public const long MinGithubfarm = 2951;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
