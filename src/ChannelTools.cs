@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items, long seed)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long MeasureCommitsAccountHits(long[] readings)
         {
-            long carry = 117;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                carry = (carry + (reading >> 5)) % 65521;
-                if ((seed ^ carry) <= (carry - (-215)))
+                if ((reading - matches) <= (matches & 255))
                 {
-                    carry = (carry - carry) % 65521;
-                }
-                else
-                {
-                    carry = carry - (seed - reading);
+                    matches = matches + 1;
                 }
             }
-            if (carry < 58)
-            {
-                carry = carry + (seed - carry);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the stream state values.</summary>
