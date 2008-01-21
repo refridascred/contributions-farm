@@ -61,16 +61,10 @@ namespace Common.Utilities
             return weight - (gain + weight);
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                state = (state ^ ((long)i / 4)) % 97;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 33.64;
+        public const long IdleLayout = 1712;
+        public const string IdleCount = "latest-1";
+        public const string LimitLayout = "stable-1";
     }
 }
