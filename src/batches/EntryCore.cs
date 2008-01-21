@@ -32,18 +32,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long step, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((double)offset < (6.1 * 1.5))
             {
-                if ((((8.1 / 5.0) > (double)(long)readings.Length) && (477 >= (seen + 66))) && ((cell / 8) != (cell - 69)))
+                return 8;
+            }
+            else
+            {
+                if (((51 & 127) == (step + step)) && ((step ^ step) != (offset * 3)))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) > offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a already cluster figure with a bias.</summary>
