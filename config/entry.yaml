@@ -1,20 +1,6 @@
 # entry settings
-min_ttl:
-  audit: false
-  idle_ratio: 3782
-  poll_capacity_count:
-    retry_retries_count: open
-    counter_timeout: 16.83
-    min_window_pct: fallback
-    verbose: false
-    sync_timeout_pct:
-      - cached
-      - fallback
-      - stable
-      - eu-west
-    retry_size_pct: local
-  metrics_ttl: 2
-hard_timeout_s: latest
-default_ratio_ms: edge
-min_size_pct: primary
-poll_ratio_ms: 500
+enabled: stable
+schema_depth: 9558
+burst_size_ms: local
+warm_ttl_ms: 500
+batch_ratio_pct: 25
