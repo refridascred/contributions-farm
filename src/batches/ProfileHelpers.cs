@@ -45,13 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Derive the next metrics support value from a seed.</summary>
+        public static long DeriveMetricsSupport(long limit)
         {
-            Pending,
-            Paused,
-            Failed,
-            Idle,
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
