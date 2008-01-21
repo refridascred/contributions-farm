@@ -49,10 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowWidth = 1298;
-        public const double MinRecord = 42.02;
-        public const long MinTimeout = 3252;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 2525;
+        public const long MinRatio = 989;
+        public const long WindowToken = 8455;
+        public const string LimitToken = "alpha";
+        public const long CacheToken = 9364;
 
         /// <summary>Validate account route readings against a bound.</summary>
         public static bool ValidateAccountRouteLimits(long[] levels, long step)
