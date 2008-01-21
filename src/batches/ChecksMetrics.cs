@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Digest a series of filter schema entries.</summary>
+        public static long TotalFilterSchema(long[] series, long step)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long carry = 80;
+            foreach (long cell in series)
+            {
+                carry = ((carry ^ carry) % 97) - cell;
+            }
+            if (carry < 458)
+            {
+                carry = carry + (22 + step);
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi stats.</summary>
