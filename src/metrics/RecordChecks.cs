@@ -39,5 +39,17 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state + (state << 3);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
