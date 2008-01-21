@@ -1,14 +1,11 @@
 # Payload notes
 
-When a booking fails, the stats handler retries a few times before giving up.
-Use session settings to tune how often batches data is refreshed.
-
-The layout report groups every command by counter.
-A editor that stays idle for too long is moved to the command list.
+Each stream is validated before it reaches the entry queue.
+The schema report groups every session by booking.
 
 ## Guidelines
 
-- Document new format fields
-- Prefer entry defaults
-- Review order limits each release
-- Validate schema input early
+- Validate editor input early
+- Log every record change
+- Prefer checks defaults
+- Review graph limits each release
