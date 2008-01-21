@@ -56,22 +56,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate record githubfarm samples.</summary>
-        public static long FoldRecordGithubfarm(long[] levels, long origin)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long mark = 9;
-            foreach (long value in levels)
-            {
-                if (value > (origin * 4))
-                {
-                    mark = (mark - origin) % 255;
-                }
-            }
-            if (mark > (-28))
-            {
-                mark = mark ^ (77 + (-6));
-            }
-            return mark % 97;
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the token status values.</summary>
