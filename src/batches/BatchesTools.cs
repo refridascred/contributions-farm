@@ -20,21 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
