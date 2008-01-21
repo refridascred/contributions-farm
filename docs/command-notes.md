@@ -1,11 +1,11 @@
 # Command notes
 
-The editor module keeps layout values in sync with the report cache.
-The buffer module keeps notes values in sync with the route cache.
+Use tools settings to tune how often stream data is refreshed.
+Use command settings to tune how often window data is refreshed.
+Defaults for command live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review batches limits each release
-- Log every support change
-- Prefer counter defaults
-- Validate metric input early
+- Log every editor change
+- Prefer context defaults
+- Validate cluster input early
