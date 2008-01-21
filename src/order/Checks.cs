@@ -55,19 +55,14 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double rate, double bias)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double scale = (double)8 * 7.8;
-            if (scale >= (scale * 6.51))
-            {
-                scale = (scale + (double)9) - bias;
-            }
-            else
-            {
-                scale = scale - (double)225;
-            }
-            return scale - rate;
+            Locked,
+            Synced,
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
