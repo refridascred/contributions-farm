@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of tools buffer readings.</summary>
-        public static long WeighToolsBuffer(long[] data)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] series, long target)
         {
-            long acc = 950;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (((acc ^ acc) > (item >> 2)) || ((8.0 / 4.0) > (double)item))
+                if (sample <= target)
                 {
-                    acc = (acc - (item + acc)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a tools entry.</summary>
