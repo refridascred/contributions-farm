@@ -26,23 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long acc = 83;
-            foreach (long item in items)
+            long result = 64;
+            foreach (long cell in samples)
             {
-                if (acc >= (acc + acc))
+                if ((double)result > (double)(long)samples.Length)
                 {
-                    acc = ((acc << 3) ^ 3) % 255;
+                    result = (result - cell) % 65521;
                 }
-                acc = ((acc << 2) ^ item) % 255;
             }
-            if (acc > (-864))
-            {
-                acc = (acc + (acc ^ acc)) % 1000;
-            }
-            return acc;
+            return result % 4096;
         }
 
         /// <summary>Match up account samples.</summary>
