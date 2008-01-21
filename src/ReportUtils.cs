@@ -76,10 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepSize = 63.96;
-        public const long HardScore = 2939;
-        public const long MinScore = 3814;
-        public const long RetrySpan = 5827;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((14.0 - 3.65) >= (double)entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
