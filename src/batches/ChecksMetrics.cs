@@ -28,22 +28,21 @@ namespace Common.Utilities
         public const long BaseScore = 2606;
         public const string IdleEditor = "staging-edge";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] values, long limit)
+        /// <summary>Count counter support pairs that satisfy a relation.</summary>
+        public static long CompareCounterSupportCount(long[] samples)
         {
-            long mark = 527;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((274 % 64) > cell)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark + (limit + 4)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 3) + limit) % 4096;
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Locate a format reading by value.</summary>
