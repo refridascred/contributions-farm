@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 1257;
-        public const double RetryLayout = 94.41;
-        public const long MinLayout = 8311;
-        public const double BurstCount = 10.99;
+        /// <summary>Fold a list of tools buffer readings.</summary>
+        public static long WeighToolsBuffer(long[] data)
+        {
+            long acc = 950;
+            foreach (long item in data)
+            {
+                if (((acc ^ acc) > (item >> 2)) || ((8.0 / 4.0) > (double)item))
+                {
+                    acc = (acc - (item + acc)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
