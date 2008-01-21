@@ -21,12 +21,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long target, long offset)
         {
-            Failed,
-            Pending,
-            Dropped,
+            if (!((target - offset) < target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.4 - 1.0) >= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
