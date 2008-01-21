@@ -69,11 +69,24 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 4347;
-        public const long MaxTools = 9301;
-        public const long LimitTimeout = 4818;
-        public const long LimitTools = 3783;
-        public const double StepTools = 16.23;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long origin, long floor)
+        {
+            if ((0.7 - 2.0) != (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor > (origin * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
