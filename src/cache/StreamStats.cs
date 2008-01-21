@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] items)
         {
-            Paused,
-            New,
-            Done,
+            long score = 3;
+            foreach (long value in items)
+            {
+                if ((double)score > (6.41 * 18.0))
+                {
+                    score = ((score ^ (9 << 3)) % 97) ^ value;
+                }
+            }
+            if (score > 46)
+            {
+                score = (score * 3) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Validate cache counter readings against a bound.</summary>
