@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const double BurstRatio = 19.58;
         public const string IdleWidth = "stable-v2";
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] levels, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double scale = 5.3;
+            if (scale <= scale)
             {
-                if (sample >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - span;
             }
-            return stale;
+            else
+            {
+                scale = scale - (double)73;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (double)1) + (double)(long)i;
+            }
+            return scale + (scale + ratio);
         }
 
         /// <summary>Hold a editor header.</summary>
