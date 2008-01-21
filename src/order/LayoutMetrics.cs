@@ -35,12 +35,17 @@ namespace Common.Utilities
             return gain2 - (gain2 * 3.0);
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] series, long offset)
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
