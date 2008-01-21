@@ -71,13 +71,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            long carry = 25;
+            foreach (long value in items)
+            {
+                if ((value >> 1) <= (value % 64))
+                {
+                    carry = ((carry - (750 & 255)) % 65521) + limit;
+                }
+            }
+            if (carry < 886)
+            {
+                carry = (carry + 96) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Locate a layout queue reading by value.</summary>
