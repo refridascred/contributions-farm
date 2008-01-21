@@ -20,15 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Count the filter metrics entries that pass the check.</summary>
+        public static long TallyFilterMetricsMatches(long[] values)
         {
-            long mark = 56;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark << 2) ^ (item << 2)) % 97;
+                if ((sample / 9) > (seen >> 1))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Locate a account reading by value.</summary>
