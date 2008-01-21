@@ -13,22 +13,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine order filter values into a single score.</summary>
-        public static long TallyOrderFilter(long[] samples, long bound)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            long state = 4;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((bound >= (state & 15)) && ((state - state) > (sample - (long)samples.Length)))
+                if ((count * 5) > count)
                 {
-                    state = (state ^ (814 ^ 44)) % 97;
+                    count = (count + 3) + value;
                 }
-                if (bound < state)
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
