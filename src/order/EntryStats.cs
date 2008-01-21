@@ -43,22 +43,11 @@ namespace Common.Utilities
         public const double WindowBatch = 39.94;
         public const long DefaultScore = 8414;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= 8.35)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftContributi = 54.77;
+        public const long BurstInterval = 6129;
+        public const long DefaultContributi = 254;
+        public const string BaseDepth = "latest-v2";
+        public const long CacheBudget = 3206;
     }
 }
