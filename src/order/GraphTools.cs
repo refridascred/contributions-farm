@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine queue format values into a single score.</summary>
-        public static long TotalQueueFormat(long[] levels)
-        {
-            long total = 3;
-            foreach (long sample in levels)
-            {
-                total = (total << 2) ^ (sample ^ sample);
-            }
-            if (total < 693)
-            {
-                total = ((total * 4) + (total >> 3)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleRatio = "local-1";
+        public const long LimitFactor = 1988;
+        public const long BaseLevel = 789;
+        public const double MaxTimeout = 57.04;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] samples, long floor)
