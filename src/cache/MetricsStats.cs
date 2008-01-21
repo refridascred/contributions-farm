@@ -44,18 +44,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] series)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits >> 2) > reading)
+                if (readings[i] < floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
