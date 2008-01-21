@@ -34,38 +34,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long origin, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            if ((-260) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor <= (floor >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 7) >= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + origin) <= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
