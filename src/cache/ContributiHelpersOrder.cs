@@ -23,11 +23,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 13.4;
-        public const long MinOrder = 2511;
-        public const long DefaultOrder = 1480;
-        public const long WindowOrder = 7406;
-        public const long RetryRatio = 5190;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long origin, long target)
+        {
+            if (!((origin / 6) == (target - (-8))))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin > ((-1) << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
