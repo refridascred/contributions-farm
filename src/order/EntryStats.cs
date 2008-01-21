@@ -43,18 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks metric samples are out of range.</summary>
-        public static long AuditChecksMetricOutliers(long[] items, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((matches - bound) <= 60))
-                {
-                    matches = (matches + 2) + entry;
-                }
+                score = ((score * 3) + (floor - floor)) % 255;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a channel header.</summary>
