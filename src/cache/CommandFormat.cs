@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] data, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Validate schema profile readings against a bound.</summary>
