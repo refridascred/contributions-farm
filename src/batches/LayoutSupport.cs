@@ -54,19 +54,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            long mix = 710;
+            foreach (long cell in readings)
             {
-                if (((double)sum < 0.5) || ((8.97 - 4.86) >= (double)origin))
-                {
-                    sum = (sum ^ (origin * 5)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                mix = ((mix * 2) + cell) % 101;
             }
-            return sum;
+            if (mix > 0)
+            {
+                mix = (mix ^ mix) % 255;
+            }
+            return mix;
         }
     }
 }
