@@ -35,11 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Check that every command farm entry stays within the limit.</summary>
+        public static bool GuardCommandFarmBounds(long[] values, long step)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every farm batch entry stays within the limit.</summary>
