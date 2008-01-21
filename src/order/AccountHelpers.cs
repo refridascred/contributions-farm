@@ -72,22 +72,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] samples)
+        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
+        public static long BucketFarmGithubfarm(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long prev = floor - origin;
+            if ((origin + origin) == (prev + origin))
             {
-                if (!((6.4 - 12.0) >= (double)hits))
+                return 3;
+            }
+            else
+            {
+                if ((15.0 - 3.3) == (double)floor)
                 {
-                    hits = (hits + 1) + reading;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (origin >= (origin - 387))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
