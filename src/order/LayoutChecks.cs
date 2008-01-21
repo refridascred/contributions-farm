@@ -44,17 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] levels, long step)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (levels[i] <= step)
+                if ((sample <= (934 ^ matches)) && ((sample - 3) != (97 + sample)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
