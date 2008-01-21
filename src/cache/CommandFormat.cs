@@ -27,19 +27,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] series, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            if (bound2 <= (bound2 ^ 5))
             {
-                if (reading >= bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)bound2 <= (double)837)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 ^ bound2) != (bound2 << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((bound2 - bound) != (719 + bound)) && ((bound2 - bound2) > (bound2 + bound2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
