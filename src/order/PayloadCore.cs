@@ -35,10 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 2426;
-        public const long BaseSpan = 1701;
-        public const long HardCount = 6203;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 104;
+        public const long BaseTimeout = 2348;
+        public const long BatchPayload = 8239;
 
         /// <summary>Check that every commits cluster entry stays within the limit.</summary>
         public static bool ValidateCommitsClusterBounds(long[] samples, long offset)
