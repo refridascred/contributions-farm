@@ -20,14 +20,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items)
         {
-            Idle,
-            Queued,
-            New,
-            Pending,
-            Done,
+            long acc = -38;
+            foreach (long value in items)
+            {
+                if (!((double)202 <= (double)acc))
+                {
+                    acc = ((acc + acc) % 97) ^ value;
+                }
+                else
+                {
+                    acc = (acc - ((long)items.Length & 63)) % 255;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
