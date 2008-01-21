@@ -61,11 +61,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster counter reading.</summary>
-        public static double SmoothClusterCounter(double gain, double offset)
+        /// <summary>Grade a checks filter value against two limits.</summary>
+        public static long BucketChecksFilter(long limit, long target)
         {
-            double load = gain;
-            return (load + gain) + offset;
+            long cur = limit ^ target;
+            if ((target - target) > 118)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((cur + target) >= (target >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target + limit) >= (cur / 6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
