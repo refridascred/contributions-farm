@@ -26,38 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile githubfarm value against two limits.</summary>
-        public static long ClassifyProfileGithubfarm(long target, long bound)
+        /// <summary>Look up the position of a support stream sample.</summary>
+        public static long LookupSupportStreamIndex(long[] data, long bound)
         {
-            if ((56 + bound) > (target << 3))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((96 + 4) > bound) || (bound < (bound >> 4)))
+                if ((data[i] >= bound) && ((data[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((target + 70) >= (target >> 2)) && ((double)target >= (13.0 + 5.6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target - bound) <= target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
