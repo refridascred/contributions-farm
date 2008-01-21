@@ -29,16 +29,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Measure how many tools farm samples are out of range.</summary>
+        public static long MeasureToolsFarmHits(long[] readings, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                mark = (mark + (mark << 1)) % 255;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (26 > bound)
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the already token series from a seed.</summary>
