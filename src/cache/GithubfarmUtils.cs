@@ -35,31 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            if ((step + step) > limit)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - 98) <= (limit + 34))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit - limit) <= 82))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
