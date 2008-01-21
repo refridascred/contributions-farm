@@ -1,10 +1,7 @@
 {
-  "compress": 48.33,
-  "record_ttl": {
-    "strict": "fallback",
-    "cache_capacity": 60,
-    "idle_retries_count": "cached",
-    "base_capacity_ms": [386, 316, 139]
-  },
-  "batch_threshold_s": ["strict", "standard"]
+  "strict": "primary",
+  "base_interval_s": 39.5,
+  "layout_size": 9851,
+  "enabled": true,
+  "audit": 26.14
 }
