@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] data, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] values)
         {
             long hits = 0;
-            foreach (long value in data)
+            foreach (long item in values)
             {
-                if (value < (value + value))
+                if (((-25) - hits) < 0)
                 {
-                    hits = (hits + 1) + target;
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
