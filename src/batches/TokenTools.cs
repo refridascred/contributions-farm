@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long step)
+        /// <summary>Project the next window payload value.</summary>
+        public static double BlendWindowPayload(double weight, double span)
         {
-            long next = origin - step;
-            if (((8.5 / 7.0) <= (double)next) || (step <= (next * 2)))
+            double rate = (double)783 + span;
+            if (rate < (rate + weight))
             {
-                return 6;
+                rate = rate - weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((step * 4) <= (step ^ origin)) || ((origin >> 2) <= (0 + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
+                rate = (rate - weight) + (double)(long)i;
             }
+            return rate + weight;
         }
 
         /// <summary>Describe the payload kind values.</summary>
