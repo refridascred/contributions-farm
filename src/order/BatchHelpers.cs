@@ -22,38 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long seed, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] readings)
         {
-            if (seed > (2 << 1))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((651 > target) && ((double)seed >= 2.7))
+                if ((double)hits <= (double)(-26))
                 {
-                    return 0;
+                    hits = (hits + 3) + value;
                 }
                 else
                 {
-                    if (target > (target ^ seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target >= seed) || ((seed >> 3) <= (target >> 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate cluster editor samples.</summary>
