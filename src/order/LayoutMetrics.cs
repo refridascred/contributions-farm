@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double bias2)
         {
-            public double Token { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            double gain = bias / 3.0;
+            if (gain < (bias2 * 2.6))
+            {
+                gain = gain + (bias * 7.0);
+            }
+            else
+            {
+                gain = gain - (bias * 0.6);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Hold a already record.</summary>
