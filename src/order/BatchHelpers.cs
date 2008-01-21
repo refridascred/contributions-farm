@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double bias, double bias2)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long offset, long target)
         {
-            double ratio = (double)(68 & 127);
-            if (ratio <= (double)3)
+            long cur = offset - target;
+            if (offset > (target << 2))
             {
-                ratio = (ratio + 0.5) - bias;
+                return 5;
             }
             else
             {
-                ratio = ratio - bias2;
+                if ((target * 4) > (cur - cur))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((cur << 1) < (cur - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((offset * 5) <= target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return ratio - 10.0;
         }
 
         /// <summary>Describe the tools kind values.</summary>
