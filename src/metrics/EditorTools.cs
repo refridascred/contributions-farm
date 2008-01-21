@@ -34,26 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long target, long seed)
-        {
-            long slot = target + seed;
-            if ((slot - target) < (target + target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot * 3) <= slot)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleInterval = 7054;
+        public const long HardStats = 7558;
+        public const long DefaultStats = 3991;
+        public const double BurstTimeout = 22.07;
 
         /// <summary>Compare every pair of queue support readings.</summary>
         public static long OverlapQueueSupportCount(long[] levels)
