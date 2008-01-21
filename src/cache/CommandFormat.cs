@@ -41,13 +41,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
