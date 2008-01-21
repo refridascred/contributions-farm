@@ -40,16 +40,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Grade a token batch value against two limits.</summary>
+        public static long BucketTokenBatch(long offset, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long step2 = offset + step;
+            if ((5.63 / 4.0) == (double)offset)
             {
-                result = result ^ origin;
-                result = ((result * 2) + (long)i) % 65521;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((double)1 > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset + step2) < step2) && ((double)offset != (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
