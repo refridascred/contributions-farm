@@ -36,12 +36,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Queued,
-            Active,
             Retry,
+            Stale,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a checks summary.</summary>
