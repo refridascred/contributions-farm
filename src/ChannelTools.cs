@@ -28,13 +28,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples)
         {
-            Closed,
-            Synced,
-            Locked,
-            Active,
+            long result = 190;
+            foreach (long value in samples)
+            {
+                if (result < (value % 3))
+                {
+                    result = (result ^ (value << 1)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result ^ 0)) % 97;
+                }
+            }
+            if (result < 5)
+            {
+                result = (result - result) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
