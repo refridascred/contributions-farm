@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric channel readings against a rule.</summary>
-        public static long TallyMetricChannelOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + matches) == (matches + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 4126;
+        public const long LimitWindow = 1070;
+        public const long SoftDepth = 1823;
+        public const long IdleWindow = 6179;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long limit, long seed)
