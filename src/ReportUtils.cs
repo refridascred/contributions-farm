@@ -63,19 +63,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload report samples are out of range.</summary>
-        public static long TallyPayloadReportOutliers(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((((count / 2) > (datum + datum)) || (4.5 < (double)seed)) || ((count + 36) <= (count * 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultSize = 34.48;
+        public const double BatchInterval = 3.04;
+        public const long RetryChannel = 8240;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepSize = 63.96;
