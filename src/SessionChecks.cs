@@ -46,24 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long step, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] data, long limit)
         {
-            if ((6.0 - 7.41) > (double)seed)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ seed) <= 331)
+                if (data[i] <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
