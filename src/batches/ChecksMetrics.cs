@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double MinContext = 9.23;
         public const string MaxTimeout = "standard";
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double ratio, double offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double mean = offset;
-            if (mean < (mean - mean))
-            {
-                mean = (mean + (double)963) - ratio;
-            }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (double)144;
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
