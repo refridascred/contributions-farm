@@ -22,17 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] levels, long origin)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
