@@ -20,14 +20,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            Synced,
-            New,
-            Failed,
-            Draft,
-            Queued,
+            long state = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state + (offset - offset);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
