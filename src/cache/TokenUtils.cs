@@ -25,14 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Combine cluster batches values into a single score.</summary>
+        public static long TallyClusterBatches(long[] readings, long step)
         {
-            Stale,
-            Ready,
-            Done,
-            Synced,
-            Active,
+            long result = 528;
+            foreach (long entry in readings)
+            {
+                if (result <= (result - result))
+                {
+                    result = (result ^ entry) % 97;
+                }
+                if ((result * 2) > (entry - step))
+                {
+                    result = result - result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
