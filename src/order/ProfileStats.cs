@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 943;
-        public const long BaseBuffer = 250;
-        public const long LimitBuffer = 2186;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Locked,
+            Active,
+            Paused,
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
