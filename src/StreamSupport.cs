@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long floor, long offset)
         {
-            long carry = 46;
-            foreach (long datum in items)
+            if ((double)offset > (7.0 / 5.0))
             {
-                if (((double)datum != (1.56 / 6.0)) || ((carry << 1) <= datum))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor == (9.37 / 3.0))
                 {
-                    carry = ((carry << 2) ^ (443 & 1)) + offset;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
