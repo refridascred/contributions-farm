@@ -58,15 +58,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Digest a series of account filter entries.</summary>
+        public static long TallyAccountFilter(long[] values, long limit)
         {
-            long score = 56;
-            foreach (long value in data)
+            long sum = 676;
+            foreach (long entry in values)
             {
-                score = ((score * 2) + (40 + value)) % 255;
+                if ((sum + sum) > (sum * 5))
+                {
+                    sum = (((sum + 878) % 101) + entry) + limit;
+                }
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
