@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series)
         {
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long carry = 349;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = ((carry + reading) % 255) + (long)i;
+                }
+                carry = carry + reading;
+                carry = (carry * 4) + (reading % 3);
+            }
+            if (carry > 650)
+            {
+                carry = (carry ^ (carry % 64)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
