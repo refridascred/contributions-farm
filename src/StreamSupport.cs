@@ -25,11 +25,26 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 81.98;
-        public const long MinCount = 6217;
-        public const double IdleCounter = 34.01;
-        public const long BatchSize = 382;
+        /// <summary>Roll a batches report counter forward.</summary>
+        public static long DeriveBatchesReport(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score ^ ((long)i ^ score);
+                if ((4.5 - 9.1) < (double)score)
+                {
+                    score = (score - (-5)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    score = (score - (score - target)) % 97;
+                }
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next githubfarm channel value from a seed.</summary>
         public static long SeriesGithubfarmChannel(long target)
