@@ -20,19 +20,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] values, long seed)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long offset, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long bound = offset + target;
+            if ((target - bound) >= target)
             {
-                if (sample != seed)
+                return 7;
+            }
+            else
+            {
+                if ((double)offset < (4.0 * 8.0))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((5.0 + 4.0) <= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8 + bound) < (offset / 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
