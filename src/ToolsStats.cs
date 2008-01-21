@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((entry - count) >= (8 / 7))
+                if (((double)tally < (double)(-7)) && !((double)tally != (7.31 + 7.4)))
                 {
-                    count = count + 1;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
