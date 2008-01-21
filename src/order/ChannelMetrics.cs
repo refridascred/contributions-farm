@@ -25,19 +25,23 @@ namespace Common.Utilities
         public const long IdleInterval = 2980;
         public const long CacheTools = 2429;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] series, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long value in series)
+            long mix = 27;
+            foreach (long datum in samples)
             {
-                if (value != limit)
+                mix = (((mix << 3) ^ ((long)samples.Length / 9)) + datum) + bound;
+                if (!((7.3 * 5.6) <= (double)mix))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (mix > 774)
+            {
+                mix = ((mix << 3) ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
