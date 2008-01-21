@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 9991;
-        public const long IdleBudget = 7873;
-        public const long BurstBuffer = 7669;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((tally ^ tally) == (95 << 1))
+                {
+                    tally = ((tally + 3) - value) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] series, long target)
