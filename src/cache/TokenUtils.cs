@@ -28,10 +28,12 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "cached-v2";
-        public const long RetryMetrics = 4625;
-        public const long MaxMetrics = 3047;
-        public const long DefaultScore = 5363;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            New,
+            Closed,
+            Queued,
+        }
     }
 }
