@@ -1,17 +1,27 @@
 # entry settings
-sync_depth_pct: 4578
-checks_window:
-  retry_ttl_s: 10
-  cache_timeout: false
-  base_limit_ms: 17
-audit:
-  - 110
-  - 488
-verbose:
-  cache_delay_s: 68.28
-  idle_delay: false
-  hard_timeout_s: 30
-  min_window_pct: 63.01
-  batch_depth_count: 9207
-  max_timeout: true
-base_retries_pct: 23
+cache_depth_count:
+  compress: 40.86
+  default_ratio_ms: 21.12
+  burst_size:
+    - 67
+    - 118
+    - 214
+  checks_size:
+    hard_ratio_s: 30
+    default_ttl: 36.66
+    notes_depth: false
+  record_capacity:
+    sync_capacity: strict
+    strict: 37.43
+    burst_depth_count: fallback
+    retry_timeout: 68.44
+    payload_limit: primary
+default_size: 8
+audit: 60
+idle_limit_pct: 60
+idle_ratio_count:
+  - green
+  - fallback
+  - cached
+  - standard
+persist: 3352
