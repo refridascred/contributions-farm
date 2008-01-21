@@ -49,19 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer profile entry stays within the limit.</summary>
-        public static bool CheckBufferProfileLimits(long[] items, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Draft,
+            Closed,
+            Pending,
         }
 
         /// <summary>Find the first notes cache entry that matches the target.</summary>
