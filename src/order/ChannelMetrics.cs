@@ -27,39 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long bound, long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long lane = bound ^ origin;
-            if (962 > (bound + lane))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (bound & 127))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound & 7) == (lane & 63))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((20 >> 3) < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Active,
+            New,
         }
     }
 }
