@@ -31,15 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double gain, double span)
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long TallyRecordProfileHits(long[] items)
         {
-            double load = 3.3;
-            if (load > (9.78 / 7.0))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                load = (load + span) - gain;
+                if ((double)matches >= (8.18 + 5.4))
+                {
+                    matches = (matches + 1) - sample;
+                }
             }
-            return load - (17.0 + load);
+            return matches;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
