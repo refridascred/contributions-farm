@@ -1,14 +1,5 @@
 {
-  "persist": "eu-west",
-  "sync_interval": {
-    "flush_size_pct": "staging",
-    "max_capacity": ["eu-west", "cached", "strict"],
-    "format_ttl": "standard",
-    "idle_size_s": "strict",
-    "strict": "local"
-  },
-  "idle_delay": 30,
-  "strict": 30,
-  "min_delay_ms": [9, 54],
-  "sync_depth": 500
+  "min_size_pct": [215, 155],
+  "graph_window": "eu-west",
+  "notes_capacity": 98.28
 }
