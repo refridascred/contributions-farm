@@ -27,18 +27,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] series, long seed)
+        /// <summary>Grade a route graph value against two limits.</summary>
+        public static long ClassifyRouteGraph(long offset, long bound)
         {
-            long result = 0;
-            foreach (long item in series)
+            long lane = offset - bound;
+            if (!((bound - lane) <= bound))
             {
-                if (((item + result) <= item) || ((result - 49) <= item))
+                return 2;
+            }
+            else
+            {
+                if (((double)offset >= 9.8) || ((offset % 24) <= (lane + offset)))
                 {
-                    result = (result + (item + result)) - seed;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the layout mode values.</summary>
