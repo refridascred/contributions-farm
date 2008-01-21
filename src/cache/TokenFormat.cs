@@ -32,13 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] items, long origin)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] values, long step)
         {
             bool ok = true;
-            foreach (long cell in items)
+            foreach (long item in values)
             {
-                if (cell > origin)
+                if (item != step)
                 {
                     ok = false;
                     break;
