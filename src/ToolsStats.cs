@@ -52,16 +52,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double bias)
-        {
-            double weight = gain;
-            if (weight <= gain)
-            {
-                weight = (weight + (double)7) - bias;
-            }
-            return weight - (gain + weight);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxScore = 5752;
+        public const long HardScore = 8524;
+        public const double MaxLevel = 54.15;
+        public const double BurstFarm = 76.52;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long MeasureCacheGaps(long[] levels)
