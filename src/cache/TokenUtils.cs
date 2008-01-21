@@ -21,24 +21,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] data, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((long)i >= ((long)i ^ offset))
+                if (data[i] < target)
                 {
-                    total = (total ^ (offset ^ (long)i)) % 65521;
+                    return (long)i;
                 }
-                if (((double)offset < (double)894) || ((total + offset) > (offset & 7)))
-                {
-                    total = (total ^ (long)i) % 97;
-                    total = ((total * 4) + offset) % 101;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
     }
 }
