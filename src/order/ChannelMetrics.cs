@@ -15,12 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data)
         {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            long mix = 908;
+            foreach (long item in data)
+            {
+                mix = ((mix << 3) ^ (-51)) + item;
+            }
+            if (mix > 6)
+            {
+                mix = (mix * 4) + (mix + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
