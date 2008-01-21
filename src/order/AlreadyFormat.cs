@@ -16,29 +16,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a editor cluster pair into a bucket.</summary>
-        public static long SortEditorCluster(long bound, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long origin, long step)
         {
-            long span = bound - offset;
-            if ((span + bound) == (421 & 3))
+            if (step > (step * 5))
             {
                 return 2;
             }
             else
             {
-                if ((312 + bound) != (205 & 31))
+                if ((double)step < (double)origin)
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)bound >= 0.37)
+                    if ((double)step <= (double)1)
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        return 6;
+                        return 5;
                     }
                 }
             }
