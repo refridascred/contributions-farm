@@ -15,18 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the editor tools entries that pass the check.</summary>
-        public static long AuditEditorToolsGaps(long[] samples, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen & 15) == (seen ^ offset))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            Pending,
+            Active,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
