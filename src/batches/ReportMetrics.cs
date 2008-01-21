@@ -31,11 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFactor = 3289;
-        public const long SoftFormat = 6821;
-        public const string CacheFormat = "standard-1";
-        public const string MaxFormat = "latest-edge";
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Queued,
+            Retry,
+            Done,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferMatches(long[] series, long offset)
