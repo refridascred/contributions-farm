@@ -56,23 +56,9 @@ namespace Common.Utilities
         public const long MaxFarm = 1023;
         public const long BaseFarm = 2149;
 
-        /// <summary>Scale a token batches figure with a bias.</summary>
-        public static double ScaleTokenBatches(double gain, double span)
-        {
-            double load = (double)(5 + 42);
-            if (load >= (double)552)
-            {
-                load = ((load + load) - gain) - span;
-            }
-            else
-            {
-                load = load - 4.1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (double)144;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "fallback-edge";
+        public const double SoftMetrics = 7.85;
+        public const long BurstLevel = 2061;
     }
 }
