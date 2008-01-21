@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] values, long target)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)target <= (2.3 - 0.44))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) ^ item;
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
