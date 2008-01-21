@@ -34,24 +34,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long origin, long target)
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
+            long diff = origin ^ target;
+            if ((double)diff != (7.0 * 2.5))
             {
-                long edge = (result / 5) ^ (step + (long)i);
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    edge = (edge + (step + step)) - (long)i2;
-                }
-                if (step > (edge % 2))
-                {
-                    result = ((result * 2) + step) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (origin > (origin + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((diff - target) < ((-58) ^ diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target & 127) == (origin % 10))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a record reading by value.</summary>
