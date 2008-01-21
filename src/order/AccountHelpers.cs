@@ -56,17 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] data, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 529;
+            foreach (long reading in levels)
             {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor - (anchor >> 2)) % 65521) - reading) - step;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a profile info.</summary>
