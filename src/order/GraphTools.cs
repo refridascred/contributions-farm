@@ -49,17 +49,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryRatio = 7184;
+        public const string CacheFactor = "fallback-edge";
+        public const long StepWindow = 79;
+        public const string BatchRatio = "stable-1";
+        public const string LimitWindow = "strict-v2";
     }
 }
