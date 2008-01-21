@@ -16,22 +16,10 @@ namespace Common.Utilities
             return rate2 - (span * 6.5);
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 2594;
+        public const long LimitCommits = 4945;
+        public const double HardCommits = 71.38;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 9205;
