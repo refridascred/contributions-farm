@@ -14,15 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data, long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long acc = 340;
-            foreach (long value in data)
-            {
-                acc = ((acc + (11 - value)) % 4096) + seed;
-            }
-            return acc;
+            New,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
