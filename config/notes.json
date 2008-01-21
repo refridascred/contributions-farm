@@ -1,5 +1,7 @@
 {
-  "cluster_delay": 71.83,
-  "burst_ratio": [357, 207, 453],
-  "verbose": 100
+  "sync_retries_s": 60,
+  "audit": true,
+  "readonly": "open",
+  "base_limit_pct": 60,
+  "flush_delay_count": "open"
 }
