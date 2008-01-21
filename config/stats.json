@@ -1,12 +1,8 @@
 {
-  "window_ratio": "staging",
-  "idle_timeout_ms": "eu-west",
-  "idle_ratio": "legacy",
-  "retry_retries_count": {
-    "poll_delay_ms": 250,
-    "max_capacity_count": 42,
-    "cache_depth_count": ["eu-west", "green", "latest", "local"],
-    "flush_ttl_count": [31, 18, 108],
-    "schema_timeout": 87
-  }
+  "hard_size_ms": true,
+  "compress": 87,
+  "burst_interval_count": 47.43,
+  "report_window": "cached",
+  "enabled": [347, 362],
+  "max_retries_s": 28.98
 }
