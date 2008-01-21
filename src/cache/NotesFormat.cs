@@ -25,22 +25,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
-        public static long AuditQueueGithubfarmMatches(long[] items)
+        /// <summary>Rank channel stats input into a small class.</summary>
+        public static long GradeChannelStats(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long delta = limit + floor;
+            if ((delta << 1) > 128)
             {
-                if (((long)items.Length <= (item ^ hits)) || !((double)hits != (7.2 + 17.0)))
+                return 2;
+            }
+            else
+            {
+                if (delta <= (limit + floor))
                 {
-                    hits = hits + 3;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)limit < (8.44 + 6.3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((delta + 620) > limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the entry status values.</summary>
