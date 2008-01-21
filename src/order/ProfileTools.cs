@@ -28,19 +28,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every context checks entry stays within the limit.</summary>
-        public static bool ValidateContextChecksLimits(long[] data, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Pending,
+            Dropped,
+            Ready,
+            Closed,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
