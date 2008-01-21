@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public long Total { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowBudget = 5209;
+        public const string MinNotes = "stable";
+        public const long CacheTimeout = 4497;
+        public const long RetryNotes = 7472;
+        public const string BurstSpan = "latest-edge";
 
         /// <summary>Audit profile token readings against a rule.</summary>
         public static long CountProfileTokenOutliers(long[] samples)
