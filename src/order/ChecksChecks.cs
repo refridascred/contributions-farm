@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter counter samples.</summary>
-        public static long CombineFilterCounter(long[] readings)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long offset)
         {
-            long acc = 422;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc >= (8 ^ acc))
+                if (samples[i] == offset)
                 {
-                    acc = (acc - (717 & 255)) ^ entry;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
