@@ -1,8 +1,8 @@
 # githubfarm settings
-cache_ttl_pct:
-  - fallback
-  - cached
-  - latest
-  - stable
-support_ratio: 1024
-idle_delay_s: 1024
+default_ttl: false
+context_capacity:
+  - 109
+  - 46
+default_delay: false
+cache_size: 68.49
+metric_depth: green
