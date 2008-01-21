@@ -18,32 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window cache value against two limits.</summary>
-        public static long GradeWindowCache(long origin, long offset)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double bias, double span)
         {
-            long cur = origin - offset;
-            if ((double)origin > (double)offset)
+            double gain = bias;
+            if (gain > (span - span))
             {
-                return 4;
+                gain = gain + (bias + bias);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((offset ^ origin) < (origin * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin <= (offset - cur))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                gain = (gain + (bias / 7.0)) + (double)(long)i;
             }
+            return gain + bias;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
