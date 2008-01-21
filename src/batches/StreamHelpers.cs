@@ -69,22 +69,18 @@ namespace Common.Utilities
             return weight + (gain + gain);
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] samples)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = 8;
+            foreach (long sample in samples)
             {
-                if (((double)entry >= (double)tally) && ((tally / 6) < (tally % 97)))
+                if (sample > (acc & 3))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = (((acc * 5) + (354 - sample)) % 97) + offset;
                 }
             }
-            return tally;
+            return acc % 97;
         }
     }
 }
