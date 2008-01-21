@@ -1,7 +1,11 @@
 {
-  "sync_window_count": 69,
-  "hard_threshold_ms": "edge",
-  "sync_depth_ms": "primary",
-  "sync_limit": 37.56,
-  "editor_depth": 3580
+  "strict": [321, 4],
+  "max_size_pct": {
+    "cluster_ratio": ["eu-west", "staging", "open"],
+    "flush_limit_pct": ["green", "green"],
+    "poll_interval_pct": 90.05,
+    "hard_size": true
+  },
+  "profile_delay": 33,
+  "record_interval": "stable"
 }
