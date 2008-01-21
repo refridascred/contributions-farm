@@ -14,16 +14,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next stream format value from a seed.</summary>
-        public static long DeriveStreamFormat(long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            double gain = scale;
+            if (gain > floor)
             {
-                mark = (mark ^ (long)i) % 1000;
-                mark = ((mark * 5) + (long)i) % 1000;
+                gain = gain + 0.5;
             }
-            return mark;
+            else
+            {
+                gain = gain - (gain / 4.0);
+            }
+            return gain + scale;
         }
 
         /// <summary>Rank account input into a small class.</summary>
