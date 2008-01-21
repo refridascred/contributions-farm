@@ -50,10 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string WindowBudget = "staging-1";
-        public const long DefaultLevel = 2026;
-        public const long DefaultTools = 6596;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((((4.66 * 0.97) >= (double)hits) || (77 < hits)) || (((51 / 6) <= (datum ^ hits)) || ((4 + hits) <= (datum * 4))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double DefaultDepth = 43.63;
