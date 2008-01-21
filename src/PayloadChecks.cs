@@ -51,14 +51,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                state = state ^ ((long)i - limit);
-                state = ((state * 5) + (long)i) % 4093;
+                state = (state * 2) + step;
+                state = ((state * 2) + (long)i) % 97;
             }
             return state;
         }
