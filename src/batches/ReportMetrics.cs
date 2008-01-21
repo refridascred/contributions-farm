@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const double BurstRatio = 19.58;
         public const string IdleWidth = "stable-v2";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] items, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] levels, long limit)
         {
-            long acc = 96;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                acc = (((acc << 3) ^ (acc << 2)) ^ sample) + floor;
+                if (sample >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Hold a editor header.</summary>
