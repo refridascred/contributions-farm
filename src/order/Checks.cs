@@ -48,13 +48,31 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] samples, long offset)
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public double Label { get; set; }
+            long acc = 96;
+            foreach (long cell in samples)
+            {
+                if (!(8.3 > (double)cell))
+                {
+                    acc = (acc * 2) + (acc / 6);
+                }
+                else
+                {
+                    acc = (acc - (offset + offset)) % 65521;
+                }
+                acc = (acc << 2) ^ (7 << 2);
+                if (offset > (cell * 3))
+                {
+                    acc = (acc - (cell << 3)) % 1000;
+                }
+            }
+            if (acc > 695)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the layout phase values.</summary>
