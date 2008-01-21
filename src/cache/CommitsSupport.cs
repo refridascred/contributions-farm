@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long seed, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] data, long limit)
         {
-            long lane = seed + bound;
-            if ((bound > (lane & 127)) && ((bound + lane) <= (lane - lane)))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (39 >= (seed + lane))
+                if ((matches - matches) > (limit >> 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) - entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
