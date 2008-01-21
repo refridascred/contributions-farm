@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
