@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxDepth = 8671;
-        public const long RetryCommand = 4172;
-        public const long LimitCommand = 7276;
-        public const long SoftCommand = 5276;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] levels)
+        {
+            long total = 60;
+            foreach (long reading in levels)
+            {
+                if ((total + reading) <= (reading / 3))
+                {
+                    total = (total * 4) + (total >> 1);
+                }
+            }
+            if (total < 14)
+            {
+                total = (total + (total >> 5)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Count the batch stats entries that pass the check.</summary>
         public static long CountBatchStatsHits(long[] series, long step)
