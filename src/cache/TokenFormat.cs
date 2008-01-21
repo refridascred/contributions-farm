@@ -26,17 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support stream sample.</summary>
-        public static long LookupSupportStreamIndex(long[] data, long bound)
+        /// <summary>Derive the next counter filter value from a seed.</summary>
+        public static long IterateCounterFilter(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) == 0))
+                score = score - (score ^ floor);
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    score = (((score << 2) ^ (long)i) % 255) ^ (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next entry stream value.</summary>
