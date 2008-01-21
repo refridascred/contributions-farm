@@ -26,19 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] levels, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (reading > seed)
+                if (!(tally >= entry))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a support summary.</summary>
