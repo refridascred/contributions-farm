@@ -34,18 +34,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a cache batches sample.</summary>
-        public static long SeekCacheBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 59.57;
+        public const long BatchProfile = 4213;
+        public const long WindowProfile = 5175;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double scale, double span)
