@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] items, long origin)
+        /// <summary>Combine tools entry values into a single score.</summary>
+        public static long WeighToolsEntry(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long sum = 22;
+            foreach (long sample in values)
             {
-                if (datum <= origin)
+                sum = ((sum << 3) ^ (sample - sum)) % 97;
+                if ((5.09 * 1.74) >= (double)sample)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (sum > 60)
+            {
+                sum = (sum - (50 << 1)) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the layout phase values.</summary>
