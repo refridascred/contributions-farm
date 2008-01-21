@@ -25,11 +25,11 @@ namespace Common.Utilities
         public const string StepFactor = "standard-v2";
         public const double BaseCommand = 81.18;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 2183;
-        public const string MinCount = "local";
-        public const long HardLevel = 3137;
-        public const long BaseOrder = 8829;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseCount = 2192;
+        public const string StepBudget = "local-edge";
+        public const long CacheRatio = 2474;
+        public const string StepLayout = "cached-v2";
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] series)
