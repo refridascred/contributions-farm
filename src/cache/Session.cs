@@ -13,10 +13,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 8123;
-        public const long BatchCount = 2366;
-        public const long BaseScore = 6892;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Synced,
+            Pending,
+            Draft,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long WeighPayload(long[] levels, long target)
