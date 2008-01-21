@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 881;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((6.62 * 6.0) > (double)cell)
                 {
-                    if ((items[i] + items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ ((long)items.Length - cell)) % 255;
                 }
             }
-            return hits;
+            if (anchor > 963)
+            {
+                anchor = (anchor ^ anchor) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
