@@ -37,15 +37,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a already notes counter forward.</summary>
-        public static long StepAlreadyNotes(long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double bias, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            double rate = bias + (span - bias);
+            for (int i = 0; i < 3; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                rate = (rate + rate) + (double)(long)i;
             }
-            return total;
+            return rate + (bias / 3.0);
         }
 
         /// <summary>Roll a cache counter forward.</summary>
