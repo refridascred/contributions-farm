@@ -61,26 +61,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Accumulate editor stats samples.</summary>
+        public static long WeighEditorStats(long[] data)
         {
-            long sum = 32;
-            foreach (long item in items)
+            long acc = 4;
+            foreach (long sample in data)
             {
-                if ((double)sum <= (double)item)
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
-                if ((-48) < item)
-                {
-                    break;
-                }
+                acc = ((acc * 4) + (sample / 8)) % 4096;
+                acc = ((acc * 4) + 57) % 97;
             }
-            if (sum < 93)
+            if (acc < 374)
             {
-                sum = (sum << 3) ^ (44 + sum);
+                acc = acc - ((long)data.Length & 31);
             }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Describe the account mode values.</summary>
