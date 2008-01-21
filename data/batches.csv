@@ -1,6 +1,9 @@
-id,active,count
-1,77.82,638
-2,233,cached
-3,latest,blue
-4,latest,730
-5,43.6,708
+id,rank,weight,label,count
+1,staging,330,70.49,20.2
+2,488,33.28,31.79,local
+3,63.04,cached,stable,36.29
+4,388,latest,759,open
+5,staging,open,462,82.67
+6,257,779,853,93.97
+7,cached,255,latest,strict
+8,432,115,878,98.51
