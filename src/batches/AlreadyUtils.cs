@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double ratio, double bias)
+        /// <summary>Compare every pair of stream githubfarm readings.</summary>
+        public static long MatchStreamGithubfarmCount(long[] items)
         {
-            double gain = (double)(-729);
-            if (gain > bias)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + 7.83) + ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain + (5.2 + 1.6);
+            return seen;
         }
 
         /// <summary>Hold a layout options.</summary>
