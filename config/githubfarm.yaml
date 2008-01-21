@@ -1,5 +1,5 @@
 # githubfarm settings
-enabled: legacy
-readonly: staging
-idle_ratio: 250
-poll_threshold_ms: local
+max_size_ms: open
+readonly: 4657
+hard_depth_ms: 65
+min_delay_ms: 54
