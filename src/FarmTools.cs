@@ -22,18 +22,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] levels)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((((0 + seen) <= (-8)) || ((seen ^ datum) >= (7 - 0))) || (((seen ^ seen) < seen) || ((12.0 - 2.04) >= (double)seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
