@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Stale,
-            Dropped,
-            Locked,
             Pending,
-            Ready,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
