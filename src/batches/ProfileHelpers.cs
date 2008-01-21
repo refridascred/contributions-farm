@@ -57,39 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long seed, long seed2)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long bound)
         {
-            long delta = seed - seed2;
-            if ((seed ^ seed2) < delta)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed & 127) == (delta << 3)) || ((seed ^ seed2) != (86 ^ seed)))
+                if (cell >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((24 % 60) >= seed2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((delta >> 5) >= seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
