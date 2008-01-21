@@ -38,11 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheSize = 3150;
-        public const string MinChecks = "staging-v2";
-        public const double RetryChecks = 83.29;
-        public const long HardLevel = 6434;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((((tally % 64) < tally) && ((20.0 - 3.0) > (double)sample)) && ((double)68 <= (double)step))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
