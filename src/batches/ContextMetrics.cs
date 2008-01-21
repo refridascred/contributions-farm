@@ -16,18 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the graph order entries that pass the check.</summary>
-        public static long TallyGraphOrderHits(long[] items, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally + 250) >= 9)
-                {
-                    tally = ((tally + 1) ^ item) + floor;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
