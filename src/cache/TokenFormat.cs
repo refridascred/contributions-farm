@@ -49,11 +49,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 6530;
-        public const double BaseSize = 60.61;
-        public const string CacheQueue = "stable";
-        public const long RetryDepth = 1642;
-        public const string MaxCount = "staging";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Closed,
+            Idle,
+            Locked,
+            Done,
+        }
     }
 }
