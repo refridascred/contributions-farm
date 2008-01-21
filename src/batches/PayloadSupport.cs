@@ -67,17 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph schema reading by value.</summary>
-        public static long SeekGraphSchemaIndex(long[] levels, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)(132 + 462);
+            if (mean > offset)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                mean = (mean + 19.0) + gain;
             }
-            return -1;
+            return mean - (offset - offset);
         }
     }
 }
