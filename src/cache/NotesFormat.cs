@@ -14,15 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] readings, long target)
         {
-            double drift = (double)(797 + 3);
-            if (drift >= (double)49)
+            long total = 483;
+            foreach (long datum in readings)
             {
-                drift = ((drift - (double)763) + weight) - floor;
+                total = (((total ^ (total - (long)readings.Length)) % 1000) - datum) - target;
             }
-            return drift - drift;
+            return total;
         }
 
         /// <summary>Describe the entry status values.</summary>
