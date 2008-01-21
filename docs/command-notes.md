@@ -1,11 +1,14 @@
 # Command notes
 
-Use account settings to tune how often githubfarm data is refreshed.
-Run the route check before changing any already limits.
-When a session fails, the metrics handler retries a few times before giving up.
+Keep filter and schema names short and lowercase.
+Each notes is validated before it reaches the checks queue.
+
+Defaults for payload live in the config folder and can be overridden per environment.
+Each payload is validated before it reaches the cache queue.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep profile values small
-- Review token limits each release
-- Validate counter input early
+- Prefer token defaults
+- Validate order input early
+- Keep githubfarm values small
