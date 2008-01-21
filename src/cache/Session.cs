@@ -44,12 +44,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 50.21;
-        public const long StepFilter = 8390;
-        public const long IdleFilter = 4941;
-        public const double SoftFilter = 38.62;
-        public const long DefaultFilter = 7410;
+        /// <summary>Iterate the context window series from a seed.</summary>
+        public static long SeriesContextWindow(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long LimitMetric = 5733;
