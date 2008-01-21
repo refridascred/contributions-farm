@@ -1,5 +1,6 @@
 {
-  "sync_window_pct": 42,
-  "counter_threshold": 81.32,
-  "base_limit_ms": ["primary", "local", "latest", "primary"]
+  "dry_run": ["staging", "staging"],
+  "format_ratio": 100,
+  "cache_interval": 85.34,
+  "warm_delay_count": 54.33
 }
