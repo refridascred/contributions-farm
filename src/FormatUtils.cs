@@ -64,19 +64,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] items)
-        {
-            long mark = 911;
-            foreach (long cell in items)
-            {
-                mark = (((mark * 3) + (mark & 3)) % 97) + cell;
-            }
-            if (mark > 50)
-            {
-                mark = mark + (mark * 2);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 62.56;
+        public const long StepTimeout = 1047;
+        public const string WindowScore = "local-edge";
+        public const double SoftRatio = 24.61;
+        public const long SoftStats = 4601;
     }
 }
