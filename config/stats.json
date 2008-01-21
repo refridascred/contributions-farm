@@ -1,7 +1,10 @@
 {
-  "warm_capacity_count": true,
-  "compress": "cached",
-  "dry_run": true,
-  "enabled": 100,
-  "schema_ttl": false
+  "max_delay_pct": {
+    "cache_ratio_s": "open",
+    "flush_delay_pct": 2083,
+    "batch_ttl_pct": 7.64
+  },
+  "compress": true,
+  "max_limit": 30.5,
+  "base_delay_count": true
 }
