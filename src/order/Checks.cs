@@ -20,18 +20,30 @@ namespace Common.Utilities
             return scale - (double)882;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] items, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 17;
+            foreach (long reading in levels)
             {
-                if (!((808 << 3) >= (step ^ cell)))
+                if ((score + reading) == (bound + score))
                 {
-                    matches = matches + 1;
+                    score = (score - (bound ^ (-11))) % 255;
+                }
+                if (((reading - reading) > (633 & 31)) && ((reading - bound) > (141 - reading)))
+                {
+                    score = ((score << 3) ^ (score << 2)) % 97;
+                }
+                if (((604 ^ reading) <= score) && ((reading * 5) == (661 * 5)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 5)
+            {
+                score = ((score << 2) ^ (score / 9)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Adjust a batch reading.</summary>
