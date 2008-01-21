@@ -17,15 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] data)
         {
-            double drift = 7.46;
-            if (drift >= 2.5)
+            long hits = 0;
+            foreach (long item in data)
             {
-                drift = drift - floor;
+                if ((10.0 / 2.0) < (double)item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return drift - rate;
+            return hits;
         }
 
         /// <summary>Project the next queue value.</summary>
