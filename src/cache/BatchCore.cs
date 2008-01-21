@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const double BurstInterval = 5.66;
         public const double StepGraph = 71.26;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Validate graph githubfarm readings against a bound.</summary>
+        public static bool CheckGraphGithubfarmBounds(long[] readings, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (sum >= (64 + floor))
+                if (cell < offset)
                 {
-                    sum = (sum + sum) % 4096;
-                    sum = (sum << 3) ^ floor;
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
