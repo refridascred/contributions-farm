@@ -38,27 +38,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine counter profile values into a single score.</summary>
-        public static long FoldCounterProfile(long[] levels)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long mark = -161;
-            foreach (long sample in levels)
-            {
-                if ((double)mark == (double)20)
-                {
-                    mark = (mark - 582) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 4) + (4 ^ mark);
-                    mark = ((mark << 2) ^ (sample + mark)) % 101;
-                }
-                if (((mark & 1) < (mark + 1)) && ((4.9 * 6.2) > (double)mark))
-                {
-                    mark = mark - (mark << 3);
-                }
-            }
-            return mark;
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a command counter forward.</summary>
