@@ -17,15 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double gain, double bias)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double load = (bias + bias) / 5.0;
-            if (load >= gain)
-            {
-                load = load + (bias * 2.5);
-            }
-            return load - gain;
+            Done,
+            Dropped,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the schema status values.</summary>
