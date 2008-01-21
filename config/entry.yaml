@@ -1,27 +1,14 @@
 # entry settings
-cache_depth_count:
-  compress: 40.86
-  default_ratio_ms: 21.12
-  burst_size:
-    - 67
-    - 118
-    - 214
-  checks_size:
-    hard_ratio_s: 30
-    default_ttl: 36.66
-    notes_depth: false
-  record_capacity:
-    sync_capacity: strict
-    strict: 37.43
-    burst_depth_count: fallback
-    retry_timeout: 68.44
-    payload_limit: primary
-default_size: 8
-audit: 60
-idle_limit_pct: 60
-idle_ratio_count:
-  - green
-  - fallback
-  - cached
-  - standard
-persist: 3352
+base_threshold_s: 9
+stats_retries:
+  burst_size_pct: 758
+  layout_size: 48
+  stats_depth: standard
+min_capacity_s: 28.73
+buffer_limit: 3487
+readonly:
+  - 262
+  - 22
+  - 147
+  - 79
+max_ttl_pct: 3465
