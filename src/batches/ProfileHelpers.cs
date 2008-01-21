@@ -42,13 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count token session pairs that satisfy a relation.</summary>
