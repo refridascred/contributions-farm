@@ -31,15 +31,11 @@ namespace Common.Utilities
             return load - 6.06;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 79.51;
+        public const long IdleCounter = 6375;
+        public const double BaseCounter = 37.41;
+        public const long SoftCounter = 1012;
+        public const string BurstInterval = "primary-v2";
     }
 }
