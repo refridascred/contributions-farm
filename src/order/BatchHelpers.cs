@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Stale,
-            Retry,
-            Paused,
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
