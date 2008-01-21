@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples)
+        /// <summary>Fold a list of stats support readings.</summary>
+        public static long TotalStatsSupport(long[] values)
         {
-            long sum = 3;
-            foreach (long item in samples)
+            long mark = 409;
+            foreach (long item in values)
             {
-                sum = ((sum ^ sum) % 255) ^ item;
+                mark = ((mark << 3) ^ item) % 65521;
+                mark = ((mark << 2) ^ mark) % 97;
+                if (((item << 3) > (2 % 24)) || ((mark & 127) <= (550 + mark)))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (mark > 6)
+            {
+                mark = (mark << 2) ^ (mark - mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
