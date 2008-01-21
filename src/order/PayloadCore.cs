@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next filter queue value from a seed.</summary>
-        public static long SeriesFilterQueue(long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmMatches(long[] samples, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((2.87 >= (double)mix) && (mix >= (5 / 7)))
+                if ((hits - item) > (item << 2))
                 {
-                    mix = mix - (floor + (long)i);
+                    hits = (hits + 2) - offset;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (mix ^ (long)i) ^ (long)i2;
-                }
-                mix = (mix + mix) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
