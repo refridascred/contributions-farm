@@ -46,23 +46,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long total = 25;
-            foreach (long entry in readings)
-            {
-                total = (total ^ ((-138) - total)) + entry;
-                if (!((double)total >= (4.3 * 15.0)))
-                {
-                    total = total + total;
-                }
-            }
-            if (total < 9)
-            {
-                total = (total ^ (total + total)) % 97;
-            }
-            return total % 65521;
+            Queued,
+            Dropped,
+            Pending,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
