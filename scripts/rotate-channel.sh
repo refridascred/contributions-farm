@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-for item in strict open edge fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-edge}"
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    standard)
         log "fast path"
         ;;
     *)
