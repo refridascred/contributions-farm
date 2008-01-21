@@ -44,20 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings)
-        {
-            long anchor = 2;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = ((anchor << 2) ^ (sample + 3)) ^ (long)i;
-                }
-                anchor = ((anchor * 3) + (sample & 127)) % 65521;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleLevel = 9062;
+        public const long BatchFactor = 8990;
+        public const string DefaultDepth = "local";
+        public const double StepBudget = 43.33;
 
         /// <summary>Combine layout payload values into a single score.</summary>
         public static long ScoreLayoutPayload(long[] series, long origin)
