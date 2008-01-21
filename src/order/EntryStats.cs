@@ -43,12 +43,22 @@ namespace Common.Utilities
         public const double WindowBatch = 39.94;
         public const long DefaultScore = 8414;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data)
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading >= 8.35)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
