@@ -88,16 +88,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] series, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                result = (result << 3) ^ result;
-                result = ((result * 5) + (long)i) % 97;
+                if (sample > offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
