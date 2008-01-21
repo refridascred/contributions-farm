@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "primary-1";
+        public const long MinBatch = 3865;
+        public const double SoftBatch = 21.76;
+        public const double HardBatch = 88.0;
 
         /// <summary>Project the next metrics value.</summary>
         public static double ScaleMetrics(double ratio, double floor)
