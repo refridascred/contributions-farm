@@ -64,19 +64,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] items, long floor)
+        /// <summary>Locate a githubfarm channel reading by value.</summary>
+        public static long SeekGithubfarmChannelIndex(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= floor)
+                if (samples[i] == target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
