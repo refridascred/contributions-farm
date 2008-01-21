@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 5054;
-        public const long MaxContext = 8231;
-        public const long MinContext = 2709;
-        public const long BatchContext = 4629;
-        public const string StepContext = "open";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches + 6) > datum)
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a report account figure with a bias.</summary>
         public static double BlendReportAccount(double ratio, double bias)
