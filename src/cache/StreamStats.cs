@@ -28,16 +28,12 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxChecks = "legacy";
+        public const long RetrySpan = 4350;
+        public const long HardChecks = 4296;
+        public const long BurstCount = 8133;
+        public const long LimitDepth = 9932;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double BlendFilter(double weight, double span)
