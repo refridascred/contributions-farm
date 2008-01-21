@@ -27,19 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] data, long floor)
         {
-            long carry = 4;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long cell in data)
             {
-                carry = ((carry ^ carry) % 1000) + sample;
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry > 81)
-            {
-                carry = ((carry * 2) + (carry >> 1)) % 101;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
