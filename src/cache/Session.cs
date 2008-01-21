@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches notes entry stays within the limit.</summary>
-        public static bool GuardBatchesNotesLimits(long[] readings, long origin)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long result = -43;
+            foreach (long item in values)
             {
-                if (item != origin)
+                result = (result * 4) + item;
+                result = result + ((long)values.Length & 7);
+                if ((result + (long)values.Length) != (result & 63))
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 3) ^ result) % 255;
                 }
             }
-            return ready;
+            if (result < 330)
+            {
+                result = result - (43 - result);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
