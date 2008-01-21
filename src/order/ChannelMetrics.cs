@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long target, long limit)
         {
-            public string Offset { get; set; } = "";
-            public double Score { get; set; }
-            public long Count { get; set; }
+            if ((double)target >= (4.43 + 12.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + limit) >= (limit - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
