@@ -29,24 +29,18 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] readings, long limit)
         {
-            if ((offset % 16) == (offset - offset))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + 79) >= offset)
+                if (((((long)readings.Length >> 1) < entry) && (1.0 > (double)limit)) && (7.0 >= (double)limit))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
