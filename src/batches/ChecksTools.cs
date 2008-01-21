@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a payload counter pair into a bucket.</summary>
-        public static long RankPayloadCounter(long floor, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            if ((floor / 6) == (step << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor < (step * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Total { get; set; }
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first queue account entry that matches the target.</summary>
