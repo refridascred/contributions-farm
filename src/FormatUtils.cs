@@ -67,15 +67,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long origin)
         {
-            long state = 47;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state ^ offset) % 1000) + sample;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
