@@ -1,5 +1,18 @@
 {
-  "min_size_pct": [215, 155],
-  "graph_window": "eu-west",
-  "notes_capacity": 98.28
+  "context_interval": 73.6,
+  "burst_retries_pct": "eu-west",
+  "batch_limit": 30,
+  "cache_size": {
+    "cache_size": false,
+    "readonly": {
+      "default_retries_count": "blue",
+      "base_capacity_ms": false,
+      "burst_threshold_ms": 7287,
+      "max_ttl": "open"
+    },
+    "burst_threshold_pct": 9324,
+    "strict": 18,
+    "batch_timeout_count": 94.88,
+    "notes_ttl": false
+  }
 }
