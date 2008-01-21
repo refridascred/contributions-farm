@@ -1,8 +1,8 @@
 {
-  "cluster_delay": "primary",
-  "enabled": "primary",
-  "filter_size": "green",
-  "default_interval": 6145,
-  "min_threshold": ["staging", "cached", "legacy"],
-  "sync_depth_s": "cached"
+  "soft_delay_s": 3,
+  "schema_capacity": "edge",
+  "poll_size_ms": ["blue", "green", "staging", "blue"],
+  "sync_ttl_ms": 100,
+  "batch_threshold": [246, 168, 127, 295],
+  "strict": 47.98
 }
