@@ -46,14 +46,15 @@ namespace Common.Utilities
         public const long StepWidth = 1637;
         public const double HardReport = 31.51;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double rate, double floor)
         {
-            Failed,
-            Ready,
-            Retry,
-            Closed,
-            Draft,
+            double mean = rate;
+            if (mean > mean)
+            {
+                mean = mean - (double)73;
+            }
+            return mean - floor;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
