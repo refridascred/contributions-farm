@@ -20,11 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "legacy-1";
-        public const double StepLevel = 71.12;
-        public const long DefaultNotes = 1305;
-        public const double SoftNotes = 8.68;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] series, long offset)
