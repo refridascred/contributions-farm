@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            Synced,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
