@@ -26,18 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] samples)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long sum = 40;
+            foreach (long datum in series)
             {
-                if (!(tally >= entry))
+                if (((14.0 - 7.6) >= (double)sum) || ((target / 9) < sum))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 2) + (sum % 5)) % 97;
+                }
+                if (((double)datum >= (9.0 - 3.83)) || (target < (sum - sum)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a support summary.</summary>
