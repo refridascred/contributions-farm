@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 23.48;
-        public const double BatchSize = 38.73;
-        public const long IdleMetric = 5762;
-        public const long DefaultMetric = 6815;
-        public const long MinRatio = 2988;
+        /// <summary>Measure how many schema entry samples are out of range.</summary>
+        public static long CountSchemaEntryGaps(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((reading - offset) != (hits - offset)) && ((offset >= reading) || (reading < (offset + 736))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long TallyMetricGaps(long[] levels, long seed)
