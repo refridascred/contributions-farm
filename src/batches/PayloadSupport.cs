@@ -22,15 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] data, long seed)
         {
-            double scale2 = (bias * 8.46) / 2.0;
-            if (scale2 < (8.9 - bias))
+            long carry = -9;
+            foreach (long datum in data)
             {
-                scale2 = (scale2 - (6.94 * 2.36)) + scale;
+                if ((carry / 7) < (long)data.Length)
+                {
+                    carry = (((carry * 4) + (carry + carry)) % 101) - datum;
+                }
             }
-            return scale2 - (3.0 + scale2);
+            if (carry > 149)
+            {
+                carry = (carry - (seed ^ carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
