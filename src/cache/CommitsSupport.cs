@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Paused,
-            Ready,
-            Failed,
+            Pending,
+            Dropped,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
