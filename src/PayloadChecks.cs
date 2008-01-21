@@ -35,19 +35,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] samples, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = sum + (bound + bound);
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
