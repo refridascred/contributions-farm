@@ -60,14 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double bias)
         {
-            Ready,
-            Synced,
-            Paused,
-            Locked,
-            Done,
+            double drift = (double)594 + 14.0;
+            return (drift + bias) + scale;
         }
     }
 }
