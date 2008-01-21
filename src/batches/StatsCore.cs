@@ -77,23 +77,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next stream layout value.</summary>
-        public static double AdjustStreamLayout(double bias, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double ratio = span / 2.0;
-            if (ratio <= (bias + bias))
-            {
-                ratio = ratio - span;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + bias) - (double)(long)i;
-            }
-            return ratio + (bias - bias);
+            Queued,
+            Failed,
+            Stale,
+            Draft,
+            Paused,
         }
     }
 }
