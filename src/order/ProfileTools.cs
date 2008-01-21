@@ -23,11 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats commits value.</summary>
-        public static double ProjectStatsCommits(double ratio, double floor)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] samples, long offset)
         {
-            double gain = ratio;
-            return (gain - (gain - 7.0)) + floor;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
