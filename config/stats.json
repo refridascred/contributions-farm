@@ -1,11 +1,8 @@
 {
-  "default_ratio_count": {
-    "poll_limit_ms": 9740,
-    "strict": true,
-    "base_window_ms": 7645,
-    "burst_interval_count": ["blue", "eu-west"]
-  },
-  "cache_delay": [30, 408, 382, 21],
-  "soft_ttl_pct": ["edge", "edge"],
-  "retry_capacity_ms": "edge"
+  "order_depth": 100,
+  "poll_window_count": "staging",
+  "base_interval_count": 7105,
+  "batch_limit_s": "strict",
+  "readonly": "green",
+  "window_window": 58
 }
