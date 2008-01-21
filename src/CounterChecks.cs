@@ -44,20 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] series)
-        {
-            long mark = 49;
-            foreach (long reading in series)
-            {
-                mark = (((mark * 5) + 997) % 97) - reading;
-            }
-            if (mark < 4)
-            {
-                mark = (mark - (mark & 63)) % 4096;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 5629;
+        public const long SoftNotes = 8021;
+        public const string BatchRatio = "alpha";
+        public const double MaxNotes = 0.86;
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long floor, long offset)
