@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 3763;
-        public const long DefaultCommits = 5213;
-        public const double DefaultTimeout = 50.78;
-        public const long BatchTimeout = 2272;
-        public const long HardCommits = 8803;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
+        {
+            long acc = 422;
+            foreach (long reading in readings)
+            {
+                acc = ((acc * 2) + (reading * 5)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
