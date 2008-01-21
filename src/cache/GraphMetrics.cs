@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const double HardFilter = 97.35;
         public const long HardCount = 2026;
 
-        /// <summary>Find the first contributi session entry that matches the target.</summary>
-        public static long SeekContributiSessionIndex(long[] series, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 4;
+            foreach (long item in data)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                if (!(146 <= (item - item)))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + item) % 1000;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
