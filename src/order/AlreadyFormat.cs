@@ -32,11 +32,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            Retry,
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
