@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public string Region { get; set; } = "";
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            Locked,
+            Idle,
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
