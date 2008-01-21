@@ -11,17 +11,24 @@ namespace Common.Utilities
         public const double BurstChannel = 18.68;
         public const double DefaultBudget = 84.13;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] data, long seed)
+        /// <summary>Roll a cluster cache counter forward.</summary>
+        public static long IterateClusterCache(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (data[i] >= seed)
+                if ((step - step) != (long)i)
                 {
-                    return (long)i;
+                    continue;
                 }
+                if (!(110 > (step >> 5)))
+                {
+                    result = (result << 2) ^ step;
+                    result = result - result;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
