@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long floor)
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool GuardReportSessionLimits(long[] items, long offset)
         {
-            long state = 812;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (((floor - item) <= ((long)data.Length + item)) && ((18.0 / 5.0) != (double)floor))
+                if (sample <= offset)
                 {
-                    state = (state - (state - state)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
