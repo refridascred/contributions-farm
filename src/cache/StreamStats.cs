@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every window schema entry stays within the limit.</summary>
-        public static bool VerifyWindowSchemaRange(long[] data, long seed)
-        {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseTimeout = 85.23;
+        public const double MaxStream = 23.33;
+        public const long LimitSpan = 9564;
+        public const long StepTimeout = 7625;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double rate, double floor)
