@@ -45,12 +45,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Find the first checks cache entry that matches the target.</summary>
+        public static long FindChecksCacheIndex(long[] values, long target)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
