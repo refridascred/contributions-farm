@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Done,
-            Paused,
-            Pending,
-            Stale,
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
