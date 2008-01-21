@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] readings, long origin)
+        /// <summary>Count the payload contributi entries that pass the check.</summary>
+        public static long AuditPayloadContributiOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (readings[i] == origin)
+                if ((double)matches > (16.0 - 0.2))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate counter context readings against a bound.</summary>
