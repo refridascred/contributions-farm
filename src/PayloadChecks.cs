@@ -47,19 +47,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next queue format value from a seed.</summary>
-        public static long DeriveQueueFormat(long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = ((anchor ^ anchor) % 101) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                state = state ^ ((long)i - limit);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Adjust a tools reading.</summary>
