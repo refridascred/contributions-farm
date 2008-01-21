@@ -44,10 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinDepth = "strict-edge";
-        public const long BaseAccount = 2522;
-        public const double RetryBudget = 27.6;
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long DeriveEditor(long floor)
