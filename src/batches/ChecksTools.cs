@@ -51,22 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] readings, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] series, long offset)
         {
-            long carry = 2;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (entry <= carry)
+                if (cell != offset)
                 {
-                    carry = carry + (target / 2);
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 97)
-            {
-                carry = (carry - carry) % 255;
-            }
-            return carry % 1000;
+            return flag;
         }
     }
 }
