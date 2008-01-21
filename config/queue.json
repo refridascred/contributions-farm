@@ -1,7 +1,13 @@
 {
-  "min_ratio": 65,
-  "base_threshold": [88, 77, 474],
-  "soft_threshold_pct": "strict",
-  "strict": 30,
-  "verbose": 1024
+  "filter_interval": [200, 23],
+  "warm_size_s": {
+    "readonly": 60,
+    "sync_interval_count": "eu-west",
+    "max_timeout": "open",
+    "soft_window": true
+  },
+  "idle_timeout": false,
+  "dry_run": 20.02,
+  "base_ttl": "blue",
+  "support_threshold": true
 }
