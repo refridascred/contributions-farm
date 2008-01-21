@@ -37,16 +37,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] series, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                sum = sum + (bound + bound);
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (datum <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
