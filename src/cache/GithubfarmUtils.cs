@@ -44,12 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Stale,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "fallback-1";
+        public const long SoftMetrics = 4844;
+        public const double MinMetrics = 92.57;
+        public const long DefaultMetrics = 6591;
+        public const long MinCount = 4232;
     }
 }
