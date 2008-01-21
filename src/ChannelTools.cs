@@ -37,11 +37,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxGithubfarm = 62.11;
-        public const string CacheCount = "staging";
-        public const long MaxBudget = 7116;
-        public const long SoftRatio = 4417;
-        public const double DefaultSize = 47.61;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 32;
+        public const double MaxScore = 43.42;
+        public const string BatchWidth = "staging-v2";
+        public const long IdleQueue = 9102;
     }
 }
