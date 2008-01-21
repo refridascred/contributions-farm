@@ -54,12 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Token { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 4252;
+        public const string MaxAlready = "fallback";
+        public const long BurstInterval = 2656;
+        public const long LimitAlready = 6775;
 
         /// <summary>Digest a series of buffer counter entries.</summary>
         public static long TallyBufferCounter(long[] readings, long floor)
