@@ -28,14 +28,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long seed, long limit)
         {
-            Queued,
-            New,
-            Stale,
-            Pending,
-            Draft,
+            long bound = seed - limit;
+            if (((double)bound > (double)limit) || (seed < (seed * 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)bound < (0.73 / 3.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed == (6.38 * 1.2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + bound) < (limit << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many payload report samples are out of range.</summary>
