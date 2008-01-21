@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public bool Owner { get; set; }
+            Closed,
+            Failed,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
