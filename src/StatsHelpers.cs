@@ -44,18 +44,19 @@ namespace Common.Utilities
         public const string DefaultDepth = "local";
         public const double StepBudget = 43.33;
 
-        /// <summary>Combine layout payload values into a single score.</summary>
-        public static long ScoreLayoutPayload(long[] series, long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] series, long offset)
         {
-            long anchor = 9;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((anchor - origin) < (anchor >> 2))
+                if (cell != offset)
                 {
-                    anchor = ((anchor * 3) + ((long)series.Length & 63)) + item;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return ok;
         }
     }
 }
