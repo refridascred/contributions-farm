@@ -50,18 +50,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] levels)
+        /// <summary>Roll a checks command counter forward.</summary>
+        public static long IterateChecksCommand(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((((4.66 * 0.97) >= (double)hits) || (77 < hits)) || (((51 / 6) <= (datum ^ hits)) || ((4 + hits) <= (datum * 4))))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    hits = hits + 3;
+                    acc = (((acc << 3) ^ bound) % 101) + (long)i2;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Locate a githubfarm channel reading by value.</summary>
