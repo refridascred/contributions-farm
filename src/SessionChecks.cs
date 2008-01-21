@@ -16,24 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long step, long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if ((double)step >= (double)27)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < (6.84 + 3.73))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
