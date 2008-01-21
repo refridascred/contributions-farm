@@ -1,10 +1,7 @@
-id,state,region
-1,strict,31.7
-2,latest,stable
-3,15,cached
-4,443,72.52
-5,162,785
-6,66.52,open
-7,2.48,fallback
-8,4.14,608
-9,cached,4
+id,rank,owner,count
+1,139,616,19.14
+2,88.99,open,green
+3,stable,15.5,30.05
+4,71.78,cached,65.13
+5,893,59,64.25
+6,657,strict,primary
