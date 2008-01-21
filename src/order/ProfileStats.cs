@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings)
-        {
-            long acc = 422;
-            foreach (long reading in readings)
-            {
-                acc = ((acc * 2) + (reading * 5)) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheInterval = "fallback";
+        public const string WindowContributi = "strict-edge";
+        public const long LimitBudget = 3996;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
