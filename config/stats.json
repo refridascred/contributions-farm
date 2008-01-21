@@ -1,6 +1,6 @@
 {
-  "verbose": 37,
-  "dry_run": "stable",
-  "poll_retries_s": 71,
-  "default_depth": "open"
+  "max_retries_count": 8,
+  "persist": "open",
+  "batch_delay": [254, 249],
+  "stream_ttl": 250
 }
