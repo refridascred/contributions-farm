@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public bool Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitSpan = 1395;
+        public const long DefaultEntry = 1113;
+        public const string IdleDepth = "open-1";
+        public const double RetryLevel = 89.24;
+        public const double StepInterval = 14.86;
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
