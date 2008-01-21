@@ -20,11 +20,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "alpha-edge";
-        public const double IdleLayout = 51.76;
-        public const long DefaultWidth = 5157;
-        public const string BurstLayout = "standard-1";
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double gain, double bias)
+        {
+            double gain2 = gain;
+            if (gain2 < (gain + gain2))
+            {
+                gain2 = (gain2 - (gain / 6.0)) + bias;
+            }
+            else
+            {
+                gain2 = gain2 + (double)770;
+            }
+            return gain2 - (gain2 * 3.0);
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
