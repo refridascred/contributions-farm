@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] readings, long target)
+        /// <summary>Scale a format already figure with a bias.</summary>
+        public static double ProjectFormatAlready(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double scale = (gain / 4.0) / 3.0;
+            if (scale > 13.0)
             {
-                if ((6 + item) < item)
-                {
-                    tally = (tally + 1) - target;
-                }
+                scale = scale + bias;
             }
-            return tally;
+            else
+            {
+                scale = scale + (double)(-83);
+            }
+            return scale - (gain / 3.0);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
