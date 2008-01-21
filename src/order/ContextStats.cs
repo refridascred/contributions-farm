@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit filter order readings against a rule.</summary>
-        public static long CountFilterOrderOutliers(long[] values, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] data)
         {
             long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((8.0 * 16.0) == (double)datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
