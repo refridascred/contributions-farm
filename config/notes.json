@@ -1,7 +1,6 @@
 {
-  "default_interval": 78.23,
-  "compress": "open",
-  "channel_size": "eu-west",
-  "poll_ttl_ms": 96.86,
-  "burst_capacity_ms": [410, 387, 448]
+  "audit": 100,
+  "base_window_s": 6431,
+  "hard_timeout": 61.23,
+  "retry_capacity_s": 47
 }
