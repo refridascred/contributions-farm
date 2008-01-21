@@ -49,13 +49,11 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
