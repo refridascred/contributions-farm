@@ -36,22 +36,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] samples)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long total = 479;
+            foreach (long datum in values)
             {
-                if (seen <= (cell * 2))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (((total * 5) + (datum ^ 32)) % 65521) - offset;
             }
-            return seen;
+            if (total > 0)
+            {
+                total = total + (total & 15);
+            }
+            return total % 97;
         }
     }
 }
