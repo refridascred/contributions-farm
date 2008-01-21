@@ -1,8 +1,33 @@
 # githubfarm settings
-token_window: 9331
-cluster_interval: 49.83
-min_size_ms: 65.94
-burst_threshold_pct:
-  - 19
-  - 313
-  - 461
+batches_window: 3063
+idle_ttl_s: 3
+strict: 29.61
+max_ttl_count: 80.72
+base_window: true
+flush_threshold_s:
+  readonly:
+    - 222
+    - 162
+    - 129
+    - 265
+  dry_run:
+    - 302
+    - 498
+  editor_timeout:
+    sync_threshold_s:
+      - cached
+      - stable
+      - latest
+      - cached
+    min_ratio_s: true
+    retry_ttl: 35.18
+    min_retries_ms:
+      - 240
+      - 290
+    batches_threshold:
+      - 447
+      - 282
+      - 229
+      - 398
+  enabled: 4.74
+  min_capacity_pct: 64.1
