@@ -1,6 +1,10 @@
 {
-  "soft_retries_count": "cached",
-  "burst_timeout_pct": "staging",
-  "batch_ratio": 77.56,
-  "enabled": "staging"
+  "batches_capacity": ["stable", "legacy", "stable", "stable"],
+  "flush_limit": ["latest", "blue"],
+  "batch_depth_s": {
+    "burst_delay": "edge",
+    "cache_ttl_ms": [304, 92, 354],
+    "batch_ratio": true,
+    "batch_size_count": 2932
+  }
 }
