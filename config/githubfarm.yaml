@@ -1,25 +1,13 @@
 # githubfarm settings
-soft_depth_pct:
-  batches_interval:
-    flush_window_ms: 92
-    commits_depth: true
-    default_ttl:
-      - 275
-      - 194
-      - 15
-    channel_timeout: green
-    min_threshold_s: 60
-    window_ratio: eu-west
-  min_interval_count: true
-  persist: false
-  warm_limit_s: false
-  min_interval_ms: 32.24
-readonly: 100
-default_interval_count: legacy
-compress: false
-cache_ratio_ms:
-  - 443
-  - 271
-  - 87
-  - 249
-sync_capacity_s: false
+warm_ttl_s: true
+default_depth:
+  - legacy
+  - standard
+  - legacy
+flush_interval_pct:
+  - cached
+  - cached
+  - open
+idle_delay_count: true
+warm_delay_pct: 60
+stats_interval: 30
