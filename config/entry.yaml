@@ -1,31 +1,12 @@
 # entry settings
-retry_depth_pct:
-  metrics_delay: 100
-  soft_window: legacy
-  base_threshold_pct: false
-  min_interval_count:
-    - 41
-    - 295
-    - 355
-  batch_timeout_s: 83.56
-idle_threshold_s:
-  - green
-  - standard
-flush_window_count:
-  flush_size_s:
-    - 101
-    - 169
-    - 339
-    - 388
-  cluster_timeout: primary
-  poll_size_ms: 92
-  idle_retries_ms:
-    - local
-    - standard
-    - stable
-  stream_threshold:
-    - cached
-    - strict
-    - fallback
-  flush_timeout_count: true
-persist: legacy
+flush_depth_pct: 6307
+compress:
+  base_size: 46.33
+  poll_retries_pct: true
+  flush_window_s: standard
+  retry_size: 58
+  strict: 2242
+retry_ratio_pct:
+  - legacy
+  - fallback
+  - open
