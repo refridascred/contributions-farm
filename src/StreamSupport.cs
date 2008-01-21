@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Failed,
-            Queued,
-            New,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 81.98;
+        public const long MinCount = 6217;
+        public const double IdleCounter = 34.01;
+        public const long BatchSize = 382;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
