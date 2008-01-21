@@ -13,17 +13,26 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first queue account entry that matches the target.</summary>
-        public static long LookupQueueAccountIndex(long[] values, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -69;
+            foreach (long cell in data)
             {
-                if (values[i] == step)
+                if (!((973 & 1) < cell))
                 {
-                    return (long)i;
+                    result = result + result;
+                }
+                if ((cell + cell) <= 77)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 39)
+            {
+                result = ((result * 5) + result) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define token limits and defaults.</summary>
