@@ -1,18 +1,5 @@
 {
-  "max_size_ms": {
-    "sync_depth_ms": "local",
-    "flush_delay_ms": ["blue", "local", "eu-west", "primary"],
-    "burst_capacity_ms": {
-      "min_delay": "standard",
-      "min_limit": true,
-      "sync_ratio_ms": ["eu-west", "eu-west", "local"],
-      "entry_window": "latest",
-      "metric_window": 46,
-      "warm_depth_count": 71
-    },
-    "retry_limit_pct": false,
-    "session_limit": ["eu-west", "legacy"]
-  },
-  "payload_retries": false,
-  "idle_limit": false
+  "burst_threshold_s": "blue",
+  "strict": ["primary", "staging", "cached"],
+  "max_interval_pct": 100
 }
