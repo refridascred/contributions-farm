@@ -45,28 +45,23 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double rate, double offset)
         {
-            long mark = 14;
-            foreach (long reading in items)
+            double drift = offset;
+            if (drift <= (drift * 5.0))
             {
-                long prev = (mark << 3) ^ (mark % 3);
-                if (((prev >> 3) != (mark / 6)) || ((prev << 3) < mark))
-                {
-                    mark = (mark ^ (mark % 5)) % 1000;
-                    mark = mark ^ (605 * 4);
-                }
-                if (reading < (mark % 5))
-                {
-                    mark = ((mark * 5) + mark) % 101;
-                }
-                if ((7.0 * 8.1) < (double)reading)
-                {
-                    break;
-                }
+                drift = drift - (drift - rate);
             }
-            return mark;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (3.6 + drift)) + (double)(long)i;
+            }
+            return drift + (7.51 - rate);
         }
 
         /// <summary>Hold a record header.</summary>
