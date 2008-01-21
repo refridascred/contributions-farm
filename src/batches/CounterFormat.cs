@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double scale = weight;
-            if (scale <= (scale * 3.1))
-            {
-                scale = (scale + scale) - bias;
-            }
-            return scale - scale;
+            Pending,
+            Failed,
+            Done,
+            Paused,
+            Draft,
         }
 
         /// <summary>Combine window values into a single score.</summary>
