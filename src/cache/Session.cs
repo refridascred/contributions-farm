@@ -40,18 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a layout commits reading by value.</summary>
-        public static long SeekLayoutCommitsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 878;
+        public const string BurstSpan = "strict-v2";
+        public const long WindowMetric = 6121;
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] values, long target)
