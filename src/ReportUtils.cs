@@ -49,10 +49,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinRatio = 5544;
-        public const double SoftSize = 42.51;
-        public const long RetryOrder = 2750;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long floor)
+        {
+            if ((origin / 6) < floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(origin > (floor << 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin >= (floor * 4)) || ((origin * 3) == (origin << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepSize = 63.96;
