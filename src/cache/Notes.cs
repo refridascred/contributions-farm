@@ -14,25 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long target)
-        {
-            if ((double)target <= (7.2 / 2.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target / 5) >= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowSpan = 2.63;
+        public const double MaxScore = 16.15;
+        public const double StepCluster = 21.8;
+        public const double WindowCluster = 70.74;
 
         /// <summary>Locate a record route reading by value.</summary>
         public static long LocateRecordRouteIndex(long[] data, long offset)
