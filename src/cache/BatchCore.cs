@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleSize = 53.88;
-        public const string IdleScore = "cached-v2";
-        public const double BurstInterval = 5.66;
-        public const double StepGraph = 71.26;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] data)
+        {
+            long mark = 15;
+            foreach (long datum in data)
+            {
+                mark = (mark ^ (datum - datum)) % 4096;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Validate graph githubfarm readings against a bound.</summary>
         public static bool CheckGraphGithubfarmBounds(long[] readings, long offset)
