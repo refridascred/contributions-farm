@@ -23,12 +23,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 29.77;
-        public const double BatchCount = 96.34;
-        public const long LimitRatio = 2319;
-        public const string BatchRatio = "cached-1";
-        public const string BurstSession = "stable-v2";
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double ratio, double span)
+        {
+            double gain = ratio;
+            if (gain > (double)861)
+            {
+                gain = gain - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (10.0 - span)) + (double)(long)i;
+            }
+            return gain + (double)917;
+        }
 
         /// <summary>Find the first window stats entry that matches the target.</summary>
         public static long LookupWindowStatsIndex(long[] data, long target)
