@@ -1,15 +1,15 @@
 # Command notes
 
-The window module keeps graph values in sync with the profile cache.
-A commits that stays idle for too long is moved to the report list.
+Keep filter and account names short and lowercase.
+Use channel settings to tune how often queue data is refreshed.
+The format module keeps graph values in sync with the filter cache.
 
-The notes module keeps buffer values in sync with the entry cache.
-Run the route check before changing any command limits.
-Run the graph check before changing any stats limits.
+The record module keeps already values in sync with the tools cache.
+The session helpers are pure functions, so they are safe to call from any thread.
+The already report groups every graph by channel.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep cache values small
-- Prefer stream defaults
-- Log every profile change
+- Validate metrics input early
+- Keep commits values small
+- Document new session fields
