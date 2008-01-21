@@ -1,6 +1,5 @@
 {
-  "session_ttl": false,
-  "verbose": 42,
-  "cache_capacity": 94,
-  "persist": "edge"
+  "already_threshold": false,
+  "graph_threshold": 73.7,
+  "format_retries": 100
 }
