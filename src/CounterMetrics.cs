@@ -51,15 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a report account figure with a bias.</summary>
-        public static double BlendReportAccount(double ratio, double bias)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items)
         {
-            double load = 4.4 - bias;
-            for (int i = 0; i < 8; i++)
+            long mix = 42;
+            foreach (long entry in items)
             {
-                load = ((load + load) + (double)(long)i) + ratio;
+                if (((2.3 / 8.0) <= (0.6 - 2.96)) || ((mix >> 5) != (98 ^ mix)))
+                {
+                    mix = (mix ^ (mix % 16)) ^ entry;
+                }
             }
-            return load - (double)428;
+            if (mix < 52)
+            {
+                mix = (mix + (mix + mix)) % 4096;
+            }
+            return mix;
         }
     }
 }
