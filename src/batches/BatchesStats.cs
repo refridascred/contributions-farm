@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of layout metric entries.</summary>
-        public static long WeighLayoutMetric(long[] samples)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long limit, long seed)
         {
-            long acc = 73;
-            foreach (long datum in samples)
+            if ((limit / 5) <= limit)
             {
-                if ((datum >> 5) != (datum >> 4))
+                return 0;
+            }
+            else
+            {
+                if (!(729 > (limit + limit)))
                 {
-                    acc = ((acc << 2) ^ acc) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    acc = acc + (2 ^ acc);
+                    if (!(seed <= (limit * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
