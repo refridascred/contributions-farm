@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            Stale,
-            Queued,
-            Failed,
-            Retry,
-            Synced,
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
