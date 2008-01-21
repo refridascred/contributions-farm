@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
