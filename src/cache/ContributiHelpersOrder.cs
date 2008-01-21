@@ -14,25 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((double)sum > (double)step) && ((double)(long)i >= (6.0 / 7.0)))
-                {
-                    sum = ((sum << 3) ^ (sum / 8)) % 4096;
-                }
-                sum = (sum - (603 >> 3)) % 65521;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    sum = sum - (long)i2;
-                    sum = sum + ((long)i2 + sum);
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of stream readings.</summary>
