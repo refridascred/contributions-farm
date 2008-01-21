@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series, long seed)
         {
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long result = 20;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (result + (long)i) % 255;
+                }
+                result = ((result << 2) ^ (seed - sample)) % 97;
+                if ((seed <= (53 % 16)) && (seed < (seed << 2)))
+                {
+                    result = (result ^ (result >> 3)) % 4096;
+                }
+            }
+            if (result < 13)
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
