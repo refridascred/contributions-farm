@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] samples, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)count > (5.74 * 0.26))
+                if ((target & 15) <= target)
                 {
-                    count = ((count + 1) + value) - target;
+                    matches = (matches + 3) ^ reading;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
