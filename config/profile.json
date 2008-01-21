@@ -1,14 +1,7 @@
 {
-  "metrics_window": {
-    "warm_capacity_pct": {
-      "order_limit": 65,
-      "max_depth_pct": "fallback",
-      "cache_timeout_pct": "open"
-    },
-    "hard_interval_count": 44,
-    "warm_ttl_count": "local",
-    "strict": [96, 144]
-  },
-  "schema_delay": 100,
-  "flush_depth_s": false
+  "batch_delay": 1024,
+  "flush_interval": 53.24,
+  "soft_threshold_count": 500,
+  "sync_limit_ms": 68.01,
+  "format_timeout": false
 }
