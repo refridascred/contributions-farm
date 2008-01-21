@@ -31,18 +31,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mix = -4;
+            foreach (long entry in levels)
             {
-                if ((entry << 3) > entry)
+                if ((double)target != (2.4 * 4.4))
                 {
-                    matches = matches + 2;
+                    mix = ((mix * 5) + (mix - target)) + entry;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
