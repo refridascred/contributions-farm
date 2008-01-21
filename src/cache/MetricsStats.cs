@@ -33,16 +33,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values)
-        {
-            long anchor = 74;
-            foreach (long value in values)
-            {
-                anchor = (anchor + (value + anchor)) % 101;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 8498;
+        public const double BurstTimeout = 37.17;
+        public const long StepSize = 9673;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long SeekToolsIndex(long[] readings, long floor)
