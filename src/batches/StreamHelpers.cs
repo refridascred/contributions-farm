@@ -74,14 +74,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] items, long limit)
         {
-            Done,
-            Retry,
-            Stale,
-            Failed,
-            Idle,
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
