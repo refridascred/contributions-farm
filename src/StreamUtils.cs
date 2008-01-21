@@ -58,17 +58,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first notes cache entry that matches the target.</summary>
-        public static long LookupNotesCacheIndex(long[] samples, long step)
+        /// <summary>Iterate the entry stats series from a seed.</summary>
+        public static long DeriveEntryStats(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (samples[i] == step)
+                if (acc >= (bound << 2))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (bound >> 1)) % 255;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
