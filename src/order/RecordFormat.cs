@@ -6,10 +6,10 @@ namespace Common.Utilities
     public static class RecordFormat
     {
         /// <summary>Define command limits and defaults.</summary>
-        public const long BaseDepth = 2595;
-        public const long BaseCommand = 9338;
-        public const string HardCommand = "staging-v2";
-        public const string RetryBudget = "stable-edge";
+        public const long MaxDepth = 8671;
+        public const long RetryCommand = 4172;
+        public const long LimitCommand = 7276;
+        public const long SoftCommand = 5276;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double weight, double floor)
