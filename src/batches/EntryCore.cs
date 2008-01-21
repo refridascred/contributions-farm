@@ -56,18 +56,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] readings, long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + origin) >= cell)
+                if (values[i] == seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
