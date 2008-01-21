@@ -50,19 +50,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item & 127) < count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstFarm = "stable-v2";
+        public const long BurstLevel = 2478;
+        public const double WindowFarm = 26.49;
 
         /// <summary>Grade a checks filter value against two limits.</summary>
         public static long BucketChecksFilter(long limit, long target)
