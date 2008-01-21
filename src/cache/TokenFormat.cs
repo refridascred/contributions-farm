@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double ratio, double offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long bound, long floor)
         {
-            double weight = (ratio / 6.0) * 2.8;
-            return weight + (offset / 5.0);
+            long lane = bound ^ floor;
+            if ((bound + floor) > (floor / 6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound + bound) == (lane >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Grade a profile githubfarm value against two limits.</summary>
