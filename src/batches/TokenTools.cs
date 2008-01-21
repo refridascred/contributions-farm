@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit filter profile readings against a rule.</summary>
-        public static long AuditFilterProfileMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!((matches ^ 646) == (value + value)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstTimeout = 6964;
+        public const string SoftContext = "alpha-1";
+        public const long BaseDepth = 9256;
+        public const long MaxInterval = 8427;
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
