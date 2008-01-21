@@ -51,22 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Match up token window samples.</summary>
+        public static long CompareTokenWindowCount(long[] samples)
         {
-            long mix = 42;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((2.3 / 8.0) <= (0.6 - 2.96)) || ((mix >> 5) != (98 ^ mix)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ (mix % 16)) ^ entry;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 52)
-            {
-                mix = (mix + (mix + mix)) % 4096;
-            }
-            return mix;
+            return count;
         }
     }
 }
