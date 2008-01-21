@@ -28,19 +28,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] items, long origin)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Closed,
+            Queued,
+            Retry,
         }
     }
 }
