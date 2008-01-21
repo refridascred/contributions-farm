@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long WindowSchema = 6997;
         public const long DefaultTimeout = 9111;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] samples, long bound)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)(68 >> 1);
+            return ((rate + (17.0 / 6.0)) + weight) + bias;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
