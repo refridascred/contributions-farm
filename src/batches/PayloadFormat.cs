@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route already value from a seed.</summary>
-        public static long SeriesRouteAlready(long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] series, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if (origin >= (item - origin))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
