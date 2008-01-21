@@ -36,18 +36,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] readings, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((seed / 6) <= matches))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Draft,
+            Idle,
         }
     }
 }
