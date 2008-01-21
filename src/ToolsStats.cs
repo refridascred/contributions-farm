@@ -56,13 +56,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long offset)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
