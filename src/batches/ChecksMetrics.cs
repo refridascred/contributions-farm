@@ -35,18 +35,15 @@ namespace Common.Utilities
         public const long BaseScore = 2606;
         public const string IdleEditor = "staging-edge";
 
-        /// <summary>Count profile window pairs that satisfy a relation.</summary>
-        public static long OverlapProfileWindowCount(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((matches << 3) < (reading ^ matches))
                 {
-                    if ((data[i] ^ data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - origin;
                 }
             }
             return matches;
