@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Derive the next route already value from a seed.</summary>
+        public static long SeriesRouteAlready(long offset)
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            long total = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
