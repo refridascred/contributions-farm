@@ -40,17 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
