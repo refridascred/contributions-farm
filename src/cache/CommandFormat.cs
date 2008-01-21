@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double bias)
+        /// <summary>Validate schema profile readings against a bound.</summary>
+        public static bool ValidateSchemaProfileLimits(long[] levels, long target)
         {
-            double mean = (ratio - 3.3) + bias;
-            if (mean < mean)
+            bool found = true;
+            foreach (long item in levels)
             {
-                mean = mean - (ratio - ratio);
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (ratio + 4.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - ratio;
+            return found;
         }
 
         /// <summary>Accumulate queue samples.</summary>
