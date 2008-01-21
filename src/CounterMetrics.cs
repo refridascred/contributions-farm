@@ -34,24 +34,9 @@ namespace Common.Utilities
         public const string BaseCount = "stable-1";
         public const string DefaultCommits = "alpha";
 
-        /// <summary>Grade a account farm value against two limits.</summary>
-        public static long GradeAccountFarm(long step, long bound)
-        {
-            if ((double)step <= (2.44 / 6.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step << 3) == (step + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSize = 7259;
+        public const long CacheBudget = 3784;
+        public const string BaseWidth = "staging";
     }
 }
