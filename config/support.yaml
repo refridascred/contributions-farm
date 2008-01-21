@@ -1,5 +1,16 @@
 # support settings
-persist: 250
-compress: eu-west
-farm_capacity: staging
-idle_size_count: 70.14
+burst_size_count:
+  - 487
+  - 484
+  - 76
+  - 384
+layout_threshold:
+  record_timeout: 9900
+  base_ratio: true
+  retry_interval_ms: 250
+  layout_interval: 72
+  soft_timeout_s: cached
+retry_capacity: 98.0
+batch_size: legacy
+audit: 500
+report_delay: 4.26
