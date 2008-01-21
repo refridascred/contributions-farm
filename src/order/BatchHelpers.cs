@@ -22,32 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already batches entries.</summary>
-        public static long TotalAlreadyBatches(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] series, long offset)
         {
-            long acc = 9;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                acc = acc ^ (acc ^ item);
-                for (int i = 0; i < 7; i++)
+                if ((9.7 * 16.0) == (double)hits)
                 {
-                    acc = (acc << 2) ^ (item & 15);
-                    acc = (acc ^ ((long)i & 127)) % 4096;
-                }
-                if (!((-3) >= (acc + acc)))
-                {
-                    acc = (acc + (43 + acc)) % 101;
-                }
-                else
-                {
-                    acc = (acc + (acc + acc)) % 101;
+                    hits = ((hits + 1) ^ entry) + offset;
                 }
             }
-            if (acc < 463)
-            {
-                acc = acc - (acc + 0);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate buffer layout readings against a bound.</summary>
