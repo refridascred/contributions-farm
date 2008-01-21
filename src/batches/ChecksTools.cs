@@ -19,18 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] levels, long seed)
+        /// <summary>Rank session stats input into a small class.</summary>
+        public static long ClassifySessionStats(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long prev = limit - origin;
+            if ((origin - limit) < 610)
             {
-                if ((sample + hits) < (seed + 2))
+                return 8;
+            }
+            else
+            {
+                if ((prev + prev) <= origin)
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((prev * 3) > (limit - origin)) || ((limit + prev) == (limit & 7)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((origin + prev) <= (prev << 1)) && ((origin << 2) >= 782))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count cache window pairs that satisfy a relation.</summary>
