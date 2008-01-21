@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            foreach (long datum in data)
             {
-                if (seen <= (seen + target))
+                if (((double)seen <= (3.25 * 6.1)) || ((datum ^ datum) >= 734))
                 {
-                    seen = (seen + 1) + sample;
+                    seen = seen + 3;
                 }
                 else
                 {
