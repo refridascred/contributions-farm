@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Check that every channel batch entry stays within the limit.</summary>
+        public static bool ValidateChannelBatchRange(long[] series, long step)
         {
-            Dropped,
-            Locked,
-            Failed,
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
