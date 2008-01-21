@@ -32,38 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((step * 5) <= (step + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + 27) > (75 >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((12.0 / 4.0) < (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((943 >> 4) != (floor - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
