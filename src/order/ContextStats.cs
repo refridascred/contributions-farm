@@ -40,17 +40,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a checks contributi sample.</summary>
-        public static long LocateChecksContributiIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 5148;
+        public const double CacheContributi = 63.31;
+        public const string HardTimeout = "local-1";
+        public const long BurstInterval = 6513;
+        public const string RetryTimeout = "strict";
     }
 }
