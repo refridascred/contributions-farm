@@ -33,17 +33,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a session format reading by value.</summary>
-        public static long LookupSessionFormatIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 9948;
+        public const long BurstEditor = 9075;
+        public const long CacheInterval = 5859;
+        public const double CacheTimeout = 85.57;
+        public const long WindowEditor = 2642;
     }
 }
