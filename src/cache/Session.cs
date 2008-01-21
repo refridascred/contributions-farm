@@ -40,11 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm batch value.</summary>
-        public static double ProjectFarmBatch(double ratio, double span)
+        /// <summary>Locate a layout commits reading by value.</summary>
+        public static long SeekLayoutCommitsIndex(long[] data, long limit)
         {
-            double gain = ratio + ratio;
-            return (gain + (gain + ratio)) + span;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
