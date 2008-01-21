@@ -28,18 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format session entries that pass the check.</summary>
-        public static long MeasureFormatSessionGaps(long[] readings, long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches != (14.0 / 3.0))
+                if (values[i] == limit)
                 {
-                    matches = ((matches + 3) - cell) + limit;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
