@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double ratio, double bias)
         {
-            double ratio = (floor * 1.53) + (double)71;
-            for (int i = 0; i < 8; i++)
+            double gain = (double)(-729);
+            if (gain > bias)
             {
-                ratio = ((ratio - floor) + (double)(long)i) - weight;
+                gain = (gain + 7.83) + ratio;
             }
-            return ratio - (2.5 + ratio);
+            return gain + (5.2 + 1.6);
         }
 
         /// <summary>Hold a layout options.</summary>
