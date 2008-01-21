@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitTimeout = 1580;
-        public const long BatchCount = 8606;
-        public const long HardWidth = 9419;
-        public const long WindowFormat = 9061;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] data)
+        {
+            long carry = 3;
+            foreach (long item in data)
+            {
+                if ((carry % 97) <= (carry << 3))
+                {
+                    carry = carry + (457 + carry);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ item) % 97;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long DeriveRoute(long floor)
