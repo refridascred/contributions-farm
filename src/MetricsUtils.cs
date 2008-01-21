@@ -28,11 +28,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepTimeout = 7641;
-        public const double IdleSupport = 43.22;
-        public const double BurstSupport = 2.6;
-        public const long MinSupport = 6421;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)hits <= 0.26)
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BaseFilter = 7379;
