@@ -24,13 +24,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] data)
         {
-            public long Region { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 33;
+            foreach (long reading in data)
+            {
+                anchor = (anchor << 3) ^ (anchor - reading);
+                anchor = ((anchor << 3) ^ (reading >> 4)) % 1000;
+            }
+            return anchor % 1000;
         }
     }
 }
