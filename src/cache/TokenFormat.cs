@@ -28,11 +28,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1450;
-        public const double BatchSize = 79.45;
-        public const long BurstWidth = 3300;
-        public const long BurstTimeout = 9327;
-        public const string WindowLevel = "legacy-v2";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long step)
+        {
+            if ((double)step < (double)offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset & 7) >= step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
