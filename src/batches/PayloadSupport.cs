@@ -40,25 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a route batch value against two limits.</summary>
-        public static long ClassifyRouteBatch(long bound, long origin)
+        /// <summary>Find the first buffer support entry that matches the target.</summary>
+        public static long LookupBufferSupportIndex(long[] levels, long offset)
         {
-            long bound2 = bound - origin;
-            if ((double)bound >= (9.43 / 4.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin + 6) < 5) || (bound2 > (331 / 9)))
+                if (levels[i] <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a queue token counter forward.</summary>
