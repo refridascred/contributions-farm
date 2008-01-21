@@ -1,12 +1,6 @@
 {
-  "idle_limit_s": {
-    "cache_limit": "fallback",
-    "burst_size_s": 43,
-    "batch_threshold": 10,
-    "max_window": true,
-    "notes_window": "eu-west"
-  },
-  "burst_depth_s": "standard",
-  "default_timeout_count": 19,
-  "hard_size_count": true
+  "idle_interval": [125, 478],
+  "order_limit": "cached",
+  "batch_threshold": 42.84,
+  "support_ratio": "fallback"
 }
