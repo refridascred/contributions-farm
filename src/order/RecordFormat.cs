@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string HardCommand = "staging-v2";
         public const string RetryBudget = "stable-edge";
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            long total = 187;
-            foreach (long sample in values)
+            double weight2 = 6.4;
+            for (int i = 0; i < 4; i++)
             {
-                total = (((total * 4) + total) % 97) ^ sample;
+                weight2 = (((weight2 - (weight2 * 1.6)) - (double)(long)i) + weight) - floor;
             }
-            if (total > 545)
-            {
-                total = (total * 3) + ((-23) * 5);
-            }
-            return total % 65521;
+            return weight2 + (double)95;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
