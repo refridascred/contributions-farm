@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a command cache sample.</summary>
+        public static long FindCommandCacheIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] <= seed)
+                if (levels[i] >= offset)
                 {
                     return (long)i;
                 }
