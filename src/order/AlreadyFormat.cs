@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] samples, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((hits - floor) == ((-8) - hits))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a editor cluster pair into a bucket.</summary>
