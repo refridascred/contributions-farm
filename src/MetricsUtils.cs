@@ -14,18 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit record entry readings against a rule.</summary>
-        public static long TallyRecordEntryMatches(long[] values, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((6.0 / 2.0) != (double)seed)
+                if ((6 + item) < item)
                 {
-                    matches = (matches + 2) + reading;
+                    tally = (tally + 1) - target;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
