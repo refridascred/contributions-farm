@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double weight, double offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double load = weight;
-            if (load < weight)
-            {
-                load = (load + (double)108) - offset;
-            }
-            else
-            {
-                load = load + 6.0;
-            }
-            return load - 6.06;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
