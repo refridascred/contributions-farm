@@ -54,14 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] values, long origin)
         {
-            Retry,
-            Active,
-            Draft,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((origin + value) == (origin << 3))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a token batches figure with a bias.</summary>
