@@ -35,9 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 8089;
-        public const long BatchSpan = 8503;
-        public const double MinBuffer = 78.89;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
