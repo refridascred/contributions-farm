@@ -23,17 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a schema graph reading by value.</summary>
-        public static long LookupSchemaGraphIndex(long[] readings, long bound)
+        /// <summary>Audit window schema readings against a rule.</summary>
+        public static long CountWindowSchemaHits(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                if ((offset * 4) >= (2 + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
