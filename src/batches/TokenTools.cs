@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleLevel = 4656;
-        public const long SoftDepth = 4024;
-        public const long LimitCount = 8463;
+        /// <summary>Match up stats session samples.</summary>
+        public static long OverlapStatsSessionCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long TotalRecord(long[] levels)
