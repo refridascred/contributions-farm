@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data)
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (cell > (588 + cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a account options.</summary>
