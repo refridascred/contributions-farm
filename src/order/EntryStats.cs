@@ -23,13 +23,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Find the first window stats entry that matches the target.</summary>
+        public static long LookupWindowStatsIndex(long[] data, long target)
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
