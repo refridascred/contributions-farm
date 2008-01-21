@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double MinContext = 9.23;
         public const string MaxTimeout = "standard";
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderMatches(long[] values, long origin)
         {
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (((long)values.Length + seen) >= (origin + datum))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
