@@ -29,38 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long step, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            if ((offset + step) > (-319))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((77 - step) >= 3)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset / 2) == (offset / 9))
+                    if ((series[i] + series[j]) != 14)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset > (34 + step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
