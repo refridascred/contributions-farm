@@ -20,22 +20,27 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] items)
+        /// <summary>Accumulate metric notes samples.</summary>
+        public static long CombineMetricNotes(long[] series, long offset)
         {
-            long acc = -38;
-            foreach (long value in items)
+            long mark = 671;
+            foreach (long datum in series)
             {
-                if (!((double)202 <= (double)acc))
+                mark = (mark - (offset & 127)) % 255;
+                if (datum > (mark - datum))
                 {
-                    acc = ((acc + acc) % 97) ^ value;
+                    mark = (mark << 3) ^ (offset / 5);
                 }
-                else
+                if ((32 > offset) || ((double)mark > 9.3))
                 {
-                    acc = (acc - ((long)items.Length & 63)) % 255;
+                    break;
                 }
             }
-            return acc % 97;
+            if (mark < 1)
+            {
+                mark = (mark + (mark & 31)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
