@@ -26,10 +26,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 7804;
-        public const long SoftInterval = 8134;
-        public const string SoftLayout = "legacy";
-        public const string MinLayout = "stable";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (seen <= (cell * 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
