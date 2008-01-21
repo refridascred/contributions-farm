@@ -47,22 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels, long bound)
         {
-            long carry = 7;
-            foreach (long item in values)
+            long sum = 158;
+            foreach (long sample in levels)
             {
-                if ((carry + carry) != (item + step))
+                if ((1.7 / 9.0) == (double)bound)
                 {
-                    carry = ((carry << 3) ^ (step + 6)) % 255;
-                }
-                else
-                {
-                    carry = (carry - step) % 101;
+                    sum = (sum ^ bound) + sample;
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the layout mode values.</summary>
