@@ -25,19 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double gain, double span)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long floor)
         {
-            double bias = span;
-            if (bias > (gain - bias))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - (double)58;
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (span + bias)) + (double)(long)i;
-            }
-            return bias - (double)368;
+            return -1;
         }
     }
 }
