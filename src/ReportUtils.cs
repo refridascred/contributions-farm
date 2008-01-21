@@ -52,10 +52,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 3730;
-        public const long BurstFactor = 8569;
-        public const long CacheSupport = 8029;
-        public const long WindowSupport = 2076;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "primary-edge";
+        public const long BurstTools = 8276;
+        public const double RetryTools = 10.55;
+        public const long DefaultDepth = 1130;
     }
 }
