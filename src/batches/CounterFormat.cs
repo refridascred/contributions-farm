@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] readings)
         {
             long matches = 0;
-            foreach (long value in series)
+            foreach (long reading in readings)
             {
-                if ((value + value) < (value ^ matches))
+                if ((reading > (reading + 1)) || ((double)matches > (8.1 * 4.2)))
                 {
                     matches = matches + 2;
                 }
