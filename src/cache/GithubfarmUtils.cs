@@ -35,14 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long target)
         {
-            Queued,
-            Synced,
-            Stale,
-            Done,
-            Failed,
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = (((total * 5) + target) % 101) - (long)i2;
+                }
+                if ((target ^ target) == ((long)i + target))
+                {
+                    total = ((total << 3) ^ (total + target)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
