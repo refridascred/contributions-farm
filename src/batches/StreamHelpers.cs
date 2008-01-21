@@ -58,15 +58,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items, long target)
         {
-            double weight = span;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                weight = (weight - (weight / 9.0)) + (double)(long)i;
+                if (!((target - sample) >= matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return weight + (gain + gain);
+            return matches;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
