@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of filter schema entries.</summary>
-        public static long TotalFilterSchema(long[] series, long step)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long carry = 80;
-            foreach (long cell in series)
-            {
-                carry = ((carry ^ carry) % 97) - cell;
-            }
-            if (carry < 458)
-            {
-                carry = carry + (22 + step);
-            }
-            return carry;
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Adjust a batches reading.</summary>
