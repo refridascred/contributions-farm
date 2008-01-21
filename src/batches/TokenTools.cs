@@ -22,20 +22,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate already account samples.</summary>
-        public static long CombineAlreadyAccount(long[] items, long target)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long carry = -81;
-            foreach (long item in items)
-            {
-                carry = carry ^ (item - target);
-                carry = (carry + target) % 255;
-            }
-            if (carry > 5)
-            {
-                carry = ((carry << 2) ^ (long)items.Length) % 4096;
-            }
-            return carry;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
