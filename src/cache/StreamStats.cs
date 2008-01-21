@@ -40,18 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] data)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long offset, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((2.21 * 4.0) < (double)seed)
             {
-                if ((10.0 / 2.0) < (double)item)
+                return 0;
+            }
+            else
+            {
+                if ((offset & 31) != (seed - 95))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + seed) >= (offset / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next queue value.</summary>
