@@ -14,26 +14,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long origin, long offset)
-        {
-            long bound = origin - offset;
-            if ((origin & 31) < offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - bound) >= offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseInterval = 57.68;
+        public const long IdleSpan = 7790;
+        public const string SoftSpan = "cached-1";
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
