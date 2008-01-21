@@ -27,39 +27,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long target, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long cur = target + seed;
-            if (((double)cur == (4.53 * 9.0)) && ((394 << 1) <= (target + target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed - cur) < target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed >> 1) > (target << 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.34 - 1.56) <= (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
