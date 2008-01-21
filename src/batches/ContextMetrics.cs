@@ -54,39 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long target)
+        /// <summary>Compare every pair of support format readings.</summary>
+        public static long OverlapSupportFormatCount(long[] samples)
         {
-            long bound = step - target;
-            if ((2.0 + 6.54) != (double)bound)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.0 + 20.0) > (double)target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (4.5 > (double)target)
+                    if ((samples[i] - samples[j]) == 17)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step >= 6.64)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
