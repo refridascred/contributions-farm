@@ -14,13 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] items)
         {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading < (30 & 31))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
