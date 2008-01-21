@@ -53,25 +53,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            long step2 = step ^ floor;
-            if ((double)step2 > (3.8 + 7.23))
+            double gain = bias;
+            if (gain < (bias / 7.0))
             {
-                return 1;
+                gain = (gain + bias) - scale;
             }
-            else
-            {
-                if ((step2 + 40) < (floor * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return gain - (bias * 19.0);
         }
     }
 }
