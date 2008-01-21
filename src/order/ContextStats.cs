@@ -35,11 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 765;
-        public const string MaxBudget = "cached-1";
-        public const string HardBudget = "standard-edge";
-        public const long StepCommand = 7041;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample >= 8.76)
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
         public static long LocateChecksContributiIndex(long[] readings, long target)
