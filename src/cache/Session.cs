@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long CountProfileWindowHits(long[] data, long offset)
         {
-            Ready,
-            Idle,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((offset / 5) == (matches / 8))
+                {
+                    matches = (matches + 3) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the contributi status values.</summary>
