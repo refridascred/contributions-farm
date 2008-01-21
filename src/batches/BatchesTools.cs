@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitSpan = 1395;
-        public const long DefaultEntry = 1113;
-        public const string IdleDepth = "open-1";
-        public const double RetryLevel = 89.24;
-        public const double StepInterval = 14.86;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 4020;
+        public const long BurstInterval = 2820;
+        public const string StepChecks = "latest-v2";
+        public const string MaxChecks = "open-v2";
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
