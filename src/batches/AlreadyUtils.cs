@@ -78,18 +78,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer batches values into a single score.</summary>
-        public static long FoldBufferBatches(long[] readings, long floor)
-        {
-            long state = 413;
-            foreach (long item in readings)
-            {
-                if ((state + state) == (17 >> 5))
-                {
-                    state = (((state - 594) % 65521) + item) + floor;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 35.65;
+        public const long DefaultDepth = 6273;
+        public const string IdleCount = "open";
+        public const long BaseEntry = 6493;
     }
 }
