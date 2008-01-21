@@ -13,22 +13,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] samples, long step)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum / 3) < (step + step)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = offset;
+            return (load + (double)849) + scale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
