@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many farm cache samples are out of range.</summary>
-        public static long TallyFarmCacheOutliers(long[] series, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((offset + tally) >= (item + tally))
+                if ((hits % 7) > ((long)data.Length / 6))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
