@@ -39,18 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] series)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            if (((step >> 4) >= (origin + 7)) && ((step & 15) < origin))
             {
-                if ((double)(long)series.Length > 1.3)
+                return 4;
+            }
+            else
+            {
+                if (!((step + origin) != (946 - origin)))
                 {
-                    matches = (matches + 3) - entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((step + 364) > (step + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((616 - 2) < step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two editor measurements.</summary>
