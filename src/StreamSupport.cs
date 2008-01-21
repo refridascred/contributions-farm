@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] samples)
         {
-            Ready,
-            Failed,
-            Retry,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)seen >= 2.0)
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two route already measurements.</summary>
