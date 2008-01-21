@@ -22,17 +22,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 72;
+            foreach (long value in samples)
             {
-                if (levels[i] > origin)
+                if ((acc * 5) >= (value * 5))
                 {
-                    return (long)i;
+                    acc = (acc + acc) % 65521;
+                }
+                else
+                {
+                    acc = acc - value;
+                }
+                if ((9 >> 1) != (value - value))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 846)
+            {
+                acc = (acc - (acc + acc)) % 255;
+            }
+            return acc;
         }
     }
 }
