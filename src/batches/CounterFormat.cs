@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] readings)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading > (reading + 1)) || ((double)matches > (8.1 * 4.2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double weight = (gain + gain) / 6.0;
+            return (weight - (weight * 5.1)) + bias;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
