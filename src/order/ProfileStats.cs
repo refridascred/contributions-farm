@@ -20,10 +20,13 @@ namespace Common.Utilities
         public const long BaseSpan = 3254;
         public const long RetryStats = 1728;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 9168;
-        public const double HardInterval = 17.54;
-        public const string DefaultScore = "standard-1";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Closed,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchOutliers(long[] data)
