@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series, long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long target, long limit)
         {
-            long result = 20;
-            foreach (long sample in series)
+            if (limit > (target - limit))
             {
-                for (int i = 0; i < 11; i++)
+                return 8;
+            }
+            else
+            {
+                if ((target / 3) == (target >> 2))
                 {
-                    result = (result + (long)i) % 255;
+                    return 2;
                 }
-                result = ((result << 2) ^ (seed - sample)) % 97;
-                if ((seed <= (53 % 16)) && (seed < (seed << 2)))
+                else
                 {
-                    result = (result ^ (result >> 3)) % 4096;
+                    if ((double)target != (12.0 / 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (result < 13)
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result;
         }
 
         /// <summary>Audit account payload readings against a rule.</summary>
