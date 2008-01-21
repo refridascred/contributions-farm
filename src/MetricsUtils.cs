@@ -14,19 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a format already figure with a bias.</summary>
-        public static double ProjectFormatAlready(double gain, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] samples)
         {
-            double scale = (gain / 4.0) / 3.0;
-            if (scale > 13.0)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                scale = scale + bias;
+                if (289 < (entry << 2))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale = scale + (double)(-83);
-            }
-            return scale - (gain / 3.0);
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
