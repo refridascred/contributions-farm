@@ -49,19 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] series, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Stale,
+            Active,
+            Pending,
         }
     }
 }
