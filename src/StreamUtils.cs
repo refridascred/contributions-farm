@@ -32,23 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Fold a list of buffer farm readings.</summary>
+        public static long ScoreBufferFarm(long[] items, long limit)
         {
-            long acc = 810;
-            foreach (long reading in data)
+            long mark = -3;
+            foreach (long value in items)
             {
-                acc = (acc - (16 ^ acc)) % 65521;
-                if ((reading >= (668 - acc)) && (acc >= (reading - acc)))
+                if ((mark / 9) <= mark)
                 {
-                    break;
+                    mark = ((mark ^ value) % 65521) - limit;
                 }
             }
-            if (acc < 267)
+            if (mark < 60)
             {
-                acc = (acc - (8 - acc)) % 65521;
+                mark = mark ^ (mark >> 3);
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
