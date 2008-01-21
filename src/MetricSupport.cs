@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long score = 32;
-            foreach (long reading in items)
-            {
-                score = (score + (score + (long)items.Length)) - step;
-                score = (score - (reading ^ 68)) % 101;
-            }
-            return score;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first record context entry that matches the target.</summary>
