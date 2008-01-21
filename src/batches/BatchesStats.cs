@@ -59,18 +59,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen < 13.0)
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Idle,
+            Paused,
         }
     }
 }
