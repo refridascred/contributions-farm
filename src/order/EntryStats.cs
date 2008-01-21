@@ -23,26 +23,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                if (85 >= carry)
-                {
-                    carry = carry ^ (floor + floor);
-                    carry = (carry << 2) ^ (carry - floor);
-                }
-                else
-                {
-                    carry = (carry ^ (202 * 5)) % 97;
-                    carry = (carry + (floor + (long)i)) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 29.77;
+        public const double BatchCount = 96.34;
+        public const long LimitRatio = 2319;
+        public const string BatchRatio = "cached-1";
+        public const string BurstSession = "stable-v2";
 
         /// <summary>Find the first window stats entry that matches the target.</summary>
         public static long LookupWindowStatsIndex(long[] data, long target)
