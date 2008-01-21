@@ -36,20 +36,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor + anchor) % 255;
-                    anchor = anchor + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MaxGithubfarm = 62.11;
+        public const string CacheCount = "staging";
+        public const long MaxBudget = 7116;
+        public const long SoftRatio = 4417;
+        public const double DefaultSize = 47.61;
     }
 }
