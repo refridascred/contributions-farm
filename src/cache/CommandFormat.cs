@@ -27,12 +27,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "cached-edge";
-        public const double DefaultSize = 82.36;
-        public const string MinTimeout = "strict";
-        public const long IdleInterval = 2918;
-        public const long BatchBudget = 1921;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items, long target)
+        {
+            long mark = 3;
+            foreach (long cell in items)
+            {
+                if (mark < (target << 1))
+                {
+                    mark = ((mark + (2 + target)) % 97) - cell;
+                }
+                else
+                {
+                    mark = (mark ^ 3) % 101;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] samples, long limit)
