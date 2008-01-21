@@ -20,20 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double gain, double bias)
-        {
-            double gain2 = gain;
-            if (gain2 < (gain + gain2))
-            {
-                gain2 = (gain2 - (gain / 6.0)) + bias;
-            }
-            else
-            {
-                gain2 = gain2 + (double)770;
-            }
-            return gain2 - (gain2 * 3.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "legacy-1";
+        public const double StepLevel = 71.12;
+        public const long DefaultNotes = 1305;
+        public const double SoftNotes = 8.68;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long SeekAccountIndex(long[] series, long offset)
