@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] samples, long origin)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((6.12 + 13.0) == (double)value) || (((value >> 2) >= (origin >> 5)) && ((value + matches) > value)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next session queue value from a seed.</summary>
