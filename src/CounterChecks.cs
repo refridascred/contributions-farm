@@ -40,21 +40,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Look up the position of a cache batches sample.</summary>
+        public static long SeekCacheBatchesIndex(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    if ((items[i] + items[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
