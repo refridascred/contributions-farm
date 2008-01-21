@@ -1,7 +1,14 @@
 {
-  "burst_delay_count": "local",
-  "soft_window": ["fallback", "latest", "latest"],
-  "warm_size_ms": "blue",
-  "batch_depth": 58.92,
-  "burst_ttl_pct": 86.56
+  "metrics_window": {
+    "warm_capacity_pct": {
+      "order_limit": 65,
+      "max_depth_pct": "fallback",
+      "cache_timeout_pct": "open"
+    },
+    "hard_interval_count": 44,
+    "warm_ttl_count": "local",
+    "strict": [96, 144]
+  },
+  "schema_delay": 100,
+  "flush_depth_s": false
 }
