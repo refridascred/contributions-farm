@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support batch entries.</summary>
-        public static long CombineSupportBatch(long[] items)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long result = 450;
-            foreach (long item in items)
-            {
-                if (!((double)item != (double)result))
-                {
-                    result = (result * 3) + (66 + item);
-                }
-                else
-                {
-                    result = ((result * 3) + (item + item)) % 4096;
-                }
-            }
-            return result;
+            Queued,
+            Draft,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
