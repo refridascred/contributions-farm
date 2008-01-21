@@ -69,12 +69,9 @@ namespace Common.Utilities
         public const double HardTimeout = 5.9;
         public const string BaseCache = "primary-1";
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 6473;
+        public const string MinGithubfarm = "legacy-1";
+        public const long IdleScore = 8051;
     }
 }
