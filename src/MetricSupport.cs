@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] samples, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((reading + target) != (matches - 8))
+                if (reading <= floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
