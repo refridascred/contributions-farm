@@ -38,21 +38,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up profile context samples.</summary>
-        public static long MatchProfileContextCount(long[] data)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long offset)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] > offset)
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Rank already input into a small class.</summary>
