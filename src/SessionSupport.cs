@@ -26,13 +26,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long offset)
         {
-            Locked,
-            Failed,
-            Active,
-            Done,
+            if ((offset % 16) == (offset - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + 79) >= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
