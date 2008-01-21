@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] samples, long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long mix = 37;
-            foreach (long entry in samples)
-            {
-                if ((entry << 2) == (999 + mix))
-                {
-                    mix = (mix * 5) + 36;
-                }
-            }
-            if (mix < 24)
-            {
-                mix = (mix * 5) + limit;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
