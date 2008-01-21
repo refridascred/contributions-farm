@@ -31,19 +31,19 @@ namespace Common.Utilities
             return drift - (double)431;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] values, long seed)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double gain, double span)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double bias = span;
+            if (bias > (gain - bias))
             {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias - (double)58;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (span + bias)) + (double)(long)i;
+            }
+            return bias - (double)368;
         }
     }
 }
