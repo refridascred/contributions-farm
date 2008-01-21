@@ -43,22 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] data, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (!(822 < (target ^ 797)))
+                if (sample >= limit)
                 {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Define context limits and defaults.</summary>
