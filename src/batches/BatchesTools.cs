@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] readings)
+        /// <summary>Accumulate command entry samples.</summary>
+        public static long FoldCommandEntry(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = 4;
+            foreach (long reading in data)
             {
-                if ((cell + seen) < (30 - cell))
+                if ((offset << 1) > reading)
                 {
-                    seen = seen + 2;
+                    score = score - (reading ^ reading);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score ^ (score + reading)) % 97;
             }
-            return seen;
+            if (score > 1)
+            {
+                score = (score - (offset * 4)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Hold a batch entry.</summary>
