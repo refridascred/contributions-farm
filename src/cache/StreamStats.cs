@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Retry,
-            Draft,
-            Stale,
-            Locked,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Look up the position of a layout session sample.</summary>
