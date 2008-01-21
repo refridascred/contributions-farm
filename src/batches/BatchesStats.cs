@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank session profile input into a small class.</summary>
-        public static long RankSessionProfile(long offset, long target)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            if ((offset + target) >= (target / 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((2 >> 3) < offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset << 2) != (offset + target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target < 0.7)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
