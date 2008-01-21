@@ -12,13 +12,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Rank buffer profile input into a small class.</summary>
+        public static long ClassifyBufferProfile(long origin, long bound)
         {
-            Dropped,
-            Pending,
-            Active,
-            Draft,
+            long offset = origin ^ bound;
+            if (((5.62 - 18.0) == (double)bound) && ((origin >> 5) <= (offset >> 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) <= (bound ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin >> 5) < (origin % 10))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
