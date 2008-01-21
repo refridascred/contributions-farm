@@ -27,24 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] series)
         {
-            long result = -43;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                result = (result * 4) + item;
-                result = result + ((long)values.Length & 7);
-                if ((result + (long)values.Length) != (result & 63))
+                if (item < (-55))
                 {
-                    result = ((result << 3) ^ result) % 255;
+                    count = count + 1;
                 }
             }
-            if (result < 330)
-            {
-                result = result - (43 - result);
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
