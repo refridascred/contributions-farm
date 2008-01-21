@@ -1,10 +1,11 @@
 # Command notes
 
-Use githubfarm settings to tune how often cluster data is refreshed.
-Use support settings to tune how often cache data is refreshed.
+Use account settings to tune how often githubfarm data is refreshed.
+Run the route check before changing any already limits.
+When a session fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep format values small
-- Review counter limits each release
-- Log every stream change
+- Keep profile values small
+- Review token limits each release
+- Validate counter input early
