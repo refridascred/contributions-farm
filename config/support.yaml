@@ -1,4 +1,5 @@
 # support settings
-base_delay: stable
-batch_interval: blue
-persist: 56.04
+verbose: 41
+flush_size: 64
+poll_depth: true
+soft_limit: false
