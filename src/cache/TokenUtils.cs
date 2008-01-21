@@ -23,19 +23,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long origin)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Retry,
+            Synced,
+            Dropped,
         }
     }
 }
