@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)matches <= (double)3)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout phase values.</summary>
