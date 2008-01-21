@@ -28,10 +28,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 59.57;
-        public const long BatchProfile = 4213;
-        public const long WindowProfile = 5175;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (count > (count + cell))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double scale, double span)
