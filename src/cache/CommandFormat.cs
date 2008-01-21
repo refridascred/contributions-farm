@@ -42,16 +42,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = (mark + offset) % 97;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            Pending,
+            Dropped,
+            Draft,
+            Stale,
         }
     }
 }
