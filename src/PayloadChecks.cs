@@ -59,23 +59,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double gain, double offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] data, long bound)
         {
-            double gain2 = gain;
-            if (gain2 > (19.0 / 3.0))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                gain2 = gain2 - 3.07;
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - offset) - (double)(long)i;
-            }
-            return gain2 - (gain * 13.0);
+            return ok;
         }
 
         /// <summary>Hold a filter info.</summary>
