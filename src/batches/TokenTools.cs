@@ -14,18 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] data)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (count >= (cell ^ 9))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Accumulate already account samples.</summary>
