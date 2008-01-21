@@ -56,13 +56,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] data)
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long total = 288;
+            foreach (long sample in data)
+            {
+                total = (total ^ 4) % 255;
+                if ((total + total) < (total << 1))
+                {
+                    total = (total - (sample * 5)) % 101;
+                }
+                else
+                {
+                    total = (total - (total << 3)) % 65521;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the token status values.</summary>
