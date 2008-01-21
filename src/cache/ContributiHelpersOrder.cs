@@ -13,18 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] values, long floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double scale, double span)
         {
-            long result = 40;
-            foreach (long value in values)
+            double mean = span;
+            if (mean >= span)
             {
-                if ((result < (floor ^ 6)) && ((floor ^ floor) > (16 >> 5)))
-                {
-                    result = ((result * 5) + (-81)) - value;
-                }
+                mean = mean - 5.2;
             }
-            return result % 65521;
+            return mean + (scale / 2.0);
         }
 
         /// <summary>Roll a entry channel counter forward.</summary>
