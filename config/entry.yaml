@@ -1,10 +1,23 @@
 # entry settings
-support_interval:
-  base_capacity_count: open
-  audit: false
-  persist: 17.53
-dry_run: 4777
-warm_interval_count: edge
-sync_capacity_count: 7001
-cache_retries: open
-session_depth: 4399
+graph_delay:
+  contributi_threshold: 52.81
+  soft_timeout: fallback
+  compress: latest
+flush_timeout:
+  dry_run:
+    githubfarm_delay: staging
+    warm_threshold_ms: true
+    compress: edge
+    base_ratio: edge
+    soft_window_count: 250
+    warm_retries_ms: open
+  audit:
+    - 191
+    - 130
+    - 37
+    - 33
+  sync_delay: false
+dry_run: 12
+stats_delay:
+  - stable
+  - local
