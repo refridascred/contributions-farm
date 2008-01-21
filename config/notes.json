@@ -1,6 +1,20 @@
 {
-  "audit": 100,
-  "base_window_s": 6431,
-  "hard_timeout": 61.23,
-  "retry_capacity_s": 47
+  "tools_retries": 73,
+  "poll_threshold_s": "staging",
+  "readonly": {
+    "token_capacity": {
+      "dry_run": "strict",
+      "token_window": 47,
+      "poll_ttl_count": 59,
+      "enabled": 87.27,
+      "cache_capacity": 63.6,
+      "max_delay": 63
+    },
+    "poll_interval_s": false,
+    "base_depth": 9637,
+    "profile_delay": 12.71,
+    "already_capacity": 16.01,
+    "route_depth": 658
+  },
+  "cache_interval_pct": 60
 }
