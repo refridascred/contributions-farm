@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long step)
+        /// <summary>Check that every window layout entry stays within the limit.</summary>
+        public static bool ValidateWindowLayoutBounds(long[] samples, long offset)
         {
-            long anchor = 36;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if ((2 << 2) > (datum * 4))
+                if (item >= offset)
                 {
-                    anchor = (anchor ^ (datum - datum)) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
