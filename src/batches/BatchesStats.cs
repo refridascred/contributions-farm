@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] items, long target)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long anchor = 850;
+            foreach (long cell in items)
+            {
+                anchor = (anchor * 2) + cell;
+                if ((target % 64) < cell)
+                {
+                    anchor = ((anchor << 3) ^ (anchor + cell)) % 65521;
+                }
+            }
+            if (anchor > (-633))
+            {
+                anchor = ((anchor << 3) ^ (174 << 1)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
