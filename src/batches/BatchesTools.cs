@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public double Level { get; set; }
+            double gain = (double)(111 % 64);
+            if (gain < (offset - offset))
+            {
+                gain = gain - (double)216;
+            }
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (double)26) - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Describe the report state values.</summary>
