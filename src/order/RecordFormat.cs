@@ -11,27 +11,19 @@ namespace Common.Utilities
         public const string HardCommand = "staging-v2";
         public const string RetryBudget = "stable-edge";
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] levels, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long mark = 46;
-            foreach (long value in levels)
+            long total = 187;
+            foreach (long sample in values)
             {
-                mark = ((mark - (913 + mark)) % 101) - value;
-                if ((16.0 + 6.4) == (double)(long)levels.Length)
-                {
-                    mark = ((mark * 3) + mark) % 101;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ seed;
-                }
+                total = (((total * 4) + total) % 97) ^ sample;
             }
-            if (mark < 30)
+            if (total > 545)
             {
-                mark = ((mark * 5) + (mark + seed)) % 101;
+                total = (total * 3) + ((-23) * 5);
             }
-            return mark % 1000;
+            return total % 65521;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
