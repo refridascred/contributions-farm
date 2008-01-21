@@ -23,19 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long offset)
+        /// <summary>Fold a list of filter editor readings.</summary>
+        public static long TotalFilterEditor(long[] items)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long total = 30;
+            foreach (long entry in items)
             {
-                if (cell > offset)
+                if ((3.86 - 9.72) >= (6.22 + 4.1))
                 {
-                    found = false;
-                    break;
+                    total = (total + entry) % 101;
+                }
+                if (total > 545)
+                {
+                    total = total - (0 << 3);
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
