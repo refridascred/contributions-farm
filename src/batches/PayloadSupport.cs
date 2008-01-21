@@ -35,13 +35,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public double Stamp { get; set; }
+            long result = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                result = result + (bound ^ bound);
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
