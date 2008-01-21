@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "open-edge";
+        public const long StepAlready = 8901;
+        public const string HardAlready = "open-1";
+        public const long IdleCount = 4073;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
