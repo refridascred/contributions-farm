@@ -15,19 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] items, long bound)
+        /// <summary>Validate batches token readings against a bound.</summary>
+        public static bool GuardBatchesTokenBounds(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (sample != bound)
+                if (cell <= floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Define support limits and defaults.</summary>
