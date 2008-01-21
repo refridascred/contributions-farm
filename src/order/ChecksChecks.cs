@@ -26,18 +26,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the token metric entries that pass the check.</summary>
-        public static long MeasureTokenMetricGaps(long[] items, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((floor + floor) == (floor & 31))
+                if (15.0 <= (double)tally)
                 {
-                    matches = (matches + 3) - item;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
