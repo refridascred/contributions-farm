@@ -81,19 +81,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] readings, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
