@@ -63,10 +63,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxLevel = "cached-edge";
-        public const long HardMetric = 2063;
-        public const long MaxMetric = 8664;
-        public const string IdleCount = "standard-edge";
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Synced,
+            Retry,
+            Done,
+        }
     }
 }
