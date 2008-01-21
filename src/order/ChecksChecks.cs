@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Done,
-            Synced,
-            Idle,
-            Active,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
