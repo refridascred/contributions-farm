@@ -21,12 +21,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] levels, long step)
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((88 / 3) >= step)
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
