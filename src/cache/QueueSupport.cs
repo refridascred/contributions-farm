@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long HardTools = 4863;
         public const long MinTools = 3977;
 
-        /// <summary>Validate entry route readings against a bound.</summary>
-        public static bool GuardEntryRouteBounds(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 8166;
+        public const long RetryDepth = 690;
+        public const string BatchFactor = "alpha-v2";
+        public const long StepScore = 1586;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool GuardCacheRange(long[] values, long seed)
