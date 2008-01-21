@@ -62,19 +62,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double span)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long seed)
         {
-            double drift = span * 2.95;
-            if (drift <= (drift + drift))
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift + 20.0) + scale;
+                mark = ((mark * 4) + ((long)i + (long)i)) % 97;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = (mark ^ (mark - (long)i)) ^ (long)i2;
+                }
+                mark = mark - (seed - (long)i);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - 5.0) + (double)(long)i;
-            }
-            return drift - (double)(-7);
+            return mark;
         }
 
         /// <summary>Hold a editor entry.</summary>
