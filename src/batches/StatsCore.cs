@@ -77,16 +77,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Project the next stream layout value.</summary>
+        public static double AdjustStreamLayout(double bias, double span)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            double ratio = span / 2.0;
+            if (ratio <= (bias + bias))
             {
-                anchor = anchor + anchor;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                ratio = ratio - span;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + bias) - (double)(long)i;
+            }
+            return ratio + (bias - bias);
         }
     }
 }
