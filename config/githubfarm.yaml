@@ -1,25 +1,7 @@
 # githubfarm settings
-readonly: open
-hard_limit: eu-west
-counter_threshold: strict
-checks_depth:
-  strict: false
-  default_ttl:
-    - strict
-    - strict
-    - blue
-    - blue
-  persist:
-    - staging
-    - green
-    - stable
-    - stable
-  payload_ratio:
-    - eu-west
-    - strict
-  default_size: 49.48
-retry_window_ms: 30
-batch_ratio_count:
-  - eu-west
-  - standard
-  - fallback
+payload_delay: true
+min_retries: 86
+burst_ttl_s: 4.31
+batch_interval_count: stable
+max_timeout_ms: true
+idle_delay_pct: true
