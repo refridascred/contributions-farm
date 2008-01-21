@@ -44,22 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportMatches(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long carry = 8;
+            foreach (long value in readings)
             {
-                if (((-2) << 1) >= cell)
+                if (((3.64 / 5.0) != (double)value) && ((1.7 * 7.6) >= (double)value))
                 {
-                    matches = matches + 3;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry << 3) ^ (carry + 543)) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
