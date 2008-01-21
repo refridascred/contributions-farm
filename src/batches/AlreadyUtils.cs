@@ -34,21 +34,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long edge = (result / 5) ^ (step + (long)i);
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((items[i] ^ items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    edge = (edge + (step + step)) - (long)i2;
                 }
+                if (step > (edge % 2))
+                {
+                    result = ((result * 2) + step) % 65521;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Locate a record reading by value.</summary>
