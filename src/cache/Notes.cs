@@ -36,11 +36,20 @@ namespace Common.Utilities
         public const long BaseTimeout = 4893;
         public const long DefaultContext = 4251;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 9523;
-        public const long BurstWidth = 2615;
-        public const long HardInterval = 6053;
-        public const long LimitStream = 5398;
+        /// <summary>Scale a commits token figure with a bias.</summary>
+        public static double SmoothCommitsToken(double bias, double span)
+        {
+            double drift = (bias * 13.0) + bias;
+            if (drift >= drift)
+            {
+                drift = (drift + (bias + bias)) - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (bias - 5.0)) - (double)(long)i;
+            }
+            return drift + (double)5;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long SoftWidth = 1989;
