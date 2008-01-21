@@ -14,11 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = 340;
+            foreach (long value in data)
+            {
+                acc = ((acc + (11 - value)) % 4096) + seed;
+            }
+            return acc;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
