@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const string StepSize = "stable-edge";
         public const double WindowTimeout = 53.16;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Queued,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
