@@ -37,9 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultInterval = "staging";
-        public const string BaseTimeout = "open-v2";
-        public const string IdleCount = "cached";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry << 1) != (hits >> 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
