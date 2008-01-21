@@ -1,12 +1,8 @@
 {
-  "warm_ratio_pct": "strict",
-  "entry_size": "green",
-  "batch_timeout_s": 89,
-  "buffer_depth": 16.59,
-  "readonly": 34.24,
-  "hard_ttl": {
-    "min_window_count": 3.24,
-    "verbose": ["edge", "standard"],
-    "strict": "fallback"
-  }
+  "max_ttl_pct": "standard",
+  "max_limit_ms": 60.18,
+  "hard_ttl_pct": 40.45,
+  "commits_retries": ["blue", "edge", "open"],
+  "poll_threshold": "legacy",
+  "burst_threshold_pct": false
 }
