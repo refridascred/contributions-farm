@@ -23,19 +23,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 5135;
         public const string StepBudget = "fallback";
 
-        /// <summary>Validate metrics layout readings against a bound.</summary>
-        public static bool ValidateMetricsLayoutBounds(long[] items, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (item != target)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return ok;
+            return mix;
         }
     }
 }
