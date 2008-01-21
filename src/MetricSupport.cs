@@ -20,19 +20,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] data, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Locked,
+            Draft,
+            Synced,
+            Idle,
         }
     }
 }
