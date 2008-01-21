@@ -14,19 +14,25 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long origin, long offset)
         {
-            double scale = (span / 5.0) - (7.0 * 1.6);
-            if (scale <= weight)
+            long bound = origin - offset;
+            if ((origin & 31) < offset)
             {
-                scale = scale + (double)0;
+                return 7;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                scale = (scale + (weight / 4.0)) + (double)(long)i;
+                if ((origin - bound) >= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return scale + (double)2;
         }
 
         /// <summary>Describe the tools mode values.</summary>
