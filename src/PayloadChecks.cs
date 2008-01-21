@@ -63,11 +63,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 20.18;
-        public const double BaseScore = 4.92;
-        public const long DefaultLevel = 2532;
-        public const long WindowStats = 9067;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
