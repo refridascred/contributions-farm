@@ -14,18 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] values, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (hits <= (origin + cell))
+                if (count >= (cell ^ 9))
                 {
-                    hits = hits + 2;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
