@@ -1,11 +1,13 @@
 # Command notes
 
-Use tools settings to tune how often stream data is refreshed.
-Use command settings to tune how often window data is refreshed.
-Defaults for command live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the graph list.
+Use session settings to tune how often schema data is refreshed.
+
+The payload report groups every metrics by notes.
+A batches that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Log every editor change
-- Prefer context defaults
-- Validate cluster input early
+- Log every metric change
+- Prefer stream defaults
+- Document new record fields
