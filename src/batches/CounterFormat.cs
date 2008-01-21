@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (count >= (entry & 63))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultBudget = 6200;
+        public const long MinRatio = 2738;
+        public const long BatchRatio = 5135;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] series)
