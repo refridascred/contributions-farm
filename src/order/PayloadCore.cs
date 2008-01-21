@@ -40,9 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "staging-1";
-        public const long BaseDepth = 6438;
-        public const long IdleTools = 2638;
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double weight, double offset)
+        {
+            double weight2 = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + (weight2 - offset);
+        }
     }
 }
