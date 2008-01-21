@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleSpan = "local-1";
-        public const long BaseDepth = 5837;
-        public const double BurstFormat = 58.51;
-        public const long WindowFormat = 6325;
-        public const string RetryFormat = "alpha-v2";
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i + (long)i) > (bound - 96))
+                {
+                    state = ((state * 2) + (bound >> 3)) % 4096;
+                    state = ((state * 2) + (state * 2)) % 1000;
+                }
+                else
+                {
+                    state = (state + (3 + (long)i)) % 65521;
+                    state = state + ((-453) & 3);
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
