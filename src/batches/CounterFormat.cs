@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] levels, long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
