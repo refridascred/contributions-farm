@@ -5,34 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Compare every pair of format githubfarm readings.</summary>
+        public static long MatchFormatGithubfarmCount(long[] series)
         {
-            long total = 448;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((14.0 * 1.5) >= (double)value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total - (total ^ (long)items.Length);
-                }
-                if ((total / 4) <= (580 & 3))
-                {
-                    total = (total ^ (value - value)) % 1000;
-                }
-                if ((65 > (446 ^ value)) || ((value - 0) < total))
-                {
-                    total = total + (total ^ total);
-                }
-                else
-                {
-                    total = total + (total % 64);
+                    if ((series[i] ^ series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 14)
-            {
-                total = total + total;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
