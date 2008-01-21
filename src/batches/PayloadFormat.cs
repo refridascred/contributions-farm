@@ -29,16 +29,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a window metrics counter forward.</summary>
-        public static long DeriveWindowMetrics(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitLevel = 4137;
+        public const long BurstSession = 4276;
+        public const double CacheLevel = 23.22;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenOutliers(long[] readings)
