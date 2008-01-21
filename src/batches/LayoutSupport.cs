@@ -50,10 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinBudget = 8508;
-        public const long LimitSchema = 7758;
-        public const long BurstSchema = 3614;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileGaps(long[] values, long origin)
