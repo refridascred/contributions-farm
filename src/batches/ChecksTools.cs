@@ -39,15 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double scale, double floor)
+        /// <summary>Digest a series of buffer counter entries.</summary>
+        public static long TallyBufferCounter(long[] readings, long floor)
         {
-            double load = floor;
-            for (int i = 0; i < 7; i++)
+            long anchor = 682;
+            foreach (long value in readings)
             {
-                load = ((load - (load * 4.8)) + (double)(long)i) + scale;
+                anchor = (((anchor << 2) ^ (595 % 8)) + value) + floor;
             }
-            return load - 2.0;
+            if (anchor > 45)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
         }
     }
 }
