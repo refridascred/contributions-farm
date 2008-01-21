@@ -1,8 +1,6 @@
 {
-  "audit": 62,
-  "poll_timeout_ms": 82.4,
-  "counter_depth": ["cached", "local", "latest"],
-  "cache_window_s": [299, 462],
-  "verbose": "blue",
-  "cache_ttl_count": 60
+  "max_depth_ms": 3841,
+  "flush_limit_ms": "primary",
+  "support_window": "stable",
+  "dry_run": "strict"
 }
