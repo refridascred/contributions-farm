@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long MinLevel = 1440;
         public const long SoftSpan = 5209;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((5.46 * 2.0) < (double)cell)
-                {
-                    hits = (hits + 2) + step;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Fold a list of cache commits readings.</summary>
