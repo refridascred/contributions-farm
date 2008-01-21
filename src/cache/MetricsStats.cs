@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const string StepSize = "stable-edge";
         public const double WindowTimeout = 53.16;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long mix = 1;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ datum) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Fold a list of filter editor readings.</summary>
