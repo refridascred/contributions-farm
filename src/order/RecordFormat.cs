@@ -41,32 +41,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long seed, long seed2)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long lane = seed + seed2;
-            if ((lane ^ lane) > (seed2 + lane))
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
+                acc = (acc ^ (1 / 8)) % 1000;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((lane ^ (-58)) <= (56 ^ seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed < (lane + lane))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
