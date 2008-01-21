@@ -43,19 +43,11 @@ namespace Common.Utilities
         public const long CacheToken = 6255;
         public const long BatchRatio = 7065;
 
-        /// <summary>Digest a series of buffer counter entries.</summary>
-        public static long TallyBufferCounter(long[] readings, long floor)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long anchor = 682;
-            foreach (long value in readings)
-            {
-                anchor = (((anchor << 2) ^ (595 % 8)) + value) + floor;
-            }
-            if (anchor > 45)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
     }
 }
