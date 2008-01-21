@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] items)
+        /// <summary>Check that every filter account entry stays within the limit.</summary>
+        public static bool ValidateFilterAccountBounds(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum <= limit)
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
