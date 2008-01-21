@@ -28,13 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 5054;
+        public const long MaxContext = 8231;
+        public const long MinContext = 2709;
+        public const long BatchContext = 4629;
+        public const string StepContext = "open";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long MeasureMetricsMatches(long[] series, long target)
