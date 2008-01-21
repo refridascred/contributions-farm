@@ -20,18 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the filter metrics entries that pass the check.</summary>
-        public static long TallyFilterMetricsMatches(long[] values)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((sample / 9) > (seen >> 1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
