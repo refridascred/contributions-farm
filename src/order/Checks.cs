@@ -75,12 +75,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Done,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinTimeout = 3646;
+        public const double BurstGithubfarm = 62.74;
+        public const long HardGithubfarm = 9228;
+        public const long DefaultTimeout = 2157;
     }
 }
