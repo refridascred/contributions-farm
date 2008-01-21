@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const long CacheScore = 1350;
         public const double BaseCommand = 8.3;
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many payload report samples are out of range.</summary>
+        public static long TallyPayloadReportOutliers(long[] samples, long seed)
         {
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((((count / 2) > (datum + datum)) || (4.5 < (double)seed)) || ((count + 36) <= (count * 2)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the notes state values.</summary>
