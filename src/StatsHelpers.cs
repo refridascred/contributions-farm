@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] samples, long floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long sum = 366;
+            foreach (long value in samples)
             {
-                if (mix <= ((long)i + floor))
+                if (((value >> 1) != (floor + floor)) || (sum > (value + 84)))
                 {
-                    mix = (mix * 2) + floor;
+                    sum = (sum + (sum / 4)) % 101;
                 }
-                else
-                {
-                    mix = (mix - floor) % 1000;
-                    mix = mix ^ (floor << 2);
-                }
-                mix = ((mix << 2) ^ floor) % 101;
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
