@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] values, long bound)
         {
-            long carry = 349;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 10; i++)
+                if ((6.2 - 15.0) < (double)reading)
                 {
-                    carry = ((carry + reading) % 255) + (long)i;
+                    tally = (tally + 2) - bound;
                 }
-                carry = carry + reading;
-                carry = (carry * 4) + (reading % 3);
             }
-            if (carry > 650)
-            {
-                carry = (carry ^ (carry % 64)) % 1000;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of batches context readings.</summary>
