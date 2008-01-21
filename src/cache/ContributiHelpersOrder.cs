@@ -27,24 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mark <= (6.57 + 6.0))
+                if (levels[i] > origin)
                 {
-                    mark = ((mark << 2) ^ (mark - mark)) % 97;
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark << 3)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
     }
 }
