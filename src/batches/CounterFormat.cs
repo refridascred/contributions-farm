@@ -19,12 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] readings, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
