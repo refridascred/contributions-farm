@@ -19,15 +19,20 @@ namespace Common.Utilities
         public const double HardCount = 98.7;
         public const long MinFactor = 4518;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Roll a queue token counter forward.</summary>
+        public static long DeriveQueueToken(long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if (788 <= (6 - carry))
+                {
+                    continue;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
     }
 }
