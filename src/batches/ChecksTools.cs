@@ -20,26 +20,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long result = -69;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((973 & 1) < cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result + result;
-                }
-                if ((cell + cell) <= 77)
-                {
-                    break;
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 39)
-            {
-                result = ((result * 5) + result) % 97;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
