@@ -54,22 +54,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] values, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((tally * 4) <= 49)
+                if (datum > (matches ^ matches))
                 {
-                    tally = ((tally + 2) + entry) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
