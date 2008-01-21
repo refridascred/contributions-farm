@@ -16,16 +16,10 @@ namespace Common.Utilities
             return ratio + 20.0;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstScore = 58.1;
+        public const string RetryEditor = "alpha-1";
+        public const long MaxTimeout = 1346;
 
         /// <summary>Compare every pair of route metric readings.</summary>
         public static long PairRouteMetricCount(long[] series)
