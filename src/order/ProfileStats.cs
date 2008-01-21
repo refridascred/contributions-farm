@@ -27,23 +27,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (tally >= (6 + 240))
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinSize = 8396;
+        public const long CacheCount = 103;
+        public const long RetrySpan = 7864;
+        public const string DefaultChecks = "staging-v2";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchOutliers(long[] data)
