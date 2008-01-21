@@ -40,12 +40,9 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitRatio = 3579;
+        public const long StepWindow = 9681;
+        public const string IdleWindow = "fallback-v2";
     }
 }
