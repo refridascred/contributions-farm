@@ -1,4 +1,9 @@
 # entry settings
-window_threshold: 58.07
-checks_interval: primary
-poll_interval: latest
+min_window_ms: 2434
+batch_limit_count:
+  - 279
+  - 500
+  - 15
+retry_interval_pct: staging
+flush_threshold: false
+idle_size_pct: true
