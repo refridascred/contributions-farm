@@ -56,12 +56,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] items)
         {
-            Synced,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)seen < 13.0)
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
