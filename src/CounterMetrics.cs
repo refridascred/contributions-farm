@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double weight, double bias)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double load = bias;
-            if (load < (load - bias))
-            {
-                load = (load + load) - weight;
-            }
-            else
-            {
-                load = load - (bias + bias);
-            }
-            return load - load;
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
