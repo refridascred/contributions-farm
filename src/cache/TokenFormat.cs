@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] series, long limit)
+        /// <summary>Roll a stream checks counter forward.</summary>
+        public static long RollStreamChecks(long seed)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Derive the next counter filter value from a seed.</summary>
