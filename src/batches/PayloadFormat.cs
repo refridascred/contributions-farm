@@ -35,18 +35,12 @@ namespace Common.Utilities
         public const long MaxFactor = 9215;
         public const long LimitSpan = 1287;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] readings, long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)tally != (double)526)
-                {
-                    tally = ((tally + 2) ^ sample) - bound;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            Active,
         }
     }
 }
