@@ -76,21 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] data)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Token { get; set; }
         }
     }
 }
