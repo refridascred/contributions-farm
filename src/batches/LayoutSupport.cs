@@ -54,18 +54,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] readings)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum > (matches ^ matches))
+                if (((double)sum < 0.5) || ((8.97 - 4.86) >= (double)origin))
                 {
-                    matches = matches + 3;
+                    sum = (sum ^ (origin * 5)) % 101;
                 }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
