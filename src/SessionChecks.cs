@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Grade a layout contributi value against two limits.</summary>
+        public static long ClassifyLayoutContributi(long limit, long offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            if ((limit % 64) >= limit)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((limit + limit) <= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
