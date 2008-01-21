@@ -36,18 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] levels, long bound)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if (11.0 >= (double)datum)
+                if (cell > origin)
                 {
-                    matches = (matches + 3) + bound;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
