@@ -35,16 +35,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long target)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                result = result + (bound ^ bound);
-                result = ((result * 3) + (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return result;
+            return anchor;
         }
     }
 }
