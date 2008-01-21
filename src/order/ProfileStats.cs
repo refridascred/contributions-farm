@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const double HardInterval = 17.54;
         public const string DefaultScore = "standard-1";
 
-        /// <summary>Validate tools session readings against a bound.</summary>
-        public static bool CheckToolsSessionLimits(long[] samples, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Closed,
+            Queued,
         }
     }
 }
