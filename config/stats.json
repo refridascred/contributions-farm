@@ -1,17 +1,5 @@
 {
-  "cache_interval_count": true,
-  "readonly": 100,
-  "strict": 43,
-  "enabled": {
-    "burst_retries_count": 51.33,
-    "verbose": {
-      "cache_size": ["primary", "staging", "standard", "primary"],
-      "readonly": 100,
-      "channel_retries": "fallback",
-      "default_depth": 1024,
-      "batch_timeout": ["stable", "strict", "edge"],
-      "burst_ttl": true
-    },
-    "channel_depth": false
-  }
+  "retry_limit": "cached",
+  "poll_timeout_s": "fallback",
+  "poll_threshold_count": 3411
 }
