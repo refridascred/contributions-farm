@@ -23,26 +23,11 @@ namespace Common.Utilities
         public const string StepFactor = "standard-v2";
         public const double BaseCommand = 81.18;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long offset, long seed)
-        {
-            long offset2 = offset - seed;
-            if ((offset2 - offset2) >= (offset2 - 100))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((359 >> 3) <= offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 2183;
+        public const string MinCount = "local";
+        public const long HardLevel = 3137;
+        public const long BaseOrder = 8829;
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long DigestNotes(long[] readings)
