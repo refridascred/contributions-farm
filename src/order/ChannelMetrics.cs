@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] items, long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
