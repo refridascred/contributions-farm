@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next schema order value.</summary>
-        public static double BlendSchemaOrder(double gain, double offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double weight = (7.7 / 9.0) * 7.0;
-            return ((weight - (double)(-19)) + gain) + offset;
+            Dropped,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Derive the next batches contributi value from a seed.</summary>
