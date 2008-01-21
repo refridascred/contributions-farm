@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a tools farm figure with a bias.</summary>
-        public static double ScaleToolsFarm(double weight, double offset)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] items, long bound)
         {
-            double scale = offset + weight;
-            if (scale < (double)449)
+            long total = 8;
+            foreach (long item in items)
             {
-                scale = scale + (4.5 - offset);
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (total - (long)i) + item;
+                }
+                total = ((total << 3) ^ (bound << 1)) % 1000;
             }
-            return scale + (double)(-59);
+            return total;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
