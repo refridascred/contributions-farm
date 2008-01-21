@@ -42,15 +42,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next entry stream value.</summary>
-        public static double ScaleEntryStream(double weight, double floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] levels, long bound)
         {
-            double weight2 = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                weight2 = (weight2 - weight) + (double)(long)i;
+                if (11.0 >= (double)datum)
+                {
+                    matches = (matches + 3) + bound;
+                }
             }
-            return weight2 + (double)(-5);
+            return matches;
         }
     }
 }
