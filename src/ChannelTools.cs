@@ -31,9 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowSpan = 4303;
-        public const double BurstCommand = 28.05;
-        public const string BaseInterval = "latest";
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Active,
+            New,
+            Paused,
+        }
     }
 }
