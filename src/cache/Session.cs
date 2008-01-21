@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a metrics already reading by value.</summary>
-        public static long LocateMetricsAlreadyIndex(long[] readings, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] readings, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                if ((seed + seed) < item)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
