@@ -27,19 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] levels, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (entry <= bound)
+                if (entry < limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
