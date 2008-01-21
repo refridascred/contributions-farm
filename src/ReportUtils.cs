@@ -31,22 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Count window record pairs that satisfy a relation.</summary>
+        public static long CompareWindowRecordCount(long[] levels)
         {
-            long carry = -68;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((869 - carry) > (value + value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + (value * 2)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
