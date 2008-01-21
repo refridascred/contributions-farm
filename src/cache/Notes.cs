@@ -22,19 +22,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorRange(long[] items, long step)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long reading in items)
+            if ((double)bound2 < (double)9)
             {
-                if (reading < step)
+                return 7;
+            }
+            else
+            {
+                if ((bound2 & 15) >= (bound >> 3))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a format options.</summary>
