@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long MinLevel = 1440;
         public const long SoftSpan = 5209;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportHits(long[] samples, long step)
         {
-            Stale,
-            Dropped,
-            Synced,
-            Retry,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((5.46 * 2.0) < (double)cell)
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of cache commits readings.</summary>
