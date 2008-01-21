@@ -42,13 +42,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] series)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= (70 + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
