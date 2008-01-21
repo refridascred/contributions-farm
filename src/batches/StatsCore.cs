@@ -62,11 +62,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 2026;
         public const long DefaultTools = 6596;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double weight, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            double load = floor * 0.02;
-            return (load - (double)41) + weight;
+            long total = 2;
+            foreach (long item in samples)
+            {
+                total = (total - (item - total)) % 255;
+                if (item >= (total % 12))
+                {
+                    total = (total + total) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a cache stats.</summary>
