@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] items, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double gain, double span)
         {
-            bool found = true;
-            foreach (long value in items)
+            double ratio = span;
+            if (ratio <= (double)809)
             {
-                if (value < seed)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - gain;
             }
-            return found;
+            return ratio + 20.0;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
