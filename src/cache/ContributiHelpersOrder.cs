@@ -13,15 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double scale, double span)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double mean = span;
-            if (mean >= span)
-            {
-                mean = mean - 5.2;
-            }
-            return mean + (scale / 2.0);
+            Failed,
+            New,
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
