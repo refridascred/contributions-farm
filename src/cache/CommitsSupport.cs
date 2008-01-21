@@ -62,12 +62,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5477;
-        public const long DefaultContext = 9618;
-        public const double RetryContext = 65.66;
-        public const long MaxBudget = 7064;
-        public const long MinWidth = 4356;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((seen + reading) != (seen >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit payload format readings against a rule.</summary>
         public static long AuditPayloadFormatMatches(long[] readings, long target)
