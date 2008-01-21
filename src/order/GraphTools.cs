@@ -18,20 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] samples, long floor)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            long acc = 28;
-            foreach (long sample in samples)
+            long acc = 3;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 2) + (acc + acc)) - sample;
-                acc = (acc + (81 * 4)) % 4096;
+                acc = acc - (entry + acc);
+                if ((entry * 2) < (entry << 2))
+                {
+                    break;
+                }
             }
-            if (acc > 8)
+            if (acc > 64)
             {
-                acc = (acc + (floor << 2)) % 1000;
+                acc = (acc ^ (acc + acc)) % 101;
             }
-            return acc;
+            return acc % 4096;
         }
 
         /// <summary>Audit already metric readings against a rule.</summary>
