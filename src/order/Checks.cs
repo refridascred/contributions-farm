@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long bound, long floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double bias, double bias2)
         {
-            long delta = bound + floor;
-            if ((double)delta > (0.5 * 5.0))
+            double mean = 1.77;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                mean = (mean + bias2) - (double)(long)i;
             }
-            else
-            {
-                if (((floor & 63) != (delta - floor)) || ((929 * 4) > (bound + delta)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mean - bias;
         }
 
         /// <summary>Project the next metrics value.</summary>
