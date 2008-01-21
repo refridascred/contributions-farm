@@ -41,10 +41,23 @@ namespace Common.Utilities
         public const long CacheWidth = 8956;
         public const string MinRatio = "strict-1";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "primary-edge";
-        public const double StepStats = 73.93;
-        public const long BatchStats = 3536;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((double)item != (2.0 - 7.68)) || ((step + item) >= item))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] readings, long floor)
