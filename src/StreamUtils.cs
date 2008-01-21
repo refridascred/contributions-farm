@@ -49,13 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Check that every metrics command entry stays within the limit.</summary>
+        public static bool GuardMetricsCommandRange(long[] samples, long seed)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Pending,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the entry stats series from a seed.</summary>
