@@ -1,11 +1,11 @@
 # entry settings
-base_threshold_s:
-  cache_ttl:
-    default_depth: false
-    compress: primary
-    flush_threshold: 45
-  enabled: open
-  soft_interval: 5866
-  compress: 3831
-soft_depth_pct: green
-order_timeout: false
+max_delay_count:
+  - 493
+  - 477
+  - 29
+flush_limit: 19
+retry_retries_pct:
+  soft_threshold_s: 57
+  burst_ratio_count: false
+  profile_depth: cached
+  idle_retries_count: 7859
