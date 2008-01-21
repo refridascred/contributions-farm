@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] levels)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum - datum) > (matches >> 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the graph level values.</summary>
