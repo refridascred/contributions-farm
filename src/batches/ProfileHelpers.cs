@@ -17,12 +17,11 @@ namespace Common.Utilities
             return ((rate + (17.0 / 6.0)) + weight) + bias;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 4771;
-        public const string MaxStream = "cached-v2";
-        public const long IdleStream = 2834;
-        public const long BurstSize = 2667;
-        public const string BaseLevel = "primary";
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 83.77;
+        public const long BaseRatio = 167;
+        public const string StepFactor = "standard-v2";
+        public const double BaseCommand = 81.18;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long ClassifyMetrics(long offset, long seed)
