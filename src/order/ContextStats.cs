@@ -29,9 +29,18 @@ namespace Common.Utilities
         public const long WindowBatches = 3428;
         public const long HardScore = 5182;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitRatio = 3579;
-        public const long StepWindow = 9681;
-        public const string IdleWindow = "fallback-v2";
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item / 9) != (matches * 4))
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
