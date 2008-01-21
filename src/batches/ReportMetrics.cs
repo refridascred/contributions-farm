@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] readings, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                mark = ((mark * 5) + (long)i) % 97;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Combine context values into a single score.</summary>
