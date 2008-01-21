@@ -46,11 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long step, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            if ((6.0 - 7.41) > (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step ^ seed) <= 331)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
