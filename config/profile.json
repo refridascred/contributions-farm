@@ -1,5 +1,6 @@
 {
-  "batch_timeout": ["local", "local", "latest"],
-  "cache_retries_ms": false,
-  "max_ratio_s": true
+  "default_window_pct": 36.06,
+  "retry_threshold_count": true,
+  "batch_window": "cached",
+  "base_delay_pct": "open"
 }
