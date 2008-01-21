@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a queue stats reading.</summary>
-        public static double SmoothQueueStats(double weight, double offset)
+        /// <summary>Validate route notes readings against a bound.</summary>
+        public static bool ValidateRouteNotesLimits(long[] data, long step)
         {
-            double scale = 9.86 - (double)97;
-            if (scale > (weight - 13.0))
+            bool stale = true;
+            foreach (long sample in data)
             {
-                scale = (scale - 4.9) + offset;
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - weight;
+            return stale;
         }
 
         /// <summary>Find the first githubfarm metrics entry that matches the target.</summary>
