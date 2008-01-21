@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] samples)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((long)samples.Length / 2) == (43 << 2))
+                if ((step + value) >= (3 << 3))
                 {
-                    hits = (hits + 2) + item;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Derive the next queue format value from a seed.</summary>
