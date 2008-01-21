@@ -44,18 +44,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] series, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (cell < ((long)series.Length - seen))
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            Locked,
+            Failed,
+            Ready,
+            Draft,
+            Pending,
         }
     }
 }
