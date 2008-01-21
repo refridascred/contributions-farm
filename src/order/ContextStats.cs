@@ -40,11 +40,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 5148;
-        public const double CacheContributi = 63.31;
-        public const string HardTimeout = "local-1";
-        public const long BurstInterval = 6513;
-        public const string RetryTimeout = "strict";
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)limit != (0.6 + 9.87))
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
+        }
     }
 }
