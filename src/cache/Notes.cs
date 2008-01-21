@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Stale,
-            Pending,
-            Idle,
-            Ready,
-            Draft,
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
