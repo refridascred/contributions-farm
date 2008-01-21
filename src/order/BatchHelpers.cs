@@ -32,14 +32,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] levels, long limit)
         {
-            Locked,
-            Pending,
-            Ready,
-            New,
-            Failed,
+            long carry = -5;
+            foreach (long entry in levels)
+            {
+                if (5.81 <= (double)entry)
+                {
+                    carry = ((carry * 4) + (limit + entry)) % 101;
+                }
+                else
+                {
+                    carry = ((carry * 5) + limit) % 101;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
