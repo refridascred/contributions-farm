@@ -85,19 +85,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] series, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (datum < floor)
+                if (((double)entry >= (double)tally) && ((tally / 6) < (tally % 97)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
