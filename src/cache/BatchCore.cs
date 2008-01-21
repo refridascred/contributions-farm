@@ -35,10 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 2845;
-        public const string CacheRoute = "open";
-        public const string DefaultRoute = "latest-edge";
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long BucketPayload(long seed, long seed2)
