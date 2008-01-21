@@ -50,18 +50,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset - seen) != (seen + reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxLevel = "cached-edge";
+        public const long HardMetric = 2063;
+        public const long MaxMetric = 8664;
+        public const string IdleCount = "standard-edge";
     }
 }
