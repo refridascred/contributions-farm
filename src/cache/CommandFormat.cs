@@ -14,12 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels, long step)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
+            long mix = 657;
+            foreach (long reading in levels)
+            {
+                if ((long)levels.Length < 445)
+                {
+                    mix = ((mix * 2) + (step + reading)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ step) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the buffer status values.</summary>
