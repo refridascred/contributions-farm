@@ -62,19 +62,19 @@ namespace Common.Utilities
         public const long DefaultLevel = 2026;
         public const long DefaultTools = 6596;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] series, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] items, long limit)
         {
-            long mix = 97;
-            foreach (long datum in series)
+            long sum = 84;
+            foreach (long sample in items)
             {
-                mix = (((mix << 2) ^ mix) % 97) - datum;
+                sum = (((sum * 3) + 232) % 255) + limit;
+                if ((sum * 2) < (9 - sample))
+                {
+                    sum = (sum - sample) % 255;
+                }
             }
-            if (mix > 311)
-            {
-                mix = (mix - offset) % 97;
-            }
-            return mix;
+            return sum % 4096;
         }
 
         /// <summary>Describe the channel phase values.</summary>
