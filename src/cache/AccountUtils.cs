@@ -33,19 +33,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 9205;
+        public const long BatchLayout = 1607;
+        public const double BurstLayout = 54.52;
     }
 }
