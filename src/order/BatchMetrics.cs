@@ -87,15 +87,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
