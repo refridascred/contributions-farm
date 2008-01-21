@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Draft,
+            Failed,
+            New,
+            Dropped,
         }
 
         /// <summary>Hold a format entry.</summary>
