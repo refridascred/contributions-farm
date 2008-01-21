@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Locate a channel route reading by value.</summary>
+        public static long LocateChannelRouteIndex(long[] readings, long limit)
         {
-            New,
-            Queued,
-            Closed,
-            Dropped,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
