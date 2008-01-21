@@ -51,10 +51,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 3404;
-        public const long MaxFarm = 1023;
-        public const long BaseFarm = 2149;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples, long limit)
+        {
+            long state = 243;
+            foreach (long reading in samples)
+            {
+                if (limit > (state ^ 0))
+                {
+                    state = (state << 3) ^ 962;
+                }
+                else
+                {
+                    state = (state + (227 / 2)) % 1000;
+                }
+                if ((limit % 12) >= (reading - limit))
+                {
+                    break;
+                }
+            }
+            if (state > 9)
+            {
+                state = (state + limit) % 4096;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string StepMetrics = "fallback-edge";
