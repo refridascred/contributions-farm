@@ -27,17 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] items, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 394;
+            foreach (long value in samples)
             {
-                if (items[i] >= offset)
+                if ((double)bound < (5.1 + 2.0))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((2 / 6) <= bound)
+                {
+                    carry = ((carry + bound) % 101) ^ value;
                 }
             }
-            return -1;
+            if (carry < 304)
+            {
+                carry = ((carry * 5) + (bound - bound)) % 65521;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of contributi buffer entries.</summary>
