@@ -21,18 +21,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] levels, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(datum >= ((long)levels.Length - datum)))
+                if (samples[i] == origin)
                 {
-                    count = (count + 2) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
