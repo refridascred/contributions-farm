@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] values)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (((-25) - hits) < 0)
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor << 3) ^ (anchor * 4);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
