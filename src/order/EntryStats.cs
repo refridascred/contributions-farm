@@ -32,12 +32,38 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long target, long target2)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            if ((target2 - (-67)) > ((-4) / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target2 > (9.9 * 8.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target >= (target >> 1)) || ((target + target) == (target2 % 64)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((0.69 + 7.68) < (double)target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
