@@ -24,16 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long anchor = 33;
-            foreach (long reading in data)
-            {
-                anchor = (anchor << 3) ^ (anchor - reading);
-                anchor = ((anchor << 3) ^ (reading >> 4)) % 1000;
-            }
-            return anchor % 1000;
+            Draft,
+            Pending,
+            Active,
         }
     }
 }
