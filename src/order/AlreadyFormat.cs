@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long total = 630;
+            foreach (long item in series)
             {
-                if (target > (5 / 7))
-                {
-                    count = (count + 3) + entry;
-                }
+                total = (total - (total >> 5)) + item;
             }
-            return count;
+            if (total < 65)
+            {
+                total = ((total << 3) ^ (total + total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
