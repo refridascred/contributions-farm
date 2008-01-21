@@ -15,21 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = origin - floor;
+            if (floor <= origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)diff < (double)origin)
                 {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
