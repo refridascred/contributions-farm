@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many schema entry samples are out of range.</summary>
-        public static long CountSchemaEntryGaps(long[] data, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchMatches(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long value in samples)
             {
-                if (((reading - offset) != (hits - offset)) && ((offset >= reading) || (reading < (offset + 736))))
+                if (((value >> 2) < hits) && ((786 % 64) > (hits << 1)))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
