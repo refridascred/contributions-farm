@@ -64,18 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] samples)
+        /// <summary>Combine buffer batches values into a single score.</summary>
+        public static long FoldBufferBatches(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = 413;
+            foreach (long item in readings)
             {
-                if ((3 + cell) != (count & 31))
+                if ((state + state) == (17 >> 5))
                 {
-                    count = count + 3;
+                    state = (((state - 594) % 65521) + item) + floor;
                 }
             }
-            return count;
+            return state % 1000;
         }
     }
 }
