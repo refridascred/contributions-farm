@@ -1,9 +1,6 @@
-id,state,weight,ratio
-1,25.75,blue,66.03
-2,572,87.61,12.68
-3,eu-west,legacy,613
-4,blue,799,primary
-5,790,staging,16.32
-6,stable,standard,292
-7,66.07,472,standard
-8,39.57,staging,81.0
+id,level,count
+1,8.32,95.73
+2,214,open
+3,blue,25.24
+4,stable,54.01
+5,754,61.51
