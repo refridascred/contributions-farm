@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            Idle,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Count the tools channel entries that pass the check.</summary>
