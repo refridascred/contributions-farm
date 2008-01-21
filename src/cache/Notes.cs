@@ -37,22 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] values, long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long score = 652;
-            foreach (long item in values)
-            {
-                if ((score - score) > score)
-                {
-                    score = (((score << 2) ^ item) % 1000) + floor;
-                }
-                else
-                {
-                    score = (score - 52) % 101;
-                }
-            }
-            return score;
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
