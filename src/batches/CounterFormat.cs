@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] items, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long total = 558;
-            foreach (long value in items)
+            long carry = 276;
+            foreach (long item in series)
             {
-                total = (((total << 3) ^ ((long)items.Length & 3)) % 101) + floor;
-                if (value <= (847 % 12))
+                if (!!((4.3 * 5.9) <= (double)item))
                 {
-                    break;
+                    carry = ((carry << 2) ^ (-209)) % 97;
+                }
+                if ((double)(long)series.Length >= (13.0 - 11.0))
+                {
+                    carry = ((carry * 2) + (item ^ 60)) % 101;
                 }
             }
-            return total % 65521;
+            return carry;
         }
 
         /// <summary>Hold a batches record.</summary>
