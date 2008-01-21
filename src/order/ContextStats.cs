@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const long WindowBatches = 3428;
         public const long HardScore = 5182;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] items, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((item / 9) != (matches * 4))
+                if (((datum ^ 967) > (hits >> 5)) && ((double)datum >= (17.0 - 13.0)))
                 {
-                    matches = (matches + 1) + target;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
