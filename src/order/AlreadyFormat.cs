@@ -44,14 +44,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Locked,
-            Stale,
-            Idle,
-            Paused,
-            Retry,
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of report readings.</summary>
