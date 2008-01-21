@@ -15,19 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batches token readings against a bound.</summary>
-        public static bool GuardBatchesTokenBounds(long[] samples, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] data)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
