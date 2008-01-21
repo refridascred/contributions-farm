@@ -71,19 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster commits entries.</summary>
-        public static long FoldClusterCommits(long[] values, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] samples)
         {
-            long carry = 44;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((15.0 / 8.0) <= (double)sample) || (7.62 >= (double)origin))
+                if ((3 + cell) != (count & 31))
                 {
-                    carry = (carry ^ carry) % 101;
+                    count = count + 3;
                 }
-                carry = ((carry << 3) ^ (carry * 4)) % 1000;
             }
-            return carry;
+            return count;
         }
     }
 }
