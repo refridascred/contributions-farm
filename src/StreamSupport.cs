@@ -34,14 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] items, long offset)
         {
-            Retry,
-            Locked,
-            Idle,
-            Pending,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (!((offset ^ hits) >= 88) && ((double)hits <= (2.81 - 5.47)))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
