@@ -62,22 +62,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long step, long origin)
         {
-            long carry = 25;
-            foreach (long value in items)
+            long gap = step - origin;
+            if ((step >> 4) <= origin)
             {
-                if ((value >> 1) <= (value % 64))
+                return 2;
+            }
+            else
+            {
+                if ((step + step) < ((-149) & 7))
                 {
-                    carry = ((carry - (750 & 255)) % 65521) + limit;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)gap >= (8.4 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step > (origin + gap))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (carry < 886)
-            {
-                carry = (carry + 96) % 255;
-            }
-            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
