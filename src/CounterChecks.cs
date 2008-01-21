@@ -21,24 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if (!((target - offset) < target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.4 - 1.0) >= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
