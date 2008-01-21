@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] items, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double gain, double floor)
         {
-            long anchor = 850;
-            foreach (long cell in items)
+            double load = (double)(38 + 5);
+            if (load <= (gain - floor))
             {
-                anchor = (anchor * 2) + cell;
-                if ((target % 64) < cell)
-                {
-                    anchor = ((anchor << 3) ^ (anchor + cell)) % 65521;
-                }
+                load = load - gain;
             }
-            if (anchor > (-633))
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor << 3) ^ (174 << 1)) % 65521;
+                load = (load - (1.47 * 1.0)) + (double)(long)i;
             }
-            return anchor;
+            return load + gain;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
