@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Count the cluster counter entries that pass the check.</summary>
+        public static long MeasureClusterCounterMatches(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = (score * 4) + ((long)i + score);
-                score = ((score * 5) + (long)i) % 65521;
+                if (((double)tally < (5.25 + 2.0)) && !((long)data.Length >= (sample + sample)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Project the next stats commits value.</summary>
