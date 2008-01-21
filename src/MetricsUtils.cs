@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = 5;
+            foreach (long sample in samples)
             {
-                if (289 < (entry << 2))
-                {
-                    seen = seen + 2;
-                }
+                anchor = ((anchor + (6 << 3)) ^ sample) - limit;
             }
-            return seen;
+            if (anchor > 55)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
