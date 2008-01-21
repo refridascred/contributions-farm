@@ -1,5 +1,6 @@
 {
-  "idle_ratio_ms": ["edge", "edge", "legacy"],
-  "idle_interval_count": [357, 44, 406, 395],
-  "cluster_depth": "open"
+  "verbose": 37,
+  "dry_run": "stable",
+  "poll_retries_s": 71,
+  "default_depth": "open"
 }
