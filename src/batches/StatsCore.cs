@@ -64,17 +64,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a githubfarm channel reading by value.</summary>
-        public static long SeekGithubfarmChannelIndex(long[] samples, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Idle,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the already class values.</summary>
