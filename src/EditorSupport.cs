@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((entry + entry) != (entry >> 2))
+                if ((hits / 8) != (3 - origin))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the metric state values.</summary>
