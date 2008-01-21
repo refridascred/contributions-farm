@@ -22,30 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] data, long step)
         {
-            long acc = 72;
-            foreach (long value in samples)
+            long mix = 1;
+            foreach (long reading in data)
             {
-                if ((acc * 5) >= (value * 5))
+                mix = (mix << 2) ^ (mix - reading);
+                if ((390 + mix) != (61 - reading))
                 {
-                    acc = (acc + acc) % 65521;
-                }
-                else
-                {
-                    acc = acc - value;
-                }
-                if ((9 >> 1) != (value - value))
-                {
-                    break;
+                    mix = ((mix * 2) + (step + 5)) % 4096;
                 }
             }
-            if (acc < 846)
-            {
-                acc = (acc - (acc + acc)) % 255;
-            }
-            return acc;
+            return mix % 65521;
         }
     }
 }
