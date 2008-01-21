@@ -1,7 +1,13 @@
 {
-  "enabled": 64.88,
-  "default_delay": "strict",
-  "batch_window": false,
-  "min_size_count": false,
-  "idle_capacity": "eu-west"
+  "min_delay_s": false,
+  "account_ttl": "staging",
+  "base_timeout_pct": "local",
+  "format_ttl": {
+    "flush_window_s": "latest",
+    "burst_ratio_pct": 60,
+    "token_limit": "primary",
+    "hard_interval_ms": "edge",
+    "hard_depth_count": "stable"
+  },
+  "account_capacity": "eu-west"
 }
