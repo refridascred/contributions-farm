@@ -13,14 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long floor)
         {
-            Failed,
-            New,
-            Dropped,
-            Stale,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
