@@ -18,14 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long step, long target)
         {
-            Queued,
-            Closed,
-            Retry,
-            Paused,
-            Active,
+            if ((target >> 3) <= 1)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((8 ^ target) >= (step ^ step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of format readings.</summary>
