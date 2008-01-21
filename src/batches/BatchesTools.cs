@@ -23,14 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Draft,
-            Ready,
-            Dropped,
-            Paused,
-            Failed,
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
