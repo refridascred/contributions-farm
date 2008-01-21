@@ -22,16 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleFactor = 7629;
+        public const long WindowCommand = 5541;
+        public const string DefaultSpan = "local-edge";
+        public const long RetryCommand = 9703;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] values, long limit)
