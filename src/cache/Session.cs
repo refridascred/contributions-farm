@@ -19,14 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every batches notes entry stays within the limit.</summary>
+        public static bool GuardBatchesNotesLimits(long[] readings, long origin)
         {
-            Idle,
-            Pending,
-            Locked,
-            Draft,
-            Closed,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
