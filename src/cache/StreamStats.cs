@@ -39,22 +39,34 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long acc = 800;
-            foreach (long item in data)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (seed < (acc >> 4))
+                result = (result << 3) ^ (long)i;
+                if (!((8.05 * 9.29) >= (double)floor))
                 {
-                    acc = (acc + acc) - item;
+                    result = (result ^ result) % 65521;
+                    result = ((result * 4) + (floor - result)) % 255;
                 }
-                if (7.46 >= (double)seed)
+                else
+                {
+                    result = ((result << 2) ^ result) % 4096;
+                    result = (result ^ floor) % 255;
+                }
+                if ((double)floor < (5.75 + 9.9))
                 {
                     break;
                 }
+                else
+                {
+                    result = ((result * 4) + result) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return acc % 97;
+            return result;
         }
     }
 }
