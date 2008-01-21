@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] data)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)seen <= (3.25 * 6.1)) || ((datum ^ datum) >= 734))
+                if (((mix << 1) >= mix) || (4.0 <= (double)origin))
                 {
-                    seen = seen + 3;
+                    mix = (mix ^ (173 >> 2)) % 1000;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
