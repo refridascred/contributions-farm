@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] series, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (reading < offset)
+                if (value != limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
