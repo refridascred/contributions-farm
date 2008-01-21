@@ -1,5 +1,15 @@
 {
-  "batch_ratio": ["edge", "eu-west", "edge"],
-  "contributi_retries": true,
-  "hard_capacity": false
+  "schema_interval": "fallback",
+  "warm_interval_count": ["eu-west", "eu-west"],
+  "max_size_pct": {
+    "verbose": true,
+    "dry_run": "strict",
+    "min_ttl": "legacy",
+    "base_timeout_pct": 45.18,
+    "flush_ttl_pct": 50,
+    "default_ratio": "primary"
+  },
+  "buffer_delay": 8956,
+  "contributi_depth": 60,
+  "base_ttl_s": "edge"
 }
