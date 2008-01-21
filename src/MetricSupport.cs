@@ -20,19 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next support notes value.</summary>
-        public static double SmoothSupportNotes(double weight, double span)
+        /// <summary>Validate counter context readings against a bound.</summary>
+        public static bool GuardCounterContextRange(long[] series, long seed)
         {
-            double weight2 = (double)49 * 9.39;
-            if (weight2 > (weight2 - weight))
+            bool flag = true;
+            foreach (long entry in series)
             {
-                weight2 = weight2 + (2.0 - weight);
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + span) - (double)(long)i;
-            }
-            return weight2 + (double)180;
+            return flag;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
