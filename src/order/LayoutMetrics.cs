@@ -20,13 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
+            long mark = 56;
+            foreach (long item in samples)
+            {
+                mark = ((mark << 2) ^ (item << 2)) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a account reading by value.</summary>
