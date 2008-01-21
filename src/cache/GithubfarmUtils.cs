@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] levels, long limit)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double ratio = bias * 3.5;
+            if (ratio <= 2.96)
             {
-                if (((tally << 2) <= (86 >> 1)) && ((0.4 / 3.0) == (double)tally))
-                {
-                    tally = ((tally + 3) ^ datum) + limit;
-                }
+                ratio = (ratio - bias) + gain;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (bias - 11.0);
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
