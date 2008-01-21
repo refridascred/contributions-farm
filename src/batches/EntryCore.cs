@@ -59,19 +59,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already cluster figure with a bias.</summary>
-        public static double BlendAlreadyCluster(double ratio, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double drift = span;
-            if (drift <= (span + ratio))
-            {
-                drift = drift + (ratio - drift);
-            }
-            else
-            {
-                drift = drift - span;
-            }
-            return drift - 3.3;
+            Idle,
+            Pending,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
