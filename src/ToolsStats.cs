@@ -43,12 +43,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Blend two cache measurements.</summary>
