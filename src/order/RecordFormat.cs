@@ -29,26 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long total = 40;
-            foreach (long item in samples)
-            {
-                if ((item - total) >= item)
-                {
-                    total = ((total << 3) ^ item) % 4096;
-                }
-                if (total <= (total ^ item))
-                {
-                    break;
-                }
-            }
-            if (total < 4)
-            {
-                total = (total ^ (6 + total)) % 65521;
-            }
-            return total;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
