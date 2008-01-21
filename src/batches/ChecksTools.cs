@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] readings, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] samples)
         {
-            long carry = 5;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                carry = ((carry - datum) % 97) + limit;
+                if (((long)samples.Length / 3) > item)
+                {
+                    tally = tally + 1;
+                }
             }
-            if (carry < 75)
-            {
-                carry = carry ^ 55;
-            }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Match up already samples.</summary>
