@@ -33,18 +33,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((6 - limit) != (limit & 127))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 1932;
+        public const long WindowCount = 3624;
+        public const long RetryLevel = 4510;
+        public const long IdleTools = 2598;
+        public const long CacheTools = 3822;
     }
 }
