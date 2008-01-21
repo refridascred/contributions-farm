@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in stable blue green edge; do
+for item in stable primary eu-west; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
