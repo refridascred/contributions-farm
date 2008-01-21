@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
