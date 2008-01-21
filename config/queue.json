@@ -1,16 +1,12 @@
 {
-  "min_interval_count": 1024,
-  "batch_capacity_s": true,
-  "readonly": {
-    "default_ttl_ms": 60,
-    "min_size_s": {
-      "cache_window": "strict",
-      "flush_retries_pct": true,
-      "sync_limit_s": [242, 400, 56]
-    },
-    "editor_size": false
-  },
-  "max_depth": "cached",
-  "batch_retries_pct": true,
-  "burst_size": 64.52
+  "record_delay": 60,
+  "persist": 19,
+  "already_ttl": {
+    "enabled": 30,
+    "retry_threshold_count": 33.9,
+    "retry_interval_count": "legacy",
+    "flush_window_s": "standard",
+    "tools_threshold": 93,
+    "command_limit": 25
+  }
 }
