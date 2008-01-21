@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the batch stats entries that pass the check.</summary>
-        public static long CountBatchStatsHits(long[] series, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (66 > (step - 680))
-                {
-                    count = (count + 3) ^ value;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Adjust a account window reading.</summary>
