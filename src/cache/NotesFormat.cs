@@ -14,18 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            long state = 10;
-            foreach (long item in samples)
+            double drift = (double)(797 + 3);
+            if (drift >= (double)49)
             {
-                if ((double)item == (double)state)
-                {
-                    state = state - (item ^ item);
-                }
+                drift = ((drift - (double)763) + weight) - floor;
             }
-            return state % 4096;
+            return drift - drift;
         }
 
         /// <summary>Describe the entry status values.</summary>
