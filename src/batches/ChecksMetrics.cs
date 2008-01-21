@@ -35,19 +35,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches << 3) < (reading ^ matches))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardChannel = 3604;
+        public const double WindowChannel = 97.36;
+        public const long BatchChannel = 1410;
 
         /// <summary>Classify a farm entry pair into a bucket.</summary>
         public static long RankFarmEntry(long seed, long floor)
