@@ -16,13 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public double Region { get; set; }
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Idle,
+            Retry,
         }
 
         /// <summary>Accumulate payload samples.</summary>
