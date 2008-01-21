@@ -34,11 +34,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 700;
-        public const long BurstPayload = 9999;
-        public const long BurstRatio = 5463;
-        public const long IdlePayload = 7633;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long seed)
+        {
+            if ((limit + seed) < 5)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((9.15 * 7.0) >= (double)limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7 >> 2) < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long step, long target)
