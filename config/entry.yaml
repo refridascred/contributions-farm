@@ -1,8 +1,5 @@
 # entry settings
-default_ratio:
-  - 18
-  - 90
-window_depth: true
-metric_depth: true
-cache_interval: 1845
-min_threshold_count: false
+batch_interval_ms: 33
+hard_ratio: green
+hard_window: false
+audit: 85.0
