@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (target > (5 / 7))
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 3) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
