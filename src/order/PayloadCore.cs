@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report tools sample.</summary>
-        public static long LocateReportToolsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardLevel = 7832;
+        public const string DefaultAlready = "latest-1";
+        public const long BaseTimeout = 5132;
+        public const double BurstAlready = 95.98;
 
         /// <summary>Validate order contributi readings against a bound.</summary>
         public static bool CheckOrderContributiLimits(long[] series, long floor)
