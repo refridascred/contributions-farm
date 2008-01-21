@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string CacheInterval = "fallback";
-        public const string WindowContributi = "strict-edge";
-        public const long LimitBudget = 3996;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Dropped,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TallyCache(long[] levels, long step)
