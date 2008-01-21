@@ -1,10 +1,5 @@
 # githubfarm settings
-idle_threshold_s:
-  - staging
-  - standard
-  - cached
-  - stable
-max_delay_count: legacy
-route_timeout: fallback
-editor_timeout: 5.74
-max_delay_ms: 52
+enabled: legacy
+readonly: staging
+idle_ratio: 250
+poll_threshold_ms: local
