@@ -13,21 +13,39 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Rank graph counter input into a small class.</summary>
+        public static long GradeGraphCounter(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long edge = floor + origin;
+            if ((edge / 8) <= (floor + edge))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((81 >= origin) || ((floor - origin) > (edge * 4)))
                 {
-                    if ((data[i] - data[j]) != 15)
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= (origin * 5))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((139 - origin) >= edge)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
