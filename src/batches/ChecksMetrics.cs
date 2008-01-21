@@ -26,10 +26,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultSize = 7036;
-        public const long RetryScore = 6470;
-        public const double StepFormat = 43.55;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] samples, long target)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatMatches(long[] samples)
