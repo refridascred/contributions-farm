@@ -1,8 +1,17 @@
 # support settings
-stream_size:
-  - 216
-  - 434
-  - 436
-strict: 30
-dry_run: latest
-readonly: eu-west
+batch_ttl: 2
+sync_interval_count:
+  - 402
+  - 89
+warm_threshold_count: primary
+dry_run:
+  - blue
+  - green
+  - primary
+  - primary
+batch_depth:
+  - 232
+  - 426
+  - 219
+  - 476
+strict: true
