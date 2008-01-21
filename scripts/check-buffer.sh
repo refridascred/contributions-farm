@@ -6,17 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=161
+BUFFER_LIMIT=51
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for item in local latest primary edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
