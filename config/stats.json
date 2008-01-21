@@ -1,7 +1,11 @@
 {
-  "cluster_window": "latest",
-  "poll_timeout": 45,
-  "flush_size": true,
-  "base_ttl": 1024,
-  "strict": "cached"
+  "default_ratio_count": {
+    "poll_limit_ms": 9740,
+    "strict": true,
+    "base_window_ms": 7645,
+    "burst_interval_count": ["blue", "eu-west"]
+  },
+  "cache_delay": [30, 408, 382, 21],
+  "soft_ttl_pct": ["edge", "edge"],
+  "retry_capacity_ms": "edge"
 }
