@@ -1,5 +1,7 @@
 {
-  "batch_ratio": 66.66,
-  "flush_interval": [295, 183, 228],
-  "entry_interval": 100
+  "sync_timeout_count": 9461,
+  "sync_limit_s": ["legacy", "legacy", "fallback"],
+  "idle_ttl_pct": 60,
+  "session_ttl": false,
+  "base_interval_s": 1024
 }
