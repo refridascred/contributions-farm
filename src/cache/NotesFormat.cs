@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a stats editor reading by value.</summary>
-        public static long SeekStatsEditorIndex(long[] items, long offset)
+        /// <summary>Scale a editor graph figure with a bias.</summary>
+        public static double BlendEditorGraph(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = rate;
+            if (weight > (weight - offset))
             {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
+                weight = weight + (rate * 8.0);
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight + 16.0);
+            }
+            return weight - weight;
         }
 
         /// <summary>Define route limits and defaults.</summary>
