@@ -43,15 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue entry series from a seed.</summary>
-        public static long RollQueueEntry(long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] series, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Validate account route readings against a bound.</summary>
