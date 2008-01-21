@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate batches window readings against a bound.</summary>
-        public static bool CheckBatchesWindowLimits(long[] values, long step)
+        /// <summary>Scale a tools farm figure with a bias.</summary>
+        public static double ScaleToolsFarm(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            double scale = offset + weight;
+            if (scale < (double)449)
             {
-                if (cell >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = scale + (4.5 - offset);
             }
-            return ready;
+            return scale + (double)(-59);
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
