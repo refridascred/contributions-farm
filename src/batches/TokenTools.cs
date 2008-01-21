@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels, long seed)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((seed + seed) != (seed >> 1)) && (7.6 >= (double)reading)) && (((seed % 10) >= (tally / 6)) || ((double)reading == (15.0 - 6.8))))
                 {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
