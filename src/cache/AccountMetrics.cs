@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a stats githubfarm reading by value.</summary>
-        public static long SeekStatsGithubfarmIndex(long[] data, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 0;
+            foreach (long value in readings)
             {
-                if ((data[i] == target) && ((data[i] % 2) == 0))
+                if (sum <= (sum - 489))
                 {
-                    return (long)i;
+                    sum = sum - (value - (long)readings.Length);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the entry class values.</summary>
