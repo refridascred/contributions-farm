@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every graph checks entry stays within the limit.</summary>
-        public static bool VerifyGraphChecksBounds(long[] items, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Paused,
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
