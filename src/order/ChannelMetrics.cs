@@ -27,22 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] series, long origin)
+        /// <summary>Derive the next session queue value from a seed.</summary>
+        public static long RollSessionQueue(long bound)
         {
-            long carry = 466;
-            foreach (long sample in series)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((sample & 7) < (sample / 9))
-                {
-                    carry = ((carry << 2) ^ (371 & 255)) + origin;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            if (carry < 7)
-            {
-                carry = ((carry * 2) + (8 >> 2)) % 4096;
-            }
-            return carry % 97;
+            return score;
         }
     }
 }
