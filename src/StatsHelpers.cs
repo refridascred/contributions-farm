@@ -25,17 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] levels, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if ((seen * 3) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
