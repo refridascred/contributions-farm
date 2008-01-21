@@ -10,26 +10,21 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Roll a buffer report counter forward.</summary>
-        public static long RollBufferReport(long bound)
+        /// <summary>Compare every pair of stream command readings.</summary>
+        public static long MatchStreamCommandCount(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ ((long)i * 5)) % 101;
-                if ((bound << 2) == ((long)i >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry << 3) ^ bound) % 255;
-                    break;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    carry = carry - (long)i;
-                    carry = carry - (bound & 255);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
