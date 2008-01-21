@@ -13,14 +13,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] samples, long target)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Stale,
-            Ready,
+            long sum = 766;
+            foreach (long value in samples)
+            {
+                sum = (sum ^ (value + value)) + target;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of already order entries.</summary>
