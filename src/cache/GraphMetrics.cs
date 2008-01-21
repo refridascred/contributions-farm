@@ -32,25 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long seed)
+        /// <summary>Find the first contributi session entry that matches the target.</summary>
+        public static long SeekContributiSessionIndex(long[] series, long seed)
         {
-            long bound = offset + seed;
-            if ((offset + bound) == (offset ^ seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.3 * 13.0) <= (double)offset)
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the support level values.</summary>
