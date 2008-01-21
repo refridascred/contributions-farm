@@ -1,23 +1,17 @@
 # entry settings
-graph_delay:
-  contributi_threshold: 52.81
-  soft_timeout: fallback
-  compress: latest
-flush_timeout:
-  dry_run:
-    githubfarm_delay: staging
-    warm_threshold_ms: true
-    compress: edge
-    base_ratio: edge
-    soft_window_count: 250
-    warm_retries_ms: open
-  audit:
-    - 191
-    - 130
-    - 37
-    - 33
-  sync_delay: false
-dry_run: 12
-stats_delay:
-  - stable
-  - local
+sync_depth_pct: 4578
+checks_window:
+  retry_ttl_s: 10
+  cache_timeout: false
+  base_limit_ms: 17
+audit:
+  - 110
+  - 488
+verbose:
+  cache_delay_s: 68.28
+  idle_delay: false
+  hard_timeout_s: 30
+  min_window_pct: 63.01
+  batch_depth_count: 9207
+  max_timeout: true
+base_retries_pct: 23
