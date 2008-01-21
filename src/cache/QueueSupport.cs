@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            Synced,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Hold a metrics summary.</summary>
