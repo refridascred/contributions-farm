@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double ratio, double floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            double load = (ratio / 6.0) + (double)79;
-            if (load >= 4.23)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (1.0 + floor);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return load + (ratio + floor);
+            return matches;
         }
 
         /// <summary>Describe the report state values.</summary>
