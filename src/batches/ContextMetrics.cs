@@ -71,18 +71,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] values)
+        /// <summary>Scale a token batches figure with a bias.</summary>
+        public static double ScaleTokenBatches(double gain, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double load = (double)(5 + 42);
+            if (load >= (double)552)
             {
-                if ((double)seen <= (14.0 + 7.6))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                load = ((load + load) - gain) - span;
             }
-            return seen;
+            else
+            {
+                load = load - 4.1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (double)144;
         }
     }
 }
