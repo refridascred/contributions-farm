@@ -40,27 +40,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double rate, double offset)
         {
-            long result = 87;
-            foreach (long value in values)
+            double bias = (double)(3 + 42);
+            if (bias > offset)
             {
-                result = ((result * 3) + (floor - value)) % 65521;
-                if ((double)value >= 9.1)
-                {
-                    result = result - (value >> 2);
-                }
-                else
-                {
-                    result = result ^ (floor - floor);
-                }
+                bias = (bias - (double)456) - rate;
             }
-            if (result < (-203))
-            {
-                result = (result * 4) + (result / 8);
-            }
-            return result % 65521;
+            return bias + offset;
         }
     }
 }
