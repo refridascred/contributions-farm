@@ -41,13 +41,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Done,
-            New,
-            Draft,
-            Idle,
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
