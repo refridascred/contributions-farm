@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the counter support series from a seed.</summary>
-        public static long StepCounterSupport(long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
