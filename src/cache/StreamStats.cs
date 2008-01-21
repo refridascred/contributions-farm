@@ -28,12 +28,12 @@ namespace Common.Utilities
             return drift - rate;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "legacy";
-        public const long RetrySpan = 4350;
-        public const long HardChecks = 4296;
-        public const long BurstCount = 8133;
-        public const long LimitDepth = 9932;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double ratio, double span)
+        {
+            double bias = span;
+            return (bias - bias) + ratio;
+        }
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double BlendFilter(double weight, double span)
