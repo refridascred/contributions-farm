@@ -37,18 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] levels, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long target)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)sample >= 8.76)
-                {
-                    hits = (hits + 1) - bound;
-                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
