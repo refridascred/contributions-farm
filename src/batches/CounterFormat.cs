@@ -28,12 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
