@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double scale, double floor)
         {
-            Locked,
-            Stale,
-            Done,
+            double scale2 = floor;
+            return (scale2 - 2.6) + scale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
