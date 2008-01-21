@@ -13,11 +13,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 62.83;
-        public const double StepBuffer = 89.83;
-        public const double MaxScore = 35.81;
-        public const double DefaultBuffer = 20.14;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Stale,
+            Ready,
+            Done,
+            Synced,
+            Active,
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] samples, long origin)
