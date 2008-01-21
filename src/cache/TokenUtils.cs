@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] levels, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long acc = 448;
-            foreach (long cell in levels)
-            {
-                if (acc <= origin)
-                {
-                    acc = (acc + (acc & 7)) % 65521;
-                }
-                if (!(acc < cell))
-                {
-                    acc = (acc + (acc / 9)) % 97;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc - cell);
-                }
-            }
-            return acc;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
