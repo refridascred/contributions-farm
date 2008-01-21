@@ -82,5 +82,15 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Queued,
+            Ready,
+            Retry,
+            Paused,
+            Draft,
+        }
     }
 }
