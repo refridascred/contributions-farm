@@ -14,30 +14,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] levels, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            long score = 17;
-            foreach (long reading in levels)
+            double bias = 0.3;
+            if (bias >= 6.41)
             {
-                if ((score + reading) == (bound + score))
-                {
-                    score = (score - (bound ^ (-11))) % 255;
-                }
-                if (((reading - reading) > (633 & 31)) && ((reading - bound) > (141 - reading)))
-                {
-                    score = ((score << 3) ^ (score << 2)) % 97;
-                }
-                if (((604 ^ reading) <= score) && ((reading * 5) == (661 * 5)))
-                {
-                    break;
-                }
+                bias = bias - floor;
             }
-            if (score < 5)
+            else
             {
-                score = ((score << 2) ^ (score / 9)) % 255;
+                bias = bias + (bias - floor);
             }
-            return score % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + ratio) + (double)(long)i;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Adjust a batch reading.</summary>
