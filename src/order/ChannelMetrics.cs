@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long target, long limit)
+        /// <summary>Roll a context entry counter forward.</summary>
+        public static long DeriveContextEntry(long step)
         {
-            if ((double)target >= (4.43 + 12.0))
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 8;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((target + limit) >= (limit - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
