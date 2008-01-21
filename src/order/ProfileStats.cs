@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] levels, long step)
-        {
-            long mix = 257;
-            foreach (long item in levels)
-            {
-                mix = mix - 3;
-                mix = ((mix * 5) + item) % 1000;
-                mix = (mix ^ item) % 255;
-            }
-            if (mix < 407)
-            {
-                mix = mix ^ (step + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBudget = 943;
+        public const long BaseBuffer = 250;
+        public const long LimitBuffer = 2186;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
