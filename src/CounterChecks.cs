@@ -59,21 +59,38 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 6; i++)
+            if ((offset & 15) < (offset * 2))
             {
-                mark = ((mark * 4) + ((long)i + (long)i)) % 97;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mark = (mark ^ (mark - (long)i)) ^ (long)i2;
-                }
-                mark = mark - (seed - (long)i);
-                mark = ((mark * 3) + (long)i) % 65521;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (0 > (floor + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((9.0 + 1.0) < (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((3 ^ 895) != (floor / 3)) && ((offset + offset) > (offset >> 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor entry.</summary>
