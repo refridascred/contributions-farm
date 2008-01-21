@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] > step)
                 {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
