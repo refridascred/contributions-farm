@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
