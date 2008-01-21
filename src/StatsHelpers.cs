@@ -26,19 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double ScaleBatchesCommits(double rate, double offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] levels, long seed)
         {
-            double weight = offset - (offset - rate);
-            if (weight < (weight + rate))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                weight = weight + (double)56;
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (rate * 7.96)) - (double)(long)i;
-            }
-            return weight + (double)91;
+            return valid;
         }
 
         /// <summary>Hold a support summary.</summary>
