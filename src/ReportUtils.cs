@@ -45,31 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            if ((origin / 6) < floor)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(origin > (floor << 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin >= (floor * 4)) || ((origin * 3) == (origin << 3)))
+                    if ((data[i] + data[j]) != 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
