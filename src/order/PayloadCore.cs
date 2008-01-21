@@ -53,19 +53,19 @@ namespace Common.Utilities
         public const long HardBudget = 1126;
         public const long SoftRatio = 4534;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] values, long limit)
+        /// <summary>Check that every commits cluster entry stays within the limit.</summary>
+        public static bool ValidateCommitsClusterBounds(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (entry < limit)
+                if (value <= offset)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
