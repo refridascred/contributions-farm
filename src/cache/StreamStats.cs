@@ -46,32 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long floor, long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long offset = floor + seed;
-            if ((seed % 12) < 465)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor / 8) > offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= (164 * 4))
+                    if ((readings[i] ^ readings[j]) == 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
