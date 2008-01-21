@@ -44,22 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] series)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = 49;
+            foreach (long reading in series)
             {
-                if (count > (count + cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = (((mark * 5) + 997) % 97) - reading;
             }
-            return count;
+            if (mark < 4)
+            {
+                mark = (mark - (mark & 63)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
