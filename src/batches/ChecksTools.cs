@@ -40,11 +40,11 @@ namespace Common.Utilities
         public const long CacheToken = 6255;
         public const long BatchRatio = 7065;
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
-        {
-            public double Weight { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepFactor = 23.6;
+        public const string RetrySize = "fallback";
+        public const long BatchSchema = 5345;
+        public const string WindowDepth = "alpha-edge";
+        public const long BaseDepth = 1242;
     }
 }
