@@ -22,17 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] series, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                if ((((0 + seen) <= (-8)) || ((seen ^ datum) >= (7 - 0))) || (((seen ^ seen) < seen) || ((12.0 - 2.04) >= (double)seen)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
