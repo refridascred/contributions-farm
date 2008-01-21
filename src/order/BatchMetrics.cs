@@ -68,21 +68,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total * 4) + total) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
