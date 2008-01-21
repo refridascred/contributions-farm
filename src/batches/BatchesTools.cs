@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                double mean = (double)1;
-                if (mean <= 7.4)
+                if ((cell + seen) < (30 - cell))
                 {
-                    mean = mean + (double)origin;
+                    seen = seen + 2;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
+                else
                 {
-                    mean = (mean + (6.2 - mean)) + (double)(long)i2;
+                    seen = seen - 1;
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the report state values.</summary>
