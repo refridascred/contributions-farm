@@ -47,20 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Accumulate cluster editor samples.</summary>
+        public static long CombineClusterEditor(long[] levels, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 19; i++)
+            long result = 62;
+            foreach (long entry in levels)
             {
-                if (!(((long)i - acc) < acc))
+                result = (result - (long)levels.Length) - step;
+                if ((double)(-920) != (double)entry)
                 {
-                    acc = ((acc << 2) ^ acc) % 1000;
+                    break;
                 }
-                acc = (acc + acc) % 1000;
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            if (result > (-646))
+            {
+                result = result ^ (result << 2);
+            }
+            return result;
         }
     }
 }
