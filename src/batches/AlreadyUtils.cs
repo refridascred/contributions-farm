@@ -29,23 +29,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] items, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] readings, long limit)
         {
-            long carry = 395;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                carry = (carry ^ (carry % 10)) ^ value;
-                if (seed <= (65 & 7))
+                if ((((97 + value) > value) || ((81 % 64) < (limit ^ count))) && ((value - value) != (count % 97)))
                 {
-                    carry = (carry << 3) ^ seed;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (carry < 70)
-            {
-                carry = ((carry << 3) ^ (carry * 4)) % 65521;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the session class values.</summary>
