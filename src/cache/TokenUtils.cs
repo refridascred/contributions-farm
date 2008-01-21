@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowWidth = 7437;
-        public const string BatchBuffer = "open";
-        public const long SoftBuffer = 2020;
-        public const long WindowBuffer = 4728;
-        public const long CacheSize = 416;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long origin, long bound)
+        {
+            if ((double)bound == (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin < 11.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
