@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long AuditSessionCommitsMatches(long[] values, long step)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!(((step + matches) > ((-9) % 2)) || (matches >= (matches ^ matches))))
-                {
-                    matches = (matches + 3) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two session measurements.</summary>
