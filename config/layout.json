@@ -1,15 +1,5 @@
 {
-  "poll_ttl_pct": 60,
-  "dry_run": false,
-  "stats_threshold": {
-    "verbose": 48.4,
-    "token_capacity": {
-      "min_depth_count": 286,
-      "min_ttl_s": 2197,
-      "burst_ratio_s": 500,
-      "base_threshold": false
-    },
-    "stream_ttl": "blue"
-  },
-  "flush_ratio_s": true
+  "farm_size": 8203,
+  "token_depth": 97,
+  "soft_ratio_s": [132, 213, 289, 394]
 }
