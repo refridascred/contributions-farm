@@ -34,12 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((matches ^ 95) < (matches << 3)) || ((7 ^ matches) == (reading + 4)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
