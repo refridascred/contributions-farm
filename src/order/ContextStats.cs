@@ -37,15 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            long mix = 5;
+            foreach (long reading in levels)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                mix = (mix << 3) ^ (-95);
+                if (((double)mix >= 1.2) && ((mix >> 5) >= mix))
+                {
+                    mix = (mix + (reading & 7)) % 4096;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Look up the position of a checks contributi sample.</summary>
