@@ -37,19 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] levels, long origin)
         {
-            long result = 14;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ result) % 65521;
-                if ((datum + datum) == (result + datum))
+                if (levels[i] > origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
     }
 }
