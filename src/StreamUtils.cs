@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer farm readings.</summary>
-        public static long ScoreBufferFarm(long[] items, long limit)
-        {
-            long mark = -3;
-            foreach (long value in items)
-            {
-                if ((mark / 9) <= mark)
-                {
-                    mark = ((mark ^ value) % 65521) - limit;
-                }
-            }
-            if (mark < 60)
-            {
-                mark = mark ^ (mark >> 3);
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryInterval = "staging-edge";
+        public const double SoftRecord = 66.74;
+        public const long BatchRecord = 3792;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
