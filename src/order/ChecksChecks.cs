@@ -19,19 +19,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long step)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                if (item <= step)
+                if (cell > target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
