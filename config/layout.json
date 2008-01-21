@@ -1,5 +1,22 @@
 {
-  "strict": true,
-  "sync_capacity_ms": 41,
-  "channel_depth": [286, 420, 32, 283]
+  "batches_timeout": [445, 421],
+  "dry_run": false,
+  "sync_ttl_count": true,
+  "metrics_limit": 9159,
+  "soft_window_count": {
+    "persist": {
+      "poll_limit": 6227,
+      "idle_size": "local",
+      "default_delay": false,
+      "soft_delay_ms": 250,
+      "warm_capacity_pct": "cached",
+      "base_delay_count": false
+    },
+    "verbose": false,
+    "enabled": "staging",
+    "burst_delay": "primary",
+    "compress": 27.29,
+    "retry_size_s": 67.85
+  },
+  "poll_limit_count": 67.8
 }
