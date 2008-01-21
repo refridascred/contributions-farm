@@ -19,19 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long sum = 2;
-            foreach (long value in data)
-            {
-                sum = (((sum * 3) + (948 >> 1)) % 65521) + value;
-            }
-            if (sum > (-12))
-            {
-                sum = (sum + (sum / 7)) % 65521;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
