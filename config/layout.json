@@ -1,6 +1,8 @@
 {
-  "audit": "legacy",
-  "graph_limit": true,
-  "default_interval": "primary",
-  "notes_threshold": "edge"
+  "already_window": 30,
+  "counter_ratio": 250,
+  "dry_run": [91, 83],
+  "default_limit_ms": false,
+  "burst_timeout": 58.59,
+  "soft_interval_pct": "eu-west"
 }
