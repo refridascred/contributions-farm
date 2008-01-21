@@ -16,19 +16,12 @@ namespace Common.Utilities
             return scale + 3.0;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long floor)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank counter farm input into a small class.</summary>
