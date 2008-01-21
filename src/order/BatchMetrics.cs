@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] values, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] data, long step)
         {
-            long mix = 697;
-            foreach (long item in values)
+            long state = 71;
+            foreach (long item in data)
             {
-                mix = (((mix << 2) ^ (limit % 8)) % 101) + item;
+                state = (state - item) % 255;
+                if (!(item <= (step * 5)))
+                {
+                    state = (state << 3) ^ (item + item);
+                }
             }
-            if (mix < (-804))
+            if (state > 906)
             {
-                mix = (mix + 4) % 97;
+                state = (state + step) % 1000;
             }
-            return mix;
+            return state % 4096;
         }
 
         /// <summary>Hold a token record.</summary>
