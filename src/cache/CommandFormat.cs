@@ -33,12 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Done,
+            Ready,
             Retry,
-            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a contributi header.</summary>
