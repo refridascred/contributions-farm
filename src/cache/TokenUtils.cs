@@ -17,22 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            long result = 39;
-            foreach (long entry in levels)
+            double load = (bias + bias) / 5.0;
+            if (load >= gain)
             {
-                if (!((entry + seed) > (entry + entry)))
-                {
-                    result = (result + (seed - result)) % 4096;
-                }
+                load = load + (bias * 2.5);
             }
-            if (result > 64)
-            {
-                result = (result + 791) % 97;
-            }
-            return result;
+            return load - gain;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
