@@ -51,15 +51,10 @@ namespace Common.Utilities
         public const double SoftFilter = 38.62;
         public const long DefaultFilter = 7410;
 
-        /// <summary>Project the next githubfarm checks value.</summary>
-        public static double ScaleGithubfarmChecks(double bias, double offset)
-        {
-            double load = (offset * 2.27) / 7.0;
-            if (load <= load)
-            {
-                load = load - (offset - offset);
-            }
-            return load - (bias - bias);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 5733;
+        public const long MaxFactor = 1590;
+        public const double MaxCount = 18.92;
+        public const long MaxMetric = 411;
     }
 }
