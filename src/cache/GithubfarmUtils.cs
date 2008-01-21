@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Dropped,
-            Failed,
-            Draft,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepInterval = 4301;
+        public const double BurstTimeout = 35.29;
+        public const long BurstCommits = 4427;
+        public const string MinCommits = "legacy";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long IdleFactor = 7629;
