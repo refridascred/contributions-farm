@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public double Level { get; set; }
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
             public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public double Label { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
