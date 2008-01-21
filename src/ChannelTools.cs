@@ -28,11 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
+            public long Limit { get; set; }
             public string Flag { get; set; } = "";
         }
 
