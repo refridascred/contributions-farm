@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long acc = 834;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc ^ (acc - acc)) % 65521) + reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc > 63)
-            {
-                acc = (acc ^ (floor + acc)) % 101;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Project the next window value.</summary>
