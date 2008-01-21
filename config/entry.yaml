@@ -1,14 +1,4 @@
 # entry settings
-support_window: stable
-default_ratio: 100
-poll_size_pct: 60
-batches_window:
-  max_ttl_pct: 40.9
-  counter_interval: 60.37
-  burst_ttl: 1024
-  enabled: 1024
-channel_threshold:
-  - blue
-  - green
-  - edge
-  - standard
+default_threshold_pct: true
+dry_run: 70
+batch_timeout_pct: true
