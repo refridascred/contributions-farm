@@ -14,22 +14,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] data, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] data, long step)
         {
-            long carry = 532;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((double)floor > (18.0 - 5.0))
+                if (((entry & 63) >= (step + 77)) && ((count >> 4) >= (entry / 4)))
                 {
-                    carry = (carry + floor) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (reading + carry)) % 4096;
+                    count = count + 2;
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
