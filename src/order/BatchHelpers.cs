@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                if (8 > (floor + 0))
-                {
-                    acc = acc + (acc % 7);
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseInterval = 2508;
+        public const long IdleInterval = 1702;
+        public const long CacheMetrics = 595;
+        public const long WindowMetrics = 252;
+        public const long HardDepth = 8413;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadGaps(long[] values, long bound)
