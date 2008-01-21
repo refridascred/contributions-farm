@@ -36,23 +36,20 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values, long floor)
         {
-            double bias = offset;
-            if (bias > bias)
+            long total = 175;
+            foreach (long cell in values)
             {
-                bias = bias + offset;
+                total = ((total * 4) + total) + floor;
+                total = (total << 2) ^ cell;
+                if (cell >= (cell * 4))
+                {
+                    total = ((total * 3) + (942 + total)) % 4096;
+                }
             }
-            else
-            {
-                bias = bias + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - 9.07) + (double)(long)i;
-            }
-            return bias + rate;
+            return total;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
