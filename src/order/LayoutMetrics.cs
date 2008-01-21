@@ -53,13 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] levels, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Count { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item <= 6.4)
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
