@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
