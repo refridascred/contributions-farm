@@ -1,4 +1,9 @@
 # entry settings
-default_threshold_pct: true
-dry_run: 70
-batch_timeout_pct: true
+enabled: 5.84
+entry_depth:
+  - 366
+  - 216
+  - 74
+  - 43
+stats_ratio: 66
+hard_depth: false
