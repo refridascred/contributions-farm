@@ -36,15 +36,18 @@ namespace Common.Utilities
             return (gain + (gain + ratio)) + span;
         }
 
-        /// <summary>Accumulate metrics stats samples.</summary>
-        public static long ScoreMetricsStats(long[] levels, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] values, long target)
         {
-            long total = 736;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                total = (total - (floor + datum)) % 65521;
+                if ((double)target <= 2.0)
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
