@@ -29,15 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long target)
+        /// <summary>Project the next farm batch value.</summary>
+        public static double ProjectFarmBatch(double ratio, double span)
         {
-            long total = 9;
-            foreach (long reading in levels)
-            {
-                total = ((total - (target + target)) % 65521) ^ reading;
-            }
-            return total;
+            double gain = ratio + ratio;
+            return (gain + (gain + ratio)) + span;
         }
 
         /// <summary>Accumulate metrics stats samples.</summary>
