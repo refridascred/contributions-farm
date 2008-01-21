@@ -57,12 +57,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 3730;
+        public const long BurstFactor = 8569;
+        public const long CacheSupport = 8029;
+        public const long WindowSupport = 2076;
     }
 }
