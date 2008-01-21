@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
+            Ready,
+            Idle,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the contributi status values.</summary>
