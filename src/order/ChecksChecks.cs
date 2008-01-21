@@ -12,14 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Retry,
-            Locked,
-            Active,
-            Queued,
-            Stale,
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
