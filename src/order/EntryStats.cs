@@ -36,38 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long target, long target2)
+        /// <summary>Measure how many checks metric samples are out of range.</summary>
+        public static long AuditChecksMetricOutliers(long[] items, long bound)
         {
-            if ((target2 - (-67)) > ((-4) / 8))
+            long matches = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target2 > (9.9 * 8.0))
+                if (!((matches - bound) <= 60))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target >= (target >> 1)) || ((target + target) == (target2 % 64)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((0.69 + 7.68) < (double)target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 2) + entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
