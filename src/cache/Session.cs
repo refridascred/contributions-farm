@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] readings, long limit)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((double)limit == (7.0 * 7.8))
+                {
+                    matches = (matches + 2) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next farm batch value.</summary>
