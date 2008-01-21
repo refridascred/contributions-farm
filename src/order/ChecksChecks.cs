@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
+            Done,
+            Synced,
+            Idle,
             Active,
-            Dropped,
-            Closed,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
