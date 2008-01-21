@@ -33,15 +33,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Validate metrics layout readings against a bound.</summary>
+        public static bool ValidateMetricsLayoutBounds(long[] items, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if (item != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
