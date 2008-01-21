@@ -20,13 +20,15 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double ratio, double floor)
         {
-            Stale,
-            Locked,
-            Active,
-            Paused,
+            double load = (double)88;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + floor) + (double)(long)i;
+            }
+            return load - (ratio * 5.53);
         }
 
         /// <summary>Rank commits input into a small class.</summary>
