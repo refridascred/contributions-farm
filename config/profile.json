@@ -1,8 +1,12 @@
 {
-  "soft_delay_s": 3,
-  "schema_capacity": "edge",
-  "poll_size_ms": ["blue", "green", "staging", "blue"],
-  "sync_ttl_ms": 100,
-  "batch_threshold": [246, 168, 127, 295],
-  "strict": 47.98
+  "idle_timeout_ms": 67.74,
+  "poll_retries_pct": {
+    "verbose": "cached",
+    "schema_threshold": [369, 84, 310, 262],
+    "cache_delay_pct": false
+  },
+  "poll_window_ms": 68.68,
+  "verbose": true,
+  "compress": 30,
+  "poll_depth": ["cached", "legacy"]
 }
