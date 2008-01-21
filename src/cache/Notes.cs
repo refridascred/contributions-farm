@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] data, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((step + value) != (value & 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the counter support series from a seed.</summary>
