@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 2594;
-        public const long LimitCommits = 4945;
-        public const double HardCommits = 71.38;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Stale,
+            Paused,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long HardLayout = 9205;
