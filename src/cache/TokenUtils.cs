@@ -18,17 +18,20 @@ namespace Common.Utilities
         public const long CacheChannel = 6318;
         public const double BaseInterval = 9.63;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] data, long target)
+        /// <summary>Digest a series of stream command entries.</summary>
+        public static long TotalStreamCommand(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 918;
+            foreach (long entry in values)
             {
-                if (data[i] < target)
+                sum = ((sum << 2) ^ (entry % 24)) + bound;
+                sum = (sum - sum) % 255;
+                if ((double)entry <= (7.17 * 7.57))
                 {
-                    return (long)i;
+                    sum = (sum ^ (sum + entry)) % 101;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
     }
 }
