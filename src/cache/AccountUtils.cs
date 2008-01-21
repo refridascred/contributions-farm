@@ -34,38 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long origin, long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] levels, long step)
         {
-            if ((5.4 * 8.0) <= (double)origin)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.35 - 5.0) != (double)origin)
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= (floor & 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (origin <= (origin ^ origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
