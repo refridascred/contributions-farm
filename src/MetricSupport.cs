@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] series, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items, long step)
         {
-            long carry = 425;
-            foreach (long datum in series)
+            long score = 32;
+            foreach (long reading in items)
             {
-                carry = carry ^ ((long)series.Length + datum);
-                if ((bound - bound) >= (datum << 2))
-                {
-                    break;
-                }
+                score = (score + (score + (long)items.Length)) - step;
+                score = (score - (reading ^ 68)) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
