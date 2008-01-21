@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleSpan = 7587;
-        public const double LimitMetric = 4.42;
-        public const long IdleMetric = 9466;
-        public const double CacheMetric = 16.89;
+        /// <summary>Project the next schema order value.</summary>
+        public static double BlendSchemaOrder(double gain, double offset)
+        {
+            double weight = (7.7 / 9.0) * 7.0;
+            return ((weight - (double)(-19)) + gain) + offset;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long GradeStats(long target, long limit)
