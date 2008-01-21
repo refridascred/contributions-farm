@@ -23,23 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next context queue value.</summary>
-        public static double BlendContextQueue(double scale, double floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenBounds(long[] readings, long floor)
         {
-            double mean = (double)(8 % 12);
-            if (mean <= (double)15)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                mean = (mean + (mean / 4.0)) - floor;
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean - mean;
+            return valid;
         }
 
         /// <summary>Describe the account status values.</summary>
