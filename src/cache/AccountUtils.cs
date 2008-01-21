@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long seed2)
         {
-            Queued,
-            Locked,
-            New,
+            if ((double)seed < (double)673)
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed > (seed - 92))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((8 - (-909)) <= seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
