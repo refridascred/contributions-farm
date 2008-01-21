@@ -41,13 +41,18 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] series, long limit)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((reading / 3) != (86 / 2))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
