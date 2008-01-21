@@ -54,14 +54,10 @@ namespace Common.Utilities
         public const double SoftFilter = 38.62;
         public const long DefaultFilter = 7410;
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Failed,
-            Dropped,
-            Done,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchCount = 42.35;
+        public const long DefaultMetric = 7056;
+        public const string MaxDepth = "fallback";
+        public const long BaseInterval = 1722;
     }
 }
