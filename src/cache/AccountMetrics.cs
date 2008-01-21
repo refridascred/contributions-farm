@@ -27,14 +27,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] readings)
         {
-            Pending,
-            Ready,
-            Failed,
-            Dropped,
-            Draft,
+            long carry = 991;
+            foreach (long value in readings)
+            {
+                carry = (((carry << 2) ^ carry) % 1000) + value;
+            }
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
