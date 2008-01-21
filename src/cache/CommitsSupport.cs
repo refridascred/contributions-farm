@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] levels, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long seed)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] < step)
+                if (levels[i] < seed)
                 {
                     return (long)i;
                 }
