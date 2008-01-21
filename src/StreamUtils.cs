@@ -50,19 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics command entry stays within the limit.</summary>
-        public static bool GuardMetricsCommandRange(long[] samples, long seed)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Iterate the entry stats series from a seed.</summary>
