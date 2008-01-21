@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback blue stable edge; do
+for item in latest edge primary; do
     log "checking ${item}"
 done
