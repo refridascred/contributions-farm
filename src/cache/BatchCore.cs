@@ -48,15 +48,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long seed, long seed2)
         {
-            long mix = 600;
-            foreach (long reading in data)
+            long delta = seed + seed2;
+            if ((delta - delta) != (seed * 4))
             {
-                mix = ((mix + mix) % 97) + reading;
+                return 7;
             }
-            return mix % 97;
+            else
+            {
+                if ((delta - 3) > (delta ^ seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((seed / 4) != (seed2 * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
