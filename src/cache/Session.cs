@@ -34,12 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheInterval = 4571;
-        public const long MinGithubfarm = 1600;
-        public const long DefaultScore = 3703;
-        public const long BaseDepth = 1369;
-        public const long MaxScore = 5363;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate account format samples.</summary>
         public static long FoldAccountFormat(long[] samples, long bound)
