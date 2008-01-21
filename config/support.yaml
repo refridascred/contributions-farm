@@ -1,14 +1,5 @@
 # support settings
-audit: 96
-enabled: edge
-cache_interval:
-  cache_limit_ms:
-    - 309
-    - 22
-    - 129
-    - 378
-  cache_interval_s: true
-  audit: true
-strict: edge
-channel_limit: 56
-sync_depth_ms: true
+persist: 250
+compress: eu-west
+farm_capacity: staging
+idle_size_count: 70.14
