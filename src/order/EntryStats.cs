@@ -27,15 +27,15 @@ namespace Common.Utilities
             return gain + (double)917;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] values)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] items, long seed)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long reading in items)
             {
-                if (item < (item - count))
+                if ((count + 175) > (seed % 97))
                 {
-                    count = count + 2;
+                    count = (count + 3) + reading;
                 }
             }
             return count;
