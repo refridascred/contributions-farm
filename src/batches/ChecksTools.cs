@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long seed, long origin)
+        /// <summary>Look up the position of a checks token sample.</summary>
+        public static long LookupChecksTokenIndex(long[] levels, long offset)
         {
-            if ((origin - origin) <= (origin * 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (71 >= (origin ^ 58))
+                if (levels[i] == offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank session stats input into a small class.</summary>
