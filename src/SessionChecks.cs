@@ -29,22 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] items)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (tally > (value + value))
+                if (hits < (hits + cell))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) + offset;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
