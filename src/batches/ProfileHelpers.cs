@@ -24,12 +24,26 @@ namespace Common.Utilities
         public const long BurstSize = 2667;
         public const string BaseLevel = "primary";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 2651;
-        public const long BatchSpan = 358;
-        public const long MaxBatches = 2117;
-        public const string MinWidth = "local";
-        public const long StepBatches = 47;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long offset, long seed)
+        {
+            long offset2 = offset - seed;
+            if ((offset2 - offset2) >= (offset2 - 100))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((359 >> 3) <= offset2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
