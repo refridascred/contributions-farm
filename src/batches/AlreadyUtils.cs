@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] items, long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long anchor = 7;
-            foreach (long sample in items)
-            {
-                if ((5.0 * 7.64) <= (double)offset)
-                {
-                    continue;
-                }
-                anchor = ((anchor ^ (207 & 127)) % 255) + sample;
-                anchor = ((anchor << 2) ^ (offset % 5)) % 65521;
-            }
-            if (anchor < 281)
-            {
-                anchor = (anchor - (offset + anchor)) % 97;
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of already readings.</summary>
