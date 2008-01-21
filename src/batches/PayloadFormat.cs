@@ -13,13 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] samples)
         {
-            Draft,
-            Retry,
-            Done,
-            Ready,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + tally) == (tally + tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
