@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine cache graph values into a single score.</summary>
-        public static long ScoreCacheGraph(long[] items)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long score = 15;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = score + (long)i;
-                }
-                score = ((score << 2) ^ (cell * 3)) % 101;
-            }
-            if (score > 316)
-            {
-                score = (score + (0 + score)) % 101;
-            }
-            return score;
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
