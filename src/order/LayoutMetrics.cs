@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels, long seed)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item <= 6.4)
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
