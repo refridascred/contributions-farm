@@ -32,11 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] items, long bound)
         {
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
