@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Done,
-            Retry,
-            Synced,
-            Ready,
-            Draft,
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
