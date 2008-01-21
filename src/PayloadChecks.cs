@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double gain, double bias)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            double load = (double)(3 + 78);
+            if (load > (bias * 9.3))
             {
-                state = (state * 2) + (long)i;
-                state = ((state * 3) + (long)i) % 4093;
+                load = load + (gain - gain);
             }
-            return state;
+            return load + (load + 6.63);
         }
 
         /// <summary>Fold a list of schema readings.</summary>
