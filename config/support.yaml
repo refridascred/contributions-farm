@@ -1,4 +1,14 @@
 # support settings
-hard_ratio_count: 26
-soft_limit_s: 85.64
-hard_limit: 250
+cache_threshold: 1286
+cache_window: 96
+retry_capacity_count: 60
+layout_capacity:
+  - 113
+  - 88
+  - 482
+  - 476
+token_window:
+  - standard
+  - primary
+  - standard
+queue_window: 1024
