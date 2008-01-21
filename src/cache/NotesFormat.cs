@@ -20,22 +20,31 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] levels, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (limit > (limit - bound))
             {
-                if ((item + item) >= (848 << 1))
+                return 0;
+            }
+            else
+            {
+                if (!((double)limit >= 6.4))
                 {
-                    tally = (tally + 3) + bound;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit + limit) < (-46))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a tools entry.</summary>
