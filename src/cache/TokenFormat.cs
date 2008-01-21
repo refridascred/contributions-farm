@@ -53,24 +53,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long offset, long step)
+        /// <summary>Combine support schema values into a single score.</summary>
+        public static long TotalSupportSchema(long[] readings)
         {
-            if ((double)step < (double)offset)
+            long anchor = 603;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset & 7) >= step)
+                if (!((71 % 3) == (item * 2)))
                 {
-                    return 8;
+                    anchor = (anchor - (item & 127)) % 101;
                 }
-                else
-                {
-                    return 1;
-                }
+                anchor = ((anchor * 4) + (anchor + item)) % 255;
+                anchor = anchor + ((long)readings.Length << 1);
             }
+            return anchor;
         }
     }
 }
