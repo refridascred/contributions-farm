@@ -26,24 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long origin, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if (!((origin / 6) == (target - (-8))))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin > ((-1) << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Synced,
+            Retry,
+            Dropped,
+            Paused,
         }
     }
 }
