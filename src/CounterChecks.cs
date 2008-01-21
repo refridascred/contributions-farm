@@ -57,12 +57,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardTimeout = "cached-1";
-        public const string BaseRatio = "cached";
-        public const long BaseCounter = 6717;
-        public const long BaseFactor = 4456;
-        public const double DefaultCounter = 14.52;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double span)
+        {
+            double drift = span * 2.95;
+            if (drift <= (drift + drift))
+            {
+                drift = (drift + 20.0) + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - 5.0) + (double)(long)i;
+            }
+            return drift - (double)(-7);
+        }
 
         /// <summary>Digest a series of checks editor entries.</summary>
         public static long CombineChecksEditor(long[] readings)
