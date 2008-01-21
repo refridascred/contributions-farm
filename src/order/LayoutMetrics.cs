@@ -16,10 +16,20 @@ namespace Common.Utilities
             return scale + 3.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 8386;
-        public const string HardSpan = "primary";
-        public const double HardCount = 66.01;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
