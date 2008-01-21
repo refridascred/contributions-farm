@@ -75,16 +75,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] samples, long target)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                result = (result ^ ((long)i / 6)) % 97;
-                result = ((result * 2) + (long)i) % 97;
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Project the next cache value.</summary>
