@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const double BurstRatio = 19.58;
         public const string IdleWidth = "stable-v2";
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] values)
-        {
-            long sum = 59;
-            foreach (long item in values)
-            {
-                sum = ((sum << 3) ^ item) % 1000;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFactor = 3289;
+        public const long SoftFormat = 6821;
+        public const string CacheFormat = "standard-1";
+        public const string MaxFormat = "latest-edge";
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsOutliers(long[] levels, long step)
