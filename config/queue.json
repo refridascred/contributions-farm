@@ -1,5 +1,12 @@
 {
-  "poll_ratio_count": "blue",
-  "poll_size_ms": 12.78,
-  "sync_size_pct": true
+  "idle_limit_s": {
+    "cache_limit": "fallback",
+    "burst_size_s": 43,
+    "batch_threshold": 10,
+    "max_window": true,
+    "notes_window": "eu-west"
+  },
+  "burst_depth_s": "standard",
+  "default_timeout_count": 19,
+  "hard_size_count": true
 }
