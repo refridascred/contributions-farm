@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 4020;
-        public const long BurstInterval = 2820;
-        public const string StepChecks = "latest-v2";
-        public const string MaxChecks = "open-v2";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
