@@ -32,23 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits support entries that pass the check.</summary>
-        public static long TallyCommitsSupportGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((41 + value) < hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleTimeout = 2413;
+        public const long CacheToken = 6255;
+        public const long BatchRatio = 7065;
 
         /// <summary>Digest a series of buffer counter entries.</summary>
         public static long TallyBufferCounter(long[] readings, long floor)
