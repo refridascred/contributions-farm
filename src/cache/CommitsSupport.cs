@@ -69,15 +69,19 @@ namespace Common.Utilities
         public const long MaxBudget = 7064;
         public const long MinWidth = 4356;
 
-        /// <summary>Scale a commits contributi figure with a bias.</summary>
-        public static double BlendCommitsContributi(double weight, double span)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long target)
         {
-            double drift = weight * 4.86;
-            if (drift >= weight)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                drift = (drift - drift) + span;
+                if (anchor > target)
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return drift - drift;
+            return anchor;
         }
     }
 }
