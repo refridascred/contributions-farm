@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryScore = 5702;
+        public const long WindowToken = 6601;
+        public const long IdleToken = 2986;
+        public const long SoftToken = 550;
+        public const long RetryCount = 1752;
 
         /// <summary>Find the first support tools entry that matches the target.</summary>
         public static long SeekSupportToolsIndex(long[] levels, long offset)
