@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] data, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            double load = bias;
+            if (load < (load - bias))
             {
-                if (sample <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + load) - weight;
             }
-            return valid;
+            else
+            {
+                load = load - (bias + bias);
+            }
+            return load - load;
         }
 
         /// <summary>Find the first route metrics entry that matches the target.</summary>
