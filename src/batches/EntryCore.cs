@@ -66,15 +66,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double scale = (6.35 * 6.1) * 19.0;
-            if (scale <= scale)
-            {
-                scale = scale - bias;
-            }
-            return scale - (0.1 - rate);
+            Failed,
+            Closed,
+            Draft,
+            Queued,
         }
     }
 }
