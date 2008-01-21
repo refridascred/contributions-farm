@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] samples, long bound)
         {
-            double weight = (gain + gain) / 6.0;
-            return (weight - (weight * 5.1)) + bias;
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (((1.0 - 19.0) <= (double)seen) || (1 <= (bound % 24)))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
