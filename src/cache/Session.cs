@@ -36,15 +36,19 @@ namespace Common.Utilities
         public const long BaseDepth = 1369;
         public const long MaxScore = 5363;
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Accumulate account format samples.</summary>
+        public static long FoldAccountFormat(long[] samples, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long sum = 54;
+            foreach (long value in samples)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((value + sum) >= (sum + bound))
+                {
+                    sum = ((sum << 3) ^ (value % 16)) % 65521;
+                }
+                sum = ((sum * 2) + (56 & 63)) % 101;
             }
-            return state;
+            return sum % 97;
         }
     }
 }
