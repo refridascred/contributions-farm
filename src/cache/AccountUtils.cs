@@ -53,21 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((5.4 * 8.0) <= (double)origin)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((9.35 - 5.0) != (double)origin)
                 {
-                    if ((items[i] ^ items[j]) < 0)
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= (floor & 1))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin <= (origin ^ origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
