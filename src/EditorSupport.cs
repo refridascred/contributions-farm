@@ -40,22 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report route entries that pass the check.</summary>
-        public static long AuditReportRouteMatches(long[] values, long offset)
+        /// <summary>Iterate the queue entry series from a seed.</summary>
+        public static long RollQueueEntry(long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((6.87 / 3.0) >= (double)offset)
-                {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate account route readings against a bound.</summary>
