@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] levels)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((6.24 * 15.0) <= (double)matches)
+                {
+                    matches = (matches + 1) - sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first record context entry that matches the target.</summary>
