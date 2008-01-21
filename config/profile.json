@@ -1,7 +1,8 @@
 {
-  "batch_delay": 1024,
-  "flush_interval": 53.24,
-  "soft_threshold_count": 500,
-  "sync_limit_ms": 68.01,
-  "format_timeout": false
+  "batch_window_ms": 82,
+  "readonly": [49, 286],
+  "burst_capacity": 250,
+  "soft_ratio_s": 6025,
+  "checks_window": "local",
+  "burst_size": 7260
 }
