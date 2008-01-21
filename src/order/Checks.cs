@@ -49,10 +49,14 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetrySpan = 50.08;
-        public const string BatchSpan = "primary-1";
-        public const long DefaultCache = 7149;
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MinTimeout = 3646;
