@@ -14,13 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] series, long floor)
         {
-            public bool Count { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            long sum = 83;
+            foreach (long cell in series)
+            {
+                if (((sum ^ 3) > (sum ^ floor)) && ((cell - cell) > cell))
+                {
+                    sum = (sum << 3) ^ (floor * 4);
+                }
+                else
+                {
+                    sum = sum - floor;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
