@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank metric commits input into a small class.</summary>
-        public static long BucketMetricCommits(long step, long limit)
+        /// <summary>Locate a stats editor reading by value.</summary>
+        public static long SeekStatsEditorIndex(long[] items, long offset)
         {
-            if ((double)limit > 8.6)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 3) <= (limit % 8))
+                if (items[i] >= offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of context queue readings.</summary>
