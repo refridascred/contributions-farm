@@ -1,5 +1,6 @@
 {
-  "readonly": 80.88,
-  "batch_threshold_count": 32,
-  "warm_capacity_s": false
+  "hard_capacity": 60,
+  "audit": "legacy",
+  "hard_size_pct": [308, 497, 225],
+  "channel_window": 6753
 }
