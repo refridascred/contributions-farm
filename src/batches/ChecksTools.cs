@@ -50,11 +50,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batch support figure with a bias.</summary>
-        public static double BlendBatchSupport(double scale, double bias)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] data)
         {
-            double mean = (double)(80 >> 3);
-            return (mean - bias) + scale;
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
