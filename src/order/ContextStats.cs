@@ -31,11 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardDepth = 8941;
-        public const string BurstBatches = "fallback-edge";
-        public const long WindowBatches = 3428;
-        public const long HardScore = 5182;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] values, long floor)
+        {
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileOutliers(long[] readings, long seed)
