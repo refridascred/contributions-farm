@@ -83,12 +83,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of metric payload readings.</summary>
+        public static long FoldMetricPayload(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            long mix = 48;
+            foreach (long datum in samples)
+            {
+                if ((55 - floor) != (mix * 4))
+                {
+                    mix = (mix + 363) - datum;
+                }
+            }
+            return mix;
         }
     }
 }
