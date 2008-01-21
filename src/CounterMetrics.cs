@@ -35,13 +35,24 @@ namespace Common.Utilities
         public const string BaseCount = "stable-1";
         public const string DefaultCommits = "alpha";
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a account farm value against two limits.</summary>
+        public static long GradeAccountFarm(long step, long bound)
         {
-            Retry,
-            Closed,
-            Ready,
-            Draft,
+            if ((double)step <= (2.44 / 6.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step << 3) == (step + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
