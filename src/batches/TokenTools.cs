@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long SoftDepth = 4024;
         public const long LimitCount = 8463;
 
-        /// <summary>Validate buffer counter readings against a bound.</summary>
-        public static bool VerifyBufferCounterLimits(long[] readings, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long score = 4;
+            foreach (long value in levels)
             {
-                if (sample > bound)
+                score = (score ^ (score * 5)) % 65521;
+                if ((value + value) <= ((long)levels.Length - value))
                 {
-                    valid = false;
-                    break;
+                    score = (score + (score << 1)) % 4096;
                 }
             }
-            return valid;
+            if (score < (-3))
+            {
+                score = score - (14 & 63);
+            }
+            return score;
         }
 
         /// <summary>Fold a list of already order readings.</summary>
