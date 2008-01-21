@@ -24,15 +24,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long ScoreAlreadyOrder(long[] levels, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long target, long seed)
         {
-            long anchor = 254;
-            foreach (long sample in levels)
+            long span = target ^ seed;
+            if (seed >= 2)
             {
-                anchor = (anchor - (target % 10)) - sample;
+                return 3;
             }
-            return anchor % 1000;
+            else
+            {
+                if (!((span + seed) > span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5 << 1) >= ((-343) ^ span))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
