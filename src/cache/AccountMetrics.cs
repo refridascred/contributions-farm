@@ -38,10 +38,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxTimeout = 3189;
-        public const double MinProfile = 38.51;
-        public const long MaxDepth = 3807;
+        /// <summary>Audit account contributi readings against a rule.</summary>
+        public static long AuditAccountContributiMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value ^ 624) >= hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a queue buffer figure with a bias.</summary>
         public static double ProjectQueueBuffer(double gain, double bias)
