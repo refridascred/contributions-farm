@@ -25,28 +25,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series, long offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long score = 9;
-            foreach (long entry in series)
-            {
-                if ((offset & 31) < (entry + (long)series.Length))
-                {
-                    score = ((score << 3) ^ offset) % 101;
-                    score = (score ^ entry) % 4096;
-                }
-                if (4.27 <= (double)entry)
-                {
-                    continue;
-                }
-                score = ((score * 4) + (offset % 60)) % 1000;
-            }
-            if (score < 44)
-            {
-                score = score - (offset << 1);
-            }
-            return score % 4096;
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a farm options.</summary>
