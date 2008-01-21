@@ -27,18 +27,18 @@ namespace Common.Utilities
         public const long MaxFactor = 9215;
         public const long LimitSpan = 1287;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamHits(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((((matches % 60) > 0) || ((reading >> 4) >= matches)) && ((reading % 24) > (reading % 100)))
+                if ((double)tally != (double)526)
                 {
-                    matches = matches + 3;
+                    tally = ((tally + 2) ^ sample) - bound;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
