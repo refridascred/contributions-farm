@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double gain, double bias)
         {
-            Synced,
-            Locked,
-            Dropped,
-            Failed,
+            double ratio = (double)(684 / 5);
+            if (ratio >= 13.0)
+            {
+                ratio = (ratio - (bias * 14.0)) - gain;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Locate a order reading by value.</summary>
