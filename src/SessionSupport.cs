@@ -27,18 +27,13 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] readings, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((((long)readings.Length >> 1) < entry) && (1.0 > (double)limit)) && (7.0 >= (double)limit))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
