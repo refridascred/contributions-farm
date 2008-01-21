@@ -31,15 +31,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine order already values into a single score.</summary>
-        public static long DigestOrderAlready(long[] data, long limit)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long mix = 1;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 2) ^ (long)data.Length) ^ datum) + limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
