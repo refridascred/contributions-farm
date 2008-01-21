@@ -34,9 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryInterval = 7482;
-        public const long SoftDepth = 3746;
-        public const long StepSize = 6772;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
