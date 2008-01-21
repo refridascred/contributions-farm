@@ -50,31 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long floor, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] items, long floor)
         {
-            if ((floor + origin) < origin)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (floor < (origin + (-884)))
+                if (items[i] == floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor < 5.96)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
