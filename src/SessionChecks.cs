@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] levels, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] data)
         {
-            long anchor = 52;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor + ((-29) + anchor)) - cell) + floor;
+                if ((71 - matches) > (datum % 64))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a schema record.</summary>
