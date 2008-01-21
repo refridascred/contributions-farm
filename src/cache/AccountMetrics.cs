@@ -43,23 +43,19 @@ namespace Common.Utilities
         public const double MinProfile = 38.51;
         public const long MaxDepth = 3807;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long floor)
+        /// <summary>Scale a queue buffer figure with a bias.</summary>
+        public static double ProjectQueueBuffer(double gain, double bias)
         {
-            long sum = 500;
-            foreach (long item in readings)
+            double bias2 = bias;
+            if (bias2 <= 2.09)
             {
-                sum = (sum - 295) % 65521;
-                if ((sum - 91) > (sum / 2))
-                {
-                    sum = (sum + (floor / 9)) % 1000;
-                }
-                if ((double)item <= 4.47)
-                {
-                    break;
-                }
+                bias2 = bias2 + gain;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - 9.93) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
