@@ -12,33 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank buffer profile input into a small class.</summary>
-        public static long ClassifyBufferProfile(long origin, long bound)
-        {
-            long offset = origin ^ bound;
-            if (((5.62 - 18.0) == (double)bound) && ((origin >> 5) <= (offset >> 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) <= (bound ^ offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin >> 5) < (origin % 10))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 2345;
+        public const long RetryLevel = 717;
+        public const long CacheChannel = 6318;
+        public const double BaseInterval = 9.63;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long FindSchemaIndex(long[] data, long target)
