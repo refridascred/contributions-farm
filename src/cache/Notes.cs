@@ -14,26 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate checks buffer samples.</summary>
-        public static long WeighChecksBuffer(long[] readings)
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long TallyToolsChannelOutliers(long[] levels, long offset)
         {
-            long mark = 18;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((mark + item) != (item % 7))
+                if ((4.3 * 2.5) != (double)value)
                 {
-                    continue;
-                }
-                if ((mark < (item + item)) || ((mark / 8) <= (item & 1)))
-                {
-                    mark = mark + item;
+                    hits = (hits + 3) - offset;
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark - mark) % 1000;
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Accumulate filter samples.</summary>
