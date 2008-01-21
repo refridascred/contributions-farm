@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryScore = 5702;
-        public const long WindowToken = 6601;
-        public const long IdleToken = 2986;
-        public const long SoftToken = 550;
-        public const long RetryCount = 1752;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] readings, long floor)
