@@ -27,11 +27,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstTimeout = 6028;
-        public const long SoftEditor = 33;
-        public const long CacheRatio = 9819;
-        public const string IdleSpan = "cached";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long limit, long limit2)
+        {
+            if ((5.2 - 4.03) != (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit - limit2) >= (limit2 % 100))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordHits(long[] readings, long seed)
