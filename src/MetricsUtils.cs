@@ -58,11 +58,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string DefaultTimeout = "legacy-v2";
-        public const string DefaultScore = "cached-v2";
-        public const long WindowFactor = 7329;
-        public const long StepSpan = 4302;
-        public const long LimitSpan = 6774;
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long origin, long offset)
+        {
+            long slot = origin - offset;
+            if (!((origin - slot) != (slot << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset + slot) > (origin ^ slot))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((240 + offset) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
