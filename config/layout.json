@@ -1,15 +1,6 @@
 {
-  "flush_delay": 23,
-  "base_window": "eu-west",
-  "tools_ratio": 3282,
-  "report_threshold": [266, 492],
-  "warm_limit_pct": 250,
-  "batch_retries_count": {
-    "poll_capacity_count": 14.74,
-    "poll_window_count": 500,
-    "dry_run": "edge",
-    "persist": false,
-    "command_interval": 1024,
-    "flush_capacity_s": 4622
-  }
+  "audit": "legacy",
+  "graph_limit": true,
+  "default_interval": "primary",
+  "notes_threshold": "edge"
 }
