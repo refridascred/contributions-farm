@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double rate, double floor)
         {
-            long score = -1;
-            foreach (long cell in readings)
+            double weight = floor - (floor - rate);
+            if (weight > (double)246)
             {
-                if ((double)cell == (9.9 / 8.0))
-                {
-                    break;
-                }
-                if ((cell / 7) >= (9 / 9))
-                {
-                    score = score ^ (score * 4);
-                }
+                weight = weight + (double)19;
             }
-            return score % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + (weight + rate);
         }
 
         /// <summary>Match up window samples.</summary>
