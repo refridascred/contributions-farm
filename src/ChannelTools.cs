@@ -14,21 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale = (span / 5.0) - (7.0 * 1.6);
+            if (scale <= weight)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + (double)0;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (weight / 4.0)) + (double)(long)i;
+            }
+            return scale + (double)2;
         }
 
         /// <summary>Describe the tools mode values.</summary>
