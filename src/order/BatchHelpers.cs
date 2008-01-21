@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long limit, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if ((limit - 1) == (limit & 15))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + 5) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
