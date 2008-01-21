@@ -72,14 +72,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] samples)
         {
-            Locked,
-            New,
-            Active,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((6.4 - 12.0) >= (double)hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
