@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the cluster counter entries that pass the check.</summary>
-        public static long MeasureClusterCounterMatches(long[] data)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long diff = offset - bound;
+            if (174 < (diff * 3))
             {
-                if (((double)tally < (5.25 + 2.0)) && !((long)data.Length >= (sample + sample)))
+                return 6;
+            }
+            else
+            {
+                if (offset > (diff / 4))
                 {
-                    tally = tally + 3;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
