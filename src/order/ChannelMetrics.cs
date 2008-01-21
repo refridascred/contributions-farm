@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const long IdleInterval = 2980;
         public const long CacheTools = 2429;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples, long bound)
+        /// <summary>Combine order already values into a single score.</summary>
+        public static long DigestOrderAlready(long[] data, long limit)
         {
-            long mix = 27;
-            foreach (long datum in samples)
+            long mix = 1;
+            foreach (long datum in data)
             {
-                mix = (((mix << 3) ^ ((long)samples.Length / 9)) + datum) + bound;
-                if (!((7.3 * 5.6) <= (double)mix))
-                {
-                    break;
-                }
-            }
-            if (mix > 774)
-            {
-                mix = ((mix << 3) ^ mix) % 4096;
+                mix = (((mix << 2) ^ (long)data.Length) ^ datum) + limit;
             }
             return mix;
         }
