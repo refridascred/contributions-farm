@@ -22,22 +22,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] levels, long limit)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long step, long seed)
         {
-            long carry = -5;
-            foreach (long entry in levels)
+            if ((4.0 - 1.1) < (double)step)
             {
-                if (5.81 <= (double)entry)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed < (5.97 * 4.5))
                 {
-                    carry = ((carry * 4) + (limit + entry)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    carry = ((carry * 5) + limit) % 101;
+                    if ((step % 8) >= (step % 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed <= 0)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
