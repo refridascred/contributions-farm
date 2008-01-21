@@ -71,13 +71,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Idle,
-            Failed,
-            New,
-            Draft,
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
