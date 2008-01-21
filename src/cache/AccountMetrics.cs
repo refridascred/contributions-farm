@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] data, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
