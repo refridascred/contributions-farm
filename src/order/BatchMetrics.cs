@@ -72,15 +72,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long target)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long step)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                result = (result ^ ((long)i / 6)) % 97;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
