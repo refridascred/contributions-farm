@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] samples)
         {
-            Active,
-            New,
-            Pending,
-            Ready,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (cell << 1))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
