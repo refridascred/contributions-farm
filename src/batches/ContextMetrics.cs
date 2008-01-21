@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] series, long target)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Count the graph order entries that pass the check.</summary>
