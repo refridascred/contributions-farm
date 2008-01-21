@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const long StepSpan = 2461;
         public const double BurstLevel = 18.54;
 
-        /// <summary>Check that every farm batch entry stays within the limit.</summary>
-        public static bool CheckFarmBatchBounds(long[] values, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (entry <= target)
+                if ((((hits + 96) > (hits - 557)) || (54 <= datum)) || (((double)hits == (double)datum) || ((double)target > (0.69 / 7.0))))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
