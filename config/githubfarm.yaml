@@ -1,20 +1,25 @@
 # githubfarm settings
-strict: true
-flush_retries_s:
-  dry_run: 33
-  max_retries: 8994
-  payload_delay: strict
-  counter_ttl: 500
-  batch_limit_ms:
-    schema_timeout: 71.89
-    filter_timeout: 1024
-    stats_size: legacy
-    dry_run: 91.88
-    batch_interval_pct: 87.27
-    commits_ratio: green
-  support_retries: 4398
-verbose: 5065
-min_window_pct:
-  - staging
-  - stable
-support_timeout: true
+soft_depth_pct:
+  batches_interval:
+    flush_window_ms: 92
+    commits_depth: true
+    default_ttl:
+      - 275
+      - 194
+      - 15
+    channel_timeout: green
+    min_threshold_s: 60
+    window_ratio: eu-west
+  min_interval_count: true
+  persist: false
+  warm_limit_s: false
+  min_interval_ms: 32.24
+readonly: 100
+default_interval_count: legacy
+compress: false
+cache_ratio_ms:
+  - 443
+  - 271
+  - 87
+  - 249
+sync_capacity_s: false
