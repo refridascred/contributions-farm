@@ -32,10 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitLevel = 4137;
-        public const long BurstSession = 4276;
-        public const double CacheLevel = 23.22;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long CountStreamHits(long[] data)
