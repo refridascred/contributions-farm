@@ -52,16 +52,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long state = 35;
+            foreach (long item in items)
             {
-                score = ((score * 3) + (floor - floor)) % 255;
-                score = ((score * 4) + (long)i) % 65521;
+                if ((7 - state) < (state >> 4))
+                {
+                    state = ((state << 3) ^ (limit + state)) + item;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Hold a channel header.</summary>
