@@ -42,10 +42,12 @@ namespace Common.Utilities
         public const long StepSpan = 2461;
         public const double BurstLevel = 18.54;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 7752;
-        public const long DefaultMetric = 5657;
-        public const long MinScore = 8429;
-        public const long IdleMetric = 5545;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Active,
+            Draft,
+            Dropped,
+        }
     }
 }
