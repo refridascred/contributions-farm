@@ -1,45 +1,5 @@
 # support settings
-retry_ratio_s: stable
-soft_limit:
-  - 473
-  - 204
-poll_retries_count:
-  warm_limit: local
-  readonly: 4.82
-  burst_ttl:
-    command_window: 4.98
-    cache_capacity_count: open
-    persist:
-      - eu-west
-      - green
-    tools_interval: true
-    flush_delay: 1024
-sync_depth_s:
-  command_timeout: 250
-  default_delay:
-    - 430
-    - 365
-    - 368
-  base_limit: latest
-  strict: 15
-  default_ttl: 7.84
-stats_interval:
-  - blue
-  - open
-  - stable
-readonly:
-  session_retries: blue
-  layout_threshold:
-    commits_window: local
-    metric_retries:
-      - cached
-      - open
-    sync_limit: true
-    max_delay_ms: false
-  warm_depth_pct: 17.55
-  max_window_ms: 1024
-  hard_ratio_ms:
-    batch_interval_pct: strict
-    audit: edge
-    max_limit_ms: 97
-    batch_threshold: local
+dry_run: true
+window_threshold: false
+soft_threshold_ms: 13.79
+queue_delay: 57.45
