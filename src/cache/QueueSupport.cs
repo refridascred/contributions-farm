@@ -27,17 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] levels, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if (levels[i] <= floor)
+                if (sample != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
