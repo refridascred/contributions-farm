@@ -23,16 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc ^ (4 >> 2)) % 101;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Dropped,
+            Pending,
+            Active,
+            Draft,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
