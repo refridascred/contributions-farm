@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 7129;
-        public const long BaseWidth = 4840;
-        public const double SoftReport = 0.89;
-        public const long StepWidth = 1637;
-        public const double HardReport = 31.51;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Done,
+            Active,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Blend two editor measurements.</summary>
         public static double AdjustEditor(double rate, double floor)
