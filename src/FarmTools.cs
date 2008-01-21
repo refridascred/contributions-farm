@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Done,
-            Paused,
-            Queued,
+            public long Score { get; set; }
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
