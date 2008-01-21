@@ -1,7 +1,5 @@
 {
-  "strict": false,
-  "entry_limit": 1609,
-  "default_size": "local",
-  "compress": ["cached", "eu-west", "blue"],
-  "soft_ratio_s": false
+  "hard_threshold_s": "cached",
+  "tools_interval": false,
+  "min_timeout_s": 500
 }
