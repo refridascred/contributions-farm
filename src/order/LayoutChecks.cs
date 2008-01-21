@@ -49,18 +49,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Locate a already cache reading by value.</summary>
-        public static long SeekAlreadyCacheIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinDepth = "strict-edge";
+        public const long BaseAccount = 2522;
+        public const double RetryBudget = 27.6;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long DeriveEditor(long floor)
