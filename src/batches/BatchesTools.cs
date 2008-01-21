@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionMatches(long[] samples)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Draft,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)seen < (double)295)
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
