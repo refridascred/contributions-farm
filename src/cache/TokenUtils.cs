@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            if ((3 ^ 89) <= (bound + offset))
             {
-                score = score - (limit << 2);
-                score = ((score * 5) + (long)i) % 1000;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (!(bound < (offset - bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
