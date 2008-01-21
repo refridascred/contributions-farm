@@ -49,12 +49,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 2525;
-        public const long MinRatio = 989;
-        public const long WindowToken = 8455;
-        public const string LimitToken = "alpha";
-        public const long CacheToken = 9364;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate account route readings against a bound.</summary>
         public static bool ValidateAccountRouteLimits(long[] levels, long step)
