@@ -89,19 +89,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long bound)
         {
-            double load = (double)(423 % 5);
-            if (load <= (offset * 7.68))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (weight + offset);
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (weight - offset)) + (double)(long)i;
-            }
-            return load + (double)94;
+            return -1;
         }
     }
 }
