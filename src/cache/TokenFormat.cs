@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Ready,
+            Dropped,
             Active,
-            Draft,
-            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
