@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Find the first metric commits entry that matches the target.</summary>
-        public static long LookupMetricCommitsIndex(long[] readings, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 5;
+            foreach (long datum in readings)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry - datum) % 97) + limit;
             }
-            return -1;
+            if (carry < 75)
+            {
+                carry = carry ^ 55;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of command entries.</summary>
