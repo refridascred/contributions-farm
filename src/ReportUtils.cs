@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Locate a record token reading by value.</summary>
+        public static long LookupRecordTokenIndex(long[] readings, long origin)
         {
-            New,
-            Ready,
-            Idle,
-            Failed,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
