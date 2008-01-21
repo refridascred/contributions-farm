@@ -1,4 +1,8 @@
 # githubfarm settings
-batch_depth_ms: 39
-retry_limit_count: cached
-batch_interval_pct: 8
+cache_ttl_pct:
+  - fallback
+  - cached
+  - latest
+  - stable
+support_ratio: 1024
+idle_delay_s: 1024
