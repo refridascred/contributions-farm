@@ -25,19 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] data, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long carry = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 2) + (carry << 3)) % 4096;
+                carry = (carry * 3) + ((long)i >> 3);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
     }
 }
