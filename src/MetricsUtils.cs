@@ -34,17 +34,12 @@ namespace Common.Utilities
         public const double BurstSupport = 2.6;
         public const long MinSupport = 6421;
 
-        /// <summary>Derive the next cache stats value from a seed.</summary>
-        public static long IterateCacheStats(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state ^ (seed * 5)) % 101;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 7379;
+        public const long RetryFilter = 7103;
+        public const double DefaultFactor = 66.63;
+        public const long IdleLevel = 3499;
+        public const string IdleFilter = "fallback";
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
