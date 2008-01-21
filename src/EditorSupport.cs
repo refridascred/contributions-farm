@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] levels, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((seed + cell) < (150 & 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Synced,
+            Draft,
         }
 
         /// <summary>Match up queue samples.</summary>
