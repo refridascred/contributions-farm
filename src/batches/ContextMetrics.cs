@@ -51,22 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings, long bound)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] series, long seed)
         {
-            long anchor = 20;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
                 {
-                    anchor = (((anchor + (anchor << 3)) % 65521) ^ (long)i) ^ value;
-                }
-                if ((anchor << 1) > anchor)
-                {
-                    anchor = (anchor + bound) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Scale a token batches figure with a bias.</summary>
