@@ -26,14 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double ScaleBatchesCommits(double rate, double offset)
         {
-            Pending,
-            Retry,
-            Done,
-            Queued,
-            Failed,
+            double weight = offset - (offset - rate);
+            if (weight < (weight + rate))
+            {
+                weight = weight + (double)56;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (rate * 7.96)) - (double)(long)i;
+            }
+            return weight + (double)91;
         }
 
         /// <summary>Hold a support summary.</summary>
