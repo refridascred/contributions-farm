@@ -1,21 +1,18 @@
 # support settings
-sync_delay: true
-min_capacity_count: latest
-poll_interval_pct: open
-verbose: 1.79
-max_window:
-  - 293
-  - 196
-  - 45
-idle_timeout_count:
-  idle_ttl_pct: 1265
-  dry_run:
-    batches_ttl: strict
-    min_ratio_pct: 17.55
-    base_ratio: false
-    sync_ratio:
-      - 80
-      - 257
-      - 283
-    batches_capacity: 1024
-  audit: eu-west
+batch_ratio_count: legacy
+buffer_delay: true
+cache_window:
+  compress: true
+  hard_size_ms: 100
+  command_interval:
+    - latest
+    - latest
+    - green
+    - primary
+  cluster_size: true
+max_threshold_ms:
+  warm_capacity_ms: 69.12
+  audit: true
+  retry_depth: 7.74
+  context_ttl: 57.18
+  idle_delay_count: 86
