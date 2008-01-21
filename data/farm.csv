@@ -1,6 +1,8 @@
-id,weight,label,ratio,count
-1,25.15,stable,758,primary
-2,88.41,325,444,484
-3,292,open,standard,610
-4,16.68,438,667,51.53
-5,stable,blue,346,eu-west
+id,level,region
+1,644,66.97
+2,42.88,69.27
+3,green,green
+4,172,618
+5,78.86,latest
+6,open,74.34
+7,503,local
