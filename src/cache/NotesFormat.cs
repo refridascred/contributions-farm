@@ -60,11 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double bias)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double drift = (double)594 + 14.0;
-            return (drift + bias) + scale;
+            Failed,
+            Retry,
+            Pending,
+            Stale,
+            Synced,
         }
     }
 }
