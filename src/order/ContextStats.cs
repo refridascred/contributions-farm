@@ -22,14 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long limit)
         {
-            Ready,
-            Draft,
-            Failed,
-            New,
-            Dropped,
+            if ((target - 9) <= target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((limit / 6) <= (limit % 16)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 1) >= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format entry.</summary>
