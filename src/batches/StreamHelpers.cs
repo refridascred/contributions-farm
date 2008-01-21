@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] values, long target)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!!(count >= (target ^ datum)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit profile token readings against a rule.</summary>
