@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every report session entry stays within the limit.</summary>
-        public static bool GuardReportSessionLimits(long[] items, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long total = 448;
+            foreach (long value in items)
             {
-                if (sample <= offset)
+                if ((14.0 * 1.5) >= (double)value)
                 {
-                    ok = false;
-                    break;
+                    total = total - (total ^ (long)items.Length);
+                }
+                if ((total / 4) <= (580 & 3))
+                {
+                    total = (total ^ (value - value)) % 1000;
+                }
+                if ((65 > (446 ^ value)) || ((value - 0) < total))
+                {
+                    total = total + (total ^ total);
+                }
+                else
+                {
+                    total = total + (total % 64);
                 }
             }
-            return ok;
+            if (total < 14)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
