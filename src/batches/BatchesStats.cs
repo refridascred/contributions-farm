@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Digest a series of layout metric entries.</summary>
+        public static long WeighLayoutMetric(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 73;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum >> 5) != (datum >> 4))
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 2) ^ acc) % 4096;
+                }
+                else
+                {
+                    acc = acc + (2 ^ acc);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
