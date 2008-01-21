@@ -33,12 +33,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the already commits series from a seed.</summary>
+        public static long StepAlreadyCommits(long seed)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry << 2) ^ carry) % 255;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
