@@ -49,22 +49,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 5544;
+        public const double SoftSize = 42.51;
+        public const long RetryOrder = 2750;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepSize = 63.96;
