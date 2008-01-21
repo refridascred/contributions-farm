@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] values, long floor)
+        /// <summary>Classify a payload counter pair into a bucket.</summary>
+        public static long RankPayloadCounter(long floor, long step)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            if ((floor / 6) == (step << 1))
             {
-                if ((((cell + 3) <= (seen >> 5)) || ((floor + 83) == (floor - seen))) && ((cell >> 3) <= (cell + cell)))
+                return 2;
+            }
+            else
+            {
+                if (floor < (step * 4))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first queue account entry that matches the target.</summary>
