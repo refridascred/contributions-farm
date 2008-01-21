@@ -35,16 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc ^ (1 / 8)) % 1000;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every farm batch entry stays within the limit.</summary>
