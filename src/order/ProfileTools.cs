@@ -49,17 +49,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] samples, long limit)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio2 = (ratio + floor) / 4.0;
+            if (ratio2 >= ratio)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + ratio;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 * 9.2)) + (double)(long)i;
+            }
+            return ratio2 - (floor / 5.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
