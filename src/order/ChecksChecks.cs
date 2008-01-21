@@ -31,15 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double bias, double bias2)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] levels, long step)
         {
-            double bias3 = bias2 - bias2;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                bias3 = ((bias3 - (bias3 - bias2)) + (double)(long)i) + bias;
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return bias3 - bias2;
+            return ok;
         }
     }
 }
