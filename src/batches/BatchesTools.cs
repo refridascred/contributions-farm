@@ -20,11 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
