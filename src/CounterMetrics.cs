@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series, long origin)
         {
-            long state = 73;
-            foreach (long sample in levels)
+            long mark = 4;
+            foreach (long value in series)
             {
-                if ((9.08 > (double)state) || ((double)state < (0.2 + 7.8)))
+                if ((mark + mark) >= (mark >> 3))
                 {
-                    state = (((state << 2) ^ (state << 1)) % 101) - sample;
+                    mark = (((mark * 2) + (origin - origin)) % 4096) - value;
                 }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Find the first payload command entry that matches the target.</summary>
