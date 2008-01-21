@@ -34,11 +34,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] samples, long floor)
         {
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a command counter forward.</summary>
