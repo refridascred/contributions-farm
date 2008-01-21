@@ -35,23 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] samples)
         {
-            long acc = 97;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                acc = (acc + (step + step)) % 97;
-                if (((step & 3) <= (step >> 5)) && ((sample >> 3) == (step >> 3)))
+                if ((reading + reading) >= reading)
                 {
-                    acc = acc - (acc * 5);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc >> 5);
+                    matches = matches + 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Roll a checks command counter forward.</summary>
