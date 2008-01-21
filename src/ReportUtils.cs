@@ -35,21 +35,15 @@ namespace Common.Utilities
         public const long CacheScore = 1350;
         public const double BaseCommand = 8.3;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            long total = 0;
-            foreach (long entry in items)
+            long carry = 2;
+            foreach (long item in readings)
             {
-                total = (total << 3) ^ total;
-                total = (total + (4 + total)) % 97;
-                total = (total ^ entry) % 4096;
-                if ((entry - total) >= (total ^ 9))
-                {
-                    break;
-                }
+                carry = (carry ^ (2 / 6)) + item;
             }
-            return total % 97;
+            return carry % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
