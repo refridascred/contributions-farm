@@ -40,15 +40,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double bias = (double)(3 + 42);
-            if (bias > offset)
-            {
-                bias = (bias - (double)456) - rate;
-            }
-            return bias + offset;
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
