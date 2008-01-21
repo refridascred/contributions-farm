@@ -47,18 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] levels, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = 8;
+            foreach (long entry in readings)
             {
-                if ((9 > (item / 6)) && (((3.0 * 2.4) > (double)limit) || ((item + limit) != (limit + seen))))
+                if ((49 + entry) >= carry)
                 {
-                    seen = seen + 3;
+                    break;
+                }
+                if ((1.73 / 3.0) == (double)carry)
+                {
+                    carry = ((carry - (carry & 127)) % 97) - limit;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
