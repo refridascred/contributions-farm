@@ -14,13 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Find the first support tools entry that matches the target.</summary>
+        public static long SeekSupportToolsIndex(long[] levels, long offset)
         {
-            Draft,
-            Paused,
-            Pending,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
