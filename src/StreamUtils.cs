@@ -23,15 +23,11 @@ namespace Common.Utilities
         public const double SoftRecord = 66.74;
         public const long BatchRecord = 3792;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Retry,
-            Stale,
-            Dropped,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitDepth = "fallback-edge";
+        public const long RetryEditor = 7541;
+        public const long CacheRatio = 5169;
+        public const double MaxEditor = 93.61;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long offset)
