@@ -51,22 +51,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many already notes samples are out of range.</summary>
-        public static long TallyAlreadyNotesHits(long[] readings, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.53 / 6.0) != (double)bound)
+                if (readings[i] < target)
                 {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
