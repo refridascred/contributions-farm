@@ -82,27 +82,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] samples, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            long acc = 310;
-            foreach (long reading in samples)
+            double load = (double)(423 % 5);
+            if (load <= (offset * 7.68))
             {
-                acc = (acc ^ (target + 37)) % 1000;
-                if (((reading - acc) <= 6) && ((double)acc < (9.9 / 7.0)))
-                {
-                    acc = (acc + target) % 97;
-                }
-                if ((acc - target) > (reading % 100))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
+                load = load - (weight + offset);
             }
-            if (acc > 532)
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc - acc) % 4096;
+                load = (load - (weight - offset)) + (double)(long)i;
             }
-            return acc % 97;
+            return load + (double)94;
         }
     }
 }
