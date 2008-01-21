@@ -1,6 +1,8 @@
 {
-  "hard_capacity": 52.72,
-  "buffer_ratio": true,
-  "payload_limit": false,
-  "already_depth": 7325
+  "cluster_delay": "primary",
+  "enabled": "primary",
+  "filter_size": "green",
+  "default_interval": 6145,
+  "min_threshold": ["staging", "cached", "legacy"],
+  "sync_depth_s": "cached"
 }
