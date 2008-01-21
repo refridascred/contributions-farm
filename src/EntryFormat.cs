@@ -19,5 +19,40 @@ namespace Common.Utilities
             }
             return mark % 1000;
         }
+
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long origin, long floor)
+        {
+            long next = origin + floor;
+            if (((next - origin) <= (725 + next)) || ((next + origin) <= floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)floor != (4.0 * 6.44)) && ((origin ^ origin) <= (next & 3)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor << 3) < (4 ^ floor)) && ((next / 4) > origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1 * 4) < (origin % 100))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
