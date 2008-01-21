@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Compare every pair of stream command readings.</summary>
-        public static long MatchStreamCommandCount(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
