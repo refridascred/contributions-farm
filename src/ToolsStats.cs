@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor * 4);
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 51.07;
+        public const long WindowStream = 3691;
+        public const long BatchStream = 8034;
+        public const string BaseStream = "fallback";
+        public const long BurstScore = 5425;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 1005;
