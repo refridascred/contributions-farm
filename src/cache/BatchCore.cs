@@ -23,11 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetrySpan = 4937;
-        public const double BaseSpan = 3.06;
-        public const long CacheCounter = 1476;
-        public const long DefaultCounter = 8794;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (sum >= (64 + floor))
+                {
+                    sum = (sum + sum) % 4096;
+                    sum = (sum << 3) ^ floor;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long TallySessionOutliers(long[] series)
