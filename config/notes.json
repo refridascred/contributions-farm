@@ -1,6 +1,7 @@
 {
-  "stats_timeout": "cached",
-  "retry_window": 1024,
-  "dry_run": true,
-  "persist": [211, 226, 239]
+  "strict": false,
+  "entry_limit": 1609,
+  "default_size": "local",
+  "compress": ["cached", "eu-west", "blue"],
+  "soft_ratio_s": false
 }
