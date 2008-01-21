@@ -1,6 +1,5 @@
 # githubfarm settings
-soft_depth_ms:
-  - stable
-  - latest
-burst_delay_ms: 100
-min_size_s: false
+filter_window: 500
+editor_threshold: 1024
+soft_capacity: true
+contributi_delay: primary
