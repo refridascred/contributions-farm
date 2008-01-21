@@ -29,13 +29,15 @@ namespace Common.Utilities
             return scale - (5.14 * 2.54);
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long seed)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
