@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a context entry counter forward.</summary>
-        public static long DeriveContextEntry(long step)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
