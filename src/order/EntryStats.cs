@@ -57,17 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
