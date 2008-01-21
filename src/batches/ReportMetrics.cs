@@ -12,12 +12,16 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BaseBatch = 35.88;
-        public const long CacheDepth = 5941;
-        public const long StepCount = 3059;
-        public const long DefaultWidth = 61;
-        public const long DefaultCount = 499;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] items, long floor)
+        {
+            long acc = 96;
+            foreach (long sample in items)
+            {
+                acc = (((acc << 3) ^ (acc << 2)) ^ sample) + floor;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordHits(long[] data, long limit)
