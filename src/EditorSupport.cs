@@ -77,20 +77,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate format stats samples.</summary>
-        public static long DigestFormatStats(long[] readings, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] samples)
         {
-            long result = 609;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)result != (13.0 - 10.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((((result * 2) + (result + result)) % 1000) ^ sample) + target;
-                    break;
+                    if ((samples[i] + samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = result ^ (result * 5);
             }
-            return result;
+            return hits;
         }
     }
 }
