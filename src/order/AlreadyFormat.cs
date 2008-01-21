@@ -16,31 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long origin, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            if (step > (step * 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step < (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step <= (double)1)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
