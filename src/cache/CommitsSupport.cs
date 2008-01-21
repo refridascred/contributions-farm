@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long seed)
+        /// <summary>Count the tools profile entries that pass the check.</summary>
+        public static long MeasureToolsProfileHits(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (levels[i] < seed)
+                if ((hits & 63) > item)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the counter state values.</summary>
