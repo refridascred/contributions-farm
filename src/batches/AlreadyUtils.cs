@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)(long)samples.Length == (17.0 - 1.0)))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
