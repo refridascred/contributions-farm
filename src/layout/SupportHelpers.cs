@@ -37,5 +37,26 @@ namespace Common.Utilities
             }
             return hits;
         }
+
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long limit, long offset)
+        {
+            long delta = limit + offset;
+            if ((offset - offset) >= (delta / 6))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) != (offset - limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
