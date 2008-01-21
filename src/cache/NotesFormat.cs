@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Ready,
-            Retry,
-            New,
-            Active,
-            Queued,
+            Done,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Fold a list of token readings.</summary>
