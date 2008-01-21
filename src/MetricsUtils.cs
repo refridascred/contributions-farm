@@ -61,13 +61,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Active,
-            Queued,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string DefaultTimeout = "legacy-v2";
+        public const string DefaultScore = "cached-v2";
+        public const long WindowFactor = 7329;
+        public const long StepSpan = 4302;
+        public const long LimitSpan = 6774;
     }
 }
