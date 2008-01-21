@@ -77,13 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            Draft,
-            Stale,
-            Retry,
-            Pending,
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((6.4 + 8.1) == (double)carry)
+                {
+                    carry = carry + carry;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
