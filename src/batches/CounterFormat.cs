@@ -15,22 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double bias, double offset)
         {
-            long carry = 276;
-            foreach (long item in series)
-            {
-                if (!!((4.3 * 5.9) <= (double)item))
-                {
-                    carry = ((carry << 2) ^ (-209)) % 97;
-                }
-                if ((double)(long)series.Length >= (13.0 - 11.0))
-                {
-                    carry = ((carry * 2) + (item ^ 60)) % 101;
-                }
-            }
-            return carry;
+            double gain = offset;
+            return gain - (bias - gain);
         }
 
         /// <summary>Hold a entry entry.</summary>
