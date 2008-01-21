@@ -65,10 +65,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinTimeout = 3646;
-        public const double BurstGithubfarm = 62.74;
-        public const long HardGithubfarm = 9228;
-        public const long DefaultTimeout = 2157;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((2.44 + 17.0) < (double)offset)
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
+        }
     }
 }
