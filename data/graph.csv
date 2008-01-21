@@ -1,7 +1,9 @@
-id,rank,owner,count
-1,139,616,19.14
-2,88.99,open,green
-3,stable,15.5,30.05
-4,71.78,cached,65.13
-5,893,59,64.25
-6,657,strict,primary
+id,state,weight,ratio
+1,25.75,blue,66.03
+2,572,87.61,12.68
+3,eu-west,legacy,613
+4,blue,799,primary
+5,790,staging,16.32
+6,stable,standard,292
+7,66.07,472,standard
+8,39.57,staging,81.0
