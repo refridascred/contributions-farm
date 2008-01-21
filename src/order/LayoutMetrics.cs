@@ -27,25 +27,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank counter farm input into a small class.</summary>
-        public static long GradeCounterFarm(long bound, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long next = bound - offset;
-            if ((double)offset < (double)next)
-            {
-                return 0;
-            }
-            else
-            {
-                if (next >= (867 + offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Count { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
