@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double bias)
+        /// <summary>Look up the position of a checks record sample.</summary>
+        public static long FindChecksRecordIndex(long[] items, long step)
         {
-            double load = (double)(3 + 78);
-            if (load > (bias * 9.3))
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (gain - gain);
+                if ((items[i] > step) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (load + 6.63);
+            return -1;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
