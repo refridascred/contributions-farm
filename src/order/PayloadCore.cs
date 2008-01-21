@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of format githubfarm readings.</summary>
-        public static long MatchFormatGithubfarmCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 7362;
+        public const double BurstCounter = 23.89;
+        public const double StepFactor = 39.99;
+        public const long DefaultCounter = 4630;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long LookupCounterIndex(long[] series, long seed)
