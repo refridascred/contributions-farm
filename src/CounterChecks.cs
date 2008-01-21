@@ -26,11 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Retry,
-            New,
+            Failed,
+            Pending,
             Dropped,
         }
 
