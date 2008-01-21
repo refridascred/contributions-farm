@@ -34,18 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] data, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((2 << 3) >= (6 + matches))
-                {
-                    matches = ((matches + 3) - sample) - limit;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
     }
 }
