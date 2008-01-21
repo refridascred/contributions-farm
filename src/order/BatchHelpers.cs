@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long offset, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long floor)
         {
-            long cur = offset - target;
-            if (offset > (target << 2))
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target * 4) > (cur - cur))
+                if (8 > (floor + 0))
                 {
-                    return 8;
+                    acc = acc + (acc % 7);
                 }
-                else
-                {
-                    if ((cur << 1) < (cur - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((offset * 5) <= target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Describe the tools kind values.</summary>
