@@ -14,15 +14,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double rate2 = (rate - rate) - (6.1 + floor);
-            if (rate2 >= floor)
-            {
-                rate2 = rate2 - (rate + floor);
-            }
-            return rate2 - floor;
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the notes cache entries that pass the check.</summary>
