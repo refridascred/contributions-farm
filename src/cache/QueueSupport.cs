@@ -28,18 +28,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] samples, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seen + seen) < (4 + step)) && (((sample + sample) < 0) || ((sample / 4) <= (sample + sample))))
+                if ((data[i] >= bound) && ((data[i] % 3) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
