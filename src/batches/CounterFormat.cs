@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultBudget = 6200;
-        public const long MinRatio = 2738;
-        public const long BatchRatio = 5135;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] levels, long offset)
+        {
+            long total = 4;
+            foreach (long datum in levels)
+            {
+                total = (total << 3) ^ ((-2) & 3);
+                total = (total - (total - datum)) % 4096;
+                if ((offset > (total >> 5)) && ((double)total <= (19.0 + 8.99)))
+                {
+                    total = (total ^ (offset >> 2)) % 1000;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long FoldWindow(long[] series)
