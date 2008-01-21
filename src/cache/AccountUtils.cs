@@ -37,21 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 14;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result ^ result) % 65521;
+                if ((datum + datum) == (result + datum))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return result % 1000;
         }
     }
 }
