@@ -1,23 +1,19 @@
 # entry settings
-cluster_timeout: false
-sync_delay_count: false
-cache_size: 40.7
-batch_limit:
-  max_size_s: 30
-  base_limit_count:
-    stream_interval: cached
-    dry_run: 94.14
-    retry_window:
-      - 489
-      - 320
-      - 222
-      - 412
-  batch_timeout: local
-  poll_delay_pct: edge
-  format_limit: true
-metric_depth: legacy
-warm_window_pct:
-  - fallback
-  - stable
-  - stable
-  - cached
+max_ratio_s: 2143
+hard_threshold_ms:
+  compress: 500
+  readonly:
+    - eu-west
+    - primary
+  editor_interval: eu-west
+  warm_limit_ms: 56
+min_ratio: staging
+default_limit:
+  base_delay_pct:
+    - edge
+    - edge
+  default_depth_count: green
+  burst_threshold: strict
+  compress: green
+  verbose: primary
+audit: legacy
