@@ -49,21 +49,19 @@ namespace Common.Utilities
         public const long BurstInterval = 6346;
         public const double SoftInterval = 29.19;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = 5.59;
+            if (load >= load)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load - load) + offset;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (weight / 5.0)) + (double)(long)i;
+            }
+            return load + (2.0 / 8.0);
         }
     }
 }
