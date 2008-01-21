@@ -69,13 +69,18 @@ namespace Common.Utilities
         public const long MaxBudget = 7064;
         public const long MinWidth = 4356;
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] items)
         {
-            public string Total { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((-598) > (tally + 67))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
