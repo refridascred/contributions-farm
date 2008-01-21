@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] data, long bound)
         {
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((bound >> 4) <= bound)
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a githubfarm batches value against two limits.</summary>
