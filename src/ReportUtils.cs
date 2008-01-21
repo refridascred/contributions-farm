@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double scale, double span)
-        {
-            double bias = span;
-            if (bias > bias)
-            {
-                bias = (bias + bias) - scale;
-            }
-            return bias - (span + bias);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 2965;
+        public const long LimitLevel = 9406;
+        public const long StepCluster = 7751;
+        public const long WindowCluster = 8662;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseCount = 1933;
