@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] levels, long offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long score = 102;
-            foreach (long reading in levels)
-            {
-                if (((score - score) <= (reading << 3)) && ((9 * 4) < reading))
-                {
-                    score = (score ^ offset) % 65521;
-                }
-            }
-            return score;
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the stream phase values.</summary>
