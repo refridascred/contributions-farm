@@ -35,11 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two route already measurements.</summary>
-        public static double ScaleRouteAlready(double ratio, double span)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double rate = (double)(95 << 3);
-            return ((rate - (rate / 8.0)) + ratio) + span;
+            Retry,
+            Locked,
+            Idle,
+            Pending,
+            Dropped,
         }
     }
 }
