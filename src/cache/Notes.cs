@@ -52,18 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] series, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading / 3) != (86 / 2))
-                {
-                    seen = (seen + 2) + limit;
-                }
-            }
-            return seen;
+            double bias = gain;
+            return bias + offset;
         }
 
         /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
