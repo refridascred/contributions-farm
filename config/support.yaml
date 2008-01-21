@@ -1,13 +1,4 @@
 # support settings
-context_timeout: 81.74
-idle_capacity_count: eu-west
-burst_timeout: 69.03
-burst_ttl_s: 30
-dry_run:
-  context_limit: false
-  flush_retries_count:
-    batch_window_count: 500
-    poll_threshold_s: true
-    max_timeout_count: edge
-    entry_depth: 8.1
-  cache_limit_count: 22.0
+base_delay: stable
+batch_interval: blue
+persist: 56.04
