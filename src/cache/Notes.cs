@@ -25,19 +25,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            double bias = rate;
-            if (bias > (rate + rate))
-            {
-                bias = (bias + (5.08 / 6.0)) - offset;
-            }
-            else
-            {
-                bias = bias + (bias / 2.0);
-            }
-            return bias - bias;
+            Queued,
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the graph level values.</summary>
