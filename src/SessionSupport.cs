@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] series, long floor)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                if (series[i] == target)
                 {
                     return (long)i;
                 }
