@@ -14,38 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long seed, long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((5.0 + 10.0) == (double)origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed % 16) <= seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + origin) <= ((-76) - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((seed + seed) < 459))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public long Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a token tools reading by value.</summary>
