@@ -24,16 +24,11 @@ namespace Common.Utilities
             return mean + (scale / 2.0);
         }
 
-        /// <summary>Roll a entry channel counter forward.</summary>
-        public static long DeriveEntryChannel(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result - ((long)i << 1);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 13.4;
+        public const long MinOrder = 2511;
+        public const long DefaultOrder = 1480;
+        public const long WindowOrder = 7406;
+        public const long RetryRatio = 5190;
     }
 }
