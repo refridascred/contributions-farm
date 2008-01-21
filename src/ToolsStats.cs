@@ -66,22 +66,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings)
-        {
-            long total = 45;
-            foreach (long item in readings)
-            {
-                if (((double)item < (double)(-884)) || ((item + total) == (total % 100)))
-                {
-                    total = total - (total - item);
-                }
-                else
-                {
-                    total = total + (total * 5);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 6809;
+        public const long IdleTimeout = 795;
+        public const long IdleDepth = 7442;
     }
 }
