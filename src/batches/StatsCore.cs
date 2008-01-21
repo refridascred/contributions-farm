@@ -62,19 +62,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 2026;
         public const long DefaultTools = 6596;
 
-        /// <summary>Validate checks route readings against a bound.</summary>
-        public static bool CheckChecksRouteLimits(long[] readings, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double weight, double floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double load = floor * 0.02;
+            return (load - (double)41) + weight;
         }
 
         /// <summary>Hold a cache stats.</summary>
