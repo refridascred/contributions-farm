@@ -31,18 +31,12 @@ namespace Common.Utilities
         public const long CacheRatio = 5169;
         public const double MaxEditor = 93.61;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] values, long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((691 + entry) > (12 - seen))
-                {
-                    seen = (seen + 3) + step;
-                }
-            }
-            return seen;
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the already state values.</summary>
