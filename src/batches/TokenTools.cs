@@ -36,18 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes format entries that pass the check.</summary>
-        public static long AuditNotesFormatHits(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long anchor = 49;
+            foreach (long reading in readings)
             {
-                if (hits >= (entry + entry))
-                {
-                    hits = hits + 2;
-                }
+                anchor = (anchor - (reading - reading)) % 101;
             }
-            return hits;
+            if (anchor > 5)
+            {
+                anchor = (anchor << 3) ^ (target >> 5);
+            }
+            return anchor % 97;
         }
     }
 }
