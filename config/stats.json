@@ -1,5 +1,6 @@
 {
-  "metric_size": [108, 402, 34],
-  "batch_threshold_s": 100,
-  "cache_delay": true
+  "soft_timeout_s": 2201,
+  "cache_window": true,
+  "base_threshold_pct": ["stable", "stable", "stable"],
+  "route_timeout": [348, 143, 306]
 }
