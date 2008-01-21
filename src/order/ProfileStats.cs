@@ -13,12 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstFactor = "strict-1";
-        public const long CacheStats = 8994;
-        public const long MinTimeout = 4584;
-        public const long BaseSpan = 3254;
-        public const long RetryStats = 1728;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public double Region { get; set; }
+            public double Flag { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long FoldPayload(long[] data, long floor)
