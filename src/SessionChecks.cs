@@ -46,15 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double ratio, double bias)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long seed)
         {
-            double bias2 = ratio;
-            for (int i = 0; i < 2; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                bias2 = (bias2 - (bias - bias2)) - (double)(long)i;
+                if (sample < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias2 - (ratio * 20.0);
+            return found;
         }
     }
 }
