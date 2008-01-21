@@ -37,19 +37,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every schema record entry stays within the limit.</summary>
-        public static bool CheckSchemaRecordBounds(long[] items, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (value <= offset)
+                if ((target & 31) == (hits >> 5))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
