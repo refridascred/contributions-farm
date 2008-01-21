@@ -22,12 +22,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Count cache window pairs that satisfy a relation.</summary>
+        public static long OverlapCacheWindowCount(long[] data)
         {
-            Draft,
-            New,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next filter value.</summary>
