@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((double)seen >= 2.0)
+                if (item >= limit)
                 {
-                    seen = (seen + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Blend two route already measurements.</summary>
