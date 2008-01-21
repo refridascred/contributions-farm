@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double ratio, double span)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series)
         {
-            double gain = ratio;
-            if (gain > (double)861)
+            long mark = 77;
+            foreach (long datum in series)
             {
-                gain = gain - span;
+                if ((mark * 2) != (mark + mark))
+                {
+                    mark = ((mark << 3) ^ (mark ^ datum)) % 65521;
+                }
+                else
+                {
+                    mark = (mark ^ (mark & 7)) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (10.0 - span)) + (double)(long)i;
-            }
-            return gain + (double)917;
+            return mark % 1000;
         }
 
         /// <summary>Describe the layout level values.</summary>
