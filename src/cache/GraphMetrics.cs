@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] items, long target)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ ((long)i & 3)) % 1000;
-                state = state ^ ((long)i >> 5);
-                state = (state * 5) + (state - state);
-                state = ((state * 4) + (long)i) % 4093;
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the editor tools entries that pass the check.</summary>
