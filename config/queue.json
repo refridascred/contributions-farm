@@ -1,8 +1,16 @@
 {
-  "strict": 70.6,
-  "base_capacity": false,
-  "graph_timeout": 85,
-  "enabled": "green",
-  "verbose": 100,
-  "flush_ratio_ms": 7654
+  "batches_ratio": 96.0,
+  "max_ttl_s": {
+    "default_retries_s": {
+      "layout_capacity": 100,
+      "filter_window": ["legacy", "local", "primary"],
+      "sync_depth": "eu-west"
+    },
+    "soft_depth_ms": 18.59,
+    "retry_threshold_count": ["stable", "standard"],
+    "record_capacity": true,
+    "warm_size": 6251,
+    "support_interval": "local"
+  },
+  "cache_ttl_s": true
 }
