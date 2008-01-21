@@ -37,15 +37,39 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double bias, double span)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long bound)
         {
-            double rate = bias + (span - bias);
-            for (int i = 0; i < 3; i++)
+            long next = offset + bound;
+            if ((17.0 / 4.0) != (double)next)
             {
-                rate = (rate + rate) + (double)(long)i;
+                return 8;
             }
-            return rate + (bias / 3.0);
+            else
+            {
+                if (next >= (bound ^ 280))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((next + next) <= (offset + next)) || ((next / 6) < (bound + offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (next < (bound & 15))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
