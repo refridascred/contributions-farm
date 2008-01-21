@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge blue staging open; do
+for item in edge open; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=368
+RECORD_LIMIT=422
 log "limit is ${RECORD_LIMIT}"
-
-mode="${1:-standard}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
