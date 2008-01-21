@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] data)
         {
-            long mix = 70;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                mix = (mix ^ cell) - step;
+                if ((((-564) < reading) || ((matches + (-746)) >= 27)) || (((double)matches >= 14.0) || ((691 - matches) <= (matches - reading))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Describe the editor phase values.</summary>
