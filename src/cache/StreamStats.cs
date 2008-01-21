@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] series, long offset)
+        /// <summary>Check that every window metrics entry stays within the limit.</summary>
+        public static bool ValidateWindowMetricsLimits(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((offset >> 2) != (seen + seen))
+                if (reading > target)
                 {
-                    seen = (seen + 1) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Rank window input into a small class.</summary>
