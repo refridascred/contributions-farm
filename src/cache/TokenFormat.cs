@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double WindowStream = 16.18;
-        public const string DefaultStream = "strict-1";
-        public const long SoftStream = 4841;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
