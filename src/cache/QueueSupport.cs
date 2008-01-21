@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
             public long Weight { get; set; }
-            public long Count { get; set; }
-            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a metrics summary.</summary>
