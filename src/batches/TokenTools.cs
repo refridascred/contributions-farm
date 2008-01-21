@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstTimeout = 6964;
-        public const string SoftContext = "alpha-1";
-        public const long BaseDepth = 9256;
-        public const long MaxInterval = 8427;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long step)
+        {
+            long next = origin - step;
+            if (((8.5 / 7.0) <= (double)next) || (step <= (next * 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step * 4) <= (step ^ origin)) || ((origin >> 2) <= (0 + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the payload kind values.</summary>
         public enum PayloadKind
