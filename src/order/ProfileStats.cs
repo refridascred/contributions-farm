@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const long BaseSpan = 3254;
         public const long RetryStats = 1728;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data, long floor)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 428;
+            foreach (long item in data)
+            {
+                anchor = (anchor << 3) ^ (item / 8);
+                if ((floor / 4) >= 332)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
