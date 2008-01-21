@@ -58,21 +58,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Rank window channel input into a small class.</summary>
+        public static long RankWindowChannel(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset + offset) != (floor + 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((floor / 9) == (floor & 15))
                 {
-                    if ((samples[i] - samples[j]) < 9)
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ floor) < (floor >> 2))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.0 - 7.88) < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
