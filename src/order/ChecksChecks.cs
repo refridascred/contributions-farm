@@ -33,17 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token tools reading by value.</summary>
-        public static long FindTokenToolsIndex(long[] series, long seed)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias3 = bias2 - bias2;
+            for (int i = 0; i < 3; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                bias3 = ((bias3 - (bias3 - bias2)) + (double)(long)i) + bias;
             }
-            return -1;
+            return bias3 - bias2;
         }
     }
 }
