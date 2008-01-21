@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long MeasureCommitsAccountHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - matches) <= (matches & 255))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCommits = "local-v2";
+        public const long CacheCommits = 9097;
+        public const long BurstCommits = 2071;
+        public const double BurstCount = 15.14;
+        public const long WindowCommits = 1710;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
