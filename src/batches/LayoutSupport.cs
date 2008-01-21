@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values, long step)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long total = 92;
+            foreach (long entry in values)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((step >> 3) > (total + step))
+                {
+                    total = total ^ (entry >> 4);
+                }
             }
-            return total;
+            return total % 97;
         }
 
         /// <summary>Fold a list of cache commits readings.</summary>
