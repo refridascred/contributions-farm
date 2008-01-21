@@ -1,19 +1,7 @@
 # entry settings
-max_ratio_s: 2143
-hard_threshold_ms:
-  compress: 500
-  readonly:
-    - eu-west
-    - primary
-  editor_interval: eu-west
-  warm_limit_ms: 56
-min_ratio: staging
+poll_timeout: true
+dry_run: 39.0
 default_limit:
-  base_delay_pct:
-    - edge
-    - edge
-  default_depth_count: green
-  burst_threshold: strict
-  compress: green
-  verbose: primary
-audit: legacy
+  - local
+  - cached
+soft_ratio_ms: standard
