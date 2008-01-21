@@ -51,17 +51,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] data, long floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] > floor)
+                carry = carry - origin;
+                if ((origin * 5) > (carry / 4))
                 {
-                    return (long)i;
+                    carry = carry ^ (long)i;
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
