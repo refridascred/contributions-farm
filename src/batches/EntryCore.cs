@@ -32,31 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long step, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] data)
         {
-            if ((double)offset < (6.1 * 1.5))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((51 & 127) == (step + step)) && ((step ^ step) != (offset * 3)))
+                if ((tally + tally) == (tally ^ 70))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 3) - value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the record class values.</summary>
