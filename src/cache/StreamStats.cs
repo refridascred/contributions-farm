@@ -13,27 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] values, long step)
+        /// <summary>Validate cache counter readings against a bound.</summary>
+        public static bool GuardCacheCounterBounds(long[] readings, long seed)
         {
-            long sum = 212;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 10; i++)
+                if (entry > seed)
                 {
-                    sum = (sum ^ (sum << 3)) - (long)i;
-                }
-                sum = (sum * 2) + (item + step);
-                if ((step >> 1) == (item << 1))
-                {
-                    sum = sum ^ (4 - (-841));
-                }
-                else
-                {
-                    sum = sum ^ (item << 1);
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
