@@ -34,20 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long origin)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] samples, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (origin <= acc)
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
                 {
-                    acc = acc ^ origin;
-                    acc = ((acc << 3) ^ (origin - acc)) % 65521;
+                    return (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
