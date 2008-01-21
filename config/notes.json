@@ -1,15 +1,6 @@
 {
-  "base_size_ms": {
-    "batch_depth_ms": 28,
-    "readonly": 8.56,
-    "idle_depth": "staging",
-    "buffer_capacity": "staging",
-    "poll_limit": [318, 398],
-    "soft_retries": 68.86
-  },
-  "default_ratio": 92,
-  "context_capacity": [134, 42, 87],
-  "flush_ratio": [261, 96, 246, 186],
-  "max_window_count": "primary",
-  "poll_ratio_count": 57
+  "payload_threshold": ["legacy", "standard", "primary", "strict"],
+  "min_ttl_s": "staging",
+  "support_ttl": "fallback",
+  "compress": false
 }
