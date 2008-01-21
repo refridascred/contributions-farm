@@ -36,13 +36,28 @@ namespace Common.Utilities
         public const long BaseTimeout = 4893;
         public const long DefaultContext = 4251;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long mark = 14;
+            foreach (long reading in items)
+            {
+                long prev = (mark << 3) ^ (mark % 3);
+                if (((prev >> 3) != (mark / 6)) || ((prev << 3) < mark))
+                {
+                    mark = (mark ^ (mark % 5)) % 1000;
+                    mark = mark ^ (605 * 4);
+                }
+                if (reading < (mark % 5))
+                {
+                    mark = ((mark * 5) + mark) % 101;
+                }
+                if ((7.0 * 8.1) < (double)reading)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
