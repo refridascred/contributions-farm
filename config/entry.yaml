@@ -1,4 +1,7 @@
 # entry settings
-warm_size: true
-entry_capacity: 4669
-cache_interval: false
+verbose: 8824
+schema_ratio: 3047
+cache_limit_pct: 91.16
+readonly:
+  - 196
+  - 464
