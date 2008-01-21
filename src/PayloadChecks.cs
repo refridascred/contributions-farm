@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long limit, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            if ((1.6 * 8.01) >= (double)limit)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                state = (state * 2) + (long)i;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (669 > (79 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit * 4) <= bound) || ((double)bound < 11.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
