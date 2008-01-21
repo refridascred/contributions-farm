@@ -33,13 +33,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long seed)
         {
-            Ready,
-            Draft,
-            Queued,
-            Active,
+            long bound = offset + seed;
+            if ((offset + bound) == (offset ^ seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((4.3 * 13.0) <= (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of command readings.</summary>
