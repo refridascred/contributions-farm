@@ -14,12 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of stream readings.</summary>
