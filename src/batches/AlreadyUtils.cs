@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double bias, double floor)
         {
-            New,
-            Ready,
-            Done,
-            Active,
-            Paused,
+            double rate = (bias - bias) * 5.4;
+            if (rate > rate)
+            {
+                rate = rate - 6.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Rank record input into a small class.</summary>
