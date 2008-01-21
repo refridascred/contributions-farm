@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit profile window readings against a rule.</summary>
-        public static long CountProfileWindowHits(long[] data, long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset / 5) == (matches / 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - sample;
+                    if ((values[i] - values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a editor options.</summary>
