@@ -14,13 +14,25 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            Closed,
-            Idle,
-            Queued,
-            Pending,
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (85 >= carry)
+                {
+                    carry = carry ^ (floor + floor);
+                    carry = (carry << 2) ^ (carry - floor);
+                }
+                else
+                {
+                    carry = (carry ^ (202 * 5)) % 97;
+                    carry = (carry + (floor + (long)i)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Find the first window stats entry that matches the target.</summary>
