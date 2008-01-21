@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] data, long offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (hits < (hits + cell))
-                {
-                    hits = (hits + 1) + offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
