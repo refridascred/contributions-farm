@@ -39,13 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Count queue editor pairs that satisfy a relation.</summary>
+        public static long MatchQueueEditorCount(long[] samples)
         {
-            Draft,
-            Retry,
-            Done,
-            New,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
