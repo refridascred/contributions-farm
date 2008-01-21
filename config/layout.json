@@ -1,7 +1,23 @@
 {
-  "strict": "primary",
-  "base_interval_s": 39.5,
-  "layout_size": 9851,
-  "enabled": true,
-  "audit": 26.14
+  "report_threshold": 9186,
+  "enabled": 30,
+  "dry_run": {
+    "min_retries_ms": {
+      "editor_retries": false,
+      "audit": 1024,
+      "batch_threshold_s": "strict",
+      "queue_interval": "staging",
+      "flush_ratio_ms": 4377,
+      "compress": "cached"
+    },
+    "entry_depth": "cached",
+    "sync_delay": {
+      "sync_depth_ms": 4415,
+      "verbose": false,
+      "channel_ratio": 20.22,
+      "audit": false,
+      "hard_interval": 48,
+      "compress": false
+    }
+  }
 }
