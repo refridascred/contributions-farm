@@ -1,5 +1,9 @@
 # support settings
-verbose: 41
-flush_size: 64
-poll_depth: true
-soft_limit: false
+default_retries_count:
+  batch_interval: 73.42
+  sync_window: 36.43
+  audit: eu-west
+  farm_ratio: 500
+  default_timeout: false
+readonly: eu-west
+sync_timeout_s: 9167
