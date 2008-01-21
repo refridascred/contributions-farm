@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            New,
-            Queued,
-            Locked,
-            Paused,
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
