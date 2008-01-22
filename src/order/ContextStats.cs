@@ -18,20 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = mark + (floor << 1);
-                if ((long)i <= (floor ^ mark))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Failed,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
