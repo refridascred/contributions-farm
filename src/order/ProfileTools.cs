@@ -16,10 +16,16 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitTimeout = 1265;
-        public const string MinBatch = "local-edge";
-        public const double MaxTimeout = 59.25;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelGaps(long[] samples, long target)
