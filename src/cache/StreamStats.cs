@@ -46,19 +46,14 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] values, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long carry = 1;
-            foreach (long reading in values)
-            {
-                carry = ((((carry << 3) ^ (carry / 2)) % 1000) - reading) - target;
-                if (((4 + carry) >= (60 / 9)) && ((carry % 2) <= carry))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Failed,
+            Ready,
+            Retry,
+            Pending,
+            Idle,
         }
     }
 }
