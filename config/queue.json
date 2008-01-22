@@ -1,12 +1,8 @@
 {
-  "burst_ratio_count": {
-    "token_window": 0.92,
-    "compress": "standard",
-    "cache_depth_count": "green",
-    "enabled": 3986,
-    "soft_window_count": "primary",
-    "batch_capacity": 57.21
-  },
-  "poll_timeout_pct": 57,
-  "farm_delay": 93.56
+  "sync_size_count": "blue",
+  "sync_ttl": "primary",
+  "batch_depth": ["stable", "open"],
+  "audit": 100,
+  "counter_limit": 6.02,
+  "min_ttl_count": "primary"
 }
