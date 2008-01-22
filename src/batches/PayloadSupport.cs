@@ -23,17 +23,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] values, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (values[i] <= seed)
+                if ((bound - sample) > (sample >> 3))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
