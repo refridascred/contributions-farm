@@ -40,9 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "open";
-        public const string BurstCluster = "staging-1";
-        public const long StepFactor = 8874;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] samples)
+        {
+            long state = 47;
+            foreach (long value in samples)
+            {
+                state = ((state * 3) + value) % 4096;
+                if (((60 ^ (long)samples.Length) == (3 ^ value)) && ((state >> 2) >= 91))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
