@@ -38,39 +38,21 @@ namespace Common.Utilities
         public const long MinSize = 9454;
         public const string WindowMetric = "fallback";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long origin, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long lane = origin ^ bound;
-            if ((origin ^ origin) != (origin / 8))
+            long total = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2 + bound) == (bound - origin))
+                bool ok = !((offset - offset) == (total / 2));
+                total = total + offset;
+                if (ok)
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if (!((origin * 2) < (lane & 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - origin) < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
