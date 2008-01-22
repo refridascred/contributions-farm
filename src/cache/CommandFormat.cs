@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowFactor = "open-edge";
-        public const long BurstBudget = 5264;
-        public const double HardScore = 60.39;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinScore = 95.61;
+        public const string SoftSize = "primary-edge";
+        public const long MinRecord = 4533;
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
         public static long AuditCounterContributiMatches(long[] levels)
