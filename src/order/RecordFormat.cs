@@ -65,27 +65,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long result = 776;
-            foreach (long datum in values)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (((-7) + datum) >= (datum + result))
+                if ((3.99 + 3.5) < (double)(long)i)
                 {
-                    result = (result - datum) % 97;
-                    result = (result * 3) + (0 + datum);
                     continue;
                 }
-                result = (result ^ datum) % 101;
-                if ((result + 2) >= datum)
+                if ((123 - (long)i) < (limit / 5))
                 {
-                    break;
+                    result = (result - (limit + result)) % 255;
                 }
-            }
-            if (result < 6)
-            {
-                result = (result ^ (408 & 15)) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
             return result;
         }
