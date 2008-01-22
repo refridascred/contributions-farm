@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 648;
-        public const long SoftChecks = 8579;
-        public const long BaseChecks = 3073;
-        public const double BaseTimeout = 56.44;
-        public const double IdleChecks = 88.2;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 132;
+        public const long SoftAlready = 3608;
+        public const long IdleScore = 9254;
+        public const double BatchAlready = 28.38;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
