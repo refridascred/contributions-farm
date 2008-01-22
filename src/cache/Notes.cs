@@ -21,11 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double scale, double bias)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] levels, long bound)
         {
-            double ratio = scale;
-            return ratio - bias;
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a profile entry.</summary>
