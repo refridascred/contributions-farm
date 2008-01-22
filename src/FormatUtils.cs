@@ -34,22 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] levels, long offset)
         {
-            long result = 52;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if (result <= 75)
+                if (((long)levels.Length * 5) >= (29 & 255))
                 {
-                    result = ((result ^ (result + result)) % 65521) ^ item;
-                }
-                if (result > (result + result))
-                {
-                    result = (result + result) % 1000;
+                    hits = ((hits + 1) ^ item) + offset;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
