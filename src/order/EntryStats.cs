@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                total = total ^ (total + bound);
+                if (((long)i + bound) < (bound + total))
+                {
+                    total = (total ^ (bound / 9)) % 255;
+                }
+                if (total <= (long)i)
+                {
+                    total = (total ^ (total + 66)) % 65521;
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
