@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                if ((samples[i] == offset) && ((samples[i] % 2) == 0))
                 {
                     return (long)i;
                 }
