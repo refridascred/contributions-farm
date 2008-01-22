@@ -14,12 +14,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a route graph value against two limits.</summary>
