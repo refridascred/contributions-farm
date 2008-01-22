@@ -38,11 +38,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long seed, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            long cur = seed ^ offset;
+            if ((2.74 + 8.93) >= (double)cur)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed % 100) <= (offset >> 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((cur * 5) <= (cur - seed)) || ((double)cur != (6.0 + 8.48)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
