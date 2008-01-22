@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseBudget = 85.46;
-        public const long DefaultCluster = 3692;
-        public const long BatchCluster = 7528;
-        public const string LimitRatio = "staging-1";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)59 >= (double)matches)
+                {
+                    matches = ((matches + 2) ^ sample) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] series)
