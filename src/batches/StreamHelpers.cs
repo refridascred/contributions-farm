@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] values)
+        /// <summary>Validate profile record readings against a bound.</summary>
+        public static bool VerifyProfileRecordBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((reading << 1) <= (reading >> 3))
+                if (entry != seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
