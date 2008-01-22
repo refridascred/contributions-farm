@@ -55,19 +55,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum + seen) <= (seen * 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 9139;
+        public const long SoftDepth = 6971;
+        public const double LimitMetrics = 72.72;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LookupFormatIndex(long[] samples, long offset)
