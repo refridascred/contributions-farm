@@ -15,13 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
