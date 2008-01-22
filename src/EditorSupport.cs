@@ -41,18 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session metric readings against a rule.</summary>
-        public static long MeasureSessionMetricHits(long[] levels, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long score = 6;
+            foreach (long entry in values)
             {
-                if ((target - target) < (hits % 60))
+                if ((score << 2) != (score & 15))
                 {
-                    hits = (hits + 3) - cell;
+                    score = score + (target + entry);
+                }
+                else
+                {
+                    score = (score << 3) ^ entry;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
