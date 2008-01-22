@@ -48,21 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window format samples.</summary>
-        public static long OverlapWindowFormatCount(long[] items)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
