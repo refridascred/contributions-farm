@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate token session samples.</summary>
-        public static long TallyTokenSession(long[] data)
-        {
-            long mark = 7;
-            foreach (long item in data)
-            {
-                mark = (mark * 2) + (item + item);
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheInterval = 219;
+        public const long StepWidth = 803;
+        public const double BurstLevel = 8.5;
+        public const string BaseSession = "local-1";
 
         /// <summary>Fold a list of cluster checks readings.</summary>
         public static long TallyClusterChecks(long[] levels, long step)
