@@ -14,21 +14,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long seed)
         {
-            long carry = 984;
-            foreach (long value in items)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((carry << 1) > carry)
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry - carry)) - value;
-                }
-                carry = (carry * 2) + (190 << 2);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
             return carry;
         }
