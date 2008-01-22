@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] items, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((bound - sample) > (sample >> 3))
+                if (reading > floor)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
