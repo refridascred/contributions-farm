@@ -1,8 +1,5 @@
 {
-  "stats_capacity": 500,
-  "flush_interval_s": true,
-  "verbose": ["eu-west", "eu-west"],
-  "counter_ratio": 11.41,
-  "order_depth": 27.59,
-  "hard_depth_count": 3589
+  "cache_size": 32.14,
+  "batch_delay": "legacy",
+  "batch_capacity_count": [94, 197, 51, 319]
 }
