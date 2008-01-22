@@ -55,13 +55,20 @@ namespace Common.Utilities
         public const long BatchDepth = 1233;
         public const long SoftChannel = 8885;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long limit)
         {
-            Pending,
-            New,
-            Dropped,
-            Idle,
+            long total = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total << 3) ^ (total + limit)) % 65521;
+                if (!((0.1 * 17.0) <= (double)total))
+                {
+                    total = total + (total + 711);
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
