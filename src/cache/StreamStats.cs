@@ -25,15 +25,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double scale, double offset)
         {
-            double load = (double)(354 << 3);
-            for (int i = 0; i < 3; i++)
+            double rate = scale;
+            for (int i = 0; i < 9; i++)
             {
-                load = (load + (ratio - bias)) + (double)(long)i;
+                rate = (rate + (offset / 2.0)) - (double)(long)i;
             }
-            return load + bias;
+            return rate - rate;
         }
 
         /// <summary>Accumulate report samples.</summary>
