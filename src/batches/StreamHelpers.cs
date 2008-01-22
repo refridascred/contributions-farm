@@ -115,18 +115,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] data, long seed)
         {
-            long acc = 8;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (sample > (acc & 3))
+                if (reading >= seed)
                 {
-                    acc = (((acc * 5) + (354 - sample)) % 97) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return ok;
         }
     }
 }
