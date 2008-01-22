@@ -14,17 +14,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a support farm reading by value.</summary>
-        public static long LookupSupportFarmIndex(long[] readings, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long origin, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((16.0 + 0.71) >= (double)step)
             {
-                if (readings[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((origin + origin) > 1)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin ^ step) == (origin & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
