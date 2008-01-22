@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] values)
         {
-            Closed,
-            Failed,
-            Dropped,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) <= (reading >> 3))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
