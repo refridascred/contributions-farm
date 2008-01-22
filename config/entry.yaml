@@ -1,17 +1,4 @@
 # entry settings
-entry_capacity: 7059
-strict:
-  base_size_pct:
-    - 215
-    - 442
-  flush_retries_count: cached
-  dry_run:
-    sync_depth_s: 36.75
-    base_ratio_ms: 89.11
-    flush_ratio_s: 60
-    commits_ttl: 35
-  audit: standard
-  queue_interval: green
-  counter_ttl: 100
-audit: primary
-batch_threshold: 40
+burst_ttl_s: 15.81
+audit: 29.98
+default_delay: 80.96
