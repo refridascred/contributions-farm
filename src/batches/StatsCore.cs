@@ -33,17 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile channel value from a seed.</summary>
-        public static long RollProfileChannel(long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = ((mark << 2) ^ (-64)) % 255;
-                mark = (mark ^ (bound << 2)) % 65521;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
