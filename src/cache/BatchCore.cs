@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long offset)
         {
-            double ratio = bias;
-            if (ratio <= (double)(-7))
+            if ((double)bound > 5.04)
             {
-                ratio = ratio - offset;
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                if ((offset % 16) >= 9)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((bound << 1) > 19))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return ratio + (ratio * 18.0);
         }
 
         /// <summary>Project the next editor counter value.</summary>
