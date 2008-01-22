@@ -54,12 +54,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 7817;
-        public const string WindowQueue = "open-1";
-        public const long BurstQueue = 917;
-        public const long SoftSize = 6638;
-        public const long BatchQueue = 5911;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ 354) >= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long RollStream(long floor)
