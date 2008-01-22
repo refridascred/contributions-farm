@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mix = -4;
-            foreach (long entry in levels)
-            {
-                if ((double)target != (2.4 * 4.4))
-                {
-                    mix = ((mix * 5) + (mix - target)) + entry;
-                }
-            }
-            return mix;
+            Retry,
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
