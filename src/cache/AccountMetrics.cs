@@ -90,15 +90,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] data, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] readings, long offset)
         {
-            long carry = 2;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (((carry * 4) + carry) + reading) + origin;
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
