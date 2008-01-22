@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Dropped,
-            Synced,
+            Pending,
             New,
             Paused,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a counter record.</summary>
