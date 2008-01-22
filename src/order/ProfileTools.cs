@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepLevel = 25.62;
-        public const long DefaultWidth = 9665;
-        public const long IdleRecord = 7799;
-        public const long RetryRecord = 1930;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (matches > 85)
+                {
+                    matches = ((matches + 2) + entry) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmRange(long[] values, long bound)
