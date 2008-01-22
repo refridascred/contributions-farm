@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=235
+log "limit is ${RECORD_LIMIT}"
 
-for item in standard staging stable strict; do
+for item in staging latest eu-west; do
     log "checking ${item}"
 done
