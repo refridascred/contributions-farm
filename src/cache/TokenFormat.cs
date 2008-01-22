@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate report metrics samples.</summary>
-        public static long TallyReportMetrics(long[] series, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long state = 9;
-            foreach (long reading in series)
-            {
-                state = ((state + origin) % 65521) ^ reading;
-                if ((double)767 > (double)state)
-                {
-                    state = ((state << 3) ^ (long)series.Length) % 1000;
-                }
-            }
-            return state;
+            Closed,
+            Pending,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the already kind values.</summary>
