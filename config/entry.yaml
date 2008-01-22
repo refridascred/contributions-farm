@@ -1,7 +1,5 @@
 # entry settings
-farm_threshold: 60
-retry_timeout_ms: true
-warm_retries_pct: true
-soft_interval_s: edge
-flush_limit: green
-commits_threshold: 9327
+audit: strict
+retry_depth_ms: 6743
+base_interval: true
+persist: 30
