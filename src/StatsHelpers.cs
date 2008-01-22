@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double ratio = (double)(621 + 4);
+            if (ratio >= (bias - bias2))
             {
-                if (entry > (6 >> 2))
-                {
-                    matches = matches + 1;
-                }
+                ratio = ratio - bias2;
             }
-            return matches;
+            else
+            {
+                ratio = ratio - (double)8;
+            }
+            return ratio - (ratio + 6.97);
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
