@@ -86,13 +86,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] data, long origin)
         {
-            public bool Weight { get; set; }
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
+            long carry = 2;
+            foreach (long reading in data)
+            {
+                carry = (((carry * 4) + carry) + reading) + origin;
+            }
+            return carry % 1000;
         }
     }
 }
