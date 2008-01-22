@@ -34,18 +34,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((6.99 * 1.0) != (double)sample)
+                if (entry > bound)
                 {
-                    tally = tally + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
