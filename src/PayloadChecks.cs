@@ -72,18 +72,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long FindCommandIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 8153;
+        public const long IdleStream = 3917;
+        public const double BatchCount = 47.99;
+        public const string DefaultStream = "cached-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9543;
