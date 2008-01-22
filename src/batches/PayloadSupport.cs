@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 5662;
-        public const double CacheLevel = 13.57;
-        public const long CacheAccount = 8719;
-        public const string SoftAccount = "primary";
-        public const long MaxTimeout = 3284;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepInterval = 7915;
+        public const string DefaultSpan = "fallback-edge";
+        public const long SoftLevel = 4257;
+        public const long BatchContext = 734;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long limit, long floor)
