@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long limit, long target)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] levels, long origin)
         {
-            if ((target / 4) <= (83 & 15))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (5.89 - 4.8))
+                if (cell > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + (-95)) > (target ^ limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((target + limit) > (target - limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
