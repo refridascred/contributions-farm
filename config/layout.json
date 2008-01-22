@@ -1,20 +1,5 @@
 {
-  "persist": [482, 131, 198, 446],
-  "hard_interval": ["green", "green", "standard", "green"],
-  "audit": {
-    "report_window": 60,
-    "idle_capacity": {
-      "dry_run": "latest",
-      "warm_size_s": 500,
-      "poll_ratio": "eu-west",
-      "account_retries": false,
-      "batches_depth": "eu-west"
-    },
-    "enabled": 9648,
-    "tools_timeout": false,
-    "flush_ratio_ms": 44.21
-  },
-  "hard_depth_ms": 250,
-  "enabled": 30,
-  "idle_ratio": 23.79
+  "warm_interval": 30,
+  "min_limit": 30,
+  "strict": ["blue", "latest"]
 }
