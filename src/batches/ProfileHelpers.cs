@@ -79,21 +79,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token buffer samples.</summary>
-        public static long CompareTokenBufferCount(long[] data)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 93;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum + (sample + 268)) % 255) - floor;
             }
-            return tally;
+            return sum;
         }
     }
 }
