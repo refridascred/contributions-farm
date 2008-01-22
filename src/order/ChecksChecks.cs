@@ -20,14 +20,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long offset, long step)
         {
-            New,
-            Failed,
-            Active,
-            Stale,
-            Paused,
+            long gap = offset + step;
+            if ((gap / 7) >= (gap - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((6.8 >= (double)step) || ((double)gap == (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((10.0 - 6.9) <= (double)gap) || ((offset * 2) < (offset & 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - gap) <= (gap - 109))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
