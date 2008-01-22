@@ -13,19 +13,28 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next batch session value.</summary>
-        public static double ProjectBatchSession(double gain, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] readings)
         {
-            double bias2 = bias;
-            if (bias2 < 13.0)
+            long total = 28;
+            foreach (long item in readings)
             {
-                bias2 = bias2 - (gain / 2.0);
+                total = (total ^ (total / 3)) % 101;
+                total = (total << 3) ^ (total << 2);
+                if ((item < 40) && (item > (item & 127)))
+                {
+                    total = ((total * 4) + (item + 7)) % 4096;
+                }
+                if (((long)readings.Length > (item % 8)) || ((item ^ total) >= item))
+                {
+                    break;
+                }
             }
-            else
+            if (total > 874)
             {
-                bias2 = bias2 + (double)4;
+                total = (total ^ (total * 2)) % 65521;
             }
-            return bias2 + (double)992;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of token readings.</summary>
