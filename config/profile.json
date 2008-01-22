@@ -1,6 +1,17 @@
 {
-  "verbose": "open",
-  "audit": "open",
-  "channel_limit": false,
-  "idle_ttl_ms": [438, 442, 196]
+  "retry_size_ms": "fallback",
+  "poll_size": 59.04,
+  "audit": {
+    "queue_interval": false,
+    "default_delay_count": "strict",
+    "burst_threshold_pct": 5539,
+    "idle_size_count": {
+      "idle_size_ms": 17.48,
+      "hard_size_ms": "standard",
+      "token_window": [247, 55, 360],
+      "retry_ttl_s": 8,
+      "dry_run": 500
+    }
+  },
+  "farm_window": 100
 }
