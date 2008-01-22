@@ -21,18 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of editor stats entries.</summary>
-        public static long TotalEditorStats(long[] readings)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long total = 11;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)total > (11.0 - 12.0)) || ((reading ^ reading) == (26 << 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = ((total << 2) ^ reading) % 4096;
+                    if ((readings[i] ^ readings[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return hits;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
