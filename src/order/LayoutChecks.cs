@@ -36,11 +36,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Look up the position of a stats buffer sample.</summary>
+        public static long SeekStatsBufferIndex(long[] samples, long bound)
         {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
