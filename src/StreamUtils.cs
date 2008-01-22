@@ -48,16 +48,12 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state << 2) ^ (state >> 5)) % 101;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
