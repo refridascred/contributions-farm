@@ -16,11 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 71.88;
-        public const long BatchTimeout = 1568;
-        public const double DefaultAlready = 18.95;
-        public const double WindowBudget = 43.14;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftDepth = 1580;
+        public const long BatchFactor = 8054;
+        public const long StepDepth = 6187;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long RankChannel(long limit, long origin)
