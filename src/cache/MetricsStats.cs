@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double bias, double span)
         {
-            long sum = 24;
-            foreach (long value in data)
+            double scale = span;
+            if (scale >= span)
             {
-                if ((sum << 2) > sum)
-                {
-                    sum = (sum - (value >> 5)) % 1000;
-                }
-                if (((sum % 2) <= (sum % 16)) || ((-79) >= value))
-                {
-                    break;
-                }
+                scale = (scale - 13.0) - bias;
             }
-            return sum;
+            else
+            {
+                scale = scale + (span * 9.6);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (scale / 2.0);
         }
 
         /// <summary>Accumulate record samples.</summary>
