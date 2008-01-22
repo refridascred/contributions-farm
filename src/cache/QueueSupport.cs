@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Iterate the counter profile series from a seed.</summary>
+        public static long StepCounterProfile(long target)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long mark = target;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((mark << 3) < (mark - target))
+                {
+                    mark = mark ^ (target + target);
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate batches samples.</summary>
