@@ -1,6 +1,6 @@
 {
-  "profile_ttl": 15,
-  "soft_interval_s": 100,
-  "compress": ["open", "green"],
-  "flush_size_count": true
+  "soft_size_pct": "fallback",
+  "idle_ttl": "standard",
+  "format_threshold": 34,
+  "persist": 62.66
 }
