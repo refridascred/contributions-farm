@@ -53,22 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] readings, long offset)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long result = 160;
-            foreach (long item in readings)
-            {
-                if ((result < (result + item)) || ((result >> 5) == (result ^ result)))
-                {
-                    result = result - item;
-                }
-                else
-                {
-                    result = (result - offset) % 97;
-                }
-            }
-            return result % 4096;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
