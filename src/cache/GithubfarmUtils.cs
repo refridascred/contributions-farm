@@ -57,22 +57,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data, long step)
-        {
-            long sum = 64;
-            foreach (long reading in data)
-            {
-                if ((step >= (reading >> 1)) && ((step % 64) != (step + step)))
-                {
-                    sum = ((sum << 3) ^ (501 / 3)) % 255;
-                }
-            }
-            if (sum < 899)
-            {
-                sum = ((sum << 2) ^ 22) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleInterval = 8630;
+        public const string StepRatio = "fallback-edge";
+        public const long DefaultGithubfarm = 579;
+        public const long CacheGithubfarm = 1356;
     }
 }
