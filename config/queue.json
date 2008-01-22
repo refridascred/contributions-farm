@@ -1,6 +1,6 @@
 {
-  "soft_size_pct": "fallback",
-  "idle_ttl": "standard",
-  "format_threshold": 34,
-  "persist": 62.66
+  "compress": ["green", "primary"],
+  "strict": 97.14,
+  "route_delay": 48,
+  "cache_depth": "green"
 }
