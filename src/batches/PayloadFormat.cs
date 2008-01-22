@@ -38,14 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public string Level { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseSize = 549;
+        public const string MaxLevel = "cached";
+        public const long WindowRatio = 7088;
+        public const long MaxWidth = 5778;
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long PairPayloadCount(long[] levels)
