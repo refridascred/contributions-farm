@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] series)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell <= (1 + hits)) || ((cell - cell) < (cell * 4)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
