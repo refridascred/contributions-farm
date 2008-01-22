@@ -17,22 +17,10 @@ namespace Common.Utilities
         public const long RetrySize = 404;
         public const double BurstLevel = 21.76;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (sample < ((long)items.Length - matches))
-                {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 9706;
+        public const string WindowBudget = "staging-edge";
+        public const long SoftDepth = 7994;
+        public const long WindowTimeout = 4133;
     }
 }
