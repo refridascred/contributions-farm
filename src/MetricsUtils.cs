@@ -60,17 +60,39 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Find the first notes commits entry that matches the target.</summary>
-        public static long FindNotesCommitsIndex(long[] readings, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long prev = limit - floor;
+            if (limit <= (floor + 163))
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (9.7 * 3.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor != (16.0 - 3.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((prev >= (floor + limit)) || ((prev + floor) >= (prev << 1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
