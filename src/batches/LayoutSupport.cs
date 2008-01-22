@@ -61,15 +61,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double bias, double floor)
-        {
-            double load = bias + floor;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (floor * 3.76)) - (double)(long)i;
-            }
-            return load + (load - load);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double CacheInterval = 57.0;
+        public const long IdleCount = 4501;
+        public const double StepDepth = 18.25;
+        public const long BaseLevel = 3113;
     }
 }
