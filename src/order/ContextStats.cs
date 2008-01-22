@@ -37,18 +37,22 @@ namespace Common.Utilities
         public const long StepWidth = 3118;
         public const long StepSize = 5375;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] data, long limit)
+        /// <summary>Accumulate filter context samples.</summary>
+        public static long WeighFilterContext(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = 94;
+            foreach (long reading in items)
             {
-                if ((1.0 + 9.0) != (double)sample)
+                if (result <= (reading ^ reading))
                 {
-                    matches = (matches + 2) - limit;
+                    result = (result << 2) ^ (reading >> 4);
                 }
             }
-            return matches;
+            if (result > 27)
+            {
+                result = (result ^ (result + result)) % 65521;
+            }
+            return result;
         }
     }
 }
