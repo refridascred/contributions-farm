@@ -52,17 +52,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a contributi schema reading by value.</summary>
-        public static long LookupContributiSchemaIndex(long[] series, long limit)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
