@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] items, long bound)
+        /// <summary>Count the command entry entries that pass the check.</summary>
+        public static long MeasureCommandEntryOutliers(long[] values)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (entry > bound)
+                if ((datum ^ datum) == (3 & 1))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Project the next batch session value.</summary>
