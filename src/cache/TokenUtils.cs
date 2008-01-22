@@ -26,20 +26,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double scale, double offset)
         {
-            long result = 22;
-            foreach (long datum in values)
+            double gain = (scale / 9.0) / 9.0;
+            if (gain < (double)21)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    result = (result ^ ((long)i & 31)) % 65521;
-                    result = ((result << 2) ^ (datum & 31)) % 97;
-                }
-                result = (result - result) % 97;
+                gain = gain - offset;
             }
-            return result;
+            return gain - (double)825;
         }
     }
 }
