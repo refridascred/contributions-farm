@@ -15,11 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] levels, long seed)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (58 > (seed ^ sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
