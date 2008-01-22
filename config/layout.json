@@ -1,16 +1,20 @@
 {
-  "command_retries": {
-    "burst_capacity": ["standard", "standard"],
-    "warm_timeout_ms": 30,
-    "soft_ttl_s": {
-      "readonly": 55.84,
-      "warm_interval_s": "latest",
-      "burst_capacity": true,
-      "idle_ratio_ms": 88
+  "route_threshold": "latest",
+  "retry_depth_s": 84,
+  "account_interval": [226, 70],
+  "flush_threshold": "green",
+  "warm_retries_count": {
+    "compress": 6628,
+    "retry_threshold_s": {
+      "base_depth_ms": true,
+      "readonly": 100,
+      "buffer_delay": 98.04,
+      "strict": 7860
     },
-    "default_timeout_s": 9495,
-    "cache_delay_count": [130, 212, 12, 435]
+    "default_size_ms": 30,
+    "record_window": "staging",
+    "idle_threshold": true,
+    "burst_timeout_pct": 74
   },
-  "dry_run": 1.32,
-  "filter_ratio": "blue"
+  "base_limit_ms": false
 }
