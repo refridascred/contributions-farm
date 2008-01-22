@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double MinContext = 9.23;
         public const string MaxTimeout = "standard";
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double floor)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double drift = scale + (floor / 9.0);
-            if (drift > (double)7)
-            {
-                drift = drift - (drift / 8.0);
-            }
-            else
-            {
-                drift = drift - scale;
-            }
-            return drift + (double)(-1);
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
