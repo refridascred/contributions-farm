@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const string BaseLevel = "latest-v2";
         public const double LimitFactor = 59.46;
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Dropped,
-            Synced,
-            Closed,
-            Active,
-            Locked,
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
