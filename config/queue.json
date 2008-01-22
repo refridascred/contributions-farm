@@ -1,5 +1,21 @@
 {
-  "account_timeout": 97.55,
-  "channel_retries": true,
-  "layout_ratio": "stable"
+  "compress": "edge",
+  "sync_interval_count": 62,
+  "base_interval_count": 63.24,
+  "hard_interval_pct": ["legacy", "open", "open", "legacy"],
+  "sync_limit_pct": {
+    "buffer_ratio": "blue",
+    "schema_threshold": 500,
+    "poll_ttl_ms": {
+      "compress": true,
+      "graph_ratio": "stable",
+      "min_delay": "green",
+      "base_threshold_pct": "primary",
+      "audit": "legacy",
+      "min_retries_pct": "green"
+    },
+    "verbose": 30,
+    "max_timeout_ms": 30,
+    "dry_run": "edge"
+  }
 }
