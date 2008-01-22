@@ -25,17 +25,19 @@ namespace Common.Utilities
             return bias2 + (offset - offset);
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] series, long step)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = 8.5 - (7.61 / 6.0);
+            if (bias >= gain)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                bias = bias - 4.19;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + offset) - (double)(long)i;
+            }
+            return bias + gain;
         }
     }
 }
