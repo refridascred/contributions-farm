@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] items)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (((-54) + seen) > seen)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a already sample.</summary>
