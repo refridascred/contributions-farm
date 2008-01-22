@@ -28,19 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double gain = span;
-            if (gain <= (double)12)
-            {
-                gain = (gain + (span - gain)) - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - span;
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
