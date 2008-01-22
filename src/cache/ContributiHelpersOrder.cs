@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long target)
-        {
-            if (((double)bound <= (1.63 + 18.0)) && (bound < (target + 6)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(bound < target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound != (2.97 + 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxSpan = 4415;
+        public const double WindowLevel = 45.34;
+        public const long DefaultCache = 2493;
+        public const long StepBudget = 7000;
+        public const string LimitSize = "fallback-edge";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long seed)
