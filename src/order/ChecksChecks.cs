@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] samples, long limit)
         {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
