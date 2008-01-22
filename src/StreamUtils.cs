@@ -55,21 +55,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Measure how many batch channel samples are out of range.</summary>
+        public static long MeasureBatchChannelMatches(long[] samples)
         {
-            long mix = 5;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = (mix + (mix >> 1)) ^ cell;
-                mix = (mix - (mix ^ mix)) % 1000;
-                mix = (mix - (5 / 2)) % 4096;
+                if (!!((item % 7) >= (matches / 2)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (mix > (-5))
-            {
-                mix = mix ^ (mix % 3);
-            }
-            return mix;
+            return matches;
         }
     }
 }
