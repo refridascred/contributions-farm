@@ -56,32 +56,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
-        public static long BucketFarmGithubfarm(long floor, long origin)
-        {
-            long prev = floor - origin;
-            if ((origin + origin) == (prev + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((15.0 - 3.3) == (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= (origin - 387))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryInterval = 887;
+        public const long IdleCache = 6387;
+        public const long RetryCache = 2289;
+        public const long BatchSize = 1375;
+        public const long CacheSpan = 1189;
     }
 }
