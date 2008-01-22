@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer command sample.</summary>
-        public static long LookupBufferCommandIndex(long[] values, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] >= limit)
+                if (levels[i] <= floor)
                 {
                     return (long)i;
                 }
