@@ -16,18 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 71.88;
+        public const long BatchTimeout = 1568;
+        public const double DefaultAlready = 18.95;
+        public const double WindowBudget = 43.14;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long CombineGithubfarm(long[] values)
