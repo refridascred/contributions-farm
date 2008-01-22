@@ -1,21 +1,18 @@
 # entry settings
-min_delay:
-  - cached
-  - latest
-  - strict
-  - staging
-default_size_ms: 3530
-enabled:
-  sync_retries_s:
-    cache_capacity: 64.8
-    default_delay: cached
-    readonly: 7031
-    warm_delay: 3300
-    soft_threshold: 83.5
-    stream_retries: true
-  readonly: edge
-  flush_timeout_pct:
-    - legacy
-    - fallback
-    - latest
+persist: legacy
+audit: 51
+default_timeout: fallback
+contributi_timeout: 30
+account_size:
+  hard_interval_count: false
+  layout_depth:
+    - 267
+    - 44
+    - 81
+    - 110
+  sync_depth:
+    - blue
+    - green
     - cached
+    - legacy
+  retry_ratio_pct: false
