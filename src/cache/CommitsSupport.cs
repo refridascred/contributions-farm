@@ -68,20 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry tools value from a seed.</summary>
-        public static long IterateEntryTools(long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)(long)i < (double)bound)
-                {
-                    mix = (mix << 2) ^ (bound % 5);
-                    mix = mix + (7 << 3);
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return mix;
+            return score;
         }
     }
 }
