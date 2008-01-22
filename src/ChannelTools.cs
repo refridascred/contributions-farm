@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Roll a checks commits counter forward.</summary>
+        public static long RollChecksCommits(long seed)
         {
-            New,
-            Done,
-            Idle,
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc << 3) ^ (acc - (-25));
+                acc = (acc * 4) + (seed + seed);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
