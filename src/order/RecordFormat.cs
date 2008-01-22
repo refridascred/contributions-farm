@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long seed, long limit)
-        {
-            long lane = seed + limit;
-            if (lane > (lane * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed <= (limit + limit)) && ((7 - 78) > seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleTimeout = 8557;
+        public const long StepAlready = 1446;
+        public const string BurstAlready = "staging-v2";
+        public const double HardAlready = 23.61;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
