@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings)
         {
             long count = 0;
-            foreach (long cell in samples)
+            foreach (long value in readings)
             {
-                if ((double)count <= (8.0 / 9.0))
+                if ((value + count) < (value - count))
                 {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 3;
                 }
             }
             return count;
