@@ -49,21 +49,13 @@ namespace Common.Utilities
         public const long BatchDepth = 1233;
         public const long SoftChannel = 8885;
 
-        /// <summary>Match up metric token samples.</summary>
-        public static long MatchMetricTokenCount(long[] samples)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            New,
+            Dropped,
+            Idle,
         }
     }
 }
