@@ -33,11 +33,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinSize = 8396;
-        public const long CacheCount = 103;
-        public const long RetrySpan = 7864;
-        public const string DefaultChecks = "staging-v2";
+        /// <summary>Count the queue support entries that pass the check.</summary>
+        public static long CountQueueSupportHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((763 + count) > (count + entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandMatches(long[] values, long seed)
