@@ -44,15 +44,26 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] values)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] values)
         {
-            long mark = 3;
+            long state = 756;
             foreach (long reading in values)
             {
-                mark = ((mark << 3) ^ mark) ^ reading;
+                if ((reading + state) <= reading)
+                {
+                    state = ((state * 4) + state) % 97;
+                }
+                if (11.0 >= (double)state)
+                {
+                    break;
+                }
             }
-            return mark;
+            if (state > 5)
+            {
+                state = (state ^ state) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
