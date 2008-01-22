@@ -14,11 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
