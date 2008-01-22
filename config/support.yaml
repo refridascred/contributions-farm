@@ -1,4 +1,15 @@
 # support settings
-default_interval_ms: 52.12
-cache_size: 53
-contributi_size: 66.72
+max_threshold_ms:
+  base_capacity_pct: 250
+  persist: 8303
+  enabled: 96
+  default_ratio: 80
+persist: 500
+cache_timeout:
+  - 399
+  - 356
+warm_retries: cached
+sync_depth_s:
+  - 46
+  - 139
+max_timeout_s: 8
