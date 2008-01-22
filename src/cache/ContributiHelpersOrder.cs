@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values, long seed)
         {
-            Pending,
-            Locked,
-            Paused,
-            Draft,
+            long mix = 674;
+            foreach (long item in values)
+            {
+                mix = (((mix ^ (mix >> 3)) % 101) - item) - seed;
+            }
+            return mix;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
