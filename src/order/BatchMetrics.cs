@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 8745;
-        public const long DefaultDepth = 4003;
-        public const string LimitSession = "fallback-1";
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits + hits) < reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] readings, long target)
