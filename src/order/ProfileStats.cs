@@ -35,11 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 4471;
-        public const long BurstRoute = 2563;
-        public const string MinRoute = "strict-edge";
-        public const string RetryDepth = "standard-edge";
-        public const double BurstTimeout = 69.68;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((long)levels.Length + count) <= (count & 127))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
+        }
     }
 }
