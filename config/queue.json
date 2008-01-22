@@ -1,6 +1,19 @@
 {
-  "cache_capacity": [439, 467, 198, 137],
-  "context_retries": ["cached", "open"],
-  "compress": 25,
-  "flush_interval": false
+  "batches_retries": 42.55,
+  "audit": "open",
+  "cache_delay_count": "fallback",
+  "metric_ttl": false,
+  "channel_limit": "eu-west",
+  "retry_depth_ms": {
+    "batch_limit_ms": "fallback",
+    "poll_retries": "staging",
+    "flush_interval": ["legacy", "fallback"],
+    "compress": {
+      "burst_depth_count": 26.62,
+      "hard_delay": 62.77,
+      "burst_threshold_count": "staging",
+      "default_limit": "strict"
+    },
+    "burst_threshold": "open"
+  }
 }
