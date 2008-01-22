@@ -26,39 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings)
         {
-            long next = offset + bound;
-            if ((17.0 / 4.0) != (double)next)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (next >= (bound ^ 280))
+                if ((sample ^ sample) > (hits - hits))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((next + next) <= (offset + next)) || ((next / 6) < (bound + offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (next < (bound & 15))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the format state values.</summary>
