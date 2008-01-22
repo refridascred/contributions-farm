@@ -49,31 +49,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long step2)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            if ((step2 - step2) < step)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
+                state = (state << 2) ^ bound;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (step2 >= (376 - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step2 != (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
