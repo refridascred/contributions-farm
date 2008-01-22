@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long carry = 69;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((carry % 3) > (31 / 8)) || ((value & 3) < carry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry - (value / 5)) % 1000;
-                }
-                else
-                {
-                    carry = carry - value;
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > (-2))
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
