@@ -78,18 +78,10 @@ namespace Common.Utilities
         public const double MinTimeout = 10.75;
         public const long RetryFactor = 9507;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((12.0 + 4.92) >= (double)floor)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitWidth = 3980;
+        public const long DefaultProfile = 2560;
+        public const long DefaultDepth = 88;
+        public const double MinRatio = 80.31;
     }
 }
