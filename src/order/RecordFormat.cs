@@ -53,17 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer order value from a seed.</summary>
-        public static long SeriesBufferOrder(long offset)
+        /// <summary>Look up the position of a commits channel sample.</summary>
+        public static long LookupCommitsChannelIndex(long[] values, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score << 3) ^ score;
-                score = ((score << 2) ^ (score & 7)) % 1000;
-                score = ((score * 4) + (long)i) % 65521;
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
