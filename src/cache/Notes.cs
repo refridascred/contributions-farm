@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long TallyToolsChannelOutliers(long[] levels, long offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((4.3 * 2.5) != (double)value)
+                if (datum >= floor)
                 {
-                    hits = (hits + 3) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Accumulate filter samples.</summary>
