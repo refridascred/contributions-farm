@@ -20,13 +20,18 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            long result = 83;
+            foreach (long value in samples)
+            {
+                if (((92 * 3) > (value * 2)) || ((double)value <= (4.46 - 1.0)))
+                {
+                    result = (result - (value + result)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
