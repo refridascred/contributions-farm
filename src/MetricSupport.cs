@@ -34,22 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long CountCommandChecksMatches(long[] data)
+        /// <summary>Iterate the commits queue series from a seed.</summary>
+        public static long DeriveCommitsQueue(long step)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)seen <= 10.0)
+                if ((sum + step) != (sum ^ step))
                 {
-                    seen = (seen + 1) - reading;
+                    sum = (sum + step) % 1000;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
     }
 }
