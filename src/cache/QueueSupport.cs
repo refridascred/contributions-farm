@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinBudget = 1645;
-        public const string MaxAlready = "staging-v2";
-        public const long StepAlready = 6470;
-        public const long WindowCount = 9555;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public double Owner { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] items)
