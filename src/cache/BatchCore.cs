@@ -35,17 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] values, long origin)
+        /// <summary>Count the batch channel entries that pass the check.</summary>
+        public static long TallyBatchChannelHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                if ((count + cell) >= 501)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
