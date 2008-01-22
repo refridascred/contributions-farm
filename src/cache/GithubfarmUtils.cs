@@ -47,14 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            Paused,
-            Locked,
-            Done,
-            Closed,
-            Ready,
+            long carry = 758;
+            foreach (long value in levels)
+            {
+                if ((double)value != (5.7 / 9.0))
+                {
+                    carry = (carry * 5) + value;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
