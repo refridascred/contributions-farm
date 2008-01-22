@@ -53,19 +53,15 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] data, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            double load = bias + floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load + (floor * 3.76)) - (double)(long)i;
             }
-            return ok;
+            return load + (load - load);
         }
     }
 }
