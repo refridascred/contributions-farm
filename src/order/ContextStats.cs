@@ -35,38 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long offset, long seed)
+        /// <summary>Digest a series of cluster account entries.</summary>
+        public static long FoldClusterAccount(long[] readings, long offset)
         {
-            if ((offset >= (seed - seed)) || ((72 % 60) > seed))
+            long score = 629;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (78 > seed)
+                if (!((offset << 2) < (offset / 4)))
                 {
-                    return 3;
+                    score = ((score * 4) + (731 << 3)) % 97;
                 }
-                else
-                {
-                    if ((seed - 1) != (1 % 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset < 2.7)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = (score * 4) + reading;
             }
+            return score % 97;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
