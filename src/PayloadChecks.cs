@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Look up the position of a checks record sample.</summary>
-        public static long FindChecksRecordIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitRatio = 1293;
+        public const string BurstBatch = "strict-v2";
+        public const long CacheFactor = 1617;
 
         /// <summary>Count order context pairs that satisfy a relation.</summary>
         public static long MatchOrderContextCount(long[] values)
