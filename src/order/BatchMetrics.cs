@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long DefaultDepth = 4003;
         public const string LimitSession = "fallback-1";
 
-        /// <summary>Audit window schema readings against a rule.</summary>
-        public static long CountWindowSchemaHits(long[] series, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset * 4) >= (2 + matches))
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
                 {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
