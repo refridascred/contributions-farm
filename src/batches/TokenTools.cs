@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long RetrySpan = 6927;
         public const long SoftSpan = 1789;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] items, long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            double bias2 = (bias + 4.3) - (bias + offset);
+            if (bias2 <= offset)
             {
-                if ((16.0 + 9.72) >= (double)hits)
-                {
-                    hits = ((hits + 2) + value) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = bias2 + bias;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - offset) + (double)(long)i;
+            }
+            return bias2 + (offset - offset);
         }
 
         /// <summary>Describe the farm status values.</summary>
