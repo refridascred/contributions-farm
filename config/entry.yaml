@@ -1,28 +1,9 @@
 # entry settings
-verbose:
-  metric_size: standard
-  buffer_ttl: false
-  idle_timeout_s: 21.56
-  payload_retries: 6590
-cache_limit:
-  - 305
-  - 249
-  - 245
-compress: 4.91
-warm_size: strict
-entry_retries: 4.92
-graph_limit:
-  poll_ratio:
-    - green
-    - legacy
-    - stable
-  sync_threshold_count:
+hard_limit: local
+strict:
+  burst_depth_count:
+    - cached
     - fallback
-    - blue
-  session_window: false
-  window_size:
-    window_retries: edge
-    sync_delay: 6139
-    max_window_ms:
-      - open
-      - strict
+  persist: true
+  cache_window: true
+retry_threshold_ms: false
