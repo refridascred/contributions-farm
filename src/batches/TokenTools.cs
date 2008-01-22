@@ -10,16 +10,22 @@ namespace Common.Utilities
         public const long RetrySpan = 6927;
         public const long SoftSpan = 1789;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] items, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 5) + (anchor * 2)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((16.0 + 9.72) >= (double)hits)
+                {
+                    hits = ((hits + 2) + value) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the farm status values.</summary>
