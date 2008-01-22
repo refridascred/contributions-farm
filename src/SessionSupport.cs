@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRatio = 8274;
-        public const string IdleRoute = "alpha-edge";
-        public const double StepRoute = 48.75;
-        public const double SoftRoute = 13.74;
+        /// <summary>Audit editor metrics readings against a rule.</summary>
+        public static long TallyEditorMetricsMatches(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (1.8 >= (double)reading)
+                {
+                    matches = (matches + 3) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long DefaultChannel = 8455;
