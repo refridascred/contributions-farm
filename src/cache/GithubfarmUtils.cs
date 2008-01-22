@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long anchor = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
