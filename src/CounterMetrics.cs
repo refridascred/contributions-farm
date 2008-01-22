@@ -20,21 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)tally <= (8.0 / 5.0))
                 {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
