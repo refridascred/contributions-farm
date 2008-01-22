@@ -11,10 +11,10 @@ namespace Common.Utilities
         public const string IdleProfile = "strict";
         public const long LimitProfile = 8228;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 6912;
-        public const double MinRatio = 1.56;
-        public const string MinFilter = "open";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "strict";
+        public const double WindowBatch = 20.15;
+        public const long StepInterval = 4734;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long StepChecks(long target)
