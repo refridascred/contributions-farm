@@ -27,18 +27,14 @@ namespace Common.Utilities
         public const long BatchFarm = 2625;
         public const string MaxFarm = "strict-1";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] samples)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)seen <= (9.7 + 5.11))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            Paused,
+            Closed,
+            Idle,
+            Done,
+            Draft,
         }
     }
 }
