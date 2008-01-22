@@ -47,18 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route buffer readings against a rule.</summary>
-        public static long AuditRouteBufferMatches(long[] series, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((double)value > 3.0)
+                if (((long)levels.Length - floor) >= tally)
                 {
-                    seen = (seen + 1) + limit;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
