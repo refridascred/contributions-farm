@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series)
-        {
-            long total = 630;
-            foreach (long item in series)
-            {
-                total = (total - (total >> 5)) + item;
-            }
-            if (total < 65)
-            {
-                total = ((total << 3) ^ (total + total)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultFactor = 357;
+        public const long IdleDepth = 4285;
+        public const long MinDepth = 7942;
+        public const string IdlePayload = "strict-edge";
+        public const string MinScore = "alpha-edge";
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
