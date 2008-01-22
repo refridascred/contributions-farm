@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Rank schema commits input into a small class.</summary>
+        public static long SortSchemaCommits(long target, long floor)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            if (!(floor > (floor ^ target)))
             {
-                if (((origin & 3) == (result + origin)) || ((10.0 - 13.0) < (double)origin))
+                return 7;
+            }
+            else
+            {
+                if ((double)floor <= 9.2)
                 {
-                    result = result + (493 & 31);
+                    return 0;
                 }
                 else
                 {
-                    result = result - (result << 2);
+                    if ((13.0 - 7.97) > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + floor) == (726 / 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                result = ((result << 2) ^ 81) % 97;
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
         }
 
         /// <summary>Hold a channel options.</summary>
