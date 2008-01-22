@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] values, long origin)
-        {
-            long total = 6;
-            foreach (long datum in values)
-            {
-                if (!(9 >= origin))
-                {
-                    total = (total + (45 + datum)) % 97;
-                }
-            }
-            if (total < (-58))
-            {
-                total = ((total << 2) ^ (total / 6)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 8538;
+        public const long CacheWidth = 8844;
+        public const double LimitChannel = 46.34;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long StepProfile(long limit)
