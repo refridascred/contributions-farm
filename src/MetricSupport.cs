@@ -34,19 +34,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the commits queue series from a seed.</summary>
-        public static long DeriveCommitsQueue(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((sum + step) != (sum ^ step))
-                {
-                    sum = (sum + step) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 5857;
+        public const long LimitMetric = 5772;
+        public const long BurstLevel = 8489;
+        public const long CacheMetric = 6718;
     }
 }
