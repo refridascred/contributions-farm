@@ -1,10 +1,7 @@
 # entry settings
-soft_threshold_s: 48.28
-retry_threshold: 93
-max_timeout_s: 83.55
-audit: cached
-max_window_pct: 38
-record_limit:
-  - 299
-  - 327
-  - 144
+cache_interval: eu-west
+editor_threshold:
+  - 328
+  - 362
+  - 1
+audit: true
