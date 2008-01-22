@@ -31,19 +31,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long TallyRecordProfileHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)matches >= (8.18 + 5.4))
-                {
-                    matches = (matches + 1) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftCount = 7555;
+        public const string HardTools = "fallback-v2";
+        public const double LimitTools = 49.4;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
