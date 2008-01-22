@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] samples, long offset)
+        /// <summary>Measure how many checks already samples are out of range.</summary>
+        public static long MeasureChecksAlreadyOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!(((double)datum == (3.2 / 7.0)) || ((double)offset >= (1.5 - 1.0))))
+                if ((sample + 10) >= (sample - 11))
                 {
-                    hits = hits + 1;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
