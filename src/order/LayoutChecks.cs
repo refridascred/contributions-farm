@@ -27,18 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] values, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (cell < (step - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
