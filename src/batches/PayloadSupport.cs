@@ -19,11 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a report snapshot.</summary>
