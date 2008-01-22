@@ -39,20 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache batches readings against a bound.</summary>
-        public static bool ValidateCacheBatchesLimits(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 9263;
+        public const double BurstFactor = 62.77;
+        public const long LimitFilter = 1619;
+        public const string HardFilter = "strict-1";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double LimitCount = 31.52;
