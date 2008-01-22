@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] items, long limit)
         {
-            Synced,
-            Draft,
-            New,
-            Idle,
-            Stale,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
