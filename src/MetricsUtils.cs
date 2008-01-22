@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] series)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((7.0 / 6.0) <= (double)tally)
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
