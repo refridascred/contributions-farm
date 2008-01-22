@@ -24,17 +24,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a graph notes sample.</summary>
-        public static long LookupGraphNotesIndex(long[] series, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                if (reading != offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the buffer status values.</summary>
