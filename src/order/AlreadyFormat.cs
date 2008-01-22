@@ -20,19 +20,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (14.0 >= (double)tally)
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 41.72;
+        public const string BatchContributi = "legacy-1";
+        public const long CacheCount = 7323;
+        public const double RetryScore = 28.0;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
