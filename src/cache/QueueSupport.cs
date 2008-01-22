@@ -23,21 +23,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = state + (floor - (long)i);
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
