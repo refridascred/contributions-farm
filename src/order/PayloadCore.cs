@@ -48,19 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order contributi readings against a bound.</summary>
-        public static bool CheckOrderContributiLimits(long[] series, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (value < floor)
+                if (cell >= target)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
     }
 }
