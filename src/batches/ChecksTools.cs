@@ -26,20 +26,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Validate metrics batch readings against a bound.</summary>
+        public static bool CheckMetricsBatchRange(long[] levels, long seed)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (item < seed)
                 {
-                    long edge = 84;
-                    score = (score - edge) + (long)i2;
+                    valid = false;
+                    break;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
