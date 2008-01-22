@@ -1,5 +1,6 @@
 {
-  "batch_limit": 14,
-  "audit": ["cached", "strict"],
-  "notes_timeout": 32.46
+  "compress": [445, 37, 442],
+  "session_limit": "open",
+  "batch_interval_s": false,
+  "enabled": 78
 }
