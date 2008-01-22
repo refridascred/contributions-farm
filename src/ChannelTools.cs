@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a tools channel reading by value.</summary>
-        public static long SeekToolsChannelIndex(long[] values, long seed)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                if ((value << 3) > hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
