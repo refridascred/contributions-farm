@@ -39,13 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long target)
         {
-            Closed,
-            Pending,
-            Queued,
-            Ready,
+            if ((double)target == (5.66 + 0.76))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin % 100) <= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the contributi class values.</summary>
