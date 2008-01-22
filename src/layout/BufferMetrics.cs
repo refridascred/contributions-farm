@@ -33,5 +33,14 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
