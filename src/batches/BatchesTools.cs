@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
+            Dropped,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
