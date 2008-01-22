@@ -37,18 +37,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((6 % 97) < matches)
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchFactor = 5902;
+        public const long SoftSupport = 3192;
+        public const string BurstSupport = "alpha-v2";
+        public const long MinSupport = 9139;
     }
 }
