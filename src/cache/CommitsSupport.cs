@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] series)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)seen < 3.9)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the counter state values.</summary>
