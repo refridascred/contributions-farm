@@ -40,18 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools buffer samples are out of range.</summary>
-        public static long CountToolsBufferMatches(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = 373;
+            foreach (long entry in values)
             {
-                if ((cell << 1) > matches)
-                {
-                    matches = matches + 1;
-                }
+                mark = ((mark * 3) + (entry + mark)) % 65521;
             }
-            return matches;
+            if (mark > 1)
+            {
+                mark = mark + (offset & 3);
+            }
+            return mark % 1000;
         }
     }
 }
