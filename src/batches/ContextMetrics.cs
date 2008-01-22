@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long floor)
         {
-            double load = floor;
-            if (load > load)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                load = (load + floor) - weight;
+                if (reading >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (floor / 8.0)) + (double)(long)i;
-            }
-            return load + load;
+            return flag;
         }
 
         /// <summary>Roll a route counter forward.</summary>
