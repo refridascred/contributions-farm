@@ -33,22 +33,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long limit)
+        /// <summary>Rank commits window input into a small class.</summary>
+        public static long SortCommitsWindow(long floor, long floor2)
         {
-            if ((bound >> 2) != (limit - limit))
+            if (!(floor > (floor2 & 255)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (39 < (limit + bound))
+                if ((floor2 + floor) >= ((-6) % 8))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    return 1;
                 }
             }
         }
