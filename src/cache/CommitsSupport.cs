@@ -50,15 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double scale, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            double ratio = span;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                ratio = ((ratio + 5.82) + (double)(long)i) - scale;
+                if ((tally & 63) == (datum >> 5))
+                {
+                    tally = tally + 2;
+                }
             }
-            return ratio - (double)89;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
