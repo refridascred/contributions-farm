@@ -79,19 +79,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] samples, long offset)
         {
-            long mix = 9;
-            foreach (long cell in levels)
+            long mix = 1;
+            foreach (long datum in samples)
             {
-                if ((cell + cell) < (17 * 5))
+                mix = mix + (datum % 24);
+                if ((datum + offset) >= (datum ^ datum))
                 {
-                    mix = ((mix << 3) ^ (mix & 3)) % 101;
+                    mix = ((mix * 3) + 569) % 1000;
+                    mix = mix - offset;
                 }
-                if ((cell * 2) != (mix ^ mix))
+                else
                 {
-                    break;
+                    mix = mix + (datum * 5);
+                    mix = ((mix << 2) ^ (offset + mix)) % 255;
+                }
+                if ((15.0 * 5.0) < (double)mix)
+                {
+                    mix = ((mix << 2) ^ (mix ^ mix)) % 65521;
                 }
             }
             return mix;
