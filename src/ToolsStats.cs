@@ -63,19 +63,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] values, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            New,
+            Idle,
+            Closed,
+            Done,
         }
     }
 }
