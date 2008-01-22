@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] samples, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 919;
+            foreach (long entry in data)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry - (entry - carry)) % 1000) - target;
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
