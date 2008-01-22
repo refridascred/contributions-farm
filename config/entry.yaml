@@ -1,15 +1,19 @@
 # entry settings
-dry_run:
-  - latest
-  - standard
-strict: 81
-sync_capacity_count: 12.55
-commits_timeout:
-  verbose: 25.14
-  soft_retries_pct:
-    - standard
+verbose:
+  - green
+  - edge
+  - legacy
+buffer_retries: 10.17
+payload_ttl: 1029
+max_timeout:
+  burst_timeout_pct: strict
+  hard_delay_s:
+    - 495
+    - 357
+    - 277
+  flush_threshold: strict
+  audit:
+    - edge
+    - open
     - cached
-    - green
-    - eu-west
-  payload_interval: standard
-checks_delay: edge
+  default_window: 9273
