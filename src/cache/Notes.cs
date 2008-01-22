@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Idle,
-            Paused,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchWidth = 489;
+        public const double MinFactor = 41.96;
+        public const long RetryDepth = 4360;
+        public const long BaseScore = 8902;
+        public const long BaseWidth = 2616;
 
         /// <summary>Count the tools channel entries that pass the check.</summary>
         public static long TallyToolsChannelOutliers(long[] levels, long offset)
