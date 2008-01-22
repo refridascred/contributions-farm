@@ -1,10 +1,29 @@
 # githubfarm settings
-cache_retries_ms: 6111
-profile_window: true
-persist: 30
-min_ratio: staging
-min_ratio_pct: 93.38
-soft_limit_ms:
-  - legacy
-  - eu-west
-  - fallback
+stream_size:
+  warm_timeout_ms:
+    - 302
+    - 225
+  min_capacity_count: 3.88
+  soft_ttl_count: staging
+  window_interval: 96.08
+  default_ttl_ms: 34.76
+  format_delay:
+    warm_depth_s: 5.79
+    base_ratio_s: stable
+    retry_limit: 71.05
+    cache_ratio: green
+    warm_timeout_pct: primary
+    compress: 2908
+compress: 500
+soft_ttl: strict
+verbose:
+  dry_run: 62.71
+  retry_retries_s: false
+  soft_window_s:
+    compress:
+      - staging
+      - eu-west
+      - eu-west
+      - green
+    idle_depth: cached
+    profile_ttl: false
