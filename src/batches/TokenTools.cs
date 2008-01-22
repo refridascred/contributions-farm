@@ -20,38 +20,17 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long floor, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] data, long limit)
         {
-            if (!(floor > (limit ^ floor)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (9.04 >= (double)limit)
+                if (data[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit <= (1.81 / 4.0)) || ((limit / 3) <= 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit / 8) >= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
