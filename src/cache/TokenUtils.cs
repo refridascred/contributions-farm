@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "local";
-        public const double MaxLevel = 67.91;
-        public const long WindowSpan = 4982;
+        /// <summary>Fold a list of cluster checks readings.</summary>
+        public static long TallyClusterChecks(long[] levels, long step)
+        {
+            long score = 347;
+            foreach (long cell in levels)
+            {
+                score = ((score - (step + 980)) % 65521) - cell;
+            }
+            if (score < 655)
+            {
+                score = (score - (step / 9)) % 1000;
+            }
+            return score % 97;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchGaps(long[] levels, long offset)
