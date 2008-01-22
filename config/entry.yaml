@@ -1,7 +1,6 @@
 # entry settings
-cache_interval: eu-west
-editor_threshold:
-  - 328
-  - 362
-  - 1
-audit: true
+poll_ratio_pct: 16.75
+route_window: fallback
+burst_ratio_ms: true
+base_threshold: 67.92
+retry_limit: 54
