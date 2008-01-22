@@ -74,17 +74,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowStats = 33.16;
+        public const long MinStats = 5903;
+        public const long DefaultStats = 6008;
+        public const long BurstStats = 8672;
     }
 }
