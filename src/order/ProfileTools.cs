@@ -35,11 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 6226;
-        public const string HardDepth = "cached";
-        public const double CacheBuffer = 84.62;
-        public const string SoftInterval = "latest-1";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            New,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstWidth = 2465;
