@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] items)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((hits + hits) < reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Queued,
+            Done,
+            Active,
+            New,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
