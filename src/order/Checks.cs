@@ -38,12 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] items, long offset)
         {
-            Failed,
-            Done,
-            Ready,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the order tools entries that pass the check.</summary>
