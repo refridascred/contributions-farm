@@ -28,19 +28,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] values, long origin)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            double bias = (double)(377 & 7);
+            if (bias <= (floor - 3.92))
             {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - bias;
             }
-            return found;
+            return bias + rate;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
