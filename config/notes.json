@@ -1,19 +1,5 @@
 {
-  "soft_ratio_s": "legacy",
-  "verbose": {
-    "persist": "fallback",
-    "readonly": "primary",
-    "dry_run": "strict",
-    "sync_size_s": [462, 206, 456],
-    "channel_limit": 9359
-  },
-  "schema_timeout": 2670,
-  "cache_limit": 6544,
-  "order_threshold": {
-    "flush_limit": false,
-    "enabled": 30,
-    "batches_depth": 30,
-    "batch_threshold": 8535,
-    "burst_window": 62.03
-  }
+  "base_ttl": "green",
+  "batch_delay_s": [155, 267],
+  "soft_interval_count": false
 }
