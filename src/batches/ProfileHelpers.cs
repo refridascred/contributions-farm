@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a stream already counter forward.</summary>
-        public static long RollStreamAlready(long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (!((origin + (long)i) > (8 - mark)))
+                {
+                    mark = (mark * 2) + mark;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Accumulate batch report samples.</summary>
