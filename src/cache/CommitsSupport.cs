@@ -53,21 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] readings)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = span;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ((ratio + 5.82) + (double)(long)i) - scale;
             }
-            return count;
+            return ratio - (double)89;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
