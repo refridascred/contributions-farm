@@ -29,21 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout tools samples.</summary>
-        public static long PairLayoutToolsCount(long[] levels)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= step)
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
