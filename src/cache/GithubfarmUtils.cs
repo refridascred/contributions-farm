@@ -22,32 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes window value against two limits.</summary>
-        public static long BucketNotesWindow(long target, long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long slot = target ^ offset;
-            if (slot < (offset << 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((slot >> 4) <= (target + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target != (8.86 * 0.37))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every report record entry stays within the limit.</summary>
