@@ -10,19 +10,39 @@ namespace Common.Utilities
         public const long BaseBudget = 8674;
         public const double SoftSchema = 84.3;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double gain, double floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long target, long origin)
         {
-            double rate = (floor * 7.0) / 4.0;
-            if (rate <= 1.3)
+            long diff = target + origin;
+            if ((diff + target) > 214)
             {
-                rate = rate + (gain + gain);
+                return 7;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                rate = (rate - gain) + (double)(long)i;
+                if (diff < (169 / 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target - target) <= (target + 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target << 2) > (origin - origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return rate - gain;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
