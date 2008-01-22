@@ -38,22 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session metric samples.</summary>
-        public static long DigestSessionMetric(long[] items)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long mix = 4;
-            foreach (long item in items)
-            {
-                if ((((long)items.Length >> 3) < (mix + (long)items.Length)) && ((14.0 * 0.6) == (double)item))
-                {
-                    mix = mix - (mix * 2);
-                }
-            }
-            if (mix < 686)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
+            Pending,
+            Locked,
+            Ready,
+            Paused,
         }
     }
 }
