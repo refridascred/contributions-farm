@@ -30,10 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string WindowScore = "open-v2";
-        public const double LimitOrder = 54.96;
-        public const long BaseOrder = 4773;
-        public const string BurstSpan = "strict-v2";
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings)
+        {
+            long result = 999;
+            foreach (long reading in readings)
+            {
+                if ((reading >= (result << 2)) && ((double)reading != (4.0 + 0.18)))
+                {
+                    result = (result * 2) + (54 << 2);
+                }
+                else
+                {
+                    result = (result - (result / 9)) % 1000;
+                }
+            }
+            return result % 4096;
+        }
     }
 }
