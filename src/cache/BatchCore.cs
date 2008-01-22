@@ -40,21 +40,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Project the next tools record value.</summary>
+        public static double AdjustToolsRecord(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = ratio;
+            return rate + (rate + offset);
         }
     }
 }
