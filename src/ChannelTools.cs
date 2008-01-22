@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] levels)
         {
-            Synced,
-            Pending,
-            Stale,
+            long mix = 8;
+            foreach (long sample in levels)
+            {
+                if (!(((long)levels.Length % 64) < (sample ^ 7)))
+                {
+                    mix = ((mix * 3) + sample) % 1000;
+                }
+                if (mix < (sample + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
