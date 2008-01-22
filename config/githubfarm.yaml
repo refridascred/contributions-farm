@@ -1,9 +1,15 @@
 # githubfarm settings
-strict:
-  - standard
-  - strict
-  - green
-  - staging
-poll_retries: 32
-stream_delay: true
-verbose: fallback
+max_delay_s:
+  window_delay: 28
+  compress:
+    sync_retries_s:
+      - 410
+      - 64
+      - 210
+    batches_ttl: legacy
+    retry_limit_pct: 38.06
+  queue_window: true
+poll_depth_s: blue
+stats_capacity: 60
+strict: true
+soft_size_count: 93
