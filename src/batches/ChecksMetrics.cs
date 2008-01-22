@@ -58,13 +58,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token phase values.</summary>
