@@ -45,9 +45,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowTimeout = 4407;
-        public const string HardMetric = "staging";
-        public const long BaseRatio = 3619;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] levels, long limit)
+        {
+            long sum = 916;
+            foreach (long item in levels)
+            {
+                if (((double)limit == (6.4 / 5.0)) && ((item ^ limit) > (limit << 3)))
+                {
+                    sum = (sum - item) % 101;
+                }
+            }
+            if (sum < 604)
+            {
+                sum = (sum + (3 - limit)) % 97;
+            }
+            return sum;
+        }
     }
 }
