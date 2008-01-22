@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit queue session readings against a rule.</summary>
-        public static long CountQueueSessionOutliers(long[] data, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell == (16.0 / 4.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 3) - offset;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a account entry.</summary>
