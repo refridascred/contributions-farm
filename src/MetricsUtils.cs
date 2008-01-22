@@ -20,21 +20,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 7;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (1 > (datum / 3))
                 {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state << 2) ^ (7 ^ datum)) % 101;
+                }
+                else
+                {
+                    state = (state - (limit % 7)) % 101;
+                }
+                if (4 >= (state + 0))
+                {
+                    state = (state << 2) ^ (state + datum);
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
