@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools batches readings against a bound.</summary>
-        public static bool GuardToolsBatchesBounds(long[] data, long floor)
+        /// <summary>Audit farm channel readings against a rule.</summary>
+        public static long MeasureFarmChannelOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (value <= floor)
+                if ((double)reading == (7.97 / 8.0))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
