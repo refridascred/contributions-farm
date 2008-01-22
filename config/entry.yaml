@@ -1,8 +1,6 @@
 # entry settings
-min_ratio_pct: cached
-idle_delay_pct: 3340
-strict:
-  strict: 357
-  audit: cached
-  compress: false
-idle_capacity: 4135
+max_interval: false
+compress: 100
+cache_depth_count: 84
+metrics_interval: true
+enabled: green
