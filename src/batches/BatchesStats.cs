@@ -20,15 +20,13 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double ratio, double floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double load = (double)88;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + floor) + (double)(long)i;
-            }
-            return load - (ratio * 5.53);
+            Failed,
+            Synced,
+            Queued,
+            New,
         }
 
         /// <summary>Define record limits and defaults.</summary>
