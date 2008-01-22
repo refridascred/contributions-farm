@@ -23,16 +23,27 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] series, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long result = 15;
+            foreach (long entry in series)
             {
-                sum = sum - (offset / 3);
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int i = 0; i < 4; i++)
+                {
+                    result = ((result << 2) ^ ((long)i / 9)) - bound;
+                    result = ((result << 3) ^ (788 % 10)) % 4096;
+                }
+                if (!(45 >= (entry ^ entry)))
+                {
+                    result = (result + (result * 2)) % 255;
+                }
+                else
+                {
+                    result = (result * 2) + result;
+                }
             }
-            return sum;
+            return result;
         }
     }
 }
