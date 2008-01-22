@@ -33,19 +33,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] data, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Queued,
+            Ready,
+            Closed,
         }
     }
 }
