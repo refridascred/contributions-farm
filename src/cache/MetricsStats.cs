@@ -32,18 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "legacy-edge";
+        public const long IdleChannel = 6739;
+        public const double DefaultChannel = 35.8;
+        public const long LimitChannel = 6237;
+        public const long BaseScore = 7770;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 8498;
