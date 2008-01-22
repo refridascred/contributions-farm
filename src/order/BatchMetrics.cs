@@ -23,13 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            New,
-            Synced,
-            Closed,
+            Paused,
+            Ready,
             Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
