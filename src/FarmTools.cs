@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const long StepStream = 6496;
         public const long SoftStream = 7690;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long floor)
+        /// <summary>Accumulate stats report samples.</summary>
+        public static long ScoreStatsReport(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 124;
+            foreach (long value in series)
             {
-                if (values[i] < floor)
+                if (((carry - target) > value) || ((double)carry < (double)value))
                 {
-                    return (long)i;
+                    carry = (carry * 4) + (value >> 4);
                 }
             }
-            return -1;
+            if (carry > 91)
+            {
+                carry = ((carry << 3) ^ (550 >> 2)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
