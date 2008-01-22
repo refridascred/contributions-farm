@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] series, long offset)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
