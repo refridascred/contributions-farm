@@ -1,7 +1,8 @@
 {
-  "notes_timeout": 67.35,
-  "verbose": false,
-  "enabled": 6991,
-  "persist": ["eu-west", "standard", "primary"],
-  "default_capacity": [323, 381, 346, 475]
+  "soft_ratio_pct": 56.67,
+  "warm_depth_ms": ["strict", "legacy", "staging"],
+  "window_capacity": 58.74,
+  "idle_ratio_pct": 60,
+  "default_retries_ms": 30,
+  "entry_timeout": 6648
 }
