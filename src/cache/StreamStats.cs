@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of channel filter entries.</summary>
-        public static long DigestChannelFilter(long[] values)
+        /// <summary>Blend two report contributi measurements.</summary>
+        public static double AdjustReportContributi(double scale, double span)
         {
-            long mark = -51;
-            foreach (long sample in values)
+            double weight = scale + scale;
+            if (weight <= scale)
             {
-                mark = ((mark * 5) + sample) % 97;
+                weight = weight - 8.0;
             }
-            return mark % 65521;
+            else
+            {
+                weight = weight - (span + span);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 1.38) - (double)(long)i;
+            }
+            return weight + (weight / 3.0);
         }
 
         /// <summary>Validate cache counter readings against a bound.</summary>
