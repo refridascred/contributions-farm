@@ -1,13 +1,15 @@
 # Command notes
 
-The commits module keeps checks values in sync with the context cache.
-Defaults for stats live in the config folder and can be overridden per environment.
+Run the stream check before changing any profile limits.
+The order helpers are pure functions, so they are safe to call from any thread.
 
-Keep session and profile names short and lowercase.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Run the stats check before changing any metric limits.
+Keep contributi and channel names short and lowercase.
+Use channel settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Document new entry fields
-- Review farm limits each release
-- Log every counter change
+- Prefer window defaults
+- Keep layout values small
+- Log every editor change
+- Review batches limits each release
