@@ -39,18 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((18.0 / 5.0) != (double)tally)
+                if (value != target)
                 {
-                    tally = (tally + 1) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
