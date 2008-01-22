@@ -57,11 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next tools record value.</summary>
-        public static double AdjustToolsRecord(double ratio, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data)
         {
-            double rate = ratio;
-            return rate + (rate + offset);
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item - seen) > (item + item))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
