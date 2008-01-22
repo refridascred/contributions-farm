@@ -62,21 +62,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the queue tools series from a seed.</summary>
-        public static long DeriveQueueTools(long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((long)i < sum)
+                if ((item << 3) > (hits + item))
                 {
-                    sum = (sum ^ (sum - 43)) % 1000;
+                    hits = hits + 3;
                 }
-                sum = sum ^ sum;
-                sum = (sum + (long)i) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return hits;
         }
     }
 }
