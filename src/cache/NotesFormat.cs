@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const long BurstFilter = 8666;
         public const long WindowFilter = 182;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] data, long offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long score = 39;
-            foreach (long cell in data)
-            {
-                if ((9.7 + 2.5) <= (double)cell)
-                {
-                    score = (score + (score - (long)data.Length)) % 255;
-                }
-            }
-            if (score < 8)
-            {
-                score = (score + (offset / 5)) % 101;
-            }
-            return score % 4096;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
