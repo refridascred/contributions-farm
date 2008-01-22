@@ -55,13 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] values)
         {
-            Done,
-            Failed,
-            Idle,
-            Synced,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading < ((long)values.Length + reading)) && !(reading <= (seen & 31)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
