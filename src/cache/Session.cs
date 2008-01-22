@@ -46,18 +46,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((((entry % 12) < 64) || ((5 << 3) >= (entry << 3))) && ((8.88 + 7.9) < (double)entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Stale,
+            Draft,
         }
     }
 }
