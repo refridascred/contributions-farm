@@ -22,24 +22,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long seed, long target)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            if ((seed + target) >= seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed <= target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the route class values.</summary>
