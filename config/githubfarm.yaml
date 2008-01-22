@@ -1,8 +1,6 @@
 # githubfarm settings
-strict: primary
-idle_delay:
-  - 284
-  - 136
-  - 500
-max_threshold: 100
-hard_threshold_count: 60
+warm_size_ms:
+  - 387
+  - 289
+max_retries: edge
+stream_size: 100
