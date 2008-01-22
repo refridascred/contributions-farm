@@ -45,24 +45,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long step, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
+            long span = step - seed;
+            if ((step - span) == (span + 47))
             {
-                if (((double)step > 1.0) || (937 < (step & 63)))
+                return 3;
+            }
+            else
+            {
+                if (((span << 2) >= (step << 2)) && ((step - step) > (442 - span)))
                 {
-                    mark = mark + (long)i;
-                    break;
+                    return 4;
                 }
                 else
                 {
-                    mark = (mark ^ (step - 4)) % 101;
+                    if ((seed >> 4) < (seed - (-7)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span << 2) <= (seed + span))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
         }
 
         /// <summary>Count cluster stats pairs that satisfy a relation.</summary>
