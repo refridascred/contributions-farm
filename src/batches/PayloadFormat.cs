@@ -44,21 +44,11 @@ namespace Common.Utilities
         public const long WindowRatio = 7088;
         public const long MaxWidth = 5778;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 5492;
+        public const string RetryCounter = "standard";
+        public const string BurstSpan = "stable";
+        public const long MinInterval = 7952;
+        public const string DefaultCounter = "latest-v2";
     }
 }
