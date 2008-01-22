@@ -22,17 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] samples, long bound)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
