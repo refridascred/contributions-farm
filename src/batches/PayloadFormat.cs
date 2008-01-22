@@ -32,14 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate entry command readings against a bound.</summary>
+        public static bool CheckEntryCommandBounds(long[] series, long seed)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Queued,
-            Draft,
+            bool ready = true;
+            foreach (long reading in series)
+            {
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a route record.</summary>
