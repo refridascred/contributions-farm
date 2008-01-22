@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] samples, long bound)
         {
-            Draft,
-            Pending,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (double)65)
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next report value.</summary>
