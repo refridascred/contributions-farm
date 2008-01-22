@@ -52,12 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            Dropped,
+            New,
+            Closed,
+            Pending,
+            Paused,
         }
     }
 }
