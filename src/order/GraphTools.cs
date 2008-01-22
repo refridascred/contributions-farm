@@ -41,14 +41,21 @@ namespace Common.Utilities
         public const long BurstLevel = 9746;
         public const long RetryDepth = 6851;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Compare every pair of context contributi readings.</summary>
+        public static long OverlapContextContributiCount(long[] samples)
         {
-            Failed,
-            Locked,
-            Done,
-            Idle,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
