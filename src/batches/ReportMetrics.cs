@@ -31,17 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] readings, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] < offset)
+                if ((double)sample <= (4.08 * 12.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
