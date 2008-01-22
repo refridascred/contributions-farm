@@ -46,12 +46,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long seed)
         {
-            Idle,
-            Queued,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry ^ ((long)i + (long)i)) % 4096;
+                if ((long)i >= (64 * 5))
+                {
+                    continue;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
