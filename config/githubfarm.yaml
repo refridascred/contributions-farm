@@ -1,20 +1,16 @@
 # githubfarm settings
-notes_timeout:
-  - 453
-  - 391
-  - 264
-persist:
-  min_delay: 23.07
-  burst_retries_s: 60
-  default_limit: true
-  warm_size_ms: 28
-  hard_ratio_count: 45
-commits_depth:
-  sync_threshold: green
-  profile_timeout: 100
-  retry_timeout_pct: legacy
-audit:
-  notes_delay: 61.38
-  context_interval: stable
-  min_window_count: green
-soft_retries_ms: 27.32
+base_size_ms: 4127
+layout_size:
+  hard_depth_count: open
+  account_ttl: 7289
+  readonly: standard
+hard_depth:
+  max_depth:
+    support_size: 18.57
+    burst_window: fallback
+    cache_depth_ms: 47
+    dry_run: 37
+  readonly:
+    - 171
+    - 237
+  burst_ttl_s: 55.14
