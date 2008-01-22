@@ -24,19 +24,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 9396;
+        public const long StepDepth = 5493;
+        public const long BatchCommand = 8790;
+        public const string DefaultCommand = "primary-edge";
     }
 }
