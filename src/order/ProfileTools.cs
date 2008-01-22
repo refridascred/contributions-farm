@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] readings, long limit)
         {
-            Active,
-            Idle,
-            Paused,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((limit << 3) >= cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
