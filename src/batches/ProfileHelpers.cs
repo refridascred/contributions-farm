@@ -33,22 +33,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the tools order entries that pass the check.</summary>
-        public static long CountToolsOrderGaps(long[] data, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((double)seen == (3.0 / 3.0))
+                if ((count + datum) > (count * 3))
                 {
-                    seen = ((seen + 1) ^ sample) + target;
+                    count = count + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up account counter samples.</summary>
