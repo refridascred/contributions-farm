@@ -16,11 +16,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] values)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((5.3 * 8.4) > (double)count)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
