@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Pending,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Adjust a order reading.</summary>
