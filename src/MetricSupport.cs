@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Synced,
-            Paused,
-            Closed,
-            Locked,
+            Ready,
+            Idle,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
