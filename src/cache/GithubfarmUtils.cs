@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] series, long seed)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = -8;
+            foreach (long reading in samples)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (anchor + reading)) % 255;
             }
-            return -1;
+            if (anchor > 23)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a token stats.</summary>
