@@ -32,11 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 6075;
-        public const string RetryInterval = "staging-edge";
-        public const long SoftDepth = 5048;
-        public const long CacheBatches = 2288;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 4.53;
+        public const long MinTools = 7833;
+        public const long SoftTools = 7675;
+        public const long MaxTools = 2145;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long CombineEntry(long[] series)
