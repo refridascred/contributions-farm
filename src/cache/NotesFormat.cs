@@ -29,14 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
+            Active,
+            Stale,
             Dropped,
-            New,
-            Closed,
-            Pending,
-            Paused,
         }
     }
 }
