@@ -48,12 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
+            long score = 643;
+            foreach (long entry in items)
+            {
+                if (entry < (score * 2))
+                {
+                    score = (score + score) % 255;
+                }
+            }
+            return score % 1000;
         }
     }
 }
