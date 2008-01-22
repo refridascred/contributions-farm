@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Failed,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowRatio = 49.02;
+        public const long StepLevel = 6995;
+        public const string IdleCluster = "strict-edge";
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] values, long floor)
