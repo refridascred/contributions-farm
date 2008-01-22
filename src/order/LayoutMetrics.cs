@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double rate, double bias)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] series)
         {
-            double mean = (double)(0 + 180);
-            if (mean >= (double)824)
+            long anchor = 87;
+            foreach (long value in series)
             {
-                mean = ((mean + mean) - rate) - bias;
+                if (!(value <= (88 - 16)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
+                }
             }
-            return mean - (double)6;
+            if (anchor < (-5))
+            {
+                anchor = anchor + 26;
+            }
+            return anchor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
