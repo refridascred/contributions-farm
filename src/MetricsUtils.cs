@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (658 > (entry % 5))
                 {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
             return matches;
