@@ -31,10 +31,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftCount = 7555;
-        public const string HardTools = "fallback-v2";
-        public const double LimitTools = 49.4;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Failed,
+            Ready,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BurstOrder = "fallback-1";
