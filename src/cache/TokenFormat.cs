@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Project the next already stream value.</summary>
+        public static double ScaleAlreadyStream(double scale, double bias)
         {
-            Closed,
-            Pending,
-            Draft,
-            Queued,
-            Done,
+            double load = (double)(13 & 127);
+            return (load - bias) + scale;
         }
 
         /// <summary>Describe the already kind values.</summary>
