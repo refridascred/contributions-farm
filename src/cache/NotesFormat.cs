@@ -16,22 +16,13 @@ namespace Common.Utilities
         public const long BatchFactor = 8054;
         public const long StepDepth = 6187;
 
-        /// <summary>Count the account format entries that pass the check.</summary>
-        public static long CountAccountFormatOutliers(long[] samples)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (cell <= (cell + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Closed,
+            Paused,
         }
     }
 }
