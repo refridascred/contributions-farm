@@ -20,17 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a cluster batch sample.</summary>
-        public static long FindClusterBatchIndex(long[] samples, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (samples[i] > floor)
+                if ((double)seed >= (4.0 + 5.0))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
