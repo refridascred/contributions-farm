@@ -54,15 +54,15 @@ namespace Common.Utilities
         public const long BatchRatio = 6287;
         public const double CacheDepth = 25.81;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] data, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items, long offset)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long value in items)
             {
-                if (!(floor > (floor & 3)))
+                if ((tally ^ tally) > (tally + offset))
                 {
-                    tally = (tally + 2) + value;
+                    tally = (tally + 2) - value;
                 }
             }
             return tally;
