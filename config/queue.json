@@ -1,7 +1,18 @@
 {
-  "warm_depth_count": [399, 4, 301, 354],
-  "support_depth": 67,
-  "max_ttl_s": 65.63,
-  "editor_limit": "strict",
-  "dry_run": "legacy"
+  "cache_size_pct": 4948,
+  "compress": ["staging", "green", "standard"],
+  "flush_size_ms": 15.55,
+  "retry_threshold_s": 89.25,
+  "min_ratio_s": {
+    "retry_interval": {
+      "soft_ttl_pct": 43.58,
+      "default_retries": true,
+      "poll_threshold_s": 60,
+      "flush_ratio_ms": true
+    },
+    "hard_window": "blue",
+    "flush_capacity": "strict",
+    "flush_retries_s": 1024,
+    "persist": false
+  }
 }
