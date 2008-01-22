@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] items)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (sample * 5))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
