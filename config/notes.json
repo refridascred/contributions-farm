@@ -1,14 +1,19 @@
 {
-  "batch_timeout_pct": false,
-  "editor_limit": {
-    "token_depth": true,
-    "hard_capacity": false,
-    "persist": "cached"
+  "dry_run": {
+    "retry_interval_count": {
+      "cache_timeout": 30,
+      "hard_size": 93.21,
+      "farm_timeout": true,
+      "hard_ttl_s": "stable"
+    },
+    "batches_delay": 30,
+    "cache_ttl_count": 292,
+    "strict": 47,
+    "poll_ttl": "standard",
+    "command_ratio": false
   },
-  "filter_window": {
-    "base_timeout_s": 9791,
-    "idle_capacity_ms": "cached",
-    "dry_run": 8704,
-    "enabled": [357, 53, 395, 58]
-  }
+  "poll_delay_s": 38.34,
+  "default_timeout_ms": "green",
+  "graph_timeout": "latest",
+  "stream_ttl": 27.78
 }
