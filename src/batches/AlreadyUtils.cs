@@ -34,15 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Locked,
-            Draft,
-            Idle,
-            Active,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitInterval = 9914;
+        public const long MaxProfile = 6633;
+        public const long HardLevel = 9890;
+        public const double StepProfile = 59.23;
+        public const long BaseProfile = 591;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string SoftRatio = "strict-1";
