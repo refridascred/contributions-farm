@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 7504;
-        public const string MinSpan = "stable-edge";
-        public const long RetryScore = 8529;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items, long target)
+        {
+            long score = 7;
+            foreach (long cell in items)
+            {
+                if ((2 * 4) != (score - cell))
+                {
+                    score = (score - target) % 255;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score * 4);
+                }
+            }
+            if (score > (-16))
+            {
+                score = (score * 2) + (target >> 5);
+            }
+            return score;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long floor)
