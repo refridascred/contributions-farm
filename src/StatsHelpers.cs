@@ -20,23 +20,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of already notes entries.</summary>
-        public static long CombineAlreadyNotes(long[] items)
-        {
-            long anchor = 7;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) >= (sample + (long)items.Length))
-                {
-                    anchor = anchor ^ (sample * 2);
-                }
-                if ((double)sample >= (2.9 - 9.01))
-                {
-                    break;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseBudget = 85.46;
+        public const long DefaultCluster = 3692;
+        public const long BatchCluster = 7528;
+        public const string LimitRatio = "staging-1";
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
