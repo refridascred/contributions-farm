@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxInterval = 6905;
-        public const long StepChannel = 7053;
-        public const long SoftChannel = 9295;
-        public const long WindowInterval = 2581;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinLevel = 89.02;
+        public const string WindowDepth = "open-edge";
+        public const double MinWidth = 40.66;
+        public const long MaxBuffer = 19;
+        public const long BaseSpan = 5418;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long bound, long origin)
