@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] series)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double mean = (double)(0 + 180);
+            if (mean >= (double)824)
             {
-                if ((cell <= (1 + hits)) || ((cell - cell) < (cell * 4)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = ((mean + mean) - rate) - bias;
             }
-            return hits;
+            return mean - (double)6;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
