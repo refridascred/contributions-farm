@@ -1,16 +1,37 @@
 # entry settings
-hard_depth: 97.98
-support_depth: 51.34
-default_threshold_pct:
-  compress: false
-  farm_threshold: stable
-  order_depth: false
-  dry_run:
-    poll_retries_ms: 87
-    burst_timeout_pct: true
-    flush_timeout: standard
-    idle_ttl_count: stable
-  soft_ttl: 500
-  default_limit: legacy
-retry_depth_s: true
-enabled: 18.62
+min_timeout_count:
+  - green
+  - fallback
+  - cached
+  - strict
+hard_retries_pct: false
+retry_size_pct: 37
+idle_retries_count:
+  min_delay: 72
+  batch_size_ms:
+    soft_threshold: cached
+    format_size:
+      - 488
+      - 463
+    readonly: 57.49
+    farm_delay: 37.0
+  hard_window_pct: legacy
+  editor_delay:
+    - blue
+    - strict
+    - standard
+    - strict
+max_interval_count: 7658
+min_timeout:
+  warm_ttl_count: 69
+  compress: 100
+  cluster_depth: 1024
+  retry_timeout_ms:
+    retry_capacity_count: stable
+    enabled:
+      - 416
+      - 86
+      - 18
+    verbose: true
+    cache_interval: false
+  checks_timeout: 82
