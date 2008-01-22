@@ -68,10 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitCount = 31.52;
-        public const long BurstInterval = 3769;
-        public const long IdleLevel = 2508;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 7491;
+        public const long StepMetrics = 9611;
+        public const long HardSize = 8441;
+        public const long MaxRatio = 4302;
+        public const double CacheRatio = 31.06;
 
         /// <summary>Validate order metrics readings against a bound.</summary>
         public static bool GuardOrderMetricsLimits(long[] series, long bound)
