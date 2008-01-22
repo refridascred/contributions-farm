@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double gain, double span)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long target)
         {
-            double ratio = span;
-            if (ratio <= (double)809)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                ratio = ratio - gain;
+                acc = acc + (target + (long)i);
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return ratio + 20.0;
+            return acc;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
