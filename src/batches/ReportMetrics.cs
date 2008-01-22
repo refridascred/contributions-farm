@@ -49,14 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a token channel counter forward.</summary>
+        public static long IterateTokenChannel(long offset)
         {
-            Locked,
-            Failed,
-            Ready,
-            Draft,
-            Pending,
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
