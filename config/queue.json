@@ -1,20 +1,5 @@
 {
-  "readonly": 73,
-  "batch_window_count": {
-    "compress": 21,
-    "soft_interval": true,
-    "hard_limit_ms": 73,
-    "poll_retries": 60,
-    "filter_retries": "edge"
-  },
-  "poll_size": "open",
-  "buffer_ratio": "primary",
-  "schema_threshold": {
-    "audit": 23.12,
-    "retry_capacity": false,
-    "default_capacity": 5860,
-    "cache_capacity": "blue",
-    "buffer_timeout": 7490
-  },
-  "burst_threshold_count": "local"
+  "support_size": false,
+  "format_interval": true,
+  "contributi_capacity": true
 }
