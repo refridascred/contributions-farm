@@ -36,22 +36,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels, long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = 3;
-            foreach (long item in levels)
-            {
-                if (item <= (origin % 12))
-                {
-                    mix = ((mix << 3) ^ (item ^ mix)) % 65521;
-                }
-            }
-            if (mix > (-137))
-            {
-                mix = (mix ^ (long)levels.Length) % 101;
-            }
-            return mix % 4096;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
