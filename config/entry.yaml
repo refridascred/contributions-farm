@@ -1,37 +1,15 @@
 # entry settings
-farm_limit: stable
-verbose: 49
-report_ratio:
-  record_ratio:
-    persist: 18.26
-    max_depth: 2820
-    buffer_delay: cached
-  report_window: false
-  default_capacity: true
-  burst_limit_s: legacy
-  readonly: 1605
-  hard_retries_count:
-    - blue
-    - staging
-buffer_threshold:
-  compress:
-    - strict
-    - standard
-    - edge
-    - standard
-  queue_delay:
-    already_window: blue
-    strict: 29.2
-    default_ttl_s: 97
-    max_depth:
-      - standard
-      - local
-      - standard
-      - primary
-    burst_retries: 5893
-  base_timeout_ms: legacy
-  idle_size_ms: standard
-  counter_delay: 6525
-warm_ratio:
-  - eu-west
-  - stable
+dry_run:
+  - local
+  - blue
+  - fallback
+  - fallback
+idle_retries:
+  - 237
+  - 318
+  - 170
+  - 200
+support_limit: 1797
+default_capacity_s: latest
+cache_interval: local
+base_timeout_pct: 48
