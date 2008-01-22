@@ -1,20 +1,18 @@
 {
-  "cluster_capacity": {
-    "window_ttl": ["strict", "eu-west"],
-    "idle_interval_pct": true,
-    "support_depth": "fallback",
-    "hard_timeout": [207, 27, 488, 229],
-    "account_ratio": {
-      "commits_interval": "open",
-      "soft_depth": true,
-      "retry_ratio_s": 10.7,
-      "compress": 250,
-      "graph_delay": "cached",
-      "graph_threshold": 250
-    }
+  "support_delay": ["legacy", "eu-west", "green", "local"],
+  "batch_window_pct": {
+    "readonly": "staging",
+    "batches_limit": 9105,
+    "hard_timeout": "legacy"
   },
-  "counter_interval": 250,
-  "min_ttl": true,
-  "account_limit": 7.93,
-  "channel_retries": [498, 276, 457]
+  "verbose": 91.58,
+  "default_ratio_ms": false,
+  "commits_capacity": {
+    "strict": "green",
+    "dry_run": 30,
+    "compress": 250,
+    "base_capacity_pct": 75.54,
+    "report_timeout": 537,
+    "sync_ttl_count": "staging"
+  }
 }
