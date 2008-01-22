@@ -23,22 +23,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportGaps(long[] samples)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((((long)samples.Length + 940) != (value - value)) || (count >= (value % 10))) && (((double)count < (10.0 / 7.0)) && ((count & 1) > (value * 2))))
+                if (items[i] >= seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a cluster counter figure with a bias.</summary>
