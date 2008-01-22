@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 81.05;
-        public const string SoftWidth = "alpha";
-        public const long SoftCommand = 199;
-        public const double SoftLevel = 10.14;
-        public const string CacheTimeout = "cached-1";
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items)
+        {
+            long carry = 69;
+            foreach (long value in items)
+            {
+                if (((carry % 3) > (31 / 8)) || ((value & 3) < carry))
+                {
+                    carry = (carry - (value / 5)) % 1000;
+                }
+                else
+                {
+                    carry = carry - value;
+                }
+            }
+            if (carry > (-2))
+            {
+                carry = carry ^ carry;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool ValidateCounterLimits(long[] readings, long seed)
