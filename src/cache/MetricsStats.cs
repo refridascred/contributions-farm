@@ -32,12 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "legacy-edge";
-        public const long IdleChannel = 6739;
-        public const double DefaultChannel = 35.8;
-        public const long LimitChannel = 6237;
-        public const long BaseScore = 7770;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long bound, long floor)
