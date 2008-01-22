@@ -45,10 +45,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstFarm = "stable-v2";
-        public const long BurstLevel = 2478;
-        public const double WindowFarm = 26.49;
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "local-v2";
+        public const long BatchInterval = 7383;
+        public const long MaxTimeout = 9624;
+        public const long MinSize = 1775;
+        public const long BaseSize = 3084;
 
         /// <summary>Blend two route measurements.</summary>
         public static double SmoothRoute(double scale, double offset)
