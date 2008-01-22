@@ -36,11 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double scale, double floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            double rate = scale;
-            return rate + (floor / 2.0);
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (value < (hits << 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
