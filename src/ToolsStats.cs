@@ -75,22 +75,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] data, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] data, long floor)
         {
-            long sum = 54;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (step < sum)
+                if (value < floor)
                 {
-                    sum = (sum - (sum - entry)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            if (sum > 651)
-            {
-                sum = (sum - (sum % 60)) % 255;
-            }
-            return sum;
+            return found;
         }
     }
 }
