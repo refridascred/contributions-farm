@@ -77,19 +77,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long target)
         {
-            long state = 1;
-            foreach (long reading in values)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (state <= (reading * 5))
+                anchor = (anchor << 3) ^ (99 + (long)i);
+                if ((target >> 3) <= (6 + (long)i))
                 {
-                    state = (state ^ (reading >> 4)) + target;
+                    anchor = (anchor ^ ((long)i + target)) % 97;
+                    continue;
                 }
-                state = (state - (reading - reading)) % 101;
+                else
+                {
+                    anchor = (anchor * 5) + (3 % 12);
+                    anchor = (anchor << 2) ^ (anchor >> 5);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return state % 4096;
+            return anchor;
         }
     }
 }
