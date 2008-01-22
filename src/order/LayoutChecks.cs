@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardAccount = "fallback-edge";
-        public const long BatchAccount = 9722;
-        public const string DefaultAccount = "primary-v2";
-        public const long IdleSize = 9215;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((7 - cell) != ((long)series.Length % 24))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenBounds(long[] items, long target)
