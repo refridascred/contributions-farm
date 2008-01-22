@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable legacy primary open; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=362
+COMMAND_LIMIT=364
 log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
