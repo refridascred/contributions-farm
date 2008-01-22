@@ -24,12 +24,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] readings)
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((6.99 * 1.0) != (double)sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
