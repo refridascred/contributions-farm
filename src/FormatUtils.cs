@@ -52,18 +52,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            long mark = 50;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((1 - mark) == (mark + mark))
+                if (datum > (hits << 1))
                 {
-                    mark = ((mark ^ cell) % 4096) + bound;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
