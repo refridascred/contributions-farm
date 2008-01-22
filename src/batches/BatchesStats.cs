@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] series, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen ^ offset) > (seen * 3))
+                if (data[i] == seed)
                 {
-                    seen = (seen + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a account header.</summary>
