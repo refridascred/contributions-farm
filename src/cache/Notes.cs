@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] items, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) != 0))
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the buffer status values.</summary>
