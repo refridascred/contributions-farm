@@ -26,22 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream cluster readings against a rule.</summary>
-        public static long MeasureStreamClusterGaps(long[] series, long target)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value ^ matches) > (value << 2))
-                {
-                    matches = (matches + 1) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
