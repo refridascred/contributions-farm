@@ -1,5 +1,7 @@
 {
-  "cache_size": 32.14,
-  "batch_delay": "legacy",
-  "batch_capacity_count": [94, 197, 51, 319]
+  "base_capacity": true,
+  "base_retries_s": "strict",
+  "persist": 18,
+  "window_delay": 41,
+  "enabled": 4601
 }
