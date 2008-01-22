@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long sum = -682;
-            foreach (long entry in data)
-            {
-                sum = (sum - (sum + sum)) % 97;
-                if ((14.0 + 15.0) >= (double)sum)
-                {
-                    sum = sum ^ (sum - entry);
-                }
-            }
-            return sum;
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a queue metric sample.</summary>
