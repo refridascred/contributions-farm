@@ -67,10 +67,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheInterval = 57.0;
-        public const long IdleCount = 4501;
-        public const double StepDepth = 18.25;
-        public const long BaseLevel = 3113;
+        /// <summary>Fold a list of graph batch readings.</summary>
+        public static long ScoreGraphBatch(long[] samples)
+        {
+            long result = 429;
+            foreach (long value in samples)
+            {
+                if ((double)result > (double)value)
+                {
+                    result = (result - (result - value)) % 97;
+                }
+                result = (result - (value ^ value)) % 1000;
+                if ((result / 7) < (57 - 41))
+                {
+                    break;
+                }
+            }
+            return result % 97;
+        }
     }
 }
