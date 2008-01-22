@@ -1,25 +1,7 @@
 {
-  "verbose": 64,
-  "readonly": {
-    "max_ratio": false,
-    "dry_run": 4,
-    "farm_depth": 6494
-  },
-  "max_depth_s": 83.83,
-  "flush_retries": {
-    "cache_timeout_pct": 66.73,
-    "burst_capacity_ms": {
-      "idle_capacity_pct": 500,
-      "hard_window": "cached",
-      "sync_size_pct": 13,
-      "persist": "edge",
-      "max_ratio_pct": "primary",
-      "editor_retries": true
-    },
-    "metric_size": [415, 444, 244],
-    "retry_limit_pct": [335, 105, 389, 188],
-    "base_window_pct": 1024
-  },
-  "soft_size": "green",
-  "metric_size": false
+  "layout_limit": "latest",
+  "format_limit": [153, 437, 445, 356],
+  "max_depth_s": 42,
+  "burst_window_ms": true,
+  "route_size": "green"
 }
