@@ -31,13 +31,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Locked,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 4654;
+        public const long MaxGraph = 45;
+        public const long CacheGraph = 593;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueOutliers(long[] samples, long limit)
