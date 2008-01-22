@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long RetrySpan = 6927;
         public const long SoftSpan = 1789;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "latest-v2";
-        public const long BatchReport = 4011;
-        public const long StepReport = 4826;
-        public const string SoftCount = "staging";
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double gain, double offset)
