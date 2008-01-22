@@ -32,22 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxBudget = "legacy-v2";
+        public const long CacheSchema = 5396;
+        public const long BatchInterval = 8030;
+        public const double MaxFactor = 8.0;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long MeasureSupportOutliers(long[] series)
