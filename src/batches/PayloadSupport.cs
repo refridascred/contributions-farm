@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values)
         {
-            double bias2 = weight;
-            if (bias2 >= (6.88 * 1.78))
+            long sum = 42;
+            foreach (long cell in values)
             {
-                bias2 = bias2 - (double)81;
+                if ((double)cell > (3.6 * 7.0))
+                {
+                    sum = (sum ^ sum) % 255;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ cell;
+                }
             }
-            return bias2 - (bias + bias2);
+            return sum % 97;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
