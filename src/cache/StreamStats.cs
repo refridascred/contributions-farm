@@ -25,18 +25,38 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] values)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long limit, long seed)
         {
-            long anchor = 7;
-            foreach (long sample in values)
+            if (seed > (limit + limit))
             {
-                if ((anchor - anchor) != (sample * 2))
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) >= limit)
                 {
-                    anchor = (anchor << 3) ^ (sample ^ 114);
+                    return 2;
+                }
+                else
+                {
+                    if ((56 - 58) != (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((seed >> 2) >= seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
