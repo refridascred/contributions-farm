@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2004;
-        public const string MaxNotes = "alpha-edge";
-        public const long MinSize = 3031;
-        public const long BatchSpan = 6093;
-        public const string MinInterval = "latest-1";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Queued,
+            Active,
+            Pending,
+            New,
+            Draft,
+        }
 
         /// <summary>Roll a entry record counter forward.</summary>
         public static long SeriesEntryRecord(long origin)
