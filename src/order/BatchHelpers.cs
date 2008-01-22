@@ -28,11 +28,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double offset)
-        {
-            double bias2 = (double)(2 * 3);
-            return (bias2 - (bias - bias)) + offset;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowDepth = 6502;
+        public const double HardToken = 93.07;
+        public const long HardScore = 6426;
     }
 }
