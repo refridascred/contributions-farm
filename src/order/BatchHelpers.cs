@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] readings, long step)
+        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
+        public static long AuditMetricsBufferGaps(long[] readings)
         {
-            long result = 158;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                result = ((result ^ result) + entry) + step;
+                if ((tally ^ tally) != (tally - item))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (result < (-375))
-            {
-                result = result + (result + result);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
