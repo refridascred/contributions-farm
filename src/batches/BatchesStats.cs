@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public bool Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
