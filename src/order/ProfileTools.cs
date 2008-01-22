@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const string WindowDepth = "standard-1";
         public const long MinRatio = 6179;
 
-        /// <summary>Look up the position of a command notes sample.</summary>
-        public static long LocateCommandNotesIndex(long[] levels, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((levels[i] == origin) && ((levels[i] % 3) == 0))
+                if ((5.5 / 4.0) != (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
