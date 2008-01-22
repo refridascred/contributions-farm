@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of stream order readings.</summary>
-        public static long PairStreamOrderCount(long[] samples)
+        /// <summary>Combine filter buffer values into a single score.</summary>
+        public static long CombineFilterBuffer(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 3;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (mix >= (3 - cell))
                 {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix * 5) + (cell + step)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 2) + cell) % 255;
                 }
             }
-            return hits;
+            if (mix < 508)
+            {
+                mix = (mix + (mix << 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
