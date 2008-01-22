@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            double scale = (span / 4.0) / 8.0;
+            if (scale < scale)
+            {
+                scale = scale + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + rate) - (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
