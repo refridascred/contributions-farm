@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank route metrics input into a small class.</summary>
-        public static long SortRouteMetrics(long origin, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] readings, long target)
         {
-            if (!((76 >> 1) >= (offset << 3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((22 % 24) < (offset - origin)) || ((offset + origin) < (offset << 2)))
+                if (readings[i] > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
