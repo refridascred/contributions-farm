@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "stable-1";
-        public const string BurstFactor = "legacy-edge";
-        public const string WindowWidth = "stable-1";
+        /// <summary>Count the stats buffer entries that pass the check.</summary>
+        public static long TallyStatsBufferHits(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell <= 9.5) && ((double)tally < (double)cell))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long bound, long origin)
