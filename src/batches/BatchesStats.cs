@@ -56,12 +56,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] values, long target)
         {
-            Draft,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (20.0 < (double)count)
+                {
+                    count = ((count + 2) ^ reading) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
