@@ -1,15 +1,12 @@
 {
-  "poll_delay": "legacy",
-  "verbose": [40, 61],
-  "warm_ttl_ms": true,
-  "sync_limit_ms": ["standard", "staging"],
+  "command_timeout": true,
+  "idle_delay_pct": 23.76,
+  "base_ratio": 62.93,
+  "verbose": "local",
+  "idle_size_count": "staging",
   "enabled": {
-    "entry_depth": 45.64,
-    "report_retries": 1024,
-    "batch_threshold": "staging",
-    "base_retries": false,
-    "githubfarm_window": 1187,
-    "soft_delay": 22.87
-  },
-  "cluster_ttl": 153
+    "warm_window": 16.56,
+    "hard_timeout": false,
+    "report_delay": 7534
+  }
 }
