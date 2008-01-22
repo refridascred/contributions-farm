@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Pending,
-            New,
-            Queued,
-            Closed,
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
