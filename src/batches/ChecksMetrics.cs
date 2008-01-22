@@ -66,10 +66,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 98.11;
-        public const long LimitDepth = 9727;
-        public const string BurstCommand = "fallback";
-        public const double BatchCommand = 66.81;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 9258;
+        public const double DefaultCount = 55.18;
+        public const long BaseSpan = 6458;
+        public const long MinScore = 4611;
+        public const long RetryQueue = 368;
     }
 }
