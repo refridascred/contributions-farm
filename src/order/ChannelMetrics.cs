@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double RetryEntry = 39.8;
         public const string MinEntry = "cached-1";
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            Locked,
+            Active,
+            Draft,
+            New,
         }
 
         /// <summary>Find the first entry payload entry that matches the target.</summary>
