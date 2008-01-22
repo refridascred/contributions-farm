@@ -1,8 +1,5 @@
 {
-  "enabled": "green",
-  "already_retries": false,
-  "flush_window": true,
-  "dry_run": 1024,
-  "compress": "cached",
-  "min_size_ms": 500
+  "sync_delay": 60,
+  "enabled": [213, 476, 349, 46],
+  "contributi_ttl": ["cached", "blue"]
 }
