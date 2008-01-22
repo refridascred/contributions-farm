@@ -45,12 +45,11 @@ namespace Common.Utilities
             return gain - (double)773;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 4471;
+        public const long BurstRoute = 2563;
+        public const string MinRoute = "strict-edge";
+        public const string RetryDepth = "standard-edge";
+        public const double BurstTimeout = 69.68;
     }
 }
