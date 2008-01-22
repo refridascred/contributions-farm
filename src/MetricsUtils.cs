@@ -60,12 +60,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Find the first notes commits entry that matches the target.</summary>
+        public static long FindNotesCommitsIndex(long[] readings, long offset)
         {
-            public double Size { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a layout options.</summary>
