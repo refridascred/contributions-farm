@@ -77,19 +77,22 @@ namespace Common.Utilities
             return (weight + (span * 1.0)) + bias;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadRange(long[] levels, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long state = 7;
+            foreach (long reading in readings)
             {
-                if (reading != floor)
+                if (reading < (reading >> 4))
                 {
-                    flag = false;
                     break;
                 }
+                if ((436 + reading) >= (state + state))
+                {
+                    state = state + (reading % 24);
+                }
             }
-            return flag;
+            return state % 97;
         }
     }
 }
