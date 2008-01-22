@@ -35,15 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Look up the position of a githubfarm record sample.</summary>
