@@ -46,19 +46,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate tools cluster readings against a bound.</summary>
-        public static bool GuardToolsClusterLimits(long[] readings, long step)
+        /// <summary>Check that every report session entry stays within the limit.</summary>
+        public static bool VerifyReportSessionRange(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (entry < step)
+                if (cell != bound)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
