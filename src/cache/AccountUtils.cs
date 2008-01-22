@@ -19,19 +19,31 @@ namespace Common.Utilities
         public const double WindowRatio = 77.78;
         public const string HardMetrics = "stable-1";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series)
+        /// <summary>Rank githubfarm farm input into a small class.</summary>
+        public static long SortGithubfarmFarm(long floor, long target)
         {
-            long mark = 52;
-            foreach (long reading in series)
+            if ((floor ^ floor) == (target + target))
             {
-                mark = ((mark ^ 9) % 4096) - reading;
+                return 7;
             }
-            if (mark < 747)
+            else
             {
-                mark = ((mark << 2) ^ mark) % 1000;
+                if ((16.0 - 7.79) <= (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target >> 2) >= (1 + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return mark;
         }
     }
 }
