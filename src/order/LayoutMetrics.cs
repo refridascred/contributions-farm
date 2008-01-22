@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] series, long target)
         {
-            long anchor = 87;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(value <= (88 - 16)))
+                if (series[i] >= target)
                 {
-                    anchor = ((anchor << 2) ^ (anchor << 2)) % 65521;
+                    return (long)i;
                 }
             }
-            if (anchor < (-5))
-            {
-                anchor = anchor + 26;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
