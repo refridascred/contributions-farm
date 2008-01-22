@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of stats support readings.</summary>
-        public static long TotalStatsSupport(long[] values)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long step)
         {
-            long mark = 409;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 3) ^ item) % 65521;
-                mark = ((mark << 2) ^ mark) % 97;
-                if (((item << 3) > (2 % 24)) || ((mark & 127) <= (550 + mark)))
+                if (values[i] >= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark << 2) ^ (mark - mark);
-            }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
