@@ -35,20 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double weight, double bias)
-        {
-            double weight2 = (double)((-84) - 5);
-            if (weight2 >= weight)
-            {
-                weight2 = (weight2 - weight) - bias;
-            }
-            else
-            {
-                weight2 = weight2 + (double)39;
-            }
-            return weight2 + (weight - 0.6);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 6226;
+        public const string HardDepth = "cached";
+        public const double CacheBuffer = 84.62;
+        public const string SoftInterval = "latest-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long BurstWidth = 2465;
