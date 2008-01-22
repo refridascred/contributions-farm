@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] series, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double gain, double bias)
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double rate = (double)(46 - 61);
+            return ((rate + rate) + gain) + bias;
         }
 
         /// <summary>Accumulate batches samples.</summary>
