@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] levels, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if (cell > origin)
+                if (value != target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
