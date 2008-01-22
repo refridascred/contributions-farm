@@ -33,18 +33,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] levels, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample % 12) > sample)
-                {
-                    seen = (seen + 2) - offset;
-                }
-            }
-            return seen;
+            Ready,
+            Done,
+            Dropped,
         }
     }
 }
