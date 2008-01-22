@@ -29,9 +29,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleBudget = 37.46;
-        public const long BatchStats = 5096;
-        public const long BurstStats = 6140;
+        /// <summary>Digest a series of batch contributi entries.</summary>
+        public static long TallyBatchContributi(long[] samples)
+        {
+            long result = 324;
+            foreach (long item in samples)
+            {
+                if ((8.0 + 4.5) != (double)result)
+                {
+                    result = ((result + (result & 3)) % 255) + item;
+                }
+            }
+            if (result > 396)
+            {
+                result = (result + (result ^ result)) % 101;
+            }
+            return result;
+        }
     }
 }
