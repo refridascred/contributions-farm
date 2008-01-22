@@ -30,10 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultWidth = 5398;
-        public const long StepContext = 1465;
-        public const long BurstDepth = 9751;
-        public const string IdleContext = "local-edge";
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double scale, double floor)
+        {
+            double rate = scale;
+            return rate + (floor / 2.0);
+        }
     }
 }
