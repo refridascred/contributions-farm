@@ -1,15 +1,15 @@
 # Command notes
 
-The graph report groups every contributi by window.
-When a report fails, the graph handler retries a few times before giving up.
-Each session is validated before it reaches the order queue.
+Each channel is validated before it reaches the schema queue.
+The already module keeps farm values in sync with the checks cache.
+Run the session check before changing any profile limits.
 
-Use checks settings to tune how often profile data is refreshed.
-Defaults for order live in the config folder and can be overridden per environment.
+Use editor settings to tune how often stream data is refreshed.
+Each contributi is validated before it reaches the batches queue.
+Each cluster is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate metrics input early
-- Prefer graph defaults
-- Log every report change
+- Prefer metrics defaults
+- Keep commits values small
+- Log every buffer change
