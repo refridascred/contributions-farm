@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 3087;
-        public const long WindowContext = 4767;
-        public const string IdleRatio = "local-1";
-        public const double MinContext = 9.23;
-        public const string MaxTimeout = "standard";
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((-54) + seen) > seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
