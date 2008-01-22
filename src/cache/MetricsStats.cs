@@ -15,21 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 63;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix + 975) % 255;
+                mix = mix ^ (mix << 1);
+                mix = (mix - (item - mix)) % 65521;
             }
-            return matches;
+            if (mix < 32)
+            {
+                mix = mix + (mix >> 2);
+            }
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
