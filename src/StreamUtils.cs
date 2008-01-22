@@ -50,13 +50,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] items, long target)
         {
-            Done,
-            Stale,
-            Closed,
-            Retry,
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
