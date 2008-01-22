@@ -1,6 +1,11 @@
-id,region,token,label
-1,285,69.95,779
-2,555,latest,42.09
-3,912,open,78.75
-4,328,723,20.46
-5,95,fallback,136
+id,weight,owner,score
+1,738,open,stable
+2,strict,848,13.62
+3,42.76,401,staging
+4,58.87,primary,standard
+5,374,292,522
+6,local,open,fallback
+7,0.53,52.49,221
+8,510,762,eu-west
+9,staging,736,edge
+10,903,937,682
