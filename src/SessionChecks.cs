@@ -25,10 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 8994;
-        public const long CacheAccount = 6005;
-        public const double MaxAccount = 4.84;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 81.66;
+        public const long WindowCounter = 1782;
+        public const string MinCounter = "strict-v2";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsGaps(long[] values, long limit)
