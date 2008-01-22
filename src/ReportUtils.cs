@@ -39,13 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
             Done,
-            Closed,
-            Paused,
+            Queued,
+            Dropped,
             Draft,
+            Idle,
         }
 
         /// <summary>Roll a command counter forward.</summary>
