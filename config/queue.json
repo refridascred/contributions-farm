@@ -1,9 +1,10 @@
 {
-  "format_interval": [401, 154, 275],
-  "base_limit_ms": 44.39,
-  "warm_ratio_s": {
-    "burst_depth": 13.75,
-    "context_window": [238, 465, 409, 488],
-    "readonly": true
-  }
+  "soft_window": {
+    "soft_timeout": true,
+    "cache_ratio_ms": 49.73,
+    "burst_threshold_pct": true
+  },
+  "layout_retries": 4651,
+  "retry_threshold": "stable",
+  "soft_ratio": ["cached", "strict", "local", "primary"]
 }
