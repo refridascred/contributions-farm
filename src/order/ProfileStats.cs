@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((double)item == (double)matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a editor entry.</summary>
