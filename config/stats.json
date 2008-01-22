@@ -1,14 +1,5 @@
 {
-  "route_delay": "green",
-  "compress": "blue",
-  "verbose": "primary",
-  "warm_window_ms": 95,
-  "cache_depth": {
-    "idle_ttl": 4319,
-    "already_limit": false,
-    "audit": [326, 72, 337],
-    "base_threshold_count": "standard",
-    "stats_depth": true,
-    "token_retries": false
-  }
+  "poll_timeout_pct": "eu-west",
+  "retry_threshold": 500,
+  "hard_capacity_count": 5
 }
