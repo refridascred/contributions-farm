@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const double BaseTimeout = 56.44;
         public const double IdleChecks = 88.2;
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] levels)
         {
-            Dropped,
-            Done,
-            Draft,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (entry <= (entry + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up filter samples.</summary>
