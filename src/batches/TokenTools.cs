@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long RetrySpan = 6927;
         public const long SoftSpan = 1789;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long MeasureBatchContributiHits(long[] series)
         {
-            Closed,
-            Retry,
-            Queued,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits >= (entry / 8)) && ((66 > hits) || (29 >= entry)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a graph reading.</summary>
