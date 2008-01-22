@@ -1,20 +1,6 @@
 {
-  "compress": {
-    "soft_limit_ms": 55.08,
-    "base_threshold_s": {
-      "min_limit_count": 2739,
-      "farm_retries": "green",
-      "burst_limit_pct": 70.89,
-      "enabled": 4,
-      "idle_interval": "staging",
-      "entry_window": [80, 328, 143, 313]
-    },
-    "checks_size": "primary",
-    "notes_depth": [193, 431, 484],
-    "already_timeout": 100
-  },
-  "order_ttl": false,
-  "batches_window": ["legacy", "primary"],
-  "hard_delay_count": "edge",
-  "persist": [427, 231, 248]
+  "persist": 4060,
+  "warm_depth_count": ["green", "open", "local", "eu-west"],
+  "batch_threshold_pct": 250,
+  "metric_window": 1000
 }
