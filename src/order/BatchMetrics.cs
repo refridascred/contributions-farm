@@ -42,22 +42,12 @@ namespace Common.Utilities
             return scale + (double)81;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 9836;
+        public const string WindowSpan = "stable";
+        public const double RetryChecks = 52.15;
+        public const long CacheSize = 9861;
+        public const long IdleBudget = 5511;
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
         public static long MeasureSchemaGithubfarmHits(long[] values, long offset)
