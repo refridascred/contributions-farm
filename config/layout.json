@@ -1,5 +1,7 @@
 {
-  "min_size": ["legacy", "local", "staging", "eu-west"],
-  "tools_depth": 57.21,
-  "retry_ratio_count": "latest"
+  "channel_delay": ["stable", "latest", "staging", "latest"],
+  "audit": false,
+  "commits_size": "blue",
+  "persist": ["staging", "green", "staging"],
+  "batch_window": 2.15
 }
