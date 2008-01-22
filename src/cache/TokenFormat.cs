@@ -32,19 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] data, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            long score = 475;
-            foreach (long value in data)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                score = (score << 3) ^ (value - value);
+                if ((7.0 >= (double)seed) || (((long)i + (long)i) >= (5 >> 3)))
+                {
+                    state = ((state << 3) ^ (seed ^ seed)) % 101;
+                }
+                state = ((state * 2) + (state % 5)) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (score < 17)
-            {
-                score = ((score * 4) + (target ^ score)) % 65521;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
