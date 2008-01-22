@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long BatchCluster = 7528;
         public const string LimitRatio = "staging-1";
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the commits mode values.</summary>
