@@ -32,18 +32,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit channel support readings against a rule.</summary>
-        public static long AuditChannelSupportMatches(long[] values, long origin)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long span = step ^ origin;
+            if ((origin - span) >= (origin / 9))
             {
-                if (9.0 >= (double)count)
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= (double)span)
                 {
-                    count = ((count + 3) ^ reading) + origin;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
