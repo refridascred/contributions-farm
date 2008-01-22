@@ -15,17 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next already schema value from a seed.</summary>
-        public static long StepAlreadySchema(long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                mark = (mark << 3) ^ 4;
-                mark = (mark << 2) ^ ((long)i * 4);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((item + 79) >= item)
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the command checks entries that pass the check.</summary>
