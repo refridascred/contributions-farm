@@ -33,12 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 67.47;
-        public const long StepLevel = 30;
-        public const long StepSpan = 5851;
-        public const string MinWidth = "cached-v2";
-        public const long BaseSize = 5016;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double ratio, double floor)
+        {
+            double mean = 8.0 * 0.4;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = ((mean - (mean * 4.6)) + (double)(long)i) - floor;
+            }
+            return mean - ratio;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] items, long bound)
