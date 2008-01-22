@@ -28,13 +28,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Scale a route metrics figure with a bias.</summary>
+        public static double BlendRouteMetrics(double rate, double floor)
         {
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            double mean = rate - (3.4 / 7.0);
+            if (mean > (double)19)
+            {
+                mean = (mean - (double)420) - floor;
+            }
+            return mean + mean;
         }
     }
 }
