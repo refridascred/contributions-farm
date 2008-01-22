@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate filter channel samples.</summary>
-        public static long WeighFilterChannel(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long origin)
         {
-            long total = 415;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((item ^ total) <= (item + total))
+                if ((value - origin) >= (count - value))
                 {
-                    total = (total - (item ^ total)) % 255;
+                    count = count + 1;
                 }
                 else
                 {
-                    total = total ^ total;
-                }
-                if ((item >> 4) < item)
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (total < 208)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
