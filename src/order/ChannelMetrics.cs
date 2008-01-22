@@ -25,12 +25,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long step, long origin)
         {
-            Done,
-            Draft,
-            Locked,
+            long bound = step ^ origin;
+            if (!((step + origin) >= origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound >= (1.48 / 5.0)) && ((11.0 + 4.7) > (double)bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((52 + origin) > (step * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step << 2) <= (origin ^ 611))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes options.</summary>
