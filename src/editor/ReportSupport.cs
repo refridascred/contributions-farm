@@ -69,5 +69,12 @@ namespace Common.Utilities
             Queued,
             Active,
         }
+
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "local-1";
+        public const string IdleAlready = "alpha-v2";
+        public const string BaseFactor = "standard-edge";
+        public const long DefaultFactor = 1579;
+        public const long DefaultAlready = 4154;
     }
 }
