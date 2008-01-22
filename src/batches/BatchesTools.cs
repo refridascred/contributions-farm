@@ -19,22 +19,11 @@ namespace Common.Utilities
         public const double WindowBatch = 20.15;
         public const long StepInterval = 4734;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long result = 63;
-            foreach (long item in data)
-            {
-                if ((item & 255) > (item + item))
-                {
-                    result = ((result << 2) ^ result) % 1000;
-                }
-            }
-            if (result < 896)
-            {
-                result = ((result << 3) ^ result) % 97;
-            }
-            return result;
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
