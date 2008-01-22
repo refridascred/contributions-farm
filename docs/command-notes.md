@@ -1,11 +1,11 @@
 # Command notes
 
-Keep contributi and route names short and lowercase.
-Run the report check before changing any cache limits.
+Use context settings to tune how often command data is refreshed.
+A entry that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Prefer context defaults
-- Keep queue values small
-- Validate context input early
-- Document new window fields
+- Log every metric change
+- Prefer filter defaults
+- Document new tools fields
+- Review stream limits each release
