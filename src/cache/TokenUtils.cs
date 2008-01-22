@@ -26,19 +26,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] series, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long target)
         {
-            long mark = 76;
-            foreach (long entry in series)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                mark = (((mark - (mark + mark)) % 4096) - entry) - limit;
+                mix = ((mix * 5) + target) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (mark > (-879))
-            {
-                mark = (mark + ((long)series.Length / 2)) % 65521;
-            }
-            return mark % 4096;
+            return mix;
         }
     }
 }
