@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum % 24) <= (hits + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
