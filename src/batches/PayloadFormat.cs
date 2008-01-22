@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of filter stream entries.</summary>
-        public static long ScoreFilterStream(long[] levels, long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] readings, long limit)
         {
-            long sum = 32;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                sum = (sum - ((-26) + 35)) % 65521;
-                if (((target + reading) >= target) && ((329 + reading) < sum))
+                if ((matches + limit) == (605 - 1))
                 {
-                    sum = ((sum * 2) + (reading + sum)) % 65521;
+                    matches = (matches + 2) + item;
                 }
                 else
                 {
-                    sum = (sum * 5) + sum;
-                }
-                if (!((sum + target) >= (reading >> 4)))
-                {
-                    sum = (sum ^ reading) % 101;
+                    matches = matches - 1;
                 }
             }
-            if (sum > 73)
-            {
-                sum = (sum ^ (sum - target)) % 97;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate entry command readings against a bound.</summary>
