@@ -1,5 +1,12 @@
 {
-  "already_size": false,
-  "warm_window_s": 65,
-  "farm_ratio": 1240
+  "batch_timeout_pct": {
+    "filter_interval": false,
+    "format_ratio": 55,
+    "idle_ratio": 100,
+    "audit": 500,
+    "retry_timeout_pct": "open",
+    "dry_run": "edge"
+  },
+  "hard_delay": 1910,
+  "poll_capacity_s": ["staging", "edge", "local"]
 }
