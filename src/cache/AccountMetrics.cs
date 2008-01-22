@@ -67,23 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] samples, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((49 ^ state) <= state)
+                if ((seed ^ seed) >= (83 + matches))
                 {
-                    break;
+                    matches = (matches + 1) + entry;
                 }
-                else
-                {
-                    state = (state * 5) + (origin ^ state);
-                }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
