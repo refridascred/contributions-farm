@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordGaps(long[] series, long bound)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double span)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double ratio = (double)(92 % 97);
+            for (int i = 0; i < 2; i++)
             {
-                if (bound <= tally)
-                {
-                    tally = (tally + 3) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ((ratio + (ratio + 18.0)) - (double)(long)i) - bias;
             }
-            return tally;
+            return ratio - (span + 6.45);
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
