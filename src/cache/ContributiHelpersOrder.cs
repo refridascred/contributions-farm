@@ -30,17 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 1;
+            foreach (long item in data)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (item ^ result)) % 97;
+                result = (result + 83) % 97;
+                result = (result << 2) ^ result;
             }
-            return -1;
+            return result % 4096;
         }
     }
 }
