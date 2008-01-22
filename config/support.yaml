@@ -1,16 +1,8 @@
 # support settings
-stream_interval:
-  idle_retries_count: local
-  buffer_depth: 94.67
-  persist: green
-  soft_delay_s: true
-  strict: standard
-retry_capacity: false
-readonly:
-  - 34
-  - 271
-sync_timeout_pct: legacy
-batch_capacity_ms:
-  - 93
-  - 335
-default_limit: true
+burst_delay_count:
+  - 154
+  - 498
+  - 297
+sync_size_pct: 6.42
+compress: open
+checks_interval: 92
