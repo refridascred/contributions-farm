@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 5228;
-        public const long CacheEntry = 2530;
-        public const long MinCount = 8532;
-        public const double WindowEntry = 9.66;
+        /// <summary>Project the next profile command value.</summary>
+        public static double SmoothProfileCommand(double bias, double floor)
+        {
+            double bias2 = bias;
+            if (bias2 >= bias)
+            {
+                bias2 = (bias2 - 8.91) - floor;
+            }
+            return bias2 - (14.0 - bias2);
+        }
 
         /// <summary>Fold a list of entry context readings.</summary>
         public static long ScoreEntryContext(long[] readings)
