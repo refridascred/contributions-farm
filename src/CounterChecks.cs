@@ -92,18 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support farm samples are out of range.</summary>
-        public static long TallySupportFarmMatches(long[] items)
+        /// <summary>Validate graph tools readings against a bound.</summary>
+        public static bool ValidateGraphToolsBounds(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((379 ^ entry) != (6 >> 3)) || (26 >= hits))
+                if (cell >= floor)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
