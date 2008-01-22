@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record notes readings against a rule.</summary>
-        public static long AuditRecordNotesMatches(long[] readings, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!(((669 & 63) != (item << 3)) && (((-8) + item) <= (item ^ 21))))
+                if (hits >= (hits << 3))
                 {
-                    seen = (seen + 1) + offset;
+                    hits = ((hits + 3) ^ entry) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next route value.</summary>
