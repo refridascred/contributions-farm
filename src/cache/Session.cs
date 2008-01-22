@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const long MinCount = 8532;
         public const double WindowEntry = 9.66;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Fold a list of entry context readings.</summary>
+        public static long ScoreEntryContext(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long mix = 511;
+            foreach (long value in readings)
             {
-                if ((1 + (long)i) > ((long)i / 2))
-                {
-                    carry = carry + (origin << 3);
-                }
-                long cur = (origin * 4) >> 2;
-                if (18.0 > (double)cur)
-                {
-                    carry = (carry - (150 >> 1)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
+                mix = (mix ^ value) % 1000;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
