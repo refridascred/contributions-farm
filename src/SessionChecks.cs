@@ -35,16 +35,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] levels, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long carry = 364;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 4) + ((long)i ^ anchor)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (92 <= item)
+                {
+                    carry = (carry - item) + floor;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (item >> 4)) % 65521;
+                }
             }
-            return anchor;
+            if (carry > 423)
+            {
+                carry = carry ^ (1 << 3);
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
