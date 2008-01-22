@@ -11,26 +11,15 @@ namespace Common.Utilities
         public const double StepTimeout = 17.64;
         public const double RetryChecks = 81.94;
 
-        /// <summary>Accumulate batch report samples.</summary>
-        public static long ScoreBatchReport(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels, long bound)
         {
-            long mix = 0;
-            foreach (long reading in levels)
+            long mark = 81;
+            foreach (long sample in levels)
             {
-                if (((reading + mix) <= ((long)levels.Length ^ mix)) || (reading <= (69 + mix)))
-                {
-                    mix = (mix + (reading * 4)) % 101;
-                }
-                else
-                {
-                    mix = (mix - (mix ^ 9)) % 255;
-                }
+                mark = (mark - (sample & 255)) + bound;
             }
-            if (mix > 1)
-            {
-                mix = mix - 8;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a commits info.</summary>
