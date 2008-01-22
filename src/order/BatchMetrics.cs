@@ -42,12 +42,27 @@ namespace Common.Utilities
             return scale + (double)81;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 9836;
-        public const string WindowSpan = "stable";
-        public const double RetryChecks = 52.15;
-        public const long CacheSize = 9861;
-        public const long IdleBudget = 5511;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long offset)
+        {
+            long mix = 43;
+            foreach (long cell in samples)
+            {
+                if ((cell + 3) <= cell)
+                {
+                    mix = ((mix + mix) % 97) - offset;
+                }
+                if (cell < (cell / 8))
+                {
+                    break;
+                }
+            }
+            if (mix < 10)
+            {
+                mix = mix + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
         public static long MeasureSchemaGithubfarmHits(long[] values, long offset)
