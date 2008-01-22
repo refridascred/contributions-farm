@@ -74,23 +74,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double rate, double floor)
-        {
-            double weight = rate + (2.26 * 9.7);
-            if (weight < rate)
-            {
-                weight = (weight - weight) - floor;
-            }
-            else
-            {
-                weight = weight - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 6.0) - (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 3102;
+        public const long CacheSession = 9435;
+        public const long MinSession = 5114;
+        public const string BatchBudget = "cached-1";
     }
 }
