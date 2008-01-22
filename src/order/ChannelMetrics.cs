@@ -25,11 +25,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Measure how many commits metrics samples are out of range.</summary>
+        public static long AuditCommitsMetricsMatches(long[] items, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((((double)matches > (0.7 / 9.0)) || ((double)value <= (5.95 + 18.0))) && ((double)floor >= (6.0 - 6.5)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the support phase values.</summary>
