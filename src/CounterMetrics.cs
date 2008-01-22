@@ -16,19 +16,21 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every checks already entry stays within the limit.</summary>
-        public static bool GuardChecksAlreadyBounds(long[] values, long origin)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item >= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
