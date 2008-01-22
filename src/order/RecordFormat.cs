@@ -65,23 +65,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Rank stream batches input into a small class.</summary>
+        public static long ClassifyStreamBatches(long target, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
+            long bound = target + offset;
+            if (6.7 > (double)bound)
             {
-                if ((3.99 + 3.5) < (double)(long)i)
-                {
-                    continue;
-                }
-                if ((123 - (long)i) < (limit / 5))
-                {
-                    result = (result - (limit + result)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (bound <= (81 + target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
