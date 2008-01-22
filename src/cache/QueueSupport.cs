@@ -23,10 +23,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchBudget = 7054;
-        public const string BatchAccount = "open-edge";
-        public const long MaxAccount = 5922;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every commits record entry stays within the limit.</summary>
         public static bool GuardCommitsRecordBounds(long[] series, long bound)
