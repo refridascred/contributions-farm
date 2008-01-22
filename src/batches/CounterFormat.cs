@@ -18,19 +18,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long limit)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (entry <= limit)
+                if (value < seed)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
