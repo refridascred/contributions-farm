@@ -22,21 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Match up window samples.</summary>
