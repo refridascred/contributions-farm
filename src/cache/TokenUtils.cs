@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Ready,
-            Closed,
+            Locked,
+            Dropped,
             Pending,
-            Retry,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
