@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Owner { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultScore = "open";
+        public const long MinFactor = 5485;
+        public const string HardAccount = "staging-edge";
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long seed)
