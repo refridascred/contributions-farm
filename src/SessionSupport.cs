@@ -20,11 +20,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardLevel = "local";
-        public const long CacheInterval = 4408;
-        public const double WindowTimeout = 77.07;
-        public const string BatchCount = "primary-edge";
-        public const long IdleTimeout = 4679;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample < ((long)items.Length - matches))
+                {
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
