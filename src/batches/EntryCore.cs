@@ -49,18 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings, long offset)
+        /// <summary>Count the account support entries that pass the check.</summary>
+        public static long CountAccountSupportGaps(long[] readings)
         {
-            long matches = 0;
+            long hits = 0;
             foreach (long value in readings)
             {
-                if (20.0 > (double)offset)
+                if ((hits * 5) >= (value << 1))
                 {
-                    matches = (matches + 3) ^ value;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
