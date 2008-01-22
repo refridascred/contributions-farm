@@ -14,23 +14,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series)
-        {
-            long mark = 77;
-            foreach (long datum in series)
-            {
-                if ((mark * 2) != (mark + mark))
-                {
-                    mark = ((mark << 3) ^ (mark ^ datum)) % 65521;
-                }
-                else
-                {
-                    mark = (mark ^ (mark & 7)) % 1000;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 842;
+        public const long BaseBudget = 7578;
+        public const long CacheBatches = 4199;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
