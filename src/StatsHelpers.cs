@@ -36,14 +36,12 @@ namespace Common.Utilities
             return drift + (drift + floor);
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
-        {
-            Synced,
-            Closed,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinLevel = 57;
+        public const long MinScore = 9956;
+        public const string IdleCount = "primary";
+        public const long BatchDepth = 1233;
+        public const long SoftChannel = 8885;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long WeighTools(long[] levels, long floor)
