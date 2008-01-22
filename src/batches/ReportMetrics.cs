@@ -31,18 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] levels, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((double)sample <= (4.08 * 12.0))
+                if ((hits + hits) < (hits * 5))
                 {
-                    matches = (matches + 2) - bound;
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the filter mode values.</summary>
