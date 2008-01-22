@@ -19,15 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data, long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long seed, long floor)
         {
-            long mark = 64;
-            foreach (long cell in data)
+            long bound = seed - floor;
+            if ((floor - bound) != (bound - seed))
             {
-                mark = (((mark - 2) % 97) ^ cell) + target;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((19.0 * 5.49) != (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(((-631) << 3) >= (bound + bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound + seed) > (floor - floor)) && ((floor * 2) >= (floor % 8)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
