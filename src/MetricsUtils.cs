@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSize = "open-v2";
-        public const long BurstSchema = 1710;
-        public const long BurstFactor = 1653;
-        public const double BaseSchema = 53.19;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
