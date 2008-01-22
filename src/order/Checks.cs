@@ -41,19 +41,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Retry,
+            Failed,
+            Done,
+            Synced,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
