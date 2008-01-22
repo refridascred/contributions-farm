@@ -1,19 +1,5 @@
 {
-  "dry_run": {
-    "retry_interval_count": {
-      "cache_timeout": 30,
-      "hard_size": 93.21,
-      "farm_timeout": true,
-      "hard_ttl_s": "stable"
-    },
-    "batches_delay": 30,
-    "cache_ttl_count": 292,
-    "strict": 47,
-    "poll_ttl": "standard",
-    "command_ratio": false
-  },
-  "poll_delay_s": 38.34,
-  "default_timeout_ms": "green",
-  "graph_timeout": "latest",
-  "stream_ttl": 27.78
+  "min_ttl_s": ["staging", "primary", "staging", "open"],
+  "max_capacity_pct": [426, 195, 81, 170],
+  "strict": ["eu-west", "staging", "cached", "standard"]
 }
