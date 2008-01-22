@@ -23,18 +23,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] data, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if ((bound + 93) > bound2)
             {
-                if (((entry & 63) >= (step + 77)) && ((count >> 4) >= (entry / 4)))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (double)bound2)
                 {
-                    count = count + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound & 127) < bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound == (9.0 * 11.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up contributi samples.</summary>
