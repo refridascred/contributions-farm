@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string BurstAlready = "staging-v2";
         public const double HardAlready = 23.61;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Validate githubfarm profile readings against a bound.</summary>
+        public static bool ValidateGithubfarmProfileRange(long[] items, long seed)
         {
-            Done,
-            Synced,
-            Pending,
-            Locked,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
