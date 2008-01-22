@@ -51,18 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] readings, long step)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((78 + 2) > (tally & 1))
-                {
-                    tally = ((tally + 1) - reading) - step;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a report reading by value.</summary>
