@@ -1,14 +1,7 @@
 {
-  "hard_interval": "green",
-  "dry_run": "primary",
-  "base_interval_count": 65.74,
-  "persist": [310, 118],
-  "support_depth": [263, 158, 249],
-  "enabled": {
-    "poll_depth_pct": "edge",
-    "window_limit": 3410,
-    "flush_interval_pct": [218, 465, 125],
-    "retry_delay": "strict",
-    "cache_interval": "standard"
-  }
+  "notes_timeout": 67.35,
+  "verbose": false,
+  "enabled": 6991,
+  "persist": ["eu-west", "standard", "primary"],
+  "default_capacity": [323, 381, 346, 475]
 }
