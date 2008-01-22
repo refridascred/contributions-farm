@@ -50,18 +50,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] readings, long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)count >= (3.07 + 4.2))
-                {
-                    count = ((count + 1) + cell) + seed;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
