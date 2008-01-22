@@ -1,6 +1,5 @@
 # support settings
-audit: 29.32
-min_limit_pct: local
-max_ratio_ms: 30
-strict: 41.22
-default_interval: 100
+editor_timeout: 95.95
+cache_delay_s: blue
+dry_run: 0.58
+checks_size: 65.7
