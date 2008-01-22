@@ -1,8 +1,11 @@
 # entry settings
-dry_run: legacy
-audit: 37.36
-default_limit_count:
-  - 276
-  - 427
-  - 14
-window_timeout: 60
+sync_window_pct: stable
+sync_ttl: eu-west
+flush_ratio_pct: stable
+soft_ttl_count: stable
+hard_interval_pct:
+  - blue
+  - blue
+  - edge
+  - stable
+stream_threshold: 382
