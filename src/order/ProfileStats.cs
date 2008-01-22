@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
-            Retry,
-            New,
-            Ready,
-            Active,
-            Stale,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!((double)item == (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
