@@ -24,26 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] items)
         {
-            long carry = 727;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((12 - carry) > (1 + seed)) && ((double)carry < 8.0))
+                if (!((double)573 > (double)matches))
                 {
-                    carry = ((carry << 2) ^ (carry - 1)) % 4096;
-                }
-                else
-                {
-                    carry = (carry ^ datum) % 255;
+                    matches = (matches + 1) ^ reading;
                 }
             }
-            if (carry > 170)
-            {
-                carry = (carry ^ (77 % 24)) % 1000;
-            }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
