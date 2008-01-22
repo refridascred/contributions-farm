@@ -34,12 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitInterval = 9914;
-        public const long MaxProfile = 6633;
-        public const long HardLevel = 9890;
-        public const double StepProfile = 59.23;
-        public const long BaseProfile = 591;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = carry ^ (carry << 3);
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string SoftRatio = "strict-1";
