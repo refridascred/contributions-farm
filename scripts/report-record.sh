@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=203
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-green}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in eu-west green legacy; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=300
+log "limit is ${RECORD_LIMIT}"
