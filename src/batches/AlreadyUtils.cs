@@ -34,16 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                carry = carry ^ (carry << 3);
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (345 > count)
+                {
+                    count = (count + 2) - datum;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
