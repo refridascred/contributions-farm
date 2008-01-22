@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const double MinContext = 9.23;
         public const string MaxTimeout = "standard";
 
-        /// <summary>Accumulate cache metric samples.</summary>
-        public static long CombineCacheMetric(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double floor)
         {
-            long acc = 72;
-            foreach (long value in items)
+            double drift = scale + (floor / 9.0);
+            if (drift > (double)7)
             {
-                if (!((2.0 * 7.4) == (double)value))
-                {
-                    continue;
-                }
-                acc = acc + 795;
+                drift = drift - (drift / 8.0);
             }
-            return acc;
+            else
+            {
+                drift = drift - scale;
+            }
+            return drift + (double)(-1);
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
