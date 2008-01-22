@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long BatchSpan = 6093;
         public const string MinInterval = "latest-1";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long step)
+        /// <summary>Roll a entry record counter forward.</summary>
+        public static long SeriesEntryRecord(long origin)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark - mark) % 1000;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
