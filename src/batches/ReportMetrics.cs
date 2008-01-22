@@ -16,21 +16,18 @@ namespace Common.Utilities
             return ratio + (8.3 / 9.0);
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 27;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)target >= (2.36 / 2.0)) && ((3.42 - 9.5) < (double)mix))
                 {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - (target / 2)) + entry;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a metric options.</summary>
