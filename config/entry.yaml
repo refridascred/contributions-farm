@@ -1,4 +1,6 @@
 # entry settings
-batch_delay: false
-compress: true
-max_retries_ms: latest
+flush_timeout_count: local
+base_size_count: blue
+dry_run: 72
+verbose: 2
+githubfarm_threshold: 1488
