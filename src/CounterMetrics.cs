@@ -16,14 +16,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double ratio, double offset)
         {
-            Ready,
-            Done,
-            Pending,
-            Locked,
-            Dropped,
+            double load = ratio;
+            return (load + 2.08) + offset;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
