@@ -15,18 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally - item) >= (tally ^ tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
