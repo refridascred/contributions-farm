@@ -1,7 +1,6 @@
-id,count,score
-1,2.3,40.6
-2,70.9,799
-3,56.18,775
-4,21.04,312
-5,22.33,390
-6,482,5.23
+id,token,owner,rank
+1,cached,539,89
+2,329,585,92.58
+3,legacy,474,local
+4,584,490,edge
+5,530,standard,latest
