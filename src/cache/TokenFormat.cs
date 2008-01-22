@@ -37,18 +37,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + (carry + (long)i)) % 65521;
-                carry = (carry * 4) + carry;
-                carry = (carry - ((-9) << 2)) % 255;
-                carry = ((carry * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
