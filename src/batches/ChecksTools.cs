@@ -23,16 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix - limit) % 97;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Blend two buffer entry measurements.</summary>
