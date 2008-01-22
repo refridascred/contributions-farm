@@ -25,18 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long state = 1;
-            foreach (long sample in data)
-            {
-                if (((offset - 5) < ((long)data.Length - sample)) || ((long)data.Length > offset))
-                {
-                    state = ((state * 5) + (offset - sample)) % 1000;
-                }
-            }
-            return state % 4096;
+            Done,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the support phase values.</summary>
