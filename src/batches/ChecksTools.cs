@@ -26,19 +26,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate metrics batch readings against a bound.</summary>
-        public static bool CheckMetricsBatchRange(long[] levels, long seed)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long acc = 0;
+            foreach (long reading in data)
             {
-                if (item < seed)
+                if (!((reading >> 2) >= origin))
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc << 3) ^ (acc << 2)) % 255;
+                }
+                else
+                {
+                    acc = acc + (reading >> 2);
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
