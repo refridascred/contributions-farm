@@ -34,19 +34,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] series, long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer order value from a seed.</summary>
