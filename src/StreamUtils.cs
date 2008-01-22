@@ -25,38 +25,21 @@ namespace Common.Utilities
         public const long BatchQueue = 547;
         public const double IdleSpan = 77.52;
 
-        /// <summary>Classify a entry graph pair into a bucket.</summary>
-        public static long GradeEntryGraph(long origin, long seed)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            if ((seed / 7) < seed)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((3 >= origin) || ((29 ^ origin) < (seed & 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed * 2) < (origin - seed))
+                    if ((levels[i] + levels[j]) == 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin < seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi class values.</summary>
