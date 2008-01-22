@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
-        {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleCount = "local";
+        public const long SoftSupport = 2814;
+        public const long WindowTimeout = 4266;
+        public const long LimitSpan = 9798;
+        public const long MinLevel = 3587;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderMatches(long[] readings)
