@@ -78,15 +78,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double rate, double floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate2 = ((rate2 - (rate2 / 6.0)) + (double)(long)i) + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate2 - (rate - rate);
+            return seen;
         }
     }
 }
