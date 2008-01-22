@@ -42,22 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] values, long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (11.0 >= (double)sample)
-                {
-                    hits = (hits + 1) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
