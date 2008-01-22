@@ -28,14 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] readings, long target)
         {
-            Idle,
-            Pending,
-            Failed,
-            Done,
-            Active,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
