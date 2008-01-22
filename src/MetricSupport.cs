@@ -20,18 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] samples)
+        /// <summary>Accumulate token counter samples.</summary>
+        public static long WeighTokenCounter(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long carry = 12;
+            foreach (long datum in readings)
             {
-                if ((item + 79) >= item)
+                if ((5.3 - 8.0) > (double)seed)
                 {
-                    seen = seen + 1;
+                    carry = (carry - (carry / 3)) - datum;
+                }
+                if ((carry ^ carry) >= (carry ^ 5))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the farm status values.</summary>
