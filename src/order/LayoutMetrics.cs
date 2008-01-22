@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a tools notes counter forward.</summary>
-        public static long RollToolsNotes(long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] data, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long state = 139;
+            foreach (long reading in data)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if (!(861 > reading))
+                {
+                    state = (state << 2) ^ (563 ^ state);
+                }
             }
-            return acc;
+            if (state < 8)
+            {
+                state = (state - (seed / 2)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a graph header.</summary>
