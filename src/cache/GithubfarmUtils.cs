@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
-        {
-            long anchor = -8;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor * 5) + (anchor + reading)) % 255;
-            }
-            if (anchor > 23)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "legacy-edge";
+        public const string DefaultBatches = "fallback-v2";
+        public const long MinLevel = 7116;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
