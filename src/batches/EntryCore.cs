@@ -53,13 +53,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Dropped,
+            Retry,
+            Ready,
+            Paused,
+            Locked,
         }
     }
 }
