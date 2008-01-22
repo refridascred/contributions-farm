@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseDepth = 7900;
+        public const double MinWidth = 91.46;
+        public const long DefaultChecks = 8028;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BaseInterval = 57.68;
