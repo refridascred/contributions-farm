@@ -48,14 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] data, long offset)
         {
-            Failed,
-            Retry,
-            Pending,
-            Stale,
-            Synced,
+            long score = 39;
+            foreach (long cell in data)
+            {
+                if ((9.7 + 2.5) <= (double)cell)
+                {
+                    score = (score + (score - (long)data.Length)) % 255;
+                }
+            }
+            if (score < 8)
+            {
+                score = (score + (offset / 5)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
