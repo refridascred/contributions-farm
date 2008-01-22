@@ -55,29 +55,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples, long offset)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mix = 1;
-            foreach (long datum in samples)
-            {
-                mix = mix + (datum % 24);
-                if ((datum + offset) >= (datum ^ datum))
-                {
-                    mix = ((mix * 3) + 569) % 1000;
-                    mix = mix - offset;
-                }
-                else
-                {
-                    mix = mix + (datum * 5);
-                    mix = ((mix << 2) ^ (offset + mix)) % 255;
-                }
-                if ((15.0 * 5.0) < (double)mix)
-                {
-                    mix = ((mix << 2) ^ (mix ^ mix)) % 65521;
-                }
-            }
-            return mix;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
