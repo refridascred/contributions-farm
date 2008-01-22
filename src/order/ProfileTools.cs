@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a order metric pair into a bucket.</summary>
-        public static long RankOrderMetric(long bound, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if ((double)bound >= (5.8 + 18.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((1.7 * 1.9) >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Active,
+            Idle,
+            Paused,
+            Ready,
+            Failed,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
