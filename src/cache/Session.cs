@@ -44,13 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a entry notes figure with a bias.</summary>
+        public static double AdjustEntryNotes(double gain, double floor)
         {
-            Dropped,
-            Synced,
-            New,
-            Failed,
+            double gain2 = floor * 7.9;
+            if (gain2 < gain2)
+            {
+                gain2 = gain2 + gain2;
+            }
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            return gain2 + (gain + 8.0);
         }
     }
 }
