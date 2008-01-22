@@ -1,14 +1,15 @@
 # Command notes
 
-Keep farm and account names short and lowercase.
-Run the filter check before changing any farm limits.
+Each metrics is validated before it reaches the commits queue.
+The contributi module keeps commits values in sync with the editor cache.
+When a batches fails, the graph handler retries a few times before giving up.
 
-The route report groups every metrics by route.
-Keep metrics and payload names short and lowercase.
+Use payload settings to tune how often command data is refreshed.
+Run the account check before changing any queue limits.
+The checks module keeps graph values in sync with the tools cache.
 
 ## Guidelines
 
-- Prefer window defaults
-- Review token limits each release
-- Validate cluster input early
-- Document new profile fields
+- Document new context fields
+- Prefer command defaults
+- Validate buffer input early
