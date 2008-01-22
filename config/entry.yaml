@@ -1,12 +1,13 @@
 # entry settings
-already_limit:
-  counter_window: false
-  retry_capacity:
-    default_limit_pct: false
-    flush_depth_pct: standard
-    soft_depth_s: local
-  compress: legacy
-  layout_depth: 9057
-dry_run: edge
-buffer_capacity: blue
-metric_window: 50.94
+flush_capacity:
+  compress: blue
+  burst_capacity_count: false
+  cache_limit_count:
+    warm_size_count: green
+    graph_threshold: eu-west
+    support_limit: false
+    poll_timeout: 0.98
+    warm_depth_count: 498
+    cache_ratio: 55
+metric_timeout: true
+metric_interval: stable
