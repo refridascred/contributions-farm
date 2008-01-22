@@ -35,18 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] items)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!(item < (item + seen)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
