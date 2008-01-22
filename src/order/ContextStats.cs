@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a context stream reading.</summary>
-        public static double ScaleContextStream(double scale, double span)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] items, long floor)
         {
-            double ratio = (scale / 3.0) * 0.33;
-            if (ratio > (double)569)
+            long carry = 55;
+            foreach (long cell in items)
             {
-                ratio = ratio - (scale + scale);
+                carry = (((carry * 2) + ((long)items.Length / 5)) % 255) - floor;
+                if (((double)(long)items.Length == (7.7 / 6.0)) || ((double)3 < (double)cell))
+                {
+                    carry = ((carry * 3) + (cell * 5)) % 4096;
+                }
             }
-            else
+            if (carry > 64)
             {
-                ratio = ratio + ratio;
+                carry = (carry + (carry << 2)) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
-            }
-            return ratio + (scale + span);
+            return carry;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
