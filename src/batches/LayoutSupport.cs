@@ -23,19 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every context editor entry stays within the limit.</summary>
-        public static bool VerifyContextEditorRange(long[] data, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Match up farm samples.</summary>
