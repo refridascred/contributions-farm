@@ -64,17 +64,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a graph githubfarm reading by value.</summary>
-        public static long SeekGraphGithubfarmIndex(long[] values, long offset)
+        /// <summary>Check that every stats order entry stays within the limit.</summary>
+        public static bool VerifyStatsOrderLimits(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                if (reading != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
