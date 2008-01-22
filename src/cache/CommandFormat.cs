@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinScore = 95.61;
-        public const string SoftSize = "primary-edge";
-        public const long MinRecord = 4533;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
         public static long AuditCounterContributiMatches(long[] levels)
