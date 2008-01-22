@@ -1,8 +1,8 @@
 {
-  "checks_limit": 46.57,
-  "command_size": 8,
-  "flush_ratio_s": 81,
-  "audit": 68,
-  "farm_capacity": 30,
-  "strict": "primary"
+  "default_depth_count": "open",
+  "default_timeout_count": 6146,
+  "route_retries": 1,
+  "default_interval": true,
+  "hard_delay_s": 11.13,
+  "audit": ["legacy", "legacy"]
 }
