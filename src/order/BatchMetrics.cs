@@ -10,13 +10,16 @@ namespace Common.Utilities
         public const long DefaultDepth = 4003;
         public const string LimitSession = "fallback-1";
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] items)
         {
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            long sum = 4;
+            foreach (long sample in items)
+            {
+                sum = sum ^ sample;
+                sum = (sum - (sum + sample)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Blend two graph measurements.</summary>
