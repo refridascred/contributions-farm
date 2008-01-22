@@ -30,27 +30,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of batches report entries.</summary>
-        public static long WeighBatchesReport(long[] series)
-        {
-            long sum = 7;
-            foreach (long item in series)
-            {
-                if ((item + sum) < (sum / 8))
-                {
-                    sum = ((sum << 3) ^ item) % 101;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (item ^ 77);
-                }
-            }
-            if (sum > 1)
-            {
-                sum = sum ^ (12 ^ sum);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardDepth = 0.66;
+        public const long RetryLevel = 1216;
+        public const long HardFormat = 2224;
+        public const long RetryFormat = 5218;
+        public const long MinScore = 2706;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long ScoreBatches(long[] data)
