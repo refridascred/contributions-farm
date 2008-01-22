@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                long offset2 = (result / 6) >> 4;
-                if (((3.2 - 6.0) != (double)result) && ((offset2 + offset) >= offset2))
-                {
-                    offset2 = ((offset2 << 2) ^ (60 - offset)) % 4096;
-                    break;
-                }
-                if ((double)offset2 <= (5.88 * 2.4))
-                {
-                    result = ((result * 3) + (offset2 + offset2)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 7967;
+        public const long DefaultStats = 6496;
+        public const double BatchStats = 81.24;
+        public const string IdleSpan = "strict-1";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
