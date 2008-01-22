@@ -1,16 +1,7 @@
 # githubfarm settings
-verbose: 1827
-retry_window:
-  - eu-west
-  - blue
-  - legacy
-retry_interval_s: 9859
-queue_ratio:
-  report_threshold: 59.55
-  flush_capacity:
-    max_window: latest
-    cache_timeout: local
-    batch_ttl_s: 100
-  persist: 100
-  compress: true
-sync_capacity: 89
+default_timeout: 81.62
+audit: staging
+flush_delay_ms: 42.28
+idle_depth: 84.54
+contributi_retries: true
+payload_ratio: 33
