@@ -1,18 +1,6 @@
 {
-  "persist": "green",
-  "hard_limit_s": ["local", "open", "fallback"],
-  "batch_threshold_pct": {
-    "persist": "green",
-    "enabled": {
-      "queue_size": 78,
-      "warm_threshold": "stable",
-      "format_ttl": ["stable", "strict"],
-      "max_size_pct": 30
-    },
-    "dry_run": [365, 64],
-    "layout_interval": false
-  },
-  "session_limit": [117, 259, 250, 170],
-  "enabled": "local",
-  "min_delay_ms": "standard"
+  "min_interval": 23,
+  "warm_delay_count": [226, 170, 194],
+  "audit": [452, 379, 490, 1],
+  "idle_depth_ms": 1024
 }
