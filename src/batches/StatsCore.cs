@@ -57,19 +57,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the queue token entries that pass the check.</summary>
-        public static long CountQueueTokenHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally / 2) <= (tally + (long)series.Length))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 6869;
+        public const string WindowChannel = "standard-1";
+        public const long BatchLevel = 8687;
+        public const long SoftRatio = 6756;
+        public const string DefaultDepth = "cached";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double IdleCounter = 10.75;
