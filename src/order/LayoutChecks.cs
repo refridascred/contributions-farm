@@ -27,17 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] values, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                if (cell < (step - matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
