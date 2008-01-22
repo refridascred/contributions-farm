@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate commits report samples.</summary>
-        public static long DigestCommitsReport(long[] samples, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] readings, long origin)
         {
-            long anchor = 6;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((double)anchor != (2.63 / 4.0))
+                if (value >= origin)
                 {
-                    anchor = ((anchor - (anchor >> 3)) ^ item) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Hold a tools entry.</summary>
