@@ -21,14 +21,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Pending,
+            Locked,
+            Paused,
+            Dropped,
             Stale,
-            Failed,
-            Closed,
-            Idle,
         }
 
         /// <summary>Describe the channel state values.</summary>
