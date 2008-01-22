@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long origin)
         {
-            Closed,
-            Locked,
-            Retry,
-            Queued,
+            long total = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((total < (16 & 63)) || ((total + 4) >= (total - total))))
+                {
+                    total = total ^ (origin << 3);
+                }
+                total = ((total * 5) + ((long)i + origin)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
