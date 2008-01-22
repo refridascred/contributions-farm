@@ -1,6 +1,5 @@
 {
-  "payload_threshold": "blue",
-  "strict": false,
-  "sync_timeout": false,
-  "farm_window": "primary"
+  "warm_retries": 99,
+  "notes_ttl": 3463,
+  "default_interval_ms": "staging"
 }
