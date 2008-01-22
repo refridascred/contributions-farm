@@ -1,6 +1,5 @@
 {
-  "compress": ["green", "primary"],
-  "strict": 97.14,
-  "route_delay": 48,
-  "cache_depth": "green"
+  "account_capacity": 62,
+  "audit": 30,
+  "cluster_capacity": 92.43
 }
