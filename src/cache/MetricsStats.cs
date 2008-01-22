@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
-        {
-            Draft,
-            Queued,
-            Closed,
-            Done,
-            Synced,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSession = "staging";
+        public const string DefaultSession = "latest-1";
+        public const string MinBudget = "open";
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] values)
