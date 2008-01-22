@@ -52,19 +52,17 @@ namespace Common.Utilities
         public const string DefaultSize = "primary-v2";
         public const long BurstQueue = 8601;
 
-        /// <summary>Project the next window farm value.</summary>
-        public static double ScaleWindowFarm(double bias, double bias2)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long origin)
         {
-            double bias3 = (bias2 * 5.0) * 17.0;
-            if (bias3 < (bias / 4.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias3 = bias3 - (bias2 / 8.0);
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (bias3 - bias3) - (double)(long)i;
-            }
-            return bias3 + bias3;
+            return -1;
         }
 
         /// <summary>Digest a series of context stats entries.</summary>
