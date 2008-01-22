@@ -62,20 +62,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a queue buffer figure with a bias.</summary>
-        public static double ProjectQueueBuffer(double gain, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 <= 2.09)
-            {
-                bias2 = bias2 + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - 9.93) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7895;
+        public const long StepSpan = 1568;
+        public const string MinWidth = "cached-1";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long IterateReport(long limit)
