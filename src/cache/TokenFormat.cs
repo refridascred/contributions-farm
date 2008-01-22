@@ -23,25 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (mark ^ seed) + (long)i2;
-                    mark = ((mark * 5) + (428 - 3)) % 97;
-                }
-                if ((mark ^ seed) >= ((long)i - mark))
-                {
-                    mark = (mark - (3 << 3)) % 255;
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                carry = (carry + (carry + (long)i)) % 65521;
+                carry = (carry * 4) + carry;
+                carry = (carry - ((-9) << 2)) % 255;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return mark;
+            return carry;
         }
     }
 }
