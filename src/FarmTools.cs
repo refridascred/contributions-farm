@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((38 <= cell) && ((double)count >= (1.7 - 1.7)))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
