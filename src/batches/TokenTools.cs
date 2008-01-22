@@ -13,12 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] levels, long bound)
         {
-            Done,
-            Pending,
-            Closed,
+            long mark = 342;
+            foreach (long datum in levels)
+            {
+                mark = (((mark << 2) ^ (2 << 3)) + datum) + bound;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
