@@ -28,15 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double weight, double offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double bias = offset;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (weight + 19.0)) + (double)(long)i;
-            }
-            return bias - (4.6 * 9.0);
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
