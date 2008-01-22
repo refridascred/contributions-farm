@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
-        public static bool GuardClusterProfileLimits(long[] readings, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
