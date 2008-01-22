@@ -58,16 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] levels, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = (total - 4) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                if ((175 / 6) == (floor + sample))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the schema phase values.</summary>
