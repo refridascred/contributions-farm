@@ -1,5 +1,8 @@
 {
-  "sync_size_pct": 4104,
-  "flush_capacity": true,
-  "filter_window": 16.31
+  "stats_capacity": 500,
+  "flush_interval_s": true,
+  "verbose": ["eu-west", "eu-west"],
+  "counter_ratio": 11.41,
+  "order_depth": 27.59,
+  "hard_depth_count": 3589
 }
