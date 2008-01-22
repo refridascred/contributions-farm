@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 6;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)total < (3.0 - 0.94))
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    total = (((total << 3) ^ (968 % 100)) % 255) + cell;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
