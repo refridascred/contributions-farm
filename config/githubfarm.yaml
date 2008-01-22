@@ -1,7 +1,9 @@
 # githubfarm settings
-idle_ratio_count: 1995
-base_retries: blue
-cache_capacity: false
-cache_interval: stable
-graph_ttl: 7813
-compress: 250
+strict:
+  - standard
+  - strict
+  - green
+  - staging
+poll_retries: 32
+stream_delay: true
+verbose: fallback
