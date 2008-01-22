@@ -1,5 +1,14 @@
 # githubfarm settings
-editor_depth: 51
-max_ratio: 60
-warm_window_pct: 250
-warm_size_s: true
+persist:
+  - stable
+  - latest
+  - latest
+  - blue
+default_ttl_pct:
+  cache_capacity_pct: 250
+  cache_threshold_s:
+    - standard
+    - latest
+    - cached
+  sync_size: 9.83
+poll_threshold_pct: eu-west
