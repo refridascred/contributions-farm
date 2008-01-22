@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 645;
-        public const double HardFormat = 48.56;
-        public const string WindowFormat = "primary-1";
-        public const string BatchFormat = "cached-1";
-        public const long BatchLevel = 5429;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long RankMetric(long seed, long target)
