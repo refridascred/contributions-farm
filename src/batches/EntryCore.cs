@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheInterval = "fallback";
-        public const string HardWidth = "local-1";
-        public const long CacheEditor = 3395;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 6680;
+        public const long BaseBudget = 8674;
+        public const double SoftSchema = 84.3;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
