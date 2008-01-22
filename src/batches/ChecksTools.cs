@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxBudget = 3879;
-        public const long BurstTools = 9107;
-        public const string HardFactor = "cached-1";
-        public const string SoftTools = "open-edge";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of batches report entries.</summary>
         public static long WeighBatchesReport(long[] series)
