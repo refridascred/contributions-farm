@@ -46,19 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((matches ^ 95) < (matches << 3)) || ((7 ^ matches) == (reading + 4)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitInterval = 619;
+        public const string CacheInterval = "fallback-1";
+        public const long IdleBudget = 9245;
+        public const long HardChannel = 1845;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] samples, long origin)
