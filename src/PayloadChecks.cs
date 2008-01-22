@@ -80,21 +80,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 1;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (state <= (reading * 5))
                 {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state ^ (reading >> 4)) + target;
                 }
+                state = (state - (reading - reading)) % 101;
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
