@@ -1,4 +1,4 @@
 # githubfarm settings
-batch_window: 100
-burst_retries_pct: 7068
-hard_depth_ms: fallback
+persist: false
+cache_limit_pct: 54
+retry_interval: 30
