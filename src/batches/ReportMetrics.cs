@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] data, long bound)
         {
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
