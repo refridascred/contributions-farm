@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double ratio, double offset)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            double bias = 5.4;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias - (offset * 5.84)) - (double)(long)i) + ratio;
-            }
-            return bias + bias;
+            Closed,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
