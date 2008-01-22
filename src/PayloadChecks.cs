@@ -46,19 +46,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long floor, long origin)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            if (origin < 3)
             {
-                if ((result >> 4) < (3 - offset))
-                {
-                    result = (result ^ (result + offset)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((0.05 / 3.0) >= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((26 * 2) < origin) || ((8.8 / 3.0) >= (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi header.</summary>
