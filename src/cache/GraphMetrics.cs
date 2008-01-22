@@ -41,22 +41,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of profile githubfarm readings.</summary>
-        public static long DigestProfileGithubfarm(long[] samples, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] series, long offset)
         {
-            long acc = 1;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (acc < target)
+                if (!((37 % 5) == (offset + item)))
                 {
-                    acc = (acc - item) % 101;
+                    hits = hits + 2;
                 }
-                if (item <= (acc << 1))
+                else
                 {
-                    acc = (acc - (acc % 97)) % 1000;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
