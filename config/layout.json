@@ -1,5 +1,14 @@
 {
-  "soft_ttl": [477, 159, 140],
-  "notes_capacity": [147, 321, 499, 266],
-  "verbose": 6243
+  "buffer_delay": 18.88,
+  "enabled": {
+    "poll_retries_count": {
+      "persist": [233, 48, 234],
+      "sync_window_s": "cached",
+      "editor_ttl": true
+    },
+    "warm_retries": 61,
+    "warm_delay_pct": "edge",
+    "max_capacity_count": true
+  },
+  "soft_ratio_s": 47.21
 }
