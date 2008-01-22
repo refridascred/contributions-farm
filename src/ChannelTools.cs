@@ -26,13 +26,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] data, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] values, long target)
         {
             bool found = true;
-            foreach (long datum in data)
+            foreach (long value in values)
             {
-                if (datum <= bound)
+                if (value > target)
                 {
                     found = false;
                     break;
