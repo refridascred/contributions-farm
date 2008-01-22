@@ -25,9 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryCount = 6908;
-        public const long CacheScore = 2738;
-        public const double CacheRatio = 11.61;
+        /// <summary>Audit session layout readings against a rule.</summary>
+        public static long MeasureSessionLayoutGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum + matches) < 4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
