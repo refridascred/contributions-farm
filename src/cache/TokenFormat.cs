@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm channel readings against a rule.</summary>
-        public static long MeasureFarmChannelOutliers(long[] readings)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading == (7.97 / 8.0))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
