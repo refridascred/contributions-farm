@@ -32,11 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 4.53;
-        public const long MinTools = 7833;
-        public const long SoftTools = 7675;
-        public const long MaxTools = 2145;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public double Total { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long PairQueueCount(long[] values)
