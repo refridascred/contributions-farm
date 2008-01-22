@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
