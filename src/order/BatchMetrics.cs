@@ -10,23 +10,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 4003;
         public const string LimitSession = "fallback-1";
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)limit >= (9.3 - 7.4))
-                {
-                    anchor = ((anchor << 2) ^ (long)i) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + ((long)i - anchor)) % 4096;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
