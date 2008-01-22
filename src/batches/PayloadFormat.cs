@@ -42,12 +42,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstTimeout = "alpha-1";
-        public const double StepStream = 46.8;
-        public const string RetryStream = "primary-edge";
-        public const double MaxInterval = 70.73;
-        public const long MaxStream = 8534;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public string Level { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of payload readings.</summary>
         public static long PairPayloadCount(long[] levels)
