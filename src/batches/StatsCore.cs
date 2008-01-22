@@ -64,19 +64,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every stats order entry stays within the limit.</summary>
-        public static bool VerifyStatsOrderLimits(long[] samples, long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate route readings against a bound.</summary>
