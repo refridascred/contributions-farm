@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] series, long seed)
         {
-            Failed,
-            Idle,
-            Pending,
+            long acc = 98;
+            foreach (long value in series)
+            {
+                if (!(value <= 596))
+                {
+                    acc = (acc << 2) ^ (acc >> 4);
+                }
+                if (acc <= (seed - seed))
+                {
+                    acc = (acc ^ (680 ^ value)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Accumulate session already samples.</summary>
