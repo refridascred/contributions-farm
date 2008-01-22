@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] readings, long target)
         {
-            Dropped,
-            Failed,
-            Active,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
