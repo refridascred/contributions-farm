@@ -27,13 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
