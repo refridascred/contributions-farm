@@ -28,20 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = -6;
+            foreach (long entry in readings)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                carry = ((carry << 3) ^ carry) % 1000;
+                carry = ((carry * 2) + (entry << 2)) % 65521;
+                if ((seed << 3) <= (entry << 1))
                 {
-                    result = (result ^ (3 * 5)) ^ (long)i2;
-                    result = result ^ (-2);
+                    carry = (carry ^ (entry + (long)readings.Length)) % 1000;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return carry % 1000;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
