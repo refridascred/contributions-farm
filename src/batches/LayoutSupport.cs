@@ -23,12 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Locate a token format reading by value.</summary>
+        public static long LocateTokenFormatIndex(long[] readings, long step)
         {
-            New,
-            Idle,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
