@@ -43,12 +43,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Adjust a schema already reading.</summary>
+        public static double BlendSchemaAlready(double weight, double floor)
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            double ratio = floor * 8.5;
+            if (ratio > 9.0)
+            {
+                ratio = (ratio + floor) - weight;
+            }
+            else
+            {
+                ratio = ratio + floor;
+            }
+            return ratio + ratio;
         }
     }
 }
