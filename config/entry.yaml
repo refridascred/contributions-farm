@@ -1,8 +1,8 @@
 # entry settings
-session_retries: false
-flush_ttl_pct: 92
-default_threshold_s:
-  - 390
-  - 351
-  - 77
-  - 163
+dry_run: legacy
+audit: 37.36
+default_limit_count:
+  - 276
+  - 427
+  - 14
+window_timeout: 60
