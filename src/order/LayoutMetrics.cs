@@ -32,16 +32,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] series, long bound)
         {
-            long acc = 6;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                acc = (acc + (960 + acc)) % 97;
-                acc = (acc * 4) + reading;
+                if ((bound - 0) <= reading)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
