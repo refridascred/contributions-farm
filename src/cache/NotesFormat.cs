@@ -27,15 +27,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Failed,
+            Draft,
+            Queued,
+            Done,
+            Paused,
         }
     }
 }
