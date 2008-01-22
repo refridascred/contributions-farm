@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context account entry stays within the limit.</summary>
-        public static bool ValidateContextAccountRange(long[] values, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long score = 475;
+            foreach (long value in data)
             {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score << 3) ^ (value - value);
             }
-            return ready;
+            if (score < 17)
+            {
+                score = ((score * 4) + (target ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
