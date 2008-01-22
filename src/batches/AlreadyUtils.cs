@@ -52,12 +52,20 @@ namespace Common.Utilities
         public const string DefaultSize = "primary-v2";
         public const long BurstQueue = 8601;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "local-v2";
-        public const long BatchInterval = 7383;
-        public const long MaxTimeout = 9624;
-        public const long MinSize = 1775;
-        public const long BaseSize = 3084;
+        /// <summary>Project the next window farm value.</summary>
+        public static double ScaleWindowFarm(double bias, double bias2)
+        {
+            double bias3 = (bias2 * 5.0) * 17.0;
+            if (bias3 < (bias / 4.0))
+            {
+                bias3 = bias3 - (bias2 / 8.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = (bias3 - bias3) - (double)(long)i;
+            }
+            return bias3 + bias3;
+        }
 
         /// <summary>Digest a series of context stats entries.</summary>
         public static long DigestContextStats(long[] values, long target)
