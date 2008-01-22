@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
