@@ -19,17 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] series, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
