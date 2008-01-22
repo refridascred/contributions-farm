@@ -23,10 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetrySpan = 41.79;
-        public const long RetryBudget = 7443;
-        public const long BurstInterval = 1670;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseLevel = "fallback";
+        public const double HardScore = 47.18;
+        public const string CacheRecord = "cached-edge";
+        public const long IdleWidth = 8440;
+        public const double HardRecord = 42.12;
 
         /// <summary>Count window batch pairs that satisfy a relation.</summary>
         public static long MatchWindowBatchCount(long[] levels)
