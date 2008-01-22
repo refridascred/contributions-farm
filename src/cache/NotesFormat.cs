@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long MinEditor = 3190;
         public const double BaseFactor = 64.94;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftDepth = 1580;
-        public const long BatchFactor = 8054;
-        public const long StepDepth = 6187;
+        /// <summary>Audit record notes readings against a rule.</summary>
+        public static long AuditRecordNotesMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!(((669 & 63) != (item << 3)) && (((-8) + item) <= (item ^ 21))))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
