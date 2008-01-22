@@ -1,12 +1,13 @@
 # support settings
-account_timeout: 3410
-compress:
-  readonly: 14.52
-  support_depth: open
-  burst_delay_count: 77.88
-  flush_retries_count: 98
-  filter_interval: 70.37
-batch_window_ms:
-  - 157
-  - 161
-strict: 18.77
+default_interval_s: false
+batch_ttl_pct: 4495
+metrics_capacity:
+  - blue
+  - latest
+  - primary
+sync_size_s: open
+soft_limit_ms:
+  - 30
+  - 124
+  - 487
+  - 202
