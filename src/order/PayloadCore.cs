@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a farm graph reading by value.</summary>
-        public static long LookupFarmGraphIndex(long[] values, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the session batch entries that pass the check.</summary>
