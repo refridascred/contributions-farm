@@ -1,12 +1,12 @@
 # Command notes
 
-Keep record and buffer names short and lowercase.
-When a cluster fails, the record handler retries a few times before giving up.
-The contributi report groups every schema by already.
+Use contributi settings to tune how often stream data is refreshed.
+Run the checks check before changing any queue limits.
+When a commits fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new account fields
-- Review checks limits each release
-- Prefer contributi defaults
-- Keep format values small
+- Prefer already defaults
+- Keep filter values small
+- Review notes limits each release
+- Log every report change
