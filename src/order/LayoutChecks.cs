@@ -61,13 +61,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
