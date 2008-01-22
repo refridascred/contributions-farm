@@ -33,10 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 5598;
-        public const long MaxFormat = 4263;
-        public const long DefaultFormat = 6292;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinLevel = 57;
