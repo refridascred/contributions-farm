@@ -1,8 +1,5 @@
 {
-  "burst_size": [17, 483, 294, 24],
-  "warm_interval": ["open", "open", "stable"],
-  "idle_window_ms": "legacy",
-  "retry_interval": true,
-  "retry_size": 2.82,
-  "record_ratio": "strict"
+  "max_ttl_s": 94,
+  "readonly": ["eu-west", "edge", "green"],
+  "retry_retries_ms": false
 }
