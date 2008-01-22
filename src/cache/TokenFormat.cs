@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double bias)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            double scale = (rate - rate) + rate;
+            if (scale < 6.7)
+            {
+                scale = scale - (scale / 3.0);
+            }
+            return scale + (scale - bias);
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
