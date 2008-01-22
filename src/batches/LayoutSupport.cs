@@ -19,19 +19,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] values, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a cluster header.</summary>
