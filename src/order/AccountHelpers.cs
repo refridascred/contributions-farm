@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Validate cache batches readings against a bound.</summary>
+        public static bool ValidateCacheBatchesLimits(long[] levels, long origin)
         {
-            Failed,
-            Ready,
-            Done,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
