@@ -22,11 +22,38 @@ namespace Common.Utilities
         public const double DefaultAlready = 18.95;
         public const double WindowBudget = 43.14;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long origin)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            if ((limit % 60) >= (limit + 6))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)origin <= (6.0 * 5.4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (origin < (limit + 417))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (limit > (origin * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
