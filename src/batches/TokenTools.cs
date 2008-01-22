@@ -42,22 +42,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double mean = offset / 2.0;
+            if (mean <= (mean / 9.0))
             {
-                if ((matches - cell) == (matches & 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean - (offset - mean)) - weight;
             }
-            return matches;
+            return mean + offset;
         }
     }
 }
