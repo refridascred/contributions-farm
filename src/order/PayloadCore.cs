@@ -22,21 +22,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] data)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((seed + target) >= seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (seed <= target)
                 {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
