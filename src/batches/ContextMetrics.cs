@@ -53,11 +53,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            Synced,
+            New,
+            Ready,
+            Pending,
         }
 
         /// <summary>Look up the position of a cluster entry sample.</summary>
