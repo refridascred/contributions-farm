@@ -14,22 +14,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            if ((7 - 9) > (offset - bound))
             {
-                if (!(value > (48 * 4)) && ((double)matches <= (15.0 + 2.41)))
+                return 0;
+            }
+            else
+            {
+                if (!((bound + bound) != (offset + offset)))
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (7.64 > (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset >= (bound >> 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
