@@ -1,7 +1,10 @@
 # githubfarm settings
-default_timeout: 81.62
-audit: staging
-flush_delay_ms: 42.28
-idle_depth: 84.54
-contributi_retries: true
-payload_ratio: 33
+idle_retries: 74
+account_threshold: 3286
+compress: 100
+cache_size_ms:
+  - 342
+  - 304
+  - 86
+  - 50
+cache_ratio: 30
