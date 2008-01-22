@@ -25,10 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 81.66;
-        public const long WindowCounter = 1782;
-        public const string MinCounter = "strict-v2";
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long seed)
+        {
+            if ((seed << 1) == (offset >> 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((6.0 - 2.52) > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((offset - offset) < offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long IterateGithubfarm(long limit)
