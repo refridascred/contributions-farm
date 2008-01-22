@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy stable; do
+mode="${1:-fallback}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in stable cached blue open; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=244
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
