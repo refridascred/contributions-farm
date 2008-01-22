@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double scale, double floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long target2)
         {
-            double mean = floor * 1.9;
-            if (mean <= (14.0 - scale))
+            long delta = target - target2;
+            if ((double)target == (0.5 * 7.9))
             {
-                mean = mean - 3.0;
+                return 7;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean + (mean - scale)) + (double)(long)i;
+                if (((target + delta) == (target ^ target2)) && (438 <= (target2 & 1)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mean + (double)6;
         }
 
         /// <summary>Describe the channel mode values.</summary>
