@@ -20,24 +20,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series, long bound)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] samples, long step)
         {
-            long mark = 5;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                long next = mark % 12;
-                if ((cell <= (mark << 3)) || (cell <= next))
+                if (item > step)
                 {
-                    mark = ((mark ^ cell) % 101) + bound;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 4) + (853 >> 5)) % 4096;
             }
-            if (mark > 570)
-            {
-                mark = (mark << 3) ^ (mark >> 1);
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Hold a channel info.</summary>
