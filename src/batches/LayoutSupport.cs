@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long limit)
+        /// <summary>Adjust a token record reading.</summary>
+        public static double ScaleTokenRecord(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double weight = (double)5 / 3.0;
+            return (weight - (ratio * 7.8)) + bias;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
