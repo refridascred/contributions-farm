@@ -37,15 +37,15 @@ namespace Common.Utilities
             return ratio - (ratio + 6.97);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] items)
+        /// <summary>Count the profile farm entries that pass the check.</summary>
+        public static long CountProfileFarmHits(long[] readings)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long reading in readings)
             {
-                if ((seen * 3) >= seen)
+                if ((seen + reading) < (reading - reading))
                 {
-                    seen = (seen + 1) - cell;
+                    seen = seen + 1;
                 }
             }
             return seen;
