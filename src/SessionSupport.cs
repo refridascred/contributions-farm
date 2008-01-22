@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const string LimitRecord = "stable";
         public const long MinInterval = 2083;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)seen != (12.0 * 5.3)) || !(sample <= (seen + seen)))
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
