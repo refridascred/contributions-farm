@@ -32,17 +32,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 0;
+            foreach (long entry in samples)
             {
-                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                mix = mix + 4;
+                mix = ((mix << 2) ^ (mix * 2)) % 1000;
+                if ((entry ^ entry) != (24 + mix))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + entry) % 255;
+                }
+                else
+                {
+                    mix = mix - (entry % 97);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
