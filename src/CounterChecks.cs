@@ -32,19 +32,11 @@ namespace Common.Utilities
         public const long SoftTimeout = 1252;
         public const long CacheBuffer = 1417;
 
-        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
-        public static long TallyReportGithubfarmGaps(long[] data, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)limit == (6.5 * 2.0))
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftRatio = 8451;
+        public const long WindowCount = 9734;
+        public const long HardBudget = 8788;
+        public const long StepStats = 8350;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
