@@ -1,11 +1,6 @@
 {
-  "commits_limit": 100,
-  "window_ratio": {
-    "flush_ratio": [10, 82],
-    "soft_capacity_count": 47.1,
-    "githubfarm_retries": 60,
-    "schema_window": false,
-    "strict": true
-  },
-  "retry_retries": "staging"
+  "dry_run": 94.38,
+  "sync_depth": 44.29,
+  "flush_size_ms": ["staging", "local", "local"],
+  "account_retries": "staging"
 }
