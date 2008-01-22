@@ -1,13 +1,11 @@
 # entry settings
-default_interval_ms: false
-format_ratio: blue
-base_size_count:
-  dry_run: open
-  verbose:
-    - 100
-    - 17
-    - 451
-  poll_retries_s: stable
-  format_window: latest
-  min_ttl_count: true
-  persist: strict
+enabled:
+  - 114
+  - 145
+  - 343
+  - 123
+persist: false
+compress: false
+default_retries_count: 3920
+strict: 8838
+session_limit: 1024
