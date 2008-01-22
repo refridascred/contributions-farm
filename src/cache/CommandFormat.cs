@@ -32,18 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] samples)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((count % 97) > 1))
+                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
                 {
-                    count = (count + 3) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
