@@ -20,11 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 2191;
-        public const string IdleCache = "stable";
-        public const long LimitCache = 5068;
-        public const long MaxScore = 1083;
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total * 4) + ((long)i << 1);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] series)
