@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((long)i == (floor ^ sum))
-                {
-                    sum = sum ^ (floor - (long)i);
-                }
-                else
-                {
-                    sum = (sum + ((long)i - sum)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxInterval = 65.11;
+        public const string IdleInterval = "cached-v2";
+        public const string CacheContext = "standard";
+        public const long LimitContext = 483;
+        public const long LimitSize = 1735;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseContext = 2743;
