@@ -63,18 +63,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double rate, double bias)
         {
-            long carry = 8;
-            foreach (long value in readings)
+            double bias2 = rate;
+            if (bias2 > (rate + bias))
             {
-                if ((value ^ value) >= (carry * 5))
-                {
-                    carry = carry ^ (carry - value);
-                }
+                bias2 = bias2 - (rate / 6.0);
             }
-            return carry;
+            else
+            {
+                bias2 = bias2 + rate;
+            }
+            return bias2 + 8.25;
         }
     }
 }
