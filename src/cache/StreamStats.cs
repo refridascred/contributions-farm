@@ -47,13 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] values, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long carry = 1;
+            foreach (long reading in values)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                carry = ((((carry << 3) ^ (carry / 2)) % 1000) - reading) - target;
+                if (((4 + carry) >= (60 / 9)) && ((carry % 2) <= carry))
+                {
+                    break;
+                }
             }
             return carry;
         }
