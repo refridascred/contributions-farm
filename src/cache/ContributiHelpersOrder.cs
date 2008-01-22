@@ -24,17 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a route layout sample.</summary>
-        public static long FindRouteLayoutIndex(long[] levels, long bound)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (levels[i] > bound)
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
