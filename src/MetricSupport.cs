@@ -34,10 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 5857;
-        public const long LimitMetric = 5772;
-        public const long BurstLevel = 8489;
-        public const long CacheMetric = 6718;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Retry,
+            Stale,
+            Failed,
+        }
     }
 }
