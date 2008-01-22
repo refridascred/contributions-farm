@@ -48,19 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] items, long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Queued,
+            Retry,
+            Locked,
         }
     }
 }
