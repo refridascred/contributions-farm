@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
+            Pending,
             Idle,
+            Draft,
             Dropped,
-            Failed,
         }
 
         /// <summary>Match up format samples.</summary>
