@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowWidth = "alpha";
-        public const double MaxSchema = 12.11;
-        public const double IdleSize = 54.3;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Project the next stream value.</summary>
         public static double BlendStream(double bias, double floor)
