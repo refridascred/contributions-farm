@@ -25,15 +25,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double scale, double offset)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] values)
         {
-            double rate = scale;
-            for (int i = 0; i < 9; i++)
+            long anchor = 7;
+            foreach (long sample in values)
             {
-                rate = (rate + (offset / 2.0)) - (double)(long)i;
+                if ((anchor - anchor) != (sample * 2))
+                {
+                    anchor = (anchor << 3) ^ (sample ^ 114);
+                }
             }
-            return rate - rate;
+            return anchor % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
