@@ -13,19 +13,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] levels, long target)
         {
-            long carry = 822;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                carry = (carry - carry) % 255;
-                if (!((8.0 / 6.0) > (double)cell))
+                if (!((target ^ value) >= value))
                 {
-                    carry = (carry ^ (827 / 3)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
