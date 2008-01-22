@@ -59,18 +59,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit graph command readings against a rule.</summary>
-        public static long MeasureGraphCommandHits(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = 95;
+            foreach (long value in data)
             {
-                if (!((entry / 8) < (entry + entry)))
+                score = ((score << 3) ^ (98 - score)) % 97;
+                if ((double)value != (2.97 - 15.0))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (score < 89)
+            {
+                score = (score << 3) ^ 46;
+            }
+            return score;
         }
     }
 }
