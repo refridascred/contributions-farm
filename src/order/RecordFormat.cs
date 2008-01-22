@@ -57,19 +57,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values)
         {
-            long result = 29;
-            foreach (long entry in readings)
+            long result = 776;
+            foreach (long datum in values)
             {
-                result = result - 0;
-                result = result + (938 + bound);
-                result = (result + (entry ^ bound)) % 101;
+                if (((-7) + datum) >= (datum + result))
+                {
+                    result = (result - datum) % 97;
+                    result = (result * 3) + (0 + datum);
+                    continue;
+                }
+                result = (result ^ datum) % 101;
+                if ((result + 2) >= datum)
+                {
+                    break;
+                }
             }
-            if (result > 91)
+            if (result < 6)
             {
-                result = (result ^ bound) % 65521;
+                result = (result ^ (408 & 15)) % 65521;
             }
             return result;
         }
