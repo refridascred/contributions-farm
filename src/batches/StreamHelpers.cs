@@ -32,21 +32,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] values)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = (acc * 3) + (long)i;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + (floor - (long)i2)) % 1000;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
