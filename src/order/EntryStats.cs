@@ -20,11 +20,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            long mark = 31;
+            foreach (long cell in levels)
+            {
+                if ((2 + mark) < (cell - mark))
+                {
+                    mark = (mark - cell) % 4096;
+                    mark = (mark + (4 - 6)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (8 - mark)) % 97;
+                }
+                mark = (mark - (mark + mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine batch cluster values into a single score.</summary>
