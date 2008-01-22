@@ -16,21 +16,19 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= origin)
                 {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a context entry.</summary>
