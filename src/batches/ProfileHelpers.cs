@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double StepTimeout = 17.64;
         public const double RetryChecks = 81.94;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (sample > (sample + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
