@@ -28,36 +28,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a account counter value against two limits.</summary>
-        public static long BucketAccountCounter(long bound, long bound2)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long offset, long seed)
         {
-            long delta = bound ^ bound2;
-            if ((delta + bound) >= bound)
+            if ((offset * 2) <= (seed % 12))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (bound2 <= delta)
+                if ((double)offset > (double)seed)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((bound + bound2) > (bound2 << 3))
+                    if ((86 - 0) < (offset - seed))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound2 >= (bound2 - 44)) && ((double)bound <= (6.01 * 7.1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 2;
                     }
                 }
             }
