@@ -87,12 +87,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
