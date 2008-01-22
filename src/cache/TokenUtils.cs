@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long origin, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if ((double)bound == (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin < 11.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Owner { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
