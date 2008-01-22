@@ -24,19 +24,13 @@ namespace Common.Utilities
         public const double LimitWidth = 23.83;
         public const long IdleWidth = 6404;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] data, long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the editor status values.</summary>
