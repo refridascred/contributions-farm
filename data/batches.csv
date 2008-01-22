@@ -1,6 +1,10 @@
-id,active,level
-1,cached,stable
-2,279,43.7
-3,963,60
-4,open,35.88
-5,404,26
+id,count,ratio,state
+1,89.18,green,569
+2,open,latest,62.35
+3,latest,73.24,382
+4,54.9,89.95,62.54
+5,latest,448,98.88
+6,759,206,blue
+7,93.41,674,476
+8,960,5.75,377
+9,119,fallback,949
