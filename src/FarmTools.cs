@@ -36,10 +36,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchFactor = 5902;
-        public const long SoftSupport = 3192;
-        public const string BurstSupport = "alpha-v2";
-        public const long MinSupport = 9139;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
