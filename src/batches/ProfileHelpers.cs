@@ -75,19 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Match up token buffer samples.</summary>
+        public static long CompareTokenBufferCount(long[] data)
         {
             long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((80 & 63) > tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
