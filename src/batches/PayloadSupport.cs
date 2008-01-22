@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Fold a list of cache channel readings.</summary>
+        public static long DigestCacheChannel(long[] values, long bound)
         {
-            long delta = step + floor;
-            if (!((floor & 255) > 122))
+            long sum = 64;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - floor) < (floor >> 3))
+                if ((bound << 1) <= (sum << 2))
                 {
-                    return 4;
+                    sum = (sum + bound) + datum;
                 }
-                else
+                if (!((double)sum >= (6.1 * 1.17)))
                 {
-                    if ((8.54 * 2.4) >= (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step > (delta / 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (sum < (-8))
+            {
+                sum = sum - (926 % 60);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
