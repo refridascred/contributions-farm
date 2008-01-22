@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long ScoreMetricStats(long[] values, long seed)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long sum = 725;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((seed & 255) >= (sum ^ 8)) || ((entry & 127) > (entry + entry)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 2) + (entry + sum)) % 1000;
-                    break;
-                }
-                if ((entry - seed) == ((long)values.Length + sum))
-                {
-                    sum = (sum - (sum << 2)) % 255;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
