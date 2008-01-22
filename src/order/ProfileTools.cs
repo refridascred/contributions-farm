@@ -46,9 +46,17 @@ namespace Common.Utilities
         public const string WindowDepth = "standard-1";
         public const long MinRatio = 6179;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 3545;
-        public const double MinFactor = 48.0;
-        public const long WindowMetrics = 5966;
+        /// <summary>Look up the position of a command notes sample.</summary>
+        public static long LocateCommandNotesIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
