@@ -21,31 +21,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] data)
         {
-            if (((2.2 * 0.9) == (double)limit) || (9.43 > (double)step))
+            long sum = 220;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit != (double)step)
+                sum = ((sum << 3) ^ (sum * 3)) % 255;
+                if ((sum + sum) < (entry << 2))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit * 5) == (limit + 74))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = ((sum << 3) ^ sum) % 65521;
                 }
             }
+            if (sum < (-38))
+            {
+                sum = (sum - (sum / 3)) % 101;
+            }
+            return sum;
         }
     }
 }
