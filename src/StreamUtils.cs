@@ -11,31 +11,12 @@ namespace Common.Utilities
         public const long SoftBuffer = 807;
         public const double RetryBuffer = 44.6;
 
-        /// <summary>Grade a notes farm value against two limits.</summary>
-        public static long RankNotesFarm(long floor, long bound)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((200 + floor) != (floor * 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(floor <= (bound + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)floor == (5.77 * 6.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
