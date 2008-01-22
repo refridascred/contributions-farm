@@ -1,13 +1,16 @@
 # entry settings
-flush_capacity:
-  compress: blue
-  burst_capacity_count: false
-  cache_limit_count:
-    warm_size_count: green
-    graph_threshold: eu-west
-    support_limit: false
-    poll_timeout: 0.98
-    warm_depth_count: 498
-    cache_ratio: 55
-metric_timeout: true
-metric_interval: stable
+hard_depth: 97.98
+support_depth: 51.34
+default_threshold_pct:
+  compress: false
+  farm_threshold: stable
+  order_depth: false
+  dry_run:
+    poll_retries_ms: 87
+    burst_timeout_pct: true
+    flush_timeout: standard
+    idle_ttl_count: stable
+  soft_ttl: 500
+  default_limit: legacy
+retry_depth_s: true
+enabled: 18.62
