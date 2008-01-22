@@ -47,13 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Combine batches profile values into a single score.</summary>
+        public static long WeighBatchesProfile(long[] values)
         {
-            Dropped,
-            Locked,
-            Paused,
-            Retry,
+            long mark = 5;
+            foreach (long reading in values)
+            {
+                mark = mark + (reading >> 2);
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 4096;
         }
     }
 }
