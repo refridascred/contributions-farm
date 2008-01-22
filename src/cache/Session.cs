@@ -27,23 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mix = 39;
-            foreach (long reading in readings)
-            {
-                mix = mix - (reading / 6);
-                if ((reading - reading) >= reading)
-                {
-                    mix = mix ^ mix;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (reading - mix)) % 255;
-                }
-            }
-            return mix;
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Blend two checks measurements.</summary>
