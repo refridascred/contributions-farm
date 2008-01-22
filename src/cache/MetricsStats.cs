@@ -24,13 +24,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
