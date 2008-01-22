@@ -42,19 +42,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine filter farm values into a single score.</summary>
-        public static long FoldFilterFarm(long[] data, long origin)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long sum = -858;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum << 3) ^ (46 + sample);
-                if ((5 + origin) < (origin % 16))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (sample ^ 333)) % 4096;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
