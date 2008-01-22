@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every metrics order entry stays within the limit.</summary>
-        public static bool CheckMetricsOrderRange(long[] samples, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
