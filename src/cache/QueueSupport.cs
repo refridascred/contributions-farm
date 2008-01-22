@@ -12,21 +12,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 984;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((carry << 1) > carry)
                 {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    carry = ((carry * 3) + (carry - carry)) - value;
+                }
+                carry = (carry * 2) + (190 << 2);
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the tools phase values.</summary>
