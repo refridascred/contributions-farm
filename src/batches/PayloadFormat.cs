@@ -23,26 +23,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a route graph value against two limits.</summary>
-        public static long ClassifyRouteGraph(long offset, long bound)
-        {
-            long lane = offset - bound;
-            if (!((bound - lane) <= bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset >= 9.8) || ((offset % 24) <= (lane + offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstTimeout = "alpha-1";
+        public const double StepStream = 46.8;
+        public const string RetryStream = "primary-edge";
+        public const double MaxInterval = 70.73;
+        public const long MaxStream = 8534;
 
         /// <summary>Combine record values into a single score.</summary>
         public static long CombineRecord(long[] samples, long step)
