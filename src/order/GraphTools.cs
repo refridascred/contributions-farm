@@ -42,21 +42,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of context contributi readings.</summary>
-        public static long OverlapContextContributiCount(long[] samples)
+        /// <summary>Count the graph editor entries that pass the check.</summary>
+        public static long CountGraphEditorHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen > datum) && ((double)seen < 5.0))
                 {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the report phase values.</summary>
