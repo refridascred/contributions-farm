@@ -1,6 +1,17 @@
 {
-  "compress": [445, 37, 442],
-  "session_limit": "open",
-  "batch_interval_s": false,
-  "enabled": 78
+  "record_depth": {
+    "base_timeout_pct": 61.77,
+    "context_delay": "legacy",
+    "burst_window_ms": ["standard", "blue"]
+  },
+  "retry_depth_count": "green",
+  "batch_retries": {
+    "audit": [27, 181, 166],
+    "window_size": 100,
+    "profile_retries": "green",
+    "flush_limit": [91, 17],
+    "flush_limit_ms": [186, 307, 444]
+  },
+  "commits_size": [75, 104],
+  "dry_run": [359, 96, 319]
 }
