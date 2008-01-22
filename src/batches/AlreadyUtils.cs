@@ -46,18 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context stats entries.</summary>
-        public static long DigestContextStats(long[] values, long target)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            long mark = 72;
-            foreach (long entry in values)
+            double bias2 = rate;
+            if (bias2 < (bias - bias))
             {
-                if (entry > (target & 3))
-                {
-                    mark = mark + (-42);
-                }
+                bias2 = bias2 - bias;
             }
-            return mark % 97;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + (double)35;
         }
     }
 }
