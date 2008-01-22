@@ -15,19 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (58 > (seed ^ sample))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowWidth = "alpha";
+        public const double MaxSchema = 12.11;
+        public const double IdleSize = 54.3;
 
         /// <summary>Find the first graph window entry that matches the target.</summary>
         public static long SeekGraphWindowIndex(long[] readings, long seed)
