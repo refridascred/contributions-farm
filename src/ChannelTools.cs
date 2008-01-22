@@ -36,13 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
+            double gain = span;
+            if (gain <= (double)12)
+            {
+                gain = (gain + (span - gain)) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - span;
         }
     }
 }
