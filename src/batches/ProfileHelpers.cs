@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double StepTimeout = 17.64;
         public const double RetryChecks = 81.94;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if (sample > (sample + count))
+                if (value < target)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a commits info.</summary>
