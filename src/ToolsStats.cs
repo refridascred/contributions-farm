@@ -86,25 +86,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long seed, long step)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            long prev = seed + step;
-            if (((step % 100) < (step / 8)) || ((double)prev < (6.68 * 5.7)))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((495 * 3) != (step + prev))
+                if (!(7 >= (datum & 1)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
