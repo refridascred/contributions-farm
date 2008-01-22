@@ -32,22 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] values)
+        /// <summary>Match up layout tools samples.</summary>
+        public static long PairLayoutToolsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum - datum) != (datum << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] + levels[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
