@@ -22,18 +22,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] readings, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading + limit) >= (hits + reading)) && (reading > (hits + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
