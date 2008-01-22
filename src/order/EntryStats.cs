@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long RetryFactor = 4309;
         public const long IdleCount = 712;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] levels, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)value == (4.16 * 7.13))
+                if ((series[i] == step) && ((series[i] % 3) == 0))
                 {
-                    tally = (tally + 2) + seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
