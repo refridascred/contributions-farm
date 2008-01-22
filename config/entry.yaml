@@ -1,6 +1,5 @@
 # entry settings
-order_window: false
-idle_size_ms: 53.18
-poll_ttl_pct: local
-default_capacity: edge
-batch_capacity_ms: legacy
+enabled: standard
+checks_size: primary
+max_size: 52.62
+sync_delay_pct: 7396
