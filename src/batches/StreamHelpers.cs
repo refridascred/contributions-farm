@@ -63,38 +63,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long floor, long floor2)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            if ((floor <= floor2) && (64 > floor2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((800 & 1) < (floor2 << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor & 15) == (floor ^ floor2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor2 < (floor / 6))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Retry,
+            Synced,
+            New,
         }
     }
 }
