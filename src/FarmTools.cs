@@ -26,27 +26,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] series, long bound)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] data, long limit)
         {
-            long result = 15;
-            foreach (long entry in series)
+            long score = 3;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    result = ((result << 2) ^ ((long)i / 9)) - bound;
-                    result = ((result << 3) ^ (788 % 10)) % 4096;
-                }
-                if (!(45 >= (entry ^ entry)))
-                {
-                    result = (result + (result * 2)) % 255;
-                }
-                else
-                {
-                    result = (result * 2) + result;
-                }
+                score = (score + (limit / 5)) - reading;
             }
-            return result;
+            if (score > (-68))
+            {
+                score = score + (69 << 1);
+            }
+            return score;
         }
     }
 }
