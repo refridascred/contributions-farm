@@ -34,13 +34,14 @@ namespace Common.Utilities
         public const long SoftTimeout = 1252;
         public const long CacheBuffer = 1417;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Retry,
-            Ready,
-            Closed,
-            Dropped,
+            Pending,
+            Stale,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Rank report input into a small class.</summary>
