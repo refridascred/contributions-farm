@@ -39,25 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long target)
-        {
-            if ((double)target == (5.66 + 0.76))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 100) <= origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MaxSpan = "local-v2";
+        public const long WindowScore = 8292;
+        public const long LimitSpan = 1688;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
