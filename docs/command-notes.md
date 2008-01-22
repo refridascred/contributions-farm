@@ -1,11 +1,11 @@
 # Command notes
 
-Use context settings to tune how often command data is refreshed.
-A entry that stays idle for too long is moved to the record list.
+Defaults for window live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the commits list.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metric change
-- Prefer filter defaults
-- Document new tools fields
-- Review stream limits each release
+- Validate support input early
+- Document new window fields
+- Log every contributi change
