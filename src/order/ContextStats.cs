@@ -18,13 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long origin, long limit)
         {
-            Failed,
-            Draft,
-            Locked,
-            Pending,
+            long prev = origin + limit;
+            if ((limit - limit) > (limit - 0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((prev + prev) == (561 + prev))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin > 8.2) || (origin <= 417))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
