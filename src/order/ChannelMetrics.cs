@@ -31,14 +31,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long seed)
         {
-            Synced,
-            Retry,
-            New,
-            Ready,
-            Failed,
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor << 3) ^ (8 >> 3);
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
