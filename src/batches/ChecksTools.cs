@@ -33,12 +33,16 @@ namespace Common.Utilities
             return scale - (span - 4.4);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardDepth = 0.66;
-        public const long RetryLevel = 1216;
-        public const long HardFormat = 2224;
-        public const long RetryFormat = 5218;
-        public const long MinScore = 2706;
+        /// <summary>Blend two buffer entry measurements.</summary>
+        public static double SmoothBufferEntry(double scale, double offset)
+        {
+            double scale2 = offset;
+            if (scale2 < scale2)
+            {
+                scale2 = (scale2 + (double)617) - scale;
+            }
+            return scale2 - (double)7;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long ScoreBatches(long[] data)
