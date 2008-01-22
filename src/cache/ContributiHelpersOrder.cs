@@ -14,31 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long origin, long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings)
         {
-            if ((16.0 + 0.71) >= (double)step)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin + origin) > 1)
+                if (!(value > (48 * 4)) && ((double)matches <= (15.0 + 2.41)))
                 {
-                    return 2;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((origin ^ step) == (origin & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
