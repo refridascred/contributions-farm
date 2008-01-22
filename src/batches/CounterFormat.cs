@@ -34,11 +34,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "strict-1";
-        public const string WindowMetrics = "local-1";
-        public const string SoftMetrics = "standard";
-        public const double MinMetrics = 88.65;
-        public const long CacheLevel = 5905;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
