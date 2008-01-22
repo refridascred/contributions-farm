@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitRatio = 1293;
-        public const string BurstBatch = "strict-v2";
-        public const long CacheFactor = 1617;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double floor)
+        {
+            double scale = bias + (floor - floor);
+            if (scale > 0.9)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - (double)2;
+            }
+            return scale - (bias + bias);
+        }
 
         /// <summary>Count order context pairs that satisfy a relation.</summary>
         public static long MatchOrderContextCount(long[] values)
