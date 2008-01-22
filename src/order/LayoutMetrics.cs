@@ -29,22 +29,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((bound - 0) <= reading)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryCount = 6908;
+        public const long CacheScore = 2738;
+        public const double CacheRatio = 11.61;
     }
 }
