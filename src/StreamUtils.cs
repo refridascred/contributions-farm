@@ -39,13 +39,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
             Done,
-            Failed,
-            Active,
-            Draft,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
