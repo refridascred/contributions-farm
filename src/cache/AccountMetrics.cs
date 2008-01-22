@@ -51,21 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of token tools readings.</summary>
-        public static long CompareTokenToolsCount(long[] levels)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample != step)
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
