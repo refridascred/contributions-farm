@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of graph entry entries.</summary>
-        public static long TallyGraphEntry(long[] values)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long carry = -38;
-            foreach (long value in values)
-            {
-                if ((double)(long)values.Length != (0.86 / 8.0))
-                {
-                    carry = carry - (71 + (long)values.Length);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (value & 7)) % 1000;
-                }
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
