@@ -21,12 +21,22 @@ namespace Common.Utilities
         public const long BatchFactor = 8054;
         public const long StepDepth = 6187;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count the account format entries that pass the check.</summary>
+        public static long CountAccountFormatOutliers(long[] samples)
         {
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= (cell + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
