@@ -12,17 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state + (floor - (long)i);
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBudget = 6859;
+        public const long DefaultBatch = 9524;
+        public const long LimitBatch = 3780;
+        public const string HardBatch = "stable-v2";
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
