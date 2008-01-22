@@ -73,10 +73,20 @@ namespace Common.Utilities
         public const long BurstInterval = 3769;
         public const long IdleLevel = 2508;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 792;
-        public const double MinTimeout = 10.75;
-        public const long RetryFactor = 9507;
+        /// <summary>Validate order metrics readings against a bound.</summary>
+        public static bool GuardOrderMetricsLimits(long[] series, long bound)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long FindAlreadyIndex(long[] values, long step)
