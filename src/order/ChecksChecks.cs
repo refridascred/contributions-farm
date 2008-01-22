@@ -20,11 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Look up the position of a queue metric sample.</summary>
+        public static long SeekQueueMetricIndex(long[] levels, long origin)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of report entries.</summary>
