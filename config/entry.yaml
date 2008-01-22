@@ -1,5 +1,8 @@
 # entry settings
-enabled: standard
-checks_size: primary
-max_size: 52.62
-sync_delay_pct: 7396
+sync_limit: latest
+verbose: 1024
+layout_timeout: edge
+metric_size:
+  - strict
+  - staging
+  - latest
