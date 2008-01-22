@@ -48,10 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "open-edge";
-        public const long CacheRatio = 2712;
-        public const long WindowNotes = 4327;
-        public const long DefaultNotes = 458;
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Label { get; set; } = "";
+        }
     }
 }
