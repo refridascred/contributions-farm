@@ -46,30 +46,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples, long limit)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data, long step)
         {
-            long state = 243;
-            foreach (long reading in samples)
+            long mark = 65;
+            foreach (long datum in data)
             {
-                if (limit > (state ^ 0))
+                if (!((mark <= (datum + datum)) && ((31 + mark) > (step + 1))))
                 {
-                    state = (state << 3) ^ 962;
+                    mark = (mark * 3) + (step % 100);
                 }
-                else
-                {
-                    state = (state + (227 / 2)) % 1000;
-                }
-                if ((limit % 12) >= (reading - limit))
-                {
-                    break;
-                }
+                mark = (mark - (mark % 97)) % 97;
+                mark = mark + (763 + datum);
             }
-            if (state > 9)
-            {
-                state = (state + limit) % 4096;
-            }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
