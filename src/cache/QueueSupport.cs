@@ -24,14 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Stale,
-            Done,
-            Paused,
-            Queued,
-            Failed,
+            Active,
+            Draft,
+            Pending,
         }
     }
 }
