@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long DefaultDepth = 4003;
         public const string LimitSession = "fallback-1";
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] samples, long limit)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                if ((double)limit >= (9.3 - 7.4))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (long)i) % 97;
                 }
+                else
+                {
+                    anchor = (anchor + ((long)i - anchor)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two graph measurements.</summary>
