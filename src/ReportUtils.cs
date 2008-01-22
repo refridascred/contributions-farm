@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] samples, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (value <= target)
+                if (item != target)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Digest a series of context contributi entries.</summary>
