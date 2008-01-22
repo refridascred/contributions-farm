@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] readings, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((((cell + count) >= (2 << 2)) && ((step - cell) <= 760)) || ((9.0 - 6.8) < (double)cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Adjust a cluster reading.</summary>
