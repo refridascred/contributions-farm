@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=183
+BUFFER_LIMIT=278
 log "limit is ${BUFFER_LIMIT}"
 
-for item in fallback primary; do
+for item in latest edge blue green; do
     log "checking ${item}"
 done
