@@ -35,31 +35,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long target, long limit)
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long CountContextContributiGaps(long[] values)
         {
-            if (((target << 3) > (58 % 7)) && (limit >= 0))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit * 4) < (445 * 5))
+                if ((entry * 2) >= (entry - matches))
                 {
-                    return 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((double)target <= (5.1 * 6.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next buffer order value from a seed.</summary>
