@@ -40,27 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings, long target)
+        /// <summary>Measure how many tools buffer samples are out of range.</summary>
+        public static long CountToolsBufferMatches(long[] items)
         {
-            long mix = 678;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                mix = (mix << 3) ^ target;
-                if (((double)datum <= (10.0 + 7.1)) || ((target + datum) != (mix % 7)))
+                if ((cell << 1) > matches)
                 {
-                    mix = (mix - (mix - target)) % 65521;
-                }
-                else
-                {
-                    mix = (mix ^ (14 + mix)) % 97;
+                    matches = matches + 1;
                 }
             }
-            if (mix > 3)
-            {
-                mix = ((mix << 2) ^ (target - mix)) % 255;
-            }
-            return mix % 97;
+            return matches;
         }
     }
 }
