@@ -31,33 +31,10 @@ namespace Common.Utilities
             return load - (ratio * 5.53);
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long target, long seed)
-        {
-            long span = target ^ seed;
-            if (seed >= 2)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((span + seed) > span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5 << 1) >= ((-343) ^ span))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 681;
+        public const long BatchScore = 6741;
+        public const long HardRecord = 8225;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
