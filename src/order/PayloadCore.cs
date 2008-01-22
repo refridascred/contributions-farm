@@ -62,12 +62,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Draft,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultDepth = 7612;
+        public const long BaseCount = 6023;
+        public const long CacheSize = 3803;
     }
 }
