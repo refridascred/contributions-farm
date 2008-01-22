@@ -1,12 +1,8 @@
 {
-  "default_depth_pct": 3274,
-  "cluster_ttl": {
-    "idle_capacity_count": 85,
-    "stats_capacity": true,
-    "metric_timeout": [123, 134, 25, 471],
-    "compress": ["edge", "staging"],
-    "audit": 32.78
-  },
-  "default_ratio": 500,
-  "default_size": "strict"
+  "idle_depth_pct": 60,
+  "flush_timeout_s": 55,
+  "hard_window_count": ["blue", "eu-west", "stable", "standard"],
+  "batch_interval": ["stable", "open"],
+  "base_interval_ms": false,
+  "payload_size": 7425
 }
