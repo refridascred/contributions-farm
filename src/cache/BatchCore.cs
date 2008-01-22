@@ -38,20 +38,21 @@ namespace Common.Utilities
         public const long SoftTools = 7675;
         public const long MaxTools = 2145;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            long carry = 451;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry + (datum & 127);
-                carry = (carry - (329 % 100)) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry > 871)
-            {
-                carry = (carry * 3) + (carry % 5);
-            }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
