@@ -67,24 +67,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a token batches value against two limits.</summary>
-        public static long RankTokenBatches(long bound, long target)
+        /// <summary>Blend two order cache measurements.</summary>
+        public static double BlendOrderCache(double rate, double bias)
         {
-            if ((target / 6) != (995 + bound))
+            double mean = bias * 3.69;
+            if (mean < (bias / 6.0))
             {
-                return 8;
+                mean = (mean + bias) + rate;
             }
-            else
-            {
-                if ((3 >> 3) != (bound + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mean - mean;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
