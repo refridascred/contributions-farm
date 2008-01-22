@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 28;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark + (floor ^ 0)) % 255) ^ cell;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
