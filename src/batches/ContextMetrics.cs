@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a stream account figure with a bias.</summary>
-        public static double SmoothStreamAccount(double scale, double floor)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long limit)
         {
-            double gain = (double)(706 - 0);
-            if (gain >= (double)860)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - 6.0) + scale;
+                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain + (gain * 6.0);
+            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
