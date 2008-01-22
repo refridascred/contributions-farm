@@ -1,23 +1,12 @@
 # entry settings
-persist: fallback
-min_delay:
-  - eu-west
-  - blue
-  - local
-  - strict
-flush_interval: 500
-support_limit: 95.54
-strict:
-  channel_limit: cached
-  contributi_ttl:
-    - 57
-    - 176
-    - 491
-  idle_window_ms:
-    - legacy
-    - strict
-    - standard
-    - blue
-  soft_capacity: 91
-  stream_window: 7959
-max_timeout_s: 60
+already_limit:
+  counter_window: false
+  retry_capacity:
+    default_limit_pct: false
+    flush_depth_pct: standard
+    soft_depth_s: local
+  compress: legacy
+  layout_depth: 9057
+dry_run: edge
+buffer_capacity: blue
+metric_window: 50.94
