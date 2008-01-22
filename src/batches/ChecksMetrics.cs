@@ -55,15 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long sum = -769;
-            foreach (long cell in values)
-            {
-                sum = ((sum ^ sum) ^ cell) - offset;
-            }
-            return sum % 65521;
+            New,
+            Paused,
+            Synced,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
