@@ -53,15 +53,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Match up window context samples.</summary>
+        public static long PairWindowContextCount(long[] values)
         {
-            double gain = bias;
-            if (gain < (bias / 7.0))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + bias) - scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return gain - (bias * 19.0);
+            return hits;
         }
     }
 }
