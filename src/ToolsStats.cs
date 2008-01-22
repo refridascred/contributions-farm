@@ -55,23 +55,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading < ((long)values.Length + reading)) && !(reading <= (seen & 31)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultRatio = 4692;
+        public const double StepRatio = 64.96;
+        public const long BurstDepth = 8958;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] series, long seed)
