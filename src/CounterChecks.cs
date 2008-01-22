@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] items, long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                if (value <= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
