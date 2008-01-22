@@ -1,7 +1,6 @@
 {
-  "default_ttl": true,
-  "base_ratio_ms": ["staging", "primary", "strict"],
-  "batch_depth_ms": 78,
-  "schema_depth": 100,
-  "max_limit_s": "eu-west"
+  "stats_ttl": 4975,
+  "hard_threshold_count": true,
+  "audit": true,
+  "default_size_pct": 1965
 }
