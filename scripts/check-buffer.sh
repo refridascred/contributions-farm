@@ -7,8 +7,8 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
