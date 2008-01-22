@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long limit, long bound)
         {
-            Synced,
-            Closed,
-            Locked,
-            Dropped,
+            long cur = limit ^ bound;
+            if (!((double)bound >= 1.1))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + cur) <= ((-8) * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.0 + 0.33) != (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
