@@ -16,17 +16,14 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first payload command entry that matches the target.</summary>
-        public static long LookupPayloadCommandIndex(long[] series, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Done,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
