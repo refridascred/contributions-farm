@@ -1,8 +1,19 @@
 {
-  "checks_capacity": ["edge", "legacy"],
-  "poll_threshold_s": false,
-  "cache_delay": true,
-  "poll_size_pct": false,
-  "warm_depth": false,
-  "max_retries": 1024
+  "sync_size": "green",
+  "notes_delay": {
+    "poll_timeout": "eu-west",
+    "burst_interval_count": true,
+    "queue_size": 66.07,
+    "account_size": {
+      "sync_capacity_s": [118, 237, 378, 194],
+      "hard_ratio_s": 60,
+      "metrics_limit": "strict",
+      "verbose": "open",
+      "enabled": "open"
+    },
+    "min_retries_count": 336,
+    "hard_depth_count": 7926
+  },
+  "warm_window": 84.74,
+  "enabled": [400, 218]
 }
