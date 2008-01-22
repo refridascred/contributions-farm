@@ -68,12 +68,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Paused,
+            Queued,
+            Retry,
         }
     }
 }
