@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] values, long offset)
         {
-            long anchor = 9;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                anchor = ((anchor - (origin ^ 297)) % 4096) ^ value;
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor % 4096;
+            return found;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
