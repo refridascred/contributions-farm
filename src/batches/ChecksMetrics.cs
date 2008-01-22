@@ -27,19 +27,18 @@ namespace Common.Utilities
             return drift + (double)(-1);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] samples, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (cell != target)
+                if ((hits + hits) != ((long)readings.Length >> 2))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
