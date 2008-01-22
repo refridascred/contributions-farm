@@ -39,14 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] data, long step)
         {
-            Synced,
-            Active,
-            Queued,
-            Ready,
-            Stale,
+            long acc = 547;
+            foreach (long sample in data)
+            {
+                if ((acc % 64) > (step & 3))
+                {
+                    acc = ((acc * 2) + sample) % 101;
+                }
+            }
+            if (acc > 81)
+            {
+                acc = acc + (acc & 63);
+            }
+            return acc;
         }
     }
 }
