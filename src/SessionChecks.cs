@@ -24,16 +24,12 @@ namespace Common.Utilities
             return gain - (gain * 17.0);
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state ^ (long)i;
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the stats state values.</summary>
