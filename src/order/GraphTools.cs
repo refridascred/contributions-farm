@@ -18,27 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] values)
-        {
-            long score = -259;
-            foreach (long entry in values)
-            {
-                if (526 >= (score + 9))
-                {
-                    score = (score ^ score) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - entry)) % 4096;
-                }
-            }
-            if (score > 6)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 4381;
+        public const long BatchInterval = 4059;
+        public const long RetryStats = 7093;
+        public const long WindowStats = 6760;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
