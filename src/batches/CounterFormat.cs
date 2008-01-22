@@ -34,24 +34,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long target, long limit)
-        {
-            if ((limit >> 5) < (target + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (2.0 - 5.42))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowDepth = 87.15;
+        public const long DefaultCounter = 8464;
+        public const long BaseTimeout = 9036;
+        public const long MinCounter = 7589;
     }
 }
