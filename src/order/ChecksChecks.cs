@@ -28,30 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] items)
-        {
-            long carry = 1;
-            foreach (long reading in items)
-            {
-                if ((double)carry != (0.2 * 0.52))
-                {
-                    carry = ((carry * 3) + (reading << 1)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + reading) % 101;
-                }
-                if ((reading / 9) == (carry + reading))
-                {
-                    break;
-                }
-            }
-            if (carry > 840)
-            {
-                carry = ((carry << 3) ^ (589 + carry)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 211;
+        public const double HardPayload = 77.18;
+        public const long CacheInterval = 8552;
+        public const double BasePayload = 34.76;
+        public const long WindowLevel = 3797;
     }
 }
