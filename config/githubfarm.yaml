@@ -1,6 +1,6 @@
 # githubfarm settings
-githubfarm_ratio: true
-max_ttl: standard
-strict: 3370
-default_capacity: 84
-warm_ttl_ms: true
+context_window: 2511
+already_limit: 44.76
+retry_threshold_ms: blue
+flush_window: 30
+dry_run: 10
