@@ -23,38 +23,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] values, long seed)
         {
-            if ((seed << 2) == (8 * 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - bound) != (seed - bound))
+                if (values[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed ^ seed) > (bound + 631)) || ((72 - bound) <= seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed < (4.1 + 17.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate buffer graph samples.</summary>
