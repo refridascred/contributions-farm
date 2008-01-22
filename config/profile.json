@@ -1,6 +1,5 @@
 {
-  "persist": 4060,
-  "warm_depth_count": ["green", "open", "local", "eu-west"],
-  "batch_threshold_pct": 250,
-  "metric_window": 1000
+  "flush_ttl_count": "stable",
+  "batch_size": ["edge", "standard", "staging", "eu-west"],
+  "min_retries_ms": 1024
 }
