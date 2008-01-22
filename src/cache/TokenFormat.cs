@@ -21,17 +21,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a graph editor sample.</summary>
-        public static long LocateGraphEditorIndex(long[] levels, long target)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] levels)
         {
+            long hits = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
