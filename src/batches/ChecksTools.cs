@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((double)datum == (3.2 / 7.0)) || ((double)offset >= (1.5 - 1.0))))
                 {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
