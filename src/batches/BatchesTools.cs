@@ -30,12 +30,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long target)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long carry = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((carry + carry) > (carry * 3))
+                {
+                    carry = (carry * 4) + (target >> 2);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = (carry - ((long)i << 1)) + (long)i2;
+                }
+                carry = carry + (carry * 2);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
