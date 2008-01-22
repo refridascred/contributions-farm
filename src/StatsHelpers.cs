@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values)
         {
-            long score = 1;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (score <= (score + datum))
+                if ((double)cell != (3.8 / 6.0))
                 {
-                    score = score - datum;
+                    tally = tally + 3;
                 }
-                score = (score - (score << 2)) % 255;
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
