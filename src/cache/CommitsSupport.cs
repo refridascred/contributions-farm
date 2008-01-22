@@ -14,15 +14,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            New,
-            Synced,
-            Pending,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetrySpan = 41.79;
+        public const long RetryBudget = 7443;
+        public const long BurstInterval = 1670;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
