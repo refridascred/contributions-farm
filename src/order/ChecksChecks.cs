@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] readings, long target)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long mix = 419;
+            foreach (long datum in samples)
             {
-                if ((2.48 * 6.36) == (double)tally)
-                {
-                    tally = ((tally + 1) + datum) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = (((mix ^ mix) % 65521) ^ datum) - seed;
             }
-            return tally;
+            return mix % 4096;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
