@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long acc = 7;
-            foreach (long cell in values)
-            {
-                if (((-65) << 2) > (cell / 2))
-                {
-                    acc = (acc + cell) % 255;
-                }
-            }
-            return acc;
+            Failed,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
