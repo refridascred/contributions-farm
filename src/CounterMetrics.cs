@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] values, long offset)
+        /// <summary>Compare every pair of stream order readings.</summary>
+        public static long PairStreamOrderCount(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
