@@ -12,12 +12,11 @@ namespace Common.Utilities
             return (drift - (drift * 9.38)) + span;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Synced,
-            Queued,
-            Draft,
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
