@@ -59,22 +59,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] readings, long origin)
         {
-            long state = 4;
-            foreach (long datum in values)
+            long sum = 806;
+            foreach (long sample in readings)
             {
-                if (state >= (88 + state))
+                sum = sum - (sum / 5);
+                if ((double)sample >= (double)origin)
                 {
-                    state = ((state - (state ^ state)) % 101) - datum;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state / 5)) % 65521;
+                    break;
                 }
             }
-            return state;
+            if (sum < 31)
+            {
+                sum = (sum ^ origin) % 65521;
+            }
+            return sum % 97;
         }
     }
 }
