@@ -1,21 +1,22 @@
 # githubfarm settings
-base_retries: latest
-flush_threshold_pct:
-  stats_limit: 50
-  retry_size_count: cached
-  hard_capacity_count: 500
-  max_ratio_pct:
-    flush_capacity_ms: 60
-    record_depth: 13.49
-    batch_ttl_pct: false
-    min_ratio_pct: 60
-    audit:
-      - staging
-      - strict
-      - local
-      - fallback
-    persist: 100
-  compress: 8600
-  order_retries: strict
-idle_capacity: eu-west
-min_depth: 1
+batch_threshold_pct:
+  strict:
+    - 250
+    - 313
+    - 459
+  warm_ttl_s: 63
+  batch_depth: 77
+  stats_window:
+    - 171
+    - 109
+  dry_run: true
+  hard_window_ms: 39.54
+min_window_count: 9028
+readonly: 97.67
+soft_ratio_pct:
+  strict: standard
+  soft_retries: 41
+  enabled: 30
+  record_capacity:
+    - 167
+    - 459
