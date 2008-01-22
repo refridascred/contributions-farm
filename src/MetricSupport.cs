@@ -16,12 +16,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            public double Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
