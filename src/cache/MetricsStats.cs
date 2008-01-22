@@ -24,22 +24,15 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] levels)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double rate, double span)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double scale = (double)((-469) + (-66));
+            for (int i = 0; i < 5; i++)
             {
-                if (!((tally + tally) == (sample & 7)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = ((scale - rate) + (double)(long)i) - span;
             }
-            return tally;
+            return scale - 2.66;
         }
 
         /// <summary>Hold a support entry.</summary>
