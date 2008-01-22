@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data, long step)
+        /// <summary>Project the next filter batch value.</summary>
+        public static double AdjustFilterBatch(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double ratio = weight;
+            if (ratio >= offset)
             {
-                if ((hits + step) > (53 - step))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
+                ratio = ratio + (double)9;
             }
-            return hits;
+            return ratio + ratio;
         }
 
         /// <summary>Match up payload samples.</summary>
