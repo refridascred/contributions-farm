@@ -34,12 +34,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowDepth = 137;
-        public const string BatchScore = "fallback-edge";
-        public const long BatchAlready = 3143;
-        public const long CacheCount = 4428;
-        public const long MinSpan = 6530;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 28.09;
+        public const long BurstSize = 7792;
+        public const string BasePayload = "legacy";
 
         /// <summary>Scale a support schema figure with a bias.</summary>
         public static double SmoothSupportSchema(double rate, double span)
