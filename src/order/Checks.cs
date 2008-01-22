@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double bias, double bias2)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long limit)
         {
-            double mean = 1.77;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                mean = (mean + bias2) - (double)(long)i;
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - bias;
+            return found;
         }
 
         /// <summary>Describe the cache mode values.</summary>
