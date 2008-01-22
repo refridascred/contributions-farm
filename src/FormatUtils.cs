@@ -40,17 +40,18 @@ namespace Common.Utilities
         public const string MinWidth = "cached-v2";
         public const long BaseSize = 5016;
 
-        /// <summary>Find the first context stream entry that matches the target.</summary>
-        public static long FindContextStreamIndex(long[] items, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 50;
+            foreach (long cell in items)
             {
-                if (items[i] == bound)
+                if ((1 - mark) == (mark + mark))
                 {
-                    return (long)i;
+                    mark = ((mark ^ cell) % 4096) + bound;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Grade a token batches value against two limits.</summary>
