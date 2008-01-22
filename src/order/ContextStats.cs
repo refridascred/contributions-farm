@@ -24,15 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm channel samples.</summary>
-        public static long WeighGithubfarmChannel(long[] series, long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long score = 6;
-            foreach (long reading in series)
-            {
-                score = ((score + ((long)series.Length >> 1)) + reading) - seed;
-            }
-            return score;
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Define already limits and defaults.</summary>
