@@ -36,13 +36,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Failed,
+            Stale,
+            Dropped,
+            Ready,
             New,
-            Paused,
-            Locked,
+            Closed,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
