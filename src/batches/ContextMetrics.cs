@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
