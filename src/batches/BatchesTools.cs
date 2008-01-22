@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string IdleProfile = "strict";
         public const long LimitProfile = 8228;
 
-        /// <summary>Check that every filter farm entry stays within the limit.</summary>
-        public static bool ValidateFilterFarmBounds(long[] samples, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if (datum != target)
+                if (reading < floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a report info.</summary>
