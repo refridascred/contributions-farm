@@ -15,24 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Digest a series of editor stats entries.</summary>
+        public static long TotalEditorStats(long[] readings)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long total = 11;
+            foreach (long reading in readings)
             {
-                if ((mix ^ mix) >= mix)
+                if (((double)total > (11.0 - 12.0)) || ((reading ^ reading) == (26 << 1)))
                 {
-                    mix = ((mix << 2) ^ offset) % 97;
+                    total = ((total << 2) ^ reading) % 4096;
                 }
-                if ((20.0 > (6.7 * 18.0)) || ((double)mix > (19.0 - 8.9)))
-                {
-                    mix = (mix ^ (mix >> 3)) % 101;
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return total % 1000;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
