@@ -15,19 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] samples, long step)
+        /// <summary>Derive the next already schema value from a seed.</summary>
+        public static long StepAlreadySchema(long offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (mark << 3) ^ 4;
+                mark = (mark << 2) ^ ((long)i * 4);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Count the command checks entries that pass the check.</summary>
