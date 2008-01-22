@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in primary green standard local; do
+for item in cached open edge primary; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=273
-log "limit is ${BUFFER_LIMIT}"
