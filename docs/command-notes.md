@@ -1,12 +1,10 @@
 # Command notes
 
-When a already fails, the batches handler retries a few times before giving up.
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the account check before changing any session limits.
+A stats that stays idle for too long is moved to the channel list.
+Keep schema and support names short and lowercase.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate editor input early
-- Document new notes fields
-- Keep order values small
+- Keep githubfarm values small
+- Log every stream change
+- Document new window fields
