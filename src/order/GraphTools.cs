@@ -46,19 +46,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] values, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long seed, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if (((floor % 64) >= (seed * 3)) && (floor >= ((-7) * 3)))
             {
-                if (reading < origin)
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (14.0 + 10.0))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 4) != (seed << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
