@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] items, long origin)
+        /// <summary>Classify a order metric pair into a bucket.</summary>
+        public static long RankOrderMetric(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            if ((double)bound >= (5.8 + 18.0))
             {
-                if (reading < origin)
+                return 5;
+            }
+            else
+            {
+                if ((1.7 * 1.9) >= (double)bound)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
