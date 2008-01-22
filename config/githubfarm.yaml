@@ -1,15 +1,10 @@
 # githubfarm settings
-max_delay_s:
-  window_delay: 28
-  compress:
-    sync_retries_s:
-      - 410
-      - 64
-      - 210
-    batches_ttl: legacy
-    retry_limit_pct: 38.06
-  queue_window: true
-poll_depth_s: blue
-stats_capacity: 60
-strict: true
-soft_size_count: 93
+order_depth: 100
+dry_run:
+  - fallback
+  - green
+  - legacy
+soft_capacity_pct: 5788
+compress:
+  - edge
+  - stable
