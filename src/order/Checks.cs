@@ -41,12 +41,19 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 1010;
-        public const double RetryPayload = 18.53;
-        public const string IdlePayload = "latest-v2";
-        public const double WindowPayload = 23.81;
-        public const long BasePayload = 1767;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!!((count >> 3) != (item / 6)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long RollAccount(long bound)
