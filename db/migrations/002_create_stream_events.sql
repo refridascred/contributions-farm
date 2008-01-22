@@ -1,14 +1,13 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
+    weight REAL,
     count INTEGER NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1,
-    level INTEGER,
-    weight REAL
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+CREATE INDEX IF NOT EXISTS idx_stream_events_weight ON stream_events (weight);
 
-INSERT INTO stream_events (count, active, level, weight) VALUES (70, 5, 76, 66.85);
-INSERT INTO stream_events (count, active, level, weight) VALUES (65, 14, 86, 20.05);
-INSERT INTO stream_events (count, active, level, weight) VALUES (24, 44, 62, 18.15);
+INSERT INTO stream_events (weight, count, state) VALUES (38.38, 87, 'fallback');
+INSERT INTO stream_events (weight, count, state) VALUES (81.11, 13, 'standard');
+INSERT INTO stream_events (weight, count, state) VALUES (63.0, 35, 'cached');
