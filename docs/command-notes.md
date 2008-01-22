@@ -1,14 +1,15 @@
 # Command notes
 
-Use route settings to tune how often record data is refreshed.
-Run the context check before changing any counter limits.
-The notes helpers are pure functions, so they are safe to call from any thread.
+When a entry fails, the window handler retries a few times before giving up.
+Run the queue check before changing any order limits.
+When a record fails, the cache handler retries a few times before giving up.
 
-The commits report groups every stats by notes.
-A account that stays idle for too long is moved to the already list.
+Keep editor and stream names short and lowercase.
+When a profile fails, the account handler retries a few times before giving up.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Keep metric values small
-- Review layout limits each release
+- Validate metric input early
+- Document new route fields
+- Log every batches change
