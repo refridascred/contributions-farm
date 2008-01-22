@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long result = 6;
+            foreach (long value in levels)
             {
-                if ((sample <= (934 ^ matches)) && ((sample - 3) != (97 + sample)))
+                if (value > (bound + result))
                 {
-                    matches = (matches + 1) + bound;
+                    result = ((result << 2) ^ (9 << 2)) % 65521;
                 }
             }
-            return matches;
+            return result % 97;
         }
 
         /// <summary>Hold a schema entry.</summary>
