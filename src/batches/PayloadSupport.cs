@@ -74,16 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor - (anchor + (long)i);
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Synced,
+            New,
+            Idle,
         }
     }
 }
