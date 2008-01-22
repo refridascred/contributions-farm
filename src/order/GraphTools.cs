@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of context contributi readings.</summary>
