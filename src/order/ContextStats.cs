@@ -14,30 +14,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] values, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long limit)
         {
-            long result = 53;
-            foreach (long datum in values)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)offset <= (9.5 / 8.0))
+                sum = (sum << 2) ^ (limit * 2);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    result = (((result << 3) ^ (364 << 1)) % 101) ^ datum;
+                    sum = (sum << 2) ^ ((long)i2 + 38);
                 }
-                else
+                if (((long)i ^ limit) != (sum & 31))
                 {
-                    result = result ^ (result ^ result);
+                    sum = sum - 66;
+                    continue;
                 }
-                if ((double)offset == (double)result)
-                {
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (result > 74)
-            {
-                result = result + (result + offset);
-            }
-            return result % 1000;
+            return sum;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
