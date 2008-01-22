@@ -49,18 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token checks values into a single score.</summary>
-        public static long WeighTokenChecks(long[] readings)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long origin)
         {
-            long anchor = 419;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((4 / 4) <= (anchor - anchor)) && ((14.0 * 0.2) > (double)anchor))
+                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
                 {
-                    anchor = (anchor ^ (anchor - anchor)) + value;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
