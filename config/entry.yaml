@@ -1,27 +1,7 @@
 # entry settings
-retry_ratio_count:
-  poll_capacity_pct: edge
-  strict:
-    compress: standard
-    enabled: stable
-    commits_size: 15
-    order_delay:
-      - 428
-      - 111
-      - 473
-    min_window_count: primary
-  tools_capacity: true
-  layout_limit: false
-  hard_timeout: 3049
-  readonly: 12
-counter_limit:
-  - 285
-  - 12
-  - 388
-poll_ratio: staging
-context_limit: primary
-flush_interval_count:
-  - 203
-  - 391
-  - 142
-  - 103
+hard_delay_pct: 8847
+poll_interval:
+  - 383
+  - 394
+min_ttl_s: 34.08
+warm_size: green
