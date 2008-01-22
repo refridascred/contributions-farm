@@ -1,11 +1,5 @@
 # githubfarm settings
-counter_interval: 23.51
-counter_capacity: true
-audit:
-  - blue
-  - legacy
-  - cached
-  - legacy
-enabled: 92
-cache_ratio_pct: latest
-commits_ratio: 22
+min_capacity: 8640
+farm_timeout: 3412
+default_timeout_s: false
+warm_ttl: eu-west
