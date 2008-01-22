@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] readings, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 77;
+            foreach (long value in values)
             {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ (489 >> 3)) % 101) + floor;
+                acc = acc - value;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
