@@ -41,13 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate tools cluster readings against a bound.</summary>
+        public static bool GuardToolsClusterLimits(long[] readings, long step)
         {
-            Retry,
-            New,
-            Idle,
-            Paused,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
