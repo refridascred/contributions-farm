@@ -25,22 +25,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] data, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long acc = 6;
+            foreach (long reading in data)
             {
-                if ((1.0 + 1.0) != (double)cell)
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc + (960 + acc)) % 97;
+                acc = (acc * 4) + reading;
             }
-            return hits;
+            return acc;
         }
     }
 }
