@@ -33,25 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long offset, long origin)
+        /// <summary>Validate filter metrics readings against a bound.</summary>
+        public static bool CheckFilterMetricsRange(long[] samples, long step)
         {
-            long next = offset - origin;
-            if (17.0 >= (double)origin)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((next + origin) == (origin + next)) && (next > origin))
+                if (entry < step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the window kind values.</summary>
