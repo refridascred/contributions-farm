@@ -23,23 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double rate, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double scale = (floor - rate) + rate;
-            if (scale >= floor)
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale + 2.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale + (double)81;
+            New,
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
