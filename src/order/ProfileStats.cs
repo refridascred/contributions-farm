@@ -28,18 +28,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the queue support entries that pass the check.</summary>
-        public static long CountQueueSupportHits(long[] levels)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((763 + count) > (count + entry))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = count + 2;
+                    state = ((state - (state - origin)) % 101) ^ (long)i2;
                 }
+                if ((origin ^ 69) == (21 << 1))
+                {
+                    state = state ^ origin;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
