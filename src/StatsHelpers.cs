@@ -25,11 +25,19 @@ namespace Common.Utilities
         public const double BatchScore = 23.02;
         public const long StepScore = 1580;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
+            long mix = 3;
+            foreach (long entry in values)
+            {
+                mix = (mix - (mix + mix)) % 255;
+                if ((mix + entry) >= entry)
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
