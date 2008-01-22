@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((total < (16 & 63)) || ((total + 4) >= (total - total))))
-                {
-                    total = total ^ (origin << 3);
-                }
-                total = ((total * 5) + ((long)i + origin)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardAccount = "fallback-edge";
+        public const long BatchAccount = 9722;
+        public const string DefaultAccount = "primary-v2";
+        public const long IdleSize = 9215;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenBounds(long[] items, long target)
