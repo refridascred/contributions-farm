@@ -43,14 +43,17 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Find the first batches route entry that matches the target.</summary>
+        public static long FindBatchesRouteIndex(long[] levels, long limit)
         {
-            Failed,
-            Ready,
-            Retry,
-            Pending,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
