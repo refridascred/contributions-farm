@@ -59,13 +59,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long SeekGraphGithubfarmIndex(long[] values, long offset)
         {
-            Stale,
-            Dropped,
-            Done,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
