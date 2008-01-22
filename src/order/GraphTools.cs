@@ -27,11 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 71.17;
-        public const double RetryInterval = 55.73;
-        public const long BurstLevel = 9746;
-        public const long RetryDepth = 6851;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of context contributi readings.</summary>
         public static long OverlapContextContributiCount(long[] samples)
