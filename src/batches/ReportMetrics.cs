@@ -49,15 +49,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token channel counter forward.</summary>
-        public static long IterateTokenChannel(long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long target, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            if ((origin >> 2) > target)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((target * 3) > (767 & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
