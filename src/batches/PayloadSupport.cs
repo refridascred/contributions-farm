@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of cache channel readings.</summary>
-        public static long DigestCacheChannel(long[] values, long bound)
+        /// <summary>Match up contributi metrics samples.</summary>
+        public static long OverlapContributiMetricsCount(long[] series)
         {
-            long sum = 64;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound << 1) <= (sum << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum + bound) + datum;
-                }
-                if (!((double)sum >= (6.1 * 1.17)))
-                {
-                    break;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < (-8))
-            {
-                sum = sum - (926 % 60);
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
