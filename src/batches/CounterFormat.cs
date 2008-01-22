@@ -21,18 +21,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the tools token entries that pass the check.</summary>
-        public static long CountToolsTokenGaps(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (((2.2 * 0.9) == (double)limit) || (9.43 > (double)step))
             {
-                if ((cell << 1) <= (matches << 2))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit != (double)step)
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit * 5) == (limit + 74))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
