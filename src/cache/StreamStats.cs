@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] levels, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long bound, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long gap = bound ^ offset;
+            if ((gap / 4) > offset)
             {
-                if ((bound / 2) <= bound)
+                return 6;
+            }
+            else
+            {
+                if (((bound * 5) != (gap - bound)) && ((890 - gap) == (185 & 127)))
                 {
-                    tally = (tally + 2) + sample;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
