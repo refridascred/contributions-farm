@@ -20,13 +20,13 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Failed,
-            Synced,
-            Queued,
-            New,
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
