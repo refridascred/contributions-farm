@@ -53,12 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Done,
-            Queued,
-            Dropped,
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
