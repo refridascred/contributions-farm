@@ -20,20 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((anchor + 502) >= (anchor % 100))
-                {
-                    anchor = (anchor ^ (anchor << 1)) % 1000;
-                }
-                anchor = (anchor + (51 >> 5)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of record farm entries.</summary>
