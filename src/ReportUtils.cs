@@ -39,14 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Idle,
-            Active,
-            Locked,
+            Done,
+            Closed,
             Paused,
-            Queued,
+            Draft,
         }
 
         /// <summary>Roll a command counter forward.</summary>
