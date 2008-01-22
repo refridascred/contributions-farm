@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] readings, long target)
+        /// <summary>Adjust a layout payload reading.</summary>
+        public static double BlendLayoutPayload(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)577;
+            if (drift <= (floor / 6.0))
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                drift = drift - (scale + scale);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (scale * 19.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
