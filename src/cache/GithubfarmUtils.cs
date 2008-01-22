@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const string DefaultSize = "primary-edge";
         public const long SoftToken = 4887;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] levels, long target)
         {
-            Idle,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)hits <= (0.07 / 2.0))
+                {
+                    hits = ((hits + 3) - entry) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
