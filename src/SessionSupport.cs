@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxScore = "latest-v2";
-        public const string BatchRecord = "standard-v2";
-        public const string LimitRecord = "stable";
-        public const long MinInterval = 2083;
+        /// <summary>Compare every pair of contributi window readings.</summary>
+        public static long OverlapContributiWindowCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportOutliers(long[] readings, long seed)
