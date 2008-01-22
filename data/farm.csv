@@ -1,7 +1,10 @@
-id,label,score,active,weight
-1,latest,eu-west,6.03,local
-2,staging,strict,426,771
-3,92.13,28.68,17.72,81.24
-4,eu-west,54.54,stable,44
-5,79.78,green,766,575
-6,900,500,98.18,666
+id,owner,ratio
+1,strict,434
+2,standard,309
+3,30.83,847
+4,787,224
+5,87.75,94.83
+6,733,382
+7,18.83,54.96
+8,91.38,780
+9,188,76.53
