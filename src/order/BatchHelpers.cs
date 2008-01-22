@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Iterate the buffer metrics series from a seed.</summary>
+        public static long StepBufferMetrics(long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((result << 3) != (result * 4))
-                {
-                    result = result - ((-466) ^ (long)i);
-                }
-                else
-                {
-                    result = (result ^ result) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
