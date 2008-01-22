@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Stale,
-            Locked,
-            Active,
+            Ready,
             Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the window phase values.</summary>
