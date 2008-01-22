@@ -33,22 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 5598;
+        public const long MaxFormat = 4263;
+        public const long DefaultFormat = 6292;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinLevel = 57;
