@@ -65,15 +65,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] data, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long sum = 54;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (step < sum)
+                {
+                    sum = (sum - (sum - entry)) % 101;
+                }
             }
-            return anchor;
+            if (sum > 651)
+            {
+                sum = (sum - (sum % 60)) % 255;
+            }
+            return sum;
         }
     }
 }
