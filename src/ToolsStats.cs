@@ -59,14 +59,25 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long seed, long step)
         {
-            Failed,
-            New,
-            Idle,
-            Closed,
-            Done,
+            long prev = seed + step;
+            if (((step % 100) < (step / 8)) || ((double)prev < (6.68 * 5.7)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((495 * 3) != (step + prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
