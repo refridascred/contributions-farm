@@ -1,25 +1,12 @@
 # entry settings
-min_size: 1239
-base_delay:
-  max_ratio_count: staging
-  min_size_ms: 39.85
-  soft_size:
-    persist: staging
-    metrics_threshold: 250
-    sync_window_pct: fallback
-    strict: latest
-    warm_retries_count: 1024
-compress: 30
-editor_threshold:
-  metrics_ttl: 34.61
-  flush_ttl_ms: true
-  verbose:
-    cache_interval_pct: blue
-    cache_timeout_count: eu-west
-    strict: 60
-    counter_ratio: 11.29
-    min_depth: 60
-    warm_interval: 4986
-  contributi_retries: green
-schema_depth: eu-west
-cache_size_ms: 100
+min_delay_s:
+  - 9
+  - 326
+  - 467
+editor_retries: local
+schema_capacity:
+  - 369
+  - 463
+session_interval: 1024
+dry_run: 4986
+cache_size: 6186
