@@ -54,16 +54,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum * 2) + (283 & 7);
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
