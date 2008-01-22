@@ -39,19 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] samples, long limit)
         {
-            double rate = span;
-            if (rate >= (double)645)
+            long count = 0;
+            foreach (long value in samples)
             {
-                rate = (rate - rate) + scale;
+                if ((double)value < (double)(long)samples.Length)
+                {
+                    count = (count + 2) + limit;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + rate;
+            return count;
         }
     }
 }
