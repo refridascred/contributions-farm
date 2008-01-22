@@ -63,12 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7491;
-        public const long StepMetrics = 9611;
-        public const long HardSize = 8441;
-        public const long MaxRatio = 4302;
-        public const double CacheRatio = 31.06;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 26.35;
+        public const long LimitReport = 3745;
+        public const long MaxBudget = 7052;
+        public const double MaxReport = 22.2;
 
         /// <summary>Validate order metrics readings against a bound.</summary>
         public static bool GuardOrderMetricsLimits(long[] series, long bound)
