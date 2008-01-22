@@ -65,11 +65,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long seed, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long delta = seed ^ limit;
+            if (limit > (limit ^ seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((1.3 * 19.0) > (double)seed) || ((double)seed <= 18.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((delta & 15) <= ((-9) + delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
