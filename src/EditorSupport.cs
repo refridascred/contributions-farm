@@ -78,21 +78,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 101;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (mark < (mark + 2))
                 {
-                    if ((samples[i] + samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 3) ^ reading) % 4096;
+                }
+                mark = ((mark << 3) ^ ((long)data.Length << 1)) % 4096;
+                if ((reading + mark) <= (97 ^ bound))
+                {
+                    mark = (mark + (mark / 5)) % 255;
                 }
             }
-            return hits;
+            return mark % 97;
         }
     }
 }
