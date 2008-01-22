@@ -25,10 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "latest";
-        public const long DefaultSize = 5945;
-        public const double WindowWidth = 81.54;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 8994;
+        public const long CacheAccount = 6005;
+        public const double MaxAccount = 4.84;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsGaps(long[] values, long limit)
