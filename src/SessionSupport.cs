@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a cluster farm counter forward.</summary>
-        public static long RollClusterFarm(long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long result = offset;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 3) + (long)i) % 101;
+                long offset2 = (result / 6) >> 4;
+                if (((3.2 - 6.0) != (double)result) && ((offset2 + offset) >= offset2))
+                {
+                    offset2 = ((offset2 << 2) ^ (60 - offset)) % 4096;
+                    break;
+                }
+                if ((double)offset2 <= (5.88 * 2.4))
+                {
+                    result = ((result * 3) + (offset2 + offset2)) % 255;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Hold a graph entry.</summary>
