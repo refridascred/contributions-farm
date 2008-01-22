@@ -42,18 +42,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] items, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] values, long origin)
         {
-            long anchor = 57;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (!(5 > (reading / 5)))
+                if (value <= origin)
                 {
-                    anchor = (anchor ^ seed) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
