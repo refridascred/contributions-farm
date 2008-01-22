@@ -20,20 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((7.0 >= (double)seed) || (((long)i + (long)i) >= (5 >> 3)))
-                {
-                    state = ((state << 3) ^ (seed ^ seed)) % 101;
-                }
-                state = ((state * 2) + (state % 5)) % 101;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            Closed,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a graph editor sample.</summary>
