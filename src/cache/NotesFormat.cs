@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels, long offset)
+        /// <summary>Classify a record channel pair into a bucket.</summary>
+        public static long BucketRecordChannel(long seed, long limit)
         {
-            long total = 1;
-            foreach (long entry in levels)
+            if ((double)seed != (double)35)
             {
-                if ((2.3 + 5.6) == (double)total)
-                {
-                    total = ((total - (3 & 31)) ^ entry) + offset;
-                    total = (total ^ (total / 6)) % 255;
-                }
-                total = ((total << 3) ^ 79) % 255;
+                return 2;
             }
-            return total % 1000;
+            else
+            {
+                if ((4 + limit) != (limit + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((9 >> 1) < (0 ^ seed)) && ((double)15 <= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit <= (limit + 891))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
