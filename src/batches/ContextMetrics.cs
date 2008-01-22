@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long limit)
-        {
-            if (!((origin % 3) > (origin * 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 1) < (335 >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= 0.3)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepWidth = 9867;
+        public const string LimitFormat = "open-v2";
+        public const double BaseSize = 57.62;
+        public const string IdleSpan = "staging";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
