@@ -33,13 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
