@@ -39,15 +39,14 @@ namespace Common.Utilities
         public const long BurstSize = 7792;
         public const string BasePayload = "legacy";
 
-        /// <summary>Scale a support schema figure with a bias.</summary>
-        public static double SmoothSupportSchema(double rate, double span)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double mean = (double)(20 - 293);
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (8.92 + rate)) + (double)(long)i;
-            }
-            return mean + span;
+            Paused,
+            Dropped,
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
