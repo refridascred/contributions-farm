@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] readings, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] readings, long target)
         {
             bool ready = true;
-            foreach (long value in readings)
+            foreach (long entry in readings)
             {
-                if (value >= origin)
+                if (entry < target)
                 {
                     ready = false;
                     break;
