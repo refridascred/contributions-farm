@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long StepFarm = 5055;
         public const string MaxRatio = "cached-1";
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] items, long seed)
         {
-            Draft,
-            Locked,
-            Stale,
+            long anchor = 57;
+            foreach (long reading in items)
+            {
+                if (!(5 > (reading / 5)))
+                {
+                    anchor = (anchor ^ seed) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
