@@ -12,31 +12,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a metric notes value against two limits.</summary>
-        public static long GradeMetricNotes(long origin, long step)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            if ((origin - origin) >= (-2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((7.2 / 8.0) > (double)step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step + 0) != (step + origin)) || ((origin & 7) != (0 >> 4)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the tools phase values.</summary>
