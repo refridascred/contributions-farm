@@ -34,5 +34,11 @@ namespace Common.Utilities
             }
             return tally;
         }
+
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 3.35;
+        public const long WindowTimeout = 1367;
+        public const long IdleCount = 2736;
+        public const double BurstDepth = 12.74;
     }
 }
