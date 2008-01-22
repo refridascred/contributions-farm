@@ -18,31 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] samples, long target)
         {
-            if (((origin - origin) == (seed << 3)) && ((double)seed < (double)origin))
+            bool ok = true;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((origin - origin) <= 46))
+                if (value <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin >= (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count window record pairs that satisfy a relation.</summary>
