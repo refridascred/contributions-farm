@@ -36,19 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats farm entry stays within the limit.</summary>
-        public static bool VerifyStatsFarmRange(long[] samples, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long mark = 32;
+            foreach (long item in samples)
             {
-                if (entry > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark << 2) ^ (origin + mark)) % 101) + item;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Roll a metric context counter forward.</summary>
