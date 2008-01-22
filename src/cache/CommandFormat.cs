@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] items, long step)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate filter support samples.</summary>
