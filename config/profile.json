@@ -1,5 +1,6 @@
 {
-  "tools_interval": ["edge", "standard", "staging"],
-  "cache_delay": "primary",
-  "base_timeout_count": 1767
+  "verbose": "open",
+  "audit": "open",
+  "channel_limit": false,
+  "idle_ttl_ms": [438, 442, 196]
 }
