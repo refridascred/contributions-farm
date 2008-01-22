@@ -30,13 +30,18 @@ namespace Common.Utilities
             return scale - (8.7 + weight);
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values)
         {
-            Active,
-            Queued,
-            Retry,
-            Synced,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches % 100) > (reading / 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster info.</summary>
