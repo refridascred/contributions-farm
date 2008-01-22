@@ -19,13 +19,21 @@ namespace Common.Utilities
         public const long RetryBudget = 7443;
         public const long BurstInterval = 1670;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count window batch pairs that satisfy a relation.</summary>
+        public static long MatchWindowBatchCount(long[] levels)
         {
-            Draft,
-            Locked,
-            Active,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
