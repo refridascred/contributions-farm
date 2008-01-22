@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 132;
-        public const long SoftAlready = 3608;
-        public const long IdleScore = 9254;
-        public const double BatchAlready = 28.38;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 58.95;
+        public const long MinLevel = 6769;
+        public const string HardCommand = "standard-1";
+        public const string HardLevel = "cached-edge";
+        public const long SoftCommand = 168;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
