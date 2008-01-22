@@ -1,8 +1,9 @@
 # support settings
-burst_delay_count:
-  - 154
-  - 498
-  - 297
-sync_size_pct: 6.42
-compress: open
-checks_interval: 92
+idle_retries_pct: 8990
+dry_run: local
+metric_window: 34.81
+support_timeout:
+  soft_ratio_ms: 43
+  filter_timeout: stable
+  warm_retries_ms: 96.23
+  dry_run: open
