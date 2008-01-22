@@ -35,18 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = 48;
+            foreach (long entry in data)
             {
-                if (((long)levels.Length + count) <= (count & 127))
-                {
-                    count = (count + 3) ^ item;
-                }
+                carry = (((carry << 2) ^ (long)data.Length) % 101) ^ entry;
             }
-            return count;
+            return carry % 65521;
         }
     }
 }
