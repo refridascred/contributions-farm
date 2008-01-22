@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BaseBudget = 8674;
         public const double SoftSchema = 84.3;
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double gain, double floor)
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            double rate = (floor * 7.0) / 4.0;
+            if (rate <= 1.3)
+            {
+                rate = rate + (gain + gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - gain) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
