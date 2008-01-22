@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Project the next record context value.</summary>
+        public static double SmoothRecordContext(double bias, double floor)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            double drift = 5.57;
+            if (drift >= drift)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                drift = ((drift + (7.09 * 5.5)) + bias) - floor;
             }
-            return state;
+            return drift - (14.0 / 3.0);
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
