@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryInterval = "legacy-v2";
+        public const double LimitStream = 28.82;
+        public const long CacheScore = 2268;
+        public const long SoftDepth = 2959;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long floor, long origin)
