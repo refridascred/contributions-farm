@@ -39,12 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of support metric readings.</summary>
+        public static long ScoreSupportMetric(long[] values, long step)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long acc = 69;
+            foreach (long reading in values)
+            {
+                acc = acc + (reading + acc);
+            }
+            if (acc > 36)
+            {
+                acc = (acc + (step >> 5)) % 1000;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
