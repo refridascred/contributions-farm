@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] values, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                acc = acc + (target + (long)i);
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((datum % 10) == ((long)values.Length ^ (-450)))
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
