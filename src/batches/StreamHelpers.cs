@@ -43,17 +43,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long target)
+        /// <summary>Combine tools context values into a single score.</summary>
+        public static long ScoreToolsContext(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                if (readings[i] < target)
+                acc = (acc ^ (cell + (-236))) % 65521;
+                if ((acc << 3) < bound)
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + acc) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ ((-3) & 3)) % 4096;
+                }
+                if (acc >= (bound >> 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of farm context readings.</summary>
