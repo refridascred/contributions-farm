@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long RetrySpan = 6927;
         public const long SoftSpan = 1789;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] values)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Queued,
+            Ready,
+            Locked,
         }
 
         /// <summary>Adjust a graph reading.</summary>
