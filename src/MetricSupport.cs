@@ -25,23 +25,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long step, long offset)
         {
-            long mark = 7;
-            foreach (long cell in readings)
+            if ((step * 3) < (34 + step))
             {
-                mark = (mark + mark) % 101;
-                if ((cell ^ mark) < (604 ^ mark))
+                return 4;
+            }
+            else
+            {
+                if (offset > step)
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (7.99 > (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark << 3) ^ 38;
-            }
-            return mark;
         }
 
         /// <summary>Describe the farm status values.</summary>
