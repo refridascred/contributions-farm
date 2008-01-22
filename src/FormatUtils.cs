@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count - reading) < reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Retry,
         }
 
         /// <summary>Check that every buffer farm entry stays within the limit.</summary>
