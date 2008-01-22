@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchRatio = 6220;
+        public const double BaseBuffer = 64.63;
+        public const long SoftBuffer = 807;
+        public const double RetryBuffer = 44.6;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long HardQueue = 153;
