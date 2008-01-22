@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long result = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((double)result != (20.0 / 7.0)))
-                {
-                    result = result + (result - (long)i);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a support entry.</summary>
