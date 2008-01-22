@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every batch session entry stays within the limit.</summary>
-        public static bool GuardBatchSessionBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxInterval = 4498;
+        public const double MinScore = 91.15;
+        public const long BaseFarm = 4000;
+        public const long BurstScore = 1813;
+        public const long CacheFarm = 6088;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long offset)
