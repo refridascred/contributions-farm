@@ -46,22 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] values)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long result = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((62 ^ 7) >= (4 - entry))
+                if ((result >> 4) < (3 - offset))
                 {
-                    count = count + 1;
+                    result = (result ^ (result + offset)) % 1000;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a contributi header.</summary>
