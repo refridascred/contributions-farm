@@ -53,11 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowSpan = 4646;
-        public const long DefaultNotes = 8532;
-        public const long IdleFactor = 2418;
-        public const double LimitFactor = 74.02;
-        public const double HardNotes = 93.73;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] readings, long offset)
+        {
+            long result = 160;
+            foreach (long item in readings)
+            {
+                if ((result < (result + item)) || ((result >> 5) == (result ^ result)))
+                {
+                    result = result - item;
+                }
+                else
+                {
+                    result = (result - offset) % 97;
+                }
+            }
+            return result % 4096;
+        }
     }
 }
