@@ -43,15 +43,21 @@ namespace Common.Utilities
         public const long BatchDepth = 1233;
         public const long SoftChannel = 8885;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels, long floor)
+        /// <summary>Match up metric token samples.</summary>
+        public static long MatchMetricTokenCount(long[] samples)
         {
-            long anchor = -50;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor << 2) ^ sample) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
