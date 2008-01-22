@@ -1,6 +1,7 @@
 # githubfarm settings
-context_window: 2511
-already_limit: 44.76
-retry_threshold_ms: blue
-flush_window: 30
-dry_run: 10
+idle_ratio_count: 1995
+base_retries: blue
+cache_capacity: false
+cache_interval: stable
+graph_ttl: 7813
+compress: 250
