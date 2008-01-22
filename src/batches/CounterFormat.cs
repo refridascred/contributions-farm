@@ -38,38 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long origin, long step)
+        /// <summary>Accumulate session metric samples.</summary>
+        public static long DigestSessionMetric(long[] items)
         {
-            if (((1 - step) >= origin) || (591 <= (origin - origin)))
+            long mix = 4;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + 81) < (step * 5))
+                if ((((long)items.Length >> 3) < (mix + (long)items.Length)) && ((14.0 * 0.6) == (double)item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= (-6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((7.6 + 11.0) > (2.0 - 5.97)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = mix - (mix * 2);
                 }
             }
+            if (mix < 686)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
     }
 }
