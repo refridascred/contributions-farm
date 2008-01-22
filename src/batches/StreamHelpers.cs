@@ -20,32 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long target, long limit)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long edge = target + limit;
-            if ((edge << 1) >= (47 + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(edge >= (edge - 86)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target & 31) >= (limit + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
