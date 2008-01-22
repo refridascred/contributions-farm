@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long CacheScore = 2268;
         public const long SoftDepth = 2959;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Region { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
