@@ -37,14 +37,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
             Pending,
-            Failed,
-            Closed,
-            Synced,
+            Retry,
             Queued,
+            Active,
         }
     }
 }
