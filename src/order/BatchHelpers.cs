@@ -28,14 +28,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double offset)
         {
-            Paused,
-            Closed,
-            Idle,
-            Done,
-            Draft,
+            double bias2 = (double)(2 * 3);
+            return (bias2 - (bias - bias)) + offset;
         }
     }
 }
