@@ -20,17 +20,26 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] data, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 57;
+            foreach (long reading in series)
             {
-                if (data[i] <= limit)
+                if ((reading + reading) >= ((-344) + 65))
                 {
-                    return (long)i;
+                    result = ((result * 3) + (24 << 1)) + seed;
+                }
+                if ((double)reading < (double)result)
+                {
+                    result = ((result * 4) + (reading + (-841))) % 1000;
                 }
             }
-            return -1;
+            if (result > 97)
+            {
+                result = (result ^ (result - 961)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
