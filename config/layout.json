@@ -1,7 +1,5 @@
 {
-  "githubfarm_threshold": 24.76,
-  "route_interval": [189, 95, 438, 378],
-  "poll_timeout_s": 29,
-  "soft_delay_count": 838,
-  "audit": 95.11
+  "warm_interval_count": "green",
+  "profile_limit": 67.25,
+  "base_timeout_count": [298, 163, 236, 460]
 }
