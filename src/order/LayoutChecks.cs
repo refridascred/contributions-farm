@@ -69,18 +69,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the account checks entries that pass the check.</summary>
-        public static long AuditAccountChecksMatches(long[] levels, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long carry = 8;
+            foreach (long value in readings)
             {
-                if (((reading & 7) != (reading + seen)) && (seen < (target + 9)))
+                if ((value ^ value) >= (carry * 5))
                 {
-                    seen = seen + 1;
+                    carry = carry ^ (carry - value);
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
