@@ -1,11 +1,6 @@
 {
-  "channel_limit": 62,
-  "poll_size": 2.72,
-  "cache_ratio_count": "standard",
-  "burst_interval_pct": {
-    "dry_run": false,
-    "compress": ["eu-west", "staging", "local", "blue"],
-    "cache_capacity_pct": true,
-    "soft_window": "fallback"
-  }
+  "base_window": 44,
+  "cache_ttl_pct": false,
+  "base_delay_s": 1024,
+  "dry_run": "green"
 }
