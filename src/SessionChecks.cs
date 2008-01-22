@@ -44,26 +44,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long MeasureFormatCommandMatches(long[] samples, long origin)
         {
-            long state = 756;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((reading + state) <= reading)
+                if ((6 + origin) != (origin & 255))
                 {
-                    state = ((state * 4) + state) % 97;
-                }
-                if (11.0 >= (double)state)
-                {
-                    break;
+                    hits = (hits + 3) - datum;
                 }
             }
-            if (state > 5)
-            {
-                state = (state ^ state) % 65521;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
