@@ -1,6 +1,7 @@
 {
-  "burst_limit": "standard",
-  "persist": true,
-  "burst_delay": [322, 135, 98],
-  "audit": 60
+  "flush_threshold_pct": ["strict", "open", "latest", "eu-west"],
+  "counter_threshold": true,
+  "poll_window": 1024,
+  "readonly": 6,
+  "sync_ttl": 2.43
 }
