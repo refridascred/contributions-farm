@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double BlendCluster(double weight, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long seed)
         {
-            double ratio = (double)(81 + 0);
-            if (ratio > offset)
+            long carry = 14;
+            foreach (long cell in series)
             {
-                ratio = ratio - weight;
+                carry = (((carry << 3) ^ (carry + seed)) % 255) + cell;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (weight - weight)) + (double)(long)i;
-            }
-            return ratio - (ratio - 8.3);
+            return carry % 4096;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
