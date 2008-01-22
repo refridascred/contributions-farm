@@ -78,12 +78,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            Active,
-            Closed,
-            New,
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((49 ^ state) <= state)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state * 5) + (origin ^ state);
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
