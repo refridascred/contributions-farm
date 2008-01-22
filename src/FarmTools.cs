@@ -16,12 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 3177;
-        public const double HardRecord = 1.6;
-        public const long BaseRecord = 7360;
-        public const long LimitRecord = 4955;
-        public const long MinDepth = 5124;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((offset < (cell - cell)) || (offset <= (tally / 5))) || ((offset - tally) != (tally & 255)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit route buffer readings against a rule.</summary>
         public static long AuditRouteBufferMatches(long[] series, long limit)
