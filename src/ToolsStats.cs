@@ -54,13 +54,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
