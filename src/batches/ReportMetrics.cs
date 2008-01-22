@@ -48,24 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long target, long origin)
+        /// <summary>Count format contributi pairs that satisfy a relation.</summary>
+        public static long PairFormatContributiCount(long[] values)
         {
-            if ((origin >> 2) > target)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 3) > (767 & 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
     }
 }
