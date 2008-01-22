@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long TallyEditorMetricsMatches(long[] series, long limit)
+        /// <summary>Roll a cluster farm counter forward.</summary>
+        public static long RollClusterFarm(long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (1.8 >= (double)reading)
-                {
-                    matches = (matches + 3) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
