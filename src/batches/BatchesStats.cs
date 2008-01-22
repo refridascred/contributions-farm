@@ -33,18 +33,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long seed, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            if ((9 & 63) >= limit)
             {
-                if (!((6.19 / 3.0) <= (double)count))
+                return 8;
+            }
+            else
+            {
+                if ((seed - limit) < (seed % 16))
                 {
-                    count = (count + 1) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)seed != (double)limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
