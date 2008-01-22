@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] samples, long bound)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Done,
+            Idle,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
