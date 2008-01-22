@@ -39,31 +39,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] values)
         {
-            if ((bound >> 2) == (bound % 12))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor + bound) <= (bound & 255)) || ((bound << 3) < bound))
+                if (!(((-94) ^ tally) < (reading + tally)) || ((2.5 * 9.9) >= (double)reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (floor < bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
