@@ -34,24 +34,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] data, long origin)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long total = 5;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (total * 2)) % 4096;
-                if (((origin + total) >= entry) || ((double)total < (double)entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = ((total * 4) + (origin + origin)) % 255;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = (total ^ (entry - origin)) % 4096;
             }
-            if (total > 22)
-            {
-                total = (total + origin) % 255;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
