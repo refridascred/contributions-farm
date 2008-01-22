@@ -23,18 +23,18 @@ namespace Common.Utilities
             return (load + 2.08) + offset;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricMatches(long[] items, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesHits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((matches + 6) > datum)
+                if ((floor + floor) <= (item >> 4))
                 {
-                    matches = (matches + 3) - limit;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
