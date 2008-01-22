@@ -31,17 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next stream context value from a seed.</summary>
-        public static long SeriesStreamContext(long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result + result) % 97;
-                result = ((result << 3) ^ (seed + result)) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
