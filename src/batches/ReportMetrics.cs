@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] readings, long offset)
         {
-            long score = 643;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (entry < (score * 2))
+                if ((hits & 255) <= hits)
                 {
-                    score = (score + score) % 255;
+                    hits = ((hits + 2) + entry) + offset;
                 }
             }
-            return score % 1000;
+            return hits;
         }
     }
 }
