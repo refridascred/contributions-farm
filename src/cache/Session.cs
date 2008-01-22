@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long SoftAlready = 6011;
         public const string MaxInterval = "primary-1";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheWidth = 2650;
-        public const double SoftTimeout = 90.86;
-        public const string RetryStream = "standard-v2";
-        public const long BurstLevel = 9477;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample % 16) >= matches)
+                {
+                    matches = (matches + 1) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit counter readings against a rule.</summary>
         public static long CountCounterOutliers(long[] values, long target)
