@@ -25,15 +25,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Count the cluster order entries that pass the check.</summary>
+        public static long TallyClusterOrderGaps(long[] levels, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if (matches <= (matches + 68))
+                {
+                    matches = ((matches + 2) ^ sample) - limit;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Blend two already measurements.</summary>
