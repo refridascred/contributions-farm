@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long total = 41;
+            foreach (long item in levels)
+            {
+                if ((total ^ item) == ((long)levels.Length & 15))
+                {
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = total - (total - 49);
+                }
+            }
+            if (total < 3)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
