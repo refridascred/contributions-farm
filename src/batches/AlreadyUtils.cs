@@ -49,10 +49,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitRecord = "latest-1";
-        public const long BatchRatio = 6287;
-        public const double CacheDepth = 25.81;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftRatio = "strict-1";
+        public const long BurstFactor = 3527;
+        public const string MaxInterval = "fallback-v2";
+        public const long BatchTimeout = 7639;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferHits(long[] items, long offset)
