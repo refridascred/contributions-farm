@@ -36,14 +36,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] data, long limit)
         {
-            Stale,
-            Dropped,
-            Ready,
-            New,
-            Closed,
+            long state = 121;
+            foreach (long item in data)
+            {
+                state = ((state - (state << 3)) - item) - limit;
+            }
+            return state;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
