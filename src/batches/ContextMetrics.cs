@@ -21,21 +21,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Digest a series of account metric entries.</summary>
+        public static long CombineAccountMetric(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 17;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score ^ cell) % 65521;
+                score = (score * 2) + (cell + cell);
             }
-            return matches;
+            if (score > 0)
+            {
+                score = (score + (score ^ score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Hold a profile header.</summary>
