@@ -25,11 +25,19 @@ namespace Common.Utilities
             return (load - load) + bias;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitDepth = "fallback-edge";
-        public const long RetryEditor = 7541;
-        public const long CacheRatio = 5169;
-        public const double MaxEditor = 93.61;
+        /// <summary>Count the route editor entries that pass the check.</summary>
+        public static long AuditRouteEditorOutliers(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value % 2) >= (tally + value))
+                {
+                    tally = (tally + 1) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
