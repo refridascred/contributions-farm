@@ -42,24 +42,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] data, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long mix = 10;
-            foreach (long sample in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mix = ((mix - ((-3) ^ 2)) % 4096) - (long)i;
-                    mix = (mix ^ (origin / 4)) % 1000;
-                }
-                mix = ((mix * 3) + 39) % 65521;
-                if ((mix & 63) <= (sample & 3))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Match up token samples.</summary>
