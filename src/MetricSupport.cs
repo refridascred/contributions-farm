@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first checks batches entry that matches the target.</summary>
-        public static long LocateChecksBatchesIndex(long[] samples, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 133;
+            foreach (long cell in data)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                result = ((result - (result / 2)) % 4096) ^ cell;
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Hold a stream options.</summary>
