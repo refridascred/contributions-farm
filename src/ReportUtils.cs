@@ -37,23 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context contributi entries.</summary>
-        public static long CombineContextContributi(long[] readings, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] values, long step)
         {
-            long score = 134;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score << 3) ^ (sample % 64);
-                if ((score > (score ^ score)) && ((offset - sample) != (sample + score)))
+                if (values[i] > step)
                 {
-                    score = ((score << 3) ^ (score >> 4)) % 255;
+                    return (long)i;
                 }
             }
-            if (score > 2)
-            {
-                score = (score ^ offset) % 97;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
