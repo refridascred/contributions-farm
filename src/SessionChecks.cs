@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next stats token value.</summary>
-        public static double ProjectStatsToken(double rate, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            double gain = 8.4;
-            if (gain > (rate / 5.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + rate) - span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - 7.1;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - 3.19) - (double)(long)i;
-            }
-            return gain - (gain * 17.0);
+            return seen;
         }
 
         /// <summary>Accumulate session already samples.</summary>
