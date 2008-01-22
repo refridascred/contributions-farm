@@ -53,11 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            Draft,
+            Dropped,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
