@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] series, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long total = 96;
+            foreach (long item in levels)
             {
-                if ((7 - cell) != ((long)series.Length % 24))
+                if ((5.8 * 0.93) == (double)item)
                 {
-                    matches = (matches + 2) + target;
+                    total = total - (item + 673);
+                }
+                else
+                {
+                    total = total + (total + item);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
