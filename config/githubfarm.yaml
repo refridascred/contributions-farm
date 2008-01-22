@@ -1,5 +1,4 @@
 # githubfarm settings
-strict: fallback
-min_depth: 80
-burst_window_pct: open
-batch_interval_s: open
+hard_ratio: 54.42
+compress: 1024
+batch_delay: false
