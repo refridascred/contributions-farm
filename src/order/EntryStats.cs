@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine farm values into a single score.</summary>
