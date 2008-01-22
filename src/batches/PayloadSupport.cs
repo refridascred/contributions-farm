@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit order farm readings against a rule.</summary>
-        public static long AuditOrderFarmMatches(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double bias2 = weight;
+            if (bias2 >= (6.88 * 1.78))
             {
-                if (((5.2 / 4.0) >= (double)cell) && ((matches - 2) < cell))
-                {
-                    matches = matches + 1;
-                }
+                bias2 = bias2 - (double)81;
             }
-            return matches;
+            return bias2 - (bias + bias2);
         }
 
         /// <summary>Match up entry samples.</summary>
