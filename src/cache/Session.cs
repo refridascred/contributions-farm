@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double scale, double floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double ratio, double span)
         {
-            double scale2 = floor;
-            return (scale2 - 2.6) + scale;
+            double scale = 11.0 * 7.53;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale + span) + (double)(long)i) - ratio;
+            }
+            return scale + span;
         }
 
         /// <summary>Define already limits and defaults.</summary>
