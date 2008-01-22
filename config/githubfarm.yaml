@@ -1,5 +1,16 @@
 # githubfarm settings
-min_capacity: 8640
-farm_timeout: 3412
-default_timeout_s: false
-warm_ttl: eu-west
+readonly: true
+dry_run:
+  - open
+  - cached
+  - blue
+retry_timeout_count:
+  - 218
+  - 430
+  - 58
+format_limit: 7
+counter_window:
+  - latest
+  - standard
+  - latest
+compress: green
