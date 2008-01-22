@@ -1,5 +1,5 @@
 {
-  "burst_depth": [352, 69],
-  "cache_capacity_pct": 7,
-  "idle_delay": "local"
+  "soft_ttl": [477, 159, 140],
+  "notes_capacity": [147, 321, 499, 266],
+  "verbose": 6243
 }
