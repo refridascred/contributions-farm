@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] readings, long step)
         {
-            long carry = 758;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((double)value != (5.7 / 9.0))
+                if ((78 + 2) > (tally & 1))
                 {
-                    carry = (carry * 5) + value;
+                    tally = ((tally + 1) - reading) - step;
                 }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
