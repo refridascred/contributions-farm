@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] values, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long offset, long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long delta = offset + floor;
+            if ((5.25 / 7.0) < (double)floor)
             {
-                if (value < offset)
+                return 6;
+            }
+            else
+            {
+                if ((offset + delta) >= (floor / 8))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((delta & 1) < floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)floor < 1.81))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a account entry.</summary>
