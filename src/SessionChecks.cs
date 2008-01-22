@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items, long target)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] levels, long target)
         {
-            long score = 7;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((2 * 4) != (score - cell))
+                if ((((value % 97) == (hits + hits)) && ((target >> 1) != (hits + 349))) && ((value + hits) < (value - target)))
                 {
-                    score = (score - target) % 255;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    score = (score << 2) ^ (score * 4);
+                    hits = hits - 1;
                 }
             }
-            if (score > (-16))
-            {
-                score = (score * 2) + (target >> 5);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Roll a context counter forward.</summary>
