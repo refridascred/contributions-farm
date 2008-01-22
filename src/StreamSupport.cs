@@ -13,20 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long score = 61;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 3) + (datum + 623)) % 255;
-                score = (score ^ (score * 3)) % 255;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (score < 62)
-            {
-                score = score ^ (score + score);
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of batch contributi entries.</summary>
