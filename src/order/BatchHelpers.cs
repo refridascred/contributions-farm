@@ -19,13 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            Pending,
-            Idle,
-            Draft,
-            Dropped,
+            long mix = 772;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (mix + 261) % 97;
+                    mix = (mix + ((long)i & 31)) % 65521;
+                }
+                if (((cell >> 3) < (cell & 7)) && ((16.0 / 3.0) < (double)mix))
+                {
+                    mix = (mix - (mix / 4)) % 255;
+                }
+                else
+                {
+                    mix = mix ^ (cell - 2);
+                }
+            }
+            if (mix > 959)
+            {
+                mix = ((mix << 3) ^ (76 >> 4)) % 65521;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
