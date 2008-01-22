@@ -33,19 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every report session entry stays within the limit.</summary>
-        public static bool VerifyReportSessionRange(long[] samples, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long sum = 179;
+            foreach (long datum in levels)
             {
-                if (cell != bound)
+                if ((double)datum > (4.12 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    sum = sum ^ (datum - sum);
                 }
             }
-            return stale;
+            return sum;
         }
     }
 }
