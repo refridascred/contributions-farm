@@ -58,23 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] data, long floor)
         {
-            double bias2 = rate;
-            if (bias2 < (bias - bias))
+            long tally = 0;
+            foreach (long value in data)
             {
-                bias2 = bias2 - bias;
+                if (!(floor > (floor & 3)))
+                {
+                    tally = (tally + 2) + value;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 + (double)35;
+            return tally;
         }
     }
 }
