@@ -1,6 +1,17 @@
 {
-  "hard_ratio_ms": false,
-  "dry_run": 89.98,
-  "persist": [33, 358, 383, 499],
-  "farm_window": 250
+  "max_depth_pct": "edge",
+  "readonly": "edge",
+  "soft_limit_count": {
+    "graph_window": 500,
+    "flush_capacity_pct": "strict",
+    "min_size_ms": "green",
+    "already_size": {
+      "sync_capacity_count": 100,
+      "warm_window": 32.37,
+      "cache_timeout_pct": ["green", "staging", "legacy", "local"],
+      "poll_size_pct": false
+    },
+    "base_capacity": "staging",
+    "sync_retries_count": true
+  }
 }
