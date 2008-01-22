@@ -51,15 +51,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] data, long limit)
+        /// <summary>Iterate the channel record series from a seed.</summary>
+        public static long DeriveChannelRecord(long floor)
         {
-            long state = 121;
-            foreach (long item in data)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state - (state << 3)) - item) - limit;
+                if (!((long)i == (floor ^ acc)))
+                {
+                    acc = acc ^ (acc >> 1);
+                    continue;
+                }
+                if ((floor ^ (long)i) == ((-8) & 15))
+                {
+                    continue;
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
