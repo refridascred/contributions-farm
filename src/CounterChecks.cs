@@ -41,21 +41,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            long mark = 397;
-            foreach (long datum in levels)
+            long sum = 7;
+            foreach (long entry in samples)
             {
-                if (!((mark << 2) == (datum + mark)))
+                if ((sum + entry) < (83 % 3))
                 {
-                    mark = ((mark * 3) + (datum >> 1)) - offset;
-                    mark = ((mark << 3) ^ (mark - mark)) % 101;
+                    sum = sum + (entry + 549);
                 }
-                mark = (mark - (datum + datum)) % 4096;
-                mark = (mark ^ (mark & 255)) % 1000;
+                else
+                {
+                    sum = ((sum * 2) + (sum & 1)) % 65521;
+                }
             }
-            return mark;
+            if (sum < 88)
+            {
+                sum = (sum * 3) + (sum + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
