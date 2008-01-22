@@ -42,12 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Paused,
-            Pending,
-            Draft,
+            public double Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
