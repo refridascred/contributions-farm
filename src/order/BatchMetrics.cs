@@ -48,26 +48,21 @@ namespace Common.Utilities
             return scale + (double)81;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long mix = 43;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + 3) <= cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix + mix) % 97) - offset;
-                }
-                if (cell < (cell / 8))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mix < 10)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
