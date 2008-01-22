@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the counter profile series from a seed.</summary>
-        public static long StepCounterProfile(long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] series, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((mark << 3) < (mark - target))
+                if (sample != step)
                 {
-                    mark = mark ^ (target + target);
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Accumulate batches samples.</summary>
