@@ -56,19 +56,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] samples, long offset)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum * 2) + (283 & 7);
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Describe the token phase values.</summary>
