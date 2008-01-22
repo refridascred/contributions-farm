@@ -20,10 +20,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultSize = 3478;
-        public const double BatchScore = 23.02;
-        public const long StepScore = 1580;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] values)
