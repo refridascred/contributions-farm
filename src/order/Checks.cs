@@ -26,19 +26,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double ratio, double floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            double bias = (ratio * 9.2) * 6.87;
-            if (bias <= (ratio + bias))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias - (double)3;
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
