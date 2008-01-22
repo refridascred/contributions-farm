@@ -52,12 +52,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long bound)
+        /// <summary>Locate a contributi schema reading by value.</summary>
+        public static long LookupContributiSchemaIndex(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
