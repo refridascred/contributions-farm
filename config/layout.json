@@ -1,5 +1,5 @@
 {
-  "max_ttl_s": 94,
-  "readonly": ["eu-west", "edge", "green"],
-  "retry_retries_ms": false
+  "persist": "strict",
+  "min_ttl_count": 597,
+  "max_capacity_s": false
 }
