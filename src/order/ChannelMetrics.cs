@@ -29,13 +29,29 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((473 ^ (long)i) <= (acc ^ floor)) && ((94 * 5) < floor))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + acc);
+                }
+                if ((4 ^ floor) != ((long)i + floor))
+                {
+                    acc = (acc - floor) % 101;
+                    acc = acc + ((long)i * 2);
+                }
+                acc = (acc + acc) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
