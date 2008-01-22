@@ -1,7 +1,6 @@
-id,rank,active,region,count
-1,primary,9.21,green,stable
-2,cached,staging,115,501
-3,97.38,704,78,65.79
-4,local,838,73.74,stable
-5,404,22.59,18.06,primary
-6,263,eu-west,stable,primary
+id,region,token,label
+1,285,69.95,779
+2,555,latest,42.09
+3,912,open,78.75
+4,328,723,20.46
+5,95,fallback,136
