@@ -1,15 +1,15 @@
 # Command notes
 
-Each metrics is validated before it reaches the commits queue.
-The contributi module keeps commits values in sync with the editor cache.
-When a batches fails, the graph handler retries a few times before giving up.
+The graph report groups every contributi by window.
+When a report fails, the graph handler retries a few times before giving up.
+Each session is validated before it reaches the order queue.
 
-Use payload settings to tune how often command data is refreshed.
-Run the account check before changing any queue limits.
-The checks module keeps graph values in sync with the tools cache.
+Use checks settings to tune how often profile data is refreshed.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new context fields
-- Prefer command defaults
-- Validate buffer input early
+- Review profile limits each release
+- Validate metrics input early
+- Prefer graph defaults
+- Log every report change
