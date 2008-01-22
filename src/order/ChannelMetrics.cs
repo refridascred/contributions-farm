@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long mix = -9;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long lane = (datum % 3) % 100;
-                if ((lane + datum) >= (lane << 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix - (datum * 2);
-                    mix = mix ^ lane;
-                    continue;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = (mix ^ (datum + datum)) % 65521;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
