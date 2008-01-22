@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long step, long step2)
+        /// <summary>Validate tools batches readings against a bound.</summary>
+        public static bool GuardToolsBatchesBounds(long[] data, long floor)
         {
-            if (step2 >= 3)
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step2 - 94) <= 15)
+                if (value <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
