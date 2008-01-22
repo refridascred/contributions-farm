@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] readings, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mix = 729;
+            foreach (long reading in series)
             {
-                if ((matches - datum) > datum)
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = (matches + 2) - target;
+                    mix = ((mix ^ seed) % 65521) ^ (long)i;
                 }
-                else
+                if ((reading * 4) >= seed)
                 {
-                    matches = matches - 1;
+                    mix = (mix ^ (seed ^ seed)) % 97;
                 }
             }
-            return matches;
+            if (mix > 479)
+            {
+                mix = (mix + (mix / 3)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
