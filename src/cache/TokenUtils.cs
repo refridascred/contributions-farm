@@ -30,19 +30,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((16.0 + 7.63) <= (double)origin) && (mix < ((long)i + (long)i)))
-                {
-                    mix = ((mix * 4) + (mix + 5)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string WindowScore = "open-v2";
+        public const double LimitOrder = 54.96;
+        public const long BaseOrder = 4773;
+        public const string BurstSpan = "strict-v2";
     }
 }
