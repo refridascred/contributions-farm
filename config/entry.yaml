@@ -1,14 +1,7 @@
 # entry settings
-metrics_limit: 250
-soft_depth:
-  metric_depth: 2982
-  record_ttl: 1703
-  min_threshold_s: 6467
-  record_size: 87.85
-  cluster_retries: open
-  audit: 61.53
-command_limit:
-  - strict
-  - local
-  - latest
-  - strict
+persist: 1024
+poll_limit:
+  - eu-west
+  - standard
+max_threshold_pct: 97.62
+soft_limit_s: 41.58
