@@ -49,24 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long step, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double weight, double bias)
         {
-            if ((double)bound <= (double)89)
+            double weight2 = weight;
+            if (weight2 >= bias)
             {
-                return 4;
+                weight2 = weight2 - (weight2 - bias);
             }
-            else
-            {
-                if ((263 / 6) <= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return weight2 - weight;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
