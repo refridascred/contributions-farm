@@ -20,19 +20,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] values, long offset)
+        /// <summary>Digest a series of already notes entries.</summary>
+        public static long CombineAlreadyNotes(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long anchor = 7;
+            foreach (long sample in items)
             {
-                if (entry <= offset)
+                if ((sample + sample) >= (sample + (long)items.Length))
                 {
-                    ok = false;
+                    anchor = anchor ^ (sample * 2);
+                }
+                if ((double)sample >= (2.9 - 9.01))
+                {
                     break;
                 }
             }
-            return ok;
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of window readings.</summary>
