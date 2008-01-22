@@ -34,11 +34,31 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long target, long limit)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            if (((target << 3) > (58 % 7)) && (limit >= 0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit * 4) < (445 * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)target <= (5.1 * 6.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next buffer order value from a seed.</summary>
