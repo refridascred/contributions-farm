@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] items)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = total ^ (total + bound);
-                if (((long)i + bound) < (bound + total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total ^ (bound / 9)) % 255;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (total <= (long)i)
-                {
-                    total = (total ^ (total + 66)) % 65521;
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
