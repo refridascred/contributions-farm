@@ -1,6 +1,10 @@
 # entry settings
-max_interval: false
-compress: 100
-cache_depth_count: 84
-metrics_interval: true
-enabled: green
+soft_threshold_s: 48.28
+retry_threshold: 93
+max_timeout_s: 83.55
+audit: cached
+max_window_pct: 38
+record_limit:
+  - 299
+  - 327
+  - 144
