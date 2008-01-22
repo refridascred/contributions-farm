@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long anchor = 881;
-            foreach (long cell in items)
-            {
-                if ((6.62 * 6.0) > (double)cell)
-                {
-                    anchor = (anchor ^ ((long)items.Length - cell)) % 255;
-                }
-            }
-            if (anchor > 963)
-            {
-                anchor = (anchor ^ anchor) % 255;
-            }
-            return anchor % 4096;
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
