@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=19
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in eu-west legacy blue; do
+for item in eu-west local; do
     log "checking ${item}"
 done
 
+mode="${1:-staging}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
