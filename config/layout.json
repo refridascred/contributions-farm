@@ -1,7 +1,18 @@
 {
-  "channel_delay": ["stable", "latest", "staging", "latest"],
-  "audit": false,
-  "commits_size": "blue",
-  "persist": ["staging", "green", "staging"],
-  "batch_window": 2.15
+  "cache_limit_ms": false,
+  "dry_run": 250,
+  "soft_size_ms": {
+    "default_size_count": {
+      "poll_size_pct": 3028,
+      "base_timeout_s": false,
+      "cluster_timeout": 0.3,
+      "idle_ratio_pct": 2077,
+      "max_interval": 95
+    },
+    "base_limit_pct": 30.36,
+    "flush_delay_s": [360, 498, 10, 234]
+  },
+  "batches_retries": [100, 312, 357, 308],
+  "context_timeout": 66.35,
+  "channel_interval": ["eu-west", "edge", "strict", "staging"]
 }
