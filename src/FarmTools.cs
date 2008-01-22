@@ -16,26 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long floor, long target)
-        {
-            long gap = floor - target;
-            if ((floor ^ gap) <= (target + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (gap > (223 % 16))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 3177;
+        public const double HardRecord = 1.6;
+        public const long BaseRecord = 7360;
+        public const long LimitRecord = 4955;
+        public const long MinDepth = 5124;
 
         /// <summary>Accumulate context samples.</summary>
         public static long FoldContext(long[] data, long limit)
