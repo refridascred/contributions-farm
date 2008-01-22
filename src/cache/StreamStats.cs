@@ -44,12 +44,12 @@ namespace Common.Utilities
         public const string DefaultBudget = "staging";
         public const string BurstWindow = "staging-edge";
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] series, long step)
+        /// <summary>Look up the position of a checks githubfarm sample.</summary>
+        public static long LocateChecksGithubfarmIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] < step)
+                if (samples[i] == bound)
                 {
                     return (long)i;
                 }
