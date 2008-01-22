@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long floor)
+        /// <summary>Accumulate report metrics samples.</summary>
+        public static long TallyReportMetrics(long[] series, long origin)
         {
-            if ((double)floor > 12.0)
+            long state = 9;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((9.71 + 7.0) >= (double)target))
+                state = ((state + origin) % 65521) ^ reading;
+                if ((double)767 > (double)state)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor <= 8.8)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    state = ((state << 3) ^ (long)series.Length) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
