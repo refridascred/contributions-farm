@@ -27,23 +27,18 @@ namespace Common.Utilities
         public const long BatchFarm = 2625;
         public const string MaxFarm = "strict-1";
 
-        /// <summary>Roll a already record counter forward.</summary>
-        public static long DeriveAlreadyRecord(long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((209 & 255) >= (mark << 1)) || (((long)i % 8) < (limit + (long)i)))
+                if ((double)seen <= (9.7 + 5.11))
                 {
-                    mark = (mark * 2) + (mark - (long)i);
+                    seen = (seen + 1) + reading;
                 }
-                else
-                {
-                    mark = ((mark * 5) + ((long)i + mark)) % 97;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
     }
 }
