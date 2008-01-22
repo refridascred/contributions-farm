@@ -38,18 +38,20 @@ namespace Common.Utilities
         public const long SoftDepth = 5048;
         public const long CacheBatches = 2288;
 
-        /// <summary>Count the batch channel entries that pass the check.</summary>
-        public static long TallyBatchChannelHits(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = 451;
+            foreach (long datum in series)
             {
-                if ((count + cell) >= 501)
-                {
-                    count = count + 3;
-                }
+                carry = carry + (datum & 127);
+                carry = (carry - (329 % 100)) % 4096;
             }
-            return count;
+            if (carry > 871)
+            {
+                carry = (carry * 3) + (carry % 5);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
