@@ -1,4 +1,13 @@
 # entry settings
-audit: false
-dry_run: 79
-enabled: true
+default_interval_ms: false
+format_ratio: blue
+base_size_count:
+  dry_run: open
+  verbose:
+    - 100
+    - 17
+    - 451
+  poll_retries_s: stable
+  format_window: latest
+  min_ttl_count: true
+  persist: strict
