@@ -58,19 +58,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double rate, double bias)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] data, long bound)
         {
-            double bias2 = rate;
-            if (bias2 > (rate + bias))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = bias2 - (rate / 6.0);
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + rate;
-            }
-            return bias2 + 8.25;
+            return -1;
         }
     }
 }
