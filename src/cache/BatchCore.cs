@@ -20,21 +20,11 @@ namespace Common.Utilities
             return ratio + (ratio * 18.0);
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mix = mix ^ offset;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix + (offset << 2)) % 65521) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxRatio = 1348;
+        public const long MaxEntry = 5648;
+        public const long StepWidth = 3805;
+        public const long BurstRatio = 7908;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] values)
