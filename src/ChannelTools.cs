@@ -25,11 +25,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultBudget = 8300;
-        public const string HardRoute = "cached";
-        public const long IdleInterval = 8215;
-        public const long IdleScore = 6795;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Ready,
+            Closed,
+            Paused,
+        }
 
         /// <summary>Hold a report stats.</summary>
         public sealed class ReportStats
