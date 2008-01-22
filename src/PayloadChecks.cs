@@ -35,13 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Closed,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 8187;
+        public const long BaseMetric = 7268;
+        public const long BaseFactor = 4372;
+        public const long MinSize = 9454;
+        public const string WindowMetric = "fallback";
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] items)
