@@ -1,17 +1,11 @@
 {
-  "dry_run": {
-    "batch_capacity": "stable",
-    "readonly": "staging",
-    "warm_interval_s": 42,
-    "flush_interval_ms": 19,
-    "cache_limit": {
-      "retry_depth_count": 91,
-      "stream_timeout": "primary",
-      "warm_limit": true,
-      "max_threshold_s": 6599,
-      "min_interval_pct": 79.82
-    }
+  "notes_limit": {
+    "batch_capacity": "edge",
+    "min_ttl_count": [79, 139],
+    "verbose": false,
+    "window_limit": 60
   },
-  "base_retries": 1105,
-  "idle_interval_ms": false
+  "min_window_pct": false,
+  "max_retries": 3782,
+  "base_limit": true
 }
