@@ -73,24 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long seed, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] samples, long offset)
         {
-            if (((seed / 3) == (seed + step)) && ((step << 1) <= step))
+            bool found = true;
+            foreach (long reading in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed > 4.71)
+                if (reading >= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
