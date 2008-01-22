@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long step, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = step + origin;
+            if ((((-35) - step) <= (slot + 75)) && ((double)slot >= (18.0 * 1.03)))
             {
-                if (data[i] <= step)
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (18.0 * 5.9))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)slot != (double)3)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a cache header.</summary>
