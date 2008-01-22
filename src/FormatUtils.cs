@@ -64,11 +64,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 62.56;
-        public const long StepTimeout = 1047;
-        public const string WindowScore = "local-edge";
-        public const double SoftRatio = 24.61;
-        public const long SoftStats = 4601;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadRange(long[] levels, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
