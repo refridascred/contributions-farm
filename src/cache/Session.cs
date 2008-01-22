@@ -23,10 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 4744;
-        public const long SoftAlready = 6011;
-        public const string MaxInterval = "primary-1";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 7482;
+        public const long WindowBudget = 4725;
+        public const string BatchGithubfarm = "open-v2";
+        public const string SoftGithubfarm = "staging";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long CountRouteMatches(long[] readings, long seed)
