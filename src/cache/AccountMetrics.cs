@@ -90,17 +90,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] readings, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
