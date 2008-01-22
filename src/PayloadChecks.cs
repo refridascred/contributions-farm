@@ -48,21 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                bool ok = !((offset - offset) == (total / 2));
-                total = total + offset;
-                if (ok)
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
