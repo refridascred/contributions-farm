@@ -44,14 +44,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] values)
         {
-            Active,
-            Dropped,
-            Idle,
-            Retry,
-            Failed,
+            long mark = 3;
+            foreach (long reading in values)
+            {
+                mark = ((mark << 3) ^ mark) ^ reading;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
