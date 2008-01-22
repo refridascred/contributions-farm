@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 8000;
-        public const string WindowEntry = "fallback-edge";
-        public const long RetryFactor = 4309;
-        public const long IdleCount = 712;
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
