@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series, long origin)
+        /// <summary>Count the order already entries that pass the check.</summary>
+        public static long MeasureOrderAlreadyHits(long[] series, long floor)
         {
-            long sum = -418;
+            long tally = 0;
             foreach (long sample in series)
             {
-                sum = ((sum ^ (origin / 6)) % 65521) - sample;
-                if ((8.6 / 2.0) <= (double)origin)
+                if (!(sample <= (floor - 535)) || ((sample >> 5) == (tally / 5)))
                 {
-                    sum = ((sum << 2) ^ (989 * 4)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
