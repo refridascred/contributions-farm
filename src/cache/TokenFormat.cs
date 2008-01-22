@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] series, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (series[i] == step)
+                if ((seen << 1) >= datum)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the buffer status values.</summary>
