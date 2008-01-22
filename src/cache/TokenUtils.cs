@@ -28,17 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 22;
+            foreach (long datum in values)
             {
-                if (levels[i] == bound)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    result = (result ^ ((long)i & 31)) % 65521;
+                    result = ((result << 2) ^ (datum & 31)) % 97;
                 }
+                result = (result - result) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
