@@ -1,8 +1,13 @@
 {
-  "burst_capacity_pct": true,
-  "persist": 500,
-  "editor_retries": true,
-  "retry_window_pct": "open",
-  "checks_depth": 10,
-  "base_ttl_pct": ["local", "fallback", "blue"]
+  "compress": 84.21,
+  "route_delay": {
+    "editor_window": "legacy",
+    "report_ttl": 51,
+    "burst_delay_count": "stable",
+    "burst_limit": "cached",
+    "queue_retries": 88
+  },
+  "retry_ratio": false,
+  "flush_window_pct": [56, 472, 234],
+  "min_ratio_ms": 25.56
 }
