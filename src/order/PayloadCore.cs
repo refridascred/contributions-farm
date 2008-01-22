@@ -31,24 +31,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)(long)i >= (double)score)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score - 19;
-                    continue;
+                    if ((data[i] + data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    score = (score + score) % 255;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Validate order contributi readings against a bound.</summary>
