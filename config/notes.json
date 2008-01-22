@@ -1,8 +1,20 @@
 {
-  "flush_capacity": true,
-  "support_threshold": 1808,
-  "batch_size_count": "fallback",
-  "default_interval_s": "strict",
-  "readonly": "standard",
-  "retry_size_pct": false
+  "soft_timeout_pct": {
+    "default_interval_s": "standard",
+    "max_timeout_ms": "open",
+    "record_limit": false,
+    "sync_retries_count": {
+      "commits_capacity": "green",
+      "verbose": 5,
+      "persist": 8879,
+      "account_size": 91.68,
+      "sync_interval": 9095,
+      "flush_delay_pct": true
+    }
+  },
+  "burst_capacity_pct": true,
+  "sync_limit_pct": "legacy",
+  "idle_window_ms": 69.61,
+  "notes_timeout": "green",
+  "hard_ttl_ms": ["legacy", "fallback"]
 }
