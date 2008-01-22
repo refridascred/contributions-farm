@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitFactor = 3781;
-        public const long IdleInterval = 2281;
-        public const double RetryEntry = 39.8;
-        public const string MinEntry = "cached-1";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
