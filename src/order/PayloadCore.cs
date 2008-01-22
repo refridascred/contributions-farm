@@ -32,15 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the session batch entries that pass the check.</summary>
-        public static long TallySessionBatchMatches(long[] values)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportHits(long[] values, long bound)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long entry in values)
             {
-                if (matches <= (sample % 16))
+                if ((6.0 + 0.26) != (double)matches)
                 {
-                    matches = matches + 1;
+                    matches = ((matches + 3) ^ entry) + bound;
                 }
             }
             return matches;
