@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] items)
         {
-            long score = 7;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((double)cell > (5.0 + 8.4))
+                if ((datum % 24) <= (hits + hits))
                 {
-                    score = (score + (score * 2)) % 101;
+                    hits = hits + 2;
                 }
             }
-            if (score < 229)
-            {
-                score = (score + (score / 8)) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit route buffer readings against a rule.</summary>
