@@ -33,14 +33,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Scale a metrics stream figure with a bias.</summary>
+        public static double BlendMetricsStream(double rate, double span)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Pending,
-            Queued,
+            double weight = (double)(893 * 4);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (rate + span)) + (double)(long)i;
+            }
+            return weight + span;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
