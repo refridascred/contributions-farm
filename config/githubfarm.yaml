@@ -1,6 +1,15 @@
 # githubfarm settings
-warm_size_ms:
-  - 387
-  - 289
-max_retries: edge
-stream_size: 100
+cache_limit_count: 79
+sync_retries_s:
+  - 425
+  - 237
+  - 178
+min_retries_count:
+  - strict
+  - blue
+  - blue
+persist: legacy
+record_delay:
+  - 65
+  - 275
+  - 213
