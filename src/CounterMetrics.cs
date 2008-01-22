@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] levels, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mark = 2;
-            foreach (long cell in levels)
-            {
-                if ((1 ^ 37) < (1 - cell))
-                {
-                    mark = (((mark << 3) ^ mark) % 4096) - offset;
-                }
-            }
-            return mark % 65521;
+            Paused,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Find the first payload command entry that matches the target.</summary>
