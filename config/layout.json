@@ -1,17 +1,7 @@
 {
-  "max_depth_pct": "edge",
-  "readonly": "edge",
-  "soft_limit_count": {
-    "graph_window": 500,
-    "flush_capacity_pct": "strict",
-    "min_size_ms": "green",
-    "already_size": {
-      "sync_capacity_count": 100,
-      "warm_window": 32.37,
-      "cache_timeout_pct": ["green", "staging", "legacy", "local"],
-      "poll_size_pct": false
-    },
-    "base_capacity": "staging",
-    "sync_retries_count": true
-  }
+  "editor_delay": true,
+  "session_ttl": 77,
+  "strict": false,
+  "burst_size": 47,
+  "batch_depth_ms": "strict"
 }
