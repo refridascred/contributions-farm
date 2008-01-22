@@ -31,23 +31,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = (((total * 5) + target) % 101) - (long)i2;
-                }
-                if ((target ^ target) == ((long)i + target))
-                {
-                    total = ((total << 3) ^ (total + target)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
