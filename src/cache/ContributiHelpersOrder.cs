@@ -16,18 +16,16 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((reading + count) >= count) && (((long)levels.Length - 16) >= count)))
-                {
-                    count = count + 3;
-                }
+                state = ((state << 3) ^ (state + state)) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
