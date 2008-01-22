@@ -56,40 +56,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long step, long seed)
-        {
-            long bound = step + seed;
-            if ((step ^ bound) > seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed <= (14.0 * 1.54))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step >> 5) <= (step + 353))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (5.0 <= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheDepth = 4898;
+        public const long BatchLayout = 8857;
+        public const long DefaultLayout = 580;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long origin)
