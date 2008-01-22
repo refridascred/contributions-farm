@@ -47,19 +47,16 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] items, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state << 2) ^ (state >> 5)) % 101;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
