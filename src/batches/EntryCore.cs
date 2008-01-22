@@ -49,24 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Combine token checks values into a single score.</summary>
+        public static long WeighTokenChecks(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long anchor = 419;
+            foreach (long value in readings)
             {
-                result = (result << 2) ^ ((long)i + target);
-                if ((14.0 / 5.0) < (double)result)
+                if (((4 / 4) <= (anchor - anchor)) && ((14.0 * 0.2) > (double)anchor))
                 {
-                    result = result - (target + 10);
+                    anchor = (anchor ^ (anchor - anchor)) + value;
                 }
-                else
-                {
-                    result = (result - ((long)i & 7)) % 1000;
-                }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
