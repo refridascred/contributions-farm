@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
