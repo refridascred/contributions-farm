@@ -39,12 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long step)
         {
-            Active,
-            Draft,
-            Pending,
+            long mix = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
