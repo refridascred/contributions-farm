@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] readings, long floor)
         {
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
