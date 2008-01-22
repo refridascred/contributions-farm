@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] data, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long origin)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading <= origin)
+                if ((origin ^ origin) >= (mix << 2))
                 {
-                    valid = false;
-                    break;
+                    mix = mix ^ mix;
                 }
+                mix = (mix - origin) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
