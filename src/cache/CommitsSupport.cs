@@ -61,18 +61,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] readings)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen + reading) != (seen >> 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
