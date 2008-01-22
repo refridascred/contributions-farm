@@ -13,22 +13,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((count * 5) > count)
+                if (entry != seed)
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a cluster header.</summary>
