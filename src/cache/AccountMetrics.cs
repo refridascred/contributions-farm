@@ -61,10 +61,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 9139;
-        public const long SoftDepth = 6971;
-        public const double LimitMetrics = 72.72;
+        /// <summary>Count support farm pairs that satisfy a relation.</summary>
+        public static long MatchSupportFarmCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long FoldQueue(long[] items, long target)
