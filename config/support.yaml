@@ -1,8 +1,7 @@
 # support settings
-dry_run: green
-cache_window_pct: 37
-max_capacity_s: false
-graph_threshold:
-  - 375
-  - 140
-audit: latest
+queue_window: false
+default_limit_pct: 17
+channel_ratio: 3696
+poll_size: 33
+poll_ttl_s: false
+notes_ratio: strict
