@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long LimitDepth = 8953;
         public const long CacheDepth = 9672;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 9807;
-        public const long BurstBatch = 6675;
-        public const long BaseWidth = 7334;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 7028;
+        public const long CacheScore = 6489;
+        public const double BatchRatio = 94.42;
+        public const long WindowSize = 2631;
+        public const long BatchGraph = 3854;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 1878;
