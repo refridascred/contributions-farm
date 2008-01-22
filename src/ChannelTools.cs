@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks commits counter forward.</summary>
-        public static long RollChecksCommits(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = (acc << 3) ^ (acc - (-25));
-                acc = (acc * 4) + (seed + seed);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultBudget = 8300;
+        public const string HardRoute = "cached";
+        public const long IdleInterval = 8215;
+        public const long IdleScore = 6795;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] values, long target)
