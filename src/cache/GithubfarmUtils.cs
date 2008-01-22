@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "legacy-edge";
-        public const string DefaultBatches = "fallback-v2";
-        public const long MinLevel = 7116;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 645;
+        public const double HardFormat = 48.56;
+        public const string WindowFormat = "primary-1";
+        public const string BatchFormat = "cached-1";
+        public const long BatchLevel = 5429;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
