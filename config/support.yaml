@@ -1,19 +1,8 @@
 # support settings
-soft_size_ms: standard
-sync_size_ms:
-  support_limit:
-    - 41
-    - 48
-    - 453
-  poll_ttl_pct: 51
-  hard_retries_s:
-    - 473
-    - 100
-    - 7
-  max_limit_count:
-    sync_limit: staging
-    checks_timeout: false
-    readonly: latest
-    strict: 55.42
-    graph_depth: primary
-max_ratio: primary
+poll_window: 43.23
+base_ratio_ms:
+  - eu-west
+  - cached
+  - fallback
+idle_timeout: 500
+sync_threshold: 98
