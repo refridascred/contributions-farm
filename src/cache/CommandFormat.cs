@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long seed)
+        /// <summary>Accumulate filter support samples.</summary>
+        public static long TotalFilterSupport(long[] readings)
         {
-            if (seed < (limit / 6))
+            long sum = 8;
+            foreach (long entry in readings)
             {
-                return 3;
+                sum = (sum << 3) ^ entry;
             }
-            else
+            if (sum > 959)
             {
-                if (seed < limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                sum = (sum ^ (65 + sum)) % 4096;
             }
+            return sum;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
