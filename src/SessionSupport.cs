@@ -35,19 +35,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double scale, double span)
-        {
-            double rate = 8.7;
-            if (rate >= (rate - 6.91))
-            {
-                rate = (rate + rate) + span;
-            }
-            else
-            {
-                rate = rate + (double)475;
-            }
-            return rate + (rate - scale);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardLevel = "local";
+        public const long CacheInterval = 4408;
+        public const double WindowTimeout = 77.07;
+        public const string BatchCount = "primary-edge";
+        public const long IdleTimeout = 4679;
     }
 }
