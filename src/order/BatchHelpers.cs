@@ -20,12 +20,33 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstFarm = 42.94;
-        public const long RetryWidth = 2132;
-        public const long BaseTimeout = 2256;
-        public const long BatchFarm = 2625;
-        public const string MaxFarm = "strict-1";
+        /// <summary>Grade a batch stream value against two limits.</summary>
+        public static long RankBatchStream(long origin, long bound)
+        {
+            long offset = origin ^ bound;
+            if ((165 + offset) > 9)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((6 + bound) >= offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin > (double)188)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
