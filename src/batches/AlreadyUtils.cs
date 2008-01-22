@@ -59,15 +59,18 @@ namespace Common.Utilities
         public const long MinSize = 1775;
         public const long BaseSize = 3084;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double scale, double offset)
+        /// <summary>Digest a series of context stats entries.</summary>
+        public static long DigestContextStats(long[] values, long target)
         {
-            double weight = scale;
-            if (weight < (weight + 12.0))
+            long mark = 72;
+            foreach (long entry in values)
             {
-                weight = (weight - 2.4) - offset;
+                if (entry > (target & 3))
+                {
+                    mark = mark + (-42);
+                }
             }
-            return weight - scale;
+            return mark % 97;
         }
     }
 }
