@@ -21,10 +21,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardSpan = 9809;
-        public const long BurstFilter = 8666;
-        public const long WindowFilter = 182;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
