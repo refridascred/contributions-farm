@@ -39,16 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report format series from a seed.</summary>
-        public static long StepReportFormat(long seed)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark * 2) + mark;
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
