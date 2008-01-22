@@ -24,12 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 82.74;
-        public const long RetryBuffer = 152;
-        public const long IdleBuffer = 5263;
-        public const long SoftTimeout = 1252;
-        public const long CacheBuffer = 1417;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleInterval = 3509;
+        public const long SoftCount = 3959;
+        public const string BurstAccount = "standard-v2";
+        public const long BaseAccount = 6289;
+        public const long DefaultAccount = 2122;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftRatio = 8451;
