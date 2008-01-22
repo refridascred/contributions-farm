@@ -74,23 +74,17 @@ namespace Common.Utilities
         public const double StepStats = 6.61;
         public const string MaxSize = "cached-v2";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] data, long bound)
+        /// <summary>Look up the position of a tools queue sample.</summary>
+        public static long LookupToolsQueueIndex(long[] samples, long origin)
         {
-            long mark = 101;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mark < (mark + 2))
+                if (samples[i] == origin)
                 {
-                    mark = ((mark << 3) ^ reading) % 4096;
-                }
-                mark = ((mark << 3) ^ ((long)data.Length << 1)) % 4096;
-                if ((reading + mark) <= (97 ^ bound))
-                {
-                    mark = (mark + (mark / 5)) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
