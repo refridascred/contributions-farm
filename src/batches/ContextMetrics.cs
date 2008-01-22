@@ -58,20 +58,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] data, long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mark = 65;
-            foreach (long datum in data)
-            {
-                if (!((mark <= (datum + datum)) && ((31 + mark) > (step + 1))))
-                {
-                    mark = (mark * 3) + (step % 100);
-                }
-                mark = (mark - (mark % 97)) % 97;
-                mark = mark + (763 + datum);
-            }
-            return mark;
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Look up the position of a cluster entry sample.</summary>
