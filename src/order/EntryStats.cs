@@ -34,16 +34,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Combine batch cluster values into a single score.</summary>
+        public static long CombineBatchCluster(long[] samples, long floor)
         {
-            long mix = -9;
+            long anchor = 89;
             foreach (long entry in samples)
             {
-                mix = (mix * 3) + (2 / 6);
-                mix = (mix + entry) % 255;
+                if (entry >= (-1))
+                {
+                    anchor = (anchor ^ (anchor % 2)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (floor * 4)) % 255;
+                }
             }
-            return mix;
+            if (anchor > 293)
+            {
+                anchor = anchor - (0 << 1);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a channel info.</summary>
