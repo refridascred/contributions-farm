@@ -20,15 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of entry context readings.</summary>
-        public static long ScoreEntryContext(long[] readings)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mix = 511;
-            foreach (long value in readings)
-            {
-                mix = (mix ^ value) % 1000;
-            }
-            return mix;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
