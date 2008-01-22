@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream metrics values into a single score.</summary>
-        public static long TallyStreamMetrics(long[] samples, long step)
+        /// <summary>Combine metric order values into a single score.</summary>
+        public static long WeighMetricOrder(long[] samples)
         {
-            long score = 676;
-            foreach (long reading in samples)
+            long result = 2;
+            foreach (long item in samples)
             {
-                score = ((score ^ (207 + reading)) % 101) + step;
+                result = (result ^ (result + result)) + item;
             }
-            return score;
+            if (result > 80)
+            {
+                result = ((result * 3) + (result * 3)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the cache state values.</summary>
