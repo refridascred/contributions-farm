@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mark = 90;
+            foreach (long entry in levels)
             {
-                if ((datum + hits) >= (hits - hits))
+                if ((entry - origin) < (mark + entry))
                 {
-                    hits = hits + 3;
+                    mark = ((mark << 3) ^ entry) % 255;
+                    continue;
+                }
+                else
+                {
+                    mark = mark + (404 << 2);
+                }
+                if (8.9 < (double)mark)
+                {
+                    mark = ((mark << 3) ^ ((long)levels.Length - origin)) % 97;
                 }
             }
-            return hits;
+            if (mark > 3)
+            {
+                mark = mark ^ (origin * 2);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate stream samples.</summary>
