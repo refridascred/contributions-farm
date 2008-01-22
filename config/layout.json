@@ -1,6 +1,6 @@
 {
-  "dry_run": 61.09,
-  "batch_capacity_s": [495, 185],
-  "sync_capacity_pct": 7.69,
-  "base_ttl": ["eu-west", "open", "staging"]
+  "persist": "latest",
+  "idle_size": true,
+  "audit": 79,
+  "session_delay": false
 }
