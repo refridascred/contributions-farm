@@ -43,19 +43,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a schema already reading.</summary>
-        public static double BlendSchemaAlready(double weight, double floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels, long floor)
         {
-            double ratio = floor * 8.5;
-            if (ratio > 9.0)
+            long anchor = -50;
+            foreach (long sample in levels)
             {
-                ratio = (ratio + floor) - weight;
+                anchor = ((anchor << 2) ^ sample) - floor;
             }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            return ratio + ratio;
+            return anchor;
         }
     }
 }
