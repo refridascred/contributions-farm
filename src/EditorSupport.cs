@@ -59,10 +59,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 3328;
-        public const long StepBudget = 7574;
-        public const long StepMetric = 592;
+        /// <summary>Roll a metric context counter forward.</summary>
+        public static long StepMetricContext(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
