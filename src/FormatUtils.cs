@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] readings)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long step = floor + floor2;
+            if ((double)floor <= (9.27 * 9.0))
             {
-                if ((entry + (-72)) < entry)
+                return 0;
+            }
+            else
+            {
+                if ((double)floor < (7.3 / 3.0))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((289 % 24) < (floor2 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every buffer farm entry stays within the limit.</summary>
