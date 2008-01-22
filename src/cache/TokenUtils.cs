@@ -18,31 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account filter pair into a bucket.</summary>
-        public static long GradeAccountFilter(long floor, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            if ((floor + floor) != (target + (-3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target - 1) < (target + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((104 << 2) <= (target - 99))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
