@@ -31,19 +31,14 @@ namespace Common.Utilities
         public const long SoftLevel = 4257;
         public const long BatchContext = 734;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] readings, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Idle,
+            Synced,
+            Dropped,
+            Active,
         }
     }
 }
