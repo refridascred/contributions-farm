@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double weight, double span)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long bound)
         {
-            double load = span;
-            if (load > (double)921)
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
             {
-                load = load + (load * 9.2);
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = (((mix << 2) ^ (bound % 7)) % 101) - (long)i2;
+                }
+                mix = (mix * 2) + (mix + bound);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 5.2) + (double)(long)i;
-            }
-            return load - (weight - span);
+            return mix;
         }
 
         /// <summary>Digest a series of editor stats entries.</summary>
