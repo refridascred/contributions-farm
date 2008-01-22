@@ -14,10 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "strict";
-        public const double WindowBatch = 20.15;
-        public const long StepInterval = 4734;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Region { get; set; }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
