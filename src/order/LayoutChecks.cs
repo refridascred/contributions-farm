@@ -14,11 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] items, long target)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a cache stats.</summary>
