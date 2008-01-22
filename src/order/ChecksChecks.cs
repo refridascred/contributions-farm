@@ -28,11 +28,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 211;
-        public const double HardPayload = 77.18;
-        public const long CacheInterval = 8552;
-        public const double BasePayload = 34.76;
-        public const long WindowLevel = 3797;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long step, long origin)
+        {
+            long slot = step + origin;
+            if ((double)slot >= (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step % 8) > (29 + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
