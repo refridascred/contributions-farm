@@ -1,16 +1,8 @@
 {
-  "idle_interval_pct": {
-    "record_capacity": "standard",
-    "commits_ratio": [14, 244, 394, 496],
-    "dry_run": 42.89,
-    "min_timeout_ms": {
-      "context_delay": ["primary", "stable"],
-      "metrics_ratio": 34,
-      "idle_ratio": 57.32,
-      "window_size": false
-    }
-  },
-  "editor_limit": "staging",
-  "context_capacity": 31,
-  "graph_window": 87.85
+  "burst_capacity_pct": true,
+  "persist": 500,
+  "editor_retries": true,
+  "retry_window_pct": "open",
+  "checks_depth": 10,
+  "base_ttl_pct": ["local", "fallback", "blue"]
 }
