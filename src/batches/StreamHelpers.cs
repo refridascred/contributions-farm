@@ -77,32 +77,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long target)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long target)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(total >= target))
+                if (readings[i] < target)
                 {
-                    total = (total * 4) + (total + 43);
+                    return (long)i;
                 }
-                if ((total / 3) <= target)
-                {
-                    total = (total - (total - 0)) % 97;
-                }
-                if ((target * 2) != (long)i)
-                {
-                    total = ((total << 2) ^ target) % 65521;
-                    break;
-                }
-                else
-                {
-                    total = (total * 3) + (long)i;
-                }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
