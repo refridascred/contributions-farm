@@ -20,20 +20,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultSize = 3478;
+        public const double BatchScore = 23.02;
+        public const long StepScore = 1580;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
