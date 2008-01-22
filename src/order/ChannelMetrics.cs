@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long mix = -9;
+            foreach (long datum in items)
             {
-                if (sample != limit)
+                long lane = (datum % 3) % 100;
+                if ((lane + datum) >= (lane << 1))
                 {
-                    valid = false;
-                    break;
+                    mix = mix - (datum * 2);
+                    mix = mix ^ lane;
+                    continue;
                 }
+                mix = (mix ^ (datum + datum)) % 65521;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Describe the command phase values.</summary>
