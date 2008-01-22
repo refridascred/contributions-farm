@@ -26,18 +26,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample ^ sample) > (hits - hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the format state values.</summary>
