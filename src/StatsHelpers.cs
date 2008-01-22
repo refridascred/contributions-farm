@@ -31,19 +31,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cluster route samples.</summary>
-        public static long TotalClusterRoute(long[] levels)
+        /// <summary>Derive the next stream context value from a seed.</summary>
+        public static long SeriesStreamContext(long seed)
         {
-            long state = 536;
-            foreach (long cell in levels)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(((3 << 2) != (cell >> 5)) && ((88 % 64) >= (cell << 2))))
-                {
-                    state = (state * 3) + (state * 2);
-                }
-                state = ((state << 3) ^ (long)levels.Length) % 255;
+                result = (result + result) % 97;
+                result = ((result << 3) ^ (seed + result)) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
