@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] series, long offset)
         {
-            New,
-            Locked,
-            Retry,
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every buffer farm entry stays within the limit.</summary>
