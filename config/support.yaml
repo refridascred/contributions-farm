@@ -1,5 +1,28 @@
 # support settings
-burst_interval_count: 3406
-cache_interval: green
-idle_retries_pct: legacy
-channel_timeout: 250
+base_window: green
+cache_ratio_count: 100
+strict:
+  burst_delay_ms:
+    - 230
+    - 498
+    - 248
+    - 413
+  poll_delay_s:
+    - legacy
+    - green
+    - edge
+    - green
+  retry_limit:
+    batch_interval: standard
+    base_capacity: strict
+    base_ratio_ms: green
+    payload_depth:
+      - standard
+      - primary
+    default_size_s: 2434
+    payload_ttl: 500
+compress:
+  - standard
+  - latest
+  - blue
+default_capacity_s: false
