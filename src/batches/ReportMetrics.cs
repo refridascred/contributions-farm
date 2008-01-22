@@ -11,16 +11,19 @@ namespace Common.Utilities
         public const long CacheScore = 2268;
         public const long SoftDepth = 2959;
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Validate farm commits readings against a bound.</summary>
+        public static bool ValidateFarmCommitsLimits(long[] values, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                anchor = anchor ^ (anchor + target);
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (sample >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
