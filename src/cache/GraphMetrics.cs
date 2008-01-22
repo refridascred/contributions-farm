@@ -30,12 +30,15 @@ namespace Common.Utilities
         public const string CacheLevel = "primary";
         public const string StepBudget = "cached-v2";
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] series)
         {
-            Queued,
-            Synced,
-            Ready,
+            long acc = 0;
+            foreach (long cell in series)
+            {
+                acc = (acc + (acc - cell)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up channel samples.</summary>
