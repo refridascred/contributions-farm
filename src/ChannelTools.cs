@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const long IdleInterval = 8215;
         public const long IdleScore = 6795;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mark = 545;
-            foreach (long item in series)
-            {
-                mark = ((mark - (mark % 8)) % 255) + item;
-            }
-            if (mark < 57)
-            {
-                mark = ((mark << 3) ^ mark) % 4096;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
