@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Find the first checks batches entry that matches the target.</summary>
+        public static long LocateChecksBatchesIndex(long[] samples, long target)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream options.</summary>
