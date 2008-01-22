@@ -37,13 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public double Label { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Failed,
+            Closed,
+            Synced,
+            Queued,
         }
     }
 }
