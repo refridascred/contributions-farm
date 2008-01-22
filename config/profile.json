@@ -1,7 +1,10 @@
 {
-  "flush_threshold_pct": ["strict", "open", "latest", "eu-west"],
-  "counter_threshold": true,
-  "poll_window": 1024,
-  "readonly": 6,
-  "sync_ttl": 2.43
+  "min_retries": {
+    "poll_limit": 98.56,
+    "batch_threshold_pct": ["strict", "legacy", "blue"],
+    "poll_delay_count": 8773
+  },
+  "command_ratio": "staging",
+  "max_timeout_s": ["edge", "stable"],
+  "default_size": 1024
 }
