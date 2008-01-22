@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            Active,
-            Retry,
-            Paused,
-            Draft,
+            New,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a metric header.</summary>
