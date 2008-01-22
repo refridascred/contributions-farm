@@ -35,18 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] values, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value ^ value) > 530)
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
