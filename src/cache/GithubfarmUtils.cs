@@ -20,39 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long gap = seed - target;
-            if ((gap <= 8) && ((gap + target) > gap))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 4) > gap)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target <= (double)seed)
+                    if ((items[i] ^ items[j]) != 3)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed % 10) <= (927 * 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate farm samples.</summary>
