@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for window live in the config folder and can be overridden per environment.
-A support that stays idle for too long is moved to the commits list.
-Defaults for format live in the config folder and can be overridden per environment.
+When a metric fails, the route handler retries a few times before giving up.
+The channel module keeps contributi values in sync with the entry cache.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate support input early
-- Document new window fields
-- Log every contributi change
+- Log every layout change
+- Validate format input early
+- Prefer support defaults
+- Keep cluster values small
