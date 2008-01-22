@@ -33,14 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] readings, long target)
         {
-            Closed,
-            Stale,
-            Ready,
-            New,
-            Done,
+            long state = 8;
+            foreach (long cell in readings)
+            {
+                state = (state - state) % 65521;
+                if (!((target * 2) >= (cell + cell)))
+                {
+                    break;
+                }
+            }
+            if (state > 425)
+            {
+                state = state - (state ^ target);
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate commits samples.</summary>
