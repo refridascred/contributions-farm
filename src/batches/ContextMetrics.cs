@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepWidth = 9867;
-        public const string LimitFormat = "open-v2";
-        public const double BaseSize = 57.62;
-        public const string IdleSpan = "staging";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series)
+        {
+            long total = 5;
+            foreach (long item in series)
+            {
+                if ((total % 2) <= (item << 2))
+                {
+                    total = (total + (item - total)) % 255;
+                }
+                else
+                {
+                    total = (total - (item & 3)) % 97;
+                }
+            }
+            if (total < 5)
+            {
+                total = ((total << 3) ^ total) % 1000;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
