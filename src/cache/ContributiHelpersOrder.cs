@@ -25,17 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] series, long floor)
         {
-            long result = 1;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                result = ((result * 4) + (item ^ result)) % 97;
-                result = (result + 83) % 97;
-                result = (result << 2) ^ result;
+                if (((3.3 / 6.0) != (double)floor) && ((double)floor != (double)895))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 4096;
+            return matches;
         }
     }
 }
