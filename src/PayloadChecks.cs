@@ -56,17 +56,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix - (mix - mix);
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 2597;
+        public const string LimitStats = "latest-v2";
+        public const long HardStats = 8352;
+        public const long LimitBudget = 2888;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9543;
