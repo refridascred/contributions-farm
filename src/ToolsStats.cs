@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const string BaseStream = "fallback";
         public const long BurstScore = 5425;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 1005;
-        public const long IdleBudget = 7787;
-        public const double SoftEntry = 57.2;
-        public const long HardEntry = 3320;
+        /// <summary>Project the next batch session value.</summary>
+        public static double ProjectBatchSession(double gain, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 < 13.0)
+            {
+                bias2 = bias2 - (gain / 2.0);
+            }
+            else
+            {
+                bias2 = bias2 + (double)4;
+            }
+            return bias2 + (double)992;
+        }
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long StepSchema(long offset)
