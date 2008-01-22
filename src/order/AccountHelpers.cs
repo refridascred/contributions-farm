@@ -90,13 +90,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double bias, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            double ratio = bias;
+            return (ratio + (ratio / 2.0)) + floor;
         }
     }
 }
