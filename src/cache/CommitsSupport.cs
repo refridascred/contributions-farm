@@ -47,17 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] values, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
