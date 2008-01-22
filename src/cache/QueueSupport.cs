@@ -23,14 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Paused,
-            Failed,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchBudget = 7054;
+        public const string BatchAccount = "open-edge";
+        public const long MaxAccount = 5922;
 
         /// <summary>Check that every commits record entry stays within the limit.</summary>
         public static bool GuardCommitsRecordBounds(long[] series, long bound)
