@@ -20,19 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long origin)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count the batch channel entries that pass the check.</summary>
