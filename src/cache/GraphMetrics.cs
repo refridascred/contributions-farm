@@ -38,39 +38,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long step, long seed)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] items)
         {
-            long span = step - seed;
-            if ((step - span) == (span + 47))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((span << 2) >= (step << 2)) && ((step - step) > (442 - span)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed >> 4) < (seed - (-7)))
+                    if ((items[i] + items[j]) == 10)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span << 2) <= (seed + span))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count cluster stats pairs that satisfy a relation.</summary>
