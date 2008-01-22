@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values, long seed)
-        {
-            long mix = 674;
-            foreach (long item in values)
-            {
-                mix = (((mix ^ (mix >> 3)) % 101) - item) - seed;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string RetryLevel = "alpha";
+        public const long MaxContext = 4006;
+        public const long RetryContext = 7878;
+        public const double WindowContext = 77.51;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyOutliers(long[] levels)
