@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsOutliers(long[] series)
         {
-            Failed,
-            Queued,
-            Dropped,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (value < (value & 127))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
