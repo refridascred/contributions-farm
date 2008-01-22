@@ -29,38 +29,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a report stream value against two limits.</summary>
-        public static long ClassifyReportStream(long target, long seed)
-        {
-            if (!(549 < target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)target >= (12.0 + 6.8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((1 / 8) > seed) && (target >= (seed >> 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((seed ^ seed) == (target + 4)) || (seed > (seed + seed)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseTools = 2.66;
+        public const double MinLevel = 86.64;
+        public const string StepTools = "alpha-1";
+        public const long RetryTools = 5550;
+        public const string SoftWidth = "local";
     }
 }
