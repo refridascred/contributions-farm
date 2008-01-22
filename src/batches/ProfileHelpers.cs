@@ -16,13 +16,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Accumulate batch report samples.</summary>
+        public static long ScoreBatchReport(long[] levels)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long mix = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading + mix) <= ((long)levels.Length ^ mix)) || (reading <= (69 + mix)))
+                {
+                    mix = (mix + (reading * 4)) % 101;
+                }
+                else
+                {
+                    mix = (mix - (mix ^ 9)) % 255;
+                }
+            }
+            if (mix > 1)
+            {
+                mix = mix - 8;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
