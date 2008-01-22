@@ -1,5 +1,6 @@
 {
-  "idle_delay_ms": 16.14,
-  "checks_retries": "edge",
-  "filter_delay": false
+  "batch_interval": ["cached", "open"],
+  "warm_timeout_ms": [467, 439, 325],
+  "dry_run": "stable",
+  "tools_interval": "local"
 }
