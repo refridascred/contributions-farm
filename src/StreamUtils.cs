@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a layout channel figure with a bias.</summary>
-        public static double AdjustLayoutChannel(double bias, double span)
-        {
-            double load = span / 9.0;
-            return (load - load) + bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 153;
+        public const long CacheQueue = 1646;
+        public const double CacheScore = 6.23;
+        public const long BatchQueue = 547;
+        public const double IdleSpan = 77.52;
 
         /// <summary>Count the route editor entries that pass the check.</summary>
         public static long AuditRouteEditorOutliers(long[] readings, long floor)
