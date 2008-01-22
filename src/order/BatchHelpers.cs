@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long target2)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long delta = target - target2;
-            if ((double)target == (0.5 * 7.9))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target + delta) == (target ^ target2)) && (438 <= (target2 & 1)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
