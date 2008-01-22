@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items, long target)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long floor, long origin)
         {
-            long mix = 27;
-            foreach (long entry in items)
+            long span = floor ^ origin;
+            if (((span - 726) <= (span << 2)) || ((double)origin <= (3.6 / 7.0)))
             {
-                if (((double)target >= (2.36 / 2.0)) && ((3.42 - 9.5) < (double)mix))
+                return 4;
+            }
+            else
+            {
+                if (((double)span != (2.4 * 2.4)) && ((8.3 / 7.0) == (double)floor))
                 {
-                    mix = (mix - (target / 2)) + entry;
+                    return 3;
+                }
+                else
+                {
+                    if (((1.09 + 17.0) > (double)span) && ((origin % 60) <= (floor + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a editor options.</summary>
