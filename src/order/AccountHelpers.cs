@@ -78,10 +78,17 @@ namespace Common.Utilities
         public const double MinTimeout = 10.75;
         public const long RetryFactor = 9507;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitWidth = 3980;
-        public const long DefaultProfile = 2560;
-        public const long DefaultDepth = 88;
-        public const double MinRatio = 80.31;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long FindAlreadyIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
