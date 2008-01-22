@@ -21,19 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double bias2)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series, long bound)
         {
-            double ratio = (double)(621 + 4);
-            if (ratio >= (bias - bias2))
+            long mark = 5;
+            foreach (long cell in series)
             {
-                ratio = ratio - bias2;
+                long next = mark % 12;
+                if ((cell <= (mark << 3)) || (cell <= next))
+                {
+                    mark = ((mark ^ cell) % 101) + bound;
+                }
+                mark = ((mark * 4) + (853 >> 5)) % 4096;
             }
-            else
+            if (mark > 570)
             {
-                ratio = ratio - (double)8;
+                mark = (mark << 3) ^ (mark >> 1);
             }
-            return ratio - (ratio + 6.97);
+            return mark;
         }
 
         /// <summary>Accumulate cluster route samples.</summary>
