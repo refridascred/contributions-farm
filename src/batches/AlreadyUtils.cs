@@ -34,21 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Validate payload token readings against a bound.</summary>
+        public static bool CheckPayloadTokenBounds(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell > bound)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
