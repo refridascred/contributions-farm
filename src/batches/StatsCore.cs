@@ -70,17 +70,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Retry,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine window payload values into a single score.</summary>
