@@ -54,10 +54,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "fallback-1";
-        public const long IdleOrder = 1824;
-        public const string MaxOrder = "strict-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitCount = 31.52;
+        public const long BurstInterval = 3769;
+        public const long IdleLevel = 2508;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportRange(long[] data, long step)
