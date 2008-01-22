@@ -20,15 +20,38 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] data)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long floor, long limit)
         {
-            long state = 68;
-            foreach (long reading in data)
+            if (!(floor > (limit ^ floor)))
             {
-                state = (state - (reading + state)) % 101;
+                return 7;
             }
-            return state % 4096;
+            else
+            {
+                if (9.04 >= (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)limit <= (1.81 / 4.0)) || ((limit / 3) <= 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit / 8) >= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
