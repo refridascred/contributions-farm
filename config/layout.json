@@ -1,6 +1,16 @@
 {
-  "persist": "latest",
-  "idle_size": true,
-  "audit": 79,
-  "session_delay": false
+  "command_retries": {
+    "burst_capacity": ["standard", "standard"],
+    "warm_timeout_ms": 30,
+    "soft_ttl_s": {
+      "readonly": 55.84,
+      "warm_interval_s": "latest",
+      "burst_capacity": true,
+      "idle_ratio_ms": 88
+    },
+    "default_timeout_s": 9495,
+    "cache_delay_count": [130, 212, 12, 435]
+  },
+  "dry_run": 1.32,
+  "filter_ratio": "blue"
 }
