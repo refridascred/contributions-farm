@@ -61,17 +61,15 @@ namespace Common.Utilities
         public const long SoftSize = 6638;
         public const long BatchQueue = 5911;
 
-        /// <summary>Look up the position of a tools queue sample.</summary>
-        public static long LookupToolsQueueIndex(long[] samples, long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
