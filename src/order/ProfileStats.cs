@@ -22,23 +22,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] levels, long offset)
         {
-            double gain = floor;
-            if (gain <= 10.0)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = gain - 2.3;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (bias / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - (double)773;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
