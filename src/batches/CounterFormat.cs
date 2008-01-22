@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long limit, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            if ((origin << 3) <= (limit << 3))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (((mix << 2) ^ (bound % 7)) % 101) - (long)i2;
-                }
-                mix = (mix * 2) + (mix + bound);
-                mix = ((mix * 3) + (long)i) % 65521;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if (!((10.0 - 9.0) <= (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)716 > (6.0 - 19.0)) && (origin < (limit % 97)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
