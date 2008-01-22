@@ -1,19 +1,6 @@
 # githubfarm settings
-enabled: 98.99
-base_retries_s: false
-session_size:
-  batch_threshold:
-    session_ratio: 961
-    soft_timeout: 44.59
-    buffer_ratio: 32.42
-    retry_ttl:
-      - 25
-      - 6
-      - 157
-      - 68
-    compress: primary
-  notes_ttl: 7483
-  hard_timeout_count: true
-  idle_size_count: 30
-  warm_interval: 7982
-  idle_delay_count: 3779
+githubfarm_ratio: true
+max_ttl: standard
+strict: 3370
+default_capacity: 84
+warm_ttl_ms: true
