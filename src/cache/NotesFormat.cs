@@ -13,39 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank channel stats input into a small class.</summary>
-        public static long GradeChannelStats(long limit, long floor)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long delta = limit + floor;
-            if ((delta << 1) > 128)
-            {
-                return 2;
-            }
-            else
-            {
-                if (delta <= (limit + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit < (8.44 + 6.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta + 620) > limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
