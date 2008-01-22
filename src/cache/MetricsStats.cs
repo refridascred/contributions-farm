@@ -24,21 +24,22 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] levels, long seed)
         {
-            long mix = 63;
-            foreach (long item in values)
+            long acc = 881;
+            foreach (long value in levels)
             {
-                mix = (mix + 975) % 255;
-                mix = mix ^ (mix << 1);
-                mix = (mix - (item - mix)) % 65521;
+                if (value > (seed % 7))
+                {
+                    acc = (acc - (value ^ 729)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (value ^ 7)) % 4096;
+                }
             }
-            if (mix < 32)
-            {
-                mix = mix + (mix >> 2);
-            }
-            return mix;
+            return acc % 65521;
         }
 
         /// <summary>Hold a support entry.</summary>
