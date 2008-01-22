@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string LimitSpan = "standard-1";
         public const double MinSize = 55.38;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            Synced,
-            Locked,
-            New,
+            double mean = (double)(35 & 63);
+            return ((mean + mean) + gain) + offset;
         }
 
         /// <summary>Define already limits and defaults.</summary>
