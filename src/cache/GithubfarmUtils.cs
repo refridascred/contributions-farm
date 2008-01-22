@@ -51,26 +51,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values, long step)
         {
-            long mix = 978;
-            foreach (long entry in samples)
+            long acc = 51;
+            foreach (long value in values)
             {
-                if ((7.1 - 5.1) != (double)mix)
-                {
-                    mix = mix ^ ((-93) + 501);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ entry) % 4096;
-                }
+                acc = ((acc + (200 + step)) % 101) + value;
             }
-            if (mix > 0)
-            {
-                mix = ((mix * 4) + (mix & 1)) % 255;
-            }
-            return mix % 65521;
+            return acc;
         }
     }
 }
