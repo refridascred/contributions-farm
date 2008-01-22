@@ -16,18 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] series, long offset)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((offset < (cell - cell)) || (offset <= (tally / 5))) || ((offset - tally) != (tally & 255)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit route buffer readings against a rule.</summary>
