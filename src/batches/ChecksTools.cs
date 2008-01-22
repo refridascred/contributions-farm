@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch buffer value from a seed.</summary>
-        public static long IterateBatchBuffer(long origin)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long sum = 115;
+            foreach (long cell in series)
             {
-                state = (state * 5) + (state << 1);
-                state = (state * 2) + 189;
-                state = state - (long)i;
-                state = ((state * 2) + (long)i) % 1000;
+                sum = (((sum << 3) ^ target) % 4096) ^ cell;
+                if ((sum / 6) > (sum * 5))
+                {
+                    break;
+                }
             }
-            return state;
+            if (sum > 953)
+            {
+                sum = (sum ^ (target & 127)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
