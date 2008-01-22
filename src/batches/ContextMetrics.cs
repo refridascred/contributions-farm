@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Scale a stream account figure with a bias.</summary>
+        public static double SmoothStreamAccount(double scale, double floor)
         {
-            long total = 5;
-            foreach (long item in series)
+            double gain = (double)(706 - 0);
+            if (gain >= (double)860)
             {
-                if ((total % 2) <= (item << 2))
-                {
-                    total = (total + (item - total)) % 255;
-                }
-                else
-                {
-                    total = (total - (item & 3)) % 97;
-                }
+                gain = (gain - 6.0) + scale;
             }
-            if (total < 5)
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total << 3) ^ total) % 1000;
+                gain = (gain - floor) + (double)(long)i;
             }
-            return total % 1000;
+            return gain + (gain * 6.0);
         }
 
         /// <summary>Describe the notes mode values.</summary>
