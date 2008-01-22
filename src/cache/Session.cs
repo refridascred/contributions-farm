@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 5228;
+        public const long CacheEntry = 2530;
+        public const long MinCount = 8532;
+        public const double WindowEntry = 9.66;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long origin)
