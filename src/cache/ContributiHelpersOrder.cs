@@ -24,10 +24,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 9396;
-        public const long StepDepth = 5493;
-        public const long BatchCommand = 8790;
-        public const string DefaultCommand = "primary-edge";
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Paused,
+            Done,
+            Pending,
+            New,
+            Synced,
+        }
     }
 }
