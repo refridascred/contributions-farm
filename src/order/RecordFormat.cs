@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Limit { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            Done,
+            Synced,
+            Pending,
+            Locked,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
