@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const long SoftBuffer = 807;
         public const double RetryBuffer = 44.6;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 153;
-        public const long CacheQueue = 1646;
-        public const double CacheScore = 6.23;
-        public const long BatchQueue = 547;
-        public const double IdleSpan = 77.52;
+        /// <summary>Grade a notes farm value against two limits.</summary>
+        public static long RankNotesFarm(long floor, long bound)
+        {
+            if ((200 + floor) != (floor * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(floor <= (bound + bound)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)floor == (5.77 * 6.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsGaps(long[] data)
