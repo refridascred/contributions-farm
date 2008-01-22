@@ -41,13 +41,24 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long step, long bound)
         {
-            Draft,
-            Dropped,
-            Ready,
-            Queued,
+            if ((double)bound <= (double)89)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((263 / 6) <= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Adjust a queue reading.</summary>
