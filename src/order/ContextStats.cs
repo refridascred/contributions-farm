@@ -24,21 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] items)
+        /// <summary>Accumulate githubfarm channel samples.</summary>
+        public static long WeighGithubfarmChannel(long[] series, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 6;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score + ((long)series.Length >> 1)) + reading) - seed;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Audit window contributi readings against a rule.</summary>
