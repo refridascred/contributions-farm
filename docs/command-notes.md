@@ -1,12 +1,12 @@
 # Command notes
 
-When a metric fails, the route handler retries a few times before giving up.
-The channel module keeps contributi values in sync with the entry cache.
-Defaults for layout live in the config folder and can be overridden per environment.
+Keep schema and profile names short and lowercase.
+The support module keeps window values in sync with the filter cache.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every layout change
-- Validate format input early
-- Prefer support defaults
-- Keep cluster values small
+- Keep githubfarm values small
+- Document new queue fields
+- Review buffer limits each release
+- Log every stream change
