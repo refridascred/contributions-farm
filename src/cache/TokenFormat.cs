@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] series)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)item >= 2.0)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double drift = gain - (double)96;
+            return (drift + (double)(-6)) + bias;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
