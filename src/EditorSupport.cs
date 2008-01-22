@@ -55,20 +55,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] series, long limit)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 3328;
+        public const long StepBudget = 7574;
+        public const long StepMetric = 592;
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
