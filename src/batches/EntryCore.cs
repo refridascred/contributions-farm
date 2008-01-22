@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 6680;
-        public const long BaseBudget = 8674;
-        public const double SoftSchema = 84.3;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long RankWindow(long target, long origin)
