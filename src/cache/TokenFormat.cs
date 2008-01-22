@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor > 12.0)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((9.71 + 7.0) >= (double)target))
                 {
-                    if ((data[i] ^ data[j]) != 19)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor <= 8.8)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
