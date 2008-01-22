@@ -25,19 +25,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every report record entry stays within the limit.</summary>
-        public static bool ValidateReportRecordRange(long[] items, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double bias = (6.29 + offset) * 8.0;
+            if (bias > 1.9)
             {
-                if (reading >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias - offset) - gain;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + offset) + (double)(long)i;
+            }
+            return bias - 6.8;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
