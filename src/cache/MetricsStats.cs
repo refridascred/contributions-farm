@@ -24,22 +24,12 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long acc = 881;
-            foreach (long value in levels)
-            {
-                if (value > (seed % 7))
-                {
-                    acc = (acc - (value ^ 729)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (value ^ 7)) % 4096;
-                }
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a support entry.</summary>
