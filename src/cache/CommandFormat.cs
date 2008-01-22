@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of report layout readings.</summary>
-        public static long OverlapReportLayoutCount(long[] readings)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value != seed)
                 {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
