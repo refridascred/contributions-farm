@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a record channel pair into a bucket.</summary>
-        public static long BucketRecordChannel(long seed, long limit)
+        /// <summary>Derive the next cluster already value from a seed.</summary>
+        public static long DeriveClusterAlready(long seed)
         {
-            if ((double)seed != (double)35)
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((4 + limit) != (limit + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((9 >> 1) < (0 ^ seed)) && ((double)15 <= (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit <= (limit + 891))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
