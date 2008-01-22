@@ -1,5 +1,5 @@
 {
-  "persist": "strict",
-  "min_ttl_count": 597,
-  "max_capacity_s": false
+  "max_depth": 30,
+  "warm_interval_s": [18, 72],
+  "base_interval_s": "standard"
 }
