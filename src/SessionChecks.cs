@@ -30,18 +30,22 @@ namespace Common.Utilities
         public const long WindowCounter = 1782;
         public const string MinCounter = "strict-v2";
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((double)item < (7.33 + 8.1)) && (((double)hits != (19.0 * 4.0)) || (hits >= (hits << 3))))
+                if ((count / 8) <= count)
                 {
-                    hits = (hits + 1) + limit;
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up window format samples.</summary>
