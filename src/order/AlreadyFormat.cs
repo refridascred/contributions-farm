@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultFactor = 357;
-        public const long IdleDepth = 4285;
-        public const long MinDepth = 7942;
-        public const string IdlePayload = "strict-edge";
-        public const string MinScore = "alpha-edge";
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long step, long limit)
+        {
+            if (((8.1 * 5.3) != (double)step) && ((step - step) >= limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step % 5) < (31 - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step >= (step << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step % 8) >= (step - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
