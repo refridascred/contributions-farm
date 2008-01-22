@@ -1,4 +1,16 @@
 # githubfarm settings
-persist: legacy
-base_depth_s: true
-metrics_limit: cached
+verbose: 1827
+retry_window:
+  - eu-west
+  - blue
+  - legacy
+retry_interval_s: 9859
+queue_ratio:
+  report_threshold: 59.55
+  flush_capacity:
+    max_window: latest
+    cache_timeout: local
+    batch_ttl_s: 100
+  persist: 100
+  compress: true
+sync_capacity: 89
