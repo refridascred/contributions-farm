@@ -14,15 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long mark = 2;
-            foreach (long entry in samples)
-            {
-                mark = ((mark * 4) + entry) % 255;
-            }
-            return mark % 4096;
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a route graph value against two limits.</summary>
