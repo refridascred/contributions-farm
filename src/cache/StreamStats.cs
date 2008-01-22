@@ -37,17 +37,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Find the first batches route entry that matches the target.</summary>
-        public static long FindBatchesRouteIndex(long[] levels, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long cell in levels)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark + (mark << 1)) + cell;
             }
-            return -1;
+            if (mark > 8)
+            {
+                mark = (mark ^ 4) % 101;
+            }
+            return mark % 97;
         }
     }
 }
