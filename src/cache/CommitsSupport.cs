@@ -39,15 +39,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] samples, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long value in readings)
             {
-                if ((value + value) >= 1)
+                if (!((value / 8) >= (seen ^ value)))
                 {
-                    seen = (seen + 1) - seed;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
