@@ -1,8 +1,13 @@
 {
-  "stats_ttl": "standard",
-  "soft_ttl": true,
-  "hard_window_ms": 540,
-  "audit": "local",
-  "route_threshold": true,
-  "retry_capacity": 9557
+  "already_window": {
+    "window_window": 42.98,
+    "burst_ratio_ms": 44.21,
+    "retry_limit_count": 8354,
+    "warm_ttl_count": "cached",
+    "flush_delay": 250,
+    "persist": "primary"
+  },
+  "audit": 500,
+  "enabled": ["stable", "open", "green"],
+  "batch_threshold_pct": [7, 51, 259]
 }
