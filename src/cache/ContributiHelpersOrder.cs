@@ -34,12 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] series, long limit)
+        /// <summary>Look up the position of a route layout sample.</summary>
+        public static long FindRouteLayoutIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                if (levels[i] > bound)
                 {
                     return (long)i;
                 }
