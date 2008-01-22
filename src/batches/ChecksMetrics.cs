@@ -75,11 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 9258;
-        public const double DefaultCount = 55.18;
-        public const long BaseSpan = 6458;
-        public const long MinScore = 4611;
-        public const long RetryQueue = 368;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((6 - hits) <= item) || (hits <= ((long)values.Length ^ target)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
