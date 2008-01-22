@@ -15,11 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            double gain = offset;
-            return gain - (bias - gain);
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a entry entry.</summary>
