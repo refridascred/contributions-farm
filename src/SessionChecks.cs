@@ -34,12 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Roll a entry route counter forward.</summary>
+        public static long StepEntryRoute(long seed)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
