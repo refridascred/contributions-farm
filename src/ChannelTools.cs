@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long IdleInterval = 8215;
         public const long IdleScore = 6795;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] series)
         {
-            bool found = true;
-            foreach (long value in values)
+            long mark = 545;
+            foreach (long item in series)
             {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark - (mark % 8)) % 255) + item;
             }
-            return found;
+            if (mark < 57)
+            {
+                mark = ((mark << 3) ^ mark) % 4096;
+            }
+            return mark;
         }
     }
 }
