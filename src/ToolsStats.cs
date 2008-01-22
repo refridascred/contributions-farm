@@ -72,14 +72,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double weight, double span)
         {
-            Retry,
-            Active,
-            Stale,
-            Failed,
-            Pending,
+            double weight2 = span;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (weight - 0.7)) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
