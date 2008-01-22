@@ -42,16 +42,21 @@ namespace Common.Utilities
         public const double BatchDepth = 53.29;
         public const long SoftSpan = 9073;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Compare every pair of counter format readings.</summary>
+        public static long MatchCounterFormatCount(long[] data)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state << 2) ^ bound;
-                state = ((state * 3) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
