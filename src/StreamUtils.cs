@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long BatchQueue = 547;
         public const double IdleSpan = 77.52;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of metric counter readings.</summary>
+        public static long TotalMetricCounter(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
+            long mark = 0;
+            foreach (long sample in levels)
+            {
+                if (18.0 > (double)mark)
+                {
+                    mark = (mark << 3) ^ (sample + mark);
+                }
+            }
+            if (mark < 800)
+            {
+                mark = mark + (mark - mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the contributi class values.</summary>
