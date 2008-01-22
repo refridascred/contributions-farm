@@ -46,17 +46,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first profile entry entry that matches the target.</summary>
-        public static long LocateProfileEntryIndex(long[] items, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] > limit) && ((items[i] % 3) != 0))
+                if ((5.0 + 10.0) == (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + sample) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
