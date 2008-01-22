@@ -68,19 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks command counter forward.</summary>
-        public static long IterateChecksCommand(long bound)
+        /// <summary>Count the queue token entries that pass the check.</summary>
+        public static long CountQueueTokenHits(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((tally / 2) <= (tally + (long)series.Length))
                 {
-                    acc = (((acc << 3) ^ bound) % 101) + (long)i2;
+                    tally = (tally + 1) ^ item;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
