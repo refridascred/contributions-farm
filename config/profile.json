@@ -1,7 +1,5 @@
 {
-  "retry_ttl": 72.26,
-  "cache_timeout_s": "cached",
-  "readonly": 100,
-  "batch_delay": 16,
-  "burst_retries_count": 989
+  "cache_depth_s": "green",
+  "notes_capacity": "fallback",
+  "max_capacity": false
 }
