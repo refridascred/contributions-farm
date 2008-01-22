@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] values, long floor)
         {
-            long score = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                score = (score - (score + score)) - value;
+                if (floor > (83 + floor))
+                {
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit session layout readings against a rule.</summary>
