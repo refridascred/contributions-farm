@@ -22,12 +22,33 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "primary";
-        public const long SoftDepth = 1168;
-        public const double MinToken = 42.11;
-        public const string DefaultSize = "primary-edge";
-        public const long SoftToken = 4887;
+        /// <summary>Grade a notes window value against two limits.</summary>
+        public static long BucketNotesWindow(long target, long offset)
+        {
+            long slot = target ^ offset;
+            if (slot < (offset << 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((slot >> 4) <= (target + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target != (8.86 * 0.37))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long MeasureFormatHits(long[] levels, long target)
