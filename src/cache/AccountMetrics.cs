@@ -81,15 +81,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Compare every pair of token tools readings.</summary>
+        public static long CompareTokenToolsCount(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 9)
+                    if ((levels[i] + levels[j]) < 0)
                     {
                         seen = seen + 1;
                     }
