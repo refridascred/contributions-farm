@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Idle,
-            Done,
-            Pending,
+            Failed,
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Roll a route counter forward.</summary>
