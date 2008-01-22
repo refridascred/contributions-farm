@@ -35,19 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] series, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
