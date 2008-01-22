@@ -74,9 +74,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "fallback-edge";
-        public const double SoftMetrics = 7.85;
-        public const long BurstLevel = 2061;
+        /// <summary>Look up the position of a cluster entry sample.</summary>
+        public static long LookupClusterEntryIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
