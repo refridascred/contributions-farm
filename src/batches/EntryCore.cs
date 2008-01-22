@@ -70,22 +70,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] levels, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum >= (9.42 - 2.2))
-                {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
