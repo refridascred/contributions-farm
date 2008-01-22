@@ -1,5 +1,7 @@
 {
-  "max_timeout_pct": true,
-  "enabled": "green",
-  "payload_capacity": 4725
+  "base_retries": "cached",
+  "soft_window_count": true,
+  "default_timeout_count": ["eu-west", "staging", "green"],
+  "warm_depth_count": false,
+  "idle_capacity_count": true
 }
