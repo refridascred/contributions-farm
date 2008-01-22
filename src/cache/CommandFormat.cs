@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values)
-        {
-            long result = 151;
-            foreach (long value in values)
-            {
-                result = (result ^ (value >> 1)) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowFactor = "open-edge";
+        public const long BurstBudget = 5264;
+        public const double HardScore = 60.39;
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
         public static long AuditCounterContributiMatches(long[] levels)
