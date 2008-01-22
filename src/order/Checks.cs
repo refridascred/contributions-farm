@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 58.95;
-        public const long MinLevel = 6769;
-        public const string HardCommand = "standard-1";
-        public const string HardLevel = "cached-edge";
-        public const long SoftCommand = 168;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
