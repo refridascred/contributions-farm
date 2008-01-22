@@ -18,21 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count channel metrics pairs that satisfy a relation.</summary>
-        public static long MatchChannelMetricsCount(long[] series)
+        /// <summary>Locate a farm graph reading by value.</summary>
+        public static long LookupFarmGraphIndex(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] < offset) && ((values[i] % 5) != 0))
                 {
-                    if ((series[i] + series[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the session batch entries that pass the check.</summary>
