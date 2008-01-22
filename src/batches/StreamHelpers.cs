@@ -48,17 +48,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] readings, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 92;
+            foreach (long sample in values)
             {
-                if (readings[i] < bound)
+                if (!!((double)step <= (double)state))
                 {
-                    return (long)i;
+                    state = state - (state + state);
+                }
+                if ((double)step > 8.32)
+                {
+                    state = (state ^ (sample >> 2)) % 255;
+                }
+                state = (state - (step * 3)) % 1000;
+                if ((double)step >= (11.0 / 4.0))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Validate stream window readings against a bound.</summary>
