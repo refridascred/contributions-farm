@@ -57,32 +57,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long origin, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            long slot = origin - offset;
-            if (!((origin - slot) != (slot << 3)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + slot) > (origin ^ slot))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((240 + offset) < offset)
+                    if ((samples[i] - samples[j]) == 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
