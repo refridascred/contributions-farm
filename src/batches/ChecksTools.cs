@@ -51,21 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(count >= (count - item)))
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
