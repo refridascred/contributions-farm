@@ -1,23 +1,5 @@
 # githubfarm settings
-batch_window:
-  checks_timeout: true
-  cluster_delay: 250
-  flush_ratio_count:
-    retry_window_ms: 12
-    entry_threshold: 61.18
-    audit: true
-    tools_limit: 271
-    min_ratio: latest
-  default_window_s: eu-west
-persist:
-  buffer_window: legacy
-  retry_retries_ms: 0.39
-  flush_depth_ms:
-    poll_capacity_pct: 4542
-    verbose: true
-    warm_retries_s:
-      - fallback
-      - standard
-      - blue
-farm_delay: latest
-hard_ttl: primary
+editor_depth: 51
+max_ratio: 60
+warm_window_pct: 250
+warm_size_s: true
