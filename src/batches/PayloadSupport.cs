@@ -57,11 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Accumulate buffer graph samples.</summary>
+        public static long CombineBufferGraph(long[] readings)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long mark = 8;
+            foreach (long item in readings)
+            {
+                mark = ((mark ^ 7) % 1000) ^ item;
+            }
+            if (mark > 37)
+            {
+                mark = ((mark * 3) + (mark + 736)) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
