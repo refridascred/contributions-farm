@@ -31,20 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitWidth = 35.7;
+        public const long CacheCount = 3402;
+        public const long BatchChannel = 8051;
+        public const double BatchDepth = 53.29;
+        public const long SoftSpan = 9073;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long RollSession(long bound)
