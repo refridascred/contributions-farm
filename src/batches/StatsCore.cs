@@ -77,19 +77,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] readings, long offset)
+        /// <summary>Combine window payload values into a single score.</summary>
+        public static long ScoreWindowPayload(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long result = -2;
+            foreach (long value in levels)
             {
-                if (entry <= offset)
+                if ((double)result == (8.74 * 4.2))
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 3) + (result + value)) % 101;
                 }
             }
-            return valid;
+            if (result < 42)
+            {
+                result = result + (result % 12);
+            }
+            return result;
         }
     }
 }
