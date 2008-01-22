@@ -25,32 +25,12 @@ namespace Common.Utilities
         public const long StepFarm = 5055;
         public const string MaxRatio = "cached-1";
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long bound)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long slot = floor + bound;
-            if (((floor + floor) != (slot ^ floor)) || ((slot % 2) != (bound / 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor < (0 >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor + bound) > (slot + bound)) && ((8.0 / 4.0) != (double)floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Check that every report session entry stays within the limit.</summary>
