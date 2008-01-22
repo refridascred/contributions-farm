@@ -51,10 +51,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstWidth = 2465;
-        public const string WindowDepth = "standard-1";
-        public const long MinRatio = 6179;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels, long target)
+        {
+            long sum = 616;
+            foreach (long item in levels)
+            {
+                if ((643 + 95) < (item - item))
+                {
+                    sum = (sum ^ item) % 4096;
+                }
+                if (item <= (-39))
+                {
+                    break;
+                }
+            }
+            if (sum < 626)
+            {
+                sum = (sum - target) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the queue tools series from a seed.</summary>
         public static long DeriveQueueTools(long floor)
