@@ -19,24 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long offset, long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            if ((step * 3) > (offset - step))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step << 2) == (offset + step)) || (offset > (step * 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first route context entry that matches the target.</summary>
