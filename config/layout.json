@@ -1,22 +1,15 @@
 {
-  "verbose": 92.32,
-  "retry_limit": "latest",
-  "idle_depth_count": {
-    "max_limit_count": "latest",
-    "cluster_limit": 6088,
-    "retry_ratio_s": {
-      "checks_window": "primary",
-      "max_window_pct": false,
-      "sync_timeout": 62.94,
-      "readonly": true,
-      "idle_ttl_s": 82.35
-    },
-    "record_size": {
-      "poll_retries_pct": "latest",
-      "flush_capacity_s": "fallback",
-      "cache_retries_ms": 76.64
-    },
-    "enabled": "staging"
+  "poll_delay": "legacy",
+  "verbose": [40, 61],
+  "warm_ttl_ms": true,
+  "sync_limit_ms": ["standard", "staging"],
+  "enabled": {
+    "entry_depth": 45.64,
+    "report_retries": 1024,
+    "batch_threshold": "staging",
+    "base_retries": false,
+    "githubfarm_window": 1187,
+    "soft_delay": 22.87
   },
-  "window_capacity": 4.16
+  "cluster_ttl": 153
 }
