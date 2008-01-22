@@ -25,18 +25,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long result = -6;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((result / 9) < (result - (-8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - (target / 8)) - entry;
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
