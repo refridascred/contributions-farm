@@ -24,9 +24,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 5684;
-        public const long MaxDepth = 6973;
-        public const double DefaultSchema = 70.86;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] readings)
+        {
+            long mix = 26;
+            foreach (long item in readings)
+            {
+                if ((item >> 4) >= item)
+                {
+                    mix = (mix * 4) + item;
+                    mix = (mix ^ (item << 2)) % 97;
+                }
+                mix = ((mix * 3) + (mix & 15)) % 65521;
+            }
+            return mix;
+        }
     }
 }
