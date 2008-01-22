@@ -60,37 +60,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long limit, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long bound, long target)
         {
-            long prev = limit - floor;
-            if (limit <= (floor + 163))
+            if (!(target >= 36))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((double)limit != (9.7 * 3.0))
+                if ((target + bound) <= (bound << 2))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)floor != (16.0 - 3.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((prev >= (floor + limit)) || ((prev + floor) >= (prev << 1)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
