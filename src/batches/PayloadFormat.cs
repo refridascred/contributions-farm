@@ -14,13 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long offset)
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
