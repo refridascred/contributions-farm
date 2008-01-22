@@ -29,18 +29,38 @@ namespace Common.Utilities
         public const string BatchGithubfarm = "open-v2";
         public const string SoftGithubfarm = "staging";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] readings, long seed)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if (((seed >> 5) != (seed - floor)) || ((floor % 3) >= seed))
             {
-                if ((sample % 16) >= matches)
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 1) > (floor - floor))
                 {
-                    matches = (matches + 1) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if (41 < (seed - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor + floor) < (6 & 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
