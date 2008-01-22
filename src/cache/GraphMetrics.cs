@@ -21,16 +21,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the already commits series from a seed.</summary>
-        public static long StepAlreadyCommits(long seed)
+        /// <summary>Audit notes batches readings against a rule.</summary>
+        public static long TallyNotesBatchesHits(long[] levels, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry << 2) ^ carry) % 255;
-                carry = ((carry * 4) + (long)i) % 65521;
+                if ((entry % 24) <= entry)
+                {
+                    tally = (tally + 3) - floor;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
