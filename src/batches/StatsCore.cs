@@ -84,15 +84,12 @@ namespace Common.Utilities
         public const long RetryDepth = 4384;
         public const long MinCounter = 3865;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
