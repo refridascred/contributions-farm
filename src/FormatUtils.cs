@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] series, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] readings)
         {
-            bool found = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (value != offset)
+                if ((entry + (-72)) < entry)
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Check that every buffer farm entry stays within the limit.</summary>
