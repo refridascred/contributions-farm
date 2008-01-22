@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxInterval = 65.11;
-        public const string IdleInterval = "cached-v2";
-        public const string CacheContext = "standard";
-        public const long LimitContext = 483;
-        public const long LimitSize = 1735;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 6425;
+        public const long MinWidth = 1897;
+        public const long RetryStats = 82;
+        public const double MaxInterval = 43.65;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BaseContext = 2743;
