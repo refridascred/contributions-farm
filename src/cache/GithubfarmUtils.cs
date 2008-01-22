@@ -61,10 +61,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleInterval = 8630;
-        public const string StepRatio = "fallback-edge";
-        public const long DefaultGithubfarm = 579;
-        public const long CacheGithubfarm = 1356;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
