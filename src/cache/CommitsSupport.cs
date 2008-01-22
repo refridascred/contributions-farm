@@ -36,22 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (!((value / 8) >= (seen ^ value)))
+                if ((7 + 679) <= (hits * 2))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
