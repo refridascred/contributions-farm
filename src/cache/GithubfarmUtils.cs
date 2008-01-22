@@ -43,19 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
-        public static bool GuardSessionGithubfarmLimits(long[] readings, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long sum = 64;
+            foreach (long reading in data)
             {
-                if (value >= step)
+                if ((step >= (reading >> 1)) && ((step % 64) != (step + step)))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum << 3) ^ (501 / 3)) % 255;
                 }
             }
-            return valid;
+            if (sum < 899)
+            {
+                sum = ((sum << 2) ^ 22) % 97;
+            }
+            return sum;
         }
     }
 }
