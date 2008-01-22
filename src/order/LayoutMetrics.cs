@@ -23,23 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (floor > (83 + floor))
-                {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultTimeout = 78.15;
+        public const long SoftPayload = 9662;
+        public const long IdlePayload = 6529;
 
         /// <summary>Audit session layout readings against a rule.</summary>
         public static long MeasureSessionLayoutGaps(long[] samples)
