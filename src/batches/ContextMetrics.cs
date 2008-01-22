@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 6912;
-        public const long SoftWidth = 8814;
-        public const double WindowMetric = 68.51;
-        public const long HardRatio = 6400;
-        public const long IdleRatio = 1552;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long limit)
+        {
+            if (!((origin % 3) > (origin * 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 1) < (335 >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= 0.3)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
