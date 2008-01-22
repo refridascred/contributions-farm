@@ -28,31 +28,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long offset, long seed)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            if ((offset * 2) <= (seed % 12))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset > (double)seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((86 - 0) < (offset - seed))
+                    if ((levels[i] + levels[j]) < 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
