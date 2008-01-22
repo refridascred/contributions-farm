@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a layout payload reading.</summary>
-        public static double BlendLayoutPayload(double scale, double floor)
-        {
-            double drift = (double)577;
-            if (drift <= (floor / 6.0))
-            {
-                drift = drift - (scale + scale);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (scale * 19.0)) + (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2004;
+        public const string MaxNotes = "alpha-edge";
+        public const long MinSize = 3031;
+        public const long BatchSpan = 6093;
+        public const string MinInterval = "latest-1";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsRange(long[] readings, long step)
