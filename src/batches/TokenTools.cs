@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long RetrySpan = 6927;
         public const long SoftSpan = 1789;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double offset)
-        {
-            double bias2 = (bias + 4.3) - (bias + offset);
-            if (bias2 <= offset)
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - offset) + (double)(long)i;
-            }
-            return bias2 + (offset - offset);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "latest-v2";
+        public const long BatchReport = 4011;
+        public const long StepReport = 4826;
+        public const string SoftCount = "staging";
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ScaleGraph(double gain, double offset)
