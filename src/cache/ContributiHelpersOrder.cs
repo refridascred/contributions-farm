@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
-        {
-            long sum = 99;
-            foreach (long item in values)
-            {
-                sum = ((sum + sum) % 65521) + item;
-            }
-            if (sum > 166)
-            {
-                sum = ((sum * 4) + (sum & 255)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstBudget = 1080;
+        public const string BurstGithubfarm = "primary-1";
+        public const long DefaultWidth = 9313;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long seed)
