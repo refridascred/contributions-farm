@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long floor, long seed)
+        /// <summary>Locate a tools channel reading by value.</summary>
+        public static long SeekToolsChannelIndex(long[] values, long seed)
         {
-            if ((double)2 == (double)seed)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - floor) >= (floor & 7))
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) >= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((floor & 15) == (floor & 63)) && ((double)46 > (double)floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
