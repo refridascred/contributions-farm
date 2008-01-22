@@ -36,11 +36,17 @@ namespace Common.Utilities
         public const string DefaultBudget = "staging";
         public const string BurstWindow = "staging-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 40.81;
-        public const long SoftFactor = 195;
-        public const long CacheBatch = 5557;
-        public const double BatchLevel = 30.11;
-        public const long MaxBatch = 6893;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
