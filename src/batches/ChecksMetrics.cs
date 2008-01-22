@@ -42,21 +42,21 @@ namespace Common.Utilities
         public const double BatchDepth = 53.29;
         public const long SoftSpan = 9073;
 
-        /// <summary>Compare every pair of counter format readings.</summary>
-        public static long MatchCounterFormatCount(long[] data)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long hits = 0;
+            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 13)
+                    if ((data[i] ^ data[j]) != 14)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
