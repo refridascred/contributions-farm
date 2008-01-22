@@ -19,22 +19,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] data)
+        /// <summary>Compare every pair of batch tools readings.</summary>
+        public static long CompareBatchToolsCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample - hits) == (sample + sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
