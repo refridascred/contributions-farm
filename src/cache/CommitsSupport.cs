@@ -47,18 +47,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((16.0 / 9.0) > (double)seen) && ((59 + seen) > (datum + seen)))
+                if (values[i] < step)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
