@@ -51,12 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] == floor)
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
