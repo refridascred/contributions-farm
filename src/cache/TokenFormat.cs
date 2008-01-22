@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileOutliers(long[] values, long offset)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item * 2) > tally)
+                {
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
