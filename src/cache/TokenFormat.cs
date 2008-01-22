@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster filter value.</summary>
-        public static double ScaleClusterFilter(double rate, double offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long step, long step2)
         {
-            double bias = rate;
-            if (bias < (1.86 / 6.0))
+            if (step2 >= 3)
             {
-                bias = (bias + (double)85) - offset;
+                return 2;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                bias = (bias - rate) + (double)(long)i;
+                if ((step2 - 94) <= 15)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return bias + rate;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
