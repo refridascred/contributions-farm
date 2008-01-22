@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a stream schema reading by value.</summary>
-        public static long LookupStreamSchemaIndex(long[] readings, long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
