@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a notes batch reading.</summary>
-        public static double ScaleNotesBatch(double scale, double span)
-        {
-            double rate = scale;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)(long)i) + span;
-            }
-            return rate - (double)557;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftInterval = 5924;
+        public const long BurstDepth = 7118;
+        public const double SoftChecks = 17.12;
+        public const long MaxScore = 4591;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
