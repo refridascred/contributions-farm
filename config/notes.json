@@ -1,8 +1,8 @@
 {
-  "poll_size_pct": 28.2,
-  "base_depth_ms": "cached",
-  "idle_limit": "legacy",
-  "min_delay_count": "open",
-  "commits_ratio": "standard",
-  "warm_timeout": "legacy"
+  "checks_capacity": ["edge", "legacy"],
+  "poll_threshold_s": false,
+  "cache_delay": true,
+  "poll_size_pct": false,
+  "warm_depth": false,
+  "max_retries": 1024
 }
