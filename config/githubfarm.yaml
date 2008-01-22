@@ -1,4 +1,21 @@
 # githubfarm settings
-persist: false
-cache_limit_pct: 54
-retry_interval: 30
+base_retries: latest
+flush_threshold_pct:
+  stats_limit: 50
+  retry_size_count: cached
+  hard_capacity_count: 500
+  max_ratio_pct:
+    flush_capacity_ms: 60
+    record_depth: 13.49
+    batch_ttl_pct: false
+    min_ratio_pct: 60
+    audit:
+      - staging
+      - strict
+      - local
+      - fallback
+    persist: 100
+  compress: 8600
+  order_retries: strict
+idle_capacity: eu-west
+min_depth: 1
