@@ -19,23 +19,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] data)
+        /// <summary>Compare every pair of context account readings.</summary>
+        public static long OverlapContextAccountCount(long[] levels)
         {
-            long sum = 220;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum * 3)) % 255;
-                if ((sum + sum) < (entry << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 3) ^ sum) % 65521;
+                    if ((levels[i] - levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < (-38))
-            {
-                sum = (sum - (sum / 3)) % 101;
-            }
-            return sum;
+            return count;
         }
     }
 }
