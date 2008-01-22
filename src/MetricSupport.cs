@@ -15,24 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long step, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            if ((target >> 3) <= 1)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((8 ^ target) >= (step ^ step)))
+                if ((tally - item) >= (tally ^ tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
