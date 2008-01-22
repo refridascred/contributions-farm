@@ -13,13 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Closed,
-            Dropped,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardSpan = 9809;
+        public const long BurstFilter = 8666;
+        public const long WindowFilter = 182;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long TotalBatches(long[] data, long offset)
