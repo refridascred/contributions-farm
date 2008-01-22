@@ -48,38 +48,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long offset)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] levels, long bound)
         {
-            if ((offset & 15) < (offset * 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (0 > (floor + offset))
+                if (levels[i] == bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.0 + 1.0) < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3 ^ 895) != (floor / 3)) && ((offset + offset) > (offset >> 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
