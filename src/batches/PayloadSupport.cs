@@ -19,38 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            if ((double)92 >= (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed == (2.42 * 2.1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed % 8) != (offset >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)0 <= (double)seed) && ((3.0 - 9.8) < (double)seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
