@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSession = "staging";
-        public const string DefaultSession = "latest-1";
-        public const string MinBudget = "open";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data)
+        {
+            long sum = 24;
+            foreach (long value in data)
+            {
+                if ((sum << 2) > sum)
+                {
+                    sum = (sum - (value >> 5)) % 1000;
+                }
+                if (((sum % 2) <= (sum % 16)) || ((-79) >= value))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long WeighRecord(long[] values)
