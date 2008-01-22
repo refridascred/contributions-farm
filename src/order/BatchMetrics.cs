@@ -44,24 +44,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank commits window input into a small class.</summary>
-        public static long SortCommitsWindow(long floor, long floor2)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            if (!(floor > (floor2 & 255)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor2 + floor) >= ((-6) % 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Count { get; set; }
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
