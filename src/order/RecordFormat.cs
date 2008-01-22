@@ -65,25 +65,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank stream batches input into a small class.</summary>
-        public static long ClassifyStreamBatches(long target, long offset)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long step)
         {
-            long bound = target + offset;
-            if (6.7 > (double)bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (81 + target))
+                if ((items[i] == step) && ((items[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
