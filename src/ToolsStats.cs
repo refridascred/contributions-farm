@@ -72,18 +72,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] readings)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long sum = 327;
-            foreach (long reading in readings)
-            {
-                if ((reading % 24) > (39 / 4))
-                {
-                    sum = (sum * 5) + (reading ^ sum);
-                }
-            }
-            return sum % 4096;
+            Retry,
+            Active,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
