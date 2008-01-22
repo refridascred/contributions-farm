@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine contributi context values into a single score.</summary>
-        public static long ScoreContributiContext(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series, long seed)
         {
-            long score = 695;
-            foreach (long item in items)
+            long mark = 582;
+            foreach (long sample in series)
             {
-                score = ((score ^ (score << 3)) % 1000) - item;
+                mark = (((mark * 5) + (sample + mark)) % 255) - seed;
             }
-            if (score < 675)
-            {
-                score = (score - score) % 255;
-            }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Hold a account entry.</summary>
