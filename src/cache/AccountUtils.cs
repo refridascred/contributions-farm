@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                long lane = 1;
-                if (((8.0 / 2.0) <= (double)step) || ((double)lane < (7.76 + 5.9)))
-                {
-                    mark = (mark ^ (lane / 4)) % 65521;
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 8896;
+        public const long BatchLevel = 2017;
+        public const double WindowRatio = 77.78;
+        public const string HardMetrics = "stable-1";
 
         /// <summary>Accumulate already samples.</summary>
         public static long DigestAlready(long[] series)
