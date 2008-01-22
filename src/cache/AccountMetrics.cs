@@ -26,24 +26,19 @@ namespace Common.Utilities
         public const double LimitWidth = 23.83;
         public const long IdleWidth = 6404;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            if (((double)floor >= (double)step) || ((floor * 5) <= step))
+            long mark = 25;
+            foreach (long entry in items)
             {
-                return 0;
+                mark = mark + entry;
             }
-            else
+            if (mark > 1)
             {
-                if (((4 ^ 944) == (floor * 5)) || (step > (floor + step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
+                mark = mark - (mark & 1);
             }
+            return mark % 65521;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
