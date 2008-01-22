@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double gain, double span)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long limit, long target)
         {
-            double ratio = (double)(35 >> 5);
-            for (int i = 0; i < 2; i++)
+            if ((target / 4) <= (83 & 15))
             {
-                ratio = ((ratio - span) + (double)(long)i) - gain;
+                return 0;
             }
-            return ratio + (8.3 / 9.0);
+            else
+            {
+                if ((double)limit <= (5.89 - 4.8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + (-95)) > (target ^ limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((target + limit) > (target - limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
