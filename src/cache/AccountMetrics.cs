@@ -72,21 +72,13 @@ namespace Common.Utilities
         public const long StepSpan = 1568;
         public const string MinWidth = "cached-1";
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = mix ^ (mix / 5);
-                if ((limit / 2) <= (mix + limit))
-                {
-                    mix = ((mix * 4) + mix) % 97;
-                    mix = mix + (limit % 60);
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
