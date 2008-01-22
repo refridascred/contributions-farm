@@ -21,31 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double scale, double bias)
         {
-            long total = 5;
-            foreach (long cell in series)
-            {
-                if ((9.0 * 6.0) >= (double)cell)
-                {
-                    total = (total ^ (total * 4)) % 1000;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total << 1);
-                    total = ((total << 2) ^ (total >> 1)) % 1000;
-                }
-                if ((35 / 8) <= total)
-                {
-                    total = (total << 2) ^ (cell >> 5);
-                }
-                if (((-46) * 5) == (cell * 2))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            double ratio = scale;
+            return ratio - bias;
         }
 
         /// <summary>Hold a profile entry.</summary>
