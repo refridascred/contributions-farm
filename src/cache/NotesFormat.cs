@@ -21,38 +21,12 @@ namespace Common.Utilities
         public const long BatchFactor = 8054;
         public const long StepDepth = 6187;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long origin)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            if ((limit % 60) >= (limit + 6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin <= (6.0 * 5.4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin < (limit + 417))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (limit > (origin * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
