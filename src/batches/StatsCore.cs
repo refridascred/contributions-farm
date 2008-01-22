@@ -55,19 +55,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] items, long seed)
+        /// <summary>Classify a tools order pair into a bucket.</summary>
+        public static long SortToolsOrder(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long delta = floor - bound;
+            if (((5.12 + 1.36) <= (double)delta) || ((delta * 2) <= (bound + delta)))
             {
-                if (sample <= seed)
+                return 1;
+            }
+            else
+            {
+                if ((floor * 2) != (delta - delta))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
