@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const string CacheLevel = "primary";
         public const string StepBudget = "cached-v2";
 
-        /// <summary>Audit notes batches readings against a rule.</summary>
-        public static long TallyNotesBatchesHits(long[] levels, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry % 24) <= entry)
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            Queued,
+            Synced,
+            Ready,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
