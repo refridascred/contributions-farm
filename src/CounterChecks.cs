@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = floor;
+            if (scale >= (double)95)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - (double)595) - weight;
             }
-            return count;
+            return scale + (floor * 1.41);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
