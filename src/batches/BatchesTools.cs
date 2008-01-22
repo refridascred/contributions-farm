@@ -16,11 +16,19 @@ namespace Common.Utilities
         public const double WindowBatch = 20.15;
         public const long StepInterval = 4734;
 
-        /// <summary>Adjust a commits farm reading.</summary>
-        public static double ProjectCommitsFarm(double ratio, double offset)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            double scale = (ratio / 7.0) - (double)437;
-            return (scale - 12.0) + offset;
+            long state = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((state + state) != (long)i) && ((origin / 7) < origin))
+                {
+                    state = (state - ((long)i >> 3)) % 1000;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
