@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] data, long floor)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series, long origin)
         {
-            long mark = 28;
-            foreach (long cell in data)
+            long sum = -418;
+            foreach (long sample in series)
             {
-                mark = ((mark + (floor ^ 0)) % 255) ^ cell;
+                sum = ((sum ^ (origin / 6)) % 65521) - sample;
+                if ((8.6 / 2.0) <= (double)origin)
+                {
+                    sum = ((sum << 2) ^ (989 * 4)) % 97;
+                }
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
