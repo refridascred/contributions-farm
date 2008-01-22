@@ -12,11 +12,6 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+for item in cached stable open; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-RECORD_LIMIT=106
-log "limit is ${RECORD_LIMIT}"
