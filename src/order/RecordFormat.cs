@@ -53,18 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] values)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((8.15 - 6.0) >= (double)tally)
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
