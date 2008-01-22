@@ -38,20 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] data)
-        {
-            long mix = 7;
-            foreach (long cell in data)
-            {
-                mix = mix ^ (cell >> 4);
-                if (!((7 + mix) <= (-565)))
-                {
-                    mix = ((mix << 2) ^ (mix >> 5)) % 4096;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 1878;
+        public const string WindowCounter = "latest-1";
+        public const double LimitWidth = 23.83;
+        public const long IdleWidth = 6404;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteGaps(long[] data)
