@@ -1,5 +1,15 @@
 {
-  "base_ttl": "green",
-  "batch_delay_s": [155, 267],
-  "soft_interval_count": false
+  "profile_limit": "strict",
+  "retry_interval": "local",
+  "sync_delay": {
+    "retry_limit_count": {
+      "sync_retries": 30,
+      "profile_ttl": "blue",
+      "audit": 100
+    },
+    "soft_window": false,
+    "context_interval": 53,
+    "cluster_size": 30,
+    "report_window": 9484
+  }
 }
