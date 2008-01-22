@@ -56,18 +56,21 @@ namespace Common.Utilities
         public const string WindowDepth = "standard-1";
         public const long MinRatio = 6179;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Iterate the queue tools series from a seed.</summary>
+        public static long DeriveQueueTools(long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((5.5 / 4.0) != (double)seen)
+                if ((long)i < sum)
                 {
-                    seen = (seen + 3) ^ datum;
+                    sum = (sum ^ (sum - 43)) % 1000;
                 }
+                sum = sum ^ sum;
+                sum = (sum + (long)i) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
