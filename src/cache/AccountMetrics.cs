@@ -39,18 +39,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] samples, long seed)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((seed ^ seed) >= (83 + matches))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
+            Draft,
+            Dropped,
+            Synced,
+            Pending,
+            Queued,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
