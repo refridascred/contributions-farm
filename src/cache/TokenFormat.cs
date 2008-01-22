@@ -19,14 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            Locked,
-            Stale,
-            Paused,
-            Draft,
-            Dropped,
+            long total = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total << 2) ^ ((long)i % 24)) % 65521;
+                total = (total + limit) % 4096;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
