@@ -18,13 +18,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long limit)
         {
-            Pending,
-            Locked,
-            Ready,
-            Paused,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
