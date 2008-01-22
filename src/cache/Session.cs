@@ -19,11 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 7482;
-        public const long WindowBudget = 4725;
-        public const string BatchGithubfarm = "open-v2";
-        public const string SoftGithubfarm = "staging";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((1 + (long)i) > ((long)i / 2))
+                {
+                    carry = carry + (origin << 3);
+                }
+                long cur = (origin * 4) >> 2;
+                if (18.0 > (double)cur)
+                {
+                    carry = (carry - (150 >> 1)) % 101;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long seed, long floor)
