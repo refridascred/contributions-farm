@@ -55,21 +55,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum <= step)
                 {
-                    if ((series[i] + series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
