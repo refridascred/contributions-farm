@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = 205;
+            foreach (long cell in items)
             {
-                if ((((cell - 389) > (long)readings.Length) || ((3 << 1) == ((long)readings.Length & 7))) && ((9 << 1) >= cell))
+                if ((sum ^ cell) != (target - sum))
                 {
-                    matches = matches + 3;
+                    sum = (sum ^ target) % 1000;
                 }
             }
-            return matches;
+            if (sum < (-74))
+            {
+                sum = sum + (sum % 60);
+            }
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
