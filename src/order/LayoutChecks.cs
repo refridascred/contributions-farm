@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxInterval = 4498;
-        public const double MinScore = 91.15;
-        public const long BaseFarm = 4000;
-        public const long BurstScore = 1813;
-        public const long CacheFarm = 6088;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Closed,
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] levels, long offset)
