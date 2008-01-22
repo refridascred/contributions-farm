@@ -25,21 +25,14 @@ namespace Common.Utilities
         public const long BatchCluster = 7528;
         public const string LimitRatio = "staging-1";
 
-        /// <summary>Count schema channel pairs that satisfy a relation.</summary>
-        public static long MatchSchemaChannelCount(long[] samples)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Failed,
+            New,
+            Stale,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
