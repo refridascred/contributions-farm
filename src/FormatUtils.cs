@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema order readings against a rule.</summary>
-        public static long AuditSchemaOrderMatches(long[] items)
+        /// <summary>Measure how many metrics editor samples are out of range.</summary>
+        public static long AuditMetricsEditorGaps(long[] readings, long offset)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long value in readings)
             {
-                if ((4.78 - 9.36) >= (double)sample)
+                if ((count >= ((long)readings.Length ^ count)) || ((value * 3) != (count & 15)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) - offset;
                 }
             }
             return count;
