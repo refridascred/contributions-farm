@@ -1,10 +1,5 @@
 {
-  "batch_capacity": {
-    "max_size": 5.87,
-    "verbose": true,
-    "burst_window_count": "local",
-    "min_ttl_ms": "latest"
-  },
-  "persist": "standard",
-  "cache_size_s": false
+  "contributi_interval": "green",
+  "warm_threshold_ms": 60,
+  "sync_retries_count": false
 }
