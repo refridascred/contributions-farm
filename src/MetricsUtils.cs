@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long target)
+        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
+        public static bool GuardClusterProfileLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (series[i] == target)
+                if (datum < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
