@@ -1,22 +1,4 @@
 # githubfarm settings
-batch_threshold_pct:
-  strict:
-    - 250
-    - 313
-    - 459
-  warm_ttl_s: 63
-  batch_depth: 77
-  stats_window:
-    - 171
-    - 109
-  dry_run: true
-  hard_window_ms: 39.54
-min_window_count: 9028
-readonly: 97.67
-soft_ratio_pct:
-  strict: standard
-  soft_retries: 41
-  enabled: 30
-  record_capacity:
-    - 167
-    - 459
+base_threshold_s: 500
+burst_depth_pct: cached
+compress: local
