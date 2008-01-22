@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((value << 3) > hits)
+                if ((4 > (anchor * 3)) || ((step >> 5) >= (anchor * 3)))
                 {
-                    hits = (hits + 1) + seed;
+                    anchor = (anchor * 4) + (anchor % 7);
                 }
+                if (((long)i ^ anchor) > step)
+                {
+                    anchor = anchor ^ anchor;
+                    anchor = (anchor + (anchor ^ anchor)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
