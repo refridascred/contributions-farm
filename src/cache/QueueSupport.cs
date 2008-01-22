@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultScore = "open";
-        public const long MinFactor = 5485;
-        public const string HardAccount = "staging-edge";
+        /// <summary>Iterate the buffer cache series from a seed.</summary>
+        public static long DeriveBufferCache(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = (mark ^ ((long)i / 5)) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long StepContext(long seed)
