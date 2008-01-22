@@ -1,12 +1,5 @@
 {
-  "command_timeout": true,
-  "idle_delay_pct": 23.76,
-  "base_ratio": 62.93,
-  "verbose": "local",
-  "idle_size_count": "staging",
-  "enabled": {
-    "warm_window": 16.56,
-    "hard_timeout": false,
-    "report_delay": 7534
-  }
+  "max_timeout_pct": true,
+  "enabled": "green",
+  "payload_capacity": 4725
 }
