@@ -35,22 +35,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long step)
+        /// <summary>Grade a report stream value against two limits.</summary>
+        public static long ClassifyReportStream(long target, long seed)
         {
-            long hits = 0;
-            foreach (long item in items)
+            if (!(549 < target))
             {
-                if (!((hits + step) != (hits * 4)))
+                return 8;
+            }
+            else
+            {
+                if (!((double)target >= (12.0 + 6.8)))
                 {
-                    hits = (hits + 3) + item;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((1 / 8) > seed) && (target >= (seed >> 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((seed ^ seed) == (target + 4)) || (seed > (seed + seed)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
