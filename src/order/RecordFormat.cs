@@ -19,20 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long mark = 64;
+            foreach (long cell in data)
             {
-                anchor = (anchor + (anchor * 4)) % 97;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor + 2) % 255) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mark = (((mark - 2) % 97) ^ cell) + target;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
