@@ -1,6 +1,8 @@
 {
-  "soft_interval_pct": "cached",
-  "account_delay": 1024,
-  "persist": "standard",
-  "retry_size_s": ["open", "eu-west", "blue"]
+  "stats_ttl": "standard",
+  "soft_ttl": true,
+  "hard_window_ms": 540,
+  "audit": "local",
+  "route_threshold": true,
+  "retry_capacity": 9557
 }
