@@ -24,18 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] values, long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((9.45 <= (double)matches) || !(90 >= matches))
-                {
-                    matches = ((matches + 3) + reading) - bound;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a already record counter forward.</summary>
