@@ -35,15 +35,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] readings)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long carry = 991;
-            foreach (long value in readings)
-            {
-                carry = (((carry << 2) ^ carry) % 1000) + value;
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
