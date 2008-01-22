@@ -33,19 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter metrics readings against a bound.</summary>
-        public static bool CheckFilterMetricsRange(long[] samples, long step)
+        /// <summary>Derive the next profile channel value from a seed.</summary>
+        public static long RollProfileChannel(long bound)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < step)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (-64)) % 255;
+                mark = (mark ^ (bound << 2)) % 65521;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Describe the window kind values.</summary>
