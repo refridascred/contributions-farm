@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = mark - mark;
-                if ((mark >> 4) == (limit % 100))
-                {
-                    continue;
-                }
-                else
-                {
-                    mark = mark + (356 - (-4));
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
