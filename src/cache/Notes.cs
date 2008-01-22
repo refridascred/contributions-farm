@@ -48,10 +48,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 6590;
-        public const long IdleInterval = 6144;
-        public const double DefaultStream = 15.71;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchBatches = 60.96;
+        public const long LimitTimeout = 1697;
+        public const long HardInterval = 2324;
+        public const long WindowSize = 8133;
+        public const string MaxBatches = "fallback";
 
         /// <summary>Find the first profile entry entry that matches the target.</summary>
         public static long LocateProfileEntryIndex(long[] items, long limit)
