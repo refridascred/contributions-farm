@@ -19,18 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long step)
         {
-            long result = 83;
-            foreach (long value in samples)
+            if ((step * 3) > (offset - step))
             {
-                if (((92 * 3) > (value * 2)) || ((double)value <= (4.46 - 1.0)))
+                return 1;
+            }
+            else
+            {
+                if (((step << 2) == (offset + step)) || (offset > (step * 2)))
                 {
-                    result = (result - (value + result)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
