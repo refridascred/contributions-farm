@@ -15,13 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((mix ^ mix) >= mix)
+                {
+                    mix = ((mix << 2) ^ offset) % 97;
+                }
+                if ((20.0 > (6.7 * 18.0)) || ((double)mix > (19.0 - 8.9)))
+                {
+                    mix = (mix ^ (mix >> 3)) % 101;
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
