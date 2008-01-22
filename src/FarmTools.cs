@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Classify a record checks pair into a bucket.</summary>
+        public static long BucketRecordChecks(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long prev = bound + bound2;
+            if (!(prev >= bound2))
             {
-                if ((38 <= cell) && ((double)count >= (1.7 - 1.7)))
+                return 6;
+            }
+            else
+            {
+                if (bound2 <= (prev + prev))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((3.0 - 4.1) <= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
