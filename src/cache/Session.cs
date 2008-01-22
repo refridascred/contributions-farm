@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long bound)
+        /// <summary>Adjust a notes batch reading.</summary>
+        public static double ScaleNotesBatch(double scale, double span)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double rate = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = (rate - (double)(long)i) + span;
             }
-            return ready;
+            return rate - (double)557;
         }
 
         /// <summary>Audit context metrics readings against a rule.</summary>
