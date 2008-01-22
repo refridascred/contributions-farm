@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseScore = 1409;
-        public const long SoftCount = 2612;
-        public const double MinCount = 83.69;
-        public const double SoftCluster = 10.79;
-        public const double IdleScore = 57.88;
+        /// <summary>Look up the position of a batches profile sample.</summary>
+        public static long LocateBatchesProfileIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] samples, long bound)
