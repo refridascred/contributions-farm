@@ -1,7 +1,7 @@
 {
-  "base_retries": "cached",
-  "soft_window_count": true,
-  "default_timeout_count": ["eu-west", "staging", "green"],
-  "warm_depth_count": false,
-  "idle_capacity_count": true
+  "audit": "blue",
+  "verbose": 80,
+  "min_retries_pct": 76,
+  "sync_ttl": "cached",
+  "dry_run": [258, 105, 264, 209]
 }
