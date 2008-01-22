@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 8129;
-        public const long StepWidth = 4144;
-        public const long DefaultWidth = 7777;
-        public const long HardInterval = 2726;
+        /// <summary>Measure how many graph tools samples are out of range.</summary>
+        public static long TallyGraphToolsHits(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (50 <= (seed << 3))
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a account counter value against two limits.</summary>
         public static long BucketAccountCounter(long bound, long bound2)
