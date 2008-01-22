@@ -2,9 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    token TEXT,
-    rank INTEGER,
     created_at TIMESTAMP,
+    token TEXT,
     level INTEGER
 );
 
