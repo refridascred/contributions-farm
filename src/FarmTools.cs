@@ -16,11 +16,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long floor, long target)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long gap = floor - target;
+            if ((floor ^ gap) <= (target + floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (gap > (223 % 16))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
