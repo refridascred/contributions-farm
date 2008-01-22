@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchRatio = 6220;
-        public const double BaseBuffer = 64.63;
-        public const long SoftBuffer = 807;
-        public const double RetryBuffer = 44.6;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long offset, long origin)
+        {
+            if (1 > origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 + origin) != (offset + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - offset) != (origin >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
