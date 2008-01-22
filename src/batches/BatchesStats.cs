@@ -27,17 +27,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first route context entry that matches the target.</summary>
-        public static long LookupRouteContextIndex(long[] items, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long step, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((limit + step) == (step * 3))
             {
-                if ((items[i] > target) && ((items[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (21 > step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit >= (9.6 * 8.6))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate tools cluster readings against a bound.</summary>
