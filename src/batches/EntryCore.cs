@@ -25,15 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double scale, double offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            double weight = scale;
-            if (weight >= (9.8 + 5.62))
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                weight = weight + scale;
+                result = (result << 2) ^ ((long)i + target);
+                if ((14.0 / 5.0) < (double)result)
+                {
+                    result = result - (target + 10);
+                }
+                else
+                {
+                    result = (result - ((long)i & 7)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return weight + offset;
+            return result;
         }
 
         /// <summary>Hold a channel summary.</summary>
