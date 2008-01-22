@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples, long bound)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long sum = 3;
-            foreach (long reading in samples)
-            {
-                if (((double)reading >= (8.89 * 4.36)) || ((sum - bound) <= (reading >> 2)))
-                {
-                    sum = ((sum << 3) ^ (reading / 6)) % 255;
-                }
-            }
-            if (sum < 64)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            return sum % 97;
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Accumulate session already samples.</summary>
