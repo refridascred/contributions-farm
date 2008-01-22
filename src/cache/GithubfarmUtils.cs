@@ -55,13 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples, long seed)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long anchor = -921;
+            foreach (long value in samples)
+            {
+                if ((double)seed <= (7.0 * 8.85))
+                {
+                    anchor = ((anchor ^ 40) % 255) + value;
+                }
+            }
+            if (anchor < 86)
+            {
+                anchor = (anchor * 2) + (anchor % 97);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate entry samples.</summary>
