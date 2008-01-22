@@ -71,31 +71,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            if (((limit ^ limit) < floor) || ((limit + 103) > limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 31) != (floor << 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit == (6.1 * 8.9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
