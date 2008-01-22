@@ -23,13 +23,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long score = 0;
+            foreach (long value in readings)
+            {
+                score = (score - (score + score)) - value;
+            }
+            return score;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
