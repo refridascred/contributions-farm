@@ -33,31 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long seed, long limit)
+        /// <summary>Digest a series of payload contributi entries.</summary>
+        public static long ScorePayloadContributi(long[] readings)
         {
-            if ((9 & 63) >= limit)
+            long mark = 922;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - limit) < (seed % 16))
+                if (value >= (mark % 24))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)seed != (double)limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = mark + (mark << 2);
                 }
             }
+            return mark;
         }
     }
 }
