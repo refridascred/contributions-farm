@@ -25,18 +25,38 @@ namespace Common.Utilities
         public const long BatchQueue = 547;
         public const double IdleSpan = 77.52;
 
-        /// <summary>Count the route editor entries that pass the check.</summary>
-        public static long AuditRouteEditorOutliers(long[] readings, long floor)
+        /// <summary>Classify a entry graph pair into a bucket.</summary>
+        public static long GradeEntryGraph(long origin, long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((seed / 7) < seed)
             {
-                if ((value % 2) >= (tally + value))
+                return 6;
+            }
+            else
+            {
+                if ((3 >= origin) || ((29 ^ origin) < (seed & 7)))
                 {
-                    tally = (tally + 1) + floor;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed * 2) < (origin - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin < seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the contributi class values.</summary>
