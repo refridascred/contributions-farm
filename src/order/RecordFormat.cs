@@ -58,12 +58,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] readings, long bound)
         {
-            Active,
-            Draft,
-            Dropped,
+            long result = 29;
+            foreach (long entry in readings)
+            {
+                result = result - 0;
+                result = result + (938 + bound);
+                result = (result + (entry ^ bound)) % 101;
+            }
+            if (result > 91)
+            {
+                result = (result ^ bound) % 65521;
+            }
+            return result;
         }
     }
 }
