@@ -66,19 +66,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm context readings.</summary>
-        public static long CombineFarmContext(long[] levels, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long target)
         {
-            long mark = -95;
-            foreach (long cell in levels)
+            long delta = step + target;
+            if ((target ^ 27) == (target - step))
             {
-                if (!((cell - mark) <= bound))
-                {
-                    mark = mark + (mark ^ mark);
-                }
-                mark = (mark << 2) ^ (long)levels.Length;
+                return 6;
             }
-            return mark % 97;
+            else
+            {
+                if ((double)delta >= (3.2 / 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + delta) < (delta + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
