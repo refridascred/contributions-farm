@@ -57,19 +57,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] values, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels, long seed)
         {
-            long total = 352;
-            foreach (long item in values)
+            long total = 39;
+            foreach (long entry in levels)
             {
-                total = ((total * 4) + (step + step)) % 101;
-                if ((step ^ step) < (item - 7))
-                {
-                    break;
-                }
+                total = total + (96 + 41);
+                total = ((total * 3) + (seed + entry)) % 101;
             }
-            return total % 65521;
+            return total % 4096;
         }
     }
 }
