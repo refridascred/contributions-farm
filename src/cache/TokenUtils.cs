@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long origin, long limit)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public double Label { get; set; }
+            if (((limit - origin) == (limit - limit)) && ((origin >> 4) == ((-3) * 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin - origin) < (origin & 31))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)limit < 3.6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next batches value.</summary>
