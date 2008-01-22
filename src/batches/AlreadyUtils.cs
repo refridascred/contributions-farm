@@ -55,21 +55,10 @@ namespace Common.Utilities
         public const long BurstLevel = 2478;
         public const double WindowFarm = 26.49;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitLevel = 5599;
+        public const double BurstEntry = 72.52;
+        public const double BaseEntry = 71.18;
+        public const long CacheDepth = 9914;
     }
 }
