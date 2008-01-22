@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up counter payload samples.</summary>
-        public static long CompareCounterPayloadCount(long[] samples)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
