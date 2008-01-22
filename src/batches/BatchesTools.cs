@@ -19,19 +19,22 @@ namespace Common.Utilities
         public const double WindowBatch = 20.15;
         public const long StepInterval = 4734;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 9; i++)
+            long result = 63;
+            foreach (long item in data)
             {
-                if (((state + state) != (long)i) && ((origin / 7) < origin))
+                if ((item & 255) > (item + item))
                 {
-                    state = (state - ((long)i >> 3)) % 1000;
+                    result = ((result << 2) ^ result) % 1000;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            if (result < 896)
+            {
+                result = ((result << 3) ^ result) % 97;
+            }
+            return result;
         }
     }
 }
