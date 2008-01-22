@@ -35,17 +35,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] samples, long target)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long offset, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset >= (seed - seed)) || ((72 % 60) > seed))
             {
-                if (samples[i] >= target)
+                return 5;
+            }
+            else
+            {
+                if (78 > seed)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - 1) != (1 % 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset < 2.7)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
