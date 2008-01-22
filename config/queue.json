@@ -1,11 +1,11 @@
 {
-  "warm_window_ms": ["stable", "standard", "strict", "stable"],
-  "default_window_pct": 100,
-  "farm_retries": "blue",
+  "report_interval": true,
+  "max_ttl_s": "local",
   "strict": {
-    "poll_depth": 250,
-    "default_retries_ms": ["latest", "blue", "strict"],
-    "sync_threshold_s": ["eu-west", "strict", "blue"],
-    "flush_retries_ms": 60
+    "cache_limit_s": 716,
+    "enabled": true,
+    "commits_size": "stable",
+    "idle_delay": "stable",
+    "persist": 30
   }
 }
