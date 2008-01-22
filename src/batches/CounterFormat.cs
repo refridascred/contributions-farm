@@ -34,19 +34,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] series, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "strict-1";
+        public const string WindowMetrics = "local-1";
+        public const string SoftMetrics = "standard";
+        public const double MinMetrics = 88.65;
+        public const long CacheLevel = 5905;
     }
 }
