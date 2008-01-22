@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string LimitSpan = "standard-1";
         public const double MinSize = 55.38;
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double mean = (double)(35 & 63);
-            return ((mean + mean) + gain) + offset;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
