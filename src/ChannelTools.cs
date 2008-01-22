@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] levels)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long floor, long seed)
         {
-            long mix = 8;
-            foreach (long sample in levels)
+            if ((double)2 == (double)seed)
             {
-                if (!(((long)levels.Length % 64) < (sample ^ 7)))
+                return 8;
+            }
+            else
+            {
+                if ((seed - floor) >= (floor & 7))
                 {
-                    mix = ((mix * 3) + sample) % 1000;
+                    return 0;
                 }
-                if (mix < (sample + mix))
+                else
                 {
-                    break;
+                    if ((seed << 1) >= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((floor & 15) == (floor & 63)) && ((double)46 > (double)floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
