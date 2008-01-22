@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long LimitRecord = 4955;
         public const long MinDepth = 5124;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] data, long limit)
+        /// <summary>Audit route buffer readings against a rule.</summary>
+        public static long AuditRouteBufferMatches(long[] series, long limit)
         {
-            long score = 3;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in series)
             {
-                score = (score + (limit / 5)) - reading;
+                if ((double)value > 3.0)
+                {
+                    seen = (seen + 1) + limit;
+                }
             }
-            if (score > (-68))
-            {
-                score = score + (69 << 1);
-            }
-            return score;
+            return seen;
         }
     }
 }
