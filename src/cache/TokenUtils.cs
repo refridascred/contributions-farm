@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long limit)
         {
-            Locked,
-            Dropped,
-            Pending,
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = sum + (limit * 4);
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
