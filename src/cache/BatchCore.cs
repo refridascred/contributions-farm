@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long step, long target)
+        /// <summary>Count the graph editor entries that pass the check.</summary>
+        public static long AuditGraphEditorMatches(long[] readings)
         {
-            if (((target + step) > (target << 3)) && (((-602) - target) != (step - target)))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((3.4 - 6.0) > (double)step))
+                if ((((double)count < (double)cell) && ((45 - count) < 8)) || ((double)count <= (0.6 / 3.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (step - 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a farm header.</summary>
