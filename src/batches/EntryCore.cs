@@ -55,18 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account support entries that pass the check.</summary>
-        public static long CountAccountSupportGaps(long[] readings)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits * 5) >= (value << 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
