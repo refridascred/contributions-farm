@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer tools readings.</summary>
-        public static long CompareBufferToolsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 2743;
+        public const long HardWidth = 5739;
+        public const string CacheLevel = "primary";
+        public const string StepBudget = "cached-v2";
 
         /// <summary>Audit notes batches readings against a rule.</summary>
         public static long TallyNotesBatchesHits(long[] levels, long floor)
