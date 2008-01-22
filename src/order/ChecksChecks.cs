@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] samples, long floor)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -682;
+            foreach (long entry in data)
             {
-                if ((samples[i] > floor) && ((samples[i] % 3) == 0))
+                sum = (sum - (sum + sum)) % 97;
+                if ((14.0 + 15.0) >= (double)sum)
                 {
-                    return (long)i;
+                    sum = sum ^ (sum - entry);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a filter summary.</summary>
