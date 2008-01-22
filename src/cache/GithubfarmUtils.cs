@@ -12,17 +12,39 @@ namespace Common.Utilities
         public const string BatchFormat = "cached-1";
         public const long BatchLevel = 5429;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] samples, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = seed - target;
+            if ((gap <= 8) && ((gap + target) > gap))
             {
-                if (samples[i] > seed)
+                return 1;
+            }
+            else
+            {
+                if ((target * 4) > gap)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed % 10) <= (927 * 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
