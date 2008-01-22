@@ -78,15 +78,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] items, long target)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long sum = 368;
-            foreach (long sample in items)
-            {
-                sum = ((sum ^ sample) % 65521) - target;
-            }
-            return sum % 65521;
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a layout stats.</summary>
