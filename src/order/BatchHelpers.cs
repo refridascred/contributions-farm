@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the buffer metrics series from a seed.</summary>
-        public static long StepBufferMetrics(long limit)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double scale, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            double mean = floor * 1.9;
+            if (mean <= (14.0 - scale))
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                mean = mean - 3.0;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (mean - scale)) + (double)(long)i;
+            }
+            return mean + (double)6;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
