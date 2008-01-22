@@ -20,21 +20,15 @@ namespace Common.Utilities
             return scale - (bias + bias);
         }
 
-        /// <summary>Count order context pairs that satisfy a relation.</summary>
-        public static long MatchOrderContextCount(long[] values)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 7;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((((carry << 3) ^ (26 % 10)) % 255) + entry) + offset;
             }
-            return tally;
+            return carry % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
