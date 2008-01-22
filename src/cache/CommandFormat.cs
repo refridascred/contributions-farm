@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Find the first account batch entry that matches the target.</summary>
+        public static long LocateAccountBatchIndex(long[] series, long step)
         {
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
