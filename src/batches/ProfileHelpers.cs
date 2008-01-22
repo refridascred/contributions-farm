@@ -50,21 +50,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] samples)
+        /// <summary>Check that every batch cluster entry stays within the limit.</summary>
+        public static bool GuardBatchClusterRange(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample != limit)
                 {
-                    if ((samples[i] + samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
