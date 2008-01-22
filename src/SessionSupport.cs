@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const double BatchStats = 81.24;
         public const string IdleSpan = "strict-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinBudget = "strict-edge";
-        public const double BaseLevel = 67.8;
-        public const long RetrySize = 404;
-        public const double BurstLevel = 21.76;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 40.33;
+        public const long WindowProfile = 5229;
+        public const double StepProfile = 92.42;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 9706;
