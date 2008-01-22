@@ -33,20 +33,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry checks series from a seed.</summary>
-        public static long RollEntryChecks(long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                total = ((total << 3) ^ (total + origin)) % 255;
-                if (((long)i + total) >= total)
-                {
-                    total = (total << 3) ^ origin;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                mark = (mark - (offset >> 4)) % 4096;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return total;
+            return mark;
         }
     }
 }
