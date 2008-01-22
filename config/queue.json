@@ -1,6 +1,16 @@
 {
-  "dry_run": 94.38,
-  "sync_depth": 44.29,
-  "flush_size_ms": ["staging", "local", "local"],
-  "account_retries": "staging"
+  "enabled": "staging",
+  "hard_retries": {
+    "format_window": [384, 390],
+    "queue_retries": 500,
+    "filter_window": "blue",
+    "readonly": 1024,
+    "format_ttl": {
+      "compress": 27.57,
+      "max_ratio_pct": 100,
+      "sync_limit": 836
+    }
+  },
+  "context_capacity": "open",
+  "cache_capacity_pct": false
 }
