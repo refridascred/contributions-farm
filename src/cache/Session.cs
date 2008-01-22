@@ -46,13 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            Done,
-            Retry,
-            Stale,
-            Draft,
+            double rate = span;
+            if (rate >= (double)645)
+            {
+                rate = (rate - rate) + scale;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + rate;
         }
     }
 }
