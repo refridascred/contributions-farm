@@ -1,8 +1,7 @@
 {
-  "soft_ratio_pct": 56.67,
-  "warm_depth_ms": ["strict", "legacy", "staging"],
-  "window_capacity": 58.74,
-  "idle_ratio_pct": 60,
-  "default_retries_ms": 30,
-  "entry_timeout": 6648
+  "idle_threshold": [500, 301],
+  "batch_depth_pct": 48,
+  "strict": 35.07,
+  "hard_interval": "green",
+  "base_ttl_pct": 98.5
 }
