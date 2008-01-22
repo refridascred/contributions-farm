@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long CacheWidth = 8844;
         public const double LimitChannel = 46.34;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                total = ((total << 2) ^ ((long)i % 24)) % 65521;
-                total = (total + limit) % 4096;
-                total = ((total * 4) + (long)i) % 97;
+                if (((long)i + carry) > 47)
+                {
+                    carry = carry ^ (carry * 4);
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
