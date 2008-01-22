@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long limit, long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long cur = limit ^ bound;
-            if (!((double)bound >= 1.1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + cur) <= ((-8) * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.0 + 0.33) != (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
