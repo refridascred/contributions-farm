@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a token record reading.</summary>
-        public static double ScaleTokenRecord(double ratio, double bias)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] samples, long limit)
         {
-            double weight = (double)5 / 3.0;
-            return (weight - (ratio * 7.8)) + bias;
+            long acc = 10;
+            foreach (long cell in samples)
+            {
+                if ((90 / 6) > cell)
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc ^ limit) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every context editor entry stays within the limit.</summary>
