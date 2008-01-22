@@ -30,21 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route metric readings.</summary>
-        public static long PairRouteMetricCount(long[] series)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
