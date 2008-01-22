@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long limit, long origin)
-        {
-            if ((origin << 3) <= (limit << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((10.0 - 9.0) <= (double)origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)716 > (6.0 - 19.0)) && (origin < (limit % 97)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 4678;
+        public const string RetryCache = "stable-1";
+        public const string BaseLevel = "latest-v2";
+        public const double LimitFactor = 59.46;
 
         /// <summary>Fold a list of contributi entry readings.</summary>
         public static long CombineContributiEntry(long[] readings, long bound)
