@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long RetryStats = 82;
         public const double MaxInterval = 43.65;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 2743;
-        public const long HardWidth = 5739;
-        public const string CacheLevel = "primary";
-        public const string StepBudget = "cached-v2";
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Closed,
+            Stale,
+            Ready,
+            New,
+            Done,
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] series)
