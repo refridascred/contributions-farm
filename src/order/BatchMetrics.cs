@@ -28,19 +28,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] readings, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long result = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry <= target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    ready = false;
-                    break;
+                    result = (result ^ (3 * 5)) ^ (long)i2;
+                    result = result ^ (-2);
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
