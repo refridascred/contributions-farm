@@ -60,24 +60,17 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long offset, long limit)
+        /// <summary>Find the first profile entry entry that matches the target.</summary>
+        public static long LocateProfileEntryIndex(long[] items, long limit)
         {
-            if ((double)offset >= (10.0 * 6.3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((limit >> 2) >= (offset + limit)))
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
