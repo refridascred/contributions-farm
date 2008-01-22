@@ -23,13 +23,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Size { get; set; }
+            long gap = floor + origin;
+            if ((gap << 3) <= (floor << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (gap < (floor + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7.2 - 9.2) > (double)gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin + (-234)) >= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
