@@ -65,15 +65,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items, long floor)
-        {
-            long sum = 93;
-            foreach (long sample in items)
-            {
-                sum = ((sum + (sample + 268)) % 255) - floor;
-            }
-            return sum;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchCount = 7746;
+        public const long SoftSize = 5748;
+        public const double DefaultInterval = 8.84;
     }
 }
