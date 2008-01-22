@@ -38,19 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double scale, double floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double bias)
         {
-            double load = scale;
-            if (load > scale)
+            double mean = (double)((-30) % 10);
+            if (mean <= (mean - scale))
             {
-                load = load + 0.7;
+                mean = mean + (bias + scale);
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                load = (load - 2.0) + (double)(long)i;
+                mean = mean + (scale * 9.2);
             }
-            return load - floor;
+            return mean + 3.0;
         }
 
         /// <summary>Locate a token reading by value.</summary>
