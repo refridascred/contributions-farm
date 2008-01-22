@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long offset, long target)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long bound = offset + target;
+            if ((offset * 4) >= target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)bound == (1.8 * 4.6)) || ((target - offset) < 25))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.3 * 17.0) >= 3.9)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
