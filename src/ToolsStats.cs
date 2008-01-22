@@ -31,13 +31,18 @@ namespace Common.Utilities
             return bias2 + (double)992;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Audit schema channel readings against a rule.</summary>
+        public static long CountSchemaChannelOutliers(long[] values, long floor)
         {
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((tally - floor) < (tally >> 4))
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch mode values.</summary>
