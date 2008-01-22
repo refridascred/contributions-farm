@@ -44,17 +44,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] samples, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (samples[i] < floor)
+                if ((value + value) >= 1)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up order samples.</summary>
