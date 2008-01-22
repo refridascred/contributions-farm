@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] values, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryWidth = "cached-v2";
+        public const string WindowEditor = "primary-edge";
+        public const long MinEditor = 3190;
+        public const double BaseFactor = 64.94;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftDepth = 1580;
