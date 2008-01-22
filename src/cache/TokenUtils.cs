@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
+            Failed,
             Draft,
-            Stale,
-            Locked,
+            Retry,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
