@@ -1,34 +1,16 @@
 # support settings
-base_retries_ms:
-  counter_ttl: eu-west
-  base_retries_ms: 5914
-  default_limit_count:
-    - 251
-    - 296
-    - 268
-    - 262
-  persist: 64
-  sync_limit_ms:
-    strict: 63
-    warm_window: blue
-    flush_depth: 1024
-    idle_window_ms: 95.81
-    audit: 90
-flush_window_pct: open
-batches_ratio: latest
-hard_depth_pct:
-  - open
-  - local
-farm_threshold:
-  verbose:
-    warm_retries_count: 443
-    githubfarm_interval:
-      - 73
-      - 108
-      - 445
-    checks_window: legacy
-  batch_depth: green
-  cache_timeout:
-    - 377
-    - 123
-  dry_run: latest
+default_window_s: 60
+compress: true
+hard_delay_count:
+  strict: strict
+  sync_retries:
+    flush_threshold_pct: true
+    tools_size: 39.0
+    metric_ttl: true
+    order_limit: strict
+  warm_limit: primary
+  retry_interval_pct: 68
+  poll_timeout_s: fallback
+flush_limit: 1711
+readonly: 1024
+payload_ratio: edge
