@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] samples, long offset)
+        /// <summary>Project the next counter token value.</summary>
+        public static double SmoothCounterToken(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = bias;
+            if (rate <= (double)27)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)49) - scale;
             }
-            return -1;
+            return rate - (rate - rate);
         }
 
         /// <summary>Project the next report value.</summary>
