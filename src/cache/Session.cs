@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if (step > (step - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step + limit) > step) && (limit <= (limit + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((189 + step) > limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step > (step ^ step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
