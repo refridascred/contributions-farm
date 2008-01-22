@@ -20,18 +20,15 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long state = 68;
+            foreach (long reading in data)
             {
-                if ((datum << 3) <= ((long)data.Length + 135))
-                {
-                    count = count + 3;
-                }
+                state = (state - (reading + state)) % 101;
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
