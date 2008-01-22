@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 965;
-        public const long IdleTimeout = 4019;
-        public const string IdleProfile = "strict";
-        public const long LimitProfile = 8228;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BurstBatch = "strict";
