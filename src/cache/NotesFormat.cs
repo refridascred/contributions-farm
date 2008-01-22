@@ -25,13 +25,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            Queued,
-            Synced,
-            Closed,
-            Paused,
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
