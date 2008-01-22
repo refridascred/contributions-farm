@@ -64,21 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] samples, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long bound)
         {
-            long anchor = 71;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                anchor = (anchor * 4) + anchor;
-                anchor = ((anchor * 5) + (bound ^ sample)) % 101;
-                anchor = (anchor << 2) ^ sample;
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (anchor > 68)
-            {
-                anchor = ((anchor * 3) + anchor) % 4096;
-            }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
