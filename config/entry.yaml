@@ -1,11 +1,14 @@
 # entry settings
-sync_window_pct: stable
-sync_ttl: eu-west
-flush_ratio_pct: stable
-soft_ttl_count: stable
-hard_interval_pct:
-  - blue
-  - blue
-  - edge
-  - stable
-stream_threshold: 382
+metrics_limit: 250
+soft_depth:
+  metric_depth: 2982
+  record_ttl: 1703
+  min_threshold_s: 6467
+  record_size: 87.85
+  cluster_retries: open
+  audit: 61.53
+command_limit:
+  - strict
+  - local
+  - latest
+  - strict
