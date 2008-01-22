@@ -13,13 +13,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
             public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
+            public long Count { get; set; }
             public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the batch channel entries that pass the check.</summary>
