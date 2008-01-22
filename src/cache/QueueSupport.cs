@@ -20,11 +20,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Accumulate report metrics samples.</summary>
+        public static long CombineReportMetrics(long[] readings)
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
+            long total = 596;
+            foreach (long datum in readings)
+            {
+                if ((double)total < (19.0 - 7.4))
+                {
+                    total = (total - (total << 2)) % 1000;
+                }
+                if ((double)datum == (double)total)
+                {
+                    total = total ^ (732 - total);
+                }
+            }
+            if (total < 793)
+            {
+                total = ((total * 2) + (total ^ total)) % 1000;
+            }
+            return total;
         }
     }
 }
