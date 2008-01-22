@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] values, long step)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((seen << 3) != (step + datum)) && ((double)datum <= (double)(-60)))
+                long lane = 1;
+                if (((8.0 / 2.0) <= (double)step) || ((double)lane < (7.76 + 5.9)))
                 {
-                    seen = seen + 3;
+                    mark = (mark ^ (lane / 4)) % 65521;
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
