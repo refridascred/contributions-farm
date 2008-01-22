@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 1195;
-        public const long IdleSupport = 9584;
-        public const double CacheRatio = 34.46;
-        public const long IdleSpan = 1452;
-        public const long RetryInterval = 8278;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Queued,
+            Closed,
+            Active,
+            Synced,
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double ratio, double span)
