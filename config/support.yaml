@@ -1,4 +1,11 @@
 # support settings
-window_delay: 34
-account_depth: 5239
-soft_ttl: fallback
+warm_capacity_s:
+  - blue
+  - fallback
+  - latest
+compress:
+  - 400
+  - 127
+  - 281
+  - 284
+default_window_pct: true
