@@ -1,5 +1,6 @@
 {
-  "flush_ttl_count": "stable",
-  "batch_size": ["edge", "standard", "staging", "eu-west"],
-  "min_retries_ms": 1024
+  "readonly": "local",
+  "entry_threshold": 8309,
+  "strict": 42.22,
+  "hard_ttl": "blue"
 }
