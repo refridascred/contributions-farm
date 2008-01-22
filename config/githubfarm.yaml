@@ -1,12 +1,7 @@
 # githubfarm settings
-enabled: false
-warm_delay: 61
-min_ttl:
-  - 355
-  - 468
-  - 269
-burst_delay_pct: true
-cache_ttl:
-  - 248
-  - 383
-soft_window: stable
+batch_ttl_s: 1024
+flush_size: 19.44
+retry_delay_pct: green
+cache_window_pct: stable
+min_window_s: false
+idle_size_s: 89.24
