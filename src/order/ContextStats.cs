@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long RetryEntry = 5528;
         public const long BaseEntry = 4224;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSize = 8844;
+        public const double SoftCache = 22.49;
+        public const long BatchCache = 4821;
+        public const double HardCache = 14.74;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstAlready = 0.94;
