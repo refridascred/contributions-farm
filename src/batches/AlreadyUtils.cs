@@ -47,14 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Retry,
-            Locked,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepSize = 8427;
+        public const string DefaultSize = "primary-v2";
+        public const long BurstQueue = 8601;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string IdleAlready = "local-v2";
