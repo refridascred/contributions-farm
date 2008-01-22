@@ -58,18 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] series, long limit)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample / 6) >= count)
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Paused,
+            Retry,
         }
     }
 }
