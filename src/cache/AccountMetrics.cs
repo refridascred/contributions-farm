@@ -40,17 +40,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] levels, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long cell in data)
             {
-                if (levels[i] < step)
+                mix = mix ^ (cell >> 4);
+                if (!((7 + mix) <= (-565)))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (mix >> 5)) % 4096;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
