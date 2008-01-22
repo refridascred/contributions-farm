@@ -1,13 +1,16 @@
 {
-  "compress": 84.21,
-  "route_delay": {
-    "editor_window": "legacy",
-    "report_ttl": 51,
-    "burst_delay_count": "stable",
-    "burst_limit": "cached",
-    "queue_retries": 88
+  "context_ratio": 9060,
+  "tools_threshold": {
+    "entry_capacity": {
+      "persist": "cached",
+      "burst_interval_pct": ["latest", "legacy", "cached"],
+      "default_depth_count": 250
+    },
+    "token_size": 9582,
+    "retry_depth": [252, 283, 306, 457],
+    "retry_capacity_pct": 7531,
+    "contributi_timeout": false
   },
-  "retry_ratio": false,
-  "flush_window_pct": [56, 472, 234],
-  "min_ratio_ms": 25.56
+  "min_capacity_count": true,
+  "dry_run": ["standard", "cached", "cached"]
 }
