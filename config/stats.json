@@ -1,5 +1,13 @@
 {
-  "contributi_interval": "green",
-  "warm_threshold_ms": 60,
-  "sync_retries_count": false
+  "enabled": 5.14,
+  "verbose": {
+    "sync_window_count": "green",
+    "warm_ttl": ["latest", "stable", "primary"],
+    "hard_depth": 38.92,
+    "warm_depth_ms": "strict",
+    "warm_window_ms": "stable",
+    "sync_ratio": ["legacy", "fallback", "primary", "cached"]
+  },
+  "sync_timeout_ms": 79.65,
+  "token_ttl": true
 }
