@@ -1,5 +1,6 @@
 {
-  "cache_depth_s": "green",
-  "notes_capacity": "fallback",
-  "max_capacity": false
+  "payload_threshold": "blue",
+  "strict": false,
+  "sync_timeout": false,
+  "farm_window": "primary"
 }
