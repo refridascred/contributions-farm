@@ -63,19 +63,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] levels, long offset)
+        /// <summary>Roll a notes window counter forward.</summary>
+        public static long RollNotesWindow(long limit)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = acc ^ (limit + acc);
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
