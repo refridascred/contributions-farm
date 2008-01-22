@@ -41,13 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many context queue samples are out of range.</summary>
+        public static long AuditContextQueueMatches(long[] values)
         {
-            Synced,
-            New,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)item >= (7.0 * 6.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a cluster entry sample.</summary>
