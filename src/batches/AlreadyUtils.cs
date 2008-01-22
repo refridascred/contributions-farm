@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] samples)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long score = 96;
+            foreach (long cell in data)
             {
-                if (!((double)(long)samples.Length == (17.0 - 1.0)))
+                if (((score + 92) != (cell % 2)) && ((double)cell < (8.4 / 6.0)))
                 {
-                    seen = (seen + 3) ^ item;
+                    score = ((score << 2) ^ (cell & 15)) % 101;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
