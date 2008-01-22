@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double StepTimeout = 17.64;
         public const double RetryChecks = 81.94;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long mark = 81;
-            foreach (long sample in levels)
-            {
-                mark = (mark - (sample & 255)) + bound;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a commits info.</summary>
