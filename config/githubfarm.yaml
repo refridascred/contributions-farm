@@ -1,10 +1,10 @@
 # githubfarm settings
-idle_retries: 74
-account_threshold: 3286
-compress: 100
-cache_size_ms:
-  - 342
-  - 304
-  - 86
-  - 50
-cache_ratio: 30
+cache_retries_ms: 6111
+profile_window: true
+persist: 30
+min_ratio: staging
+min_ratio_pct: 93.38
+soft_limit_ms:
+  - legacy
+  - eu-west
+  - fallback
