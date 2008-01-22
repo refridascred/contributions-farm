@@ -31,12 +31,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 8187;
-        public const long BaseMetric = 7268;
-        public const long BaseFactor = 4372;
-        public const long MinSize = 9454;
-        public const string WindowMetric = "fallback";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((7.0 * 11.0) != (double)value)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long SeriesChannel(long offset)
