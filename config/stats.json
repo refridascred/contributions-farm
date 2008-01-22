@@ -1,14 +1,14 @@
 {
-  "queue_window": {
-    "min_capacity": 2359,
-    "idle_delay_ms": false,
-    "retry_retries_s": "eu-west",
-    "session_interval": 269,
-    "enabled": false
-  },
-  "entry_window": 60,
-  "default_limit_pct": "stable",
-  "max_ratio_ms": 39.08,
-  "stream_ratio": 21,
-  "soft_window_count": "staging"
+  "route_delay": "green",
+  "compress": "blue",
+  "verbose": "primary",
+  "warm_window_ms": 95,
+  "cache_depth": {
+    "idle_ttl": 4319,
+    "already_limit": false,
+    "audit": [326, 72, 337],
+    "base_threshold_count": "standard",
+    "stats_depth": true,
+    "token_retries": false
+  }
 }
