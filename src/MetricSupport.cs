@@ -22,12 +22,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            Retry,
-            Stale,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
