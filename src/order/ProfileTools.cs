@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] values)
         {
-            long total = 70;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                total = ((total << 3) ^ (total / 8)) + value;
+                if (value <= (value ^ value))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (total < 31)
-            {
-                total = (total * 5) + (step ^ step);
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
