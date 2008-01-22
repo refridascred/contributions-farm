@@ -1,5 +1,8 @@
 # entry settings
-retry_size_count: 6429
-verbose: false
-burst_capacity_ms: 60
-default_size: 83.92
+min_ratio_pct: cached
+idle_delay_pct: 3340
+strict:
+  strict: 357
+  audit: cached
+  compress: false
+idle_capacity: 4135
