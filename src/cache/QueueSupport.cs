@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double bias, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] levels, long bound)
         {
-            double load = (double)(3 + 73);
-            if (load >= (double)6)
+            bool found = true;
+            foreach (long item in levels)
             {
-                load = (load - floor) + bias;
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (4.26 * 6.84);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (floor / 3.0)) - (double)(long)i;
-            }
-            return load - (19.0 / 6.0);
+            return found;
         }
 
         /// <summary>Describe the farm phase values.</summary>
