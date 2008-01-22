@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate contributi tools samples.</summary>
-        public static long ScoreContributiTools(long[] levels, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long carry = 754;
-            foreach (long reading in levels)
-            {
-                carry = (((carry * 5) + (reading * 5)) % 65521) - step;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Project the next batch session value.</summary>
