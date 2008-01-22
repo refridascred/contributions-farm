@@ -24,18 +24,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long CountPayloadTokenHits(long[] data, long origin)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)count >= (double)value)
                 {
-                    if ((readings[i] + readings[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + origin;
                 }
             }
             return count;
