@@ -38,19 +38,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mix = 3;
-            foreach (long entry in values)
-            {
-                mix = (mix - (mix + mix)) % 255;
-                if ((mix + entry) >= entry)
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the commits mode values.</summary>
