@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report metric readings against a rule.</summary>
-        public static long TallyReportMetricMatches(long[] readings, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits * 2) < 27)
-                {
-                    hits = ((hits + 2) ^ reading) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 5404;
+        public const long LimitRatio = 4111;
+        public const long CacheSpan = 2558;
+        public const long MaxFactor = 4502;
+        public const string DefaultRatio = "strict-edge";
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long TallyReportHits(long[] values, long bound)
