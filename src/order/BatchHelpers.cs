@@ -20,32 +20,12 @@ namespace Common.Utilities
             return mean + (double)6;
         }
 
-        /// <summary>Grade a batch stream value against two limits.</summary>
-        public static long RankBatchStream(long origin, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long offset = origin ^ bound;
-            if ((165 + offset) > 9)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((6 + bound) >= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin > (double)188)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the metric state values.</summary>
