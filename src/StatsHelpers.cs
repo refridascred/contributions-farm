@@ -40,19 +40,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long target)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Accumulate token samples.</summary>
