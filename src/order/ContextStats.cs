@@ -14,31 +14,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a graph buffer value against two limits.</summary>
-        public static long BucketGraphBuffer(long target, long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            if ((floor % 64) != (floor + floor))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 60) >= (floor % 24))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - target) != (floor + floor))
+                    if ((items[i] ^ items[j]) == 5)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit window contributi readings against a rule.</summary>
