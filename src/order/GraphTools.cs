@@ -50,31 +50,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long seed, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] data, long floor)
         {
-            if (((floor % 64) >= (seed * 3)) && (floor >= ((-7) * 3)))
+            long score = 437;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (14.0 + 10.0))
+                score = score - entry;
+                if ((floor << 1) == (29 % 16))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 4) != (seed << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            if (score > 6)
+            {
+                score = score + (8 - floor);
+            }
+            return score;
         }
     }
 }
