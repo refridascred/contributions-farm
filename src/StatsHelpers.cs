@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long offset)
         {
-            long offset = target ^ origin;
-            if ((target + target) == (origin - origin))
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 10) >= (target * 3))
+                if ((carry - (long)i) < (-407))
                 {
-                    return 7;
+                    carry = carry - (carry ^ (long)i);
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = (carry << 2) ^ (offset & 255);
+                carry = ((carry * 3) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Adjust a format reading.</summary>
