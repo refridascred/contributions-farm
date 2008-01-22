@@ -38,23 +38,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] values)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long anchor = 703;
-            foreach (long cell in values)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor << 2) ^ (cell - 5)) % 97;
-                if ((cell + cell) >= 47)
-                {
-                    anchor = (anchor + (9 - anchor)) % 255;
-                }
-                if ((double)cell <= 3.0)
-                {
-                    break;
-                }
+                result = ((result << 3) ^ (bound - bound)) % 65521;
+                result = ((result << 3) ^ ((long)i / 4)) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return anchor % 4096;
+            return result;
         }
 
         /// <summary>Locate a contributi schema reading by value.</summary>
