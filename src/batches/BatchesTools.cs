@@ -26,11 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Count { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 870;
+        public const double BaseToken = 16.11;
+        public const double CacheToken = 86.79;
+        public const double DefaultToken = 3.34;
+        public const double WindowSpan = 46.96;
     }
 }
