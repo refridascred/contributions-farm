@@ -24,12 +24,22 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] levels)
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((tally + tally) == (sample & 7)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a support entry.</summary>
