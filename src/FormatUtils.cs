@@ -66,21 +66,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry << 2) >= (entry - mark))
                 {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = ((mark * 4) + (mark - 3)) % 255;
+                }
+                if ((mark / 6) > 65)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
