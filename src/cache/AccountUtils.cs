@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings)
-        {
-            long total = 6;
-            foreach (long cell in readings)
-            {
-                if ((double)total < (3.0 - 0.94))
-                {
-                    total = (((total << 3) ^ (968 % 100)) % 255) + cell;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSpan = 2556;
+        public const long WindowFactor = 157;
+        public const string LimitBatches = "standard";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsGaps(long[] values)
