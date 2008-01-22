@@ -33,22 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileOutliers(long[] values, long offset)
+        /// <summary>Count the tools support entries that pass the check.</summary>
+        public static long CountToolsSupportMatches(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((item * 2) > tally)
+                if ((double)hits >= 7.8)
                 {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = ((hits + 1) ^ value) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
