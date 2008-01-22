@@ -1,17 +1,11 @@
 {
-  "retry_size_ms": "fallback",
-  "poll_size": 59.04,
-  "audit": {
-    "queue_interval": false,
-    "default_delay_count": "strict",
-    "burst_threshold_pct": 5539,
-    "idle_size_count": {
-      "idle_size_ms": 17.48,
-      "hard_size_ms": "standard",
-      "token_window": [247, 55, 360],
-      "retry_ttl_s": 8,
-      "dry_run": 500
-    }
+  "command_timeout": 58.06,
+  "default_size_s": true,
+  "flush_ttl_ms": {
+    "persist": 862,
+    "poll_retries_s": ["staging", "standard", "cached"],
+    "support_retries": "eu-west",
+    "readonly": false
   },
-  "farm_window": 100
+  "default_retries_s": "legacy"
 }
