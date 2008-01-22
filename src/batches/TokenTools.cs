@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank stream route input into a small class.</summary>
-        public static long ClassifyStreamRoute(long bound, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            if (((double)bound >= 6.8) && ((bound >> 4) < bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed >> 2) <= (737 + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the session class values.</summary>
