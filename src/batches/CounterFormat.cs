@@ -28,19 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] data, long seed)
+        /// <summary>Count the tools token entries that pass the check.</summary>
+        public static long CountToolsTokenGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (value < seed)
+                if ((cell << 1) <= (matches << 2))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
