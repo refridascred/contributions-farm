@@ -73,18 +73,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] series)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!!((double)sample > (5.0 - 0.3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Dropped,
+            Done,
+            Idle,
         }
 
         /// <summary>Match up window samples.</summary>
