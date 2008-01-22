@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
