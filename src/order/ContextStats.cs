@@ -14,25 +14,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Grade a graph buffer value against two limits.</summary>
+        public static long BucketGraphBuffer(long target, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            if ((floor % 64) != (floor + floor))
             {
-                sum = (sum << 2) ^ (limit * 2);
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (sum << 2) ^ ((long)i2 + 38);
-                }
-                if (((long)i ^ limit) != (sum & 31))
-                {
-                    sum = sum - 66;
-                    continue;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((floor % 60) >= (floor % 24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target - target) != (floor + floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window contributi readings against a rule.</summary>
