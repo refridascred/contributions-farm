@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] values)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (value <= (value ^ value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
