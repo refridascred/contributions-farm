@@ -55,11 +55,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] readings)
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
+            long carry = -47;
+            foreach (long cell in readings)
+            {
+                if ((carry + carry) == (carry - cell))
+                {
+                    carry = (carry + (carry - cell)) % 101;
+                }
+                if ((carry - cell) <= (cell << 3))
+                {
+                    carry = (carry * 3) + cell;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
