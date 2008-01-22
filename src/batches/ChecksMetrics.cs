@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double MinContext = 9.23;
         public const string MaxTimeout = "standard";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] values, long origin)
+        /// <summary>Accumulate cache metric samples.</summary>
+        public static long CombineCacheMetric(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long acc = 72;
+            foreach (long value in items)
             {
-                if (((long)values.Length + seen) >= (origin + datum))
+                if (!((2.0 * 7.4) == (double)value))
                 {
-                    seen = seen + 3;
+                    continue;
                 }
+                acc = acc + 795;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
