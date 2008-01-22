@@ -20,16 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long limit)
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
+            long edge = target + limit;
+            if ((edge << 1) >= (47 + target))
             {
-                total = (total * 4) + ((long)i << 1);
-                total = ((total * 4) + (long)i) % 65521;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (!(edge >= (edge - 86)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target & 31) >= (limit + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
