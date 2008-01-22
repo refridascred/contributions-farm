@@ -73,18 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account filter entries.</summary>
-        public static long TallyAccountFilter(long[] values, long limit)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long sum = 676;
-            foreach (long entry in values)
-            {
-                if ((sum + sum) > (sum * 5))
-                {
-                    sum = (((sum + 878) % 101) + entry) + limit;
-                }
-            }
-            return sum;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
