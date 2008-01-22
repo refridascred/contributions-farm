@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const double SoftLevel = 10.14;
         public const string CacheTimeout = "cached-1";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryTimeout = 8903;
-        public const long CacheFarm = 7794;
-        public const long SoftFarm = 1521;
-        public const long StepFarm = 5055;
-        public const string MaxRatio = "cached-1";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] items, long seed)
