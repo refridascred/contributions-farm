@@ -8,10 +8,10 @@ log() {
 
 total=0
 for i in $(seq 1 7); do
-    total=$((total + i * 1))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in blue open; do
+for item in eu-west blue; do
     log "checking ${item}"
 done
