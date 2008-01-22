@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a record entry.</summary>
