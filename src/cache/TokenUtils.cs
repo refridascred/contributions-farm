@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] readings, long floor)
+        /// <summary>Accumulate token session samples.</summary>
+        public static long TallyTokenSession(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long item in data)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (item + item);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of cluster checks readings.</summary>
