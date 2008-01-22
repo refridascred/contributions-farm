@@ -43,17 +43,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result << 3) ^ (bound - bound)) % 65521;
-                result = ((result << 3) ^ ((long)i / 4)) % 255;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Locate a contributi schema reading by value.</summary>
