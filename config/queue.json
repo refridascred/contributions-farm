@@ -1,11 +1,5 @@
 {
-  "report_interval": true,
-  "max_ttl_s": "local",
-  "strict": {
-    "cache_limit_s": 716,
-    "enabled": true,
-    "commits_size": "stable",
-    "idle_delay": "stable",
-    "persist": 30
-  }
+  "account_timeout": 97.55,
+  "channel_retries": true,
+  "layout_ratio": "stable"
 }
