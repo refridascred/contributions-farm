@@ -1,10 +1,6 @@
 # githubfarm settings
-cache_window_count: 30
-account_timeout: 1965
-strict: false
-flush_limit_pct: false
-token_retries: 250
-warm_capacity_s:
-  - 179
-  - 384
-  - 478
+base_size: false
+audit: 37.39
+default_retries_ms: 250
+burst_depth: 34.25
+soft_interval: false
