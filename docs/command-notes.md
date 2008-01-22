@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Run the batch check before changing any counter limits.
-
-Use batches settings to tune how often batch data is refreshed.
-When a profile fails, the entry handler retries a few times before giving up.
+Each command is validated before it reaches the stats queue.
+Defaults for batches live in the config folder and can be overridden per environment.
+The checks report groups every already by profile.
 
 ## Guidelines
 
-- Validate contributi input early
-- Prefer account defaults
-- Document new farm fields
-- Keep stats values small
+- Validate tools input early
+- Log every commits change
+- Document new batch fields
+- Prefer queue defaults
