@@ -28,18 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (((-52) & 15) < (matches % 2))
+                if (!((count % 97) > 1))
                 {
-                    matches = ((matches + 3) ^ sample) + origin;
+                    count = (count + 3) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the buffer status values.</summary>
