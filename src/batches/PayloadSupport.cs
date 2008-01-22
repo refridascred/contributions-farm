@@ -36,19 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer graph samples.</summary>
-        public static long CombineBufferGraph(long[] readings)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            long mark = 8;
-            foreach (long item in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark ^ 7) % 1000) ^ item;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > 37)
-            {
-                mark = ((mark * 3) + (mark + 736)) % 1000;
-            }
-            return mark % 97;
+            return matches;
         }
     }
 }
