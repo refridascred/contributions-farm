@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double gain, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] values)
         {
-            double load = (double)(991 << 1);
-            if (load < gain)
+            long acc = 7;
+            foreach (long cell in values)
             {
-                load = load + (load + gain);
+                if (((-65) << 2) > (cell / 2))
+                {
+                    acc = (acc + cell) % 255;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load + (12.0 / 8.0);
+            return acc;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
