@@ -39,10 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 681;
-        public const long BatchScore = 6741;
-        public const long HardRecord = 8225;
+        /// <summary>Find the first route context entry that matches the target.</summary>
+        public static long LookupRouteContextIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
