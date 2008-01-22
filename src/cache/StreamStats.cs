@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] samples, long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum < (double)65)
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next report value.</summary>
