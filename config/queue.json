@@ -1,5 +1,12 @@
 {
-  "support_size": false,
-  "format_interval": true,
-  "contributi_capacity": true
+  "poll_threshold_ms": 79.21,
+  "warm_size_ms": "staging",
+  "max_timeout_s": {
+    "max_window_pct": 60,
+    "poll_ratio": 88.55,
+    "persist": 85.2,
+    "default_ratio_count": [29, 208],
+    "filter_ratio": "legacy"
+  },
+  "max_delay_count": [297, 382]
 }
