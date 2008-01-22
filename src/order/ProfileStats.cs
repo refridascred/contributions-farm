@@ -15,22 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long target)
         {
-            long mix = 5;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + mix) > (76 + 27))
+                if (series[i] == target)
                 {
-                    mix = ((mix * 3) + (mix ^ entry)) % 97;
+                    return (long)i;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix * 2) + (mix ^ mix);
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Count the queue support entries that pass the check.</summary>
