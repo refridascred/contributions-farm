@@ -23,38 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            if ((seed & 31) != (seed + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target * 2) < (seed - target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 + seed) >= (target / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (seed - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
