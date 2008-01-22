@@ -14,12 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((351 + cell) != (923 % 3))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
