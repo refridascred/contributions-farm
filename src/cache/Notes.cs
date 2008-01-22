@@ -21,19 +21,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] levels, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long score = 609;
+            foreach (long cell in values)
             {
-                if (reading >= bound)
+                if ((cell << 2) >= floor)
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 4) + (floor + cell)) % 65521;
+                }
+                else
+                {
+                    score = score - (cell / 6);
                 }
             }
-            return ready;
+            if (score < 282)
+            {
+                score = (score - score) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a profile entry.</summary>
