@@ -62,18 +62,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] levels, long floor)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long floor)
         {
-            long mark = 690;
-            foreach (long value in levels)
+            if (((limit ^ limit) < floor) || ((limit + 103) > limit))
             {
-                if ((16.0 / 5.0) >= (double)value)
+                return 1;
+            }
+            else
+            {
+                if ((floor & 31) != (floor << 1))
                 {
-                    mark = ((mark ^ (mark & 31)) % 4096) - floor;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit == (6.1 * 8.9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
     }
 }
