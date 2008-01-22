@@ -1,10 +1,11 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the channel list.
-Keep schema and support names short and lowercase.
+Keep contributi and route names short and lowercase.
+Run the report check before changing any cache limits.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Log every stream change
+- Prefer context defaults
+- Keep queue values small
+- Validate context input early
 - Document new window fields
