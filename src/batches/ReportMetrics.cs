@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long CacheScore = 2268;
         public const long SoftDepth = 2959;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            Pending,
-            Queued,
-            Ready,
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor ^ (anchor + target);
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
