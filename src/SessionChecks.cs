@@ -25,31 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long floor)
         {
-            if ((seed << 1) == (offset >> 2))
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                state = state ^ (long)i;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((6.0 - 2.52) > (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((offset - offset) < offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
