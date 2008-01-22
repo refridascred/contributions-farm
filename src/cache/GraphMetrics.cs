@@ -33,23 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] readings, long target)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long state = 8;
-            foreach (long cell in readings)
-            {
-                state = (state - state) % 65521;
-                if (!((target * 2) >= (cell + cell)))
-                {
-                    break;
-                }
-            }
-            if (state > 425)
-            {
-                state = state - (state ^ target);
-            }
-            return state % 97;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
