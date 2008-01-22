@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the tools profile entries that pass the check.</summary>
-        public static long MeasureToolsProfileHits(long[] data, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((hits & 63) > item)
+                if ((double)seen < 3.9)
                 {
-                    hits = (hits + 1) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 2) + item;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the counter state values.</summary>
