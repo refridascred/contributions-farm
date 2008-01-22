@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] values, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((double)59 >= (double)matches)
+                if ((((double)count != (double)(-74)) || ((count >> 3) < (count << 3))) && ((726 <= (count / 2)) && ((item >> 5) >= count)))
                 {
-                    matches = ((matches + 2) ^ sample) + offset;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
