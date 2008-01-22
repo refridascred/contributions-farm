@@ -59,20 +59,10 @@ namespace Common.Utilities
         public const long BurstInterval = 3769;
         public const long IdleLevel = 2508;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 792;
+        public const double MinTimeout = 10.75;
+        public const long RetryFactor = 9507;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryInterval = 887;
