@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long anchor = 980;
+            foreach (long cell in series)
+            {
+                if ((anchor - cell) < 4)
+                {
+                    anchor = (anchor * 3) + 4;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a report options.</summary>
