@@ -1,20 +1,13 @@
 # entry settings
-stream_retries: true
-session_capacity: 38.96
-sync_ratio:
-  batch_ratio:
-    hard_interval_ms:
-      - 228
-      - 406
-    burst_window_s: 62.3
-    default_delay: false
-    cluster_ratio:
-      - 3
-      - 498
-    batch_interval_ms: 5113
-    cache_window_ms: blue
-  strict: 77.14
-  compress: 60
-  checks_limit: 60.17
-  soft_depth_s: 2.87
-hard_delay: true
+default_retries: local
+cache_size_count:
+  - 359
+  - 251
+max_capacity:
+  - latest
+  - local
+  - legacy
+  - cached
+stream_ratio: standard
+batches_limit: standard
+dry_run: legacy
