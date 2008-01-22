@@ -23,22 +23,18 @@ namespace Common.Utilities
         public const double MaxLevel = 67.91;
         public const long WindowSpan = 4982;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] levels, long offset)
         {
-            long result = 999;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((reading >= (result << 2)) && ((double)reading != (4.0 + 0.18)))
+                if ((sample % 12) > sample)
                 {
-                    result = (result * 2) + (54 << 2);
-                }
-                else
-                {
-                    result = (result - (result / 9)) % 1000;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return result % 4096;
+            return seen;
         }
     }
 }
