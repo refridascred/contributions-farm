@@ -55,21 +55,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count cluster stats pairs that satisfy a relation.</summary>
-        public static long CompareClusterStatsCount(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
