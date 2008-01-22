@@ -1,14 +1,9 @@
 # githubfarm settings
-persist:
-  - stable
-  - latest
-  - latest
-  - blue
-default_ttl_pct:
-  cache_capacity_pct: 250
-  cache_threshold_s:
-    - standard
-    - latest
-    - cached
-  sync_size: 9.83
-poll_threshold_pct: eu-west
+audit: false
+window_retries: false
+min_capacity:
+  - edge
+  - green
+verbose: 100
+idle_window_count: 13
+warm_window: true
