@@ -28,9 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowDepth = 6502;
-        public const double HardToken = 93.07;
-        public const long HardScore = 6426;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
