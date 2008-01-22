@@ -72,17 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 327;
+            foreach (long reading in readings)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) == 0))
+                if ((reading % 24) > (39 / 4))
                 {
-                    return (long)i;
+                    sum = (sum * 5) + (reading ^ sum);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
