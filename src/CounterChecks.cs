@@ -92,19 +92,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph tools readings against a bound.</summary>
-        public static bool ValidateGraphToolsBounds(long[] values, long floor)
+        /// <summary>Accumulate batches cluster samples.</summary>
+        public static long ScoreBatchesCluster(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long result = 98;
+            foreach (long value in values)
             {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (((result * 3) + (target % 3)) % 101) - value;
             }
-            return flag;
+            return result;
         }
     }
 }
