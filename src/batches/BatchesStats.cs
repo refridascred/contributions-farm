@@ -27,18 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] samples)
         {
-            long sum = 179;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((double)datum > (4.12 / 9.0))
+                if (!((6.19 / 3.0) <= (double)count))
                 {
-                    sum = sum ^ (datum - sum);
+                    count = (count + 1) ^ sample;
                 }
             }
-            return sum;
+            return count;
         }
     }
 }
