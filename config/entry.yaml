@@ -1,4 +1,4 @@
 # entry settings
-burst_ttl_s: 15.81
-audit: 29.98
-default_delay: 80.96
+audit: false
+dry_run: 79
+enabled: true
