@@ -37,38 +37,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long offset, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            if (((offset & 255) > (offset - offset)) || ((bound + offset) >= bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((bound << 1) < (91 / 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound + offset) > offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3.48 / 2.0) <= (double)bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
