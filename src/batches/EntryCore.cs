@@ -78,14 +78,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Paused,
-            Retry,
-            Dropped,
-            Idle,
-            Active,
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
