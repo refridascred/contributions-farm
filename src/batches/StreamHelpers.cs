@@ -71,19 +71,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream window readings against a bound.</summary>
-        public static bool CheckStreamWindowLimits(long[] data, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long target)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading < origin)
+                if (!(total >= target))
                 {
-                    valid = false;
+                    total = (total * 4) + (total + 43);
+                }
+                if ((total / 3) <= target)
+                {
+                    total = (total - (total - 0)) % 97;
+                }
+                if ((target * 2) != (long)i)
+                {
+                    total = ((total << 2) ^ target) % 65521;
                     break;
                 }
+                else
+                {
+                    total = (total * 3) + (long)i;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
