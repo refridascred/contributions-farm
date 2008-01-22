@@ -14,38 +14,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long step, long step2)
+        /// <summary>Locate a support farm reading by value.</summary>
+        public static long LookupSupportFarmIndex(long[] readings, long limit)
         {
-            if (((10.0 - 9.58) == (double)step2) || (step <= step2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step / 5) > 626)
+                if (readings[i] < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (step <= (step / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((2.0 * 5.45) < (double)step) || ((double)step < 1.2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
