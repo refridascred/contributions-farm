@@ -1,27 +1,23 @@
 # githubfarm settings
-record_window: staging
-max_capacity_ms: 356
-context_depth: open
-counter_size:
-  enabled:
-    - 430
-    - 481
-    - 178
-  burst_limit_count: 47.8
-  warm_size: latest
-  already_ratio: primary
-  compress: 69
-  burst_window: true
-format_retries: 30
-metrics_ttl:
-  buffer_ttl: eu-west
-  strict:
-    default_retries_pct: 60
-    verbose:
+batch_window:
+  checks_timeout: true
+  cluster_delay: 250
+  flush_ratio_count:
+    retry_window_ms: 12
+    entry_threshold: 61.18
+    audit: true
+    tools_limit: 271
+    min_ratio: latest
+  default_window_s: eu-west
+persist:
+  buffer_window: legacy
+  retry_retries_ms: 0.39
+  flush_depth_ms:
+    poll_capacity_pct: 4542
+    verbose: true
+    warm_retries_s:
+      - fallback
       - standard
-      - cached
-    max_timeout_ms: stable
-    queue_timeout: 6436
-    report_timeout: true
-    enabled: 52.99
-  persist: 93.06
+      - blue
+farm_delay: latest
+hard_ttl: primary
