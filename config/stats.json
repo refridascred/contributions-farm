@@ -1,21 +1,6 @@
 {
-  "max_limit": [393, 345, 92],
-  "idle_timeout": {
-    "graph_timeout": 250,
-    "metrics_interval": {
-      "compress": 55,
-      "farm_threshold": false,
-      "persist": false,
-      "verbose": "latest"
-    },
-    "base_retries_ms": {
-      "warm_window_s": "primary",
-      "warm_delay_count": "staging",
-      "verbose": true,
-      "hard_depth": 250
-    },
-    "route_limit": 9401
-  },
-  "min_size_s": ["green", "cached", "eu-west"],
-  "default_delay": "latest"
+  "graph_threshold": [224, 30, 401],
+  "readonly": 8431,
+  "batch_ttl_count": 67.36,
+  "sync_delay": "legacy"
 }
