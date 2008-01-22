@@ -18,17 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a record token reading by value.</summary>
-        public static long LookupRecordTokenIndex(long[] readings, long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long origin, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((origin - origin) == (seed << 3)) && ((double)seed < (double)origin))
             {
-                if (readings[i] <= origin)
+                return 0;
+            }
+            else
+            {
+                if (!((origin - origin) <= 46))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin >= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count window record pairs that satisfy a relation.</summary>
