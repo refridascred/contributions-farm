@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] readings)
         {
-            public bool Limit { get; set; }
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((((cell - 389) > (long)readings.Length) || ((3 << 1) == ((long)readings.Length & 7))) && ((9 << 1) >= cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
