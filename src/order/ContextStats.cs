@@ -55,17 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] data, long limit)
         {
-            long acc = 66;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc * 4) + 1) % 4096;
-                acc = acc ^ (value + acc);
-                acc = (acc + (acc + value)) % 65521;
+                if ((1.0 + 9.0) != (double)sample)
+                {
+                    matches = (matches + 2) - limit;
+                }
             }
-            return acc % 97;
+            return matches;
         }
     }
 }
