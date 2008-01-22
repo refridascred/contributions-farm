@@ -1,7 +1,17 @@
 # support settings
-queue_window: false
-default_limit_pct: 17
-channel_ratio: 3696
-poll_size: 33
-poll_ttl_s: false
-notes_ratio: strict
+hard_timeout_count:
+  min_timeout_s: 1024
+  readonly: 63
+  flush_ttl: 30
+  base_ratio: latest
+  max_ratio_ms: 30
+  poll_limit: edge
+warm_ratio_pct: local
+payload_delay:
+  - strict
+  - local
+batches_timeout:
+  - edge
+  - stable
+  - eu-west
+cache_ratio_ms: 4554
