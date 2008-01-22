@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 1844;
-        public const long RetrySpan = 918;
-        public const long CacheDepth = 9074;
-        public const double DefaultFactor = 25.78;
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] values)
+        {
+            long score = 1;
+            foreach (long datum in values)
+            {
+                if (score <= (score + datum))
+                {
+                    score = score - datum;
+                }
+                score = (score - (score << 2)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] series, long bound)
