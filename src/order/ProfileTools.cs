@@ -20,15 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double gain, double bias)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] items, long floor)
         {
-            double ratio = (bias / 6.0) / 2.0;
-            if (ratio < ratio)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (gain - 20.0);
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + (ratio * 2.6);
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
