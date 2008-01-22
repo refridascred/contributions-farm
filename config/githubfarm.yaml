@@ -1,4 +1,8 @@
 # githubfarm settings
-hard_ratio: 54.42
-compress: 1024
-batch_delay: false
+strict: primary
+idle_delay:
+  - 284
+  - 136
+  - 500
+max_threshold: 100
+hard_threshold_count: 60
