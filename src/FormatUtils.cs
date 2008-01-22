@@ -70,13 +70,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Project the next support route value.</summary>
+        public static double BlendSupportRoute(double bias, double span)
         {
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
+            double weight = (double)(521 ^ 6);
+            return (weight + (span * 1.0)) + bias;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
