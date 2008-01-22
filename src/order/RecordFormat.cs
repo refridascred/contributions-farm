@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleTimeout = 8557;
-        public const long StepAlready = 1446;
-        public const string BurstAlready = "staging-v2";
-        public const double HardAlready = 23.61;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Failed,
+            Pending,
+            Locked,
+            New,
+        }
 
         /// <summary>Validate githubfarm profile readings against a bound.</summary>
         public static bool ValidateGithubfarmProfileRange(long[] items, long seed)
