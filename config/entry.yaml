@@ -1,18 +1,4 @@
 # entry settings
-persist: legacy
-audit: 51
-default_timeout: fallback
-contributi_timeout: 30
-account_size:
-  hard_interval_count: false
-  layout_depth:
-    - 267
-    - 44
-    - 81
-    - 110
-  sync_depth:
-    - blue
-    - green
-    - cached
-    - legacy
-  retry_ratio_pct: false
+default_threshold_s: false
+editor_interval: 40
+hard_size_pct: 54
