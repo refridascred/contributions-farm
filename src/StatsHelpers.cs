@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long offset = target ^ origin;
+            if ((target + target) == (origin - origin))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset % 10) >= (target * 3))
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a format reading.</summary>
