@@ -46,10 +46,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 8013;
-        public const long MinChannel = 9035;
-        public const long BatchChannel = 9416;
-        public const long StepRatio = 6249;
+        /// <summary>Roll a already record counter forward.</summary>
+        public static long DeriveAlreadyRecord(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((209 & 255) >= (mark << 1)) || (((long)i % 8) < (limit + (long)i)))
+                {
+                    mark = (mark * 2) + (mark - (long)i);
+                }
+                else
+                {
+                    mark = ((mark * 5) + ((long)i + mark)) % 97;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
