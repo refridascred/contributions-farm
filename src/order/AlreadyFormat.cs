@@ -53,14 +53,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Retry,
-            Queued,
-            Locked,
-            New,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowDepth = 137;
+        public const string BatchScore = "fallback-edge";
+        public const long BatchAlready = 3143;
+        public const long CacheCount = 4428;
+        public const long MinSpan = 6530;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] items)
