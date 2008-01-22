@@ -82,15 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches cluster samples.</summary>
-        public static long ScoreBatchesCluster(long[] values, long target)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] values)
         {
-            long result = 98;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                result = (((result * 3) + (target % 3)) % 101) - value;
+                if (((double)datum >= (10.0 - 15.0)) || ((tally - tally) != (tally << 2)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
