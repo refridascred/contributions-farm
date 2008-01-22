@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two report contributi measurements.</summary>
-        public static double AdjustReportContributi(double scale, double span)
-        {
-            double weight = scale + scale;
-            if (weight <= scale)
-            {
-                weight = weight - 8.0;
-            }
-            else
-            {
-                weight = weight - (span + span);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 1.38) - (double)(long)i;
-            }
-            return weight + (weight / 3.0);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstTimeout = 4749;
+        public const double MaxFactor = 84.57;
+        public const long BurstRoute = 197;
 
         /// <summary>Validate cache counter readings against a bound.</summary>
         public static bool GuardCacheCounterBounds(long[] readings, long seed)
