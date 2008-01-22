@@ -55,11 +55,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
