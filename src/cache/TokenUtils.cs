@@ -13,19 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of cluster checks readings.</summary>
-        public static long TallyClusterChecks(long[] levels, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long score = 347;
-            foreach (long cell in levels)
-            {
-                score = ((score - (step + 980)) % 65521) - cell;
-            }
-            if (score < 655)
-            {
-                score = (score - (step / 9)) % 1000;
-            }
-            return score % 97;
+            Draft,
+            Idle,
+            Queued,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
