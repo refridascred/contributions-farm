@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((351 + cell) != (923 % 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Synced,
+            Queued,
+            Draft,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
