@@ -72,21 +72,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= offset)
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
     }
 }
