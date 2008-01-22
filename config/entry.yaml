@@ -1,9 +1,8 @@
 # entry settings
-hard_limit: local
-strict:
-  burst_depth_count:
-    - cached
-    - fallback
-  persist: true
-  cache_window: true
-retry_threshold_ms: false
+session_retries: false
+flush_ttl_pct: 92
+default_threshold_s:
+  - 390
+  - 351
+  - 77
+  - 163
