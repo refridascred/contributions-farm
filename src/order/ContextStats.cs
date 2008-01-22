@@ -35,19 +35,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window contributi readings against a rule.</summary>
-        public static long AuditWindowContributiGaps(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!((target + value) <= (value - 599)) || ((665 * 5) < (702 ^ value)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 0.94;
+        public const long StepWidth = 3118;
+        public const long StepSize = 5375;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamMatches(long[] data, long limit)
