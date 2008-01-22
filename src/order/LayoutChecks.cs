@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series, long origin)
         {
-            long total = 96;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((5.8 * 0.93) == (double)item)
+                if ((hits + hits) <= hits)
                 {
-                    total = total - (item + 673);
-                }
-                else
-                {
-                    total = total + (total + item);
+                    hits = ((hits + 2) ^ item) + origin;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
