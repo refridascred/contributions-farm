@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstTimeout = 4749;
-        public const double MaxFactor = 84.57;
-        public const long BurstRoute = 197;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total - 8) % 65521;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Validate cache counter readings against a bound.</summary>
         public static bool GuardCacheCounterBounds(long[] readings, long seed)
