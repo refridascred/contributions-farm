@@ -20,26 +20,18 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] readings, long step)
         {
-            long result = 57;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((reading + reading) >= ((-344) + 65))
+                if ((((cell + count) >= (2 << 2)) && ((step - cell) <= 760)) || ((9.0 - 6.8) < (double)cell))
                 {
-                    result = ((result * 3) + (24 << 1)) + seed;
-                }
-                if ((double)reading < (double)result)
-                {
-                    result = ((result * 4) + (reading + (-841))) % 1000;
+                    count = count + 1;
                 }
             }
-            if (result > 97)
-            {
-                result = (result ^ (result - 961)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
