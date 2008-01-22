@@ -63,19 +63,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] values, long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
