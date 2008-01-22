@@ -19,17 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] data, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = limit - origin;
+            if ((origin - lane) > 33)
             {
-                if ((data[i] >= target) && ((data[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((lane / 3) < limit) || ((double)lane <= (double)limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (lane > (limit + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin <= (origin % 10))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up payload samples.</summary>
