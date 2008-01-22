@@ -43,26 +43,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session graph readings.</summary>
-        public static long TallySessionGraph(long[] items)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long carry = -55;
-            foreach (long datum in items)
-            {
-                if (((258 + carry) > (carry ^ carry)) && ((688 + datum) < (carry - carry)))
-                {
-                    carry = ((carry * 2) + (datum + datum)) % 101;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (datum & 63)) % 65521;
-                }
-            }
-            if (carry > 7)
-            {
-                carry = (carry + (carry + carry)) % 101;
-            }
-            return carry % 97;
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the buffer commits entries that pass the check.</summary>
