@@ -1,6 +1,37 @@
 # entry settings
-poll_ratio_pct: 16.75
-route_window: fallback
-burst_ratio_ms: true
-base_threshold: 67.92
-retry_limit: 54
+farm_limit: stable
+verbose: 49
+report_ratio:
+  record_ratio:
+    persist: 18.26
+    max_depth: 2820
+    buffer_delay: cached
+  report_window: false
+  default_capacity: true
+  burst_limit_s: legacy
+  readonly: 1605
+  hard_retries_count:
+    - blue
+    - staging
+buffer_threshold:
+  compress:
+    - strict
+    - standard
+    - edge
+    - standard
+  queue_delay:
+    already_window: blue
+    strict: 29.2
+    default_ttl_s: 97
+    max_depth:
+      - standard
+      - local
+      - standard
+      - primary
+    burst_retries: 5893
+  base_timeout_ms: legacy
+  idle_size_ms: standard
+  counter_delay: 6525
+warm_ratio:
+  - eu-west
+  - stable
