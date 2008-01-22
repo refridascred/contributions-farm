@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Idle,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "latest";
+        public const long DefaultSize = 5945;
+        public const double WindowWidth = 81.54;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long CountCommitsGaps(long[] values, long limit)
