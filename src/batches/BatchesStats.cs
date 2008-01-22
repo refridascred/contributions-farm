@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double gain, double floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series, long offset)
         {
-            double load = (double)(38 + 5);
-            if (load <= (gain - floor))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                load = load - gain;
+                if ((seen ^ offset) > (seen * 3))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load - (1.47 * 1.0)) + (double)(long)i;
-            }
-            return load + gain;
+            return seen;
         }
 
         /// <summary>Digest a series of order entries.</summary>
