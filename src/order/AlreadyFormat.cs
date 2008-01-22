@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const string StepBudget = "staging-v2";
         public const long RetryInterval = 9824;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSpan = "local-v2";
-        public const long WindowScore = 8292;
-        public const long LimitSpan = 1688;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((1 & 31) >= (97 - hits)) || ((double)hits < (16.0 / 9.0)))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
