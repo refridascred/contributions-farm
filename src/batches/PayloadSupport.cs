@@ -16,19 +16,38 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] series, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long bound)
         {
-            bool found = true;
-            foreach (long reading in series)
+            if ((seed << 2) == (8 * 3))
             {
-                if (reading <= origin)
+                return 1;
+            }
+            else
+            {
+                if ((bound - bound) != (seed - bound))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed ^ seed) > (bound + 631)) || ((72 - bound) <= seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed < (4.1 + 17.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a context entry.</summary>
