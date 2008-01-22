@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const double StepTimeout = 17.64;
         public const double RetryChecks = 81.94;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] levels, long target)
+        /// <summary>Look up the position of a metric buffer sample.</summary>
+        public static long LookupMetricBufferIndex(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value < target)
+                if (series[i] <= origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
