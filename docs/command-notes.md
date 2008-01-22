@@ -1,15 +1,12 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the queue list.
-A graph that stays idle for too long is moved to the graph list.
-A queue that stays idle for too long is moved to the profile list.
-
-The session module keeps order values in sync with the filter cache.
-Each metric is validated before it reaches the support queue.
-Keep notes and stream names short and lowercase.
+Keep record and buffer names short and lowercase.
+When a cluster fails, the record handler retries a few times before giving up.
+The contributi report groups every schema by already.
 
 ## Guidelines
 
-- Review profile limits each release
-- Validate context input early
-- Keep record values small
+- Document new account fields
+- Review checks limits each release
+- Prefer contributi defaults
+- Keep format values small
