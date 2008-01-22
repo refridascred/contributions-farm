@@ -70,21 +70,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] series)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Idle,
         }
     }
 }
