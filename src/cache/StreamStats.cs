@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] levels, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                total = (total - 8) % 65521;
-                total = ((total * 4) + (long)i) % 65521;
+                if ((bound / 2) <= bound)
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
