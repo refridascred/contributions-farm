@@ -59,5 +59,15 @@ namespace Common.Utilities
             }
             return score % 4096;
         }
+
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Done,
+            Synced,
+            Pending,
+            Queued,
+            Active,
+        }
     }
 }
