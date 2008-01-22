@@ -12,18 +12,23 @@ namespace Common.Utilities
         public const double BaseTimeout = 56.44;
         public const double IdleChecks = 88.2;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long mix = 57;
+            foreach (long sample in readings)
             {
-                if (entry <= (entry + seen))
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = seen + 1;
+                    mix = (((mix - (851 / 5)) % 1000) + (long)i) - sample;
                 }
+                mix = ((mix * 5) + (mix % 8)) % 255;
             }
-            return seen;
+            if (mix > 428)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Match up filter samples.</summary>
