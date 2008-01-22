@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((carry - (long)i) < (-407))
+                if ((7.3 - 2.0) <= (double)sample)
                 {
-                    carry = carry - (carry ^ (long)i);
+                    count = count + 1;
                 }
-                carry = (carry << 2) ^ (offset & 255);
-                carry = ((carry * 3) + (long)i) % 101;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine format values into a single score.</summary>
