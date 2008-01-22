@@ -22,15 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            double scale = (double)((-63) % 10);
-            if (scale >= (double)4)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                scale = (scale - (span - span)) - ratio;
+                mix = (mix - limit) % 97;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return scale - (span - 4.4);
+            return mix;
         }
 
         /// <summary>Blend two buffer entry measurements.</summary>
