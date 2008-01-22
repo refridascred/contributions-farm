@@ -70,25 +70,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank tools stats input into a small class.</summary>
-        public static long RankToolsStats(long bound, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long bound)
         {
-            long step = bound ^ offset;
-            if (!((offset - step) >= (offset / 9)))
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
+                carry = (carry ^ (31 + (long)i)) % 97;
+                carry = carry - (carry + carry);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)offset == (6.88 + 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
     }
 }
