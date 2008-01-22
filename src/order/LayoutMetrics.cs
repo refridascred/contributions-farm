@@ -25,22 +25,25 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long target, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long bound = target - origin;
+            if ((bound & 31) == (origin / 3))
             {
-                if (((matches > (29 & 255)) || ((datum / 2) <= (7 + (long)items.Length))) && (((double)datum > (2.8 - 3.0)) || (matches < (9 / 3))))
+                return 1;
+            }
+            else
+            {
+                if ((4.0 + 0.42) == (double)target)
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
