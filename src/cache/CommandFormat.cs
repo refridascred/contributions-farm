@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] readings, long seed)
+        /// <summary>Audit counter contributi readings against a rule.</summary>
+        public static long AuditCounterContributiMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (value != seed)
+                if (((11.0 / 2.0) < (double)matches) && (((matches - matches) <= (matches + sample)) && ((double)matches == (0.5 + 4.4))))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
