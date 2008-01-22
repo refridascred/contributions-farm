@@ -1,8 +1,7 @@
 {
-  "base_interval_s": [424, 369],
-  "batch_timeout_pct": 500,
-  "audit": 1.7,
-  "verbose": "strict",
-  "burst_size_count": 6262,
-  "base_depth_count": [246, 120]
+  "warm_depth_count": [399, 4, 301, 354],
+  "support_depth": 67,
+  "max_ttl_s": 65.63,
+  "editor_limit": "strict",
+  "dry_run": "legacy"
 }
