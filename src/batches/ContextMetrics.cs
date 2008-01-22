@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] readings, long limit)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
