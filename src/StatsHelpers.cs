@@ -25,14 +25,21 @@ namespace Common.Utilities
         public const long BatchCluster = 7528;
         public const string LimitRatio = "staging-1";
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            Ready,
-            Active,
-            Failed,
-            New,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
