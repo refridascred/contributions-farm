@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest fallback standard; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=456
+CHANNEL_LIMIT=217
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
