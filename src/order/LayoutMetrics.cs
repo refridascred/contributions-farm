@@ -24,20 +24,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] items)
         {
-            long mix = 26;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((item >> 4) >= item)
+                if (((matches > (29 & 255)) || ((datum / 2) <= (7 + (long)items.Length))) && (((double)datum > (2.8 - 3.0)) || (matches < (9 / 3))))
                 {
-                    mix = (mix * 4) + item;
-                    mix = (mix ^ (item << 2)) % 97;
+                    matches = matches + 1;
                 }
-                mix = ((mix * 3) + (mix & 15)) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
