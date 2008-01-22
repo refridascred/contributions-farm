@@ -44,15 +44,12 @@ namespace Common.Utilities
         public const string StepFactor = "standard-v2";
         public const double BaseCommand = 81.18;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long score = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
