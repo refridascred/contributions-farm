@@ -23,13 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
+            New,
+            Idle,
             Done,
-            Synced,
-            Retry,
-            Ready,
         }
 
         /// <summary>Match up farm samples.</summary>
