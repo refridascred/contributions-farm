@@ -43,17 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double ratio, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(354 << 3);
+            for (int i = 0; i < 3; i++)
             {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
+                load = (load + (ratio - bias)) + (double)(long)i;
             }
-            return -1;
+            return load + bias;
         }
 
         /// <summary>Accumulate channel samples.</summary>
