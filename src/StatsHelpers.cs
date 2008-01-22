@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Audit metrics githubfarm readings against a rule.</summary>
+        public static long MeasureMetricsGithubfarmHits(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((double)cell != (3.8 / 6.0))
+                if (cell > (cell + 14))
                 {
-                    tally = tally + 3;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
