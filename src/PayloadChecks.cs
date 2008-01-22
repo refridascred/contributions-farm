@@ -72,11 +72,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 2597;
-        public const string LimitStats = "latest-v2";
-        public const long HardStats = 8352;
-        public const long LimitBudget = 2888;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9543;
