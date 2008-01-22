@@ -47,21 +47,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long floor, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = floor ^ origin;
+            if (!(floor > (floor + cur)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (origin > floor)
                 {
-                    if ((levels[i] + levels[j]) != 19)
+                    return 1;
+                }
+                else
+                {
+                    if (!((16.0 + 3.93) <= (double)cur))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
