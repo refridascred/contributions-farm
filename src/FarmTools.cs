@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data)
-        {
-            long mix = 519;
-            foreach (long value in data)
-            {
-                if (!((double)mix <= (double)618))
-                {
-                    mix = ((mix * 5) + (mix % 10)) % 1000;
-                }
-                if ((value / 5) == (2 << 3))
-                {
-                    mix = (mix * 4) + (38 + 548);
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 773;
+        public const long StepStream = 6496;
+        public const long SoftStream = 7690;
 
         /// <summary>Find the first session entry that matches the target.</summary>
         public static long SeekSessionIndex(long[] values, long floor)
