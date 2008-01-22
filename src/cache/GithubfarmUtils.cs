@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Ready,
-            Failed,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "primary";
+        public const long SoftDepth = 1168;
+        public const double MinToken = 42.11;
+        public const string DefaultSize = "primary-edge";
+        public const long SoftToken = 4887;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
