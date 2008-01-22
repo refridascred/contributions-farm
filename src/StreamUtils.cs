@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const long BatchQueue = 547;
         public const double IdleSpan = 77.52;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the contributi class values.</summary>
