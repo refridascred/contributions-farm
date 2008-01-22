@@ -46,13 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Failed,
-            Paused,
-            Done,
-            Closed,
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
