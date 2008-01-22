@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const string BaseLevel = "latest-v2";
         public const double LimitFactor = 59.46;
 
-        /// <summary>Match up order support samples.</summary>
-        public static long MatchOrderSupportCount(long[] readings)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Count the tools token entries that pass the check.</summary>
