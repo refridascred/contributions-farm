@@ -1,22 +1,6 @@
 # entry settings
-audit: false
-sync_size_ms:
-  - fallback
-  - edge
-  - green
-  - eu-west
-cache_delay_ms: edge
-min_limit_ms: local
-report_retries:
-  report_capacity:
-    hard_retries_count: 44
-    schema_timeout:
-      - local
-      - latest
-    enabled: fallback
-    min_timeout_ms: false
-  hard_ttl_count: true
-  flush_delay: 60
-  strict: cached
-  channel_limit: 7713
-  cache_ratio_pct: cached
+order_window: false
+idle_size_ms: 53.18
+poll_ttl_pct: local
+default_capacity: edge
+batch_capacity_ms: legacy
