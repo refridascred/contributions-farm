@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long limit, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data, long step)
         {
-            long lane = limit - origin;
-            if ((origin - lane) > 33)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((lane / 3) < limit) || ((double)lane <= (double)limit))
+                if ((hits + step) > (53 - step))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (lane > (limit + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin <= (origin % 10))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 1) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up payload samples.</summary>
