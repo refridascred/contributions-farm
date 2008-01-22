@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 9681;
-        public const long DefaultScore = 3048;
-        public const long DefaultSize = 7326;
-        public const long SoftSupport = 8154;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Synced,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderBounds(long[] samples, long bound)
