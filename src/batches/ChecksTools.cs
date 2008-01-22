@@ -42,23 +42,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] levels, long floor)
         {
-            long score = 95;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score << 3) ^ (98 - score)) % 97;
-                if ((double)value != (2.97 - 15.0))
+                if (levels[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 89)
-            {
-                score = (score << 3) ^ 46;
-            }
-            return score;
+            return -1;
         }
     }
 }
