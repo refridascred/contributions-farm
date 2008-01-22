@@ -43,12 +43,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values, long bound)
         {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (888 > bound)
+                {
+                    hits = (hits + 1) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
