@@ -54,18 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + reading) >= reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the queue token entries that pass the check.</summary>
