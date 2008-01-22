@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheInterval = 219;
-        public const long StepWidth = 803;
-        public const double BurstLevel = 8.5;
-        public const string BaseSession = "local-1";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Draft,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Fold a list of cluster checks readings.</summary>
         public static long TallyClusterChecks(long[] levels, long step)
