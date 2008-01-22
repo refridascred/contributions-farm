@@ -28,29 +28,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((473 ^ (long)i) <= (acc ^ floor)) && ((94 * 5) < floor))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc + acc);
-                }
-                if ((4 ^ floor) != ((long)i + floor))
-                {
-                    acc = (acc - floor) % 101;
-                    acc = acc + ((long)i * 2);
-                }
-                acc = (acc + acc) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Retry,
+            New,
+            Ready,
+            Failed,
         }
     }
 }
