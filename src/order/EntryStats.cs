@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "cached";
-        public const long StepWidth = 9168;
-        public const long LimitMetric = 1541;
-        public const double HardFactor = 63.1;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] data)
+        {
+            long sum = 3;
+            foreach (long reading in data)
+            {
+                if ((reading >= (reading % 100)) && ((sum >> 2) > (sum % 8)))
+                {
+                    sum = sum - (sum / 4);
+                }
+            }
+            if (sum > 88)
+            {
+                sum = ((sum * 3) + (3 * 5)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphMatches(long[] levels, long seed)
