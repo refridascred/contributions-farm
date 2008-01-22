@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Check that every account cache entry stays within the limit.</summary>
+        public static bool ValidateAccountCacheLimits(long[] series, long step)
         {
-            Failed,
-            Closed,
-            Synced,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the commits state values.</summary>
