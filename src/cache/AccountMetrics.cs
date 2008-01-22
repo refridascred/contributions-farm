@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const double LimitWidth = 23.83;
         public const long IdleWidth = 6404;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] data, long floor)
         {
-            long mark = 25;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                mark = mark + entry;
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mark > 1)
-            {
-                mark = mark - (mark & 1);
-            }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
