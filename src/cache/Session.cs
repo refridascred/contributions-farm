@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Audit context metrics readings against a rule.</summary>
+        public static long MeasureContextMetricsMatches(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)seen > (4.1 / 7.0))
+                {
+                    seen = ((seen + 3) ^ value) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
