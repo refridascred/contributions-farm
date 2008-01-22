@@ -63,12 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            Draft,
-            Locked,
-            Idle,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((80 & 63) > tally)
+                {
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
