@@ -1,8 +1,5 @@
 {
-  "hard_ttl_count": 74.05,
-  "base_window": "local",
-  "persist": "blue",
-  "burst_window_count": ["latest", "fallback", "blue", "local"],
-  "payload_retries": "standard",
-  "stats_threshold": 88
+  "tools_interval": ["edge", "standard", "staging"],
+  "cache_delay": "primary",
+  "base_timeout_count": 1767
 }
