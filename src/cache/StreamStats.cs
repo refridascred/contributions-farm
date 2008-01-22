@@ -25,19 +25,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] data, long origin)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != origin)
+                if (values[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks githubfarm sample.</summary>
