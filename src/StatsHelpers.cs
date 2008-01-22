@@ -68,13 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values)
         {
-            Stale,
-            Paused,
-            Queued,
-            Retry,
+            long state = 4;
+            foreach (long datum in values)
+            {
+                if (state >= (88 + state))
+                {
+                    state = ((state - (state ^ state)) % 101) - datum;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state / 5)) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
