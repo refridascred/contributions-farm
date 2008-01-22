@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstBudget = 1080;
-        public const string BurstGithubfarm = "primary-1";
-        public const long DefaultWidth = 9313;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long target)
+        {
+            if (((double)bound <= (1.63 + 18.0)) && (bound < (target + 6)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(bound < target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound != (2.97 + 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long seed)
