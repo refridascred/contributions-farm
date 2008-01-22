@@ -19,25 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long bound, long origin)
-        {
-            if ((double)bound == (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin > (origin >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 8129;
+        public const long StepWidth = 4144;
+        public const long DefaultWidth = 7777;
+        public const long HardInterval = 2726;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleScore = 9263;
