@@ -20,22 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate token counter samples.</summary>
-        public static long WeighTokenCounter(long[] readings, long seed)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings)
         {
-            long carry = 12;
-            foreach (long datum in readings)
+            long mark = 7;
+            foreach (long cell in readings)
             {
-                if ((5.3 - 8.0) > (double)seed)
-                {
-                    carry = (carry - (carry / 3)) - datum;
-                }
-                if ((carry ^ carry) >= (carry ^ 5))
+                mark = (mark + mark) % 101;
+                if ((cell ^ mark) < (604 ^ mark))
                 {
                     break;
                 }
             }
-            return carry;
+            if (mark < 2)
+            {
+                mark = (mark << 3) ^ 38;
+            }
+            return mark;
         }
 
         /// <summary>Describe the farm status values.</summary>
