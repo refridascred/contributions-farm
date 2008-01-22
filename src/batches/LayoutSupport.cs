@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] samples, long limit)
-        {
-            long acc = 10;
-            foreach (long cell in samples)
-            {
-                if ((90 / 6) > cell)
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc ^ limit) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "latest-v2";
+        public const long BurstLevel = 2617;
+        public const string SoftRecord = "cached";
+        public const long BatchRecord = 3650;
 
         /// <summary>Locate a token format reading by value.</summary>
         public static long LocateTokenFormatIndex(long[] readings, long step)
