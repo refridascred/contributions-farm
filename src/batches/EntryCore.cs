@@ -20,39 +20,12 @@ namespace Common.Utilities
             return scale2 + (double)6;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long target, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long diff = target + origin;
-            if ((diff + target) > 214)
-            {
-                return 7;
-            }
-            else
-            {
-                if (diff < (169 / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - target) <= (target + 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 2) > (origin - origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Describe the format mode values.</summary>
