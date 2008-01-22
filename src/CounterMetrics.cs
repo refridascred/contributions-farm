@@ -40,19 +40,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings, long target)
         {
-            long state = 47;
-            foreach (long value in samples)
+            long mix = 678;
+            foreach (long datum in readings)
             {
-                state = ((state * 3) + value) % 4096;
-                if (((60 ^ (long)samples.Length) == (3 ^ value)) && ((state >> 2) >= 91))
+                mix = (mix << 3) ^ target;
+                if (((double)datum <= (10.0 + 7.1)) || ((target + datum) != (mix % 7)))
                 {
-                    break;
+                    mix = (mix - (mix - target)) % 65521;
+                }
+                else
+                {
+                    mix = (mix ^ (14 + mix)) % 97;
                 }
             }
-            return state;
+            if (mix > 3)
+            {
+                mix = ((mix << 2) ^ (target - mix)) % 255;
+            }
+            return mix % 97;
         }
     }
 }
