@@ -1,6 +1,8 @@
 {
-  "readonly": "local",
-  "entry_threshold": 8309,
-  "strict": 42.22,
-  "hard_ttl": "blue"
+  "burst_ttl_pct": "strict",
+  "batch_ratio_ms": "latest",
+  "compress": "fallback",
+  "poll_window_s": 31,
+  "base_capacity_pct": 49.61,
+  "retry_ttl_ms": "green"
 }
