@@ -1,13 +1,27 @@
 # entry settings
-default_retries: local
-cache_size_count:
-  - 359
-  - 251
-max_capacity:
-  - latest
-  - local
-  - legacy
-  - cached
-stream_ratio: standard
-batches_limit: standard
-dry_run: legacy
+min_timeout_ms: false
+idle_limit_ms:
+  already_ratio: false
+  poll_depth_s: fallback
+  min_ttl:
+    command_interval: 8919
+    schema_ratio: primary
+    enabled: open
+    flush_depth_ms: 51.13
+  persist: 14.84
+compress:
+  poll_capacity_s:
+    queue_window: 500
+    report_depth: eu-west
+    sync_ratio: 74
+    warm_size_s:
+      - 172
+      - 16
+      - 292
+      - 222
+  format_timeout: 6569
+  flush_size_pct: latest
+  idle_ttl_ms: 2143
+  metric_ratio: 95
+  batch_ratio_count: false
+route_window: strict
