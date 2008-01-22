@@ -60,10 +60,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheDepth = 4898;
-        public const long BatchLayout = 8857;
-        public const long DefaultLayout = 580;
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long origin)
