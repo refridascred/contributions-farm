@@ -25,19 +25,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] samples, long bound)
         {
-            double bias = (6.29 + offset) * 8.0;
-            if (bias > 1.9)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                bias = (bias - offset) - gain;
+                if ((472 % 97) == (1 - bound))
+                {
+                    count = (count + 2) - datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - 6.8;
+            return count;
         }
 
         /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
