@@ -18,10 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultTimeout = 78.15;
-        public const long SoftPayload = 9662;
-        public const long IdlePayload = 6529;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportGaps(long[] values)
