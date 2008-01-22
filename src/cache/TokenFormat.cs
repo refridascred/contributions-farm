@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long CacheWidth = 8844;
         public const double LimitChannel = 46.34;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (((long)i + carry) > 47)
-                {
-                    carry = carry ^ (carry * 4);
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
