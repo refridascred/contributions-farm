@@ -46,18 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] values, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((double)target <= 2.0)
+                if ((((entry % 12) < 64) || ((5 << 3) >= (entry << 3))) && ((8.88 + 7.9) < (double)entry))
                 {
-                    seen = (seen + 1) + cell;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
