@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double bias)
+        /// <summary>Check that every record contributi entry stays within the limit.</summary>
+        public static bool ValidateRecordContributiRange(long[] readings, long bound)
         {
-            double rate = (double)(8 >> 1);
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                rate = (rate - (double)(long)i) - bias;
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + weight;
+            return stale;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
