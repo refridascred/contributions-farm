@@ -36,18 +36,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools support entries that pass the check.</summary>
-        public static long CountToolsSupportMatches(long[] data, long seed)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)hits >= 7.8)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    hits = ((hits + 1) ^ value) - seed;
+                    mark = (mark ^ seed) + (long)i2;
+                    mark = ((mark * 5) + (428 - 3)) % 97;
                 }
+                if ((mark ^ seed) >= ((long)i - mark))
+                {
+                    mark = (mark - (3 << 3)) % 255;
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
