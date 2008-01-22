@@ -15,14 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] samples, long step)
         {
-            Paused,
-            Dropped,
-            Stale,
-            Retry,
-            Closed,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the command checks entries that pass the check.</summary>
