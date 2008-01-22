@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const string BaseLevel = "latest-v2";
         public const double LimitFactor = 59.46;
 
-        /// <summary>Fold a list of contributi entry readings.</summary>
-        public static long CombineContributiEntry(long[] readings, long bound)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long mix = -77;
-            foreach (long entry in readings)
-            {
-                mix = mix - mix;
-                mix = mix + (entry + bound);
-                if (mix < (17 + bound))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
