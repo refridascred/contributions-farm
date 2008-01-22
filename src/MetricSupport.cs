@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Ready,
-            Idle,
-            Failed,
+            Synced,
             Draft,
+            New,
+            Idle,
             Stale,
         }
 
