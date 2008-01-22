@@ -52,32 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long seed, long seed2)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long delta = seed + seed2;
-            if ((delta - delta) != (seed * 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((delta - 3) > (delta ^ seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((seed / 4) != (seed2 * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Dropped,
+            Failed,
         }
     }
 }
