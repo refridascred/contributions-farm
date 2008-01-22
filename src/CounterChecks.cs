@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const long HardBudget = 8788;
         public const long StepStats = 8350;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            Ready,
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
