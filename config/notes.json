@@ -1,5 +1,19 @@
 {
-  "account_retries": 1024,
-  "default_interval": 1024,
-  "cache_timeout_s": 30
+  "batch_interval": "cached",
+  "soft_threshold": "blue",
+  "schema_interval": {
+    "burst_threshold_ms": [62, 431],
+    "poll_retries": 37.27,
+    "sync_size_count": "fallback",
+    "burst_depth_pct": "green",
+    "max_capacity_ms": "edge",
+    "githubfarm_ratio": false
+  },
+  "verbose": 69,
+  "poll_depth_ms": [479, 166, 215, 184],
+  "readonly": {
+    "enabled": 70.6,
+    "max_capacity": 9076,
+    "audit": "strict"
+  }
 }
