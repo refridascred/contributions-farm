@@ -59,23 +59,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] readings, long origin)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long sum = 806;
-            foreach (long sample in readings)
-            {
-                sum = sum - (sum / 5);
-                if ((double)sample >= (double)origin)
-                {
-                    break;
-                }
-            }
-            if (sum < 31)
-            {
-                sum = (sum ^ origin) % 65521;
-            }
-            return sum % 97;
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
