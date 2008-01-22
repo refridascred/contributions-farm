@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] readings, long step)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long result = 158;
+            foreach (long entry in readings)
+            {
+                result = ((result ^ result) + entry) + step;
+            }
+            if (result < (-375))
+            {
+                result = result + (result + result);
+            }
+            return result;
         }
 
         /// <summary>Describe the support state values.</summary>
