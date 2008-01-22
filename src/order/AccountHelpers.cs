@@ -64,11 +64,9 @@ namespace Common.Utilities
         public const double MinTimeout = 10.75;
         public const long RetryFactor = 9507;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryInterval = 887;
-        public const long IdleCache = 6387;
-        public const long RetryCache = 2289;
-        public const long BatchSize = 1375;
-        public const long CacheSpan = 1189;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 39.45;
+        public const string BaseLevel = "standard-edge";
+        public const string WindowGraph = "stable-1";
     }
 }
