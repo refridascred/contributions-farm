@@ -1,37 +1,5 @@
 # entry settings
-min_timeout_count:
-  - green
-  - fallback
-  - cached
-  - strict
-hard_retries_pct: false
-retry_size_pct: 37
-idle_retries_count:
-  min_delay: 72
-  batch_size_ms:
-    soft_threshold: cached
-    format_size:
-      - 488
-      - 463
-    readonly: 57.49
-    farm_delay: 37.0
-  hard_window_pct: legacy
-  editor_delay:
-    - blue
-    - strict
-    - standard
-    - strict
-max_interval_count: 7658
-min_timeout:
-  warm_ttl_count: 69
-  compress: 100
-  cluster_depth: 1024
-  retry_timeout_ms:
-    retry_capacity_count: stable
-    enabled:
-      - 416
-      - 86
-      - 18
-    verbose: true
-    cache_interval: false
-  checks_timeout: 82
+retry_size_count: 6429
+verbose: false
+burst_capacity_ms: 60
+default_size: 83.92
