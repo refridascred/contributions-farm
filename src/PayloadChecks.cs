@@ -30,22 +30,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] values)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((7.0 * 11.0) != (double)value)
+                if ((62 ^ 7) >= (4 - entry))
                 {
-                    matches = matches + 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a contributi header.</summary>
