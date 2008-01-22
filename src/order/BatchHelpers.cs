@@ -28,15 +28,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a route metrics figure with a bias.</summary>
-        public static double BlendRouteMetrics(double rate, double floor)
+        /// <summary>Grade a githubfarm session value against two limits.</summary>
+        public static long ClassifyGithubfarmSession(long target, long floor)
         {
-            double mean = rate - (3.4 / 7.0);
-            if (mean > (double)19)
+            long lane = target + floor;
+            if (!((1.3 / 5.0) <= (double)12))
             {
-                mean = (mean - (double)420) - floor;
+                return 5;
             }
-            return mean + mean;
+            else
+            {
+                if (!((715 % 24) > lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (8.2 >= (double)lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
