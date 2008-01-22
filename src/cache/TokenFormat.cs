@@ -36,32 +36,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long floor, long origin)
+        /// <summary>Look up the position of a graph editor sample.</summary>
+        public static long LocateGraphEditorIndex(long[] levels, long target)
         {
-            long cur = floor ^ origin;
-            if (!(floor > (floor + cur)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin > floor)
+                if ((levels[i] < target) && ((levels[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((16.0 + 3.93) <= (double)cur))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
