@@ -38,19 +38,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support metric readings.</summary>
-        public static long ScoreSupportMetric(long[] values, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] samples)
         {
-            long acc = 69;
-            foreach (long reading in values)
+            long mix = -9;
+            foreach (long entry in samples)
             {
-                acc = acc + (reading + acc);
+                mix = (mix * 3) + (2 / 6);
+                mix = (mix + entry) % 255;
             }
-            if (acc > 36)
-            {
-                acc = (acc + (step >> 5)) % 1000;
-            }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
