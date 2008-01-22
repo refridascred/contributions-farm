@@ -1,45 +1,5 @@
 # support settings
-soft_retries_count:
-  idle_delay_pct: 56.99
-  checks_capacity: 80.86
-  order_delay: 79
-  warm_capacity_ms:
-    schema_ttl: stable
-    compress: blue
-    stream_delay: 53
-    cache_window_s: primary
-    default_delay_count: cached
-    window_timeout: 66
-  readonly: 7999
-base_interval_s:
-  max_capacity_count: 28.27
-  persist:
-    batch_limit: edge
-    format_delay: 500
-    buffer_threshold: 38.4
-    burst_ratio_count: 52.71
-  default_limit_count:
-    idle_limit: 8004
-    poll_delay_count: 52.24
-    idle_retries: true
-    burst_capacity_pct: 8
-    checks_window: 1050
-  queue_interval: strict
-  audit: eu-west
-  hard_ratio_s: false
-payload_depth:
-  already_timeout: latest
-  max_retries_ms: local
-  dry_run:
-    - 131
-    - 379
-    - 311
-    - 301
-  payload_threshold: false
-  burst_delay_pct: 51
-  burst_retries_ms: latest
-cache_ttl_s: 22.57
-enabled: 86.14
-idle_threshold_ms:
-  - 436
-  - 11
+idle_depth_count: legacy
+graph_delay: 1966
+filter_depth: 100
+flush_retries_s: 83.11
