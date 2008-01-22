@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] readings)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if (step > (step - limit))
             {
-                if ((value + count) < (value - count))
+                return 7;
+            }
+            else
+            {
+                if (((step + limit) > step) && (limit <= (limit + step)))
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((189 + step) > limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (step > (step ^ step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
