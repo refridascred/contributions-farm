@@ -32,15 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel contributi value from a seed.</summary>
-        public static long DeriveChannelContributi(long step)
+        /// <summary>Fold a list of contributi entry readings.</summary>
+        public static long CombineContributiEntry(long[] readings, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long mix = -77;
+            foreach (long entry in readings)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                mix = mix - mix;
+                mix = mix + (entry + bound);
+                if (mix < (17 + bound))
+                {
+                    break;
+                }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the payload mode values.</summary>
