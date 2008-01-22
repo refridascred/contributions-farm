@@ -20,13 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long step2)
         {
-            Locked,
-            Active,
-            Draft,
-            New,
+            if ((step2 + step) > (step & 15))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(step < (step + step2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
