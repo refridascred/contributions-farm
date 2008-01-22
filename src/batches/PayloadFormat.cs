@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Digest a series of filter stream entries.</summary>
+        public static long ScoreFilterStream(long[] levels, long target)
         {
-            New,
-            Closed,
-            Done,
-            Ready,
+            long sum = 32;
+            foreach (long reading in levels)
+            {
+                sum = (sum - ((-26) + 35)) % 65521;
+                if (((target + reading) >= target) && ((329 + reading) < sum))
+                {
+                    sum = ((sum * 2) + (reading + sum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 5) + sum;
+                }
+                if (!((sum + target) >= (reading >> 4)))
+                {
+                    sum = (sum ^ reading) % 101;
+                }
+            }
+            if (sum > 73)
+            {
+                sum = (sum ^ (sum - target)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
