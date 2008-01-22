@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] data, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long carry = 919;
-            foreach (long entry in data)
+            long sum = 99;
+            foreach (long item in values)
             {
-                carry = ((carry - (entry - carry)) % 1000) - target;
+                sum = ((sum + sum) % 65521) + item;
             }
-            return carry % 65521;
+            if (sum > 166)
+            {
+                sum = ((sum * 4) + (sum & 255)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
