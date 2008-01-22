@@ -1,8 +1,5 @@
 {
-  "idle_depth_pct": 60,
-  "flush_timeout_s": 55,
-  "hard_window_count": ["blue", "eu-west", "stable", "standard"],
-  "batch_interval": ["stable", "open"],
-  "base_interval_ms": false,
-  "payload_size": 7425
+  "sync_size_pct": 4104,
+  "flush_capacity": true,
+  "filter_window": 16.31
 }
