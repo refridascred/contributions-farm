@@ -32,24 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] samples)
         {
-            long mix = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix + 4;
-                mix = ((mix << 2) ^ (mix * 2)) % 1000;
-                if ((entry ^ entry) != (24 + mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 3) + entry) % 255;
-                }
-                else
-                {
-                    mix = mix - (entry % 97);
+                    if ((samples[i] - samples[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
