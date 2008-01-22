@@ -1,15 +1,7 @@
 # support settings
-max_threshold_ms:
-  base_capacity_pct: 250
-  persist: 8303
-  enabled: 96
-  default_ratio: 80
-persist: 500
-cache_timeout:
-  - 399
-  - 356
-warm_retries: cached
-sync_depth_s:
-  - 46
-  - 139
-max_timeout_s: 8
+enabled:
+  - blue
+  - standard
+flush_retries_ms: 9062
+min_retries_pct: edge
+cache_retries_pct: open
