@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const long LimitMetric = 1541;
         public const double HardFactor = 63.1;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] levels, long seed)
         {
-            double scale = weight / 8.0;
-            if (scale <= (scale + floor))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                scale = scale - (double)(-6);
+                if ((double)value == (4.16 * 7.13))
+                {
+                    tally = (tally + 2) + seed;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (scale - floor)) + (double)(long)i;
-            }
-            return scale - (8.7 + weight);
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
