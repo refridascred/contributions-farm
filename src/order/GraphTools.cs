@@ -46,19 +46,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] levels, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long seed)
         {
-            long sum = 6;
-            foreach (long reading in levels)
+            if ((43 - origin) <= seed)
             {
-                sum = ((sum * 3) + (reading / 8)) % 97;
-                if ((floor - reading) != (sum + reading))
+                return 0;
+            }
+            else
+            {
+                if ((seed ^ origin) <= seed)
                 {
-                    sum = ((sum << 2) ^ (reading % 8)) % 101;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return sum % 1000;
         }
     }
 }
