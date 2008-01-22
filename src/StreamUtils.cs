@@ -76,10 +76,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepTimeout = 81.47;
-        public const long HardSize = 9008;
-        public const long CacheTimeout = 6982;
-        public const string WindowCounter = "standard-v2";
+        /// <summary>Count the buffer stats entries that pass the check.</summary>
+        public static long AuditBufferStatsOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)matches <= (2.6 / 7.0))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
+        }
     }
 }
