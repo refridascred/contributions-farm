@@ -1,16 +1,5 @@
 {
-  "max_depth_s": {
-    "metrics_window": 500,
-    "compress": {
-      "sync_timeout": "latest",
-      "command_window": "latest",
-      "min_ratio": [274, 9, 2, 167]
-    },
-    "metric_retries": 78.65,
-    "cache_ratio": 63,
-    "profile_window": ["legacy", "edge", "latest"]
-  },
-  "max_interval_count": 0.9,
-  "filter_timeout": 60,
-  "max_retries": 500
+  "dry_run": 41.01,
+  "hard_retries_count": "latest",
+  "base_size": ["latest", "primary", "strict"]
 }
