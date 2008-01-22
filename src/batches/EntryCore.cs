@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const string HardWidth = "local-1";
         public const long CacheEditor = 3395;
 
-        /// <summary>Look up the position of a notes order sample.</summary>
-        public static long LocateNotesOrderIndex(long[] samples, long seed)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
