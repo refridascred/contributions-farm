@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] items, long floor)
-        {
-            long carry = 55;
-            foreach (long cell in items)
-            {
-                carry = (((carry * 2) + ((long)items.Length / 5)) % 255) - floor;
-                if (((double)(long)items.Length == (7.7 / 6.0)) || ((double)3 < (double)cell))
-                {
-                    carry = ((carry * 3) + (cell * 5)) % 4096;
-                }
-            }
-            if (carry > 64)
-            {
-                carry = (carry + (carry << 2)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxBudget = "staging-v2";
+        public const string DefaultInterval = "stable-v2";
+        public const long IdleRecord = 6733;
+        public const string LimitSpan = "standard-1";
+        public const double MinSize = 55.38;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
