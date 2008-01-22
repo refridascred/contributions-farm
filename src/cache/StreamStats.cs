@@ -47,17 +47,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks githubfarm sample.</summary>
-        public static long LocateChecksGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
     }
 }
