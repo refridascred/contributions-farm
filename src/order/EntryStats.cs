@@ -14,10 +14,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 842;
-        public const long BaseBudget = 7578;
-        public const long CacheBatches = 4199;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((target >> 5) == (entry + 565)) && ((entry ^ 0) <= (target + seen)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
