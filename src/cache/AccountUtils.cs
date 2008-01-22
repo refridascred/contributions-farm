@@ -38,31 +38,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm farm input into a small class.</summary>
-        public static long SortGithubfarmFarm(long floor, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            if ((floor ^ floor) == (target + target))
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 7;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((16.0 - 7.79) <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target >> 2) >= (1 + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
