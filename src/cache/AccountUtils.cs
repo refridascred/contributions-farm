@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target ^ target) <= (bound + 508))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((559 & 127) >= bound)
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a layout entry.</summary>
