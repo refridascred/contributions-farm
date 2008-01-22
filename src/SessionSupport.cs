@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double BatchStats = 81.24;
         public const string IdleSpan = "strict-1";
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinBudget = "strict-edge";
+        public const double BaseLevel = 67.8;
+        public const long RetrySize = 404;
+        public const double BurstLevel = 21.76;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadHits(long[] items, long step)
