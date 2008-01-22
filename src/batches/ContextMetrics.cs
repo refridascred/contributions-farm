@@ -20,14 +20,31 @@ namespace Common.Utilities
             return gain + (gain * 6.0);
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long step)
         {
-            New,
-            Active,
-            Ready,
-            Draft,
-            Stale,
+            if (step <= (step ^ seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed - seed) < (181 >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step > 2.0) && ((seed + step) <= (step * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of account metric entries.</summary>
