@@ -63,18 +63,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((hits - entry) >= hits)
+                if (datum > floor)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Blend two format measurements.</summary>
