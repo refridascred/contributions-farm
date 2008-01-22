@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            Done,
-            Paused,
-            Locked,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
