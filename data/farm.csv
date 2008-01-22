@@ -1,11 +1,6 @@
-id,state,owner,label
-1,cached,12.49,local
-2,543,latest,231
-3,local,7.16,943
-4,402,legacy,80.08
-5,cached,72.49,open
-6,92.13,79.81,851
-7,88.31,794,primary
-8,896,12.11,36.06
-9,44.04,597,latest
-10,93.17,508,open
+id,region,rank,score,count
+1,993,cached,431,open
+2,83.53,614,25.88,edge
+3,59.99,cached,local,standard
+4,941,760,328,green
+5,fallback,708,61.65,776
