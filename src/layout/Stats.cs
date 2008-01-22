@@ -54,21 +54,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry format samples.</summary>
-        public static long OverlapEntryFormatCount(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((value + value) != (4 + score)) || ((value / 7) <= value))
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (244 + score)) % 4096;
                 }
             }
-            return matches;
+            if (score < 98)
+            {
+                score = (score * 5) + (score - score);
+            }
+            return score;
         }
     }
 }
