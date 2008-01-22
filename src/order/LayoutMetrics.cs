@@ -25,25 +25,22 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long target, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] data, long origin)
         {
-            long bound = target - origin;
-            if ((bound & 31) == (origin / 3))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4.0 + 0.42) == (double)target)
+                if ((1.0 + 1.0) != (double)cell)
                 {
-                    return 2;
+                    hits = (hits + 3) + origin;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
