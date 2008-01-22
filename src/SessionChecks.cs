@@ -45,22 +45,9 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((offset >> 1) != (0 - tally)) || !((double)offset != (double)tally))
-                {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowSpan = 240;
+        public const double LimitProfile = 11.59;
+        public const long WindowProfile = 565;
     }
 }
