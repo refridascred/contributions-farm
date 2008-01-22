@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double ratio, double offset)
         {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            double bias = 5.4;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias - (offset * 5.84)) - (double)(long)i) + ratio;
+            }
+            return bias + bias;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
