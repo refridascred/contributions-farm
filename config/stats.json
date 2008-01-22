@@ -1,9 +1,5 @@
 {
-  "audit": false,
-  "max_depth_ms": 94,
-  "max_interval_s": {
-    "cache_window": false,
-    "warm_delay": ["eu-west", "open"],
-    "cache_interval": "latest"
-  }
+  "burst_ratio_ms": "standard",
+  "window_interval": [366, 110, 42, 101],
+  "poll_capacity_count": 30
 }
