@@ -1,9 +1,6 @@
-id,region,score
-1,green,84.26
-2,989,628
-3,376,legacy
-4,cached,460
-5,937,3.5
-6,4,339
-7,450,staging
-8,905,fallback
+id,active,ratio
+1,56,cached
+2,235,971
+3,928,66.12
+4,13.49,legacy
+5,270,blue
