@@ -45,21 +45,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up window context samples.</summary>
-        public static long PairWindowContextCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowTimeout = 4407;
+        public const string HardMetric = "staging";
+        public const long BaseRatio = 3619;
     }
 }
