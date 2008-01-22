@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] data, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
