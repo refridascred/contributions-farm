@@ -1,9 +1,6 @@
 # githubfarm settings
-warm_limit_ms: 14
-readonly: 30
-min_depth_ms: 1.9
-burst_depth_s: 6526
-poll_limit_pct:
-  - latest
-  - open
-hard_interval: 57
+readonly: cached
+hard_capacity: 57.85
+soft_capacity_ms: local
+enabled: local
+batches_ttl: open
