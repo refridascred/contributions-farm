@@ -1,6 +1,8 @@
 {
-  "readonly": 7668,
-  "sync_window": 500,
-  "base_interval_s": 8850,
-  "farm_ttl": 43.58
+  "default_ratio_count": 97.85,
+  "base_delay_count": 8930,
+  "sync_limit": 76.52,
+  "warm_capacity_s": [258, 409, 176, 251],
+  "sync_timeout_count": "strict",
+  "record_threshold": "green"
 }
