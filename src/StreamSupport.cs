@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Queued,
-            Retry,
-            Synced,
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
