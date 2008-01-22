@@ -16,11 +16,15 @@ namespace Common.Utilities
         public const double MinRatio = 1.56;
         public const string MinFilter = "open";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftFactor = "legacy-edge";
-        public const string CacheContributi = "staging-edge";
-        public const string BaseBudget = "local-1";
-        public const long LimitSpan = 8439;
-        public const long BaseContributi = 6169;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
