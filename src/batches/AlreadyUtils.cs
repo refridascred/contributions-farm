@@ -34,19 +34,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate payload token readings against a bound.</summary>
-        public static bool CheckPayloadTokenBounds(long[] series, long bound)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Draft,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
