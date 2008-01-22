@@ -22,23 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)seen != (12.0 * 5.3)) || !(sample <= (seen + seen)))
-                {
-                    seen = (seen + 2) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 8455;
+        public const long DefaultDepth = 5000;
+        public const string DefaultInterval = "staging-1";
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double scale, double span)
