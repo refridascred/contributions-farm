@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry command readings against a bound.</summary>
-        public static bool CheckEntryCommandBounds(long[] series, long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Done,
+            Draft,
+            Pending,
+            New,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
