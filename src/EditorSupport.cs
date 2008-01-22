@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleCount = "local";
-        public const long SoftSupport = 2814;
-        public const long WindowTimeout = 4266;
-        public const long LimitSpan = 9798;
-        public const long MinLevel = 3587;
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double gain, double span)
+        {
+            double load = (double)(991 << 1);
+            if (load < gain)
+            {
+                load = load + (load + gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load + (12.0 / 8.0);
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderMatches(long[] readings)
