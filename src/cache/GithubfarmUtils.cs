@@ -47,22 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] samples, long bound)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((472 % 97) == (1 - bound))
-                {
-                    count = (count + 2) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Locked,
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Fold a list of account readings.</summary>
