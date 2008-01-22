@@ -33,27 +33,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] levels)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            long mix = 69;
-            foreach (long item in levels)
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix ^ (mix + mix)) % 255;
-                if ((4.39 - 2.66) == (double)item)
+                double scale = (double)(long)i / 5.0;
+                anchor = (anchor * 3) + limit;
+                if (((long)i == ((long)i ^ anchor)) && (2.1 > (scale + scale)))
                 {
-                    mix = mix - (4 / 4);
+                    anchor = (anchor ^ (limit - anchor)) % 255;
+                    scale = scale + (double)limit;
+                    break;
                 }
-                else
-                {
-                    mix = (mix * 2) + 74;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            if (mix < 3)
-            {
-                mix = (mix << 2) ^ (mix ^ mix);
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Accumulate checks samples.</summary>
