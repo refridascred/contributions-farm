@@ -23,15 +23,15 @@ namespace Common.Utilities
         public const long SoftPayload = 9662;
         public const long IdlePayload = 6529;
 
-        /// <summary>Audit session layout readings against a rule.</summary>
-        public static long MeasureSessionLayoutGaps(long[] samples)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] values)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long entry in values)
             {
-                if (!((datum + matches) < 4))
+                if ((double)entry <= 18.0)
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
