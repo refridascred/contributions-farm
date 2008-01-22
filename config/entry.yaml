@@ -1,18 +1,27 @@
 # entry settings
-soft_window_s:
-  - 477
-  - 450
-  - 10
-  - 427
-retry_interval: false
-cache_threshold_s: 14
-compress:
-  report_limit: blue
-  min_limit_s: true
-  batch_ratio: 8223
-  idle_capacity_count:
-    editor_timeout: 37.27
-    counter_interval: 59.31
-    idle_ttl: false
-    warm_delay_count: 1.6
-warm_retries: blue
+retry_ratio_count:
+  poll_capacity_pct: edge
+  strict:
+    compress: standard
+    enabled: stable
+    commits_size: 15
+    order_delay:
+      - 428
+      - 111
+      - 473
+    min_window_count: primary
+  tools_capacity: true
+  layout_limit: false
+  hard_timeout: 3049
+  readonly: 12
+counter_limit:
+  - 285
+  - 12
+  - 388
+poll_ratio: staging
+context_limit: primary
+flush_interval_count:
+  - 203
+  - 391
+  - 142
+  - 103
