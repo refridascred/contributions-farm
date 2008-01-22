@@ -35,19 +35,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two metric batches measurements.</summary>
-        public static double BlendMetricBatches(double ratio, double floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double gain = floor;
-            if (gain < ratio)
-            {
-                gain = gain - (double)0;
-            }
-            else
-            {
-                gain = gain - (double)99;
-            }
-            return gain - gain;
+            Draft,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Adjust a queue reading.</summary>
