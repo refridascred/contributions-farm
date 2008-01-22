@@ -45,29 +45,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc << 3) ^ (7 + floor)) % 255;
-                if (((22 + (long)i) > (60 - (long)i)) && ((long)i >= floor))
-                {
-                    acc = (acc ^ (acc / 8)) % 101;
-                }
-                else
-                {
-                    acc = (acc * 2) + (91 - 68);
-                    acc = (acc - (floor + acc)) % 97;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc * 5) + ((-96) << 3)) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Idle,
+            Queued,
+            Retry,
         }
     }
 }
