@@ -54,15 +54,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double rate, double floor)
         {
-            double ratio = 0.52;
-            if (ratio > (ratio * 15.0))
+            double scale = (rate / 6.0) + (double)12;
+            if (scale > (floor / 3.0))
             {
-                ratio = (ratio + (floor - 6.0)) - gain;
+                scale = scale + (double)(-29);
             }
-            return ratio + (floor / 9.0);
+            return scale + (8.25 - scale);
         }
     }
 }
