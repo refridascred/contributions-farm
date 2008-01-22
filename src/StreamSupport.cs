@@ -25,18 +25,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long result = -6;
+            foreach (long entry in values)
             {
-                if (!((entry % 2) != (matches / 8)))
+                if ((result / 9) < (result - (-8)))
                 {
-                    matches = matches + 2;
+                    result = (result - (target / 8)) - entry;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
