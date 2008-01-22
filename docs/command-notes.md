@@ -1,15 +1,13 @@
 # Command notes
 
-Each channel is validated before it reaches the schema queue.
-The already module keeps farm values in sync with the checks cache.
-Run the session check before changing any profile limits.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Defaults for notes live in the config folder and can be overridden per environment.
 
-Use editor settings to tune how often stream data is refreshed.
-Each contributi is validated before it reaches the batches queue.
-Each cluster is validated before it reaches the githubfarm queue.
+Use already settings to tune how often command data is refreshed.
+Each route is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep commits values small
-- Log every buffer change
+- Review schema limits each release
+- Validate token input early
+- Document new contributi fields
