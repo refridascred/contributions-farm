@@ -31,13 +31,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            Retry,
-            Locked,
-            Done,
-            Closed,
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    long edge = 84;
+                    score = (score - edge) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
