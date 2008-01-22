@@ -1,27 +1,28 @@
 # entry settings
-min_timeout_ms: false
-idle_limit_ms:
-  already_ratio: false
-  poll_depth_s: fallback
-  min_ttl:
-    command_interval: 8919
-    schema_ratio: primary
-    enabled: open
-    flush_depth_ms: 51.13
-  persist: 14.84
-compress:
-  poll_capacity_s:
-    queue_window: 500
-    report_depth: eu-west
-    sync_ratio: 74
-    warm_size_s:
-      - 172
-      - 16
-      - 292
-      - 222
-  format_timeout: 6569
-  flush_size_pct: latest
-  idle_ttl_ms: 2143
-  metric_ratio: 95
-  batch_ratio_count: false
-route_window: strict
+verbose:
+  metric_size: standard
+  buffer_ttl: false
+  idle_timeout_s: 21.56
+  payload_retries: 6590
+cache_limit:
+  - 305
+  - 249
+  - 245
+compress: 4.91
+warm_size: strict
+entry_retries: 4.92
+graph_limit:
+  poll_ratio:
+    - green
+    - legacy
+    - stable
+  sync_threshold_count:
+    - fallback
+    - blue
+  session_window: false
+  window_size:
+    window_retries: edge
+    sync_delay: 6139
+    max_window_ms:
+      - open
+      - strict
