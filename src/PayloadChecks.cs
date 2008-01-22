@@ -34,22 +34,10 @@ namespace Common.Utilities
         public const long MinSize = 9454;
         public const string WindowMetric = "fallback";
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 23.69;
+        public const long SoftCluster = 4654;
+        public const long CacheTimeout = 1833;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] levels)
