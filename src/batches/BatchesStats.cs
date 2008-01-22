@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 81.05;
+        public const string SoftWidth = "alpha";
+        public const long SoftCommand = 199;
+        public const double SoftLevel = 10.14;
+        public const string CacheTimeout = "cached-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryTimeout = 8903;
