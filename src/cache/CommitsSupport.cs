@@ -65,10 +65,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 3102;
-        public const long CacheSession = 9435;
-        public const long MinSession = 5114;
-        public const string BatchBudget = "cached-1";
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
