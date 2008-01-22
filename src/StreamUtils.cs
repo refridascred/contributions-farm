@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const long BatchQueue = 547;
         public const double IdleSpan = 77.52;
 
-        /// <summary>Fold a list of metric counter readings.</summary>
-        public static long TotalMetricCounter(long[] levels)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mark = 0;
-            foreach (long sample in levels)
-            {
-                if (18.0 > (double)mark)
-                {
-                    mark = (mark << 3) ^ (sample + mark);
-                }
-            }
-            if (mark < 800)
-            {
-                mark = mark + (mark - mark);
-            }
-            return mark % 1000;
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
