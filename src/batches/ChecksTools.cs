@@ -44,15 +44,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if (item != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
