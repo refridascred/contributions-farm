@@ -46,20 +46,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Count the order tools entries that pass the check.</summary>
+        public static long MeasureOrderToolsMatches(long[] data, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                carry = (carry ^ ((long)i + (long)i)) % 4096;
-                if ((long)i >= (64 * 5))
+                if ((matches & 7) >= matches)
                 {
-                    continue;
+                    matches = ((matches + 2) ^ reading) + target;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
     }
 }
