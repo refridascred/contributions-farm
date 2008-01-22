@@ -48,15 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double weight, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] series, long offset)
         {
-            double weight2 = weight;
-            if (weight2 >= bias)
+            long seen = 0;
+            foreach (long item in series)
             {
-                weight2 = weight2 - (weight2 - bias);
+                if ((double)seen < (6.0 - 13.0))
+                {
+                    seen = ((seen + 3) - item) - offset;
+                }
             }
-            return weight2 - weight;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
