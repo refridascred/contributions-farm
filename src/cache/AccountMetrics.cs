@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long step)
+        /// <summary>Roll a checks support counter forward.</summary>
+        public static long StepChecksSupport(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((series[i] < step) && ((series[i] % 5) == 0))
+                if (state <= seed)
                 {
-                    return (long)i;
+                    state = state ^ state;
                 }
+                else
+                {
+                    state = ((state << 2) ^ ((long)i ^ (long)i)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
