@@ -12,13 +12,15 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in fallback open legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-cached}"
+mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
