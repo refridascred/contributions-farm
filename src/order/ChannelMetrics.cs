@@ -33,13 +33,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] data, long limit)
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
