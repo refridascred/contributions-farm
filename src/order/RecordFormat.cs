@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the farm token entries that pass the check.</summary>
+        public static long CountFarmTokenHits(long[] readings)
         {
-            Failed,
-            Pending,
-            Locked,
-            New,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (!((double)seen >= 2.2))
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate githubfarm profile readings against a bound.</summary>
