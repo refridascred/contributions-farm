@@ -56,17 +56,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] levels, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long origin, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin + origin) < (floor / 3))
             {
-                if (levels[i] == bound)
+                return 7;
+            }
+            else
+            {
+                if (((origin * 3) < origin) || ((floor >> 1) < origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
