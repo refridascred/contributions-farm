@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftInterval = 5924;
-        public const long BurstDepth = 7118;
-        public const double SoftChecks = 17.12;
-        public const long MaxScore = 4591;
+        /// <summary>Accumulate commits order samples.</summary>
+        public static long TallyCommitsOrder(long[] values, long seed)
+        {
+            long acc = 422;
+            foreach (long datum in values)
+            {
+                if ((datum & 7) > (datum / 6))
+                {
+                    acc = ((acc * 5) + (datum * 4)) + seed;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
