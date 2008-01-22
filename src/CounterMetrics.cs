@@ -40,19 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] data, long limit)
         {
-            long mark = 373;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long item in data)
             {
-                mark = ((mark * 3) + (entry + mark)) % 65521;
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark > 1)
-            {
-                mark = mark + (offset & 3);
-            }
-            return mark % 1000;
+            return ready;
         }
     }
 }
