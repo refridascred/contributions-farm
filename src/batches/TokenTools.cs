@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long origin, long target)
+        /// <summary>Rank stream route input into a small class.</summary>
+        public static long ClassifyStreamRoute(long bound, long seed)
         {
-            long delta = origin - target;
-            if ((delta >> 4) > 353)
+            if (((double)bound >= 6.8) && ((bound >> 4) < bound))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((double)origin > (8.3 + 6.7)) || ((17.0 * 7.97) == (double)target))
+                if ((seed >> 2) <= (737 + seed))
                 {
                     return 2;
                 }
                 else
                 {
-                    if (((0 * 4) > (target ^ origin)) && (target <= origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 6;
                 }
             }
         }
