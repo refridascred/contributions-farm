@@ -12,15 +12,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double weight, double floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long target)
         {
-            double scale = floor;
-            if (scale >= (double)95)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale - (double)595) - weight;
+                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (floor * 1.41);
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
