@@ -1,6 +1,9 @@
-id,token,owner,rank
-1,cached,539,89
-2,329,585,92.58
-3,legacy,474,local
-4,584,490,edge
-5,530,standard,latest
+id,score,token
+1,staging,931
+2,594,edge
+3,open,blue
+4,local,959
+5,949,34.84
+6,340,cached
+7,fallback,standard
+8,38.84,edge
