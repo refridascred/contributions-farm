@@ -50,23 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] data, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long score = 437;
-            foreach (long entry in data)
-            {
-                score = score - entry;
-                if ((floor << 1) == (29 % 16))
-                {
-                    break;
-                }
-            }
-            if (score > 6)
-            {
-                score = score + (8 - floor);
-            }
-            return score;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
