@@ -47,12 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            Locked,
+            Draft,
+            Queued,
         }
     }
 }
