@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long limit)
-        {
-            if (((8.1 * 5.3) != (double)step) && ((step - step) >= limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step % 5) < (31 - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step >= (step << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step % 8) >= (step - limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinRecord = "strict-1";
+        public const long BatchCount = 1123;
+        public const string StepBudget = "staging-v2";
+        public const long RetryInterval = 9824;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string MaxSpan = "local-v2";
