@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a queue metric sample.</summary>
-        public static long SeekQueueMetricIndex(long[] levels, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double SmoothChecks(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = floor;
+            if (drift < (ratio * 7.0))
             {
-                if (levels[i] < origin)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)99;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (drift + ratio)) + (double)(long)i;
+            }
+            return drift - (drift + ratio);
         }
 
         /// <summary>Digest a series of report entries.</summary>
