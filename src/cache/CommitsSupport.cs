@@ -68,17 +68,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] data, long seed)
+        /// <summary>Derive the next entry tools value from a seed.</summary>
+        public static long IterateEntryTools(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] <= seed)
+                if ((double)(long)i < (double)bound)
                 {
-                    return (long)i;
+                    mix = (mix << 2) ^ (bound % 5);
+                    mix = mix + (7 << 3);
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
