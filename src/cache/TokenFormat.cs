@@ -12,13 +12,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Closed,
-            Ready,
-            Paused,
-            Failed,
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
