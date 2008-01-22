@@ -19,21 +19,30 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 1;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)carry != (0.2 * 0.52))
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 3) + (reading << 1)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + reading) % 101;
+                }
+                if ((reading / 9) == (carry + reading))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry > 840)
+            {
+                carry = ((carry << 3) ^ (589 + carry)) % 101;
+            }
+            return carry;
         }
     }
 }
