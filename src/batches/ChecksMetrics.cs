@@ -48,14 +48,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long seed, long step)
         {
-            New,
-            Paused,
-            Synced,
-            Draft,
-            Retry,
+            if (((seed / 3) == (seed + step)) && ((step << 1) <= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed > 4.71)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
