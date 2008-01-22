@@ -54,22 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long CountContextContributiGaps(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] values)
         {
-            long matches = 0;
+            long seen = 0;
             foreach (long entry in values)
             {
-                if ((entry * 2) >= (entry - matches))
+                if (!((seen + seen) >= 146))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
