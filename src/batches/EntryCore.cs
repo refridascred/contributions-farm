@@ -75,10 +75,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepSize = 6819;
-        public const long MinSpan = 4545;
-        public const double StepCommits = 65.36;
-        public const long DefaultDepth = 1760;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Paused,
+            Retry,
+            Dropped,
+            Idle,
+            Active,
+        }
     }
 }
