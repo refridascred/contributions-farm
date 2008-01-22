@@ -25,22 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many commits metrics samples are out of range.</summary>
-        public static long AuditCommitsMetricsMatches(long[] items, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long state = 1;
+            foreach (long sample in data)
             {
-                if ((((double)matches > (0.7 / 9.0)) || ((double)value <= (5.95 + 18.0))) && ((double)floor >= (6.0 - 6.5)))
+                if (((offset - 5) < ((long)data.Length - sample)) || ((long)data.Length > offset))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state * 5) + (offset - sample)) % 1000;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Describe the support phase values.</summary>
