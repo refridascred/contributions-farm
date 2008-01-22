@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (cell < (cell << 1))
+                if ((count - reading) < reading)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
