@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] series, long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double BlendCluster(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            double ratio = (double)(81 + 0);
+            if (ratio > offset)
             {
-                if (cell <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - weight;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (weight - weight)) + (double)(long)i;
+            }
+            return ratio - (ratio - 8.3);
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
