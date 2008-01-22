@@ -1,17 +1,5 @@
 {
-  "checks_ttl": 1753,
-  "max_ttl_pct": false,
-  "default_interval_s": {
-    "base_retries_ms": "latest",
-    "base_limit_pct": 1.55,
-    "schema_retries": "staging",
-    "hard_timeout_ms": {
-      "tools_ttl": 60,
-      "readonly": 30,
-      "soft_capacity_s": true,
-      "audit": "fallback",
-      "channel_timeout": ["blue", "legacy", "edge", "green"],
-      "layout_ratio": 6
-    }
-  }
+  "strict": "cached",
+  "soft_timeout_ms": "strict",
+  "readonly": [214, 20, 37, 402]
 }
