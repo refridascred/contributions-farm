@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] samples)
+        /// <summary>Audit report metric readings against a rule.</summary>
+        public static long TallyReportMetricMatches(long[] readings, long floor)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits * 2) < 27)
                 {
-                    if ((samples[i] - samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 2) ^ reading) - floor;
                 }
             }
             return hits;
