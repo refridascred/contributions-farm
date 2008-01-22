@@ -24,22 +24,21 @@ namespace Common.Utilities
         public const long StepWidth = 3118;
         public const long StepSize = 5375;
 
-        /// <summary>Accumulate filter context samples.</summary>
-        public static long WeighFilterContext(long[] items)
+        /// <summary>Compare every pair of channel checks readings.</summary>
+        public static long OverlapChannelChecksCount(long[] samples)
         {
-            long result = 94;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (result <= (reading ^ reading))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result << 2) ^ (reading >> 4);
+                    if ((samples[i] + samples[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 27)
-            {
-                result = (result ^ (result + result)) % 65521;
-            }
-            return result;
+            return seen;
         }
     }
 }
