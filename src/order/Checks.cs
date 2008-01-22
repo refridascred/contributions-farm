@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 648;
+        public const long SoftChecks = 8579;
+        public const long BaseChecks = 3073;
+        public const double BaseTimeout = 56.44;
+        public const double IdleChecks = 88.2;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
