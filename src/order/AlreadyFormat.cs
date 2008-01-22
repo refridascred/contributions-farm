@@ -45,22 +45,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] levels, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long sum = 916;
-            foreach (long item in levels)
+            long acc = -95;
+            foreach (long reading in items)
             {
-                if (((double)limit == (6.4 / 5.0)) && ((item ^ limit) > (limit << 3)))
+                if (((12.0 + 4.0) >= (double)reading) && (acc > (4 + reading)))
                 {
-                    sum = (sum - item) % 101;
+                    acc = (acc - 30) % 1000;
                 }
             }
-            if (sum < 604)
+            if (acc > 209)
             {
-                sum = (sum + (3 - limit)) % 97;
+                acc = ((acc * 5) + (acc % 24)) % 65521;
             }
-            return sum;
+            return acc;
         }
     }
 }
