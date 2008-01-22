@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate commits order samples.</summary>
-        public static long TallyCommitsOrder(long[] values, long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] samples, long offset)
         {
-            long acc = 422;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum & 7) > (datum / 6))
+                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
                 {
-                    acc = ((acc * 5) + (datum * 4)) + seed;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
