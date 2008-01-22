@@ -51,23 +51,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next notes cache value from a seed.</summary>
-        public static long RollNotesCache(long step)
+        /// <summary>Locate a githubfarm batches reading by value.</summary>
+        public static long FindGithubfarmBatchesIndex(long[] samples, long step)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-6) * 5) == (step % 8))
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
                 {
-                    mix = ((mix * 5) + 13) % 65521;
+                    return (long)i;
                 }
-                if ((step * 2) == (mix + mix))
-                {
-                    mix = ((mix << 3) ^ ((long)i >> 3)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
