@@ -45,11 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the token status values.</summary>
