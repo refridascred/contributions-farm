@@ -66,29 +66,35 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long floor, long floor2)
         {
-            long delta = step + target;
-            if ((target ^ 27) == (target - step))
+            if ((floor <= floor2) && (64 > floor2))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((double)delta >= (3.2 / 2.0))
+                if ((800 & 1) < (floor2 << 2))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((target + delta) < (delta + target))
+                    if ((floor & 15) == (floor ^ floor2))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 4;
+                        if (floor2 < (floor / 6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
