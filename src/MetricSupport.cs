@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] items, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry < limit)
+                mark = mark - mark;
+                if ((mark >> 4) == (limit % 100))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    mark = mark + (356 - (-4));
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
