@@ -42,22 +42,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] series, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (0 <= limit)
             {
-                if ((seen ^ 58) != (target << 3))
+                return 0;
+            }
+            else
+            {
+                if (bound <= (581 - bound))
                 {
-                    seen = (seen + 2) + datum;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((limit + limit) > 155)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
