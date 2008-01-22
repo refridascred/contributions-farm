@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long LimitDepth = 8953;
         public const long CacheDepth = 9672;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 9807;
+        public const long BurstBatch = 6675;
+        public const long BaseWidth = 7334;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long IdleCounter = 1878;
