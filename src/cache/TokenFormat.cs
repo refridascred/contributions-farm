@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] items, long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long item in items)
+            double gain = ratio - ratio;
+            if (gain >= floor)
             {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = gain - (gain / 7.0);
             }
-            return ready;
+            return gain + (floor + ratio);
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
