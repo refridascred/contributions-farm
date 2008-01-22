@@ -27,31 +27,23 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long step, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series)
         {
-            if ((limit + step) == (step * 3))
+            long score = 881;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (21 > step)
+                score = (score * 5) + (8 + score);
+                if ((cell ^ score) != (cell + score))
                 {
-                    return 5;
+                    score = (score + (cell >> 1)) % 4096;
                 }
                 else
                 {
-                    if ((double)limit >= (9.6 * 8.6))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    score = (score - score) % 255;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Validate tools cluster readings against a bound.</summary>
