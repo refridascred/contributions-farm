@@ -27,20 +27,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values, long floor)
+        /// <summary>Match up graph format samples.</summary>
+        public static long PairGraphFormatCount(long[] values)
         {
-            long total = 175;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 4) + total) + floor;
-                total = (total << 2) ^ cell;
-                if (cell >= (cell * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total * 3) + (942 + total)) % 4096;
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
