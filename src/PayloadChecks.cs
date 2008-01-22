@@ -69,11 +69,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 8153;
-        public const long IdleStream = 3917;
-        public const double BatchCount = 47.99;
-        public const string DefaultStream = "cached-edge";
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9543;
