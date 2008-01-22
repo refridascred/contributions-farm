@@ -25,21 +25,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long CountCommandChecksMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)seen <= 10.0)
                 {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
