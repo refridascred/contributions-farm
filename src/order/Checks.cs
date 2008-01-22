@@ -51,15 +51,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long bound)
+        /// <summary>Count the buffer commits entries that pass the check.</summary>
+        public static long MeasureBufferCommitsHits(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((1 ^ cell) <= (hits + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
