@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] series, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] values, long offset)
         {
-            long mark = 582;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long value in values)
             {
-                mark = (((mark * 5) + (sample + mark)) % 255) - seed;
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a account entry.</summary>
