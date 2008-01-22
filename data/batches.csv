@@ -1,6 +1,9 @@
-id,active,ratio
-1,56,cached
-2,235,971
-3,928,66.12
-4,13.49,legacy
-5,270,blue
+id,score,region
+1,cached,eu-west
+2,968,988
+3,739,44.07
+4,edge,50.36
+5,standard,988
+6,cached,94
+7,921,97
+8,491,98
