@@ -29,21 +29,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc * 3) + (long)i;
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (acc + (floor - (long)i2)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string IdleFactor = "stable";
+        public const string MaxFactor = "cached-edge";
+        public const string CacheWindow = "legacy";
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
