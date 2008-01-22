@@ -13,11 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 51.32;
-        public const string BaseRatio = "fallback";
-        public const long MaxToken = 5489;
-        public const double HardDepth = 24.9;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((anchor + 502) >= (anchor % 100))
+                {
+                    anchor = (anchor ^ (anchor << 1)) % 1000;
+                }
+                anchor = (anchor + (51 >> 5)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long BucketSchema(long limit, long seed)
