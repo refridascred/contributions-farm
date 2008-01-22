@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long WindowFactor = 157;
         public const string LimitBatches = "standard";
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((item - (long)values.Length) >= (item & 1))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 9833;
+        public const long StepCount = 9542;
+        public const long BurstWidth = 8617;
+        public const string MinScore = "fallback-1";
+        public const double IdleScore = 77.18;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long StepAccount(long offset)
