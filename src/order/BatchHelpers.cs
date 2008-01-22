@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long floor)
         {
-            long state = 4;
-            foreach (long entry in data)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((state << 2) != (entry + entry))
+                if ((result << 3) != (result * 4))
                 {
-                    state = (state ^ (long)data.Length) % 255;
-                    state = ((state << 2) ^ (entry >> 2)) % 101;
+                    result = result - ((-466) ^ (long)i);
                 }
-                if (state < (entry ^ entry))
+                else
                 {
-                    state = state ^ (327 + 70);
+                    result = (result ^ result) % 4096;
                 }
-                if (state >= entry)
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (state > 1)
-            {
-                state = state ^ (5 + state);
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
