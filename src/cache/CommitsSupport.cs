@@ -24,19 +24,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
