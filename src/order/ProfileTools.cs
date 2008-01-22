@@ -28,22 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepLevel = 25.62;
+        public const long DefaultWidth = 9665;
+        public const long IdleRecord = 7799;
+        public const long RetryRecord = 1930;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool CheckFarmRange(long[] values, long bound)
