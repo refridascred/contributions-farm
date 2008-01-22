@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const string BatchFormat = "cached-1";
         public const long BatchLevel = 5429;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long seed)
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
