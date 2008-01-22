@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const long BatchCluster = 7528;
         public const string LimitRatio = "staging-1";
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double rate, double floor)
+        /// <summary>Count schema channel pairs that satisfy a relation.</summary>
+        public static long MatchSchemaChannelCount(long[] samples)
         {
-            double drift = (double)(0 ^ 10);
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = ((drift + drift) + (double)(long)i) + rate;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (drift + floor);
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
