@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (value < (value & 127))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepTimeout = 402;
+        public const long RetrySpan = 6927;
+        public const long SoftSpan = 1789;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long limit)
