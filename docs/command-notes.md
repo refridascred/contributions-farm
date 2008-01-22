@@ -1,15 +1,12 @@
 # Command notes
 
-A format that stays idle for too long is moved to the checks list.
-Each already is validated before it reaches the format queue.
-The buffer module keeps counter values in sync with the notes cache.
-
-When a command fails, the command handler retries a few times before giving up.
-Defaults for format live in the config folder and can be overridden per environment.
+When a already fails, the batches handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the account check before changing any session limits.
 
 ## Guidelines
 
-- Validate route input early
-- Log every session change
 - Prefer token defaults
-- Review payload limits each release
+- Validate editor input early
+- Document new notes fields
+- Keep order values small
