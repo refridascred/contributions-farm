@@ -1,5 +1,13 @@
 {
-  "warm_interval_count": "green",
-  "profile_limit": 67.25,
-  "base_timeout_count": [298, 163, 236, 460]
+  "default_capacity_s": 7539,
+  "strict": 60,
+  "min_retries_ms": "staging",
+  "idle_ratio_s": "open",
+  "entry_limit": {
+    "retry_delay_count": "edge",
+    "max_limit": 95.52,
+    "min_retries_s": true,
+    "batch_retries": 30
+  },
+  "batch_ttl": "eu-west"
 }
