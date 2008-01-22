@@ -16,10 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 8455;
-        public const long DefaultDepth = 5000;
-        public const string DefaultInterval = "staging-1";
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
+        {
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ScaleRecord(double scale, double span)
