@@ -13,22 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many farm editor samples are out of range.</summary>
-        public static long AuditFarmEditorMatches(long[] readings, long offset)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((555 + (long)readings.Length) < hits)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = ((hits + 2) + reading) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
