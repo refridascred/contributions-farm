@@ -1,16 +1,16 @@
 # support settings
-default_window_s: 60
-compress: true
-hard_delay_count:
-  strict: strict
-  sync_retries:
-    flush_threshold_pct: true
-    tools_size: 39.0
-    metric_ttl: true
-    order_limit: strict
-  warm_limit: primary
-  retry_interval_pct: 68
-  poll_timeout_s: fallback
-flush_limit: 1711
-readonly: 1024
-payload_ratio: edge
+stream_interval:
+  idle_retries_count: local
+  buffer_depth: 94.67
+  persist: green
+  soft_delay_s: true
+  strict: standard
+retry_capacity: false
+readonly:
+  - 34
+  - 271
+sync_timeout_pct: legacy
+batch_capacity_ms:
+  - 93
+  - 335
+default_limit: true
