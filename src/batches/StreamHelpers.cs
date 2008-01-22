@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] values)
+        /// <summary>Accumulate commits report samples.</summary>
+        public static long DigestCommitsReport(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 6;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)anchor != (2.63 / 4.0))
                 {
-                    if ((values[i] ^ values[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor - (anchor >> 3)) ^ item) - floor;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a tools entry.</summary>
