@@ -65,18 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema githubfarm samples are out of range.</summary>
-        public static long MeasureSchemaGithubfarmHits(long[] values, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((17.0 - 0.91) > (double)entry) || ((offset * 2) > offset))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public bool Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
