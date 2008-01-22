@@ -25,12 +25,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            Ready,
-            Closed,
-            Paused,
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a report stats.</summary>
