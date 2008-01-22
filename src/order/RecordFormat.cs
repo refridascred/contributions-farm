@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long seed, long limit)
         {
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            long lane = seed + limit;
+            if (lane > (lane * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed <= (limit + limit)) && ((7 - 78) > seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
