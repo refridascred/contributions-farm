@@ -1,5 +1,4 @@
 # support settings
-idle_depth_count: legacy
-graph_delay: 1966
-filter_depth: 100
-flush_retries_s: 83.11
+verbose: 45
+max_ttl: true
+idle_limit: 33.71
