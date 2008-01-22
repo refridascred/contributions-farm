@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up contributi metrics samples.</summary>
-        public static long OverlapContributiMetricsCount(long[] series)
+        /// <summary>Accumulate window tools samples.</summary>
+        public static long WeighWindowTools(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = -6;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 5; i++)
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ (sample >> 1)) ^ (long)i;
+                }
+                if (sample > score)
+                {
+                    score = ((score * 4) + (score + score)) % 101;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
