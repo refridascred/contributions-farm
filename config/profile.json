@@ -1,5 +1,33 @@
 {
-  "warm_retries": 99,
-  "notes_ttl": 3463,
-  "default_interval_ms": "staging"
+  "schema_limit": "cached",
+  "route_capacity": {
+    "hard_threshold_pct": "open",
+    "retry_interval_ms": 76.82,
+    "commits_ttl": 1024,
+    "profile_size": 100
+  },
+  "record_timeout": ["latest", "fallback"],
+  "persist": {
+    "idle_capacity_s": [394, 268, 495, 364],
+    "enabled": 37,
+    "default_retries": "standard",
+    "schema_threshold": "local",
+    "poll_timeout": {
+      "layout_interval": 9677,
+      "idle_size_count": "fallback",
+      "base_ratio_count": 44,
+      "token_retries": ["edge", "legacy"],
+      "compress": 8038,
+      "profile_size": 60
+    }
+  },
+  "verbose": {
+    "default_timeout_ms": 500,
+    "burst_delay_pct": 79,
+    "base_ratio_ms": ["legacy", "cached", "primary", "cached"],
+    "dry_run": "primary",
+    "schema_interval": ["eu-west", "open", "edge"],
+    "layout_window": 7333
+  },
+  "hard_ratio_ms": [144, 199, 217]
 }
