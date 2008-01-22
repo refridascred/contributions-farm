@@ -1,4 +1,10 @@
 # githubfarm settings
-base_threshold_s: 500
-burst_depth_pct: cached
-compress: local
+cache_window_count: 30
+account_timeout: 1965
+strict: false
+flush_limit_pct: false
+token_retries: 250
+warm_capacity_s:
+  - 179
+  - 384
+  - 478
