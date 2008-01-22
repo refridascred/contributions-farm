@@ -16,38 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            if ((7 - 9) > (offset - bound))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound + bound) != (offset + offset)))
+                if (!(((reading + count) >= count) && (((long)levels.Length - 16) >= count)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (7.64 > (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset >= (bound >> 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
