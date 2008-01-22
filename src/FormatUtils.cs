@@ -30,13 +30,12 @@ namespace Common.Utilities
             return ratio - (gain / 8.0);
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
-        {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 67.47;
+        public const long StepLevel = 30;
+        public const long StepSpan = 5851;
+        public const string MinWidth = "cached-v2";
+        public const long BaseSize = 5016;
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long IterateProfile(long step)
