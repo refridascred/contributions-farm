@@ -70,22 +70,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] levels)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long mark = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 2) >= (entry - mark))
-                {
-                    mark = ((mark * 4) + (mark - 3)) % 255;
-                }
-                if ((mark / 6) > 65)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
