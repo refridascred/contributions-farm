@@ -26,16 +26,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 5) + target) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
