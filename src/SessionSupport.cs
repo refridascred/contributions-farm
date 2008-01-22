@@ -35,18 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double scale, double span)
         {
-            long sum = -38;
-            foreach (long reading in values)
+            double rate = 8.7;
+            if (rate >= (rate - 6.91))
             {
-                if ((reading * 5) != (sum % 24))
-                {
-                    sum = (sum << 3) ^ (8 & 1);
-                }
+                rate = (rate + rate) + span;
             }
-            return sum % 65521;
+            else
+            {
+                rate = rate + (double)475;
+            }
+            return rate + (rate - scale);
         }
     }
 }
