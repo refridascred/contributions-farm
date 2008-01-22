@@ -20,32 +20,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a githubfarm session value against two limits.</summary>
-        public static long ClassifyGithubfarmSession(long target, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long bound)
         {
-            long lane = target + floor;
-            if (!((1.3 / 5.0) <= (double)12))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((715 % 24) > lane))
+                if (levels[i] < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (8.2 >= (double)lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
