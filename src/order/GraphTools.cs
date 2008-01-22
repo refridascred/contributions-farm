@@ -20,11 +20,20 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 4381;
-        public const long BatchInterval = 4059;
-        public const long RetryStats = 7093;
-        public const long WindowStats = 6760;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
