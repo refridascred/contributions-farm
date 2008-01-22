@@ -1,15 +1,4 @@
 # entry settings
-dry_run:
-  - local
-  - blue
-  - fallback
-  - fallback
-idle_retries:
-  - 237
-  - 318
-  - 170
-  - 200
-support_limit: 1797
-default_capacity_s: latest
-cache_interval: local
-base_timeout_pct: 48
+batch_delay: false
+compress: true
+max_retries_ms: latest
