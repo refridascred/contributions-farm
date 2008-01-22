@@ -1,7 +1,18 @@
 # entry settings
-persist: 1024
-poll_limit:
-  - eu-west
-  - standard
-max_threshold_pct: 97.62
-soft_limit_s: 41.58
+soft_window_s:
+  - 477
+  - 450
+  - 10
+  - 427
+retry_interval: false
+cache_threshold_s: 14
+compress:
+  report_limit: blue
+  min_limit_s: true
+  batch_ratio: 8223
+  idle_capacity_count:
+    editor_timeout: 37.27
+    counter_interval: 59.31
+    idle_ttl: false
+    warm_delay_count: 1.6
+warm_retries: blue
