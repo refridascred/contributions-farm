@@ -56,12 +56,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long step, long seed)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            long bound = step + seed;
+            if ((step ^ bound) > seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed <= (14.0 * 1.54))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step >> 5) <= (step + 353))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (5.0 <= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
