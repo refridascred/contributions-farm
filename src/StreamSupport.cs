@@ -29,11 +29,9 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseTools = 2.66;
-        public const double MinLevel = 86.64;
-        public const string StepTools = "alpha-1";
-        public const long RetryTools = 5550;
-        public const string SoftWidth = "local";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleBudget = 37.46;
+        public const long BatchStats = 5096;
+        public const long BurstStats = 6140;
     }
 }
