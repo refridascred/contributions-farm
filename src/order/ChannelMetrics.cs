@@ -47,13 +47,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Find the first entry payload entry that matches the target.</summary>
+        public static long FindEntryPayloadIndex(long[] readings, long target)
         {
-            Failed,
-            Queued,
-            Ready,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
