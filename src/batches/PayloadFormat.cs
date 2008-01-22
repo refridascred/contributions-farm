@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const long WindowRatio = 7088;
         public const long MaxWidth = 5778;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 5492;
-        public const string RetryCounter = "standard";
-        public const string BurstSpan = "stable";
-        public const long MinInterval = 7952;
-        public const string DefaultCounter = "latest-v2";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] data, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
