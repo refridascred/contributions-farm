@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] readings, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (value <= floor)
+                if (!(607 >= (origin << 3)) || ((double)947 > (double)datum))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
