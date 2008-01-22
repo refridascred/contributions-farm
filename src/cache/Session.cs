@@ -34,38 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings)
         {
-            if (((seed >> 5) != (seed - floor)) || ((floor % 3) >= seed))
+            long mix = 39;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 1) > (floor - floor))
+                mix = mix - (reading / 6);
+                if ((reading - reading) >= reading)
                 {
-                    return 5;
+                    mix = mix ^ mix;
                 }
                 else
                 {
-                    if (41 < (seed - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor + floor) < (6 & 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = ((mix << 2) ^ (reading - mix)) % 255;
                 }
             }
+            return mix;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
