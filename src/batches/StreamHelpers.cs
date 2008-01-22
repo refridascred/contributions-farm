@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate profile record readings against a bound.</summary>
-        public static bool VerifyProfileRecordBounds(long[] values, long seed)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a tools entry.</summary>
