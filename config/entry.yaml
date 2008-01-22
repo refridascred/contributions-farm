@@ -1,4 +1,13 @@
 # entry settings
-default_threshold_s: false
-editor_interval: 40
-hard_size_pct: 54
+batch_size: 60
+batches_ratio:
+  - 208
+  - 281
+command_retries:
+  - cached
+  - strict
+  - open
+  - staging
+idle_timeout_ms: 88.33
+dry_run: 59
+batch_interval: 84.0
