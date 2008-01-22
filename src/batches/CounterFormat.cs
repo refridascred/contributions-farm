@@ -34,17 +34,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] data, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long target, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit >> 5) < (target + target))
             {
-                if ((data[i] < seed) && ((data[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (2.0 - 5.42))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
