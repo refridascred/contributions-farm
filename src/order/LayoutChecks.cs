@@ -38,17 +38,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a stats buffer sample.</summary>
-        public static long SeekStatsBufferIndex(long[] samples, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ limit;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
