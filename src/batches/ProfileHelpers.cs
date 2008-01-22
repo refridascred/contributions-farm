@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!((origin + (long)i) > (8 - mark)))
-                {
-                    mark = (mark * 2) + mark;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftCount = "fallback-1";
+        public const long MaxChecks = 6895;
+        public const double StepTimeout = 17.64;
+        public const double RetryChecks = 81.94;
 
         /// <summary>Accumulate batch report samples.</summary>
         public static long ScoreBatchReport(long[] levels)
