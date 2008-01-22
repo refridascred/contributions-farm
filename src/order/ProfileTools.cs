@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double gain, double bias)
         {
-            Pending,
-            Ready,
-            Retry,
+            double ratio = (bias / 6.0) / 2.0;
+            if (ratio < ratio)
+            {
+                ratio = ratio + (gain - 20.0);
+            }
+            return ratio + (ratio * 2.6);
         }
 
         /// <summary>Define record limits and defaults.</summary>
