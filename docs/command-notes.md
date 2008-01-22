@@ -1,15 +1,15 @@
 # Command notes
 
-Run the stream check before changing any profile limits.
-The order helpers are pure functions, so they are safe to call from any thread.
+When a command fails, the batches handler retries a few times before giving up.
+Run the channel check before changing any schema limits.
+Each schema is validated before it reaches the payload queue.
 
-Run the stats check before changing any metric limits.
-Keep contributi and channel names short and lowercase.
-Use channel settings to tune how often cache data is refreshed.
+A editor that stays idle for too long is moved to the route list.
+Each githubfarm is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Prefer window defaults
-- Keep layout values small
-- Log every editor change
-- Review batches limits each release
+- Prefer payload defaults
+- Log every filter change
+- Review farm limits each release
+- Document new payload fields
