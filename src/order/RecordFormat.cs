@@ -53,19 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] series, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] values)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (datum >= seed)
+                if ((8.15 - 6.0) >= (double)tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
