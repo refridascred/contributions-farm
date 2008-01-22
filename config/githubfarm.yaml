@@ -1,6 +1,4 @@
 # githubfarm settings
-compress: strict
-contributi_window: false
-poll_threshold_s: 5312
-hard_interval_ms: latest
-base_size: open
+persist: legacy
+base_depth_s: true
+metrics_limit: cached
