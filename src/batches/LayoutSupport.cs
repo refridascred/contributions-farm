@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long limit)
         {
-            long score = -3;
-            foreach (long reading in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (((double)score < (double)reading) && ((4.01 * 11.0) == (double)reading))
+                if (cell != limit)
                 {
-                    score = (score - reading) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
