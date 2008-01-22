@@ -55,12 +55,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 6869;
-        public const string WindowChannel = "standard-1";
-        public const long BatchLevel = 8687;
-        public const long SoftRatio = 6756;
-        public const string DefaultDepth = "cached";
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderRange(long[] items, long origin)
