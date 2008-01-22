@@ -39,21 +39,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((hits + step) != (hits * 4)))
                 {
-                    if ((values[i] - values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
