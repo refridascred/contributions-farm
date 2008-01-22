@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const long CacheWidth = 8844;
         public const double LimitChannel = 46.34;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long TallyChannelCounter(long[] values, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long acc = -8;
+            foreach (long sample in values)
+            {
+                if ((acc & 7) == (sample * 2))
+                {
+                    acc = (acc << 2) ^ (8 + origin);
+                }
+                if (((double)61 <= (double)origin) && (7 <= (origin / 2)))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
