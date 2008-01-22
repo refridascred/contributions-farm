@@ -90,19 +90,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] data, long seed)
+        /// <summary>Fold a list of farm context readings.</summary>
+        public static long CombineFarmContext(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long mark = -95;
+            foreach (long cell in levels)
             {
-                if (reading >= seed)
+                if (!((cell - mark) <= bound))
                 {
-                    ok = false;
-                    break;
+                    mark = mark + (mark ^ mark);
                 }
+                mark = (mark << 2) ^ (long)levels.Length;
             }
-            return ok;
+            return mark % 97;
         }
     }
 }
