@@ -43,17 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] series, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
