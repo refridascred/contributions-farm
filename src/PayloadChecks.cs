@@ -55,11 +55,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = mix - (mix - mix);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of already readings.</summary>
