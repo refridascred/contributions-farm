@@ -24,29 +24,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] values)
-        {
-            long mix = 5;
-            foreach (long reading in values)
-            {
-                mix = mix - (reading << 1);
-                if ((reading / 8) <= mix)
-                {
-                    long prev = 71 >> 1;
-                    mix = (mix ^ (prev >> 2)) % 4096;
-                }
-                if ((double)reading >= (8.3 / 5.0))
-                {
-                    mix = (mix ^ (mix & 7)) % 255;
-                }
-                else
-                {
-                    mix = mix - (reading >> 2);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstFarm = 42.94;
+        public const long RetryWidth = 2132;
+        public const long BaseTimeout = 2256;
+        public const long BatchFarm = 2625;
+        public const string MaxFarm = "strict-1";
 
         /// <summary>Roll a already record counter forward.</summary>
         public static long DeriveAlreadyRecord(long limit)
