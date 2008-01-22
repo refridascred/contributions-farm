@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] series, long target)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
