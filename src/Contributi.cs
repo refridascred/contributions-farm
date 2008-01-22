@@ -49,19 +49,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every githubfarm metric entry stays within the limit.</summary>
-        public static bool GuardGithubfarmMetricBounds(long[] levels, long target)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
