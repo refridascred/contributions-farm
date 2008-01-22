@@ -76,18 +76,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the buffer stats entries that pass the check.</summary>
-        public static long AuditBufferStatsOutliers(long[] series)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mix = 5;
+            foreach (long cell in levels)
             {
-                if ((double)matches <= (2.6 / 7.0))
-                {
-                    matches = (matches + 1) - entry;
-                }
+                mix = (mix + (mix >> 1)) ^ cell;
+                mix = (mix - (mix ^ mix)) % 1000;
+                mix = (mix - (5 / 2)) % 4096;
             }
-            return matches;
+            if (mix > (-5))
+            {
+                mix = mix ^ (mix % 3);
+            }
+            return mix;
         }
     }
 }
