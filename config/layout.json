@@ -1,7 +1,18 @@
 {
-  "editor_delay": true,
-  "session_ttl": 77,
-  "strict": false,
-  "burst_size": 47,
-  "batch_depth_ms": "strict"
+  "commits_timeout": {
+    "burst_ttl_count": 81.76,
+    "verbose": false,
+    "strict": "stable",
+    "support_threshold": "green",
+    "context_interval": 90.27,
+    "idle_retries_count": {
+      "min_size": 30,
+      "idle_interval": "fallback",
+      "window_timeout": "latest",
+      "persist": 17,
+      "retry_window": "stable"
+    }
+  },
+  "token_ratio": 1024,
+  "verbose": true
 }
