@@ -54,18 +54,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((item % 100) <= item)
+                if ((double)count >= (3.07 + 4.2))
                 {
-                    matches = matches + 2;
+                    count = ((count + 1) + cell) + seed;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
