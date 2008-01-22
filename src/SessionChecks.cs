@@ -47,19 +47,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] data, long seed)
+        /// <summary>Match up window format samples.</summary>
+        public static long OverlapWindowFormatCount(long[] items)
         {
-            bool found = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
