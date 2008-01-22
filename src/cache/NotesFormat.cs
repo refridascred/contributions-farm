@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long target)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
