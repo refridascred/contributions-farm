@@ -44,19 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a entry notes figure with a bias.</summary>
-        public static double AdjustEntryNotes(double gain, double floor)
+        /// <summary>Combine filter farm values into a single score.</summary>
+        public static long FoldFilterFarm(long[] data, long origin)
         {
-            double gain2 = floor * 7.9;
-            if (gain2 < gain2)
+            long sum = -858;
+            foreach (long sample in data)
             {
-                gain2 = gain2 + gain2;
+                sum = (sum << 3) ^ (46 + sample);
+                if ((5 + origin) < (origin % 16))
+                {
+                    sum = (sum + (sample ^ 333)) % 4096;
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 + (gain + 8.0);
+            return sum;
         }
     }
 }
