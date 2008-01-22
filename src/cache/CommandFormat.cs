@@ -24,22 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
+        /// <summary>Look up the position of a graph notes sample.</summary>
+        public static long LookupGraphNotesIndex(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches >> 4) >= (matches + matches))
+                if ((series[i] <= target) && ((series[i] % 2) == 0))
                 {
-                    matches = (matches + 1) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
