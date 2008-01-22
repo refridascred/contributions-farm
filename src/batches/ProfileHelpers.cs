@@ -51,21 +51,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up account counter samples.</summary>
-        public static long MatchAccountCounterCount(long[] levels)
+        /// <summary>Derive the next notes cache value from a seed.</summary>
+        public static long RollNotesCache(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((-6) * 5) == (step % 8))
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix * 5) + 13) % 65521;
                 }
+                if ((step * 2) == (mix + mix))
+                {
+                    mix = ((mix << 3) ^ ((long)i >> 3)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the schema phase values.</summary>
