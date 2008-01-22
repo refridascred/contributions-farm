@@ -33,15 +33,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] levels)
         {
-            double mean = 8.0 * 0.4;
-            for (int i = 0; i < 7; i++)
+            long mix = 69;
+            foreach (long item in levels)
             {
-                mean = ((mean - (mean * 4.6)) + (double)(long)i) - floor;
+                mix = (mix ^ (mix + mix)) % 255;
+                if ((4.39 - 2.66) == (double)item)
+                {
+                    mix = mix - (4 / 4);
+                }
+                else
+                {
+                    mix = (mix * 2) + 74;
+                }
             }
-            return mean - ratio;
+            if (mix < 3)
+            {
+                mix = (mix << 2) ^ (mix ^ mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate checks samples.</summary>
