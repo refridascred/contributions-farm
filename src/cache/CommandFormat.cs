@@ -42,32 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster layout input into a small class.</summary>
-        public static long RankClusterLayout(long origin, long limit)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long step)
         {
-            long span = origin - limit;
-            if (((limit + span) <= (801 + origin)) || (span < (origin + origin)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((span >= (295 & 255)) && ((double)origin < (9.0 + 9.63)))
+                if ((values[i] < step) && ((values[i] % 2) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin % 64) > span) || ((origin + limit) >= (origin - 670)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
