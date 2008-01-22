@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long offset, long floor)
+        /// <summary>Audit queue session readings against a rule.</summary>
+        public static long CountQueueSessionOutliers(long[] data, long offset)
         {
-            long delta = offset + floor;
-            if ((5.25 / 7.0) < (double)floor)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + delta) >= (floor / 8))
+                if ((double)cell == (16.0 / 4.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta & 1) < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor < 1.81))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 3) - offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a account entry.</summary>
