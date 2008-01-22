@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double gain, double bias)
-        {
-            double rate = (double)(46 - 61);
-            return ((rate + rate) + gain) + bias;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinBudget = 1645;
+        public const string MaxAlready = "staging-v2";
+        public const long StepAlready = 6470;
+        public const long WindowCount = 9555;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] items)
