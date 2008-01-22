@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel counter readings.</summary>
-        public static long TallyChannelCounter(long[] values, long origin)
+        /// <summary>Check that every context account entry stays within the limit.</summary>
+        public static bool ValidateContextAccountRange(long[] values, long limit)
         {
-            long acc = -8;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((acc & 7) == (sample * 2))
+                if (reading >= limit)
                 {
-                    acc = (acc << 2) ^ (8 + origin);
-                }
-                if (((double)61 <= (double)origin) && (7 <= (origin / 2)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
