@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Stale,
-            Pending,
-            Dropped,
-            Closed,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "local-edge";
+        public const long BatchTimeout = 3;
+        public const long BaseCommand = 6510;
+        public const string BatchRatio = "primary-edge";
 
         /// <summary>Adjust a order reading.</summary>
         public static double AdjustOrder(double rate, double floor)
