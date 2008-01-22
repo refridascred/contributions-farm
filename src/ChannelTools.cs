@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long DefaultSize = 7326;
         public const long SoftSupport = 8154;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseInterval = 57.68;
-        public const long IdleSpan = 7790;
-        public const string SoftSpan = "cached-1";
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long ClassifyProfile(long offset, long floor)
