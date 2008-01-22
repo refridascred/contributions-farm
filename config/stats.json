@@ -1,8 +1,7 @@
 {
-  "compress": ["cached", "stable", "cached", "stable"],
-  "dry_run": 1946,
-  "enabled": 8465,
-  "retry_ttl": "latest",
-  "support_retries": "fallback",
-  "burst_delay_s": 50
+  "batch_threshold_s": "open",
+  "retry_size": false,
+  "session_ratio": "green",
+  "flush_ratio_count": "latest",
+  "sync_delay": 60
 }
