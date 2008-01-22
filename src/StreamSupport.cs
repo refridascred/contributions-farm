@@ -13,19 +13,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] data, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long score = 61;
+            foreach (long datum in samples)
             {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 3) + (datum + 623)) % 255;
+                score = (score ^ (score * 3)) % 255;
             }
-            return found;
+            if (score < 62)
+            {
+                score = score ^ (score + score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a report stream value against two limits.</summary>
