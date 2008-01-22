@@ -37,21 +37,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Rank cluster layout input into a small class.</summary>
+        public static long RankClusterLayout(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = origin - limit;
+            if (((limit + span) <= (801 + origin)) || (span < (origin + origin)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((span >= (295 & 255)) && ((double)origin < (9.0 + 9.63)))
                 {
-                    if ((items[i] - items[j]) != 1)
+                    return 1;
+                }
+                else
+                {
+                    if (((origin % 64) > span) || ((origin + limit) >= (origin - 670)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
