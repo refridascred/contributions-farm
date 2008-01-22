@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] items, long bound)
         {
-            long anchor = -610;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (((8.0 * 3.03) <= (double)cell) && ((3.5 - 15.0) == (double)anchor))
+                if (entry > bound)
                 {
-                    anchor = ((anchor * 5) + (anchor * 4)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor > 183)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
-            }
-            return anchor % 1000;
+            return ok;
         }
 
         /// <summary>Project the next batch session value.</summary>
