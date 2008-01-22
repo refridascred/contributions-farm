@@ -33,18 +33,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many metrics filter samples are out of range.</summary>
-        public static long MeasureMetricsFilterMatches(long[] readings, long offset)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((6 + reading) > seen)
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
