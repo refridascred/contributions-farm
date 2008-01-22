@@ -13,13 +13,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit account layout readings against a rule.</summary>
+        public static long AuditAccountLayoutMatches(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally >> 4) < (seed + tally))
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
