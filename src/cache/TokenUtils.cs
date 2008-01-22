@@ -18,22 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values, long floor)
+        /// <summary>Classify a account filter pair into a bucket.</summary>
+        public static long GradeAccountFilter(long floor, long target)
         {
-            long anchor = 637;
-            foreach (long reading in values)
+            if ((floor + floor) != (target + (-3)))
             {
-                if (532 >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((target - 1) < (target + target))
                 {
-                    anchor = (anchor - reading) % 255;
+                    return 7;
                 }
                 else
                 {
-                    anchor = anchor + (floor + reading);
+                    if ((104 << 2) <= (target - 99))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
