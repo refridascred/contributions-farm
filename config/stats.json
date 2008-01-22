@@ -1,5 +1,5 @@
 {
-  "sync_delay": 60,
-  "enabled": [213, 476, 349, 46],
-  "contributi_ttl": ["cached", "blue"]
+  "layout_timeout": 7573,
+  "compress": "local",
+  "profile_interval": 4497
 }
