@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] data, long target)
+        /// <summary>Check that every metrics order entry stays within the limit.</summary>
+        public static bool CheckMetricsOrderRange(long[] samples, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (data[i] < target)
+                if (entry > step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
