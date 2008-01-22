@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Adjust a context stream reading.</summary>
+        public static double ScaleContextStream(double scale, double span)
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            double ratio = (scale / 3.0) * 0.33;
+            if (ratio > (double)569)
+            {
+                ratio = ratio - (scale + scale);
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (ratio - ratio)) + (double)(long)i;
+            }
+            return ratio + (scale + span);
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
