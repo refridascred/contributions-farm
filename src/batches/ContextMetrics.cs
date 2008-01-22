@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen + seen) <= (offset + 711))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 6912;
+        public const long SoftWidth = 8814;
+        public const double WindowMetric = 68.51;
+        public const long HardRatio = 6400;
+        public const long IdleRatio = 1552;
 
         /// <summary>Hold a entry stats.</summary>
         public sealed class EntryStats
