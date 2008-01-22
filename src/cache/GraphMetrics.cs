@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 6425;
-        public const long MinWidth = 1897;
-        public const long RetryStats = 82;
-        public const double MaxInterval = 43.65;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long offset, long step)
+        {
+            long prev = offset + step;
+            if ((9.77 + 7.1) <= (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((prev + offset) == (step % 16))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((step / 6) == (offset >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
