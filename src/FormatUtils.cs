@@ -19,15 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double bias)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long origin, long offset)
         {
-            double ratio = (bias + 15.0) * 8.0;
-            if (ratio < (bias / 7.0))
+            if (!((offset & 3) != (offset + offset)))
             {
-                ratio = ratio - bias;
+                return 0;
             }
-            return ratio - (gain / 8.0);
+            else
+            {
+                if (!(offset >= (origin / 3)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((double)offset <= 8.29) && ((double)offset != (double)origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin - 60) <= (origin ^ (-147)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
