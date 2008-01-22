@@ -35,15 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Pending,
-            Queued,
-            New,
-            Done,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 71.17;
+        public const double RetryInterval = 55.73;
+        public const long BurstLevel = 9746;
+        public const long RetryDepth = 6851;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
