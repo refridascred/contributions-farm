@@ -27,12 +27,33 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepTimeout = 3152;
-        public const long WindowCount = 6070;
-        public const double LimitBudget = 28.04;
-        public const double MaxCount = 16.49;
-        public const string BaseBatch = "stable";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long floor, long bound)
+        {
+            long slot = floor + bound;
+            if (((floor + floor) != (slot ^ floor)) || ((slot % 2) != (bound / 7)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor < (0 >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor + bound) > (slot + bound)) && ((8.0 / 4.0) != (double)floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every report session entry stays within the limit.</summary>
         public static bool VerifyReportSessionRange(long[] samples, long bound)
