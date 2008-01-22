@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] readings, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((matches + limit) == (605 - 1))
+                if ((8.0 / 6.0) == (double)(long)samples.Length)
                 {
-                    matches = (matches + 2) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = ((tally + 1) + entry) + origin;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate entry command readings against a bound.</summary>
