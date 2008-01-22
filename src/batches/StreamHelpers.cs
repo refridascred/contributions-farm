@@ -64,27 +64,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values, long step)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] series, long offset)
         {
-            long state = 92;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((double)step <= (double)state))
+                if ((series[i] == offset) && ((series[i] % 3) == 0))
                 {
-                    state = state - (state + state);
-                }
-                if ((double)step > 8.32)
-                {
-                    state = (state ^ (sample >> 2)) % 255;
-                }
-                state = (state - (step * 3)) % 1000;
-                if ((double)step >= (11.0 / 4.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
