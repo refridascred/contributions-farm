@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] samples)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = floor;
+            if (load > load)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + floor) - weight;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (floor / 8.0)) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Roll a route counter forward.</summary>
