@@ -52,10 +52,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardWidth = "standard-edge";
-        public const long SoftGithubfarm = 8295;
-        public const double StepGithubfarm = 89.51;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] levels)
