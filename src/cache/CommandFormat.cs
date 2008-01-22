@@ -22,19 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] values, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long seed)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if (seed < (limit / 6))
             {
-                if (value != floor)
+                return 3;
+            }
+            else
+            {
+                if (seed < limit)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Rank cluster layout input into a small class.</summary>
