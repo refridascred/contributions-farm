@@ -1,16 +1,13 @@
 {
-  "checks_window": 14.82,
-  "sync_window_ms": {
-    "flush_ttl_count": false,
-    "base_limit_ms": {
-      "cache_retries": false,
-      "payload_retries": "green",
-      "payload_limit": [282, 369, 446, 276]
-    },
-    "flush_size_pct": false,
-    "warm_delay": 1024,
-    "default_depth": "strict",
-    "batch_delay": 87.76
-  },
-  "dry_run": false
+  "booking_timeout": 66,
+  "sync_capacity_s": 60.91,
+  "cache_delay": true,
+  "verbose": "staging",
+  "cache_capacity_ms": {
+    "profile_threshold": 30,
+    "profile_ratio": true,
+    "max_size": true,
+    "compress": 3096,
+    "default_ttl_pct": [209, 78, 319]
+  }
 }
