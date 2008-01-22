@@ -1,8 +1,8 @@
 # support settings
-poll_window: 43.23
-base_ratio_ms:
-  - eu-west
-  - cached
-  - fallback
-idle_timeout: 500
-sync_threshold: 98
+dry_run: green
+cache_window_pct: 37
+max_capacity_s: false
+graph_threshold:
+  - 375
+  - 140
+audit: latest
