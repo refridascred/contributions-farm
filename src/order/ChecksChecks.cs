@@ -24,25 +24,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long step, long origin)
-        {
-            long slot = step + origin;
-            if ((double)slot >= (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step % 8) > (29 + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultWidth = 5398;
+        public const long StepContext = 1465;
+        public const long BurstDepth = 9751;
+        public const string IdleContext = "local-edge";
     }
 }
