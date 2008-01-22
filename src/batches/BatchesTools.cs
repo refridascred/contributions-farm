@@ -26,11 +26,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 870;
-        public const double BaseToken = 16.11;
-        public const double CacheToken = 86.79;
-        public const double DefaultToken = 3.34;
-        public const double WindowSpan = 46.96;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftFactor = "legacy-edge";
+        public const string CacheContributi = "staging-edge";
+        public const string BaseBudget = "local-1";
+        public const long LimitSpan = 8439;
+        public const long BaseContributi = 6169;
     }
 }
