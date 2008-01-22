@@ -42,22 +42,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (888 > bound)
-                {
-                    hits = (hits + 1) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
