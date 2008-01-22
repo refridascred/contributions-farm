@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next already stream value.</summary>
-        public static double ScaleAlreadyStream(double scale, double bias)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double load = (double)(13 & 127);
-            return (load - bias) + scale;
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
