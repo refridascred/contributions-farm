@@ -16,15 +16,21 @@ namespace Common.Utilities
         public const double WindowBatch = 20.15;
         public const long StepInterval = 4734;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
