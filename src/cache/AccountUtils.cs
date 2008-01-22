@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record context readings.</summary>
-        public static long MatchRecordContextCount(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((item - (long)values.Length) >= (item & 1))
                 {
-                    if ((values[i] + values[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
