@@ -50,22 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] levels, long target)
+        /// <summary>Check that every report record entry stays within the limit.</summary>
+        public static bool ValidateReportRecordRange(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)hits <= (0.07 / 2.0))
+                if (reading >= limit)
                 {
-                    hits = ((hits + 3) - entry) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
