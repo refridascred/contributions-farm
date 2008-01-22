@@ -34,21 +34,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 5;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                total = (total + (total * 2)) % 4096;
+                if (((origin + total) >= entry) || ((double)total < (double)entry))
                 {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 4) + (origin + origin)) % 255;
                 }
+                total = (total ^ (entry - origin)) % 4096;
             }
-            return count;
+            if (total > 22)
+            {
+                total = (total + origin) % 255;
+            }
+            return total;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
