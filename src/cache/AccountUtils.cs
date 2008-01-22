@@ -30,17 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] levels, long step)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 52;
+            foreach (long reading in series)
             {
-                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ 9) % 4096) - reading;
             }
-            return -1;
+            if (mark < 747)
+            {
+                mark = ((mark << 2) ^ mark) % 1000;
+            }
+            return mark;
         }
     }
 }
