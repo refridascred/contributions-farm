@@ -85,11 +85,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double bias, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double ratio = bias;
-            return (ratio + (ratio / 2.0)) + floor;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
