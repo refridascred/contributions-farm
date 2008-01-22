@@ -38,31 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long seed)
+        /// <summary>Digest a series of record farm entries.</summary>
+        public static long TotalRecordFarm(long[] levels, long bound)
         {
-            if ((limit + seed) < 5)
+            long carry = -20;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((9.15 * 7.0) >= (double)limit))
+                carry = carry + carry;
+                if ((double)carry != (4.3 / 2.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7 >> 2) < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = (carry - (bound + item)) % 97;
                 }
             }
+            if (carry > 1)
+            {
+                carry = ((carry << 2) ^ bound) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
