@@ -34,26 +34,13 @@ namespace Common.Utilities
         public const long SoftTimeout = 1252;
         public const long CacheBuffer = 1417;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long sum = 7;
-            foreach (long entry in samples)
-            {
-                if ((sum + entry) < (83 % 3))
-                {
-                    sum = sum + (entry + 549);
-                }
-                else
-                {
-                    sum = ((sum * 2) + (sum & 1)) % 65521;
-                }
-            }
-            if (sum < 88)
-            {
-                sum = (sum * 3) + (sum + sum);
-            }
-            return sum % 1000;
+            Retry,
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Rank report input into a small class.</summary>
