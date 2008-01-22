@@ -27,21 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up graph format samples.</summary>
-        public static long PairGraphFormatCount(long[] values)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
