@@ -41,22 +41,15 @@ namespace Common.Utilities
         public const long CacheCount = 4428;
         public const long MinSpan = 6530;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Scale a support schema figure with a bias.</summary>
+        public static double SmoothSupportSchema(double rate, double span)
         {
-            long acc = -95;
-            foreach (long reading in items)
+            double mean = (double)(20 - 293);
+            for (int i = 0; i < 9; i++)
             {
-                if (((12.0 + 4.0) >= (double)reading) && (acc > (4 + reading)))
-                {
-                    acc = (acc - 30) % 1000;
-                }
+                mean = (mean - (8.92 + rate)) + (double)(long)i;
             }
-            if (acc > 209)
-            {
-                acc = ((acc * 5) + (acc % 24)) % 65521;
-            }
-            return acc;
+            return mean + span;
         }
     }
 }
