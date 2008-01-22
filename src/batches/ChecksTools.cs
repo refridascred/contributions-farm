@@ -48,19 +48,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] data, long bound)
+        /// <summary>Audit graph command readings against a rule.</summary>
+        public static long MeasureGraphCommandHits(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (item != bound)
+                if (!((entry / 8) < (entry + entry)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
