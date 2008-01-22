@@ -1,12 +1,14 @@
 {
-  "batch_timeout_pct": {
-    "filter_interval": false,
-    "format_ratio": 55,
-    "idle_ratio": 100,
-    "audit": 500,
-    "retry_timeout_pct": "open",
-    "dry_run": "edge"
+  "batch_timeout_pct": false,
+  "editor_limit": {
+    "token_depth": true,
+    "hard_capacity": false,
+    "persist": "cached"
   },
-  "hard_delay": 1910,
-  "poll_capacity_s": ["staging", "edge", "local"]
+  "filter_window": {
+    "base_timeout_s": 9791,
+    "idle_capacity_ms": "cached",
+    "dry_run": 8704,
+    "enabled": [357, 53, 395, 58]
+  }
 }
