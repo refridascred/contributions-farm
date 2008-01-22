@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinLevel = 89.02;
-        public const string WindowDepth = "open-edge";
-        public const double MinWidth = 40.66;
-        public const long MaxBuffer = 19;
-        public const long BaseSpan = 5418;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "stable-1";
+        public const string BurstFactor = "legacy-edge";
+        public const string WindowWidth = "stable-1";
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long bound, long origin)
