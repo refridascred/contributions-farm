@@ -1,18 +1,12 @@
 # githubfarm settings
-persist:
-  base_delay: 500
-  cache_interval_pct: 500
-  flush_size_pct: 29
-  strict: false
-  readonly: 32.93
-command_size:
-  - green
-  - open
-  - blue
-  - edge
-context_retries: false
-compress: 7396
-graph_capacity:
-  - open
-  - local
-warm_depth_count: true
+enabled: false
+warm_delay: 61
+min_ttl:
+  - 355
+  - 468
+  - 269
+burst_delay_pct: true
+cache_ttl:
+  - 248
+  - 383
+soft_window: stable
