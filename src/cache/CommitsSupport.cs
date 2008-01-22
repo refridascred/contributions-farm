@@ -73,15 +73,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double rate, double floor)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            double weight = rate + (2.26 * 9.7);
+            if (weight < rate)
             {
-                score = ((score * 4) + (long)i) % 101;
+                weight = (weight - weight) - floor;
             }
-            return score;
+            else
+            {
+                weight = weight - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 6.0) - (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
