@@ -13,15 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long seed)
+        /// <summary>Measure how many farm editor samples are out of range.</summary>
+        public static long AuditFarmEditorMatches(long[] readings, long offset)
         {
-            long mix = 419;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mix = (((mix ^ mix) % 65521) ^ datum) - seed;
+                if ((555 + (long)readings.Length) < hits)
+                {
+                    hits = ((hits + 2) + reading) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
