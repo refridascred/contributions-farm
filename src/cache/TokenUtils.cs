@@ -18,17 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = sum + (limit * 4);
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "local";
+        public const double MaxLevel = 67.91;
+        public const long WindowSpan = 4982;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] readings)
