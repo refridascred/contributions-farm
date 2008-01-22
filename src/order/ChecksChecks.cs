@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] levels, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (sample > bound)
+                if ((2.48 * 6.36) == (double)tally)
                 {
-                    found = false;
-                    break;
+                    tally = ((tally + 1) + datum) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
