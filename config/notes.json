@@ -1,5 +1,8 @@
 {
-  "sync_retries_s": "eu-west",
-  "hard_interval_s": 4,
-  "cache_delay": "cached"
+  "flush_capacity": true,
+  "support_threshold": 1808,
+  "batch_size_count": "fallback",
+  "default_interval_s": "strict",
+  "readonly": "standard",
+  "retry_size_pct": false
 }
