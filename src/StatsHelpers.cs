@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((7.3 - 2.0) <= (double)sample)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 1844;
+        public const long RetrySpan = 918;
+        public const long CacheDepth = 9074;
+        public const double DefaultFactor = 25.78;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] series, long bound)
