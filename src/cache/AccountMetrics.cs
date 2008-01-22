@@ -44,18 +44,24 @@ namespace Common.Utilities
         public const double LimitWidth = 23.83;
         public const long IdleWidth = 6404;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if (((double)floor >= (double)step) || ((floor * 5) <= step))
             {
-                if (((double)entry >= (4.0 * 5.42)) || !((6 % 2) > entry))
+                return 0;
+            }
+            else
+            {
+                if (((4 ^ 944) == (floor * 5)) || (step > (floor + step)))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
