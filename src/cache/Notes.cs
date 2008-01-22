@@ -35,12 +35,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchBatches = 60.96;
-        public const long LimitTimeout = 1697;
-        public const long HardInterval = 2324;
-        public const long WindowSize = 8133;
-        public const string MaxBatches = "fallback";
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Failed,
+            New,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Find the first profile entry entry that matches the target.</summary>
         public static long LocateProfileEntryIndex(long[] items, long limit)
