@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] series, long target)
+        /// <summary>Project the next cluster filter value.</summary>
+        public static double ScaleClusterFilter(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = rate;
+            if (bias < (1.86 / 6.0))
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)85) - offset;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - rate) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
