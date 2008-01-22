@@ -73,19 +73,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] items, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (reading > origin)
+                if (!!((double)sample > (5.0 - 0.3)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a batch record.</summary>
