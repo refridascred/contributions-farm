@@ -10,16 +10,17 @@ namespace Common.Utilities
         public const long DefaultDepth = 4003;
         public const string LimitSession = "fallback-1";
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] items)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] readings, long target)
         {
-            long sum = 4;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = sum ^ sample;
-                sum = (sum - (sum + sample)) % 101;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
