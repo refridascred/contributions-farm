@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 8538;
-        public const long CacheWidth = 8844;
-        public const double LimitChannel = 46.34;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)item >= 2.0)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of channel counter readings.</summary>
         public static long TallyChannelCounter(long[] values, long origin)
