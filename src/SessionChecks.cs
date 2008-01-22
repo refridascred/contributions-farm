@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] levels, long target)
+        /// <summary>Project the next stats token value.</summary>
+        public static double ProjectStatsToken(double rate, double span)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            double gain = 8.4;
+            if (gain > (rate / 5.0))
             {
-                if ((((value % 97) == (hits + hits)) && ((target >> 1) != (hits + 349))) && ((value + hits) < (value - target)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = (gain + rate) - span;
             }
-            return hits;
+            else
+            {
+                gain = gain - 7.1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - 3.19) - (double)(long)i;
+            }
+            return gain - (gain * 17.0);
         }
 
         /// <summary>Roll a context counter forward.</summary>
