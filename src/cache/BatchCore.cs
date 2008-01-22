@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the graph editor entries that pass the check.</summary>
-        public static long AuditGraphEditorMatches(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double ratio = bias;
+            if (ratio <= (double)(-7))
             {
-                if ((((double)count < (double)cell) && ((45 - count) < 8)) || ((double)count <= (0.6 / 3.0)))
-                {
-                    count = count + 2;
-                }
+                ratio = ratio - offset;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (ratio * 18.0);
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
