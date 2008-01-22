@@ -45,12 +45,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] values, long bound)
         {
-            Draft,
-            Queued,
-            Done,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token status values.</summary>
