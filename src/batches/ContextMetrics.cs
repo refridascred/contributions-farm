@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (items[i] <= offset)
+                if ((seen + seen) <= (offset + 711))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a entry stats.</summary>
