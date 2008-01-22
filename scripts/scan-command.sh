@@ -6,22 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in edge primary stable eu-west; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in stable latest; do
-    log "checking ${item}"
-done
