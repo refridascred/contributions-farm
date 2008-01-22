@@ -1,5 +1,5 @@
 {
-  "dry_run": 41.01,
-  "hard_retries_count": "latest",
-  "base_size": ["latest", "primary", "strict"]
+  "sync_retries_s": "eu-west",
+  "hard_interval_s": 4,
+  "cache_delay": "cached"
 }
