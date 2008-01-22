@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
             public long Count { get; set; }
             public long Token { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit record notes readings against a rule.</summary>
