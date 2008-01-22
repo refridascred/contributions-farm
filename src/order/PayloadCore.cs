@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmMatches(long[] samples, long offset)
+        /// <summary>Digest a series of graph entry entries.</summary>
+        public static long TallyGraphEntry(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long carry = -38;
+            foreach (long value in values)
             {
-                if ((hits - item) > (item << 2))
+                if ((double)(long)values.Length != (0.86 / 8.0))
                 {
-                    hits = (hits + 2) - offset;
+                    carry = carry - (71 + (long)values.Length);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (value & 7)) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a filter record.</summary>
