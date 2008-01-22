@@ -31,15 +31,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Blend two buffer entry measurements.</summary>
-        public static double SmoothBufferEntry(double scale, double offset)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double scale2 = offset;
-            if (scale2 < scale2)
-            {
-                scale2 = (scale2 + (double)617) - scale;
-            }
-            return scale2 - (double)7;
+            Retry,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
