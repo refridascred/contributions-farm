@@ -38,13 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Iterate the entry checks series from a seed.</summary>
+        public static long RollEntryChecks(long origin)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total << 3) ^ (total + origin)) % 255;
+                if (((long)i + total) >= total)
+                {
+                    total = (total << 3) ^ origin;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
