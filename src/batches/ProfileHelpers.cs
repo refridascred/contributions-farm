@@ -42,31 +42,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] values, long target)
         {
-            if (0 <= limit)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (581 - bound))
+                if (11.0 >= (double)sample)
                 {
-                    return 5;
+                    hits = (hits + 1) - target;
                 }
                 else
                 {
-                    if ((limit + limit) > 155)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
