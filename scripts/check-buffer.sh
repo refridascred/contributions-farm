@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+BUFFER_LIMIT=51
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,8 +19,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for item in standard green edge; do
+    log "checking ${item}"
 done
-log "total ${total}"
