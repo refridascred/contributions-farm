@@ -1,15 +1,16 @@
 {
-  "profile_limit": "strict",
-  "retry_interval": "local",
-  "sync_delay": {
-    "retry_limit_count": {
-      "sync_retries": 30,
-      "profile_ttl": "blue",
-      "audit": 100
-    },
-    "soft_window": false,
-    "context_interval": 53,
-    "cluster_size": 30,
-    "report_window": 9484
-  }
+  "idle_interval_pct": {
+    "record_capacity": "standard",
+    "commits_ratio": [14, 244, 394, 496],
+    "dry_run": 42.89,
+    "min_timeout_ms": {
+      "context_delay": ["primary", "stable"],
+      "metrics_ratio": 34,
+      "idle_ratio": 57.32,
+      "window_size": false
+    }
+  },
+  "editor_limit": "staging",
+  "context_capacity": 31,
+  "graph_window": 87.85
 }
