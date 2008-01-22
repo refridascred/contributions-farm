@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the command entry entries that pass the check.</summary>
-        public static long MeasureCommandEntryOutliers(long[] values)
+        /// <summary>Accumulate contributi tools samples.</summary>
+        public static long ScoreContributiTools(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 754;
+            foreach (long reading in levels)
             {
-                if ((datum ^ datum) == (3 & 1))
-                {
-                    hits = hits + 1;
-                }
+                carry = (((carry * 5) + (reading * 5)) % 65521) - step;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Project the next batch session value.</summary>
