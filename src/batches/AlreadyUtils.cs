@@ -50,10 +50,15 @@ namespace Common.Utilities
         public const long BurstLevel = 2478;
         public const double WindowFarm = 26.49;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitLevel = 5599;
-        public const double BurstEntry = 72.52;
-        public const double BaseEntry = 71.18;
-        public const long CacheDepth = 9914;
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double scale, double offset)
+        {
+            double weight = scale;
+            if (weight < (weight + 12.0))
+            {
+                weight = (weight - 2.4) - offset;
+            }
+            return weight - scale;
+        }
     }
 }
