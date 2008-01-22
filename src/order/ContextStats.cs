@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long seed, long step)
-        {
-            if (!((83 ^ step) >= (seed - step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step - step) < (seed & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((step * 4) >= (step + 5)) && (seed < (step >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((step - seed) > (step + 6)) && ((step - 0) < (step + step)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 1936;
+        public const double CacheScore = 29.15;
+        public const long HardLevel = 7523;
+        public const long RetryEntry = 5528;
+        public const long BaseEntry = 4224;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
