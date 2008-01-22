@@ -1,5 +1,5 @@
 {
-  "layout_timeout": 7573,
-  "compress": "local",
-  "profile_interval": 4497
+  "batch_limit": 14,
+  "audit": ["cached", "strict"],
+  "notes_timeout": 32.46
 }
