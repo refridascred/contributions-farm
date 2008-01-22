@@ -1,6 +1,9 @@
 # githubfarm settings
-readonly: cached
-hard_capacity: 57.85
-soft_capacity_ms: local
-enabled: local
-batches_ttl: open
+soft_delay_pct: stable
+cache_window_count:
+  - 170
+  - 232
+  - 477
+  - 25
+cache_ttl_ms: 7661
+poll_timeout_pct: false
