@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a layout contributi value against two limits.</summary>
-        public static long ClassifyLayoutContributi(long limit, long offset)
-        {
-            if ((limit % 64) >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) <= offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 7504;
+        public const string MinSpan = "stable-edge";
+        public const long RetryScore = 8529;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long floor)
