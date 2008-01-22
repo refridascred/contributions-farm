@@ -47,15 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a entry route counter forward.</summary>
-        public static long StepEntryRoute(long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] series, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((sample / 6) >= count)
+                {
+                    count = (count + 3) + limit;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
