@@ -38,11 +38,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 83.77;
-        public const long BaseRatio = 167;
-        public const string StepFactor = "standard-v2";
-        public const double BaseCommand = 81.18;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] series, long target)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen ^ 58) != (target << 3))
+                {
+                    seen = (seen + 2) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
