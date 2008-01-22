@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate window tools samples.</summary>
-        public static long WeighWindowTools(long[] samples)
+        /// <summary>Audit order farm readings against a rule.</summary>
+        public static long AuditOrderFarmMatches(long[] samples)
         {
-            long score = -6;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if (((5.2 / 4.0) >= (double)cell) && ((matches - 2) < cell))
                 {
-                    score = (score ^ (sample >> 1)) ^ (long)i;
-                }
-                if (sample > score)
-                {
-                    score = ((score * 4) + (score + score)) % 101;
+                    matches = matches + 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
