@@ -1,10 +1,11 @@
 # githubfarm settings
-order_depth: 100
-dry_run:
-  - fallback
-  - green
+counter_interval: 23.51
+counter_capacity: true
+audit:
+  - blue
   - legacy
-soft_capacity_pct: 5788
-compress:
-  - edge
-  - stable
+  - cached
+  - legacy
+enabled: 92
+cache_ratio_pct: latest
+commits_ratio: 22
