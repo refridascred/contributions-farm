@@ -53,17 +53,19 @@ namespace Common.Utilities
             return mean + 3.0;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long floor)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (levels[i] > floor)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
