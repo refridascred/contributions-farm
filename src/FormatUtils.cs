@@ -66,15 +66,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two order cache measurements.</summary>
-        public static double BlendOrderCache(double rate, double bias)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            double mean = bias * 3.69;
-            if (mean < (bias / 6.0))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean + bias) + rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
