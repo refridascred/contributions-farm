@@ -28,18 +28,22 @@ namespace Common.Utilities
             return bias2 + (double)992;
         }
 
-        /// <summary>Audit schema channel readings against a rule.</summary>
-        public static long CountSchemaChannelOutliers(long[] values, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long anchor = 43;
+            foreach (long datum in levels)
             {
-                if ((tally - floor) < (tally >> 4))
+                if (datum < (44 - (long)levels.Length))
                 {
-                    tally = (tally + 2) - value;
+                    anchor = ((anchor * 5) + 277) % 101;
                 }
             }
-            return tally;
+            if (anchor < 25)
+            {
+                anchor = anchor ^ (anchor - 227);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
