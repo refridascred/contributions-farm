@@ -1,6 +1,9 @@
 {
-  "batch_interval": ["cached", "open"],
-  "warm_timeout_ms": [467, 439, 325],
-  "dry_run": "stable",
-  "tools_interval": "local"
+  "burst_delay_pct": 23.64,
+  "cluster_timeout": {
+    "route_interval": "green",
+    "window_depth": 30,
+    "soft_delay_pct": 3580
+  },
+  "compress": 1024
 }
