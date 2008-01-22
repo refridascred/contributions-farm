@@ -58,18 +58,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] levels, long floor)
+        /// <summary>Match up account counter samples.</summary>
+        public static long MatchAccountCounterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((175 / 6) == (floor + sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the schema phase values.</summary>
