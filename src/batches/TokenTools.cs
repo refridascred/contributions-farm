@@ -31,17 +31,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Paused,
         }
     }
 }
