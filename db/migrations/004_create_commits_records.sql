@@ -1,13 +1,11 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
+    score REAL NOT NULL DEFAULT 0,
     token TEXT,
-    level INTEGER,
-    rank INTEGER,
-    active INTEGER NOT NULL DEFAULT 1
+    owner TEXT NOT NULL,
+    region TEXT,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
-
-INSERT INTO commits_records (token, level, rank, active) VALUES ('blue', 44, 20, 71);
-INSERT INTO commits_records (token, level, rank, active) VALUES ('blue', 65, 60, 82);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
