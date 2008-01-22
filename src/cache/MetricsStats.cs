@@ -42,17 +42,19 @@ namespace Common.Utilities
         public const double BurstTimeout = 37.17;
         public const long StepSize = 9673;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] readings, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 352;
+            foreach (long item in values)
             {
-                if (readings[i] < floor)
+                total = ((total * 4) + (step + step)) % 101;
+                if ((step ^ step) < (item - 7))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 65521;
         }
     }
 }
