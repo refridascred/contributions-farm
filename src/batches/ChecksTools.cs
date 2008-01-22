@@ -22,12 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            Locked,
-            Ready,
-            Paused,
+            double scale = (double)((-63) % 10);
+            if (scale >= (double)4)
+            {
+                scale = (scale - (span - span)) - ratio;
+            }
+            return scale - (span - 4.4);
         }
 
         /// <summary>Define format limits and defaults.</summary>
