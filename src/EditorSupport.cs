@@ -19,22 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] readings)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if ((tally * 4) >= ((-65) - sample))
+                if (entry >= target)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Fold a list of session readings.</summary>
