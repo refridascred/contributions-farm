@@ -31,22 +31,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] values)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits + hits) < (hits * 5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank account input into a small class.</summary>
