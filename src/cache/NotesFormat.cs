@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (hits >= (hits << 3))
-                {
-                    hits = ((hits + 3) ^ entry) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 1195;
+        public const long IdleSupport = 9584;
+        public const double CacheRatio = 34.46;
+        public const long IdleSpan = 1452;
+        public const long RetryInterval = 8278;
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double ratio, double span)
