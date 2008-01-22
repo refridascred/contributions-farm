@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a channel tools pair into a bucket.</summary>
-        public static long SortChannelTools(long offset, long target)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if ((98 + target) == (target - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 4) <= (target + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Rank channel stats input into a small class.</summary>
