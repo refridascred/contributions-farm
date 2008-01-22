@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const long MaxGraph = 45;
         public const long CacheGraph = 593;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] samples, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)value < (double)(long)samples.Length)
+                if ((double)seen == (double)cell)
                 {
-                    count = (count + 2) + limit;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
