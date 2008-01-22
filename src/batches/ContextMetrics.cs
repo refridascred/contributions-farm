@@ -28,24 +28,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of record farm entries.</summary>
-        public static long TotalRecordFarm(long[] levels, long bound)
-        {
-            long carry = -20;
-            foreach (long item in levels)
-            {
-                carry = carry + carry;
-                if ((double)carry != (4.3 / 2.0))
-                {
-                    carry = (carry - (bound + item)) % 97;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = ((carry << 2) ^ bound) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryDepth = 59.03;
+        public const long LimitRecord = 1400;
+        public const long BurstCount = 3800;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] data, long step)
