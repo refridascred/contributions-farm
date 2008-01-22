@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const string BaseLevel = "latest-v2";
         public const double LimitFactor = 59.46;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Match up order support samples.</summary>
+        public static long MatchOrderSupportCount(long[] readings)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
