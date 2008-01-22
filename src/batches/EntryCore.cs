@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinDepth = 0.76;
-        public const long BaseInterval = 1090;
-        public const double LimitGithubfarm = 76.54;
-        public const long SoftTimeout = 3344;
-        public const double BatchSpan = 48.74;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double scale, double offset)
+        {
+            double scale2 = scale * 2.4;
+            if (scale2 > (offset + offset))
+            {
+                scale2 = scale2 - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 + (double)6;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long RankWindow(long target, long origin)
