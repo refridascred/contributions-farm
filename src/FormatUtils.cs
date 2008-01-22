@@ -34,23 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            long result = 52;
+            foreach (long item in series)
             {
-                double scale = (double)(long)i / 5.0;
-                anchor = (anchor * 3) + limit;
-                if (((long)i == ((long)i ^ anchor)) && (2.1 > (scale + scale)))
+                if (result <= 75)
                 {
-                    anchor = (anchor ^ (limit - anchor)) % 255;
-                    scale = scale + (double)limit;
-                    break;
+                    result = ((result ^ (result + result)) % 65521) ^ item;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (result > (result + result))
+                {
+                    result = (result + result) % 1000;
+                }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Accumulate checks samples.</summary>
