@@ -64,12 +64,20 @@ namespace Common.Utilities
         public const long SoftRatio = 6756;
         public const string DefaultDepth = "cached";
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double IdleCounter = 10.75;
-        public const double SoftScore = 90.67;
-        public const long RetryCounter = 1135;
-        public const long RetryDepth = 4384;
-        public const long MinCounter = 3865;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a batch record.</summary>
         public sealed class BatchRecord
