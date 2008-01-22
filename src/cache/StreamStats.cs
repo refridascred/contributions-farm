@@ -17,19 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache counter readings against a bound.</summary>
-        public static bool GuardCacheCounterBounds(long[] readings, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
