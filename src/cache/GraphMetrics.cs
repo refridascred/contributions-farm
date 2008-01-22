@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((long)i == (floor ^ sum))
+                {
+                    sum = sum ^ (floor - (long)i);
+                }
+                else
+                {
+                    sum = (sum + ((long)i - sum)) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
