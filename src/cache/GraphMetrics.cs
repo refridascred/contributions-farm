@@ -72,10 +72,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepDepth = "staging-v2";
-        public const long DefaultProfile = 8619;
-        public const double IdleProfile = 40.76;
-        public const double BurstProfile = 33.25;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double rate, double floor)
+        {
+            double rate2 = rate;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = ((rate2 - (rate2 / 6.0)) + (double)(long)i) + floor;
+            }
+            return rate2 - (rate - rate);
+        }
     }
 }
