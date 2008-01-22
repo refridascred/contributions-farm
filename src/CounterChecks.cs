@@ -38,24 +38,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long origin, long floor)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            if ((origin + origin) < (floor / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin * 3) < origin) || ((floor >> 1) < origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
