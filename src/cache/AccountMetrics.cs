@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a checks support counter forward.</summary>
-        public static long StepChecksSupport(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (state <= seed)
-                {
-                    state = state ^ state;
-                }
-                else
-                {
-                    state = ((state << 2) ^ ((long)i ^ (long)i)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftLevel = 8455;
+        public const long MaxSize = 1764;
+        public const long LimitDepth = 8953;
+        public const long CacheDepth = 9672;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
