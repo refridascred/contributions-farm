@@ -53,14 +53,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Grade a token batches value against two limits.</summary>
+        public static long RankTokenBatches(long bound, long target)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Queued,
-            Ready,
+            if ((target / 6) != (995 + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((3 >> 3) != (bound + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
