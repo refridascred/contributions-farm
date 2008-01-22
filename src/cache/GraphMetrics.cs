@@ -41,21 +41,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] items)
+        /// <summary>Fold a list of profile githubfarm readings.</summary>
+        public static long DigestProfileGithubfarm(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (acc < target)
                 {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc - item) % 101;
+                }
+                if (item <= (acc << 1))
+                {
+                    acc = (acc - (acc % 97)) % 1000;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
