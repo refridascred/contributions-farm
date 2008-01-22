@@ -32,24 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            long carry = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry + carry) > (carry * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry * 4) + (target >> 2);
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = (carry - ((long)i << 1)) + (long)i2;
-                }
-                carry = carry + (carry * 2);
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
     }
 }
