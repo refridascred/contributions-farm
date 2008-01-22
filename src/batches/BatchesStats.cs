@@ -27,24 +27,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series)
-        {
-            long score = 881;
-            foreach (long cell in series)
-            {
-                score = (score * 5) + (8 + score);
-                if ((cell ^ score) != (cell + score))
-                {
-                    score = (score + (cell >> 1)) % 4096;
-                }
-                else
-                {
-                    score = (score - score) % 255;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepTimeout = 3152;
+        public const long WindowCount = 6070;
+        public const double LimitBudget = 28.04;
+        public const double MaxCount = 16.49;
+        public const string BaseBatch = "stable";
 
         /// <summary>Check that every report session entry stays within the limit.</summary>
         public static bool VerifyReportSessionRange(long[] samples, long bound)
