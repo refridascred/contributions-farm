@@ -24,17 +24,23 @@ namespace Common.Utilities
         public const double MaxSchema = 12.11;
         public const double IdleSize = 54.3;
 
-        /// <summary>Find the first graph window entry that matches the target.</summary>
-        public static long SeekGraphWindowIndex(long[] readings, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = floor;
+            if (gain <= 10.0)
             {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain = gain - 2.3;
             }
-            return -1;
+            else
+            {
+                gain = gain - (bias / 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - (double)773;
         }
 
         /// <summary>Hold a filter options.</summary>
