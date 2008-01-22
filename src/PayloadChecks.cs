@@ -34,10 +34,40 @@ namespace Common.Utilities
         public const long MinSize = 9454;
         public const string WindowMetric = "fallback";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 23.69;
-        public const long SoftCluster = 4654;
-        public const long CacheTimeout = 1833;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long origin, long bound)
+        {
+            long lane = origin ^ bound;
+            if ((origin ^ origin) != (origin / 8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2 + bound) == (bound - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin * 2) < (lane & 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - origin) < origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] levels)
