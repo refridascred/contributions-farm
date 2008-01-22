@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next profile command value.</summary>
-        public static double SmoothProfileCommand(double bias, double floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long bound)
         {
-            double bias2 = bias;
-            if (bias2 >= bias)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                bias2 = (bias2 - 8.91) - floor;
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 - (14.0 - bias2);
+            return ready;
         }
 
         /// <summary>Fold a list of entry context readings.</summary>
