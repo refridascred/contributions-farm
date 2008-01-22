@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Paused,
-            Synced,
-            Ready,
-            Closed,
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first payload command entry that matches the target.</summary>
