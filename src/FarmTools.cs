@@ -28,18 +28,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] levels, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (((long)levels.Length - floor) >= tally)
+                if ((6 % 97) < matches)
                 {
-                    tally = (tally + 3) + datum;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
