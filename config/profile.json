@@ -1,6 +1,7 @@
 {
-  "compress": "strict",
-  "persist": 55,
-  "enabled": 68.61,
-  "idle_ratio_pct": "primary"
+  "retry_ttl": 72.26,
+  "cache_timeout_s": "cached",
+  "readonly": 100,
+  "batch_delay": 16,
+  "burst_retries_count": 989
 }
