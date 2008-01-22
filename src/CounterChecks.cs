@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultInterval = 70.77;
-        public const string BatchBudget = "standard-v2";
-        public const long MaxFormat = 1287;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Paused,
+            Pending,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ScaleProfile(double weight, double floor)
