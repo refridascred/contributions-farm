@@ -39,15 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Stale,
+            Synced,
+            Pending,
+            Ready,
         }
     }
 }
