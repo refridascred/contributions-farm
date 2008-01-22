@@ -68,26 +68,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor << 3) ^ (99 + (long)i);
-                if ((target >> 3) <= (6 + (long)i))
-                {
-                    anchor = (anchor ^ ((long)i + target)) % 97;
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (3 % 12);
-                    anchor = (anchor << 2) ^ (anchor >> 5);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 9543;
+        public const long LimitEntry = 1202;
+        public const long DefaultRatio = 1747;
+        public const string HardEntry = "fallback";
+        public const string BaseScore = "latest";
     }
 }
