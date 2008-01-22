@@ -36,18 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] readings)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((7 + 679) <= (hits * 2))
+                if ((count / 7) > datum)
                 {
-                    hits = (hits + 2) + sample;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
