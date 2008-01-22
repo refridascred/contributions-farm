@@ -1,5 +1,18 @@
 {
-  "min_ttl_s": ["staging", "primary", "staging", "open"],
-  "max_capacity_pct": [426, 195, 81, 170],
-  "strict": ["eu-west", "staging", "cached", "standard"]
+  "max_size_ms": {
+    "warm_limit_s": false,
+    "context_interval": 66.07,
+    "compress": "open",
+    "format_ttl": "fallback",
+    "default_size": 30
+  },
+  "record_window": 4030,
+  "burst_capacity_count": "legacy",
+  "metric_window": {
+    "dry_run": "cached",
+    "batch_capacity_s": "latest",
+    "min_ratio": "latest",
+    "session_threshold": 22.01
+  },
+  "default_timeout": "green"
 }
