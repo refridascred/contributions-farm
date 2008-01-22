@@ -1,6 +1,5 @@
 {
-  "max_retries_count": 27.39,
-  "max_ttl_pct": true,
-  "counter_timeout": 100,
-  "persist": "green"
+  "burst_depth": [352, 69],
+  "cache_capacity_pct": 7,
+  "idle_delay": "local"
 }
