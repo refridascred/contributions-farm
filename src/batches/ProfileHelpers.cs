@@ -24,12 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data, long target)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long anchor = -6;
+            foreach (long value in data)
+            {
+                if (((double)anchor != (double)target) || (((long)data.Length << 3) <= anchor))
+                {
+                    anchor = (anchor ^ (value + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - value)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
