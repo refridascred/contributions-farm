@@ -28,10 +28,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 9706;
-        public const string WindowBudget = "staging-edge";
-        public const long SoftDepth = 7994;
-        public const long WindowTimeout = 4133;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 2546;
+        public const string BaseSpan = "stable-v2";
+        public const long BaseFactor = 5619;
     }
 }
