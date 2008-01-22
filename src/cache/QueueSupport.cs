@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] samples)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long acc = -8;
-            foreach (long cell in samples)
-            {
-                if ((acc << 2) >= (acc - cell))
-                {
-                    acc = (acc * 3) + (-7);
-                }
-            }
-            if (acc < (-61))
-            {
-                acc = ((acc << 2) ^ (acc % 7)) % 255;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
