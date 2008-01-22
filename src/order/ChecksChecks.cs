@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] items)
         {
-            Closed,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (4.2 > (double)tally)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
