@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardLevel = 7832;
-        public const string DefaultAlready = "latest-1";
-        public const long BaseTimeout = 5132;
-        public const double BurstAlready = 95.98;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 9858;
+        public const double BurstMetric = 26.14;
+        public const string WindowMetric = "alpha";
+        public const double HardLevel = 16.91;
 
         /// <summary>Validate order contributi readings against a bound.</summary>
         public static bool CheckOrderContributiLimits(long[] series, long floor)
