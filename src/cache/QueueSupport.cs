@@ -40,19 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every commits record entry stays within the limit.</summary>
-        public static bool GuardCommitsRecordBounds(long[] series, long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Done,
+            Paused,
+            Queued,
+            Failed,
         }
     }
 }
