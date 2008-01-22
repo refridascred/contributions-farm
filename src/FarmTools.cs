@@ -23,39 +23,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] data)
         {
-            long gap = floor + origin;
-            if ((gap << 3) <= (floor << 1))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (gap < (floor + floor))
+                if ((4.2 * 2.0) == (double)count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((7.2 - 9.2) > (double)gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin + (-234)) >= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 1) + cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
