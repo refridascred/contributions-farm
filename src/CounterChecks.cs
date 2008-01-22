@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryScore = 8946;
+        public const string StepSize = "local-edge";
+        public const long BatchScore = 2657;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmOutliers(long[] values, long origin)
