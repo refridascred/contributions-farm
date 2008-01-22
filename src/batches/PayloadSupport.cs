@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long sum = 42;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell > (3.6 * 7.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ sum) % 255;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ cell;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
