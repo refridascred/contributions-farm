@@ -39,18 +39,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] values)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!(((-94) ^ tally) < (reading + tally)) || ((2.5 * 9.9) >= (double)reading))
+                if ((-30) > (step >> 4))
                 {
-                    tally = tally + 2;
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
