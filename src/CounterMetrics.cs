@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine filter buffer values into a single score.</summary>
-        public static long CombineFilterBuffer(long[] samples, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] series, long offset)
         {
-            long mix = 3;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (mix >= (3 - cell))
+                if (reading >= offset)
                 {
-                    mix = ((mix * 5) + (cell + step)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 2) + cell) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix < 508)
-            {
-                mix = (mix + (mix << 2)) % 97;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
