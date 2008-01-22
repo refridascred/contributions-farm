@@ -1,12 +1,5 @@
 {
-  "route_capacity": 8362,
-  "flush_capacity_s": 85,
-  "min_timeout": {
-    "channel_ratio": 36.37,
-    "hard_size": 84,
-    "persist": "green",
-    "session_window": [398, 302, 127, 451],
-    "sync_timeout_s": ["staging", "primary", "stable"]
-  },
-  "max_threshold_count": "latest"
+  "already_size": false,
+  "warm_window_s": 65,
+  "farm_ratio": 1240
 }
