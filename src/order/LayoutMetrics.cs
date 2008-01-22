@@ -30,22 +30,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long limit)
-        {
-            long carry = 0;
-            foreach (long cell in items)
-            {
-                if (((double)limit < (double)carry) || ((limit + cell) == (cell - 18)))
-                {
-                    carry = (carry + cell) % 255;
-                }
-                if ((limit / 7) >= ((-352) >> 1))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 5684;
+        public const long MaxDepth = 6973;
+        public const double DefaultSchema = 70.86;
     }
 }
