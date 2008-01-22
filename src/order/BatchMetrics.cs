@@ -28,18 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit format batch readings against a rule.</summary>
-        public static long CountFormatBatchOutliers(long[] items)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + hits) > (1 >> 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Pending,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
