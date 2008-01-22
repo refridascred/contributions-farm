@@ -73,15 +73,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Derive the next checks stats value from a seed.</summary>
+        public static long IterateChecksStats(long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                carry = (carry - origin) % 4096;
+                carry = (carry - carry) % 97;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
