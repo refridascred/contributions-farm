@@ -71,18 +71,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] values, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((6 - hits) <= item) || (hits <= ((long)values.Length ^ target)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Failed,
         }
     }
 }
