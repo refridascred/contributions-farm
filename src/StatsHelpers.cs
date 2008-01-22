@@ -38,17 +38,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((series[i] <= target) && ((series[i] % 2) == 0))
+                if (value != target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate token samples.</summary>
