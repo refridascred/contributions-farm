@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const long StepWidth = 3118;
         public const long StepSize = 5375;
 
-        /// <summary>Compare every pair of channel checks readings.</summary>
-        public static long OverlapChannelChecksCount(long[] samples)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
