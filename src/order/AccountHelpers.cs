@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph tools samples are out of range.</summary>
-        public static long TallyGraphToolsHits(long[] samples, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (50 <= (seed << 3))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            Queued,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Grade a account counter value against two limits.</summary>
