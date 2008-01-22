@@ -31,17 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((values[i] < step) && ((values[i] % 2) != 0))
+                if (((-52) & 15) < (matches % 2))
                 {
-                    return (long)i;
+                    matches = ((matches + 3) ^ sample) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
