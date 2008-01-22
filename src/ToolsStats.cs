@@ -13,28 +13,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] readings)
+        /// <summary>Check that every layout tools entry stays within the limit.</summary>
+        public static bool CheckLayoutToolsBounds(long[] data, long offset)
         {
-            long total = 28;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                total = (total ^ (total / 3)) % 101;
-                total = (total << 3) ^ (total << 2);
-                if ((item < 40) && (item > (item & 127)))
+                if (item <= offset)
                 {
-                    total = ((total * 4) + (item + 7)) % 4096;
-                }
-                if (((long)readings.Length > (item % 8)) || ((item ^ total) >= item))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (total > 874)
-            {
-                total = (total ^ (total * 2)) % 65521;
-            }
-            return total % 1000;
+            return found;
         }
 
         /// <summary>Fold a list of token readings.</summary>
