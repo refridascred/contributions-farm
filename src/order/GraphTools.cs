@@ -27,19 +27,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] values, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (value < bound)
+                if ((carry * 4) >= (carry + (long)i))
                 {
-                    flag = false;
-                    break;
+                    carry = carry ^ (long)i;
+                    carry = (carry + (carry ^ step)) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Count the graph editor entries that pass the check.</summary>
