@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the order already entries that pass the check.</summary>
-        public static long MeasureOrderAlreadyHits(long[] series, long floor)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long ScoreMetricStats(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = 725;
+            foreach (long entry in values)
             {
-                if (!(sample <= (floor - 535)) || ((sample >> 5) == (tally / 5)))
+                if (((seed & 255) >= (sum ^ 8)) || ((entry & 127) > (entry + entry)))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 2) + (entry + sum)) % 1000;
+                    break;
+                }
+                if ((entry - seed) == ((long)values.Length + sum))
+                {
+                    sum = (sum - (sum << 2)) % 255;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
