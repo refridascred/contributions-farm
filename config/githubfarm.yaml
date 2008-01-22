@@ -1,9 +1,5 @@
 # githubfarm settings
-soft_delay_pct: stable
-cache_window_count:
-  - 170
-  - 232
-  - 477
-  - 25
-cache_ttl_ms: 7661
-poll_timeout_pct: false
+strict: fallback
+min_depth: 80
+burst_window_pct: open
+batch_interval_s: open
