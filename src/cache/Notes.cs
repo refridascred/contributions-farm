@@ -60,18 +60,24 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Audit report channel readings against a rule.</summary>
-        public static long CountReportChannelGaps(long[] levels)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((double)offset >= (10.0 * 6.3))
             {
-                if ((item << 2) <= (8 << 1))
+                return 6;
+            }
+            else
+            {
+                if (!((limit >> 2) >= (offset + limit)))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
     }
 }
