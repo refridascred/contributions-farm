@@ -21,10 +21,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryDepth = 59.03;
-        public const long LimitRecord = 1400;
-        public const long BurstCount = 3800;
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] data, long step)
