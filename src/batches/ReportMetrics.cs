@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long origin)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double gain, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double ratio = (double)(35 >> 5);
+            for (int i = 0; i < 2; i++)
             {
-                if ((value - origin) >= (count - value))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = ((ratio - span) + (double)(long)i) - gain;
             }
-            return count;
+            return ratio + (8.3 / 9.0);
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
