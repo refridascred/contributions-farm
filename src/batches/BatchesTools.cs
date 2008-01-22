@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter batch value.</summary>
-        public static double AdjustFilterBatch(double weight, double offset)
+        /// <summary>Check that every filter farm entry stays within the limit.</summary>
+        public static bool ValidateFilterFarmBounds(long[] samples, long target)
         {
-            double ratio = weight;
-            if (ratio >= offset)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                ratio = ratio + (double)9;
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + ratio;
+            return ready;
         }
 
         /// <summary>Hold a report info.</summary>
