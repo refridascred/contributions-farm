@@ -27,11 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Count the session batch entries that pass the check.</summary>
+        public static long TallySessionBatchMatches(long[] values)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (matches <= (sample % 16))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the route class values.</summary>
