@@ -38,14 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] values, long limit)
         {
-            Closed,
-            Pending,
-            Ready,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((double)item < (7.33 + 8.1)) && (((double)hits != (19.0 * 4.0)) || (hits >= (hits << 3))))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
