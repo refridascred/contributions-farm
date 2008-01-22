@@ -19,19 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm profile readings against a bound.</summary>
-        public static bool ValidateGithubfarmProfileRange(long[] items, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long target)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (reading <= seed)
+                anchor = (anchor + (anchor * 4)) % 97;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor + 2) % 255) ^ (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Measure how many context contributi samples are out of range.</summary>
