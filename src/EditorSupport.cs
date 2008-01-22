@@ -41,22 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] values, long target)
+        /// <summary>Scale a cluster counter figure with a bias.</summary>
+        public static double ProjectClusterCounter(double scale, double offset)
         {
-            long score = 6;
-            foreach (long entry in values)
+            double bias = offset;
+            if (bias > 16.0)
             {
-                if ((score << 2) != (score & 15))
-                {
-                    score = score + (target + entry);
-                }
-                else
-                {
-                    score = (score << 3) ^ entry;
-                }
+                bias = bias + (bias / 8.0);
             }
-            return score;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias + scale;
         }
 
         /// <summary>Roll a metric context counter forward.</summary>
