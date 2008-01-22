@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double SmoothChecks(double ratio, double floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] levels, long bound)
         {
-            double drift = floor;
-            if (drift < (ratio * 7.0))
+            bool found = true;
+            foreach (long sample in levels)
             {
-                drift = drift + (double)99;
+                if (sample > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (drift + ratio)) + (double)(long)i;
-            }
-            return drift - (drift + ratio);
+            return found;
         }
 
         /// <summary>Digest a series of report entries.</summary>
