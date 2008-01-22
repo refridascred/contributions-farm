@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=472
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
-    open)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=278
-log "limit is ${BUFFER_LIMIT}"
-
-for item in latest edge blue green; do
-    log "checking ${item}"
-done
