@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] samples)
         {
-            double scale = 11.0 * 7.53;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                scale = ((scale + span) + (double)(long)i) - ratio;
+                if ((double)count <= (8.0 / 9.0))
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale + span;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
