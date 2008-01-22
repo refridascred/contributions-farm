@@ -24,18 +24,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] items)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)573 > (double)matches))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
