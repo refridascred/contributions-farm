@@ -1,5 +1,4 @@
 # support settings
-editor_timeout: 95.95
-cache_delay_s: blue
-dry_run: 0.58
-checks_size: 65.7
+default_interval_ms: 52.12
+cache_size: 53
+contributi_size: 66.72
