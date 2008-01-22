@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account cache entry stays within the limit.</summary>
-        public static bool ValidateAccountCacheLimits(long[] series, long step)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long score = -259;
+            foreach (long entry in values)
             {
-                if (reading > step)
+                if (526 >= (score + 9))
                 {
-                    valid = false;
-                    break;
+                    score = (score ^ score) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score - entry)) % 4096;
                 }
             }
-            return valid;
+            if (score > 6)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Describe the commits state values.</summary>
