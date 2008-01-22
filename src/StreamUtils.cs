@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const long BatchQueue = 547;
         public const double IdleSpan = 77.52;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] data)
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - hits) == (sample + sample))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
