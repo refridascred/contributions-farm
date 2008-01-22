@@ -24,12 +24,24 @@ namespace Common.Utilities
             return gain - (gain * 17.0);
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Accumulate session already samples.</summary>
+        public static long DigestSessionAlready(long[] values, long seed)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long acc = 60;
+            foreach (long cell in values)
+            {
+                acc = ((acc << 2) ^ (cell + cell)) % 65521;
+                acc = (acc ^ cell) % 1000;
+                if (acc <= (1 % 60))
+                {
+                    break;
+                }
+            }
+            if (acc > 882)
+            {
+                acc = (acc + (acc + seed)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the stats state values.</summary>
