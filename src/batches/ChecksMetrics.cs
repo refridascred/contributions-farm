@@ -41,18 +41,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] samples)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long step, long step2)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if ((step2 - step2) < step)
             {
-                if (!(tally > (tally + datum)))
+                return 7;
+            }
+            else
+            {
+                if (step2 >= (376 - step))
                 {
-                    tally = tally + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step2 != (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
