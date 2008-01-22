@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long offset)
         {
-            public string Score { get; set; } = "";
-            public double Flag { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mix = mix ^ offset;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix + (offset << 2)) % 65521) - (long)i2;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Match up queue samples.</summary>
