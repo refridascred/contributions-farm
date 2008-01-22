@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long RetryCount = 1294;
         public const string IdleCount = "fallback-edge";
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Synced,
-            New,
-            Ready,
             Paused,
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Check that every commits record entry stays within the limit.</summary>
