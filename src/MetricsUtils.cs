@@ -49,12 +49,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
+            public double Size { get; set; }
             public double Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
