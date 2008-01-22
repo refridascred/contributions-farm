@@ -41,18 +41,19 @@ namespace Common.Utilities
             return bias - (double)3;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (!!((count >> 3) != (item / 6)))
+                if (item < offset)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
