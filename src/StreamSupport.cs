@@ -13,21 +13,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Validate command format readings against a bound.</summary>
+        public static bool VerifyCommandFormatLimits(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((series[i] ^ series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
