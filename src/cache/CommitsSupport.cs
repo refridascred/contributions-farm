@@ -55,18 +55,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally & 63) == (datum >> 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Active,
+            Ready,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
