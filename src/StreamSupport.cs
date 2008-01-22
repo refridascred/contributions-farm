@@ -30,22 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch contributi entries.</summary>
-        public static long TallyBatchContributi(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] items, long offset)
         {
-            long result = 324;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((8.0 + 4.5) != (double)result)
+                if ((reading - offset) > seen)
                 {
-                    result = ((result + (result & 3)) % 255) + item;
+                    seen = seen + 3;
                 }
             }
-            if (result > 396)
-            {
-                result = (result + (result ^ result)) % 101;
-            }
-            return result;
+            return seen;
         }
     }
 }
