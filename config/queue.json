@@ -1,18 +1,9 @@
 {
-  "cache_size_pct": 4948,
-  "compress": ["staging", "green", "standard"],
-  "flush_size_ms": 15.55,
-  "retry_threshold_s": 89.25,
-  "min_ratio_s": {
-    "retry_interval": {
-      "soft_ttl_pct": 43.58,
-      "default_retries": true,
-      "poll_threshold_s": 60,
-      "flush_ratio_ms": true
-    },
-    "hard_window": "blue",
-    "flush_capacity": "strict",
-    "flush_retries_s": 1024,
-    "persist": false
+  "format_interval": [401, 154, 275],
+  "base_limit_ms": 44.39,
+  "warm_ratio_s": {
+    "burst_depth": 13.75,
+    "context_window": [238, 465, 409, 488],
+    "readonly": true
   }
 }
