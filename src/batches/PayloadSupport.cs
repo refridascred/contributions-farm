@@ -31,24 +31,19 @@ namespace Common.Utilities
         public const long SoftLevel = 4257;
         public const long BatchContext = 734;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] readings, long limit)
         {
-            if ((61 % 24) != (floor << 3))
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor < (limit - floor))
+                if (reading != limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
