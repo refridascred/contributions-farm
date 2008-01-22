@@ -70,13 +70,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] levels, long bound)
         {
-            Failed,
-            Closed,
-            Draft,
-            Queued,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum >= (9.42 - 2.2))
+                {
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
