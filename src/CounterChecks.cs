@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Idle,
-            Active,
+            Done,
+            Paused,
+            Locked,
             Stale,
-            Dropped,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
