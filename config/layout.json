@@ -1,8 +1,7 @@
 {
-  "layout_ratio": 25,
-  "dry_run": 3313,
-  "flush_window": "primary",
-  "enabled": "cached",
-  "flush_window_count": 9.87,
-  "githubfarm_retries": 14.24
+  "githubfarm_threshold": 24.76,
+  "route_interval": [189, 95, 438, 378],
+  "poll_timeout_s": 29,
+  "soft_delay_count": 838,
+  "audit": 95.11
 }
