@@ -20,18 +20,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches % 100) > (reading / 4))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine batch cluster values into a single score.</summary>
