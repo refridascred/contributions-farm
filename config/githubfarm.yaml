@@ -1,6 +1,6 @@
 # githubfarm settings
-base_size: false
-audit: 37.39
-default_retries_ms: 250
-burst_depth: 34.25
-soft_interval: false
+compress: strict
+contributi_window: false
+poll_threshold_s: 5312
+hard_interval_ms: latest
+base_size: open
