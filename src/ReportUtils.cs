@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (sample > (sample * 5))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 82.0;
+        public const long BaseTimeout = 8745;
+        public const double StepCount = 66.55;
+        public const long HardInterval = 8845;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelLimits(long[] values, long target)
