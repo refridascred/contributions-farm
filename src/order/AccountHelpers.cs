@@ -25,11 +25,40 @@ namespace Common.Utilities
         public const long DefaultWidth = 7777;
         public const long HardInterval = 2726;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 9263;
-        public const double BurstFactor = 62.77;
-        public const long LimitFilter = 1619;
-        public const string HardFilter = "strict-1";
+        /// <summary>Grade a account counter value against two limits.</summary>
+        public static long BucketAccountCounter(long bound, long bound2)
+        {
+            long delta = bound ^ bound2;
+            if ((delta + bound) >= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound2 <= delta)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + bound2) > (bound2 << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound2 >= (bound2 - 44)) && ((double)bound <= (6.01 * 7.1)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double LimitCount = 31.52;
