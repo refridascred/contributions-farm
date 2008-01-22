@@ -1,28 +1,4 @@
 # githubfarm settings
-audit: staging
-dry_run: stable
-batch_limit: false
-token_timeout: true
-sync_ratio_ms:
-  - stable
-  - standard
-  - edge
-  - latest
-profile_threshold:
-  enabled:
-    burst_retries_count: latest
-    readonly: false
-    idle_size: 1024
-    counter_capacity: edge
-    order_ratio: 5073
-  sync_limit_ms:
-    - edge
-    - eu-west
-  profile_retries:
-    - 308
-    - 308
-  poll_threshold_ms: 1024
-  warm_window_ms: true
-  hard_timeout:
-    - edge
-    - open
+batch_window: 100
+burst_retries_pct: 7068
+hard_depth_ms: fallback
