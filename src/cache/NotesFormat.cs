@@ -32,14 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            Failed,
-            Draft,
-            Queued,
-            Done,
-            Paused,
+            double rate = (double)(-7) / 7.0;
+            if (rate < ratio)
+            {
+                rate = rate - (rate + 8.5);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - span) + (double)(long)i;
+            }
+            return rate - (span / 5.0);
         }
     }
 }
