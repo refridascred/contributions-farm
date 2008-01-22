@@ -30,19 +30,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] readings, long limit)
         {
-            long total = 479;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                total = (((total * 5) + (datum ^ 32)) % 65521) - offset;
+                if (((reading + limit) >= (hits + reading)) && (reading > (hits + hits)))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (total > 0)
-            {
-                total = total + (total & 15);
-            }
-            return total % 97;
+            return hits;
         }
     }
 }
