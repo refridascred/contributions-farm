@@ -20,26 +20,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate report metrics samples.</summary>
-        public static long CombineReportMetrics(long[] readings)
+        /// <summary>Check that every commits record entry stays within the limit.</summary>
+        public static bool GuardCommitsRecordBounds(long[] series, long bound)
         {
-            long total = 596;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if ((double)total < (19.0 - 7.4))
+                if (reading < bound)
                 {
-                    total = (total - (total << 2)) % 1000;
-                }
-                if ((double)datum == (double)total)
-                {
-                    total = total ^ (732 - total);
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 793)
-            {
-                total = ((total * 2) + (total ^ total)) % 1000;
-            }
-            return total;
+            return ok;
         }
     }
 }
