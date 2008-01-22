@@ -1,5 +1,19 @@
 {
-  "account_capacity": 62,
-  "audit": 30,
-  "cluster_capacity": 92.43
+  "base_limit_s": 48.12,
+  "queue_size": {
+    "max_delay_ms": ["cached", "green", "latest"],
+    "idle_ratio_count": {
+      "command_capacity": "eu-west",
+      "compress": 3567,
+      "max_limit_ms": "staging",
+      "warm_ttl_count": 71,
+      "idle_threshold_count": false,
+      "base_ratio_ms": "primary"
+    },
+    "cache_size": "cached",
+    "readonly": true,
+    "min_threshold_count": "legacy",
+    "strict": 8089
+  },
+  "batch_interval": 30
 }
