@@ -55,13 +55,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] items, long seed)
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
