@@ -51,18 +51,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the buffer commits entries that pass the check.</summary>
-        public static long MeasureBufferCommitsHits(long[] values)
+        /// <summary>Project the next commits session value.</summary>
+        public static double SmoothCommitsSession(double bias, double span)
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((1 ^ cell) <= (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double drift = span;
+            return (drift - (drift * 2.9)) + bias;
         }
     }
 }
