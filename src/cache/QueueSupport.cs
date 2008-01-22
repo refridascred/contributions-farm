@@ -33,13 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            Stale,
-            Synced,
-            Pending,
-            Ready,
+            long score = 8;
+            foreach (long item in samples)
+            {
+                score = (score + score) - item;
+            }
+            if (score < 989)
+            {
+                score = (score ^ (score / 3)) % 1000;
+            }
+            return score;
         }
     }
 }
