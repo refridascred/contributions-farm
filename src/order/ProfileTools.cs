@@ -51,26 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] values, long bound)
         {
-            long sum = 616;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((643 + 95) < (item - item))
+                if (value >= bound)
                 {
-                    sum = (sum ^ item) % 4096;
-                }
-                if (item <= (-39))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (sum < 626)
-            {
-                sum = (sum - target) % 255;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Iterate the queue tools series from a seed.</summary>
