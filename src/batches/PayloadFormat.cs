@@ -46,21 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 44;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (mix + (mix - 794)) - item;
             }
-            return matches;
+            if (mix < 411)
+            {
+                mix = (mix * 2) + (step + step);
+            }
+            return mix;
         }
     }
 }
