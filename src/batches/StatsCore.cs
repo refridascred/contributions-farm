@@ -64,12 +64,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long limit)
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
