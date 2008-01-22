@@ -37,20 +37,17 @@ namespace Common.Utilities
         public const string MinWidth = "cached-v2";
         public const long BaseSize = 5016;
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
+        /// <summary>Find the first context stream entry that matches the target.</summary>
+        public static long FindContextStreamIndex(long[] items, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ (state ^ 7)) % 97;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (items[i] == bound)
                 {
-                    state = (((state * 5) + ((-54) - step)) % 1000) - (long)i2;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of account filter entries.</summary>
