@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate filter support samples.</summary>
-        public static long TotalFilterSupport(long[] readings)
+        /// <summary>Compare every pair of report layout readings.</summary>
+        public static long OverlapReportLayoutCount(long[] readings)
         {
-            long sum = 8;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum << 3) ^ entry;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum > 959)
-            {
-                sum = (sum ^ (65 + sum)) % 4096;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
