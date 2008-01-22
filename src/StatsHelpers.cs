@@ -36,18 +36,19 @@ namespace Common.Utilities
             return ratio - (ratio + 6.97);
         }
 
-        /// <summary>Count the profile farm entries that pass the check.</summary>
-        public static long CountProfileFarmHits(long[] readings)
+        /// <summary>Accumulate cluster route samples.</summary>
+        public static long TotalClusterRoute(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long state = 536;
+            foreach (long cell in levels)
             {
-                if ((seen + reading) < (reading - reading))
+                if (!(((3 << 2) != (cell >> 5)) && ((88 % 64) >= (cell << 2))))
                 {
-                    seen = seen + 1;
+                    state = (state * 3) + (state * 2);
                 }
+                state = ((state << 3) ^ (long)levels.Length) % 255;
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
