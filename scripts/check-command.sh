@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging latest fallback open; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=315
-log "limit is ${COMMAND_LIMIT}"
