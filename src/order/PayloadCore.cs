@@ -14,13 +14,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Count channel metrics pairs that satisfy a relation.</summary>
+        public static long MatchChannelMetricsCount(long[] series)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the session batch entries that pass the check.</summary>
