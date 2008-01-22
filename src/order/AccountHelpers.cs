@@ -78,9 +78,18 @@ namespace Common.Utilities
         public const double MinTimeout = 10.75;
         public const long RetryFactor = 9507;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 39.45;
-        public const string BaseLevel = "standard-edge";
-        public const string WindowGraph = "stable-1";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((12.0 + 4.92) >= (double)floor)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
     }
 }
