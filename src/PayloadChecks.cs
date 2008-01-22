@@ -18,23 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] series)
+        /// <summary>Count order context pairs that satisfy a relation.</summary>
+        public static long MatchOrderContextCount(long[] values)
         {
-            long total = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 2) + (total << 3)) % 101;
-                if (!((double)total == (double)cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - cell) % 65521;
-                }
-                else
-                {
-                    total = (total + (cell ^ cell)) % 255;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
