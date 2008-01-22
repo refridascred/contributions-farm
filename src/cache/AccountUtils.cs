@@ -20,11 +20,23 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 8896;
-        public const long BatchLevel = 2017;
-        public const double WindowRatio = 77.78;
-        public const string HardMetrics = "stable-1";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell / 7) < (cell + count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Rank githubfarm farm input into a small class.</summary>
         public static long SortGithubfarmFarm(long floor, long target)
