@@ -1,16 +1,9 @@
 # githubfarm settings
-base_size_ms: 4127
-layout_size:
-  hard_depth_count: open
-  account_ttl: 7289
-  readonly: standard
-hard_depth:
-  max_depth:
-    support_size: 18.57
-    burst_window: fallback
-    cache_depth_ms: 47
-    dry_run: 37
-  readonly:
-    - 171
-    - 237
-  burst_ttl_s: 55.14
+warm_limit_ms: 14
+readonly: 30
+min_depth_ms: 1.9
+burst_depth_s: 6526
+poll_limit_pct:
+  - latest
+  - open
+hard_interval: 57
