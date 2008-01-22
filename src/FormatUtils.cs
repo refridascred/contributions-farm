@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics editor samples are out of range.</summary>
-        public static long AuditMetricsEditorGaps(long[] readings, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mark = 158;
+            foreach (long datum in levels)
             {
-                if ((count >= ((long)readings.Length ^ count)) || ((value * 3) != (count & 15)))
+                if ((mark * 4) >= (mark + mark))
                 {
-                    count = (count + 2) - offset;
+                    mark = ((mark << 2) ^ (datum - mark)) + offset;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Blend two already measurements.</summary>
