@@ -20,17 +20,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first entry payload entry that matches the target.</summary>
-        public static long FindEntryPayloadIndex(long[] readings, long target)
+        /// <summary>Compare every pair of farm githubfarm readings.</summary>
+        public static long MatchFarmGithubfarmCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
