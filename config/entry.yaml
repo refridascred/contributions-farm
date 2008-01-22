@@ -1,19 +1,22 @@
 # entry settings
-verbose:
-  - green
+audit: false
+sync_size_ms:
+  - fallback
   - edge
-  - legacy
-buffer_retries: 10.17
-payload_ttl: 1029
-max_timeout:
-  burst_timeout_pct: strict
-  hard_delay_s:
-    - 495
-    - 357
-    - 277
-  flush_threshold: strict
-  audit:
-    - edge
-    - open
-    - cached
-  default_window: 9273
+  - green
+  - eu-west
+cache_delay_ms: edge
+min_limit_ms: local
+report_retries:
+  report_capacity:
+    hard_retries_count: 44
+    schema_timeout:
+      - local
+      - latest
+    enabled: fallback
+    min_timeout_ms: false
+  hard_ttl_count: true
+  flush_delay: 60
+  strict: cached
+  channel_limit: 7713
+  cache_ratio_pct: cached
