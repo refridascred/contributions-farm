@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double bias)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] items, long floor)
         {
-            double scale = (rate - rate) + rate;
-            if (scale < 6.7)
+            bool ready = true;
+            foreach (long item in items)
             {
-                scale = scale - (scale / 3.0);
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale + (scale - bias);
+            return ready;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
