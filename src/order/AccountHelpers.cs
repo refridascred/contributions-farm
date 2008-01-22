@@ -36,15 +36,10 @@ namespace Common.Utilities
         public const string HardTools = "fallback-v2";
         public const double LimitTools = 49.4;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Locked,
-            Queued,
-            Dropped,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "fallback-1";
+        public const long IdleOrder = 1824;
+        public const string MaxOrder = "strict-1";
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool CheckSupportRange(long[] data, long step)
