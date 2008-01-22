@@ -24,15 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double weight, double offset)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] items, long offset)
         {
-            double mean = offset / 2.0;
-            if (mean <= (mean / 9.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = (mean - (offset - mean)) - weight;
+                if (items[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean + offset;
+            return -1;
         }
     }
 }
