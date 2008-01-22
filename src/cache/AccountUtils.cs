@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] values, long limit)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
