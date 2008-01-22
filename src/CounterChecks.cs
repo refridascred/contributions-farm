@@ -19,22 +19,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 82.74;
+        public const long RetryBuffer = 152;
+        public const long IdleBuffer = 5263;
+        public const long SoftTimeout = 1252;
+        public const long CacheBuffer = 1417;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] samples)
