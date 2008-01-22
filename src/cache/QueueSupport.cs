@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinCount = 6256;
-        public const double HardFormat = 0.58;
-        public const long RetryCount = 1294;
-        public const string IdleCount = "fallback-edge";
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double bias, double floor)
+        {
+            double load = (double)(3 + 73);
+            if (load >= (double)6)
+            {
+                load = (load - floor) + bias;
+            }
+            else
+            {
+                load = load + (4.26 * 6.84);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (floor / 3.0)) - (double)(long)i;
+            }
+            return load - (19.0 / 6.0);
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
