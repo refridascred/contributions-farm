@@ -34,10 +34,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowDepth = 87.15;
-        public const long DefaultCounter = 8464;
-        public const long BaseTimeout = 9036;
-        public const long MinCounter = 7589;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long origin, long step)
+        {
+            if (((1 - step) >= origin) || (591 <= (origin - origin)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + 81) < (step * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (-6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((7.6 + 11.0) > (2.0 - 5.97)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
