@@ -32,14 +32,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 1252;
         public const long CacheBuffer = 1417;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
+        public static long TallyReportGithubfarmGaps(long[] data, long limit)
         {
-            Pending,
-            Stale,
-            Paused,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)limit == (6.5 * 2.0))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools options.</summary>
