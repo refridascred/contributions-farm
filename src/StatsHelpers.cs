@@ -26,12 +26,15 @@ namespace Common.Utilities
         public const long BatchCluster = 7528;
         public const string LimitRatio = "staging-1";
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double rate, double floor)
         {
-            Idle,
-            Stale,
-            Closed,
+            double drift = (double)(0 ^ 10);
+            for (int i = 0; i < 5; i++)
+            {
+                drift = ((drift + drift) + (double)(long)i) + rate;
+            }
+            return drift + (drift + floor);
         }
 
         /// <summary>Describe the commits mode values.</summary>
