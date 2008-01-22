@@ -1,5 +1,7 @@
 {
-  "burst_ratio_ms": "standard",
-  "window_interval": [366, 110, 42, 101],
-  "poll_capacity_count": 30
+  "format_delay": 8160,
+  "cache_ttl": ["blue", "edge", "standard"],
+  "soft_capacity_ms": "standard",
+  "warm_window_s": 44,
+  "account_timeout": ["strict", "stable", "strict", "edge"]
 }
