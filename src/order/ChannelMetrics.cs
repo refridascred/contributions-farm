@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter command entry stays within the limit.</summary>
-        public static bool VerifyFilterCommandBounds(long[] values, long step)
+        /// <summary>Combine stream metrics values into a single score.</summary>
+        public static long TallyStreamMetrics(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long score = 676;
+            foreach (long reading in samples)
             {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score ^ (207 + reading)) % 101) + step;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Describe the cache state values.</summary>
