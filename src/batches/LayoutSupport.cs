@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (weight - (ratio * 7.8)) + bias;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Check that every context editor entry stays within the limit.</summary>
+        public static bool VerifyContextEditorRange(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Match up farm samples.</summary>
