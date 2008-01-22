@@ -24,21 +24,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (series[i] >= limit)
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
