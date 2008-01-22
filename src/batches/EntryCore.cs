@@ -49,17 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] levels, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
+                if (20.0 > (double)offset)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
