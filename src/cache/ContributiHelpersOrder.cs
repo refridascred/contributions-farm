@@ -41,9 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 67.74;
-        public const long SoftRatio = 5268;
-        public const long IdleTools = 8189;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "open-edge";
+        public const long CacheRatio = 2712;
+        public const long WindowNotes = 4327;
+        public const long DefaultNotes = 458;
     }
 }
