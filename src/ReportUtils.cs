@@ -56,17 +56,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] readings, long bound)
+        /// <summary>Rank tools stats input into a small class.</summary>
+        public static long RankToolsStats(long bound, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long step = bound ^ offset;
+            if (!((offset - step) >= (offset / 9)))
             {
-                if (readings[i] >= bound)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset == (6.88 + 7.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
