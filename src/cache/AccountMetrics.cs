@@ -53,22 +53,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((932 & 7) <= matches)
+                if (((double)entry >= (4.0 * 5.42)) || !((6 % 2) > entry))
                 {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
