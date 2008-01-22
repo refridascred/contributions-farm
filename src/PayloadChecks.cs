@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] samples)
         {
-            double scale = bias + (floor - floor);
-            if (scale > 0.9)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                scale = scale + scale;
+                if ((datum + hits) >= (hits - hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                scale = scale - (double)2;
-            }
-            return scale - (bias + bias);
+            return hits;
         }
 
         /// <summary>Accumulate stream samples.</summary>
