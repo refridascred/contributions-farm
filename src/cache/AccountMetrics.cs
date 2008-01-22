@@ -66,12 +66,15 @@ namespace Common.Utilities
         public const long SoftDepth = 6971;
         public const double LimitMetrics = 72.72;
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] items, long target)
         {
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            long sum = 368;
+            foreach (long sample in items)
+            {
+                sum = ((sum ^ sample) % 65521) - target;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a layout stats.</summary>
