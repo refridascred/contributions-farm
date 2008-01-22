@@ -19,38 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long origin, long offset)
+        /// <summary>Audit schema order readings against a rule.</summary>
+        public static long AuditSchemaOrderMatches(long[] items)
         {
-            if (!((offset & 3) != (offset + offset)))
+            long count = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(offset >= (origin / 3)))
+                if ((4.78 - 9.36) >= (double)sample)
                 {
-                    return 3;
+                    count = count + 2;
                 }
                 else
                 {
-                    if (((double)offset <= 8.29) && ((double)offset != (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin - 60) <= (origin ^ (-147)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
