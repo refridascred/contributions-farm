@@ -1,13 +1,8 @@
 {
-  "default_capacity_s": 7539,
-  "strict": 60,
-  "min_retries_ms": "staging",
-  "idle_ratio_s": "open",
-  "entry_limit": {
-    "retry_delay_count": "edge",
-    "max_limit": 95.52,
-    "min_retries_s": true,
-    "batch_retries": 30
-  },
-  "batch_ttl": "eu-west"
+  "burst_size": [17, 483, 294, 24],
+  "warm_interval": ["open", "open", "stable"],
+  "idle_window_ms": "legacy",
+  "retry_interval": true,
+  "retry_size": 2.82,
+  "record_ratio": "strict"
 }
