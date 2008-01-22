@@ -33,21 +33,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] data)
+        /// <summary>Count the tools order entries that pass the check.</summary>
+        public static long CountToolsOrderGaps(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seen == (3.0 / 3.0))
                 {
-                    if ((data[i] ^ data[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) ^ sample) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Match up account counter samples.</summary>
