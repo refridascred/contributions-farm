@@ -60,17 +60,26 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] levels, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 978;
+            foreach (long entry in samples)
             {
-                if (levels[i] <= seed)
+                if ((7.1 - 5.1) != (double)mix)
                 {
-                    return (long)i;
+                    mix = mix ^ ((-93) + 501);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ entry) % 4096;
                 }
             }
-            return -1;
+            if (mix > 0)
+            {
+                mix = ((mix * 4) + (mix & 1)) % 255;
+            }
+            return mix % 65521;
         }
     }
 }
