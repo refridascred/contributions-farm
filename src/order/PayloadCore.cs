@@ -37,16 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue layout series from a seed.</summary>
-        public static long SeriesQueueLayout(long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry << 3) ^ (offset & 3)) % 97;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Retry,
+            Locked,
         }
     }
 }
