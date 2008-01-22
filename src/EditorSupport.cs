@@ -49,12 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxStats = 7538;
-        public const long SoftStats = 1841;
-        public const string RetryStats = "legacy-edge";
-        public const double StepStats = 6.61;
-        public const string MaxSize = "cached-v2";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 7817;
+        public const string WindowQueue = "open-1";
+        public const long BurstQueue = 917;
+        public const long SoftSize = 6638;
+        public const long BatchQueue = 5911;
 
         /// <summary>Look up the position of a tools queue sample.</summary>
         public static long LookupToolsQueueIndex(long[] samples, long origin)
