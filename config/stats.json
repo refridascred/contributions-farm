@@ -1,6 +1,9 @@
 {
-  "max_depth_ms": 3841,
-  "flush_limit_ms": "primary",
-  "support_window": "stable",
-  "dry_run": "strict"
+  "audit": false,
+  "max_depth_ms": 94,
+  "max_interval_s": {
+    "cache_window": false,
+    "warm_delay": ["eu-west", "open"],
+    "cache_interval": "latest"
+  }
 }
