@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a record checks pair into a bucket.</summary>
-        public static long BucketRecordChecks(long bound, long bound2)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long prev = bound + bound2;
-            if (!(prev >= bound2))
+            long mix = 519;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (bound2 <= (prev + prev))
+                if (!((double)mix <= (double)618))
                 {
-                    return 4;
+                    mix = ((mix * 5) + (mix % 10)) % 1000;
                 }
-                else
+                if ((value / 5) == (2 << 3))
                 {
-                    if ((3.0 - 4.1) <= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix * 4) + (38 + 548);
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Hold a batches header.</summary>
