@@ -67,10 +67,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 7895;
-        public const long StepSpan = 1568;
-        public const string MinWidth = "cached-1";
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
+        {
+            Paused,
+            Retry,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
