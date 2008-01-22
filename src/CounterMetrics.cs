@@ -45,18 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesHits(long[] series, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double load = scale;
+            if (load > scale)
             {
-                if ((floor + floor) <= (item >> 4))
-                {
-                    seen = seen + 3;
-                }
+                load = load + 0.7;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 2.0) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Locate a token reading by value.</summary>
