@@ -59,21 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 66;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 4) + 1) % 4096;
+                acc = acc ^ (value + acc);
+                acc = (acc + (acc + value)) % 65521;
             }
-            return hits;
+            return acc % 97;
         }
     }
 }
