@@ -1,11 +1,12 @@
 # support settings
-dry_run: true
-sync_interval_ms: 84
-idle_retries_ms: 100
-min_threshold: 5442
-default_retries_count:
-  commits_size: 85.39
-  layout_window: false
-  batch_interval_count: 83.44
-  filter_window: 17.56
-soft_capacity: 25.37
+account_timeout: 3410
+compress:
+  readonly: 14.52
+  support_depth: open
+  burst_delay_count: 77.88
+  flush_retries_count: 98
+  filter_interval: 70.37
+batch_window_ms:
+  - 157
+  - 161
+strict: 18.77
