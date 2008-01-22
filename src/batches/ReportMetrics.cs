@@ -11,32 +11,12 @@ namespace Common.Utilities
         public const long CacheScore = 2268;
         public const long SoftDepth = 2959;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long floor, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long span = floor ^ origin;
-            if (((span - 726) <= (span << 2)) || ((double)origin <= (3.6 / 7.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)span != (2.4 * 2.4)) && ((8.3 / 7.0) == (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((1.09 + 17.0) > (double)span) && ((origin % 60) <= (floor + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Ready,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
