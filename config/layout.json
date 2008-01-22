@@ -1,20 +1,5 @@
 {
-  "route_threshold": "latest",
-  "retry_depth_s": 84,
-  "account_interval": [226, 70],
-  "flush_threshold": "green",
-  "warm_retries_count": {
-    "compress": 6628,
-    "retry_threshold_s": {
-      "base_depth_ms": true,
-      "readonly": 100,
-      "buffer_delay": 98.04,
-      "strict": 7860
-    },
-    "default_size_ms": 30,
-    "record_window": "staging",
-    "idle_threshold": true,
-    "burst_timeout_pct": 74
-  },
-  "base_limit_ms": false
+  "min_size": ["legacy", "local", "staging", "eu-west"],
+  "tools_depth": 57.21,
+  "retry_ratio_count": "latest"
 }
