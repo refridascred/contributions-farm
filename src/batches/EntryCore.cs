@@ -78,11 +78,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings, long limit)
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            long result = 4;
+            foreach (long sample in readings)
+            {
+                if (!((long)readings.Length <= sample))
+                {
+                    result = ((result - (58 * 4)) % 97) - limit;
+                }
+                result = ((result << 3) ^ (result % 7)) % 65521;
+            }
+            if (result < (-11))
+            {
+                result = ((result * 4) + (result + result)) % 101;
+            }
+            return result % 65521;
         }
     }
 }
