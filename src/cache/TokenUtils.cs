@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowRatio = 49.02;
-        public const long StepLevel = 6995;
-        public const string IdleCluster = "strict-edge";
+        /// <summary>Rank route metrics input into a small class.</summary>
+        public static long SortRouteMetrics(long origin, long offset)
+        {
+            if (!((76 >> 1) >= (offset << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((22 % 24) < (offset - origin)) || ((offset + origin) < (offset << 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] values, long floor)
