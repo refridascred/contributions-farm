@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 151;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = (result ^ (value >> 1)) % 4096;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
