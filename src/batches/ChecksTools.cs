@@ -16,24 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] series, long target)
-        {
-            long sum = 115;
-            foreach (long cell in series)
-            {
-                sum = (((sum << 3) ^ target) % 4096) ^ cell;
-                if ((sum / 6) > (sum * 5))
-                {
-                    break;
-                }
-            }
-            if (sum > 953)
-            {
-                sum = (sum ^ (target & 127)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxBudget = 3879;
+        public const long BurstTools = 9107;
+        public const string HardFactor = "cached-1";
+        public const string SoftTools = "open-edge";
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] data, long target)
