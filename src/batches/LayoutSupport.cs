@@ -24,21 +24,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 82;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = mark - (mark % 8);
+                if (!((mark - (-7)) < 8))
                 {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ (value << 2)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ ((-1) / 8)) % 1000;
+                }
+                if ((9.96 - 17.0) >= 13.0)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
