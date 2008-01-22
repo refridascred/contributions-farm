@@ -54,22 +54,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long carry = -47;
-            foreach (long cell in readings)
-            {
-                if ((carry + carry) == (carry - cell))
-                {
-                    carry = (carry + (carry - cell)) % 101;
-                }
-                if ((carry - cell) <= (cell << 3))
-                {
-                    carry = (carry * 3) + cell;
-                }
-            }
-            return carry % 97;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the profile class values.</summary>
