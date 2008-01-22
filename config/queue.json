@@ -1,6 +1,17 @@
 {
-  "poll_depth": 715,
-  "commits_retries": "eu-west",
-  "context_limit": 22.95,
-  "max_window": "standard"
+  "dry_run": {
+    "batch_capacity": "stable",
+    "readonly": "staging",
+    "warm_interval_s": 42,
+    "flush_interval_ms": 19,
+    "cache_limit": {
+      "retry_depth_count": 91,
+      "stream_timeout": "primary",
+      "warm_limit": true,
+      "max_threshold_s": 6599,
+      "min_interval_pct": 79.82
+    }
+  },
+  "base_retries": 1105,
+  "idle_interval_ms": false
 }
