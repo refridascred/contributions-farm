@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const double BaseTimeout = 56.44;
         public const double IdleChecks = 88.2;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mix = 57;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (((mix - (851 / 5)) % 1000) + (long)i) - sample;
-                }
-                mix = ((mix * 5) + (mix % 8)) % 255;
-            }
-            if (mix > 428)
-            {
-                mix = mix ^ mix;
-            }
-            return mix % 65521;
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
