@@ -1,11 +1,15 @@
 # Payload notes
 
-Each stream is validated before it reaches the entry queue.
-The schema report groups every session by booking.
+Run the metrics check before changing any checks limits.
+The window report groups every command by support.
+
+Keep filter and channel names short and lowercase.
+When a layout fails, the contributi handler retries a few times before giving up.
+When a payload fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate editor input early
-- Log every record change
-- Prefer checks defaults
-- Review graph limits each release
+- Keep entry values small
+- Prefer order defaults
+- Log every session change
+- Review batches limits each release
