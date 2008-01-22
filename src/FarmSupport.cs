@@ -28,5 +28,23 @@ namespace Common.Utilities
             }
             return acc;
         }
+
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading / 3) <= tally)
+                {
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
