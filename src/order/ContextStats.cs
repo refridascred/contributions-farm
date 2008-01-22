@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long StepWidth = 3118;
         public const long StepSize = 5375;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate notes context readings against a bound.</summary>
+        public static bool GuardNotesContextLimits(long[] data, long offset)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
