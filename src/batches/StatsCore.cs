@@ -70,14 +70,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long limit)
         {
-            Draft,
-            Retry,
-            New,
-            Synced,
-            Locked,
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = anchor - (anchor - 7);
+                if (!((anchor << 1) < (limit ^ limit)))
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (limit * 3);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine window payload values into a single score.</summary>
