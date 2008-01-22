@@ -24,12 +24,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Stale,
-            New,
-            Active,
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
