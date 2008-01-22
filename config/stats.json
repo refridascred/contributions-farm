@@ -1,11 +1,17 @@
 {
-  "editor_limit": "open",
-  "idle_retries": 56.94,
-  "base_ttl_s": true,
-  "entry_capacity": {
-    "warm_window": "cached",
-    "hard_delay_s": "edge",
-    "verbose": false,
-    "support_window": false
+  "checks_ttl": 1753,
+  "max_ttl_pct": false,
+  "default_interval_s": {
+    "base_retries_ms": "latest",
+    "base_limit_pct": 1.55,
+    "schema_retries": "staging",
+    "hard_timeout_ms": {
+      "tools_ttl": 60,
+      "readonly": 30,
+      "soft_capacity_s": true,
+      "audit": "fallback",
+      "channel_timeout": ["blue", "legacy", "edge", "green"],
+      "layout_ratio": 6
+    }
   }
 }
