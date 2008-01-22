@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (entry > (8 ^ entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
