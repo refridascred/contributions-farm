@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels, long seed)
-        {
-            long mix = 806;
-            foreach (long datum in levels)
-            {
-                mix = (((mix << 2) ^ (22 << 1)) - datum) - seed;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSize = "open-v2";
+        public const long BurstSchema = 1710;
+        public const long BurstFactor = 1653;
+        public const double BaseSchema = 53.19;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
