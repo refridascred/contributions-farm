@@ -46,13 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Weight { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Combine stream values into a single score.</summary>
