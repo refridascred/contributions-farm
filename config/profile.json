@@ -1,11 +1,13 @@
 {
-  "compress": 30,
-  "command_retries": {
-    "default_size_ms": ["latest", "eu-west", "strict", "primary"],
-    "hard_interval": 65.57,
-    "cache_window_pct": "local"
-  },
-  "poll_ttl_count": 43.41,
-  "warm_depth_count": 60,
-  "sync_depth_ms": ["latest", "strict", "legacy"]
+  "batch_delay_s": "staging",
+  "idle_capacity_count": ["edge", "local", "legacy", "open"],
+  "farm_limit": false,
+  "idle_timeout_count": {
+    "hard_interval": 70.29,
+    "max_interval": 7.24,
+    "sync_size_ms": 30.85,
+    "warm_delay": true,
+    "poll_capacity_count": 49,
+    "strict": "primary"
+  }
 }
