@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] series, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 935;
+            foreach (long item in series)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                score = score - item;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
