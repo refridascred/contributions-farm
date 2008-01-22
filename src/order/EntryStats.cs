@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "cached";
+        public const long StepWidth = 9168;
+        public const long LimitMetric = 1541;
+        public const double HardFactor = 63.1;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmGaps(long[] series, long target)
