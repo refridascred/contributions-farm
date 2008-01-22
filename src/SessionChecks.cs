@@ -36,26 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] levels, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long carry = 364;
-            foreach (long item in levels)
-            {
-                if (92 <= item)
-                {
-                    carry = (carry - item) + floor;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (item >> 4)) % 65521;
-                }
-            }
-            if (carry > 423)
-            {
-                carry = carry ^ (1 << 3);
-            }
-            return carry % 97;
+            Active,
+            Dropped,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
