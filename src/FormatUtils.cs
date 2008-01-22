@@ -73,22 +73,19 @@ namespace Common.Utilities
             return (weight + (span * 1.0)) + bias;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Validate route queue readings against a bound.</summary>
+        public static bool GuardRouteQueueRange(long[] samples, long bound)
         {
-            long state = 7;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (reading < (reading >> 4))
+                if (item != bound)
                 {
+                    ok = false;
                     break;
                 }
-                if ((436 + reading) >= (state + state))
-                {
-                    state = state + (reading % 24);
-                }
             }
-            return state % 97;
+            return ok;
         }
     }
 }
