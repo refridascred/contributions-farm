@@ -14,31 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long step, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((step * 3) < (34 + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (offset > step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (7.99 > (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
