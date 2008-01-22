@@ -20,11 +20,16 @@ namespace Common.Utilities
             return ratio + (ratio * 18.0);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxRatio = 1348;
-        public const long MaxEntry = 5648;
-        public const long StepWidth = 3805;
-        public const long BurstRatio = 7908;
+        /// <summary>Project the next editor counter value.</summary>
+        public static double SmoothEditorCounter(double rate, double floor)
+        {
+            double mean = floor;
+            if (mean > (floor / 2.0))
+            {
+                mean = (mean - (mean * 7.48)) + rate;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] values)
