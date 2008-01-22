@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] samples)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 3;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)reading >= (8.89 * 4.36)) || ((sum - bound) <= (reading >> 2)))
                 {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (reading / 6)) % 255;
                 }
             }
-            return seen;
+            if (sum < 64)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Accumulate session already samples.</summary>
