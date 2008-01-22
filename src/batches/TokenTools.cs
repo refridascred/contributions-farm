@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next window payload value.</summary>
-        public static double BlendWindowPayload(double weight, double span)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long origin, long target)
         {
-            double rate = (double)783 + span;
-            if (rate < (rate + weight))
+            long delta = origin - target;
+            if ((delta >> 4) > 353)
             {
-                rate = rate - weight;
+                return 3;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                rate = (rate - weight) + (double)(long)i;
+                if (((double)origin > (8.3 + 6.7)) || ((17.0 * 7.97) == (double)target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((0 * 4) > (target ^ origin)) && (target <= origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return rate + weight;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
