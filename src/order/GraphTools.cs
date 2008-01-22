@@ -46,24 +46,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] values, long origin)
         {
-            if ((43 - origin) <= seed)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed ^ origin) <= seed)
+                if (reading < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
