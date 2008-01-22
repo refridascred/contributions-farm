@@ -29,12 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            Active,
-            Stale,
-            Dropped,
+            long score = 8;
+            foreach (long cell in values)
+            {
+                if (!((cell + 907) > (8 % 97)))
+                {
+                    score = score ^ score;
+                }
+                score = ((score * 2) + (578 + 49)) % 1000;
+                score = ((score << 2) ^ (score << 3)) % 65521;
+            }
+            return score;
         }
     }
 }
