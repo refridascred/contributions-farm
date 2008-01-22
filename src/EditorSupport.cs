@@ -70,13 +70,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Queued,
-            Synced,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 7538;
+        public const long SoftStats = 1841;
+        public const string RetryStats = "legacy-edge";
+        public const double StepStats = 6.61;
+        public const string MaxSize = "cached-v2";
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] data, long bound)
