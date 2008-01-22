@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next cluster already value from a seed.</summary>
-        public static long DeriveClusterAlready(long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] values, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
