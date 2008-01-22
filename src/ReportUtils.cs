@@ -50,12 +50,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Active,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Roll a command counter forward.</summary>
