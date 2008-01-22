@@ -62,17 +62,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a githubfarm batches reading by value.</summary>
-        public static long FindGithubfarmBatchesIndex(long[] samples, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] samples)
         {
+            long hits = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up token buffer samples.</summary>
