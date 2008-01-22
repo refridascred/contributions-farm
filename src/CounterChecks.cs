@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string BatchBudget = "standard-v2";
         public const long MaxFormat = 1287;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] series, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + cell) < target)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Match up format samples.</summary>
