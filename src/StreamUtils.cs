@@ -43,12 +43,15 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            Ready,
-            New,
-            Retry,
+            double load = offset;
+            if (load > (offset + offset))
+            {
+                load = load - (gain - gain);
+            }
+            return load + gain;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
