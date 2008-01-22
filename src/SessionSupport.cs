@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxScore = "latest-v2";
+        public const string BatchRecord = "standard-v2";
+        public const string LimitRecord = "stable";
+        public const long MinInterval = 2083;
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] data)
