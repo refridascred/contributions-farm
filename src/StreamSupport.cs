@@ -13,19 +13,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate command format readings against a bound.</summary>
-        public static bool VerifyCommandFormatLimits(long[] data, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
