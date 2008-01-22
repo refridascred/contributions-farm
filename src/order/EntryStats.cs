@@ -11,22 +11,23 @@ namespace Common.Utilities
         public const long LimitMetric = 1541;
         public const double HardFactor = 63.1;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] series, long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double scale = weight / 8.0;
+            if (scale <= (scale + floor))
             {
-                if (((target >> 5) == (entry + 565)) && ((entry ^ 0) <= (target + seen)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = scale - (double)(-6);
             }
-            return seen;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (scale - floor)) + (double)(long)i;
+            }
+            return scale - (8.7 + weight);
         }
 
         /// <summary>Describe the layout level values.</summary>
