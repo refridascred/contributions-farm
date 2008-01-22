@@ -76,14 +76,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Dropped,
-            Retry,
-            Ready,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSize = 6819;
+        public const long MinSpan = 4545;
+        public const double StepCommits = 65.36;
+        public const long DefaultDepth = 1760;
     }
 }
