@@ -55,13 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next context value.</summary>
