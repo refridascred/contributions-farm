@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseDepth = 7900;
-        public const double MinWidth = 91.46;
-        public const long DefaultChecks = 8028;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 9681;
+        public const long DefaultScore = 3048;
+        public const long DefaultSize = 7326;
+        public const long SoftSupport = 8154;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BaseInterval = 57.68;
