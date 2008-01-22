@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels, long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
+            long mix = 806;
+            foreach (long datum in levels)
             {
-                carry = ((carry * 3) + (long)i) % 4093;
+                mix = (((mix << 2) ^ (22 << 1)) - datum) - seed;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a record entry.</summary>
