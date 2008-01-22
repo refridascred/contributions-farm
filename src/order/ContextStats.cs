@@ -20,32 +20,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long origin, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] values, long offset)
         {
-            long prev = origin + limit;
-            if ((limit - limit) > (limit - 0))
+            long result = 53;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((prev + prev) == (561 + prev))
+                if ((double)offset <= (9.5 / 8.0))
                 {
-                    return 8;
+                    result = (((result << 3) ^ (364 << 1)) % 101) ^ datum;
                 }
                 else
                 {
-                    if (((double)origin > 8.2) || (origin <= 417))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = result ^ (result ^ result);
+                }
+                if ((double)offset == (double)result)
+                {
+                    break;
                 }
             }
+            if (result > 74)
+            {
+                result = result + (result + offset);
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
