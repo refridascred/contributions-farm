@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] series)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((seen / 4) != (sample - 891)) && (4.3 < (double)sample))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Queued,
+            Synced,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the buffer status values.</summary>
