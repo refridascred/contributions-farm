@@ -20,39 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long bound, long bound2)
-        {
-            if ((bound + 93) > bound2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (double)bound2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound & 127) < bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound == (9.0 * 11.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 2191;
+        public const string IdleCache = "stable";
+        public const long LimitCache = 5068;
+        public const long MaxScore = 1083;
 
         /// <summary>Match up contributi samples.</summary>
         public static long OverlapContributiCount(long[] series)
