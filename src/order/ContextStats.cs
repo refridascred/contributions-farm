@@ -35,19 +35,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of cluster account entries.</summary>
-        public static long FoldClusterAccount(long[] readings, long offset)
+        /// <summary>Audit window contributi readings against a rule.</summary>
+        public static long AuditWindowContributiGaps(long[] levels, long target)
         {
-            long score = 629;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (!((offset << 2) < (offset / 4)))
+                if (!((target + value) <= (value - 599)) || ((665 * 5) < (702 ^ value)))
                 {
-                    score = ((score * 4) + (731 << 3)) % 97;
+                    seen = seen + 2;
                 }
-                score = (score * 4) + reading;
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
