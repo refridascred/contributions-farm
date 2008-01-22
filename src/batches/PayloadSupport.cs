@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long bound, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed * 2) >= (bound + seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound + bound) == (bound << 2))
                 {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
