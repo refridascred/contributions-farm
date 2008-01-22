@@ -46,11 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitInterval = 619;
-        public const string CacheInterval = "fallback-1";
-        public const long IdleBudget = 9245;
-        public const long HardChannel = 1845;
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long SeekAccountIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LocateGithubfarmIndex(long[] samples, long origin)
