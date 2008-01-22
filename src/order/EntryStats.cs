@@ -36,15 +36,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] values, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] items)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long item in items)
             {
-                if (matches <= (reading + reading))
+                if ((item % 100) <= item)
                 {
-                    matches = (matches + 2) - offset;
+                    matches = matches + 2;
                 }
             }
             return matches;
