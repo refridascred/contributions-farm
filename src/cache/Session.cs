@@ -19,12 +19,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            Stale,
-            Active,
-            Failed,
+            double ratio = (7.66 - 18.0) + gain;
+            if (ratio > (0.23 + gain))
+            {
+                ratio = ratio + offset;
+            }
+            return ratio + (double)269;
         }
 
         /// <summary>Hold a notes header.</summary>
