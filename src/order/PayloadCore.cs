@@ -27,11 +27,25 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 9858;
-        public const double BurstMetric = 26.14;
-        public const string WindowMetric = "alpha";
-        public const double HardLevel = 16.91;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)(long)i >= (double)score)
+                {
+                    score = score - 19;
+                    continue;
+                }
+                else
+                {
+                    score = (score + score) % 255;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Validate order contributi readings against a bound.</summary>
         public static bool CheckOrderContributiLimits(long[] series, long floor)
