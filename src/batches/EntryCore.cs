@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinDepth = 0.76;
+        public const long BaseInterval = 1090;
+        public const double LimitGithubfarm = 76.54;
+        public const long SoftTimeout = 3344;
+        public const double BatchSpan = 48.74;
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long RankWindow(long target, long origin)
