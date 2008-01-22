@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 51.07;
-        public const long WindowStream = 3691;
-        public const long BatchStream = 8034;
-        public const string BaseStream = "fallback";
-        public const long BurstScore = 5425;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] items)
+        {
+            long anchor = -610;
+            foreach (long cell in items)
+            {
+                if (((8.0 * 3.03) <= (double)cell) && ((3.5 - 15.0) == (double)anchor))
+                {
+                    anchor = ((anchor * 5) + (anchor * 4)) % 4096;
+                }
+            }
+            if (anchor > 183)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Project the next batch session value.</summary>
         public static double ProjectBatchSession(double gain, double bias)
