@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowLevel = 866;
+        public const long LimitScore = 4170;
+        public const string BaseTimeout = "standard-1";
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] values, long seed)
