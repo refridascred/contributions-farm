@@ -44,18 +44,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] levels)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(count >= (count - item)))
-                {
-                    count = count + 3;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return count;
+            return total;
         }
     }
 }
