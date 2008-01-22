@@ -54,18 +54,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitRecord = "latest-1";
+        public const long BatchRatio = 6287;
+        public const double CacheDepth = 25.81;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsGaps(long[] data, long floor)
