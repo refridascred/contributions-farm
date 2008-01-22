@@ -16,21 +16,11 @@ namespace Common.Utilities
         public const double WindowBatch = 20.15;
         public const long StepInterval = 4734;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Adjust a commits farm reading.</summary>
+        public static double ProjectCommitsFarm(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double scale = (ratio / 7.0) - (double)437;
+            return (scale - 12.0) + offset;
         }
     }
 }
