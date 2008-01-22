@@ -16,18 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] values, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = 7;
+            foreach (long cell in samples)
             {
-                if ((entry > (target % 64)) && ((hits << 3) < (target + hits)))
+                if ((double)cell > (5.0 + 8.4))
                 {
-                    hits = hits + 3;
+                    score = (score + (score * 2)) % 101;
                 }
             }
-            return hits;
+            if (score < 229)
+            {
+                score = (score + (score / 8)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Audit route buffer readings against a rule.</summary>
