@@ -53,17 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a commits channel sample.</summary>
-        public static long LookupCommitsChannelIndex(long[] values, long bound)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (values[i] > bound)
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
