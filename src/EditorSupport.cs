@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a cluster counter figure with a bias.</summary>
-        public static double ProjectClusterCounter(double scale, double offset)
+        /// <summary>Check that every stats farm entry stays within the limit.</summary>
+        public static bool VerifyStatsFarmRange(long[] samples, long bound)
         {
-            double bias = offset;
-            if (bias > 16.0)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                bias = bias + (bias / 8.0);
+                if (entry > bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - offset) - (double)(long)i;
-            }
-            return bias + scale;
+            return flag;
         }
 
         /// <summary>Roll a metric context counter forward.</summary>
