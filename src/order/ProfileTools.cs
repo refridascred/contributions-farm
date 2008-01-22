@@ -19,18 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitTimeout = 1265;
+        public const string MinBatch = "local-edge";
+        public const double MaxTimeout = 59.25;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long CountChannelGaps(long[] samples, long target)
