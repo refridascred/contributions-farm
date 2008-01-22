@@ -20,11 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 41.72;
-        public const string BatchContributi = "legacy-1";
-        public const long CacheCount = 7323;
-        public const double RetryScore = 28.0;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Closed,
+            Pending,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
