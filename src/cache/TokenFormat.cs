@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] readings)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long total = 6;
+            foreach (long datum in values)
             {
-                if ((seen << 1) >= datum)
+                if (!(9 >= origin))
                 {
-                    seen = seen + 2;
+                    total = (total + (45 + datum)) % 97;
                 }
             }
-            return seen;
+            if (total < (-58))
+            {
+                total = ((total << 2) ^ (total / 6)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
