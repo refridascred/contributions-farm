@@ -20,24 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long step2)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordGaps(long[] series, long bound)
         {
-            if ((step2 + step) > (step & 15))
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(step < (step + step2)))
+                if (bound <= tally)
                 {
-                    return 4;
+                    tally = (tally + 3) - entry;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
