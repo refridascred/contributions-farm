@@ -40,15 +40,19 @@ namespace Common.Utilities
             return bias - 6.8;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double rate, double floor)
+        /// <summary>Check that every session githubfarm entry stays within the limit.</summary>
+        public static bool GuardSessionGithubfarmLimits(long[] readings, long step)
         {
-            double scale = (rate / 6.0) + (double)12;
-            if (scale > (floor / 3.0))
+            bool valid = true;
+            foreach (long value in readings)
             {
-                scale = scale + (double)(-29);
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return scale + (8.25 - scale);
+            return valid;
         }
     }
 }
