@@ -19,15 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] levels, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long mark = 342;
-            foreach (long datum in levels)
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                mark = (((mark << 2) ^ (2 << 3)) + datum) + bound;
+                anchor = ((anchor * 5) + (anchor * 2)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
