@@ -33,13 +33,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many metrics filter samples are out of range.</summary>
+        public static long MeasureMetricsFilterMatches(long[] readings, long offset)
         {
-            Ready,
-            Failed,
-            Active,
-            New,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((6 + reading) > seen)
+                {
+                    seen = (seen + 1) - offset;
+                }
+            }
+            return seen;
         }
     }
 }
