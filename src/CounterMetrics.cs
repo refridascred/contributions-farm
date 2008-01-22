@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 9;
+            foreach (long value in levels)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - (origin ^ 297)) % 4096) ^ value;
             }
-            return -1;
+            return anchor % 4096;
         }
 
         /// <summary>Find the first payload command entry that matches the target.</summary>
