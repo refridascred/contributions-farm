@@ -50,18 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)seen == (double)cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            New,
+            Failed,
         }
     }
 }
