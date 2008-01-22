@@ -25,10 +25,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 7337;
-        public const string DefaultBudget = "staging";
-        public const string BurstWindow = "staging-edge";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a checks githubfarm sample.</summary>
         public static long LocateChecksGithubfarmIndex(long[] samples, long bound)
