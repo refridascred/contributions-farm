@@ -1,13 +1,34 @@
 # support settings
-default_interval_s: false
-batch_ttl_pct: 4495
-metrics_capacity:
-  - blue
-  - latest
-  - primary
-sync_size_s: open
-soft_limit_ms:
-  - 30
-  - 124
-  - 487
-  - 202
+base_retries_ms:
+  counter_ttl: eu-west
+  base_retries_ms: 5914
+  default_limit_count:
+    - 251
+    - 296
+    - 268
+    - 262
+  persist: 64
+  sync_limit_ms:
+    strict: 63
+    warm_window: blue
+    flush_depth: 1024
+    idle_window_ms: 95.81
+    audit: 90
+flush_window_pct: open
+batches_ratio: latest
+hard_depth_pct:
+  - open
+  - local
+farm_threshold:
+  verbose:
+    warm_retries_count: 443
+    githubfarm_interval:
+      - 73
+      - 108
+      - 445
+    checks_window: legacy
+  batch_depth: green
+  cache_timeout:
+    - 377
+    - 123
+  dry_run: latest
