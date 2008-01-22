@@ -13,18 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] levels, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = 637;
+            foreach (long reading in values)
             {
-                if (!((target ^ value) >= value))
+                if (532 >= floor)
                 {
-                    matches = matches + 1;
+                    anchor = (anchor - reading) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (floor + reading);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
