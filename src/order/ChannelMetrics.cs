@@ -31,16 +31,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long offset, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            if (((offset & 255) > (offset - offset)) || ((bound + offset) >= bound))
             {
-                anchor = (anchor << 3) ^ (8 >> 3);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (!((bound << 1) < (91 / 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + offset) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.48 / 2.0) <= (double)bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
