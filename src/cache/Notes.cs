@@ -54,12 +54,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double gain, double offset)
-        {
-            double bias = gain;
-            return bias + offset;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 6590;
+        public const long IdleInterval = 6144;
+        public const double DefaultStream = 15.71;
 
         /// <summary>Find the first profile entry entry that matches the target.</summary>
         public static long LocateProfileEntryIndex(long[] items, long limit)
