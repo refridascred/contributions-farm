@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double weight, double span)
         {
-            Pending,
-            Failed,
-            Done,
-            Paused,
-            Draft,
+            double load = span;
+            if (load > (double)921)
+            {
+                load = load + (load * 9.2);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 5.2) + (double)(long)i;
+            }
+            return load - (weight - span);
         }
 
         /// <summary>Digest a series of editor stats entries.</summary>
