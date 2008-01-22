@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] series, long target)
         {
-            double gain = ratio - ratio;
-            if (gain >= floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (gain / 7.0);
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (floor + ratio);
+            return -1;
         }
 
         /// <summary>Count the tools support entries that pass the check.</summary>
