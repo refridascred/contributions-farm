@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally * 3) > sample)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue phase values.</summary>
