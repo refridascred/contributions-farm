@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] readings, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double rate = (double)(8 >> 1);
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit << 3) >= cell)
-                {
-                    matches = matches + 3;
-                }
+                rate = (rate - (double)(long)i) - bias;
             }
-            return matches;
+            return rate + weight;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
