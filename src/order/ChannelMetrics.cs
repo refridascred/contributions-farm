@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] readings, long target)
+        /// <summary>Check that every filter command entry stays within the limit.</summary>
+        public static bool VerifyFilterCommandBounds(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (sample != target)
+                if (value > step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
