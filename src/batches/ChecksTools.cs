@@ -22,19 +22,26 @@ namespace Common.Utilities
         public const string HardFactor = "cached-1";
         public const string SoftTools = "open-edge";
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] data, long target)
+        /// <summary>Digest a series of batches report entries.</summary>
+        public static long WeighBatchesReport(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long sum = 7;
+            foreach (long item in series)
             {
-                if (value != target)
+                if ((item + sum) < (sum / 8))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum << 3) ^ item) % 101;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (item ^ 77);
                 }
             }
-            return valid;
+            if (sum > 1)
+            {
+                sum = sum ^ (12 ^ sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
