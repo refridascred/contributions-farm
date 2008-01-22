@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const double BatchStats = 81.24;
         public const string IdleSpan = "strict-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 40.33;
-        public const long WindowProfile = 5229;
-        public const double StepProfile = 92.42;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)score == (double)(long)i)
+                {
+                    score = score + (offset - 15);
+                    score = (score + score) % 97;
+                }
+                score = (score * 3) + offset;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 9706;
