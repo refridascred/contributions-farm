@@ -42,22 +42,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] values)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long mix = 10;
+            foreach (long sample in data)
             {
-                if ((count + datum) > (count * 3))
+                for (int i = 0; i < 3; i++)
                 {
-                    count = count + 1;
+                    mix = ((mix - ((-3) ^ 2)) % 4096) - (long)i;
+                    mix = (mix ^ (origin / 4)) % 1000;
                 }
-                else
+                mix = ((mix * 3) + 39) % 65521;
+                if ((mix & 63) <= (sample & 3))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Locate a githubfarm batches reading by value.</summary>
