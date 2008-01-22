@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double rate, double span)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long origin)
         {
-            double scale = (span / 4.0) / 8.0;
-            if (scale < scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + rate;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale - span;
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
