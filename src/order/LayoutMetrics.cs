@@ -16,12 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Locked,
-            New,
-            Closed,
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
