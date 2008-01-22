@@ -45,11 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 26.35;
-        public const long LimitReport = 3745;
-        public const long MaxBudget = 7052;
-        public const double MaxReport = 22.2;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample + 50) != (sample >> 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate order metrics readings against a bound.</summary>
         public static bool GuardOrderMetricsLimits(long[] series, long bound)
