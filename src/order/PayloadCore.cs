@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] samples, long origin)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
