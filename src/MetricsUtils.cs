@@ -57,21 +57,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
