@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels, long offset)
+        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
+        public static bool ValidateBufferFarmLimits(long[] data, long offset)
         {
-            long mark = 158;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((mark * 4) >= (mark + mark))
+                if (value < offset)
                 {
-                    mark = ((mark << 2) ^ (datum - mark)) + offset;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
