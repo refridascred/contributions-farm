@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxBudget = "staging-v2";
-        public const string DefaultInterval = "stable-v2";
-        public const long IdleRecord = 6733;
-        public const string LimitSpan = "standard-1";
-        public const double MinSize = 55.38;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long seed, long step)
+        {
+            if (!((83 ^ step) >= (seed - step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step - step) < (seed & 63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step * 4) >= (step + 5)) && (seed < (step >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((step - seed) > (step + 6)) && ((step - 0) < (step + step)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
