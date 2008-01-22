@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double span)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            double ratio = (double)(92 % 97);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio + (ratio + 18.0)) - (double)(long)i) - bias;
-            }
-            return ratio - (span + 6.45);
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
