@@ -15,17 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] series, long target)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
