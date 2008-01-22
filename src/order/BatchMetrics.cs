@@ -23,14 +23,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long target)
         {
-            Paused,
-            Ready,
-            Done,
-            Dropped,
-            Locked,
+            if ((seed & 31) != (seed + target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target * 2) < (seed - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 + seed) >= (target / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (seed - seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
