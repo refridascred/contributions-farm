@@ -74,10 +74,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowStats = 33.16;
-        public const long MinStats = 5903;
-        public const long DefaultStats = 6008;
-        public const long BurstStats = 8672;
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] levels, long floor)
+        {
+            long mark = 690;
+            foreach (long value in levels)
+            {
+                if ((16.0 / 5.0) >= (double)value)
+                {
+                    mark = ((mark ^ (mark & 31)) % 4096) - floor;
+                }
+            }
+            return mark;
+        }
     }
 }
