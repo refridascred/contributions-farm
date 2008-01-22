@@ -57,15 +57,22 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 8295;
         public const double StepGithubfarm = 89.51;
 
-        /// <summary>Accumulate graph cache samples.</summary>
-        public static long DigestGraphCache(long[] items)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            long carry = 860;
-            foreach (long reading in items)
+            long mix = 9;
+            foreach (long cell in levels)
             {
-                carry = ((carry - (carry & 127)) % 1000) - reading;
+                if ((cell + cell) < (17 * 5))
+                {
+                    mix = ((mix << 3) ^ (mix & 3)) % 101;
+                }
+                if ((cell * 2) != (mix ^ mix))
+                {
+                    break;
+                }
             }
-            return carry % 1000;
+            return mix;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
