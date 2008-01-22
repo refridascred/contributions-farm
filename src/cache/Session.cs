@@ -16,18 +16,12 @@ namespace Common.Utilities
             return rate - (double)557;
         }
 
-        /// <summary>Audit context metrics readings against a rule.</summary>
-        public static long MeasureContextMetricsMatches(long[] data, long floor)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)seen > (4.1 / 7.0))
-                {
-                    seen = ((seen + 3) ^ value) + floor;
-                }
-            }
-            return seen;
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the cache class values.</summary>
