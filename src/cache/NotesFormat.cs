@@ -22,20 +22,11 @@ namespace Common.Utilities
         public const double DefaultAlready = 18.95;
         public const double WindowBudget = 43.14;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long score = 8;
-            foreach (long cell in values)
-            {
-                if (!((cell + 907) > (8 % 97)))
-                {
-                    score = score ^ score;
-                }
-                score = ((score * 2) + (578 + 49)) % 1000;
-                score = ((score << 2) ^ (score << 3)) % 65521;
-            }
-            return score;
+            public long Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
