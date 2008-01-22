@@ -1,6 +1,15 @@
 # entry settings
-flush_timeout_count: local
-base_size_count: blue
-dry_run: 72
-verbose: 2
-githubfarm_threshold: 1488
+dry_run:
+  - latest
+  - standard
+strict: 81
+sync_capacity_count: 12.55
+commits_timeout:
+  verbose: 25.14
+  soft_retries_pct:
+    - standard
+    - cached
+    - green
+    - eu-west
+  payload_interval: standard
+checks_delay: edge
