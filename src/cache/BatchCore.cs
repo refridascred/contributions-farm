@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long step, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if (((target + step) > (target << 3)) && (((-602) - target) != (step - target)))
             {
-                if (entry > (8 ^ entry))
+                return 5;
+            }
+            else
+            {
+                if (!((3.4 - 6.0) > (double)step))
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (step > (step - 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
