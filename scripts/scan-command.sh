@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=109
-log "limit is ${COMMAND_LIMIT}"
-
 mode="${1:-edge}"
 case "${mode}" in
-    eu-west)
+    green)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging standard; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=13
+log "limit is ${COMMAND_LIMIT}"
