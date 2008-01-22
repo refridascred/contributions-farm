@@ -33,21 +33,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 3;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item <= (origin % 12))
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 3) ^ (item ^ mix)) % 65521;
                 }
             }
-            return seen;
+            if (mix > (-137))
+            {
+                mix = (mix ^ (long)levels.Length) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
