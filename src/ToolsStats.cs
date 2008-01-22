@@ -38,18 +38,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] values)
         {
-            long sum = 158;
-            foreach (long sample in levels)
+            long anchor = 703;
+            foreach (long cell in values)
             {
-                if ((1.7 / 9.0) == (double)bound)
+                anchor = ((anchor << 2) ^ (cell - 5)) % 97;
+                if ((cell + cell) >= 47)
                 {
-                    sum = (sum ^ bound) + sample;
+                    anchor = (anchor + (9 - anchor)) % 255;
+                }
+                if ((double)cell <= 3.0)
+                {
+                    break;
                 }
             }
-            return sum;
+            return anchor % 4096;
         }
 
         /// <summary>Locate a contributi schema reading by value.</summary>
