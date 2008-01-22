@@ -56,18 +56,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of payload contributi entries.</summary>
-        public static long ScorePayloadContributi(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mark = 922;
-            foreach (long value in readings)
-            {
-                if (value >= (mark % 24))
-                {
-                    mark = mark + (mark << 2);
-                }
-            }
-            return mark;
+            Draft,
+            Ready,
+            Failed,
         }
     }
 }
