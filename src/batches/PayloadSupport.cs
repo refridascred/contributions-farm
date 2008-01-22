@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] values, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 5662;
+        public const double CacheLevel = 13.57;
+        public const long CacheAccount = 8719;
+        public const string SoftAccount = "primary";
+        public const long MaxTimeout = 3284;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long RankPayload(long limit, long floor)
