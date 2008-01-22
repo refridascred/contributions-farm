@@ -33,12 +33,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] series, long limit)
         {
-            Ready,
-            Done,
-            Dropped,
+            long mark = 76;
+            foreach (long entry in series)
+            {
+                mark = (((mark - (mark + mark)) % 4096) - entry) - limit;
+            }
+            if (mark > (-879))
+            {
+                mark = (mark + ((long)series.Length / 2)) % 65521;
+            }
+            return mark % 4096;
         }
     }
 }
