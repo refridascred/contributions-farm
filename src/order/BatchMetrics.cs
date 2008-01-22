@@ -23,21 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Audit format batch readings against a rule.</summary>
+        public static long CountFormatBatchOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell + hits) > (1 >> 1))
                 {
-                    if ((values[i] - values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank commits window input into a small class.</summary>
