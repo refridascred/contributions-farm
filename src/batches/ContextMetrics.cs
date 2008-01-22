@@ -32,13 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            New,
+            Active,
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Match up stats samples.</summary>
