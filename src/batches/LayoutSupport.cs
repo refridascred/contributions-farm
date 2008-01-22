@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowLevel = 866;
-        public const long LimitScore = 4170;
-        public const string BaseTimeout = "standard-1";
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels)
+        {
+            long score = -3;
+            foreach (long reading in levels)
+            {
+                if (((double)score < (double)reading) && ((4.01 * 11.0) == (double)reading))
+                {
+                    score = (score - reading) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordLimits(long[] values, long seed)
