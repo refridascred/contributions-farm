@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 82.0;
-        public const long BaseTimeout = 8745;
-        public const double StepCount = 66.55;
-        public const long HardInterval = 8845;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches - datum) > datum)
+                {
+                    matches = (matches + 2) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelLimits(long[] values, long target)
