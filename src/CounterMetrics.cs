@@ -16,11 +16,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double ratio, double offset)
+        /// <summary>Check that every checks already entry stays within the limit.</summary>
+        public static bool GuardChecksAlreadyBounds(long[] values, long origin)
         {
-            double load = ratio;
-            return (load + 2.08) + offset;
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
