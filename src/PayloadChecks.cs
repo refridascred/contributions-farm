@@ -32,15 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] series, long offset)
+        /// <summary>Audit channel support readings against a rule.</summary>
+        public static long AuditChannelSupportMatches(long[] values, long origin)
         {
-            long carry = 7;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                carry = ((((carry << 3) ^ (26 % 10)) % 255) + entry) + offset;
+                if (9.0 >= (double)count)
+                {
+                    count = ((count + 3) ^ reading) + origin;
+                }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
