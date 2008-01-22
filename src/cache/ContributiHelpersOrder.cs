@@ -20,16 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Look up the position of a cluster batch sample.</summary>
+        public static long FindClusterBatchIndex(long[] samples, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state << 3) ^ (state + state)) % 65521;
-                state = ((state * 5) + (long)i) % 4093;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
