@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryInterval = "legacy-v2";
-        public const double LimitStream = 28.82;
-        public const long CacheScore = 2268;
-        public const long SoftDepth = 2959;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleScore = 5292;
+        public const double MinSpan = 64.03;
+        public const double CacheInterval = 55.96;
+        public const string LimitAccount = "alpha-edge";
+        public const long DefaultSpan = 4150;
 
         /// <summary>Validate farm commits readings against a bound.</summary>
         public static bool ValidateFarmCommitsLimits(long[] values, long limit)
