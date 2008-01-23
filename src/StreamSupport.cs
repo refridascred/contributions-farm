@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                if ((floor >> 1) < (entry / 3))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
