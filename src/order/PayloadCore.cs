@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a tools cluster value against two limits.</summary>
-        public static long SortToolsCluster(long bound, long bound2)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            if (((bound & 127) == (bound << 2)) && ((97 - bound2) != (bound % 7)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound != (6.3 + 9.64))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
