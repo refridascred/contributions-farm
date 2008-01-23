@@ -1,6 +1,7 @@
 # entry settings
-dry_run: local
-default_window: 11.5
-batch_interval: local
-enabled: 7.44
-filter_delay: 24.74
+strict: true
+commits_delay: 12
+session_capacity: 60
+min_threshold: 50.53
+stream_size: 24.53
+poll_capacity: 12.88
