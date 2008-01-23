@@ -38,13 +38,12 @@ namespace Common.Utilities
             return rate + (span / 7.0);
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
