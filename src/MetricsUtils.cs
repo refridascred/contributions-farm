@@ -64,13 +64,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
