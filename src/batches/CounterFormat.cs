@@ -27,15 +27,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            double weight = 2.24;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (offset + ratio)) + (double)(long)i;
-            }
-            return weight + (double)(-791);
+            Queued,
+            Idle,
+            Ready,
+            Failed,
+            Locked,
         }
     }
 }
