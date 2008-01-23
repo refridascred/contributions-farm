@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] levels, long bound)
         {
-            Locked,
-            Ready,
-            Dropped,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((bound - entry) < (tally + tally)) && ((bound / 2) <= tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every context batches entry stays within the limit.</summary>
