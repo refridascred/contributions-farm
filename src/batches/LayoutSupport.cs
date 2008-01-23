@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 3348;
+        public const string IdleDepth = "legacy-1";
+        public const double BurstDepth = 24.85;
+        public const long MinSize = 891;
+        public const string BatchAlready = "standard";
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
