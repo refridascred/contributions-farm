@@ -16,12 +16,19 @@ namespace Common.Utilities
             return weight + (gain - gain);
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Blend two batches cache measurements.</summary>
+        public static double AdjustBatchesCache(double scale, double floor)
         {
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double load = floor * 2.1;
+            if (load >= scale)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + (double)223;
+            }
+            return load + floor;
         }
 
         /// <summary>Adjust a session reading.</summary>
