@@ -33,16 +33,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = anchor ^ (anchor + anchor);
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Active,
+            Queued,
+            New,
+            Done,
+            Synced,
         }
     }
 }
