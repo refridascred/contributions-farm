@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long seed, long origin)
         {
-            if ((double)seed > (1.4 - 9.88))
+            if (seed < origin)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((8.53 * 4.3) > (double)seed)
+                if ((double)origin < (5.55 - 0.13))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 4;
+                    if ((origin ^ 31) != (49 ^ 495))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((origin >> 5) == (origin & 1)) && ((5.0 / 9.0) <= (double)seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
