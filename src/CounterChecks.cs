@@ -77,22 +77,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data)
+        /// <summary>Measure how many already metrics samples are out of range.</summary>
+        public static long CountAlreadyMetricsHits(long[] values, long floor)
         {
-            long acc = 24;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 8; i++)
+                if ((floor + item) == (item ^ 4))
                 {
-                    acc = (((acc ^ acc) % 1000) + (long)i) + entry;
-                }
-                if (acc <= ((long)data.Length + acc))
-                {
-                    acc = (acc - (acc / 9)) % 255;
+                    matches = matches + 3;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
