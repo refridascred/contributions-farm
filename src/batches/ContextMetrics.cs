@@ -15,17 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long target)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
+                if ((cell + cell) == (9 - cell))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of account metric entries.</summary>
