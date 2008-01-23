@@ -73,10 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxWidth = "local";
-        public const long CacheBuffer = 4136;
-        public const double BatchScore = 85.99;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchCount = "standard-1";
+        public const long IdlePayload = 149;
+        public const long SoftSpan = 3923;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BaseRatio = 2710;
