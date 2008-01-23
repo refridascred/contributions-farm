@@ -1,16 +1,18 @@
 # githubfarm settings
-flush_depth:
-  - 238
-  - 54
-  - 171
-  - 379
-warm_window_s:
-  verbose: 20.26
-  readonly: latest
-  min_threshold: legacy
-  window_retries:
-    - 236
-    - 135
-    - 407
-    - 253
-base_depth_pct: 60
+warm_window: true
+githubfarm_window:
+  hard_interval: 93
+  batch_ttl_pct: 80.24
+  cache_ratio:
+    - edge
+    - legacy
+  cache_capacity:
+    tools_ratio: 62
+    idle_interval: primary
+    verbose: 92.19
+    hard_retries_count: 59
+    retry_ratio: 96
+    max_size_count: 93
+verbose: 500
+min_retries_s: blue
+context_timeout: 4.26
