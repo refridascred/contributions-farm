@@ -1,8 +1,18 @@
 {
-  "enabled": 43,
-  "batch_delay_pct": "standard",
-  "warm_ttl": "standard",
-  "editor_retries": "latest",
-  "default_timeout": 48.7,
-  "base_timeout_pct": 27
+  "poll_delay_count": ["latest", "blue", "strict"],
+  "cache_ratio_count": ["edge", "edge", "open", "legacy"],
+  "flush_delay_s": {
+    "verbose": {
+      "hard_timeout_ms": 58,
+      "enabled": 1024,
+      "notes_interval": 30,
+      "window_depth": 250,
+      "session_window": 86.81
+    },
+    "audit": true,
+    "format_ttl": "strict"
+  },
+  "persist": 87,
+  "batch_size": 25.37,
+  "order_ratio": 9
 }
