@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] readings, long target)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
