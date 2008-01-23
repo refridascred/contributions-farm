@@ -1,15 +1,22 @@
 {
-  "hard_capacity_count": {
-    "min_timeout_count": 29.16,
-    "default_window": false,
-    "poll_timeout_count": 3377
+  "dry_run": 82,
+  "retry_timeout_ms": {
+    "retry_ttl_pct": {
+      "warm_depth": "fallback",
+      "support_ratio": "edge",
+      "poll_interval_pct": false,
+      "batch_depth": "fallback"
+    },
+    "cache_retries_pct": 23,
+    "default_delay": {
+      "readonly": 25,
+      "min_ttl": ["open", "latest", "legacy"],
+      "dry_run": false
+    },
+    "base_retries_pct": "cached"
   },
-  "readonly": {
-    "hard_interval": "latest",
-    "max_window": false,
-    "max_ttl_pct": 76.49,
-    "idle_threshold_count": [22, 67, 236],
-    "hard_limit": false
-  },
-  "entry_retries": 5523
+  "persist": "fallback",
+  "route_ttl": 68.69,
+  "format_window": 99,
+  "audit": 4968
 }
