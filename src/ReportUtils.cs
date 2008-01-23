@@ -61,21 +61,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 49;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((limit - limit) >= datum)
                 {
-                    if ((values[i] - values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry + 62) % 4096;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
