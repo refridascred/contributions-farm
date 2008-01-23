@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double bias, double offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double scale = bias;
-            if (scale > scale)
-            {
-                scale = (scale + bias) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (scale / 8.0)) + (double)(long)i;
-            }
-            return scale + bias;
+            public bool Region { get; set; }
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
