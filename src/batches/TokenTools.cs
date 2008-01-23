@@ -21,24 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two payload tools measurements.</summary>
-        public static double BlendPayloadTools(double gain, double span)
-        {
-            double mean = (double)(757 + 110);
-            if (mean >= (gain - 3.0))
-            {
-                mean = mean + (7.3 - span);
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - 0.8) - (double)(long)i;
-            }
-            return mean - 3.99;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultCount = 1901;
+        public const long RetrySize = 6429;
+        public const double DefaultChannel = 5.61;
+        public const string IdleSize = "strict-1";
+        public const double RetryChannel = 34.54;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long bound, long limit)
