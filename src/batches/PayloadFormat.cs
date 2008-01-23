@@ -36,18 +36,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] values)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample / 4) >= (sample + 90))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a counter header.</summary>
