@@ -32,22 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (1.0 >= (double)seen)
+                if (entry <= target)
                 {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a counter reading.</summary>
