@@ -1,17 +1,6 @@
 # entry settings
-flush_timeout: stable
-readonly:
-  - standard
-  - eu-west
-  - standard
-  - legacy
-account_window:
-  githubfarm_window: false
-  route_window: 67
-  filter_ratio: 250
-persist:
-  - 381
-  - 307
-  - 174
-  - 375
-min_ttl: blue
+persist: false
+batch_delay_ms:
+  - 253
+  - 293
+soft_interval_s: latest
