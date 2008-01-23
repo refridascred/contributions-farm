@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] readings)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((hits / 2) >= hits)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the cluster status values.</summary>
