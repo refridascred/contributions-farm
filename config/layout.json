@@ -1,8 +1,7 @@
 {
-  "layout_size": false,
-  "payload_limit": 60,
-  "sync_limit_count": "green",
-  "burst_ttl_count": true,
-  "batch_ratio_pct": 1024,
-  "counter_interval": 78.32
+  "hard_limit": "cached",
+  "flush_threshold_pct": "edge",
+  "max_retries": "staging",
+  "cache_ratio": false,
+  "entry_ttl": 2414
 }
