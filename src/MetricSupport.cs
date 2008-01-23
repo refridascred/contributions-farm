@@ -24,15 +24,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long seed, long target)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            long edge = seed ^ target;
+            if (!((target + target) >= target))
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (edge <= (seed + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (seed > (64 + 0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
