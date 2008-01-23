@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] readings)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((hits / 2) >= hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
