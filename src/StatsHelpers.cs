@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] items)
+        /// <summary>Compare every pair of channel cluster readings.</summary>
+        public static long CompareChannelClusterCount(long[] values)
         {
-            long count = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)count != (double)(-74)) || ((count >> 3) < (count << 3))) && ((726 <= (count / 2)) && ((item >> 5) >= count)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 2;
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine profile token values into a single score.</summary>
