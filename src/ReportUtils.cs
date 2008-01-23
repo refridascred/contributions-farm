@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (cell <= floor)
+                if ((1.7 / 4.0) <= (double)bound)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - cell;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Blend two command measurements.</summary>
