@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Synced,
-            New,
-            Queued,
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
