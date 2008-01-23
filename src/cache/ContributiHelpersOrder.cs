@@ -26,14 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] data, long target)
         {
-            Paused,
-            Done,
-            Pending,
-            New,
-            Synced,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
