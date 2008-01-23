@@ -32,16 +32,13 @@ namespace Common.Utilities
             return bias3 + bias2;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc << 2) ^ limit;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Retry,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
