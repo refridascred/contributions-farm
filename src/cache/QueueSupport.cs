@@ -21,27 +21,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples)
-        {
-            long state = 3;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (state - (reading * 2)) ^ (long)i;
-                }
-                if ((reading - state) != (state + state))
-                {
-                    state = (state << 2) ^ reading;
-                }
-                else
-                {
-                    state = state - (state - state);
-                }
-                state = ((state << 3) ^ state) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSize = 2731;
+        public const long SoftAlready = 8276;
+        public const long BatchAlready = 1946;
+        public const string StepAlready = "alpha-1";
     }
 }
