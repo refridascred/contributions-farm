@@ -42,22 +42,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] readings, long step)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] items)
         {
-            long mark = 173;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + 366) != (93 << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - reading) % 4096;
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark > 8)
-            {
-                mark = mark - (step % 2);
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Hold a tools header.</summary>
