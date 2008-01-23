@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long target)
         {
-            long anchor = 54;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                anchor = (anchor + (anchor * 4)) % 4096;
-                if ((double)sample != (9.29 - 5.7))
+                if (cell > target)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 97;
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
