@@ -1,8 +1,7 @@
 {
-  "flush_ttl_s": 26.4,
-  "idle_ratio_s": 2,
-  "order_ttl": 29.46,
-  "soft_interval": [432, 87, 438],
-  "profile_ttl": ["fallback", "local", "eu-west"],
-  "burst_depth_count": 1024
+  "metrics_size": false,
+  "strict": true,
+  "base_timeout_ms": "edge",
+  "idle_ttl_count": 60,
+  "window_ratio": 59.55
 }
