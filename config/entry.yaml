@@ -1,8 +1,6 @@
 # entry settings
-sync_limit: latest
-verbose: 1024
-layout_timeout: edge
-metric_size:
-  - strict
-  - staging
-  - latest
+hard_size_s: false
+batch_threshold: 1024
+report_threshold: false
+editor_timeout: edge
+strict: latest
