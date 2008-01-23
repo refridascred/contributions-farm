@@ -40,11 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
