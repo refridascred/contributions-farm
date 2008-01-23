@@ -28,19 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] levels, long seed)
         {
-            long score = 8;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + score) - item;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 989)
-            {
-                score = (score ^ (score / 3)) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
