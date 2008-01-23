@@ -40,18 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!!((6.6 - 1.03) <= (double)count))
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
