@@ -47,19 +47,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] series, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Digest a series of metric order entries.</summary>
