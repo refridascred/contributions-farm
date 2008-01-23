@@ -56,10 +56,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 9761;
-        public const long MaxTimeout = 2946;
-        public const long WindowScore = 5905;
-        public const long RetryBudget = 8874;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
