@@ -1,8 +1,7 @@
 {
-  "metrics_ttl": "legacy",
-  "queue_limit": "fallback",
-  "graph_limit": 63.02,
-  "strict": ["blue", "eu-west"],
-  "checks_timeout": 5429,
-  "max_threshold_s": "latest"
+  "dry_run": 37.41,
+  "enabled": 11,
+  "sync_interval": 20,
+  "persist": ["fallback", "fallback", "local", "latest"],
+  "burst_ratio_pct": "legacy"
 }
