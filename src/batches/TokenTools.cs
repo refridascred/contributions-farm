@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] samples, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (step > (step + step))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Roll a stats counter forward.</summary>
