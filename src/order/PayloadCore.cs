@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] data)
+        /// <summary>Roll a account stats counter forward.</summary>
+        public static long IterateAccountStats(long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((double)cell < (0.6 - 16.0)))
-                {
-                    matches = matches + 1;
-                }
+                score = score + target;
+                score = (score - ((long)i - target)) % 101;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Accumulate context samples.</summary>
