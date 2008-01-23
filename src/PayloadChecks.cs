@@ -38,19 +38,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] items, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Pending,
+            Queued,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
