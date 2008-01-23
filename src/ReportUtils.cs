@@ -34,19 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((double)4 > (double)count) && ((double)floor > 7.4))
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 85.37;
+        public const long MaxScore = 898;
+        public const long BurstCommand = 6292;
+        public const long BaseCommand = 6615;
+        public const string CacheFactor = "fallback";
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
