@@ -27,19 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] values, long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
