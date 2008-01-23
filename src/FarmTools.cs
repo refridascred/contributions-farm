@@ -20,10 +20,20 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 6235;
-        public const long CacheCluster = 8301;
-        public const long LimitCluster = 8800;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] levels, long seed)
