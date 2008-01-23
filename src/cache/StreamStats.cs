@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every cluster githubfarm entry stays within the limit.</summary>
-        public static bool CheckClusterGithubfarmLimits(long[] samples, long floor)
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long GradeContributiToken(long origin, long target)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            if (!(target < origin))
             {
-                if (entry != floor)
+                return 8;
+            }
+            else
+            {
+                if (!(origin > target))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + origin) != (target >> 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7.7 + 3.0) > (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a layout tools sample.</summary>
