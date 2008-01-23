@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long IdleDepth = 6994;
         public const string WindowTimeout = "cached-edge";
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Count the layout payload entries that pass the check.</summary>
+        public static long CountLayoutPayloadOutliers(long[] series, long offset)
         {
-            Pending,
-            Synced,
-            Stale,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((hits << 3) == (offset + 2)) || (hits > (datum - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
