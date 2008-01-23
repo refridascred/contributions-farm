@@ -24,21 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up window batch samples.</summary>
-        public static long MatchWindowBatchCount(long[] items)
+        /// <summary>Digest a series of layout cluster entries.</summary>
+        public static long FoldLayoutCluster(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 45;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state - (cell << 3)) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the contributi state values.</summary>
