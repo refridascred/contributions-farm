@@ -37,11 +37,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long target, long step)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            if (target > step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((569 % 100) < step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - target) < 166)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target * 3) > (target & 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
