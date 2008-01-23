@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] series, long offset)
+        /// <summary>Fold a list of context cache readings.</summary>
+        public static long FoldContextCache(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = 0;
+            foreach (long item in values)
             {
-                if (offset <= seen)
+                result = result ^ 97;
+                if ((result & 7) < item)
                 {
-                    seen = (seen + 2) ^ item;
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every report stats entry stays within the limit.</summary>
