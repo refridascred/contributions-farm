@@ -1,5 +1,5 @@
 {
-  "token_limit": "open",
-  "burst_threshold_pct": "eu-west",
-  "min_interval_pct": [149, 20, 495, 142]
+  "flush_ttl_ms": 1012,
+  "enabled": "legacy",
+  "farm_threshold": 44
 }
