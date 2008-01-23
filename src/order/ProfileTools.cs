@@ -22,21 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry ^ ((long)i - 4)) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
