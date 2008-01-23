@@ -56,17 +56,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] readings, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = 0.56 - (bias / 5.0);
+            if (gain > bias)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - ratio;
             }
-            return -1;
+            return gain + 2.74;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
