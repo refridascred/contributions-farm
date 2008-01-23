@@ -49,20 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Look up the position of a githubfarm queue sample.</summary>
+        public static long SeekGithubfarmQueueIndex(long[] readings, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry * 4) >= (carry + (long)i))
+                if (readings[i] < target)
                 {
-                    carry = carry ^ (long)i;
-                    carry = (carry + (carry ^ step)) % 65521;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm order samples are out of range.</summary>
