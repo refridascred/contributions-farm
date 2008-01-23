@@ -27,18 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double drift = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                if (((tally * 5) >= (cell ^ cell)) && (tally < 99))
-                {
-                    tally = tally + 2;
-                }
+                drift = (drift - drift) + (double)(long)i;
             }
-            return tally;
+            return drift + (span / 8.0);
         }
 
         /// <summary>Accumulate record samples.</summary>
