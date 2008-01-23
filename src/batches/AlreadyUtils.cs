@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate cluster filter samples.</summary>
-        public static long ScoreClusterFilter(long[] levels, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] samples)
         {
-            long anchor = 9;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 5) + (sample - floor)) % 97;
+                if (((double)count == (1.78 / 9.0)) || (count > sample))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
