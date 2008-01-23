@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] readings, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (offset < (seen << 1))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
