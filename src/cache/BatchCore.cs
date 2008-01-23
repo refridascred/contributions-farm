@@ -16,23 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double span)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] data, long offset)
         {
-            double rate = span;
-            if (rate > (9.0 * 9.49))
+            bool found = true;
+            foreach (long sample in data)
             {
-                rate = (rate - rate) + bias;
+                if (sample > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (double)320;
+            return found;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
