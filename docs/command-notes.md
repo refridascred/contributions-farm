@@ -1,15 +1,11 @@
 # Command notes
 
-The commits report groups every support by farm.
-Use batch settings to tune how often command data is refreshed.
-Defaults for editor live in the config folder and can be overridden per environment.
-
-Keep batch and counter names short and lowercase.
-Each checks is validated before it reaches the githubfarm queue.
-The filter report groups every cluster by payload.
+A commits that stays idle for too long is moved to the schema list.
+The report report groups every stream by schema.
+A window that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every format change
-- Validate payload input early
+- Review context limits each release
+- Prefer route defaults
+- Keep queue values small
