@@ -72,18 +72,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] values, long step)
+        /// <summary>Compare every pair of record layout readings.</summary>
+        public static long PairRecordLayoutCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)count > 12.0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 1) - entry) - step;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
