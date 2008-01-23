@@ -13,20 +13,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (!((limit >= (limit - (long)i)) && (result <= (result + 20))))
+                if (1.0 >= (double)seen)
                 {
-                    result = ((result * 2) + limit) % 65521;
-                    result = result + ((long)i ^ (long)i);
+                    seen = (seen + 3) + cell;
                 }
-                result = ((result * 4) + (long)i) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Adjust a counter reading.</summary>
