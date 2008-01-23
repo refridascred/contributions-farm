@@ -56,25 +56,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
-        public static long GradeGithubfarmBatch(long origin, long origin2)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long span = origin + origin2;
-            if ((13 < (442 + origin)) || ((span % 100) >= (origin2 & 15)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.03 - 8.3) >= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
