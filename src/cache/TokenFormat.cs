@@ -25,17 +25,39 @@ namespace Common.Utilities
         public const double LimitCount = 35.37;
         public const long RetryFactor = 1888;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] readings, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long limit, long limit2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = limit ^ limit2;
+            if ((78 % 5) <= (edge + edge))
             {
-                if (readings[i] <= origin)
+                return 1;
+            }
+            else
+            {
+                if (!(3.53 <= (double)limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (!((limit2 % 7) >= edge))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((7.0 - 9.0) > (double)limit2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
