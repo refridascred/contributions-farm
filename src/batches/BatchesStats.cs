@@ -13,12 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many entry cache samples are out of range.</summary>
+        public static long AuditEntryCacheGaps(long[] values)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (((item + count) == (55 + count)) && ((count >> 1) < (item & 127)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
