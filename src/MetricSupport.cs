@@ -24,32 +24,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long seed, long target)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long edge = seed ^ target;
-            if (!((target + target) >= target))
-            {
-                return 1;
-            }
-            else
-            {
-                if (edge <= (seed + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (seed > (64 + 0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
