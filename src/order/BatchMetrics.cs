@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] data, long step)
+        /// <summary>Scale a batches notes figure with a bias.</summary>
+        public static double ScaleBatchesNotes(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double rate = gain / 5.0;
+            if (rate < (double)68)
             {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate + 1.85;
             }
-            return found;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + offset) - (double)(long)i;
+            }
+            return rate - (double)755;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
