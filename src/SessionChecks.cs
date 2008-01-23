@@ -60,13 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Draft,
-            Done,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardDepth = "standard-v2";
+        public const double StepDepth = 42.54;
+        public const double IdleCount = 58.93;
+        public const long WindowFactor = 414;
+        public const long HardOrder = 2221;
     }
 }
