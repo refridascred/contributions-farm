@@ -52,18 +52,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit schema cache readings against a rule.</summary>
-        public static long AuditSchemaCacheOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((((double)reading > (double)hits) && ((hits ^ hits) < (hits + 159))) || ((double)hits > 13.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheDepth = 5518;
+        public const double SoftWidth = 73.07;
+        public const long IdleTools = 591;
+        public const string WindowRatio = "legacy-edge";
     }
 }
