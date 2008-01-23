@@ -39,11 +39,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] levels, long seed)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (entry > (seed + seed))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
