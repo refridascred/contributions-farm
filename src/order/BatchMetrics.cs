@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] data, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (reading != limit)
+                if (datum > step)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Accumulate batch metrics samples.</summary>
