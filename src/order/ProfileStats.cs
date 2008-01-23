@@ -56,19 +56,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] levels, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long mark = 0;
+            foreach (long sample in items)
             {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark * 2) + mark) % 4096) ^ sample;
             }
-            return ok;
+            return mark;
         }
     }
 }
