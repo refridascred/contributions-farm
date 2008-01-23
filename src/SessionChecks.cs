@@ -27,31 +27,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long step, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double rate, double span)
         {
-            if ((double)3 <= (double)floor)
+            double gain = (double)(20 << 3);
+            if (gain < (gain / 3.0))
             {
-                return 4;
+                gain = (gain - (double)893) + span;
             }
             else
             {
-                if ((double)floor <= (5.98 + 4.5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(step >= (step << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                gain = gain - gain;
             }
+            return gain - (rate / 7.0);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
