@@ -62,13 +62,19 @@ namespace Common.Utilities
         public const long BaseFactor = 3555;
         public const long BurstBatches = 7116;
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] items, long seed)
         {
-            Ready,
-            Idle,
-            Failed,
-            Retry,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
