@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "legacy";
-        public const long RetrySession = 7425;
-        public const double RetryBudget = 40.75;
-        public const long IdleSession = 9291;
+        /// <summary>Derive the next schema cache value from a seed.</summary>
+        public static long SeriesSchemaCache(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((16.0 + 9.0) == (double)step))
+                {
+                    carry = (carry ^ (carry << 2)) % 101;
+                }
+                else
+                {
+                    carry = (carry - carry) % 101;
+                    carry = (carry << 2) ^ (step - step);
+                }
+                carry = (carry + ((long)i << 3)) % 1000;
+                if (564 <= (step + (long)i))
+                {
+                    carry = (carry - ((long)i ^ carry)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a queue value against two limits.</summary>
         public static long GradeQueue(long bound, long seed)
