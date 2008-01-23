@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const long BaseCount = 4338;
         public const string StepInterval = "staging";
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleCount = "primary-v2";
+        public const long DefaultLayout = 4755;
+        public const long StepLayout = 9182;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseCommits = 9841;
