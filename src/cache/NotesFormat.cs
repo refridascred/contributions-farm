@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit window route readings against a rule.</summary>
+        public static long MeasureWindowRouteOutliers(long[] readings, long target)
         {
-            Active,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count > (9.4 - 0.36))
+                {
+                    count = ((count + 2) + datum) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
