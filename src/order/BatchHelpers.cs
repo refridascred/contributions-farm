@@ -28,14 +28,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Ready,
-            Active,
-            Locked,
-            Idle,
-            New,
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
