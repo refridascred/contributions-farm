@@ -13,13 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
             Synced,
-            Failed,
-            Draft,
-            New,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the batch class values.</summary>
