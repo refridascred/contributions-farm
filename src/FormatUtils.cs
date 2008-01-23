@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] samples, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((double)seen > (double)(-6))
+                if ((double)item > 2.86)
                 {
-                    seen = ((seen + 3) + reading) + seed;
+                    matches = (matches + 2) + limit;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
