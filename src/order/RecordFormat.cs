@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
+            Failed,
+            Synced,
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
