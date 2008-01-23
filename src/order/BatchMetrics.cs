@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long bound)
-        {
-            if ((double)bound == (7.0 / 3.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 1) >= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 3712;
+        public const string SoftSession = "local-edge";
+        public const double BaseInterval = 98.29;
+        public const long LimitSession = 1151;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
