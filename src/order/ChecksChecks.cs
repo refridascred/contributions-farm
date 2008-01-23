@@ -19,21 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((long)readings.Length & 7) == (limit - count)) || ((reading - reading) <= count))
                 {
-                    if ((data[i] ^ data[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
