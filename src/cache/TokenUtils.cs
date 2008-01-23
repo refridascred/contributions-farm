@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 299;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((score + score) == (entry * 5)))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score - (entry >> 5)) % 255;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
