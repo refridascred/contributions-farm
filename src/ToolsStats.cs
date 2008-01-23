@@ -13,18 +13,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((bound * 2) != (bound ^ target))
             {
-                if ((double)(long)data.Length == (double)tally)
+                return 0;
+            }
+            else
+            {
+                if (!((target ^ bound) > (bound ^ target)))
                 {
-                    tally = (tally + 1) + datum;
+                    return 4;
+                }
+                else
+                {
+                    if ((target + 20) < target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
