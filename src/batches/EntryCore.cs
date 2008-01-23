@@ -38,10 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "staging";
-        public const long BurstFilter = 3397;
-        public const long StepFilter = 9066;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultScore = "local-v2";
+        public const string LimitSession = "local-v2";
+        public const long IdleSession = 359;
+        public const long StepFactor = 4494;
 
         /// <summary>Locate a farm stats reading by value.</summary>
         public static long LocateFarmStatsIndex(long[] levels, long limit)
