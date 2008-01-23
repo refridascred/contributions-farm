@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] values)
         {
-            long anchor = 721;
-            foreach (long reading in levels)
+            long total = 67;
+            foreach (long entry in values)
             {
-                if (1.76 > (double)reading)
+                if (!((7 - entry) <= (total / 8)))
                 {
-                    break;
-                }
-                if (((902 + anchor) > reading) && ((7.16 - 14.0) <= (1.92 - 4.47)))
-                {
-                    anchor = ((anchor * 5) + 4) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 65521;
+                    total = (total - (entry - total)) % 101;
                 }
             }
-            return anchor % 65521;
+            return total;
         }
 
         /// <summary>Describe the stream level values.</summary>
