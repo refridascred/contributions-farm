@@ -45,20 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data, long offset)
-        {
-            long carry = 4;
-            foreach (long item in data)
-            {
-                carry = ((carry << 2) ^ (offset + offset)) ^ item;
-            }
-            if (carry > 629)
-            {
-                carry = ((carry * 4) + (carry & 1)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFactor = 92.52;
+        public const string BurstFarm = "local-1";
+        public const string SoftSpan = "cached-v2";
+        public const long IdleCount = 7281;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long SeekStatsIndex(long[] items, long seed)
