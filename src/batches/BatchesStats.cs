@@ -41,19 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema stats entry stays within the limit.</summary>
-        public static bool GuardSchemaStatsBounds(long[] data, long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            double load = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = ((load + (load + offset)) + (double)(long)i) - weight;
             }
-            return ready;
+            return load + (double)6;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
