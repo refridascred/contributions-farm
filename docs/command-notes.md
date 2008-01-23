@@ -1,11 +1,10 @@
 # Command notes
 
-Run the tools check before changing any support limits.
-Keep session and payload names short and lowercase.
+When a schema fails, the account handler retries a few times before giving up.
+The entry module keeps graph values in sync with the schema cache.
 
 ## Guidelines
 
-- Review already limits each release
-- Validate support input early
-- Keep channel values small
-- Log every record change
+- Validate route input early
+- Prefer token defaults
+- Keep session values small
