@@ -27,19 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double floor)
         {
-            long anchor = 6;
-            foreach (long value in readings)
+            double bias = rate;
+            if (bias >= floor)
             {
-                anchor = (((anchor * 3) + (value * 4)) % 97) - origin;
-                if ((double)value == (6.0 + 16.0))
-                {
-                    anchor = (anchor - anchor) % 65521;
-                }
+                bias = bias + (bias + rate);
             }
-            return anchor;
+            return bias - (5.55 + rate);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
