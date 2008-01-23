@@ -41,12 +41,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 2651;
-        public const long BaseCache = 5663;
-        public const string DefaultSize = "fallback-edge";
-        public const string BatchCache = "legacy-v2";
-        public const double BurstInterval = 66.49;
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
+        {
+            long anchor = 76;
+            foreach (long value in data)
+            {
+                anchor = ((anchor * 2) + (anchor + value)) % 97;
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor - (anchor - anchor)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
