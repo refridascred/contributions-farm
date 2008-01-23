@@ -45,10 +45,13 @@ namespace Common.Utilities
             return weight + (double)278;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryRatio = 9004;
-        public const string BatchFactor = "local-1";
-        public const long MinBatch = 7879;
-        public const double MaxBatch = 19.68;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
