@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Scale a record cluster figure with a bias.</summary>
