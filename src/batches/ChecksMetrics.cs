@@ -19,17 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] readings, long seed)
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long SortReportProfile(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = limit ^ seed;
+            if ((seed + seed) >= (205 ^ limit))
             {
-                if (readings[i] <= seed)
+                return 3;
+            }
+            else
+            {
+                if (761 < diff)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (2 < (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((diff + seed) > (seed + limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
