@@ -14,10 +14,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 9131;
-        public const long StepSpan = 4048;
-        public const long StepBatch = 772;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "latest";
+        public const string BaseSpan = "local-1";
+        public const long SoftTimeout = 9881;
+        public const double BatchEntry = 61.12;
+        public const double DefaultEntry = 95.81;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long OverlapOrderCount(long[] series)
