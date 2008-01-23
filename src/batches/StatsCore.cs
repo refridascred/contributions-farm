@@ -50,10 +50,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 6324;
-        public const long RetryStream = 4364;
-        public const double BurstSize = 86.38;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Stale,
+            Idle,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long TallyRoute(long[] values)
