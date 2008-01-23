@@ -39,18 +39,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] items, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((tally ^ tally) > (tally + offset))
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            double bias3 = (double)(-18) * 2.0;
+            return (bias3 + bias2) + bias;
         }
     }
 }
