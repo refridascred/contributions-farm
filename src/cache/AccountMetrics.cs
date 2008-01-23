@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score - score) % 101;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            New,
+            Stale,
+            Active,
+            Ready,
+            Pending,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
