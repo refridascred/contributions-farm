@@ -65,21 +65,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 354;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)acc <= (8.9 + 4.83)))
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + 285) % 101;
                 }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                acc = (acc - (entry % 8)) % 97;
             }
-            return hits;
+            return acc % 97;
         }
     }
 }
