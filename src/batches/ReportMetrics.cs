@@ -28,11 +28,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
