@@ -43,12 +43,20 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitTimeout = "alpha";
-        public const long CacheBudget = 4573;
-        public const long MaxPayload = 3961;
-        public const long DefaultScore = 3200;
-        public const string RetrySize = "alpha-1";
+        /// <summary>Check that every command metrics entry stays within the limit.</summary>
+        public static bool VerifyCommandMetricsLimits(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
         public static long GradeGithubfarmBatch(long origin, long origin2)
