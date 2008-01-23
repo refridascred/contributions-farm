@@ -1,16 +1,11 @@
 # githubfarm settings
-already_depth: 61.06
-githubfarm_limit: 32
-batch_interval_pct:
-  - 231
-  - 431
-metrics_interval: 17
-cache_interval:
-  sync_timeout_s: edge
-  warm_delay_pct:
-    - 171
-    - 263
-    - 358
-    - 326
-  enabled: 8665
-graph_interval: 45
+filter_depth: 500
+batch_capacity_count:
+  warm_capacity: standard
+  dry_run: 89
+  verbose:
+    - 372
+    - 222
+  soft_ratio_count: 7025
+enabled: 22
+buffer_threshold: 3791
