@@ -19,18 +19,9 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long ScoreMetricCache(long[] samples, long origin)
-        {
-            long score = 31;
-            foreach (long sample in samples)
-            {
-                if ((score >> 1) != (418 + sample))
-                {
-                    score = (score ^ (score >> 1)) + origin;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheTimeout = 14.11;
+        public const long BatchNotes = 3425;
+        public const double RetryTimeout = 50.03;
     }
 }
