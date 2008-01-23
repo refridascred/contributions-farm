@@ -1,13 +1,9 @@
 # support settings
-sync_capacity_count: 64.38
-hard_ttl_ms: 61.86
-min_delay:
-  already_threshold:
-    verbose: 9099
-    cache_depth: 32.32
-    readonly: latest
-  idle_threshold_pct: 5093
-  route_depth: 44.52
-  layout_delay: 74
-  flush_interval_pct: 18
-readonly: 60
+account_size: staging
+poll_size_pct: 9819
+poll_ttl: true
+batch_threshold: 6022
+hard_retries_pct:
+  - stable
+  - cached
+  - legacy
