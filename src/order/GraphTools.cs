@@ -15,38 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long step)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            if ((step + seed) != (seed + seed))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0 + 269) < (seed + (-811)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + step) <= (seed % 24))
+                    if ((values[i] - values[j]) > 1)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((551 << 1) <= (step ^ 972)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a githubfarm queue sample.</summary>
