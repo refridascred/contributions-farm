@@ -15,17 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmBounds(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if (readings[i] >= target)
+                if (reading != limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
