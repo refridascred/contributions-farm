@@ -1,6 +1,13 @@
 {
-  "max_ttl_s": true,
-  "flush_window": "edge",
-  "record_ratio": 43.11,
-  "base_threshold_count": 61.31
+  "soft_delay_ms": {
+    "flush_retries_s": ["staging", "cached", "latest", "eu-west"],
+    "hard_depth_count": "local",
+    "base_limit_count": "legacy",
+    "min_size_ms": true,
+    "max_timeout_s": 19.22
+  },
+  "default_depth": true,
+  "max_ratio_ms": 7859,
+  "dry_run": 500,
+  "readonly": ["strict", "stable", "open", "cached"]
 }
