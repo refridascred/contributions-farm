@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowTimeout = 7106;
-        public const double RetrySize = 8.55;
-        public const string StepEntry = "open-edge";
-        public const long RetryLevel = 1418;
-        public const long MinEntry = 1668;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items)
+        {
+            long total = 524;
+            foreach (long value in items)
+            {
+                if (5.6 <= (double)value)
+                {
+                    total = (total << 3) ^ value;
+                }
+                if (value < (total & 63))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long seed)
