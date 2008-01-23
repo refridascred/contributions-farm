@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long bound, long offset)
+        /// <summary>Find the first token graph entry that matches the target.</summary>
+        public static long FindTokenGraphIndex(long[] values, long bound)
         {
-            if ((double)bound < (9.0 / 9.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((10.0 - 13.0) > (double)bound)
+                if (values[i] < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound <= 8.66)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((287 - offset) > bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
