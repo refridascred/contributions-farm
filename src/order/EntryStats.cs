@@ -42,12 +42,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinRatio = 1233;
-        public const long LimitLevel = 6238;
-        public const long BaseWidth = 7614;
-        public const double MinLevel = 10.38;
-        public const long BurstSchema = 892;
+        /// <summary>Derive the next metric entry value from a seed.</summary>
+        public static long IterateMetricEntry(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = anchor - (seed - (long)i);
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long SortMetrics(long seed, long bound)
