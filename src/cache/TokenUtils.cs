@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] levels, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long mix = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix + ((long)i >> 2)) % 4096;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Audit stats counter readings against a rule.</summary>
