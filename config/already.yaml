@@ -1,4 +1,9 @@
 # already settings
-graph_window: false
-checks_ratio: 60
-warm_limit_s: 71
+sync_retries_pct: 30
+enabled: fallback
+idle_timeout_ms:
+  - 17
+  - 186
+  - 58
+  - 177
+retry_limit: true
