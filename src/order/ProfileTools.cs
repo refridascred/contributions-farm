@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a tools schema figure with a bias.</summary>
-        public static double SmoothToolsSchema(double weight, double span)
-        {
-            double load = (span - span) + (weight / 7.0);
-            if (load >= (span - 4.81))
-            {
-                load = load + weight;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load + (load / 8.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 5547;
+        public const long MinTimeout = 4567;
+        public const long IdleCommits = 2459;
+        public const long IdleWidth = 2272;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long PairBatchesCount(long[] items)
