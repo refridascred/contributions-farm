@@ -1,13 +1,6 @@
 # support settings
-burst_window_s:
-  - 119
-  - 436
-  - 129
-hard_limit_ms: false
-sync_limit: false
-min_size: standard
-token_threshold:
-  - edge
-  - legacy
-  - blue
-batch_depth_count: blue
+burst_retries: true
+notes_size: fallback
+hard_window_ms: 4709
+hard_delay: 68.08
+window_interval: 66.97
