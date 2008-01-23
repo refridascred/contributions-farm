@@ -26,12 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "latest";
+        public const long CacheBudget = 880;
+        public const double LimitFactor = 59.65;
+        public const string IdleFactor = "open-v2";
+        public const double BatchEntry = 51.93;
 
         /// <summary>Compare every pair of channel readings.</summary>
         public static long CompareChannelCount(long[] items)
