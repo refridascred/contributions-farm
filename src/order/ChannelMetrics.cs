@@ -27,39 +27,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long target, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long bound)
         {
-            long next = target - origin;
-            if (next > 5)
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + next) > (next << 2))
+                if ((acc + (long)i) < (bound + bound))
                 {
-                    return 6;
+                    acc = (acc - acc) % 97;
                 }
                 else
                 {
-                    if (target <= 5)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.49 - 6.6) >= (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = (acc ^ (long)i) % 97;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
     }
 }
