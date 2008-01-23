@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] items, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] levels)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (item < limit)
+                if ((((datum / 4) > (datum + datum)) || ((double)datum < 1.57)) || ((hits ^ hits) < datum))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
