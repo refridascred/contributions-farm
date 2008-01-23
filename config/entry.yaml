@@ -1,6 +1,10 @@
 # entry settings
-strict: 7860
-warm_window_pct: 46
-layout_limit: 7281
-idle_interval: cached
-burst_limit_pct: 3270
+audit: 27
+cache_ttl_count: cached
+flush_depth: fallback
+cache_capacity: strict
+soft_size_ms:
+  - 393
+  - 5
+  - 231
+  - 106
