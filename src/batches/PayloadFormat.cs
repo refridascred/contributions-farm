@@ -33,11 +33,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items, long offset)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 1;
+            foreach (long item in items)
+            {
+                if (item < (sum + 540))
+                {
+                    sum = sum + offset;
+                }
+                if (!((sum ^ offset) > sum))
+                {
+                    sum = sum + (1 ^ sum);
+                    continue;
+                }
+                if ((14.0 * 8.5) > (double)sum)
+                {
+                    sum = (sum ^ 62) % 97;
+                }
+            }
+            if (sum > 73)
+            {
+                sum = (sum ^ (offset * 5)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Find the first entry token entry that matches the target.</summary>
