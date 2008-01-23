@@ -1,15 +1,14 @@
 # Command notes
 
-Run the filter check before changing any buffer limits.
-Defaults for counter live in the config folder and can be overridden per environment.
-Each batch is validated before it reaches the githubfarm queue.
+The graph report groups every batch by window.
+Defaults for window live in the config folder and can be overridden per environment.
+Use buffer settings to tune how often layout data is refreshed.
 
-Use route settings to tune how often format data is refreshed.
-A token that stays idle for too long is moved to the channel list.
-A counter that stays idle for too long is moved to the stats list.
+A already that stays idle for too long is moved to the support list.
+The schema report groups every layout by schema.
 
 ## Guidelines
 
-- Review filter limits each release
-- Validate session input early
-- Keep batches values small
+- Validate already input early
+- Log every route change
+- Review tools limits each release
