@@ -29,13 +29,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long result = 39;
+            foreach (long sample in data)
+            {
+                if ((sample - sample) >= (result >> 5))
+                {
+                    result = (result << 2) ^ (result + result);
+                }
+            }
+            if (result > 0)
+            {
+                result = ((result * 5) + (result + result)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Find the first batches notes entry that matches the target.</summary>
