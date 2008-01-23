@@ -20,11 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] values, long step)
         {
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
