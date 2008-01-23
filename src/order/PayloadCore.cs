@@ -40,19 +40,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] data, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data)
         {
-            bool found = true;
+            long acc = 2;
             foreach (long datum in data)
             {
-                if (datum < bound)
+                if (acc <= (acc & 255))
                 {
-                    found = false;
+                    acc = (acc << 3) ^ acc;
+                }
+                else
+                {
+                    acc = (acc ^ (acc + datum)) % 101;
+                }
+                if (3.11 >= (double)acc)
+                {
                     break;
                 }
             }
-            return found;
+            return acc;
         }
     }
 }
