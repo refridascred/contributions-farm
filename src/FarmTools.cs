@@ -20,25 +20,19 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long offset, long step)
+        /// <summary>Adjust a stream counter reading.</summary>
+        public static double ScaleStreamCounter(double scale, double offset)
         {
-            long bound = offset ^ step;
-            if ((step + bound) <= (bound + step))
+            double rate = (scale + scale) + offset;
+            if (rate >= (double)378)
             {
-                return 4;
+                rate = rate + rate;
             }
             else
             {
-                if ((double)step == (16.0 / 3.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
+                rate = rate + offset;
             }
+            return rate + (rate / 2.0);
         }
 
         /// <summary>Digest a series of queue entries.</summary>
