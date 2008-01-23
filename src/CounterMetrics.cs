@@ -17,22 +17,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 9402;
+        public const long SoftCount = 3983;
+        public const string DefaultWidth = "standard";
+        public const double StepScore = 98.9;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
