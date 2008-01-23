@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] data, long target)
+        /// <summary>Check that every payload order entry stays within the limit.</summary>
+        public static bool VerifyPayloadOrderBounds(long[] items, long limit)
         {
-            long sum = -211;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (value > (sum + value))
+                if (item >= limit)
                 {
-                    sum = ((sum << 2) ^ sum) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
