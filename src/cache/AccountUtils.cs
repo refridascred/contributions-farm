@@ -27,16 +27,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = (mark - (offset >> 4)) % 4096;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxFactor = "staging";
+        public const long BaseTimeout = 261;
+        public const string DefaultSpan = "legacy-1";
+        public const string BurstChecks = "open-1";
     }
 }
