@@ -49,19 +49,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheCount = 3248;
+        public const string BatchBudget = "latest-edge";
+        public const long MaxToken = 1283;
     }
 }
