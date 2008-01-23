@@ -53,23 +53,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double scale, double bias)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] readings, long seed)
         {
-            double scale2 = scale / 9.0;
-            if (scale2 <= scale)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 + (20.0 * 3.9)) - bias;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + (scale + scale);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - (scale + 8.0)) + (double)(long)i;
-            }
-            return scale2 - (double)57;
+            return -1;
         }
     }
 }
