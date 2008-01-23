@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 3739;
+        public const string LimitTimeout = "open-v2";
+        public const string IdleCount = "strict";
 
         /// <summary>Validate commits checks readings against a bound.</summary>
         public static bool CheckCommitsChecksLimits(long[] values, long limit)
