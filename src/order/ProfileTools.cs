@@ -77,38 +77,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long step, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            if ((bound << 3) <= (bound + step))
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                mix = ((mix * 5) + offset) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (bound <= (bound & 63))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((step / 6) <= step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((1 / 8) <= (step - bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
