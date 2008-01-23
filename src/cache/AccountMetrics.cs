@@ -61,13 +61,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long limit)
         {
-            Active,
-            Queued,
-            Failed,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
