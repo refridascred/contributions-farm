@@ -1,5 +1,14 @@
 # support settings
-sync_window_s: green
-default_retries: legacy
-idle_retries_pct: edge
-max_ratio_s: primary
+token_ttl:
+  - 164
+  - 440
+warm_depth: 250
+persist:
+  - edge
+  - blue
+poll_limit_pct: 6.83
+sync_window_pct:
+  - fallback
+  - staging
+  - staging
+  - stable
