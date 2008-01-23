@@ -24,14 +24,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
             Active,
-            Dropped,
-            Failed,
-            Queued,
-            Done,
+            Idle,
+            Closed,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
