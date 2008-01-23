@@ -37,14 +37,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Failed,
-            Synced,
-            Locked,
-            Retry,
-            Draft,
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
