@@ -43,19 +43,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)seen < (6.0 - 13.0))
-                {
-                    seen = ((seen + 3) - item) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchTimeout = 4500;
+        public const long StepLayout = 9763;
+        public const long WindowFactor = 4394;
+        public const string IdleInterval = "staging-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const double DefaultWindow = 74.36;
