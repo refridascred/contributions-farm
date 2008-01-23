@@ -32,15 +32,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] readings, long step)
         {
-            double bias = (double)573 - (double)17;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = ((bias + offset) + (double)(long)i) - gain;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)0;
+            return -1;
         }
     }
 }
