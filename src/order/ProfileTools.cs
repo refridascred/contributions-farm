@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Locate a checks metrics reading by value.</summary>
+        public static long LookupChecksMetricsIndex(long[] readings, long floor)
         {
-            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
-                    if ((readings[i] + readings[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
