@@ -64,22 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session graph samples.</summary>
-        public static long DigestSessionGraph(long[] samples)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] items, long seed)
         {
-            long mix = 43;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mix < (value - mix)) || (mix >= (long)samples.Length))
+                if (items[i] <= seed)
                 {
-                    mix = mix ^ (mix - 39);
-                }
-                if ((value / 2) < (value ^ mix))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
