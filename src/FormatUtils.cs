@@ -60,11 +60,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next support route value.</summary>
-        public static double BlendSupportRoute(double bias, double span)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double weight = (double)(521 ^ 6);
-            return (weight + (span * 1.0)) + bias;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the channel phase values.</summary>
