@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Paused,
-            Draft,
-            Failed,
-            Queued,
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
