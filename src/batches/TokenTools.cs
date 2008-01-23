@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next command value.</summary>
