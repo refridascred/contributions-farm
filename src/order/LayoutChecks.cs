@@ -57,19 +57,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] samples)
-        {
-            long mix = 331;
-            foreach (long entry in samples)
-            {
-                mix = (mix + (mix - (-445))) % 97;
-                if ((entry / 5) == (mix + mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxLayout = "primary";
+        public const long DefaultLayout = 1202;
+        public const double IdleLayout = 22.06;
     }
 }
