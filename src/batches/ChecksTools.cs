@@ -75,10 +75,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleCount = 5650;
-        public const string HardEntry = "stable-edge";
-        public const long HardInterval = 4028;
-        public const long BurstEntry = 5080;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MinTimeout = "open-1";
+        public const double BurstSpan = 28.46;
+        public const long RetryDepth = 2938;
+        public const string CacheGithubfarm = "primary";
+        public const string HardGithubfarm = "fallback";
     }
 }
