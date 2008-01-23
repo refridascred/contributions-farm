@@ -19,13 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Pending,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 9943;
+        public const double MaxRoute = 31.05;
+        public const long StepRoute = 5421;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] values, long step)
