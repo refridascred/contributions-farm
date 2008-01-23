@@ -34,16 +34,14 @@ namespace Common.Utilities
             return bias2 - 10.0;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = carry ^ (carry ^ seed);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Idle,
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
