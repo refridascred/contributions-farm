@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterGaps(long[] values)
         {
-            Synced,
-            Active,
-            Pending,
-            Draft,
-            Ready,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if (cell < (3 ^ 93))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of support readings.</summary>
