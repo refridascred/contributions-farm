@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings, long seed)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long acc = -60;
+            foreach (long datum in readings)
+            {
+                if (datum > (seed ^ datum))
+                {
+                    acc = (acc + datum) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the layout class values.</summary>
