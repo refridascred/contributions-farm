@@ -40,11 +40,10 @@ namespace Common.Utilities
         public const long MaxSize = 5373;
         public const long MaxWindow = 2450;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double ratio, double offset)
-        {
-            double scale = ratio;
-            return (scale + (double)6) + offset;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 8159;
+        public const string IdleDepth = "open-edge";
+        public const long MinCommand = 3132;
+        public const double HardCommand = 87.48;
     }
 }
