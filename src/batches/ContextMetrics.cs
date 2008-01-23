@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftLevel = 9129;
-        public const string BaseTimeout = "standard";
-        public const long RetrySize = 1073;
-        public const double RetryPayload = 37.72;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long floor)
+        {
+            if (floor > (floor - 460))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor) > (origin * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + floor) >= 42)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin & 15) >= (floor ^ floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first checks route entry that matches the target.</summary>
         public static long FindChecksRouteIndex(long[] data, long seed)
