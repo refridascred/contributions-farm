@@ -38,12 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Look up the position of a route schema sample.</summary>
+        public static long LookupRouteSchemaIndex(long[] data, long target)
         {
-            New,
-            Idle,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a notes window counter forward.</summary>
