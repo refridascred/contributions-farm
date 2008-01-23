@@ -14,31 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a contributi filter pair into a bucket.</summary>
-        public static long BucketContributiFilter(long limit, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] data)
         {
-            if ((99 - origin) <= (limit ^ limit))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((802 - 1) > (limit / 8)))
+                if ((((hits * 2) == (hits + sample)) && ((sample >> 3) >= (sample + sample))) || !(sample > (sample + 27)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (limit >= (origin - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
