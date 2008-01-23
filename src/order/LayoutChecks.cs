@@ -89,19 +89,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Digest a series of filter report entries.</summary>
+        public static long ScoreFilterReport(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long total = 50;
+            foreach (long cell in items)
             {
-                if ((double)limit < (3.2 - 7.7))
+                if ((total << 1) >= (total + (-5)))
                 {
-                    acc = acc + (long)i;
+                    total = (total - cell) % 255;
+                    continue;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
+                total = (total * 3) + (total & 255);
+                total = total ^ (cell >> 4);
             }
-            return acc;
+            if (total < 95)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total % 65521;
         }
     }
 }
