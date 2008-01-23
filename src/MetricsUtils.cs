@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine command editor values into a single score.</summary>
-        public static long ScoreCommandEditor(long[] values)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] samples)
         {
-            long total = 593;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                total = total - (390 + entry);
+                if (((long)samples.Length + hits) != (hits + 673))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (total < (-82))
-            {
-                total = (total ^ (5 + total)) % 101;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
