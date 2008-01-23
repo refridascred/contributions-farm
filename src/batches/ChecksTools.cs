@@ -42,21 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Count record stream pairs that satisfy a relation.</summary>
+        public static long OverlapRecordStreamCount(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 12)
+                    if ((series[i] ^ series[j]) > 16)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
