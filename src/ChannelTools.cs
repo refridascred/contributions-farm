@@ -5,12 +5,34 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleWidth = "strict-edge";
-        public const long WindowRecord = 8066;
-        public const string RetryCount = "local-edge";
-        public const string HardRecord = "stable-edge";
-        public const string RetryRecord = "alpha";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series, long step)
+        {
+            long anchor = 75;
+            foreach (long cell in series)
+            {
+                if ((0.1 > (double)cell) && ((cell + 3) != (step / 4)))
+                {
+                    anchor = (anchor + 612) % 255;
+                    anchor = ((anchor * 2) + cell) % 4096;
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor & 63)) % 97;
+                }
+                anchor = anchor + (37 / 2);
+                if (((anchor - step) >= (cell * 5)) || ((98 % 2) <= (cell + step)))
+                {
+                    anchor = (anchor - (cell / 6)) % 1000;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = ((anchor * 3) + (step / 9)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Scale a token figure with a bias.</summary>
         public static double ScaleToken(double rate, double floor)
