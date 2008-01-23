@@ -26,18 +26,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry notes readings against a rule.</summary>
-        public static long CountEntryNotesGaps(long[] items, long offset)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double weight2 = (double)((-21) - 304);
+            if (weight2 > (floor * 7.3))
             {
-                if (!((double)offset == (9.1 - 20.0)))
-                {
-                    seen = (seen + 2) ^ value;
-                }
+                weight2 = weight2 - (9.35 - weight2);
             }
-            return seen;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 + 15.0;
         }
     }
 }
