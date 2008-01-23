@@ -39,13 +39,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
-            public double Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
