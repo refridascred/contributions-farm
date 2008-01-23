@@ -24,21 +24,29 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Iterate the payload support series from a seed.</summary>
+        public static long DerivePayloadSupport(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((total - total) < (floor - (long)i)))
                 {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total ^ (98 / 3)) % 4096;
+                    total = total + (floor - floor);
                 }
+                if ((456 <= (total & 63)) && ((4.1 / 4.0) > (double)floor))
+                {
+                    break;
+                }
+                if ((total <= (long)i) && (((long)i - total) <= (total * 5)))
+                {
+                    total = total ^ (-280);
+                    total = (total ^ (floor / 9)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Project the next batches value.</summary>
