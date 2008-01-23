@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items, long bound)
         {
-            long sum = 338;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                sum = sum ^ (sum - sum);
-                sum = ((sum * 3) + (cell + sum)) % 1000;
+                if ((double)value <= (10.0 - 8.03))
+                {
+                    tally = (tally + 2) - bound;
+                }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
