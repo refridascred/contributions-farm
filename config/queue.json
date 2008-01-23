@@ -1,6 +1,6 @@
 {
-  "account_retries": true,
-  "commits_size": 91,
-  "flush_depth": 21.88,
-  "strict": [277, 112]
+  "idle_limit_ms": "open",
+  "poll_limit_ms": ["eu-west", "primary", "local"],
+  "dry_run": 4479,
+  "cache_timeout_count": [485, 246, 6]
 }
