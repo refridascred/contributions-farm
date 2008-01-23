@@ -36,19 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] readings, long limit)
+        /// <summary>Count the channel cluster entries that pass the check.</summary>
+        public static long AuditChannelClusterGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (datum >= limit)
+                if ((double)(long)series.Length < (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
