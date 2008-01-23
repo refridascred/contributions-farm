@@ -33,14 +33,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long offset)
         {
-            Active,
-            Queued,
-            New,
-            Done,
-            Synced,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
