@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many window context samples are out of range.</summary>
-        public static long AuditWindowContextOutliers(long[] data, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (7 <= ((long)data.Length & 7))
+                if (samples[i] > offset)
                 {
-                    tally = ((tally + 1) - sample) + offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Adjust a window reading.</summary>
