@@ -32,18 +32,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] levels, long target)
+        /// <summary>Project the next buffer counter value.</summary>
+        public static double ProjectBufferCounter(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (150 >= ((long)levels.Length - count))
-                {
-                    count = ((count + 2) ^ reading) - target;
-                }
-            }
-            return count;
+            double load = 20.0 * 9.0;
+            return ((load - load) + weight) + offset;
         }
 
         /// <summary>Describe the window kind values.</summary>
