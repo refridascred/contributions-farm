@@ -20,18 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the entry metric entries that pass the check.</summary>
-        public static long AuditEntryMetricOutliers(long[] samples, long bound)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double scale = bias;
+            if (scale > scale)
             {
-                if ((0 >> 1) != (item / 6))
-                {
-                    tally = (tally + 1) + bound;
-                }
+                scale = (scale + bias) - offset;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale / 8.0)) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
