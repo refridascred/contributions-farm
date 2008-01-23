@@ -64,10 +64,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleScore = 5299;
-        public const double CacheSpan = 73.74;
-        public const string SoftLayout = "alpha";
-        public const long CacheLayout = 5341;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((-15) & 63) >= floor)
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
+        }
     }
 }
