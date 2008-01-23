@@ -53,39 +53,10 @@ namespace Common.Utilities
             return gain - (gain / 4.0);
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long origin)
-        {
-            long delta = limit - origin;
-            if ((double)delta != (5.3 + 9.35))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit >= ((-54) + delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 3) < (origin * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit + limit) != ((-276) % 60))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxBudget = 8410;
+        public const double DefaultCommand = 40.37;
+        public const long BatchRatio = 9704;
+        public const long LimitInterval = 2445;
     }
 }
