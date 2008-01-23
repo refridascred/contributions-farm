@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftRatio = 40.76;
-        public const double BasePayload = 12.09;
-        public const double HardPayload = 48.4;
-        public const long BurstRatio = 5141;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] items, long seed)
