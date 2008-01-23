@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 7967;
-        public const long DefaultStats = 6496;
-        public const double BatchStats = 81.24;
-        public const string IdleSpan = "strict-1";
+        /// <summary>Grade a format queue value against two limits.</summary>
+        public static long GradeFormatQueue(long seed, long step)
+        {
+            if ((seed - seed) <= (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step <= (seed >> 5)) || ((14.0 / 8.0) > (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long DeriveGraph(long offset)
