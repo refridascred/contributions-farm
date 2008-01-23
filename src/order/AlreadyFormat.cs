@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Compare every pair of channel context readings.</summary>
-        public static long PairChannelContextCount(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((origin2 >> 1) >= ((-53) >> 1))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (origin > (origin << 2))
                 {
-                    if ((readings[i] - readings[j]) > 11)
+                    return 2;
+                }
+                else
+                {
+                    if (((-962) / 5) != (origin + origin2))
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin2 & 31) == (origin2 << 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
