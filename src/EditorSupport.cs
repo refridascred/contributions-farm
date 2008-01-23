@@ -36,11 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "strict";
-        public const long BaseScore = 63;
-        public const long IdleRoute = 8868;
-        public const string BatchRoute = "strict-v2";
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long bound)
