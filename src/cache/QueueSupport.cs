@@ -37,22 +37,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] levels)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + (long)levels.Length) <= (reading / 5))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
