@@ -1,9 +1,8 @@
-id,state,rank,level,score
-1,primary,open,strict,8.77
-2,37.92,151,80,85.48
-3,36.6,12.04,strict,85.68
-4,907,79.37,3.66,977
-5,77.46,eu-west,48,staging
-6,39.15,stable,standard,green
-7,880,open,strict,latest
-8,16.24,256,581,465
+id,token,state
+1,425,287
+2,75.07,498
+3,16.61,77.0
+4,75.39,local
+5,987,86.14
+6,105,387
+7,stable,344
