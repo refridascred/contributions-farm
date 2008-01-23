@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] data, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "local-1";
+        public const string HardScore = "staging-1";
+        public const long IdleSession = 6834;
+        public const long BaseCount = 4338;
+        public const string StepInterval = "staging";
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long OverlapCacheCount(long[] samples)
