@@ -1,10 +1,6 @@
-id,level,ratio,owner,state
-1,26.37,73.29,50.89,primary
-2,2.96,109,274,34
-3,272,142,705,green
-4,40.24,green,fallback,74.57
-5,34.96,695,73.84,31.73
-6,local,edge,900,eu-west
-7,89.76,98.62,staging,824
-8,latest,legacy,32.79,standard
-9,3.77,585,23.94,97.18
+id,owner,ratio
+1,52.13,latest
+2,65.55,strict
+3,cached,500
+4,94.78,334
+5,cached,219
