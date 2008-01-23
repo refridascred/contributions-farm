@@ -1,11 +1,6 @@
 {
-  "hard_delay_ms": {
-    "max_window": 92.76,
-    "sync_timeout": 1348,
-    "audit": 8584,
-    "cache_ttl": 26.72,
-    "context_capacity": "green"
-  },
-  "burst_window": [12, 390, 321, 470],
-  "strict": 9158
+  "hard_ttl_s": 86.72,
+  "soft_interval": "green",
+  "base_limit_pct": 75.6,
+  "sync_depth": 1131
 }
