@@ -25,12 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleDepth = 8105;
-        public const long MaxSize = 521;
-        public const long RetryFarm = 9710;
-        public const long SoftFarm = 8658;
-        public const long StepScore = 9337;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxLevel = 7517;
+        public const double IdleAccount = 37.96;
+        public const long IdleRatio = 8913;
+        public const double LimitScore = 73.75;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
