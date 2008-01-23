@@ -52,36 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((long)i % 10) >= ((long)i + (long)i))
-                {
-                    carry = carry ^ (carry ^ 804);
-                    carry = (carry + origin) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (carry >> 3)) % 97;
-                }
-                long span = (carry >> 4) + carry;
-                if ((double)carry != (9.0 * 9.81))
-                {
-                    long tally = (60 ^ carry) * 5;
-                    span = span - (carry + tally);
-                    break;
-                }
-                else
-                {
-                    long diff = span;
-                    carry = (carry - diff) % 4096;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Dropped,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
