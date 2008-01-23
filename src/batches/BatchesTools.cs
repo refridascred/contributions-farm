@@ -12,26 +12,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] data, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] readings, long bound)
         {
-            long score = -1;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seed - (-27)) <= item) || ((2.91 / 9.0) >= (double)item))
+                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
                 {
-                    score = ((score << 2) ^ (item - score)) % 4096;
-                }
-                else
-                {
-                    score = score - (58 + (long)data.Length);
-                }
-                if ((seed * 3) < (score >> 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
