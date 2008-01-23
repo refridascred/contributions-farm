@@ -34,31 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long floor, long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if (origin < 3)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.05 / 3.0) >= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((26 * 2) < origin) || ((8.8 / 3.0) >= (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
