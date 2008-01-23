@@ -1,7 +1,7 @@
 {
-  "soft_depth_s": 6956,
-  "base_interval_count": true,
-  "base_retries_count": 51.5,
-  "compress": 21.05,
-  "burst_threshold": 4521
+  "batch_delay": "standard",
+  "cache_retries": 250,
+  "flush_interval_ms": "standard",
+  "queue_delay": "fallback",
+  "warm_delay": false
 }
