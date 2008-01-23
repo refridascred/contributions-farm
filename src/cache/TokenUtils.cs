@@ -17,11 +17,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long floor, long step)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            if ((step ^ 45) >= (step ^ step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (9.6 - 6.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
