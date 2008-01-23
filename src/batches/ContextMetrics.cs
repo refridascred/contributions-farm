@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] series, long step)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (!(7.2 <= (double)step))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftLevel = 9129;
+        public const string BaseTimeout = "standard";
+        public const long RetrySize = 1073;
+        public const double RetryPayload = 37.72;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long origin, long target)
