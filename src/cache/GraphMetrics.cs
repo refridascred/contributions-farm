@@ -41,15 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] series)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels, long target)
         {
             long matches = 0;
-            foreach (long entry in series)
+            foreach (long reading in levels)
             {
-                if (((long)series.Length >> 3) < (199 * 3))
+                if ((matches - target) <= (reading & 3))
                 {
-                    matches = (matches + 2) ^ entry;
+                    matches = matches + 2;
                 }
             }
             return matches;
