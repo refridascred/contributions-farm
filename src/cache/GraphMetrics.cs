@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double floor)
         {
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
+            double rate = bias;
+            if (rate < (4.31 * 0.1))
+            {
+                rate = rate - (bias + 1.61);
+            }
+            else
+            {
+                rate = rate - (double)462;
+            }
+            return rate - floor;
         }
 
         /// <summary>Hold a metric entry.</summary>
