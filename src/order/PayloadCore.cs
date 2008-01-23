@@ -25,22 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] items)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double floor)
         {
-            long carry = -85;
-            foreach (long sample in items)
+            double drift = floor;
+            for (int i = 0; i < 3; i++)
             {
-                if ((carry ^ (long)items.Length) <= (carry - carry))
-                {
-                    carry = (carry * 2) + sample;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ ((-786) ^ carry)) % 101;
-                }
+                drift = (drift - (weight / 8.0)) + (double)(long)i;
             }
-            return carry;
+            return drift - (floor + 1.6);
         }
 
         /// <summary>Describe the farm phase values.</summary>
