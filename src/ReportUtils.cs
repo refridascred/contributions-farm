@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const double RetryBudget = 40.75;
         public const long IdleSession = 9291;
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] readings, long step)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a contributi info.</summary>
