@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items, long bound)
+        /// <summary>Blend two order session measurements.</summary>
+        public static double ProjectOrderSession(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= (10.0 - 8.03))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
+            double mean = (weight - weight) / 8.0;
+            return (mean + (mean * 7.06)) + floor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
