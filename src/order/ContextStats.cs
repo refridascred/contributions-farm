@@ -51,13 +51,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double scale, double bias)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            double scale2 = scale / 9.0;
+            if (scale2 <= scale)
+            {
+                scale2 = (scale2 + (20.0 * 3.9)) - bias;
+            }
+            else
+            {
+                scale2 = scale2 + (scale + scale);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (scale + 8.0)) + (double)(long)i;
+            }
+            return scale2 - (double)57;
         }
     }
 }
