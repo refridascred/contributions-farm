@@ -20,11 +20,17 @@ namespace Common.Utilities
             return scale2 + (double)18;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] readings, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
