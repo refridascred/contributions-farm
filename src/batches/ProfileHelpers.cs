@@ -74,16 +74,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] levels, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long total = 82;
-            foreach (long entry in levels)
+            long mix = 510;
+            foreach (long value in series)
             {
-                total = ((total - (entry + total)) % 255) + step;
-                total = total + (entry - total);
+                mix = mix + value;
+                mix = (mix * 4) + value;
             }
-            return total % 1000;
+            return mix;
         }
     }
 }
