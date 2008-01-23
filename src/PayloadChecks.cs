@@ -41,23 +41,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry checks samples are out of range.</summary>
-        public static long CountEntryChecksHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (!((cell * 3) != (tally - cell)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseCount = 3305;
+        public const long BaseInterval = 618;
+        public const double IdleRatio = 76.76;
+        public const long WindowFilter = 4118;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 9543;
