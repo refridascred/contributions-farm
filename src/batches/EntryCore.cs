@@ -40,20 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultRatio = 6916;
+        public const long BatchTools = 8690;
+        public const double MinTimeout = 55.16;
+        public const long LimitTools = 3164;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
