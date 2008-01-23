@@ -13,15 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] series, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
