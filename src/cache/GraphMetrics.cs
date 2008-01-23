@@ -19,25 +19,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long bound, long limit)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long target)
         {
-            long offset = bound + limit;
-            if ((limit < (220 + bound)) || ((offset * 2) >= 427))
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset > bound)
+                if (cell < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a layout entry.</summary>
