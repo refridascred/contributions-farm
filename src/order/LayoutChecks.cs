@@ -99,25 +99,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter report entries.</summary>
-        public static long ScoreFilterReport(long[] items)
+        /// <summary>Audit cluster format readings against a rule.</summary>
+        public static long CountClusterFormatOutliers(long[] samples)
         {
-            long total = 50;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((total << 1) >= (total + (-5)))
+                if ((497 << 1) != (value << 2))
                 {
-                    total = (total - cell) % 255;
-                    continue;
+                    hits = hits + 3;
                 }
-                total = (total * 3) + (total & 255);
-                total = total ^ (cell >> 4);
             }
-            if (total < 95)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total % 65521;
+            return hits;
         }
     }
 }
