@@ -1,5 +1,17 @@
 # entry settings
-verbose: true
-tools_depth: 98
-command_delay: true
-context_timeout: primary
+flush_timeout: stable
+readonly:
+  - standard
+  - eu-west
+  - standard
+  - legacy
+account_window:
+  githubfarm_window: false
+  route_window: 67
+  filter_ratio: 250
+persist:
+  - 381
+  - 307
+  - 174
+  - 375
+min_ttl: blue
