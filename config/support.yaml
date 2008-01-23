@@ -1,10 +1,19 @@
 # support settings
-sync_ratio_s: false
-hard_delay_pct:
-  - blue
-  - edge
-idle_threshold: 1024
-max_ttl_s:
-  - eu-west
-  - standard
-  - blue
+stats_window: edge
+burst_size_count:
+  default_threshold:
+    - local
+    - strict
+  stream_delay: 82.84
+  audit:
+    min_size_ms: 1864
+    burst_limit_pct: edge
+    command_retries: false
+    hard_window_ms: true
+  default_capacity_s: eu-west
+poll_threshold_pct: blue
+max_timeout:
+  - green
+  - open
+readonly: 13
+min_size: true
