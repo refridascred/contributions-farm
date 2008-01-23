@@ -59,18 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double ratio = 2.0 * 6.0;
+            if (ratio >= (offset + gain))
             {
-                if (((item > (item - tally)) || (tally > (item + tally))) || ((double)97 > (double)tally))
-                {
-                    tally = tally + 1;
-                }
+                ratio = ratio + 3.58;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
