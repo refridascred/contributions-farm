@@ -52,12 +52,16 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseBudget = 7827;
-        public const long MinChecks = 5505;
-        public const string BaseChecks = "strict-1";
-        public const long HardChecks = 5211;
-        public const long BatchCount = 5028;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values)
+        {
+            long mark = 3;
+            foreach (long entry in values)
+            {
+                mark = mark - (entry & 31);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
