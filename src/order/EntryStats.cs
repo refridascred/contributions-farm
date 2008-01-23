@@ -22,24 +22,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Validate stream metrics readings against a bound.</summary>
+        public static bool ValidateStreamMetricsBounds(long[] series, long step)
         {
-            long mark = 31;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((2 + mark) < (cell - mark))
+                if (cell >= step)
                 {
-                    mark = (mark - cell) % 4096;
-                    mark = (mark + (4 - 6)) % 65521;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ (8 - mark)) % 97;
-                }
-                mark = (mark - (mark + mark)) % 65521;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Combine batch cluster values into a single score.</summary>
