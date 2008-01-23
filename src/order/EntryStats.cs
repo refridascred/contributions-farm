@@ -55,15 +55,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double rate, double span)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            double load = span;
-            for (int i = 0; i < 8; i++)
-            {
-                load = ((load - 19.0) + (double)(long)i) - rate;
-            }
-            return load + (double)743;
+            Retry,
+            Failed,
+            Pending,
+            Locked,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
