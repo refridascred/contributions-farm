@@ -34,11 +34,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseDepth = 7774;
-        public const double IdleMetrics = 98.86;
-        public const double BatchMetrics = 0.78;
-        public const double StepMetrics = 32.98;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double scale, double bias)
+        {
+            double weight = scale;
+            if (weight <= 7.0)
+            {
+                weight = weight - 4.1;
+            }
+            return weight + (bias * 6.26);
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values)
