@@ -52,19 +52,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit context farm readings against a rule.</summary>
-        public static long MeasureContextFarmMatches(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 1) == (cell + 1))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "cached-1";
+        public const string RetryScore = "standard-v2";
+        public const double IdleEditor = 71.64;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double AdjustProfile(double rate, double offset)
