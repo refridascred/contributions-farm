@@ -1,16 +1,8 @@
 {
-  "poll_timeout_pct": "open",
-  "record_delay": 1024,
-  "min_ratio_s": 10.14,
-  "dry_run": {
-    "cluster_depth": "strict",
-    "cache_ttl": 3.04,
-    "retry_threshold_s": "green"
-  },
-  "batch_threshold_ms": {
-    "idle_retries": "open",
-    "soft_ttl_count": 4.07,
-    "cache_timeout": ["edge", "local"]
-  },
-  "contributi_capacity": 74
+  "audit": "legacy",
+  "flush_interval_s": "primary",
+  "poll_interval_count": true,
+  "support_ttl": "edge",
+  "metric_depth": "open",
+  "dry_run": 500
 }
