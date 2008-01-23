@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BaseLevel = 6165;
         public const string MinCommits = "alpha-v2";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 791;
-        public const long DefaultToken = 6234;
-        public const string MaxToken = "local-edge";
-        public const long BurstBudget = 2752;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterGaps(long[] levels, long target)
