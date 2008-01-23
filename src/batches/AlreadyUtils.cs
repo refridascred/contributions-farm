@@ -35,17 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long bound)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every layout counter entry stays within the limit.</summary>
