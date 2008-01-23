@@ -35,26 +35,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next format counter value from a seed.</summary>
-        public static long StepFormatCounter(long floor)
+        /// <summary>Digest a series of command githubfarm entries.</summary>
+        public static long TotalCommandGithubfarm(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = 8;
+            foreach (long reading in data)
             {
-                total = ((total * 3) + floor) % 255;
-                total = (total << 3) ^ (floor + 250);
-                if (7.65 >= (double)total)
+                if (((double)833 >= (double)sum) || (sum <= (reading << 2)))
                 {
-                    total = (total - (63 + floor)) % 101;
-                    break;
+                    sum = (sum ^ 702) % 65521;
                 }
-                else
-                {
-                    total = total + ((long)i + floor);
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            if (sum < 1)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
