@@ -16,12 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] values, long target)
         {
-            Synced,
-            Idle,
-            Pending,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the payload support series from a seed.</summary>
