@@ -12,18 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] samples, long seed)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((4.7 / 4.0) == (double)(long)samples.Length)
+                if (sample >= target)
                 {
-                    seen = ((seen + 1) ^ item) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
