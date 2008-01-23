@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstBudget = "primary-edge";
-        public const long MaxLevel = 3315;
-        public const long LimitFactor = 8519;
-        public const long IdleFactor = 7640;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6792;
+        public const long HardCount = 6374;
+        public const long IdleBudget = 2066;
+        public const long MaxTimeout = 7419;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSize = 8844;
