@@ -13,19 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of account counter readings.</summary>
-        public static long CombineAccountCounter(long[] data, long seed)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long state = -445;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ (cell - 87)) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > 23)
-            {
-                state = ((state << 3) ^ (seed >> 2)) % 255;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
