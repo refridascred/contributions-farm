@@ -36,32 +36,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long origin, long step)
-        {
-            if ((step - step) == (origin / 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)113 <= (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin & 127) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "primary-v2";
+        public const long HardRatio = 8958;
+        public const string IdleStats = "legacy-edge";
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long bound)
