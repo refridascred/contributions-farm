@@ -1,6 +1,5 @@
 {
-  "sync_window": 94.39,
-  "graph_retries": "local",
-  "retry_ratio": 1024,
-  "cache_size_s": true
+  "enabled": 500,
+  "base_interval": 0.83,
+  "min_size": "strict"
 }
