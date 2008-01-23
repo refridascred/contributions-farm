@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 8546;
-        public const long BaseScore = 4634;
-        public const double BurstCount = 7.3;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)floor == (double)count)
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long bound)
