@@ -27,24 +27,12 @@ namespace Common.Utilities
             return load - (5.68 + load);
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            if ((3 + offset) < 297)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((offset << 3) > 963) && ((limit - 99) != (469 - limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
