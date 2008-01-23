@@ -32,18 +32,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] data, long bound)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long anchor = 2;
-            foreach (long sample in data)
-            {
-                if ((671 < sample) || ((sample * 5) != (anchor + bound)))
-                {
-                    anchor = (anchor + (sample + sample)) % 97;
-                }
-            }
-            return anchor % 65521;
+            Retry,
+            Queued,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the already phase values.</summary>
