@@ -41,24 +41,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the channel record series from a seed.</summary>
-        public static long DeriveChannelRecord(long floor)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((long)i == (floor ^ acc)))
-                {
-                    acc = acc ^ (acc >> 1);
-                    continue;
-                }
-                if ((floor ^ (long)i) == ((-8) & 15))
-                {
-                    continue;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
