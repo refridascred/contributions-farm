@@ -60,17 +60,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Find the first entry token entry that matches the target.</summary>
-        public static long LocateEntryTokenIndex(long[] data, long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
