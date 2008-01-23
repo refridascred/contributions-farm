@@ -49,18 +49,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context queue samples are out of range.</summary>
-        public static long AuditContextQueueMatches(long[] values)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)item >= (7.0 * 6.0))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Adjust a commits reading.</summary>
