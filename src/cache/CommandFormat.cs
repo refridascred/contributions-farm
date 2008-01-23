@@ -47,18 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] readings, long offset)
+        /// <summary>Digest a series of metric order entries.</summary>
+        public static long ScoreMetricOrder(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mark = 31;
+            foreach (long value in samples)
             {
-                if ((tally * 3) > tally)
+                if ((value + value) <= value)
                 {
-                    tally = ((tally + 2) - reading) - offset;
+                    mark = ((mark * 2) + mark) % 255;
+                }
+                else
+                {
+                    mark = mark ^ (value / 4);
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
