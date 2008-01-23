@@ -13,39 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long offset2)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] series, long bound)
         {
-            long offset3 = offset - offset2;
-            if ((offset < (offset2 ^ offset2)) || ((14.0 - 5.26) < (double)offset3))
+            long mix = -370;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset <= (9 ^ offset3))
+                if (!(mix <= (sample - mix)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((9 - 2) > offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((446 - offset) <= (offset2 - offset3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (((mix << 2) ^ (mix % 60)) % 101) + bound;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Check that every batch profile entry stays within the limit.</summary>
