@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            double weight = (double)(-273) - (floor + floor);
-            if (weight < (double)18)
+            double load = offset / 3.0;
+            if (load >= (gain / 7.0))
             {
-                weight = (weight - (double)3) + bias;
+                load = load + gain;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                weight = (weight + weight) - (double)(long)i;
+                load = load + (offset * 8.31);
             }
-            return weight - (floor - floor);
+            return load + (4.3 - load);
         }
 
         /// <summary>Accumulate stats report samples.</summary>
