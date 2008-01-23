@@ -1,7 +1,13 @@
 {
-  "metrics_size": false,
-  "strict": true,
-  "base_timeout_ms": "edge",
-  "idle_ttl_count": 60,
-  "window_ratio": 59.55
+  "flush_ttl_pct": 4559,
+  "sync_capacity_ms": "cached",
+  "queue_delay": 8331,
+  "sync_retries": {
+    "record_size": 93,
+    "notes_depth": 74.5,
+    "readonly": 6353,
+    "batch_size_s": "fallback",
+    "farm_depth": 60
+  },
+  "readonly": 7222
 }
