@@ -61,22 +61,14 @@ namespace Common.Utilities
             return load + (double)6;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] values, long target)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (20.0 < (double)count)
-                {
-                    count = ((count + 2) ^ reading) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Synced,
+            Locked,
+            Retry,
+            Draft,
         }
     }
 }
