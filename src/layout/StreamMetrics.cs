@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream metrics helpers.</summary>
     public static class StreamMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 5619;
-        public const string DefaultToken = "cached";
-        public const string IdleToken = "cached";
-        public const string HardDepth = "legacy-v2";
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
+        {
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MinOrder = 36.2;
