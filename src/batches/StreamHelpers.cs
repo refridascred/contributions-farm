@@ -46,14 +46,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 57.79;
+        public const string DefaultNotes = "primary-v2";
+        public const string BurstSize = "latest-edge";
+        public const double LimitNotes = 31.1;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsOutliers(long[] readings, long offset)
