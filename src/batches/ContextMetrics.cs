@@ -15,12 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] series, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long target)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= target)
+                if ((series[i] > target) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
