@@ -31,15 +31,18 @@ namespace Common.Utilities
         public const double StepSpan = 68.42;
         public const long DefaultChecks = 4530;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] values, long floor)
         {
-            long result = -7;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                result = (((result << 2) ^ (result % 2)) + entry) - floor;
+                if ((count + datum) <= (floor % 3))
+                {
+                    count = count + 3;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
