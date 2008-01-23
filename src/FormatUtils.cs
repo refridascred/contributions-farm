@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] data)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long acc = 50;
-            foreach (long item in data)
-            {
-                acc = (acc * 2) + (item - item);
-                if ((6 + acc) <= (item & 3))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
