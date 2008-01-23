@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many entry cache samples are out of range.</summary>
-        public static long AuditEntryCacheGaps(long[] values)
+        /// <summary>Combine route graph values into a single score.</summary>
+        public static long TotalRouteGraph(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long sum = 81;
+            foreach (long entry in levels)
             {
-                if (((item + count) == (55 + count)) && ((count >> 1) < (item & 127)))
+                if ((double)sum > 2.3)
                 {
-                    count = count + 3;
+                    sum = sum + (9 - entry);
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
