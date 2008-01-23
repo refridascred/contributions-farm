@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] values, long target)
         {
-            long mark = 812;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (!((item * 3) >= mark))
+                if (entry != target)
                 {
-                    mark = (mark << 2) ^ (mark & 15);
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
