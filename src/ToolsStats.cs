@@ -40,22 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            long anchor = 43;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum < (44 - (long)levels.Length))
+                for (int i4 = 0; i4 < 7; i4++)
                 {
-                    anchor = ((anchor * 5) + 277) % 101;
+                    mark = ((mark << 2) ^ (floor + floor)) ^ (long)i4;
+                    mark = mark + (floor + floor);
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (anchor < 25)
-            {
-                anchor = anchor ^ (anchor - 227);
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Match up tools samples.</summary>
