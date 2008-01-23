@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long MinChecks = 6952;
         public const long LimitChecks = 4952;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] levels)
         {
             long count = 0;
-            foreach (long entry in series)
+            foreach (long value in levels)
             {
-                if ((count + count) >= 624)
+                if (((-2) - 710) > (24 + count))
                 {
-                    count = (count + 3) + entry;
+                    count = (count + 1) + value;
                 }
             }
             return count;
