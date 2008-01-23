@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const string LimitDepth = "stable-1";
         public const long HardPayload = 3543;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] samples, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
             long count = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item != (9.2 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) + seed;
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
