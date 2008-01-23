@@ -74,12 +74,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] data, long offset)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (item <= 912)
+                {
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
