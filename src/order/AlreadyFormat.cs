@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long MinChecks = 6952;
         public const long LimitChecks = 4952;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] items, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < step)
+                if ((data[i] <= origin) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the contributi class values.</summary>
