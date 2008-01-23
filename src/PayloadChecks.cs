@@ -50,11 +50,17 @@ namespace Common.Utilities
         public const double IdleRatio = 76.76;
         public const long WindowFilter = 4118;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 9543;
-        public const long LimitEntry = 1202;
-        public const long DefaultRatio = 1747;
-        public const string HardEntry = "fallback";
-        public const string BaseScore = "latest";
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
