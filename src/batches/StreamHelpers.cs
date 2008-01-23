@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] readings, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long score = 15;
+            foreach (long datum in values)
             {
-                if (entry < target)
+                if ((datum + score) <= (datum / 3))
                 {
-                    ready = false;
-                    break;
+                    score = ((score * 3) + (score - score)) % 97;
                 }
             }
-            return ready;
+            return score % 97;
         }
 
         /// <summary>Measure how many command editor samples are out of range.</summary>
