@@ -61,21 +61,11 @@ namespace Common.Utilities
         public const long RetryStream = 4364;
         public const double BurstSize = 86.38;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((9.31 * 4.0) != (double)(long)i)
-                {
-                    mix = (mix - ((long)i >> 2)) % 97;
-                    mix = (mix + (long)i) % 97;
-                    break;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Count { get; set; }
+            public long Region { get; set; }
         }
     }
 }
