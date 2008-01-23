@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Validate batch buffer readings against a bound.</summary>
+        public static bool VerifyBatchBufferRange(long[] readings, long origin)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
