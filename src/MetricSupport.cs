@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batch buffer readings against a bound.</summary>
-        public static bool VerifyBatchBufferRange(long[] readings, long origin)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long result = 8;
+            foreach (long sample in readings)
             {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result << 3) ^ sample;
             }
-            return valid;
+            if (result > 64)
+            {
+                result = result - (result - target);
+            }
+            return result;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
