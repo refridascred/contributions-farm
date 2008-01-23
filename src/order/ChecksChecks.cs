@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = bound + limit;
+            if ((limit << 2) >= lane)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit + lane) == (lane + limit))
                 {
-                    if ((samples[i] - samples[j]) != 20)
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 3) <= (lane << 3))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)bound <= (double)lane))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate editor window samples.</summary>
