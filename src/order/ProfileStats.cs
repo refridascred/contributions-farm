@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Draft,
-            Failed,
-            Active,
-            Paused,
-            Pending,
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a editor entry.</summary>
