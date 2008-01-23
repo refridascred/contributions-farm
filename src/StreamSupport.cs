@@ -20,22 +20,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit already farm readings against a rule.</summary>
-        public static long AuditAlreadyFarmOutliers(long[] series, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long gap = floor - limit;
+            if (gap < (128 + 782))
             {
-                if ((double)floor >= (double)tally)
+                return 2;
+            }
+            else
+            {
+                if (floor >= limit)
                 {
-                    tally = (tally + 2) + cell;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)gap <= (18.0 - 4.2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (gap <= (gap + gap))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
