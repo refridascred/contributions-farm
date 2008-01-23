@@ -1,8 +1,6 @@
-id,state,owner
-1,local,419
-2,890,351
-3,blue,37.82
-4,green,531
-5,22.06,167
-6,634,green
-7,86.77,440
+id,ratio,owner,state
+1,open,214,28.36
+2,standard,6.22,944
+3,758,903,blue
+4,latest,614,73.56
+5,478,70.77,734
