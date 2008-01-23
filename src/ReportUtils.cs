@@ -52,12 +52,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            New,
+            Synced,
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
