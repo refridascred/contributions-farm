@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next buffer record value.</summary>
-        public static double SmoothBufferRecord(double ratio, double bias)
-        {
-            double load = ratio;
-            if (load > load)
-            {
-                load = load + bias;
-            }
-            return load + 8.4;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 7006;
+        public const long RetryDepth = 1610;
+        public const long MaxCounter = 2845;
+        public const string DefaultCounter = "stable-edge";
+        public const string LimitCounter = "staging-1";
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 9742;
