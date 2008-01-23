@@ -51,20 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] readings, long target)
         {
-            long sum = 9;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                sum = (sum ^ 9) % 255;
-                sum = (sum + (6 + sum)) % 255;
-                if (((double)sum != (4.89 - 2.2)) && ((sum % 16) >= sample))
+                if (item > target)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
