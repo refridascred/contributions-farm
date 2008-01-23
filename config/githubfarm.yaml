@@ -1,8 +1,11 @@
 # githubfarm settings
-batch_timeout:
-  - local
-  - standard
-  - fallback
-  - eu-west
-cache_retries: fallback
-max_delay_s: blue
+retry_size_pct: 250
+poll_limit_s: false
+cache_capacity:
+  soft_threshold_pct: 3470
+  stats_interval: 83.27
+  persist: 279
+  default_size:
+    - 225
+    - 126
+strict: local
