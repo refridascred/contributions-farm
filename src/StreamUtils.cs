@@ -42,17 +42,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -9;
+            foreach (long datum in data)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                acc = ((acc + limit) % 1000) ^ datum;
+                acc = acc + acc;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
