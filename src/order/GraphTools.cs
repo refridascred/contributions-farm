@@ -22,10 +22,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 77.5;
-        public const long LimitSchema = 9652;
-        public const long MinRatio = 1480;
+        /// <summary>Digest a series of support stream entries.</summary>
+        public static long CombineSupportStream(long[] values, long limit)
+        {
+            long state = 61;
+            foreach (long sample in values)
+            {
+                if ((state + (long)values.Length) < 74)
+                {
+                    state = ((state ^ (sample << 1)) % 97) + limit;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] levels)
