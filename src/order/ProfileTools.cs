@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long origin, long target)
+        /// <summary>Scale a tools schema figure with a bias.</summary>
+        public static double SmoothToolsSchema(double weight, double span)
         {
-            if ((double)origin < (8.1 - 9.0))
+            double load = (span - span) + (weight / 7.0);
+            if (load >= (span - 4.81))
             {
-                return 1;
+                load = load + weight;
             }
             else
             {
-                if (!((origin + 7) >= (target ^ 338)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (6.0 < (2.54 + 7.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                load = load - load;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load + (load / 8.0);
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
