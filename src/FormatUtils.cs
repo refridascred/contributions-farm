@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long floor, long floor2)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long step = floor + floor2;
-            if ((double)floor <= (9.27 * 9.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor < (7.3 / 3.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((289 % 24) < (floor2 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
