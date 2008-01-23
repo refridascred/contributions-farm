@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 6557;
-        public const double StepGraph = 57.69;
-        public const long WindowGraph = 8650;
-        public const long IdleGraph = 1691;
-        public const long BaseGraph = 2152;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] samples, long step)
+        {
+            long carry = 2;
+            foreach (long item in samples)
+            {
+                if ((carry - carry) >= (item & 127))
+                {
+                    carry = (carry - (3 * 4)) % 1000;
+                    carry = carry + (54 ^ step);
+                }
+                carry = carry - 5;
+                if ((double)carry < 2.6)
+                {
+                    carry = (carry - (carry + item)) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 255;
+                }
+            }
+            if (carry > 96)
+            {
+                carry = (carry << 3) ^ (carry << 1);
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a layout session reading.</summary>
         public static double ScaleLayoutSession(double rate, double bias)
