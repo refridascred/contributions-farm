@@ -35,11 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Find the first metric batch entry that matches the target.</summary>
+        public static long LocateMetricBatchIndex(long[] values, long step)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token info.</summary>
