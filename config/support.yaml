@@ -1,10 +1,9 @@
 # support settings
-stream_limit: false
-burst_retries_count: edge
-verbose: 4625
-batch_depth: 4215
-idle_timeout_s:
-  - 315
-  - 113
-  - 175
-  - 359
+poll_interval_count: blue
+checks_capacity: 4240
+default_capacity_s: true
+warm_threshold_count:
+  - 382
+  - 237
+  - 99
+sync_capacity: true
