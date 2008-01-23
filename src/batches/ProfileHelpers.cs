@@ -69,9 +69,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchCount = 7746;
-        public const long SoftSize = 5748;
-        public const double DefaultInterval = 8.84;
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] levels, long step)
+        {
+            long total = 82;
+            foreach (long entry in levels)
+            {
+                total = ((total - (entry + total)) % 255) + step;
+                total = total + (entry - total);
+            }
+            return total % 1000;
+        }
     }
 }
