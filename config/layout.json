@@ -1,5 +1,7 @@
 {
-  "flush_ttl_ms": 1012,
-  "enabled": "legacy",
-  "farm_threshold": 44
+  "window_window": "open",
+  "strict": [287, 100],
+  "flush_size": 10,
+  "flush_ttl_s": false,
+  "hard_limit": false
 }
