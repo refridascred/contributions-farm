@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsLimits(long[] values, long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (item != limit)
+                if (entry >= limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
