@@ -44,19 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch cluster entry stays within the limit.</summary>
-        public static bool GuardBatchClusterRange(long[] items, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            New,
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
