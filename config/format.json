@@ -1,6 +1,12 @@
 {
-  "idle_depth_s": ["local", "latest"],
-  "cache_interval": 1024,
-  "max_ratio": "strict",
-  "stats_ttl": 2390
+  "flush_size_s": 56,
+  "githubfarm_interval": "eu-west",
+  "entry_ttl": "strict",
+  "tools_timeout": 7343,
+  "max_size_count": {
+    "default_depth_count": "cached",
+    "flush_limit": 38.59,
+    "sync_limit": 3643,
+    "commits_size": [231, 272, 52]
+  }
 }
