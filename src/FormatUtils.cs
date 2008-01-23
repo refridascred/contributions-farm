@@ -14,18 +14,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] items, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)item > 2.86)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + limit;
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
