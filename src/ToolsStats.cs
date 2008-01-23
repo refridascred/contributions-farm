@@ -56,18 +56,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item > (item - tally)) || (tally > (item + tally))) || ((double)97 > (double)tally))
                 {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
