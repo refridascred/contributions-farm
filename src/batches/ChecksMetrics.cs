@@ -16,25 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            double mean = (offset + 3.0) / 7.0;
+            if (mean >= gain)
             {
-                if (((long)i % 2) >= 784)
-                {
-                    mix = (mix - (mix >> 4)) % 4096;
-                    mix = mix - limit;
-                }
-                else
-                {
-                    long diff = (limit + (long)i) + (mix >> 5);
-                    mix = (mix + (diff / 4)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                mean = mean + (gain - mean);
             }
-            return mix;
+            return mean + offset;
         }
 
         /// <summary>Rank already input into a small class.</summary>
