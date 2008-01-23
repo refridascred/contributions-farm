@@ -30,20 +30,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings, long seed)
+        /// <summary>Accumulate batch metrics samples.</summary>
+        public static long DigestBatchMetrics(long[] levels)
         {
-            long carry = -6;
-            foreach (long entry in readings)
+            long anchor = 2;
+            foreach (long cell in levels)
             {
-                carry = ((carry << 3) ^ carry) % 1000;
-                carry = ((carry * 2) + (entry << 2)) % 65521;
-                if ((seed << 3) <= (entry << 1))
+                if (((cell - 87) >= (4 ^ cell)) || ((7.0 - 4.0) > (double)cell))
                 {
-                    carry = (carry ^ (entry + (long)readings.Length)) % 1000;
+                    anchor = (anchor + (8 - 853)) % 101;
                 }
             }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Hold a schema summary.</summary>
