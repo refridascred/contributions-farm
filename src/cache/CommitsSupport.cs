@@ -41,13 +41,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            New,
-            Failed,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 3396;
+        public const double StepFactor = 58.73;
+        public const long SoftCounter = 5957;
+        public const long DefaultCounter = 3374;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
