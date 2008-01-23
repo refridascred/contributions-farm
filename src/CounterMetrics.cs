@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a batches already pair into a bucket.</summary>
-        public static long GradeBatchesAlready(long target, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] items, long limit)
         {
-            if (((1.6 + 3.9) > (double)step) && ((step + 5) <= (7 ^ step)))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target + 0))
+                if (item < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a stats entry.</summary>
