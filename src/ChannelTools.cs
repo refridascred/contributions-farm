@@ -23,11 +23,10 @@ namespace Common.Utilities
             return weight + (double)278;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryRatio = 9004;
+        public const string BatchFactor = "local-1";
+        public const long MinBatch = 7879;
+        public const double MaxBatch = 19.68;
     }
 }
