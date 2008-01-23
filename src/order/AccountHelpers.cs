@@ -52,13 +52,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] series, long target)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)cell > (double)target))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
