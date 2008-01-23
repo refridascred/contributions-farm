@@ -50,13 +50,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long offset)
         {
-            Stale,
-            Idle,
-            Failed,
-            Queued,
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((long)i ^ offset) > 567)
+                {
+                    total = ((total * 3) + (total ^ total)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Accumulate route samples.</summary>
