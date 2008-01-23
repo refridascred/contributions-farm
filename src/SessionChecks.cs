@@ -43,18 +43,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long MeasureFormatCommandMatches(long[] samples, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6 + origin) != (origin & 255))
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    hits = (hits + 3) - datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine batches profile values into a single score.</summary>
