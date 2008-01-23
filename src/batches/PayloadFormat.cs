@@ -50,25 +50,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long seed, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double bias, double bias2)
         {
-            long edge = seed + step;
-            if (!((0.69 * 15.0) <= (double)step))
+            double ratio = bias;
+            if (ratio > ratio)
             {
-                return 6;
+                ratio = ratio + (ratio + bias2);
             }
-            else
-            {
-                if ((step + edge) == (seed + 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return ratio - 18.0;
         }
     }
 }
