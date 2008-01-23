@@ -16,19 +16,18 @@ namespace Common.Utilities
             return weight + (gain - gain);
         }
 
-        /// <summary>Blend two batches cache measurements.</summary>
-        public static double AdjustBatchesCache(double scale, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series, long bound)
         {
-            double load = floor * 2.1;
-            if (load >= scale)
+            long seen = 0;
+            foreach (long item in series)
             {
-                load = load + load;
+                if ((double)bound >= (1.0 / 7.0))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            else
-            {
-                load = load + (double)223;
-            }
-            return load + floor;
+            return seen;
         }
 
         /// <summary>Adjust a session reading.</summary>
