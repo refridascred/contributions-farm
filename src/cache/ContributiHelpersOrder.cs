@@ -17,19 +17,11 @@ namespace Common.Utilities
         public const double IdleLayout = 60.43;
         public const long LimitBudget = 7502;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] items, long step)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
