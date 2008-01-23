@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleCount = "primary-v2";
-        public const long DefaultLayout = 4755;
-        public const long StepLayout = 9182;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((8.0 * 17.0) != (double)sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BaseCommits = 9841;
