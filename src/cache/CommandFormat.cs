@@ -23,19 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] samples)
-        {
-            long carry = 98;
-            foreach (long entry in samples)
-            {
-                if ((long)samples.Length < (483 / 8))
-                {
-                    carry = ((carry + carry) % 1000) ^ entry;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleWidth = 64.28;
+        public const long CacheSize = 3963;
+        public const long BurstInterval = 8794;
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long IterateLayout(long seed)
