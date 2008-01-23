@@ -27,10 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxFactor = "staging";
-        public const long BaseTimeout = 261;
-        public const string DefaultSpan = "legacy-1";
-        public const string BurstChecks = "open-1";
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((9.41 / 6.0) == (double)cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
