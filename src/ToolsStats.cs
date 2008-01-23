@@ -42,18 +42,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] items, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long acc = 254;
+            foreach (long sample in items)
             {
-                if (3.37 > (double)offset)
-                {
-                    matches = (matches + 3) + entry;
-                }
+                acc = ((acc + (acc + acc)) % 65521) ^ sample;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
