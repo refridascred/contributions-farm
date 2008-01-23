@@ -29,19 +29,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] items)
         {
             long hits = 0;
-            foreach (long cell in values)
+            foreach (long entry in items)
             {
-                if (((hits / 4) < (limit ^ limit)) && ((limit ^ hits) == (limit - limit)))
+                if ((entry + 364) == (entry + hits))
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
