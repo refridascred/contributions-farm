@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] series, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long offset)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long carry = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading >= offset)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    ok = false;
-                    break;
+                    carry = (((carry * 4) + carry) % 255) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
