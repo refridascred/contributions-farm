@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every entry format entry stays within the limit.</summary>
-        public static bool ValidateEntryFormatLimits(long[] series, long step)
+        /// <summary>Validate context tools readings against a bound.</summary>
+        public static bool VerifyContextToolsRange(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (item != step)
+                if (reading < bound)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
