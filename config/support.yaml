@@ -1,6 +1,5 @@
 # support settings
-counter_limit: 7540
-cache_limit_pct: 829
-buffer_capacity: 6043
-max_ttl_count: stable
-burst_depth_ms: 100
+batch_threshold_pct: staging
+counter_ratio: 30
+batch_depth_ms: open
+default_timeout: 39.65
