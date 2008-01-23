@@ -75,11 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
+            long total = 0;
+            foreach (long datum in levels)
+            {
+                if (target <= (datum << 2))
+                {
+                    total = ((total * 3) + (total << 2)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 4) + (1 + total)) % 1000;
+                }
+            }
+            return total % 1000;
         }
     }
 }
