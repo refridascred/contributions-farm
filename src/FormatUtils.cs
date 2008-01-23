@@ -71,12 +71,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Failed,
-            New,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
