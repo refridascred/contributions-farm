@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const long RetryLevel = 1418;
         public const long MinEntry = 1668;
 
-        /// <summary>Measure how many editor filter samples are out of range.</summary>
-        public static long MeasureEditorFilterOutliers(long[] items)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (((5.6 - 9.0) <= (double)count) && ((double)datum != (8.2 * 4.9)))
-                {
-                    count = count + 3;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Match up route samples.</summary>
