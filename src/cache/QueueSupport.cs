@@ -17,11 +17,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxWidth = 6.33;
-        public const double BatchFormat = 97.29;
-        public const double CacheFormat = 47.43;
-        public const double RetryFormat = 65.0;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data, long offset)
+        {
+            long mix = 304;
+            foreach (long item in data)
+            {
+                mix = ((mix ^ (offset ^ offset)) % 65521) ^ item;
+            }
+            if (mix < (-8))
+            {
+                mix = (mix + (offset + mix)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
