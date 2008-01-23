@@ -60,26 +60,12 @@ namespace Common.Utilities
         public const long HardChecks = 5211;
         public const long BatchCount = 5028;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] readings, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long state = 9;
-            foreach (long sample in readings)
-            {
-                if ((9.05 < (double)state) && ((sample >> 5) < (state - sample)))
-                {
-                    state = (state + (seed ^ sample)) % 4096;
-                }
-                else
-                {
-                    state = (state - (sample & 1)) % 65521;
-                }
-                if (seed <= 915)
-                {
-                    break;
-                }
-            }
-            return state;
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Look up the position of a format sample.</summary>
