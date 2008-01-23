@@ -1,7 +1,23 @@
 {
-  "min_capacity": 4682,
-  "min_ttl_s": 90,
-  "default_ttl_s": 2242,
-  "farm_threshold": [107, 385, 396],
-  "tools_delay": 81
+  "burst_interval_pct": 60,
+  "batch_depth": {
+    "verbose": {
+      "poll_capacity": 25.09,
+      "default_limit_s": 500,
+      "idle_capacity_pct": 29.62
+    },
+    "idle_size_count": {
+      "burst_delay_count": true,
+      "batch_window_count": [362, 107],
+      "min_interval_ms": "local",
+      "min_timeout": 89,
+      "queue_limit": ["primary", "eu-west"],
+      "strict": ["open", "stable", "strict", "open"]
+    },
+    "compress": "standard",
+    "route_capacity": false,
+    "max_limit_pct": "staging",
+    "strict": false
+  },
+  "enabled": 500
 }
