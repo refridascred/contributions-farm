@@ -16,17 +16,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] items, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                if ((double)bound != (5.1 + 6.8))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a support entry.</summary>
