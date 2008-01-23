@@ -30,20 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double rate, double span)
-        {
-            double scale = (span + 3.3) - 8.1;
-            if (scale <= (double)51)
-            {
-                scale = scale - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (8.4 + rate)) + (double)(long)i;
-            }
-            return scale + (double)67;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string DefaultWidth = "standard-1";
+        public const double CacheCounter = 28.04;
+        public const long BatchCounter = 9079;
+        public const long MaxCounter = 8209;
+        public const long DefaultDepth = 6207;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksOutliers(long[] series)
