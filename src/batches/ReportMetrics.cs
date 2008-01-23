@@ -27,19 +27,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Project the next stats cache value.</summary>
-        public static double AdjustStatsCache(double rate, double span)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] data, long origin)
         {
-            double drift = (11.0 / 9.0) * 2.9;
-            if (drift > drift)
+            bool ready = true;
+            foreach (long item in data)
             {
-                drift = (drift + (double)303) + span;
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + rate;
-            }
-            return drift + (double)535;
+            return ready;
         }
     }
 }
