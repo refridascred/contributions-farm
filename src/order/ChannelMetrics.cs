@@ -40,18 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm buffer entries that pass the check.</summary>
-        public static long AuditFarmBufferOutliers(long[] readings, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (item >= (923 % 3))
+                if (!!((6.6 - 1.03) <= (double)count))
                 {
-                    tally = (tally + 2) - target;
+                    count = (count + 3) + sample;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
