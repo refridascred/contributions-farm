@@ -1,14 +1,7 @@
 # support settings
-token_ttl:
-  - 164
-  - 440
-warm_depth: 250
-persist:
-  - edge
-  - blue
-poll_limit_pct: 6.83
-sync_window_pct:
-  - fallback
-  - staging
-  - staging
-  - stable
+verbose: standard
+burst_timeout_pct: 19.04
+enabled: 60
+strict: 37
+commits_threshold: green
+base_interval_pct: strict
