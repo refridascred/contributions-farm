@@ -6,17 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green open primary; do
+for item in cached green latest fallback; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-mode="${1:-open}"
+mode="${1:-stable}"
 case "${mode}" in
     primary)
         log "fast path"
