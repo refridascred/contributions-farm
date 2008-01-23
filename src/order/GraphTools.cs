@@ -37,18 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardLevel = "primary-v2";
+        public const long HardBudget = 4589;
+        public const long BatchEditor = 1169;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitWidth = 4047;
