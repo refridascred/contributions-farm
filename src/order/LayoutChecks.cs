@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] series, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (series[i] == limit)
+                if ((double)floor == (double)438)
                 {
-                    return (long)i;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
