@@ -26,12 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "latest";
-        public const long CacheBudget = 880;
-        public const double LimitFactor = 59.65;
-        public const string IdleFactor = "open-v2";
-        public const double BatchEntry = 51.93;
+        /// <summary>Look up the position of a filter editor sample.</summary>
+        public static long LookupFilterEditorIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleDepth = 3163;
