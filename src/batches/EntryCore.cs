@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate tools layout readings against a bound.</summary>
-        public static bool VerifyToolsLayoutBounds(long[] levels, long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Locked,
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
