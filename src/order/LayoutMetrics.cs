@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank entry commits input into a small class.</summary>
-        public static long ClassifyEntryCommits(long seed, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] data, long seed)
         {
-            if ((bound + seed) != (seed >> 1))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound + bound) > (39 >> 1)) && ((bound + seed) < (seed - seed)))
+                if (sample <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.0 * 4.2) < (double)seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed * 4) != (bound * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
