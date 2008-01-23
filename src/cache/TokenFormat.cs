@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double bias, double bias2)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] items, long seed)
         {
-            double gain = bias2;
-            if (gain > (bias * 9.47))
+            bool stale = true;
+            foreach (long value in items)
             {
-                gain = gain - (5.0 + bias2);
+                if (value <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (bias + bias2);
-            }
-            return gain - (double)88;
+            return stale;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
