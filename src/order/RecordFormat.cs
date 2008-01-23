@@ -19,40 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long seed, long floor)
-        {
-            long bound = seed - floor;
-            if ((floor - bound) != (bound - seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((19.0 * 5.49) != (double)bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(((-631) << 3) >= (bound + bound)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound + seed) > (floor - floor)) && ((floor * 2) >= (floor % 8)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 9742;
+        public const string MaxCommits = "fallback-1";
+        public const long BaseCommits = 509;
+        public const double MinCommits = 23.43;
+        public const double BurstBudget = 23.57;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheGaps(long[] values)
