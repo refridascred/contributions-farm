@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit counter contributi readings against a rule.</summary>
-        public static long AuditCounterContributiMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((11.0 / 2.0) < (double)matches) && (((matches - matches) <= (matches + sample)) && ((double)matches == (0.5 + 4.4))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseWidth = 3114;
+        public const long StepToken = 8999;
+        public const string SoftSize = "standard-v2";
+        public const string RetryToken = "cached-1";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferOutliers(long[] levels)
