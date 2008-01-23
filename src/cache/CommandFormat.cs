@@ -28,13 +28,13 @@ namespace Common.Utilities
         public const long CacheSize = 3963;
         public const long BurstInterval = 8794;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] values, long floor)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long entry in values)
             {
-                if ((tally ^ value) >= value)
+                if (!((floor / 8) < (entry + tally)) && ((33 < (floor >> 2)) || ((floor & 1) == (floor - tally))))
                 {
                     tally = tally + 1;
                 }
