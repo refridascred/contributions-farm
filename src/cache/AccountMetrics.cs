@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const long StepWidth = 4848;
         public const long StepRatio = 4032;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            New,
-            Ready,
-            Draft,
-            Active,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Audit layout checks readings against a rule.</summary>
