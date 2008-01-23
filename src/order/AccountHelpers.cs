@@ -54,17 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long limit)
+        /// <summary>Fold a list of support record readings.</summary>
+        public static long FoldSupportRecord(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 8;
+            foreach (long datum in items)
             {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                if (result <= (7 + datum))
                 {
-                    return (long)i;
+                    result = (result + result) % 255;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a metrics info.</summary>
