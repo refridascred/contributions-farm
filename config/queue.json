@@ -1,8 +1,6 @@
 {
-  "strict": 84.04,
-  "warm_window_ms": "local",
-  "hard_ttl": 66.69,
-  "base_ratio": "legacy",
-  "persist": 63.12,
-  "idle_size_ms": [98, 308, 270, 166]
+  "retry_interval": 8.38,
+  "commits_interval": 250,
+  "order_capacity": "green",
+  "burst_threshold": false
 }
