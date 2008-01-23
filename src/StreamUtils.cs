@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const double RetryBatch = 50.69;
         public const long BurstDepth = 958;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] series, long limit)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double scale, double offset)
         {
-            bool found = true;
-            foreach (long item in series)
+            double bias = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias = ((bias + scale) + (double)(long)i) - offset;
             }
-            return found;
+            return bias - bias;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
