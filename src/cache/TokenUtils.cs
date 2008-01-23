@@ -20,12 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
         {
-            Stale,
-            Synced,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
