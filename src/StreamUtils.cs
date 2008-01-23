@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long seed, long origin)
+        /// <summary>Validate account farm readings against a bound.</summary>
+        public static bool ValidateAccountFarmLimits(long[] series, long floor)
         {
-            if (seed < origin)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin < (5.55 - 0.13))
+                if (cell < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin ^ 31) != (49 ^ 495))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((origin >> 5) == (origin & 1)) && ((5.0 / 9.0) <= (double)seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
