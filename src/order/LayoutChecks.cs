@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series, long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits + hits) <= hits)
-                {
-                    hits = ((hits + 2) ^ item) + origin;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
