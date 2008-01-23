@@ -51,20 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((long)i <= (offset >> 5)))
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                anchor = anchor + (anchor - (long)i);
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
