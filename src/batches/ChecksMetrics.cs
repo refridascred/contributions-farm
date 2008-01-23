@@ -83,19 +83,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long mark = -24;
+            foreach (long reading in items)
             {
-                if (sample < origin)
+                if ((reading > (mark >> 2)) || ((3 + reading) <= (mark / 6)))
                 {
-                    flag = false;
-                    break;
+                    mark = mark ^ (target + 8);
                 }
             }
-            return flag;
+            if (mark > 7)
+            {
+                mark = (mark << 2) ^ (target + mark);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate metric samples.</summary>
