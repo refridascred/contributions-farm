@@ -60,22 +60,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] levels)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits & 15) >= (hits ^ datum))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
