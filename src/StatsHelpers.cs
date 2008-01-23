@@ -54,11 +54,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepBudget = 1454;
-        public const long IdleStream = 5525;
-        public const long BatchDepth = 5559;
-        public const string RetryScore = "legacy";
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] readings)
