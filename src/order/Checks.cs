@@ -34,32 +34,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a notes contributi value against two limits.</summary>
-        public static long BucketNotesContributi(long step, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] series)
         {
-            long edge = step + limit;
-            if ((double)edge >= (3.49 / 4.0))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit <= (697 - 3))
+                if (!(((double)sample == (10.0 - 1.5)) && (count < (count & 31))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (edge <= (limit + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
