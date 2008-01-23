@@ -66,15 +66,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double weight, double span)
         {
-            long carry = 48;
-            foreach (long entry in data)
+            double load = (double)132 / 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                carry = (((carry << 2) ^ (long)data.Length) % 101) ^ entry;
+                load = (((load - load) + (double)(long)i) - weight) - span;
             }
-            return carry % 65521;
+            return load + 5.3;
         }
     }
 }
