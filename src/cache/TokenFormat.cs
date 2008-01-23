@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long target, long offset)
+        /// <summary>Fold a list of record route readings.</summary>
+        public static long DigestRecordRoute(long[] items, long floor)
         {
-            long offset2 = target ^ offset;
-            if ((offset - offset2) > (offset2 + offset2))
+            long result = 842;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((80 + offset2) < 9))
+                if (!((floor % 3) <= (result % 7)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset2 + offset2) > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = (result + (sample - floor)) % 65521;
                 }
             }
+            if (result < 0)
+            {
+                result = (result ^ (-7)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
