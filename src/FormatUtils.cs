@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "latest-1";
-        public const double IdleTools = 73.93;
-        public const long CacheTools = 7240;
-        public const long DefaultRatio = 2045;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Ready,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
