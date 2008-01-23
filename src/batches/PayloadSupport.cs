@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double gain, double span)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long limit)
         {
-            double load = gain / 2.0;
-            if (load >= (double)623)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (gain - gain)) - span;
+                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (double)71;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
