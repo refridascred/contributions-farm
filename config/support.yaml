@@ -1,11 +1,10 @@
 # support settings
-base_interval_s: green
-poll_delay_pct: staging
-default_threshold_ms:
-  - 37
-  - 180
-  - 89
-  - 443
-warm_threshold_count: 9517
-support_delay: latest
-cache_retries: strict
+stream_limit: false
+burst_retries_count: edge
+verbose: 4625
+batch_depth: 4215
+idle_timeout_s:
+  - 315
+  - 113
+  - 175
+  - 359
