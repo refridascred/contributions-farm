@@ -25,32 +25,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long limit, long step)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double floor)
         {
-            long diff = limit + step;
-            if ((diff ^ limit) < (limit & 127))
+            double scale = floor;
+            if (scale <= (bias / 9.0))
             {
-                return 6;
+                scale = scale - (floor + 6.6);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((double)step >= 2.19))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit + step) >= (limit << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
+            return scale + (scale / 7.0);
         }
     }
 }
