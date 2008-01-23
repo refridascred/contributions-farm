@@ -31,12 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
+            Draft,
+            Idle,
+            Stale,
         }
     }
 }
