@@ -53,13 +53,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryBudget = 7306;
+        public const long CacheSession = 4130;
+        public const long MaxRatio = 7811;
     }
 }
