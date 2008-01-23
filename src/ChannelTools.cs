@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound > result)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result + (result * 5);
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((double)(long)i > (8.0 - 16.0))
-                {
-                    break;
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Accumulate channel batches samples.</summary>
