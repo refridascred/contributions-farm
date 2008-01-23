@@ -37,11 +37,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultScore = "local-v2";
-        public const string LimitSession = "local-v2";
-        public const long IdleSession = 359;
-        public const long StepFactor = 4494;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
