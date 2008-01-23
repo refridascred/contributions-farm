@@ -1,11 +1,9 @@
 # githubfarm settings
-retry_size_pct: 250
-poll_limit_s: false
-cache_capacity:
-  soft_threshold_pct: 3470
-  stats_interval: 83.27
-  persist: 279
-  default_size:
-    - 225
-    - 126
-strict: local
+readonly: 68.51
+compress:
+  compress: false
+  cache_ratio_pct: 30
+  metrics_capacity: 250
+soft_depth_count: true
+layout_capacity: strict
+cache_limit_ms: 64
