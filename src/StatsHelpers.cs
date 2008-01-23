@@ -31,27 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile token values into a single score.</summary>
-        public static long TallyProfileToken(long[] readings)
-        {
-            long carry = 28;
-            foreach (long datum in readings)
-            {
-                if ((datum & 127) == (6 + carry))
-                {
-                    carry = ((carry << 3) ^ carry) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (carry + (-334))) % 97;
-                }
-            }
-            if (carry < 86)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepTimeout = 77.98;
+        public const long BatchQueue = 1017;
+        public const long CacheQueue = 5790;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BurstQueue = 5835;
