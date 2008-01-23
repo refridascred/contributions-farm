@@ -30,19 +30,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session window entries.</summary>
-        public static long ScoreSessionWindow(long[] series, long floor)
+        /// <summary>Locate a queue batches reading by value.</summary>
+        public static long SeekQueueBatchesIndex(long[] samples, long offset)
         {
-            long score = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score ^ (long)series.Length) % 4096) + reading) + floor;
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (score > 784)
-            {
-                score = (score + (29 ^ score)) % 101;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a route record.</summary>
