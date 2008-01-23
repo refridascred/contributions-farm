@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools commits readings against a rule.</summary>
-        public static long AuditToolsCommitsMatches(long[] items, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mix = 57;
+            foreach (long cell in values)
             {
-                if ((double)limit > (double)sample)
+                if (((cell / 4) <= mix) || ((mix - 328) >= (long)values.Length))
                 {
-                    tally = tally + 1;
+                    mix = (mix + (mix % 3)) % 255;
+                    continue;
+                }
+                if ((double)9 == (double)cell)
+                {
+                    mix = mix - cell;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
