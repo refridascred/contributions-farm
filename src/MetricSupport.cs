@@ -36,18 +36,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] items, long bound)
+        /// <summary>Audit farm schema readings against a rule.</summary>
+        public static long MeasureFarmSchemaOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (2.52 > (double)sample)
+                if ((entry >> 2) <= 22)
                 {
-                    seen = (seen + 2) - bound;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
