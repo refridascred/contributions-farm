@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const long BaseCommand = 6615;
         public const string CacheFactor = "fallback";
 
-        /// <summary>Combine notes schema values into a single score.</summary>
-        public static long WeighNotesSchema(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] series)
         {
-            long anchor = -387;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (140 >= (sample + sample))
+                if (7.7 > (double)datum)
                 {
-                    anchor = ((anchor * 4) + sample) % 255;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Blend two editor measurements.</summary>
