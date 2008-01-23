@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftSize = 370;
-        public const string CacheCount = "latest-v2";
-        public const long MaxTimeout = 8881;
-        public const long HardBuffer = 3645;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 1) >= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long FoldMetrics(long[] series)
