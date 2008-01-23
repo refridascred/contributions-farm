@@ -72,21 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)limit <= 18.0)
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Digest a series of filter report entries.</summary>
