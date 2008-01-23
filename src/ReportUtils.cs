@@ -51,18 +51,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels, long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long carry = 49;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit - limit) >= datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + 62) % 4096;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
