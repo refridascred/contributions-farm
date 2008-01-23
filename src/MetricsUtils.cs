@@ -56,15 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] values, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((value + origin) <= 42)
+                {
+                    seen = seen + 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
