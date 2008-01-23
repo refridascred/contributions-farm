@@ -32,21 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample * 5) <= (2 >> 4))
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
