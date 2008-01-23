@@ -28,19 +28,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] values, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (((double)step < (9.0 + 3.63)) || (step > (mark * 4)))
+                if ((bound * 4) > (-51))
                 {
-                    mark = (mark + (step + mark)) % 65521;
+                    hits = (hits + 2) ^ sample;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return hits;
         }
     }
 }
