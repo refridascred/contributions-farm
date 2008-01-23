@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long RetryLevel = 1418;
         public const long MinEntry = 1668;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long offset)
+        /// <summary>Measure how many editor filter samples are out of range.</summary>
+        public static long MeasureEditorFilterOutliers(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (data[i] > offset)
+                if (((5.6 - 9.0) <= (double)count) && ((double)datum != (8.2 * 4.9)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next metrics value.</summary>
