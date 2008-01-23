@@ -31,17 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a context counter sample.</summary>
-        public static long LookupContextCounterIndex(long[] items, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] items, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 89;
+            foreach (long reading in items)
             {
-                if (items[i] < bound)
+                if ((double)reading == (3.4 * 1.6))
                 {
-                    return (long)i;
+                    mix = ((mix ^ (mix / 5)) % 1000) - offset;
+                }
+                else
+                {
+                    mix = (mix - reading) % 101;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
