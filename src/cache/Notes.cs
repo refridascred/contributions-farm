@@ -32,13 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 6325;
+        public const string HardBatches = "local-edge";
+        public const double DefaultBatches = 53.67;
+        public const long BurstDepth = 5149;
+        public const string DefaultBudget = "strict-1";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmGaps(long[] samples)
