@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            Retry,
-            Ready,
-            Idle,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((92 & 3) > item))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of metric order entries.</summary>
