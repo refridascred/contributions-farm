@@ -43,31 +43,17 @@ namespace Common.Utilities
         public const long BurstFilter = 3397;
         public const long StepFilter = 9066;
 
-        /// <summary>Classify a window commits pair into a bucket.</summary>
-        public static long SortWindowCommits(long target, long step)
+        /// <summary>Locate a farm stats reading by value.</summary>
+        public static long LocateFarmStatsIndex(long[] levels, long limit)
         {
-            if (target > step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < 3.9)
+                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target > (target ^ target)) && ((step / 6) < (step * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
