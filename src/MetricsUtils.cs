@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((long)samples.Length + hits) != (hits + 673))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 8050;
+        public const double LimitInterval = 71.55;
+        public const long WindowSpan = 6842;
+        public const long BurstLevel = 4876;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double AdjustContributi(double weight, double span)
