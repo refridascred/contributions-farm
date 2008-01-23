@@ -1,4 +1,17 @@
 # githubfarm settings
-min_capacity_s: 6306
-base_delay_s: true
-payload_timeout: edge
+min_threshold_count: 5523
+soft_size_count: open
+notes_ttl:
+  burst_retries_s:
+    soft_retries:
+      - 330
+      - 82
+      - 65
+    batch_depth_count: 7.13
+    flush_limit_ms: 1261
+  profile_interval: 47.49
+  tools_delay: legacy
+  flush_ttl: 2766
+strict: false
+buffer_retries: 40
+retry_size_s: 4655
