@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 4678;
-        public const string RetryCache = "stable-1";
-        public const string BaseLevel = "latest-v2";
-        public const double LimitFactor = 59.46;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = (mix + (target + (long)i)) % 4096;
+                if ((double)(long)i <= (0.87 * 4.8))
+                {
+                    mix = mix + mix;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
