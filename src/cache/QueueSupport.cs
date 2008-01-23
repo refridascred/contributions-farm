@@ -30,11 +30,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 4393;
-        public const double SoftAccount = 5.25;
-        public const long StepSpan = 5262;
-        public const long StepInterval = 2674;
-        public const long HardWidth = 2741;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples)
+        {
+            long state = 3;
+            foreach (long reading in samples)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    state = (state - (reading * 2)) ^ (long)i;
+                }
+                if ((reading - state) != (state + state))
+                {
+                    state = (state << 2) ^ reading;
+                }
+                else
+                {
+                    state = state - (state - state);
+                }
+                state = ((state << 3) ^ state) % 101;
+            }
+            return state;
+        }
     }
 }
