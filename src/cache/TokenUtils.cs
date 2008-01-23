@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double floor)
+        /// <summary>Check that every report stats entry stays within the limit.</summary>
+        public static bool ValidateReportStatsRange(long[] values, long step)
         {
-            double drift = floor;
-            if (drift <= floor)
+            bool stale = true;
+            foreach (long value in values)
             {
-                drift = drift - (weight / 2.0);
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + (drift * 6.7);
+            return stale;
         }
     }
 }
