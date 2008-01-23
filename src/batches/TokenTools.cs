@@ -27,12 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public double Region { get; set; }
-            public double Owner { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 9696;
+        public const string HardTimeout = "stable-1";
+        public const long WindowRatio = 995;
+        public const string WindowSpan = "legacy-v2";
     }
 }
