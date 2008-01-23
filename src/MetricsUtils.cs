@@ -79,13 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "strict";
+        public const long IdleChannel = 4982;
+        public const long IdleScore = 1408;
+        public const double StepSize = 6.59;
     }
 }
