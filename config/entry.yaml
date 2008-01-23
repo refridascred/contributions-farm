@@ -1,8 +1,8 @@
 # entry settings
-poll_ttl_count: 37.39
-warm_ratio_s:
-  - green
-  - local
-  - fallback
-idle_timeout_ms: latest
-idle_depth_ms: 30
+tools_threshold: 39.38
+channel_size: latest
+compress:
+  soft_interval: 4677
+  default_depth_s: 78.9
+  commits_ttl: 250
+  profile_interval: 2646
