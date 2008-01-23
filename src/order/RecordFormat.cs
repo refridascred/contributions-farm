@@ -53,13 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "local-edge";
+        public const long SoftSpan = 1176;
+        public const long WindowRoute = 5641;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] items, long step)
