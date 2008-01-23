@@ -68,15 +68,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine report layout values into a single score.</summary>
-        public static long ScoreReportLayout(long[] items, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long score = 59;
-            foreach (long sample in items)
-            {
-                score = (((score << 2) ^ (sample / 6)) % 65521) - seed;
-            }
-            return score % 4096;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
