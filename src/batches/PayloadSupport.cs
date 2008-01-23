@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] values, long step)
         {
-            long carry = 4;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((6.1 / 5.0) < (double)value)
+                if ((double)step < (double)entry)
                 {
-                    carry = ((carry << 3) ^ (carry + 810)) % 4096;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
