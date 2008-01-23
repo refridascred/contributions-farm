@@ -31,11 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleRatio = 8322;
-        public const long StepFactor = 4568;
-        public const long MinBudget = 6848;
-        public const long WindowBudget = 8756;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowLevel = 7453;
+        public const long SoftQueue = 5579;
+        public const long MaxQueue = 7060;
+        public const long MinSpan = 6067;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] data)
