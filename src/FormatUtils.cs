@@ -20,12 +20,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] data, long offset)
         {
-            public long Label { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((99 + offset) > seen)
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate cache samples.</summary>
