@@ -1,17 +1,7 @@
 # githubfarm settings
-min_threshold_count: 5523
-soft_size_count: open
-notes_ttl:
-  burst_retries_s:
-    soft_retries:
-      - 330
-      - 82
-      - 65
-    batch_depth_count: 7.13
-    flush_limit_ms: 1261
-  profile_interval: 47.49
-  tools_delay: legacy
-  flush_ttl: 2766
-strict: false
-buffer_retries: 40
-retry_size_s: 4655
+verbose: standard
+command_delay: edge
+flush_window_pct: 3540
+sync_window_count: stable
+enabled: eu-west
+warm_window_count: 6350
