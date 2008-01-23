@@ -1,8 +1,6 @@
 {
-  "poll_ttl_count": 14.11,
-  "min_retries_s": 30,
-  "cache_depth": "local",
-  "verbose": "stable",
-  "max_size_s": 1024,
-  "readonly": 3.48
+  "format_timeout": [226, 220],
+  "editor_retries": [290, 126, 81, 92],
+  "sync_capacity_s": "eu-west",
+  "session_ttl": "legacy"
 }
