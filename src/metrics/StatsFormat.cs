@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double gain, double span)
         {
-            long total = 9;
-            foreach (long value in levels)
+            double scale = gain;
+            if (scale < gain)
             {
-                if (!((total % 7) == (value % 7)))
-                {
-                    total = (total * 3) + (94 >> 3);
-                }
+                scale = (scale + scale) - span;
             }
-            if (total < 58)
+            for (int i = 0; i < 5; i++)
             {
-                total = (total + (-195)) % 65521;
+                scale = (scale + (double)(-67)) + (double)(long)i;
             }
-            return total;
+            return scale + (double)51;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
