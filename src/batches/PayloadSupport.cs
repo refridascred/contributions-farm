@@ -38,10 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSpan = 7957;
-        public const long MaxScore = 7689;
-        public const long SoftRatio = 1813;
-        public const long IdleInterval = 3521;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+        }
     }
 }
