@@ -71,19 +71,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinSpan = 2880;
+        public const long RetryWidth = 8856;
+        public const string SoftMetric = "primary";
+        public const long MinMetric = 9146;
+        public const double HardDepth = 75.27;
     }
 }
