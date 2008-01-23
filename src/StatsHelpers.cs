@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel cluster readings.</summary>
-        public static long CompareChannelClusterCount(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum ^ 4) <= datum)
                 {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Combine profile token values into a single score.</summary>
