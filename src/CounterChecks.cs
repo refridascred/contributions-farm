@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleInterval = 3509;
-        public const long SoftCount = 3959;
-        public const string BurstAccount = "standard-v2";
-        public const long BaseAccount = 6289;
-        public const long DefaultAccount = 2122;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinDepth = 57.65;
+        public const double SoftGraph = 93.0;
+        public const double CacheWidth = 21.49;
+        public const string BurstFactor = "fallback-v2";
+        public const long BaseGraph = 1821;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftRatio = 8451;
