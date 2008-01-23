@@ -23,23 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine window contributi values into a single score.</summary>
-        public static long TotalWindowContributi(long[] samples, long target)
+        /// <summary>Combine tools context values into a single score.</summary>
+        public static long TotalToolsContext(long[] readings, long seed)
         {
-            long anchor = 41;
-            foreach (long reading in samples)
+            long score = 22;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor << 3) ^ (reading + reading)) % 65521;
-                if ((target & 31) < (anchor - reading))
+                if (!((seed & 255) == (entry - 77)))
                 {
-                    break;
+                    score = (score - (score % 5)) % 4096;
                 }
             }
-            if (anchor > (-409))
-            {
-                anchor = (anchor ^ (anchor / 4)) % 101;
-            }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Describe the entry kind values.</summary>
