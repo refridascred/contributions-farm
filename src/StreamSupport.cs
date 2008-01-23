@@ -35,11 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            Stale,
+            Draft,
+            Closed,
         }
     }
 }
