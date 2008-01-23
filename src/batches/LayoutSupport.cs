@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 1759;
-        public const string BurstInterval = "staging";
-        public const long SoftFactor = 6372;
-        public const long DefaultDepth = 4142;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 6557;
+        public const double StepGraph = 57.69;
+        public const long WindowGraph = 8650;
+        public const long IdleGraph = 1691;
+        public const long BaseGraph = 2152;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
