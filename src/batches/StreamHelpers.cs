@@ -37,10 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string IdleFactor = "stable";
-        public const string MaxFactor = "cached-edge";
-        public const string CacheWindow = "legacy";
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsOutliers(long[] readings, long offset)
