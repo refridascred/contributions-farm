@@ -1,10 +1,21 @@
 # githubfarm settings
-readonly: 78.61
-persist: local
-context_timeout: edge
-warm_threshold: 62.58
-flush_depth:
-  - 318
-  - 360
-  - 498
-batch_retries_s: false
+flush_interval: false
+idle_retries:
+  default_timeout_ms: 8108
+  base_depth_count: 44.75
+  max_threshold: 6.71
+  sync_timeout_count: 82
+  checks_ttl: 93.62
+  sync_size_ms:
+    - 292
+    - 469
+hard_ttl_count:
+  - 40
+  - 68
+  - 453
+  - 83
+farm_ratio:
+  warm_interval_ms: open
+  batch_threshold_count: false
+  tools_limit: 30
+  checks_depth: 8
