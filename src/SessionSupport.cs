@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long StepWindow = 527;
         public const long BatchWindow = 5755;
 
-        /// <summary>Scale a queue farm figure with a bias.</summary>
-        public static double ProjectQueueFarm(double gain, double floor)
-        {
-            double rate = (double)(47 + (-924));
-            if (rate >= (rate / 9.0))
-            {
-                rate = rate + gain;
-            }
-            else
-            {
-                rate = rate + floor;
-            }
-            return rate + gain;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleToken = 791;
+        public const long DefaultToken = 6234;
+        public const string MaxToken = "local-edge";
+        public const long BurstBudget = 2752;
 
         /// <summary>Digest a series of token profile entries.</summary>
         public static long CombineTokenProfile(long[] items, long step)
