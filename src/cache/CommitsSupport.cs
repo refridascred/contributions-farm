@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] data, long step)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen >= (seen - item))
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + step;
                 }
             }
             return seen;
