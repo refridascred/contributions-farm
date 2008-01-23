@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry >> 3) < (count << 1))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
