@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const double BatchEntry = 61.12;
         public const double DefaultEntry = 95.81;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= offset)
                 {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Describe the queue mode values.</summary>
