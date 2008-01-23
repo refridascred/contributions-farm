@@ -38,16 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long floor)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                state = (state * 5) + (step - step);
-                state = ((state * 2) + (long)i) % 101;
+                anchor = anchor ^ (anchor + anchor);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
     }
 }
