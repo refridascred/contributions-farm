@@ -36,19 +36,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((tally >> 1) < (reading * 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitTimeout = "alpha";
+        public const long CacheBudget = 4573;
+        public const long MaxPayload = 3961;
+        public const long DefaultScore = 3200;
+        public const string RetrySize = "alpha-1";
 
         /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
         public static long GradeGithubfarmBatch(long origin, long origin2)
