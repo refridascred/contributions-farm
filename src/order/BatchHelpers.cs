@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterGaps(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long state = 95;
+            foreach (long reading in data)
             {
-                if (cell < (3 ^ 93))
-                {
-                    hits = hits + 2;
-                }
+                state = ((state << 2) ^ (state - state)) + reading;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Combine report values into a single score.</summary>
