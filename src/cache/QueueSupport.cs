@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double scale, double span)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            double rate = span - (double)8;
+            if (rate > span)
             {
-                result = (result + (result + (long)i)) % 101;
-                result = ((result * 2) + (long)i) % 65521;
+                rate = rate - scale;
             }
-            return result;
+            else
+            {
+                rate = rate - (scale / 7.0);
+            }
+            return rate - scale;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
