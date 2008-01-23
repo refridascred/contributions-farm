@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the buffer cache series from a seed.</summary>
-        public static long DeriveBufferCache(long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] items, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mark = (mark ^ ((long)i / 5)) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (((origin - origin) >= (origin << 3)) || ((75 ^ hits) <= (-57)))
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
