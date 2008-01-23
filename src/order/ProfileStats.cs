@@ -16,11 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] levels, long step)
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            long sum = -38;
+            foreach (long reading in levels)
+            {
+                sum = (sum ^ (step - reading)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Iterate the payload support series from a seed.</summary>
