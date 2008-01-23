@@ -1,5 +1,5 @@
 {
-  "soft_depth": 9022,
-  "enabled": 1024,
-  "poll_ratio_count": "strict"
+  "batch_retries_ms": "fallback",
+  "poll_threshold_count": 100,
+  "max_window_ms": 9872
 }
