@@ -19,10 +19,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchSession = "legacy";
-        public const double LimitSession = 62.39;
-        public const long SoftSession = 4479;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetrySpan = 9439;
+        public const double LimitMetric = 93.41;
+        public const string WindowSize = "alpha-1";
+        public const long RetrySize = 8169;
+        public const long StepMetric = 7834;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values)
