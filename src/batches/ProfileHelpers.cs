@@ -24,22 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data, long target)
+        /// <summary>Match up window batch samples.</summary>
+        public static long MatchWindowBatchCount(long[] items)
         {
-            long anchor = -6;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)anchor != (double)target) || (((long)data.Length << 3) <= anchor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor ^ (value + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - value)) % 97;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
