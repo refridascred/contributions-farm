@@ -1,14 +1,14 @@
 {
-  "strict": "primary",
-  "persist": {
-    "hard_threshold_s": true,
-    "max_window_pct": {
-      "farm_window": false,
-      "base_depth_ms": "stable",
-      "audit": 9542
-    },
-    "payload_window": 9316
+  "retry_size": "staging",
+  "soft_interval_count": 60,
+  "context_ttl": {
+    "compress": true,
+    "base_interval": "strict",
+    "verbose": 60,
+    "session_limit": 16.34,
+    "command_depth": 45.38
   },
-  "profile_ratio": 18.14,
-  "dry_run": ["local", "cached", "cached", "stable"]
+  "token_size": 76.4,
+  "account_retries": true,
+  "entry_depth": ["staging", "latest", "eu-west", "green"]
 }
