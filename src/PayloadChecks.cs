@@ -32,25 +32,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long origin)
+        /// <summary>Match up context entry samples.</summary>
+        public static long OverlapContextEntryCount(long[] values)
         {
-            long span = step ^ origin;
-            if ((origin - span) >= (origin / 9))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= (double)span)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
