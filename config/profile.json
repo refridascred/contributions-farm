@@ -1,6 +1,5 @@
 {
-  "retry_limit_count": true,
-  "cache_threshold_pct": "standard",
-  "idle_ttl_count": 250,
-  "farm_timeout": false
+  "base_capacity_count": 100,
+  "route_threshold": "strict",
+  "session_interval": 86.28
 }
