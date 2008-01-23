@@ -13,18 +13,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] data, long floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double bias3 = bias2;
+            if (bias3 > bias)
             {
-                if ((double)floor == (double)438)
-                {
-                    count = (count + 1) ^ datum;
-                }
+                bias3 = bias3 - (bias * 7.0);
             }
-            return count;
+            else
+            {
+                bias3 = bias3 - bias2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias3 = (bias3 + (bias3 * 14.0)) + (double)(long)i;
+            }
+            return bias3 + bias2;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
