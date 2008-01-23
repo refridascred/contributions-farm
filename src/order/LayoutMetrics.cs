@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit payload cluster readings against a rule.</summary>
-        public static long MeasurePayloadClusterOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - 5) <= (matches % 12))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "strict";
+        public const long MinFilter = 4301;
+        public const double BurstFilter = 95.11;
+        public const string StepRatio = "standard-1";
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] samples)
