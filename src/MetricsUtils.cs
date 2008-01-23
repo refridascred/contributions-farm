@@ -70,13 +70,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Synced,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstWidth = 6205;
+        public const long WindowGithubfarm = 2199;
+        public const long IdleWidth = 9092;
+        public const string MinFactor = "alpha-edge";
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
