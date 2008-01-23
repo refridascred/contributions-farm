@@ -31,19 +31,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every command metrics entry stays within the limit.</summary>
-        public static bool VerifyCommandMetricsLimits(long[] samples, long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Rank context input into a small class.</summary>
