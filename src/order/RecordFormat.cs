@@ -46,17 +46,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long step)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] == step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (long)i) % 255;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
