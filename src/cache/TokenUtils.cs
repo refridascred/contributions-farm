@@ -22,16 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric channel readings.</summary>
-        public static long CombineMetricChannel(long[] series, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] series, long offset)
         {
-            long result = 28;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                result = (((result * 2) + (result + result)) % 255) - floor;
-                result = ((result * 4) + datum) % 4096;
+                if (offset <= seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Project the next session value.</summary>
