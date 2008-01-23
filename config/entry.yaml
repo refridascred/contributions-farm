@@ -1,4 +1,15 @@
 # entry settings
-warm_retries: stable
-audit: false
-default_window_count: 94.04
+editor_timeout: 30
+max_limit_count: legacy
+commits_interval:
+  checks_ttl: 79.58
+  buffer_interval: 6.86
+  verbose: 30
+soft_delay_count:
+  - 281
+  - 408
+  - 393
+max_window_pct:
+  - 218
+  - 59
+warm_window_s: 89
