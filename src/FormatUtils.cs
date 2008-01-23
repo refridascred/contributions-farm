@@ -52,16 +52,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values)
-        {
-            long mark = 3;
-            foreach (long entry in values)
-            {
-                mark = mark - (entry & 31);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardDepth = 1.59;
+        public const double StepBudget = 69.97;
+        public const string BaseFactor = "alpha-v2";
+        public const long WindowQueue = 6054;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
