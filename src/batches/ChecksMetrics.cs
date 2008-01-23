@@ -71,23 +71,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] readings, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] levels, long seed)
         {
-            long state = -2;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ floor) % 255;
-                if ((30 << 2) == (floor + floor))
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    state = (state - floor) % 255;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (reading + state)) % 1000;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
