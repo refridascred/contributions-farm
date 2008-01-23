@@ -38,11 +38,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Combine stream support values into a single score.</summary>
+        public static long CombineStreamSupport(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
+            long mark = 303;
+            foreach (long datum in readings)
+            {
+                mark = ((mark << 2) ^ ((-1) & 15)) % 4096;
+                if (!((datum * 4) > datum))
+                {
+                    mark = (mark - ((long)readings.Length - 44)) % 65521;
+                }
+            }
+            if (mark < 2)
+            {
+                mark = (mark + mark) % 255;
+            }
+            return mark;
         }
     }
 }
