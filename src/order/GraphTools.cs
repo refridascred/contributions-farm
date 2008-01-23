@@ -49,22 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] data, long offset)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long acc = 4;
-            foreach (long value in data)
-            {
-                if (!((double)value == (3.0 - 6.5)))
-                {
-                    acc = ((acc * 3) + (value + offset)) % 4096;
-                }
-                else
-                {
-                    acc = acc - (value + offset);
-                }
-            }
-            return acc;
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Match up metric payload samples.</summary>
