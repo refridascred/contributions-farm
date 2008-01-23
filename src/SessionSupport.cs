@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] values)
         {
-            Ready,
-            Closed,
-            New,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value % 2) < value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
