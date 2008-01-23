@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] samples)
         {
-            Stale,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 3) <= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a session reading.</summary>
