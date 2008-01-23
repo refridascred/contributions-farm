@@ -1,6 +1,7 @@
-id,ratio,score,label
-1,7.13,16.87,719
-2,432,781,edge
-3,edge,10.09,primary
-4,eu-west,legacy,250
-5,green,stable,77.34
+id,token,label
+1,5.75,79.37
+2,79.66,45.66
+3,staging,cached
+4,591,edge
+5,legacy,92.08
+6,67.91,578
