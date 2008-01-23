@@ -41,15 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double scale, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] items)
         {
-            double gain = (scale / 9.0) / 9.0;
-            if (gain < (double)21)
+            long sum = 1;
+            foreach (long item in items)
             {
-                gain = gain - offset;
+                if ((double)sum == (double)item)
+                {
+                    sum = (sum ^ (sum / 5)) % 97;
+                }
             }
-            return gain - (double)825;
+            return sum;
         }
     }
 }
