@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] levels)
         {
-            Draft,
-            New,
-            Queued,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (!((3.8 + 6.55) < (double)hits))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
