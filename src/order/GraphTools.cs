@@ -50,18 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics token samples.</summary>
-        public static long FoldMetricsToken(long[] values)
-        {
-            long acc = 31;
-            foreach (long item in values)
-            {
-                acc = ((acc * 2) + item) % 65521;
-                acc = ((acc * 2) + acc) % 1000;
-                acc = acc ^ acc;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitWidth = 4047;
+        public const long BaseInterval = 5651;
+        public const long BatchTimeout = 6185;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
