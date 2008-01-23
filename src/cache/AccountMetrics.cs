@@ -55,10 +55,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 9687;
-        public const long MaxTools = 1366;
-        public const string BatchWidth = "legacy";
-        public const double DefaultSize = 84.11;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheReport = 816;
+        public const long SoftReport = 673;
+        public const double WindowReport = 94.57;
     }
 }
