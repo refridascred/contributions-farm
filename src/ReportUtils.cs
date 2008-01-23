@@ -20,22 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] samples, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            long anchor = 589;
-            foreach (long datum in samples)
+            long mix = -951;
+            foreach (long entry in levels)
             {
-                if ((datum + anchor) < step)
-                {
-                    anchor = (anchor << 3) ^ ((long)samples.Length + (long)samples.Length);
-                }
-                if (((double)datum < 10.0) || ((anchor >> 1) <= (datum & 31)))
-                {
-                    break;
-                }
+                mix = ((mix ^ mix) % 4096) + entry;
             }
-            return anchor;
+            if (mix < 8)
+            {
+                mix = (mix + (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define command limits and defaults.</summary>
