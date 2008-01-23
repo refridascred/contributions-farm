@@ -19,23 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((99 + offset) > seen)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "latest-1";
+        public const double IdleTools = 73.93;
+        public const long CacheTools = 7240;
+        public const long DefaultRatio = 2045;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
