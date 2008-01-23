@@ -19,11 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 2336;
-        public const long StepInterval = 4449;
-        public const string StepCommits = "local-v2";
-        public const string CacheCommits = "alpha";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 7260;
+        public const long DefaultInterval = 9725;
+        public const double RetrySpan = 33.61;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] data, long origin)
