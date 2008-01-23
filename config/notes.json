@@ -1,6 +1,5 @@
 {
-  "warm_size": "stable",
-  "enabled": "blue",
-  "soft_limit": false,
-  "poll_limit_s": "latest"
+  "payload_depth": 250,
+  "stream_capacity": "cached",
+  "hard_interval": true
 }
