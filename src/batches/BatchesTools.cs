@@ -20,22 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorGaps(long[] series, long step)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!(3.3 >= (double)datum))
-                {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Combine payload values into a single score.</summary>
