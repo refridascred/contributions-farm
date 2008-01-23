@@ -20,14 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Paused,
-            Locked,
-            Done,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 2992;
+        public const long WindowProfile = 5607;
+        public const string CacheRatio = "strict-1";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] levels, long target)
