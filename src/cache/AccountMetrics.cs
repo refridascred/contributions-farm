@@ -48,11 +48,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            Active,
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define report limits and defaults.</summary>
