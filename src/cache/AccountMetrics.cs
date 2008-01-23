@@ -47,18 +47,11 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long CountLayoutChecksMatches(long[] data)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((9.18 - 9.0) < (double)matches)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
