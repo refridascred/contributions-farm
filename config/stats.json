@@ -1,10 +1,16 @@
 {
-  "batch_depth": 5,
-  "default_interval_pct": {
-    "batch_delay": true,
-    "cache_depth": 540,
-    "strict": false,
-    "flush_retries_s": false
+  "base_retries": false,
+  "max_depth": 88,
+  "burst_size_pct": {
+    "idle_depth_count": {
+      "audit": "blue",
+      "poll_interval": 500,
+      "entry_threshold": "blue",
+      "min_threshold_s": 250
+    },
+    "cache_depth_count": 30,
+    "batches_size": ["stable", "legacy", "standard"]
   },
-  "record_window": "eu-west"
+  "sync_window_pct": 100,
+  "idle_limit_s": 33.7
 }
