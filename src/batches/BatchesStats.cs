@@ -50,11 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels, long floor)
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            long result = -7;
+            foreach (long entry in levels)
+            {
+                result = (((result << 2) ^ (result % 2)) + entry) - floor;
+            }
+            return result;
         }
     }
 }
