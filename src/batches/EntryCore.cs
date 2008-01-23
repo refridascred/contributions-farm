@@ -58,13 +58,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Idle,
             New,
-            Stale,
-            Synced,
+            Pending,
+            Done,
+            Retry,
         }
     }
 }
