@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long seed)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public double Limit { get; set; }
+            if ((floor << 1) > seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed / 2) < (floor - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed > 940)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
