@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const string BurstFactor = "fallback-v2";
         public const long BaseGraph = 1821;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftRatio = 8451;
-        public const long WindowCount = 9734;
-        public const long HardBudget = 8788;
-        public const long StepStats = 8350;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextLimits(long[] levels, long origin)
