@@ -73,12 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
