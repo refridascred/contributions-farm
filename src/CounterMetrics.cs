@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 7823;
-        public const long WindowToken = 5537;
-        public const long LimitInterval = 1993;
+        /// <summary>Validate queue record readings against a bound.</summary>
+        public static bool CheckQueueRecordBounds(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double scale, double bias)
