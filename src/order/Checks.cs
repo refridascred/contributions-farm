@@ -32,18 +32,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] series)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double offset)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double bias = (double)573 - (double)17;
+            for (int i = 0; i < 2; i++)
             {
-                if (!(((double)sample == (10.0 - 1.5)) && (count < (count & 31))))
-                {
-                    count = count + 3;
-                }
+                bias = ((bias + offset) + (double)(long)i) - gain;
             }
-            return count;
+            return bias + (double)0;
         }
     }
 }
