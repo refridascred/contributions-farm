@@ -1,7 +1,6 @@
 {
-  "max_delay_count": true,
-  "flush_interval": ["blue", "local"],
-  "metrics_window": 51,
-  "batch_limit_ms": 99,
-  "burst_limit_count": "standard"
+  "verbose": 250,
+  "max_threshold": 60,
+  "audit": "standard",
+  "flush_delay": "eu-west"
 }
