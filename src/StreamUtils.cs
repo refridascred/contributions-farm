@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate account farm readings against a bound.</summary>
-        public static bool ValidateAccountFarmLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultFactor = 51.77;
+        public const string MaxRatio = "local-edge";
+        public const double RetryBatch = 50.69;
+        public const long BurstDepth = 958;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] series, long limit)
