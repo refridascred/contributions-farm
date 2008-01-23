@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const double StepTimeout = 17.64;
         public const double RetryChecks = 81.94;
 
-        /// <summary>Look up the position of a metric buffer sample.</summary>
-        public static long LookupMetricBufferIndex(long[] series, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Blend two account window measurements.</summary>
