@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const long IdleRatio = 8913;
         public const double LimitScore = 73.75;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Ready,
-            Closed,
-            Queued,
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
