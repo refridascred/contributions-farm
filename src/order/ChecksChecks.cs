@@ -32,24 +32,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long step, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long diff = step + limit;
+            if ((diff + step) > step)
             {
-                mark = (mark - mark) % 4096;
-                if ((limit - limit) <= (limit << 3))
+                return 0;
+            }
+            else
+            {
+                if (diff >= 9)
                 {
-                    mark = (mark - (mark / 4)) % 97;
+                    return 1;
                 }
                 else
                 {
-                    mark = mark - limit;
+                    if ((3.8 * 15.0) <= (3.6 + 7.5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step + step) == (95 % 3)) || ((8.0 + 4.0) != (double)step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
         }
     }
 }
