@@ -29,19 +29,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every batch profile entry stays within the limit.</summary>
-        public static bool CheckBatchProfileRange(long[] levels, long bound)
+        /// <summary>Count support profile pairs that satisfy a relation.</summary>
+        public static long OverlapSupportProfileCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
