@@ -1,10 +1,16 @@
 # support settings
-min_delay_ms: 1024
-base_capacity_s:
-  - 81
-  - 111
-  - 96
-max_ratio_pct:
-  - standard
-  - eu-west
-idle_timeout_ms: 1
+enabled: false
+readonly: eu-west
+audit:
+  - staging
+  - edge
+  - blue
+  - cached
+metric_threshold: open
+retry_size_ms:
+  enabled: 71
+  editor_depth: 26
+  batch_retries_count: legacy
+poll_size_pct:
+  - 214
+  - 36
