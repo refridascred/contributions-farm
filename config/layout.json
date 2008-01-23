@@ -1,7 +1,5 @@
 {
-  "compress": 25.48,
-  "profile_threshold": 52.41,
-  "flush_retries": "eu-west",
-  "readonly": "strict",
-  "warm_depth": [329, 7, 161, 311]
+  "burst_capacity_s": "fallback",
+  "verbose": 51,
+  "idle_ratio_s": true
 }
