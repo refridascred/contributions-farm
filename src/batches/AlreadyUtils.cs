@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const long CacheDepth = 1012;
         public const long WindowSize = 665;
 
-        /// <summary>Check that every layout counter entry stays within the limit.</summary>
-        public static bool CheckLayoutCounterRange(long[] series, long offset)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Pending,
+            Synced,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
