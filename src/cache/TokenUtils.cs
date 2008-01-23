@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context cache readings.</summary>
-        public static long FoldContextCache(long[] values)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long result = 0;
-            foreach (long item in values)
-            {
-                result = result ^ 97;
-                if ((result & 7) < item)
-                {
-                    break;
-                }
-            }
-            return result;
+            Stale,
+            Synced,
+            Draft,
         }
 
         /// <summary>Check that every report stats entry stays within the limit.</summary>
