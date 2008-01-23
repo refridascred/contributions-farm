@@ -14,25 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long floor)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long prev = limit ^ floor;
-            if ((prev + prev) <= (prev ^ prev))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev <= (1.85 / 6.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Synced,
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
