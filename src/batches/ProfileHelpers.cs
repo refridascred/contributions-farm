@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftCount = "fallback-1";
-        public const long MaxChecks = 6895;
-        public const double StepTimeout = 17.64;
-        public const double RetryChecks = 81.94;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public double Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
