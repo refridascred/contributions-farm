@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long floor)
+        /// <summary>Accumulate report token samples.</summary>
+        public static long CombineReportToken(long[] data)
         {
-            if (floor > (floor - 460))
+            long anchor = -8;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + floor) > (origin * 4))
+                if ((449 << 2) == (anchor + anchor))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + floor) >= 42)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin & 15) >= (floor ^ floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = ((anchor ^ 599) % 101) ^ entry;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Find the first checks route entry that matches the target.</summary>
