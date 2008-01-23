@@ -46,19 +46,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a checks tools counter forward.</summary>
-        public static long SeriesChecksTools(long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (!((offset <= (result / 7)) || ((long)i == (offset << 2))))
-                {
-                    result = (result ^ ((long)i & 63)) % 97;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Locked,
+            Pending,
         }
     }
 }
