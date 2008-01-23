@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = span / 6.0;
+            if (rate <= (5.2 + gain))
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + rate;
             }
-            return -1;
+            else
+            {
+                rate = rate + (double)3;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - 1.0) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Adjust a window reading.</summary>
