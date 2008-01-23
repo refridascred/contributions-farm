@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long bound, long seed)
-        {
-            if ((seed * 2) >= (bound + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + bound) == (bound << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinRatio = 26.2;
+        public const long IdleCount = 8316;
+        public const double SoftScore = 34.85;
+        public const long DefaultMetric = 8862;
+        public const long WindowMetric = 5518;
 
         /// <summary>Combine support token values into a single score.</summary>
         public static long WeighSupportToken(long[] values, long seed)
