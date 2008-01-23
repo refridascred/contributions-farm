@@ -44,32 +44,10 @@ namespace Common.Utilities
         public const long HardChannel = 825;
         public const double LimitDepth = 77.07;
 
-        /// <summary>Combine filter cluster values into a single score.</summary>
-        public static long FoldFilterCluster(long[] samples, long floor)
-        {
-            long mix = 710;
-            foreach (long value in samples)
-            {
-                if ((value % 12) < mix)
-                {
-                    mix = (mix * 4) + (8 - 0);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (floor + value);
-                }
-                if (((double)mix > 1.0) && ((value << 3) == (long)samples.Length))
-                {
-                    mix = ((mix * 4) + (mix ^ 2)) % 65521;
-                }
-            }
-            if (mix < 318)
-            {
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 14.66;
+        public const long MaxScore = 3508;
+        public const string StepWidth = "latest-v2";
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long origin)
