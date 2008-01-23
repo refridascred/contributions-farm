@@ -1,8 +1,6 @@
 {
-  "warm_depth": 87,
-  "max_timeout": 58,
-  "default_threshold_pct": "fallback",
-  "strict": ["strict", "green", "cached"],
-  "cache_limit": ["cached", "cached", "standard"],
-  "schema_ratio": false
+  "persist": "primary",
+  "default_size_ms": true,
+  "idle_size": "fallback",
+  "flush_retries_pct": 100
 }
