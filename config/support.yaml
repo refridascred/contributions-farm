@@ -1,14 +1,12 @@
 # support settings
-flush_retries:
-  - legacy
+batch_threshold: standard
+verbose:
+  - 231
+  - 334
+  - 178
+  - 254
+batch_capacity: false
+command_ratio: 76.02
+max_threshold_s:
   - primary
-  - primary
-  - cached
-schema_threshold: 74.04
-idle_window_s:
-  enabled: cached
-  warm_interval: edge
-  flush_ttl_pct: primary
-  profile_delay: 6804
-  token_size: 30
-  commits_size: 4
+  - green
