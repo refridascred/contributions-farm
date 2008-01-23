@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long offset, long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if (1 > origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6 + origin) != (offset + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - offset) != (origin >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
