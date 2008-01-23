@@ -1,18 +1,5 @@
 # githubfarm settings
-audit: cached
-default_capacity_s:
-  stream_timeout: stable
-  min_delay: 42.52
-  commits_threshold:
-    - open
-    - latest
-    - stable
-    - standard
-  sync_delay_s: green
-  strict: eu-west
-contributi_interval: true
-schema_retries: 500
-idle_retries_pct:
-  dry_run: 24.68
-  account_ttl: primary
-  max_retries_ms: 43.19
+profile_ttl: fallback
+enabled: 87
+hard_interval_s: strict
+warm_capacity: blue
