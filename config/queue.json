@@ -1,5 +1,5 @@
 {
-  "readonly": "strict",
-  "warm_ratio": [185, 231, 485],
-  "dry_run": 7076
+  "compress": 9.94,
+  "cache_interval": ["cached", "open"],
+  "flush_size_ms": 54
 }
