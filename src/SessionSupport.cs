@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double ratio, double floor)
         {
-            Ready,
-            Closed,
-            Paused,
-            Pending,
-            Stale,
+            double rate = 8.4;
+            if (rate <= (double)3)
+            {
+                rate = (rate - (2.3 * 7.05)) - ratio;
+            }
+            return rate - (floor * 9.2);
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
