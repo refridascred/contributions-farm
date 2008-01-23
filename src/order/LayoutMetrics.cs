@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long step, long origin)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] items)
         {
-            long slot = step + origin;
-            if ((((-35) - step) <= (slot + 75)) && ((double)slot >= (18.0 * 1.03)))
+            long anchor = 602;
+            foreach (long datum in items)
             {
-                return 5;
+                anchor = ((anchor * 4) + (30 ^ datum)) % 97;
+                anchor = (anchor * 3) + (datum - anchor);
             }
-            else
-            {
-                if ((double)step > (18.0 * 5.9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)slot != (double)3)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
