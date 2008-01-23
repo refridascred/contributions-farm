@@ -1,11 +1,5 @@
 # support settings
-warm_capacity_s:
-  - blue
-  - fallback
-  - latest
-compress:
-  - 400
-  - 127
-  - 281
-  - 284
-default_window_pct: true
+persist: 500
+counter_window: 11.4
+readonly: green
+max_depth_pct: 7.32
