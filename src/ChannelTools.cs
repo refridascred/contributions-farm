@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long step, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            if ((bound >> 1) < step)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 6) <= step)
+                if (bound > result)
                 {
-                    return 8;
+                    result = result + (result * 5);
                 }
-                else
+                if ((double)(long)i > (8.0 - 16.0))
                 {
-                    if ((bound & 3) > (bound % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step + step) > (step - bound)) && (bound < (step + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
+            return result;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
