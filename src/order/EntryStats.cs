@@ -66,30 +66,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long target, long origin)
         {
-            long slot = seed ^ bound;
-            if ((bound - bound) != (bound % 7))
+            if ((76 / 5) == (target / 4))
             {
-                return 4;
+                return 0;
             }
             else
             {
-                if ((double)slot < (13.0 - 4.81))
+                if (!(target > origin))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((bound % 24) <= 7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return 3;
                 }
             }
         }
