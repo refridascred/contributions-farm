@@ -1,7 +1,9 @@
 # githubfarm settings
-verbose: standard
-command_delay: edge
-flush_window_pct: 3540
-sync_window_count: stable
-enabled: eu-west
-warm_window_count: 6350
+entry_window:
+  - 436
+  - 20
+  - 249
+stream_ratio: 60
+stream_delay: 58.67
+burst_ttl_ms: 9968
+base_retries_s: 75.88
