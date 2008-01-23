@@ -35,15 +35,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Scale a metrics stream figure with a bias.</summary>
-        public static double BlendMetricsStream(double rate, double span)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double weight = (double)(893 * 4);
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (rate + span)) + (double)(long)i;
-            }
-            return weight + span;
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
