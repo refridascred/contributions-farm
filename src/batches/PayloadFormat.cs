@@ -41,12 +41,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Find the first entry token entry that matches the target.</summary>
+        public static long LocateEntryTokenIndex(long[] data, long limit)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
