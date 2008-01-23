@@ -44,10 +44,19 @@ namespace Common.Utilities
         public const long HardChannel = 825;
         public const double LimitDepth = 77.07;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstBuffer = 14.66;
-        public const long MaxScore = 3508;
-        public const string StepWidth = "latest-v2";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits << 3) < (datum << 3))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long origin)
