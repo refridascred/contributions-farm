@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinWidth = 2585;
-        public const long HardTimeout = 6313;
-        public const double LimitInterval = 95.52;
-        public const string LimitWidth = "local-1";
-        public const long WindowChecks = 546;
+        /// <summary>Combine already queue values into a single score.</summary>
+        public static long TotalAlreadyQueue(long[] levels)
+        {
+            long sum = -188;
+            foreach (long sample in levels)
+            {
+                if (((sample - sum) == (sample / 7)) || ((4.1 / 5.0) != (double)sample))
+                {
+                    sum = (sum ^ (271 - (-52))) % 97;
+                }
+            }
+            if (sum > 70)
+            {
+                sum = ((sum << 3) ^ 25) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate stats report samples.</summary>
         public static long ScoreStatsReport(long[] series, long target)
