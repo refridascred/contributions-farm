@@ -31,13 +31,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleRatio = 8322;
+        public const long StepFactor = 4568;
+        public const long MinBudget = 6848;
+        public const long WindowBudget = 8756;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] data)
