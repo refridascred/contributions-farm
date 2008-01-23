@@ -34,11 +34,17 @@ namespace Common.Utilities
         public const string BurstFactor = "fallback-v2";
         public const long BaseGraph = 1821;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] samples, long limit)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
