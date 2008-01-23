@@ -33,11 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of account token readings.</summary>
+        public static long TotalAccountToken(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
+            long score = -174;
+            foreach (long reading in samples)
+            {
+                score = (score + (reading >> 4)) % 4096;
+                score = ((score << 3) ^ (score + 436)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the metric kind values.</summary>
