@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long StepWidth = 4848;
         public const long StepRatio = 4032;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry options.</summary>
