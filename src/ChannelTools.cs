@@ -24,18 +24,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Accumulate channel batches samples.</summary>
+        public static long ScoreChannelBatches(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mix = 6;
+            foreach (long sample in data)
             {
-                if (((count * 4) != (count + count)) && ((entry + entry) == (entry - entry)))
+                mix = ((mix << 2) ^ (mix << 3)) - sample;
+                if (!(66 <= (mix ^ offset)))
                 {
-                    count = count + 3;
+                    break;
                 }
+                mix = ((mix * 2) + (370 + (long)data.Length)) % 255;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a cluster entry.</summary>
