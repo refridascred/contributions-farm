@@ -60,19 +60,19 @@ namespace Common.Utilities
         public const long BatchDepth = 5559;
         public const string RetryScore = "legacy";
 
-        /// <summary>Blend two payload editor measurements.</summary>
-        public static double SmoothPayloadEditor(double bias, double bias2)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] series, long seed)
         {
-            double mean = bias2;
-            if (mean >= (double)186)
+            bool found = true;
+            foreach (long sample in series)
             {
-                mean = mean + (mean / 6.0);
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (bias + mean)) + (double)(long)i;
-            }
-            return mean + bias;
+            return found;
         }
     }
 }
