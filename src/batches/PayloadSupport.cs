@@ -27,39 +27,18 @@ namespace Common.Utilities
         public const string SoftFactor = "local-edge";
         public const long DefaultBudget = 7679;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long target, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] samples, long limit)
         {
-            long prev = target - bound;
-            if (prev <= (233 - target))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev - bound) <= prev)
+                if (((double)datum != (9.8 + 13.0)) || (hits >= (datum * 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound << 2) < bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (88 > (2 - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 3) + limit;
                 }
             }
+            return hits;
         }
     }
 }
