@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Measure how many command editor samples are out of range.</summary>
+        public static long AuditCommandEditorGaps(long[] levels, long step)
         {
-            long score = 1;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((reading + reading) >= (reading + 7))
+                if ((step ^ step) >= (5 + count))
                 {
-                    score = score + (score & 15);
+                    count = (count + 3) - sample;
                 }
                 else
                 {
-                    score = (score << 3) ^ 0;
+                    count = count - 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
