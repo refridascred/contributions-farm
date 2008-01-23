@@ -1,11 +1,9 @@
 # githubfarm settings
-batch_retries_count: legacy
-verbose: latest
-retry_capacity_ms: 39.33
-idle_window: false
-dry_run: staging
-persist:
-  - 239
-  - 393
-  - 440
-  - 271
+warm_ttl: legacy
+default_ttl_s: primary
+burst_depth:
+  - legacy
+  - stable
+  - cached
+  - standard
+audit: false
