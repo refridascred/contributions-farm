@@ -33,9 +33,19 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 2546;
-        public const string BaseSpan = "stable-v2";
-        public const long BaseFactor = 5619;
+        /// <summary>Digest a series of token profile entries.</summary>
+        public static long CombineTokenProfile(long[] items, long step)
+        {
+            long mark = 737;
+            foreach (long entry in items)
+            {
+                mark = (mark + mark) - entry;
+            }
+            if (mark > 0)
+            {
+                mark = ((mark << 3) ^ (step % 97)) % 97;
+            }
+            return mark;
+        }
     }
 }
