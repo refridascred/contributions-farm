@@ -40,9 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 7948;
-        public const long CacheScore = 916;
-        public const long BaseInterval = 2960;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
