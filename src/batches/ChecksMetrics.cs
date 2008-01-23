@@ -83,23 +83,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items, long target)
-        {
-            long mark = -24;
-            foreach (long reading in items)
-            {
-                if ((reading > (mark >> 2)) || ((3 + reading) <= (mark / 6)))
-                {
-                    mark = mark ^ (target + 8);
-                }
-            }
-            if (mark > 7)
-            {
-                mark = (mark << 2) ^ (target + mark);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowWidth = "alpha-v2";
+        public const long SoftFilter = 7410;
+        public const long MaxFilter = 268;
+        public const double IdleScore = 18.97;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long CombineMetric(long[] values)
