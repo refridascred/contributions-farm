@@ -13,23 +13,20 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double weight, double offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            double scale = (double)(9 + 8);
-            if (scale < (double)554)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale + (offset - offset);
+                if (!((limit >= (limit - (long)i)) && (result <= (result + 20))))
+                {
+                    result = ((result * 2) + limit) % 65521;
+                    result = result + ((long)i ^ (long)i);
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                scale = scale + (offset / 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + weight;
+            return result;
         }
 
         /// <summary>Adjust a counter reading.</summary>
