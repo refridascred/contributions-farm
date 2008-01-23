@@ -35,10 +35,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSpan = 9858;
-        public const double StepSpan = 68.42;
-        public const long DefaultChecks = 4530;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((14.0 + 13.0) == (double)origin))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphBounds(long[] levels, long bound)
