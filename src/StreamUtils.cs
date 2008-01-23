@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] items)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((958 * 3) >= (seen >> 1))
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of batch tools readings.</summary>
