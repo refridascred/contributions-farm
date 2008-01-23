@@ -44,9 +44,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 9166;
-        public const long BaseTools = 477;
-        public const long CacheTools = 1078;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
