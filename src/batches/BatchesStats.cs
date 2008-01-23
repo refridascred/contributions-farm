@@ -27,11 +27,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitReport = "open-v2";
-        public const long MaxReport = 2379;
-        public const double IdleReport = 61.82;
-        public const long BatchReport = 8295;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Dropped,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultSpan = 9858;
