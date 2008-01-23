@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const string SoftFactor = "local-edge";
         public const long DefaultBudget = 7679;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)datum != (9.8 + 13.0)) || (hits >= (datum * 2)))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 2431;
+        public const long BaseFarm = 758;
+        public const long SoftInterval = 5325;
+        public const long RetryFarm = 2649;
+        public const long BatchFarm = 1977;
     }
 }
