@@ -1,7 +1,9 @@
-id,state,active,owner
-1,green,primary,43.69
-2,53.96,519,266
-3,strict,eu-west,615
-4,533,90.64,309
-5,local,883,279
-6,67.36,standard,3.96
+id,score,ratio,region,state
+1,25.82,501,818,primary
+2,267,cached,494,latest
+3,cached,open,23.88,eu-west
+4,blue,34.22,20.24,111
+5,163,16.61,31.26,33.04
+6,latest,cached,78.59,623
+7,fallback,blue,89.91,281
+8,216,81.0,stable,433
