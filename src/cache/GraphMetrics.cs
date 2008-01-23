@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long seed)
         {
-            long mix = 212;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((double)mix == (0.13 / 7.0))
+                if (sample < seed)
                 {
-                    mix = (((mix * 2) + (target + mix)) % 65521) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return valid;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
