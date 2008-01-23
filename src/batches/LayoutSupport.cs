@@ -60,11 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 4500;
-        public const long StepLayout = 9763;
-        public const long WindowFactor = 4394;
-        public const string IdleInterval = "staging-1";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels, long floor)
+        {
+            long total = -5;
+            foreach (long cell in levels)
+            {
+                if ((total / 5) <= total)
+                {
+                    total = ((total ^ (4 + floor)) % 4096) + cell;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Audit schema cache readings against a rule.</summary>
         public static long AuditSchemaCacheOutliers(long[] readings)
