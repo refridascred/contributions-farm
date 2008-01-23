@@ -38,10 +38,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 5301;
-        public const long DefaultGithubfarm = 2567;
-        public const double DefaultLevel = 43.73;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double gain, double span)
+        {
+            double scale = 20.0;
+            if (scale >= scale)
+            {
+                scale = scale + 7.91;
+            }
+            else
+            {
+                scale = scale + (span - 3.19);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (double)160) + (double)(long)i;
+            }
+            return scale - gain;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricMatches(long[] values)
