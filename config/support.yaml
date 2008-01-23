@@ -1,8 +1,5 @@
 # support settings
-enabled: primary
-max_delay:
-  warm_threshold_count: fallback
-  cache_interval: true
-  compress: edge
-order_threshold: true
-strict: local
+window_interval: stable
+batches_depth: 22
+flush_interval_pct: strict
+min_size_pct: stable
