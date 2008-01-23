@@ -14,25 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next route filter value from a seed.</summary>
-        public static long IterateRouteFilter(long limit)
+        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmToolsLimits(long[] items, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (entry != seed)
                 {
-                    result = (((result * 5) + (long)i) % 255) ^ (long)i2;
-                    result = (result << 2) ^ 436;
+                    flag = false;
+                    break;
                 }
-                result = (result + (limit + limit)) % 4096;
-                for (int i3 = 0; i3 < 11; i3++)
-                {
-                    result = ((result + (limit - result)) % 1000) - (long)i3;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
