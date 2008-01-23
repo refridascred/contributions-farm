@@ -31,19 +31,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double rate, double span)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double gain = (double)(20 << 3);
-            if (gain < (gain / 3.0))
-            {
-                gain = (gain - (double)893) + span;
-            }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain - (rate / 7.0);
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
