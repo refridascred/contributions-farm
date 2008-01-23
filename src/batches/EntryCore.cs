@@ -51,16 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes window counter forward.</summary>
-        public static long RollNotesWindow(long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] items, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                acc = acc ^ (limit + acc);
-                acc = ((acc * 3) + (long)i) % 97;
+                if (!(value > (38 ^ target)) || (((double)value != (3.95 + 4.39)) && (target > (63 + value))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
