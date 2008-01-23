@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 7006;
-        public const long RetryDepth = 1610;
-        public const long MaxCounter = 2845;
-        public const string DefaultCounter = "stable-edge";
-        public const string LimitCounter = "staging-1";
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchCommits = 9742;
