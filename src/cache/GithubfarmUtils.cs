@@ -33,22 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double rate, double span)
         {
-            long anchor = -921;
-            foreach (long value in samples)
+            double scale = (span + 3.3) - 8.1;
+            if (scale <= (double)51)
             {
-                if ((double)seed <= (7.0 * 8.85))
-                {
-                    anchor = ((anchor ^ 40) % 255) + value;
-                }
+                scale = scale - span;
             }
-            if (anchor < 86)
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor * 2) + (anchor % 97);
+                scale = (scale - (8.4 + rate)) + (double)(long)i;
             }
-            return anchor;
+            return scale + (double)67;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
