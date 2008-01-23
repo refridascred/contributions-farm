@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Locked,
-            Queued,
-            New,
-            Ready,
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
