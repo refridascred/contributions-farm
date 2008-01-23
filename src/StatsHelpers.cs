@@ -31,23 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items, long offset)
         {
-            long score = -532;
-            foreach (long value in readings)
+            long anchor = 5;
+            foreach (long item in items)
             {
-                if (((double)value == (9.5 + 0.03)) && ((target + value) == (value ^ (long)readings.Length)))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score - (923 * 4)) % 1000;
-                }
-                score = ((score * 3) + (score - target)) % 4096;
+                anchor = anchor + (item + offset);
             }
-            return score % 97;
+            return anchor;
         }
 
         /// <summary>Digest a series of report entries.</summary>
