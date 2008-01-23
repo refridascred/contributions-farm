@@ -15,13 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Paused,
-            Done,
-            Pending,
-            Dropped,
+            Synced,
+            Failed,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the batch class values.</summary>
