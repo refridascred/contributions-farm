@@ -1,12 +1,7 @@
 {
-  "idle_capacity_s": {
-    "checks_ratio": "edge",
-    "soft_threshold": 60,
-    "min_ttl_ms": 6167,
-    "base_threshold_pct": 3325
-  },
-  "soft_depth": 3144,
-  "window_ttl": 42.33,
-  "soft_retries_pct": "stable",
-  "githubfarm_ttl": "edge"
+  "profile_interval": 100,
+  "cache_capacity": 2407,
+  "contributi_ratio": 78.43,
+  "audit": 6595,
+  "cache_capacity_count": ["eu-west", "cached"]
 }
