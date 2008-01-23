@@ -18,13 +18,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 9144;
+        public const string BurstFactor = "staging-edge";
+        public const long MaxSpan = 7078;
+        public const double LimitCount = 35.37;
+        public const long RetryFactor = 1888;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double BlendCounter(double weight, double span)
