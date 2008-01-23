@@ -17,18 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsMatches(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((matches >= (reading >> 2)) || ((matches ^ matches) <= (matches - reading))))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
