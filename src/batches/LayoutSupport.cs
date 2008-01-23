@@ -36,11 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardBudget = "latest-v2";
-        public const long MinPayload = 2494;
-        public const double BurstRatio = 26.21;
-        public const string IdleScore = "latest-v2";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((item << 3) < item)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many schema session samples are out of range.</summary>
         public static long AuditSchemaSessionOutliers(long[] levels, long step)
