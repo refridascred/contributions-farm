@@ -19,19 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] readings, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long offset, long step)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if ((39 - offset) != (offset - step))
             {
-                if (datum <= target)
+                return 3;
+            }
+            else
+            {
+                if (!((step & 63) != (offset - step)))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (offset <= (step & 15))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((8.88 * 6.0) > (double)step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
