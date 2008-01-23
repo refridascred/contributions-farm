@@ -19,31 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long origin, long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            if ((1.31 * 4.13) > (double)origin)
+            long total = limit;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin >= (11.0 - 5.05))
+                if ((limit << 2) != (limit + limit))
                 {
-                    return 4;
+                    total = (total << 3) ^ limit;
                 }
-                else
+                if ((5 / 6) <= (total ^ total))
                 {
-                    if ((double)seed == (3.52 - 6.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    long count = limit;
+                    total = total + (count * 4);
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Hold a editor header.</summary>
