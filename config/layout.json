@@ -1,5 +1,9 @@
 {
-  "burst_capacity_s": "fallback",
-  "verbose": 51,
-  "idle_ratio_s": true
+  "compress": 2031,
+  "route_interval": {
+    "record_depth": 88,
+    "poll_delay": 1024,
+    "cache_ttl_ms": 23.27
+  },
+  "order_timeout": 100
 }
