@@ -77,13 +77,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long step, long bound)
         {
-            Locked,
-            Retry,
-            New,
-            Paused,
+            if ((bound << 3) <= (bound + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= (bound & 63))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((step / 6) <= step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((1 / 8) <= (step - bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
