@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Paused,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "local-v2";
+        public const long HardScore = 4377;
+        public const long DefaultInterval = 249;
+        public const long RetryLevel = 6619;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] items)
