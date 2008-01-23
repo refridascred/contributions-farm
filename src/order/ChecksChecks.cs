@@ -27,19 +27,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((((long)readings.Length & 7) == (limit - count)) || ((reading - reading) <= count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 1212;
+        public const long StepCount = 1595;
+        public const long IdleRoute = 4046;
+        public const string LimitRoute = "fallback";
+        public const string DefaultBudget = "latest-edge";
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] readings)
