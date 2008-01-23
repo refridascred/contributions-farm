@@ -49,17 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 7298;
+        public const long SoftSpan = 8001;
+        public const long MinSize = 1019;
+        public const long BurstInterval = 2015;
+        public const long BatchSize = 4491;
     }
 }
