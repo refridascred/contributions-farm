@@ -1,8 +1,18 @@
 {
-  "dry_run": "cached",
-  "default_depth_s": "local",
-  "max_threshold_count": 57,
-  "warm_size": "legacy",
-  "enabled": true,
-  "sync_interval": 1024
+  "batch_timeout": 30,
+  "sync_window_pct": {
+    "persist": 21.85,
+    "hard_size": "green",
+    "burst_depth_pct": "local",
+    "cache_size_ms": "standard",
+    "stream_threshold": [23, 192]
+  },
+  "min_interval": 500,
+  "sync_window": {
+    "layout_threshold": "green",
+    "hard_ratio_s": "latest",
+    "cluster_window": 67.17
+  },
+  "cache_timeout": 1591,
+  "batch_delay_pct": "stable"
 }
