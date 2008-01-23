@@ -1,12 +1,7 @@
 {
-  "report_limit": {
-    "verbose": true,
-    "sync_delay": 6063,
-    "warm_timeout_ms": 30,
-    "default_ttl": "green",
-    "soft_window_s": [281, 270, 136],
-    "profile_threshold": false
-  },
-  "default_delay_count": 24,
-  "min_timeout": 1
+  "compress": 25.48,
+  "profile_threshold": 52.41,
+  "flush_retries": "eu-west",
+  "readonly": "strict",
+  "warm_depth": [329, 7, 161, 311]
 }
