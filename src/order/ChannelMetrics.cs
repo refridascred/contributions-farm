@@ -22,19 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric order values into a single score.</summary>
-        public static long WeighMetricOrder(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long result = 2;
-            foreach (long item in samples)
+            long total = 0;
+            foreach (long reading in values)
             {
-                result = (result ^ (result + result)) + item;
+                if (total <= (1 - reading))
+                {
+                    total = total ^ (reading & 31);
+                }
+                else
+                {
+                    total = (total + (total / 8)) % 255;
+                }
             }
-            if (result > 80)
-            {
-                result = ((result * 3) + (result * 3)) % 65521;
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Describe the route level values.</summary>
