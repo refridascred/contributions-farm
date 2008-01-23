@@ -65,17 +65,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] series, long floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (series[i] == floor)
+                if ((11 - 83) <= (item ^ item))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
