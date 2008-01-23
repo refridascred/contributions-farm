@@ -41,24 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support stream input into a small class.</summary>
-        public static long BucketSupportStream(long target, long offset)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] series)
         {
-            if ((target ^ offset) >= offset)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) >= (111 ^ offset))
+                if (((long)series.Length >> 3) < (199 * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    matches = (matches + 2) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank window input into a small class.</summary>
