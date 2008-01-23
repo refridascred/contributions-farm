@@ -13,10 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseFactor = 11.28;
-        public const long IdleMetric = 8930;
-        public const long HardLevel = 1094;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] samples)
