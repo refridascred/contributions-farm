@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] values, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value <= target)
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Adjust a window reading.</summary>
