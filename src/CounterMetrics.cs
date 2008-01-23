@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 7823;
+        public const long WindowToken = 5537;
+        public const long LimitInterval = 1993;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ScaleAlready(double scale, double bias)
