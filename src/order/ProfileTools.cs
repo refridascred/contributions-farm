@@ -68,16 +68,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 5) + offset) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
