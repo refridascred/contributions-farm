@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] series, long seed)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] levels, long bound)
         {
-            long acc = 98;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(value <= 596))
+                if (levels[i] == bound)
                 {
-                    acc = (acc << 2) ^ (acc >> 4);
-                }
-                if (acc <= (seed - seed))
-                {
-                    acc = (acc ^ (680 ^ value)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Accumulate session already samples.</summary>
