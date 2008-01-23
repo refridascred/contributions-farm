@@ -16,22 +16,12 @@ namespace Common.Utilities
             return weight + (gain - gain);
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] samples)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell * 3) <= hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Adjust a session reading.</summary>
