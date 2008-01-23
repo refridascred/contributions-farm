@@ -37,26 +37,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] levels, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
         {
-            long carry = 25;
-            foreach (long item in levels)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((95 - carry) <= (item / 9))
-                {
-                    carry = (carry ^ carry) % 1000;
-                }
-                else
-                {
-                    carry = (carry ^ (bound & 255)) % 101;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            if (carry < (-209))
-            {
-                carry = (carry - (9 * 3)) % 97;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the already phase values.</summary>
