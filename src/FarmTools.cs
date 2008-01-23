@@ -27,17 +27,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] values, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 709;
+            foreach (long entry in levels)
             {
-                if (values[i] == target)
+                if (entry > anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor + (anchor + anchor)) % 255) - seed;
                 }
             }
-            return -1;
+            if (anchor > 829)
+            {
+                anchor = (anchor << 2) ^ (anchor / 3);
+            }
+            return anchor;
         }
     }
 }
