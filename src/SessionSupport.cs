@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "staging-v2";
+        public const long IdleBudget = 5615;
+        public const long BaseLevel = 6165;
+        public const string MinCommits = "alpha-v2";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long IdleToken = 791;
