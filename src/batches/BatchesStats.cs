@@ -20,31 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long limit, long limit2)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            if ((limit2 >> 1) > (limit2 % 97))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit > (double)limit2) && (limit2 >= (limit >> 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit2 & 63) > (limit2 - limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
