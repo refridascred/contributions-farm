@@ -1,4 +1,13 @@
 # support settings
-default_size_count: 1979
-base_depth_count: 2600
-default_delay_pct: 23.52
+burst_window_s:
+  - 119
+  - 436
+  - 129
+hard_limit_ms: false
+sync_limit: false
+min_size: standard
+token_threshold:
+  - edge
+  - legacy
+  - blue
+batch_depth_count: blue
