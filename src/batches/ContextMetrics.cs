@@ -11,31 +11,13 @@ namespace Common.Utilities
         public const long RetrySize = 1073;
         public const double RetryPayload = 37.72;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long origin, long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            if ((866 >> 4) <= (target - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) <= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((2.5 * 17.0) >= (double)origin) && ((target % 12) > target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate graph samples.</summary>
