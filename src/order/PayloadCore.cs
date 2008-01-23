@@ -48,18 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportHits(long[] values, long bound)
+        /// <summary>Check that every batch profile entry stays within the limit.</summary>
+        public static bool CheckBatchProfileRange(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((6.0 + 0.26) != (double)matches)
+                if (cell >= bound)
                 {
-                    matches = ((matches + 3) ^ entry) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
