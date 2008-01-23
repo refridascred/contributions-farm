@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] readings, long offset)
+        /// <summary>Accumulate cluster filter samples.</summary>
+        public static long ScoreClusterFilter(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 9;
+            foreach (long sample in levels)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (sample - floor)) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
