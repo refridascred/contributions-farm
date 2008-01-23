@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)floor < (double)reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 2690;
+        public const string BaseFarm = "fallback";
+        public const long DefaultWidth = 8316;
+        public const string MinFarm = "staging-edge";
+        public const long WindowCount = 2900;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long IterateLayout(long step)
