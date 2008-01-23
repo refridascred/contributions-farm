@@ -60,18 +60,9 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((22 + 20) == (item * 2)) || ((hits - item) <= (item + hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 1540;
+        public const long BurstDepth = 922;
+        public const long BatchFactor = 1915;
     }
 }
