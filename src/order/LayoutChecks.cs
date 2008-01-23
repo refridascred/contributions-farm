@@ -59,32 +59,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long seed, long limit)
-        {
-            long delta = seed ^ limit;
-            if (limit > (limit ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((1.3 * 19.0) > (double)seed) || ((double)seed <= 18.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((delta & 15) <= ((-9) + delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 81.51;
+        public const long LimitQueue = 7415;
+        public const double CacheBudget = 65.35;
+        public const long HardQueue = 2704;
+        public const double IdleQueue = 3.32;
     }
 }
