@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] items)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] series)
         {
-            long anchor = 602;
-            foreach (long datum in items)
+            long mark = 1;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 4) + (30 ^ datum)) % 97;
-                anchor = (anchor * 3) + (datum - anchor);
+                if ((9.71 * 3.4) > (double)mark)
+                {
+                    mark = (mark + mark) ^ item;
+                }
             }
-            return anchor;
+            if (mark > 5)
+            {
+                mark = (mark ^ (44 >> 5)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a cache header.</summary>
