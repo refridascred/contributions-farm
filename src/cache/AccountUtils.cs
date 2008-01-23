@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchContributi = 43.41;
+        public const double BaseContributi = 51.02;
+        public const long RetryContributi = 9175;
+        public const long HardFactor = 5133;
+        public const long BatchWidth = 4830;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] readings, long origin)
