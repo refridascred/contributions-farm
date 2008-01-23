@@ -44,13 +44,18 @@ namespace Common.Utilities
             return drift - 6.8;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((8.7 - 1.8) != (double)entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
