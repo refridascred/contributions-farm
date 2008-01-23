@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            Locked,
+            Ready,
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
