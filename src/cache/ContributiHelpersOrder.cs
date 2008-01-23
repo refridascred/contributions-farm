@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const double IdleLayout = 60.43;
         public const long LimitBudget = 7502;
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many metric report samples are out of range.</summary>
+        public static long MeasureMetricReportHits(long[] items)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value ^ value) != (value - value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
