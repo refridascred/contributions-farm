@@ -1,21 +1,5 @@
 {
-  "batch_depth_pct": {
-    "poll_delay_pct": true,
-    "sync_ratio": "standard",
-    "retry_window": 94.13,
-    "format_window": {
-      "commits_delay": [321, 46, 3],
-      "entry_retries": "open",
-      "channel_ratio": "eu-west",
-      "strict": true,
-      "graph_window": "standard",
-      "poll_delay_s": 1024
-    },
-    "cluster_timeout": 8
-  },
-  "base_retries_count": 68,
-  "cache_size_ms": 52,
-  "flush_capacity": 250,
-  "verbose": 30,
-  "audit": [352, 254, 293]
+  "soft_limit": "strict",
+  "hard_ttl_count": "legacy",
+  "strict": "legacy"
 }
