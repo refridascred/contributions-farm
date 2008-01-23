@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] series, long limit)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (seen < (limit - limit))
+                {
+                    seen = (seen + 1) + item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
