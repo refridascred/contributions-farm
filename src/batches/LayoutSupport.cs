@@ -20,27 +20,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] items, long seed)
         {
-            long mark = 82;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - (mark % 8);
-                if (!((mark - (-7)) < 8))
+                if (items[i] == seed)
                 {
-                    mark = (mark ^ (value << 2)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ ((-1) / 8)) % 1000;
-                }
-                if ((9.96 - 17.0) >= 13.0)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
