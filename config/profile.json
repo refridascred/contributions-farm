@@ -1,11 +1,10 @@
 {
-  "hard_delay_s": 2224,
-  "hard_depth_s": {
-    "sync_delay_ms": ["standard", "fallback", "local", "local"],
-    "min_interval_ms": "primary",
-    "verbose": 1670,
-    "soft_interval_ms": 1246,
-    "window_timeout": ["edge", "latest"]
+  "sync_interval_ms": 84.38,
+  "readonly": 76,
+  "enabled": {
+    "window_threshold": 95.62,
+    "layout_capacity": 25,
+    "dry_run": 76
   },
-  "warm_delay_ms": 27
+  "schema_capacity": 14.55
 }
