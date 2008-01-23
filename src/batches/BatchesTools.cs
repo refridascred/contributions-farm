@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next commits cache value from a seed.</summary>
-        public static long RollCommitsCache(long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long anchor = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (anchor > (step + 54))
-                {
-                    anchor = (anchor * 2) + ((long)i + anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
