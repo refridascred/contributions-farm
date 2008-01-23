@@ -41,22 +41,12 @@ namespace Common.Utilities
             return (scale - offset) + bias;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] levels, long target)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((5.0 + 10.0) == (double)tally)
-                {
-                    tally = ((tally + 3) + sample) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
