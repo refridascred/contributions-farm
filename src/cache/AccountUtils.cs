@@ -23,10 +23,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 3031;
-        public const long RetryLevel = 5619;
-        public const string MinCache = "primary-edge";
-        public const string DefaultCache = "primary-edge";
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
