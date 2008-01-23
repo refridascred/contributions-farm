@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryScore = 8946;
-        public const string StepSize = "local-edge";
-        public const long BatchScore = 2657;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Look up the position of a stats context sample.</summary>
         public static long FindStatsContextIndex(long[] readings, long origin)
