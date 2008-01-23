@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples, long limit)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long carry = 403;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + cell) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (carry > 14)
-            {
-                carry = carry + limit;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a profile entry.</summary>
