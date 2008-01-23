@@ -1,13 +1,6 @@
 {
-  "booking_timeout": 66,
-  "sync_capacity_s": 60.91,
-  "cache_delay": true,
-  "verbose": "staging",
-  "cache_capacity_ms": {
-    "profile_threshold": 30,
-    "profile_ratio": true,
-    "max_size": true,
-    "compress": 3096,
-    "default_ttl_pct": [209, 78, 319]
-  }
+  "idle_depth_s": ["local", "latest"],
+  "cache_interval": 1024,
+  "max_ratio": "strict",
+  "stats_ttl": 2390
 }
