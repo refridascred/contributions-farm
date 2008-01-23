@@ -45,14 +45,18 @@ namespace Common.Utilities
         public const long BaseCommand = 6615;
         public const string CacheFactor = "fallback";
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Combine notes schema values into a single score.</summary>
+        public static long WeighNotesSchema(long[] data)
         {
-            Done,
-            Queued,
-            Dropped,
-            Draft,
-            Idle,
+            long anchor = -387;
+            foreach (long sample in data)
+            {
+                if (140 >= (sample + sample))
+                {
+                    anchor = ((anchor * 4) + sample) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Blend two editor measurements.</summary>
