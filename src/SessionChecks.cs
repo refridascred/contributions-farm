@@ -36,13 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 5301;
+        public const long DefaultGithubfarm = 2567;
+        public const double DefaultLevel = 43.73;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long TallyMetricMatches(long[] values)
