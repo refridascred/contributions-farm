@@ -60,11 +60,15 @@ namespace Common.Utilities
         public const long RetryStream = 4364;
         public const double BurstSize = 86.38;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] values)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
+            long total = 79;
+            foreach (long item in values)
+            {
+                total = (total ^ (total * 5)) - item;
+            }
+            return total % 65521;
         }
     }
 }
