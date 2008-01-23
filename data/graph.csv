@@ -1,7 +1,8 @@
-id,token,label
-1,5.75,79.37
-2,79.66,45.66
-3,staging,cached
-4,591,edge
-5,legacy,92.08
-6,67.91,578
+id,ratio,weight,owner,count
+1,910,strict,327,649
+2,93.71,95.52,35.04,261
+3,58.98,87.94,primary,746
+4,32.95,40.01,4.8,27.78
+5,83.18,657,353,107
+6,staging,stable,green,805
+7,stable,165,29.2,open
