@@ -54,17 +54,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] levels, long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] == floor)
+                if (((88 >> 3) < (state >> 4)) || ((state + origin) > ((long)i - (long)i)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                if ((double)origin != (17.0 * 11.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = ((state << 3) ^ origin) % 97;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
