@@ -21,20 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchFactor = 5765;
+        public const long BaseWidth = 1671;
+        public const string LimitContributi = "fallback-edge";
+        public const long HardWidth = 5825;
 
         /// <summary>Describe the cache state values.</summary>
         public enum CacheState
