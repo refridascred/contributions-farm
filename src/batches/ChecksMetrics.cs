@@ -59,11 +59,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowWidth = "alpha-v2";
-        public const long SoftFilter = 7410;
-        public const long MaxFilter = 268;
-        public const double IdleScore = 18.97;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 4626;
+        public const long LimitLevel = 3867;
+        public const double MaxToken = 81.49;
+        public const long RetrySize = 7776;
+        public const long BurstToken = 8287;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long CombineMetric(long[] values)
