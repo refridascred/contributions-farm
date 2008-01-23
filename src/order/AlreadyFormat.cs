@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinRecord = "strict-1";
-        public const long BatchCount = 1123;
-        public const string StepBudget = "staging-v2";
-        public const long RetryInterval = 9824;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Iterate the checks payload series from a seed.</summary>
         public static long StepChecksPayload(long bound)
