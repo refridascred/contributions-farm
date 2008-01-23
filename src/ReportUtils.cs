@@ -32,11 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchLevel = 3455;
-        public const double BurstCommand = 64.67;
-        public const double BaseFactor = 26.62;
-        public const long CacheTimeout = 2352;
+        /// <summary>Digest a series of notes batches entries.</summary>
+        public static long ScoreNotesBatches(long[] levels)
+        {
+            long total = 4;
+            foreach (long sample in levels)
+            {
+                if (((2 ^ (long)levels.Length) >= (sample - 233)) && ((total / 8) > (sample + 1)))
+                {
+                    total = (total - (715 + 6)) % 255;
+                }
+                if ((sample & 7) > (total % 8))
+                {
+                    break;
+                }
+            }
+            if (total < 441)
+            {
+                total = total + (total << 2);
+            }
+            return total % 4096;
+        }
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
