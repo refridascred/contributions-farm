@@ -42,15 +42,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long anchor = -5;
+            foreach (long sample in data)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (((5 + anchor) <= (sample + sample)) && (anchor < (anchor + sample)))
+                {
+                    anchor = (anchor * 5) + anchor;
+                }
+                else
+                {
+                    anchor = anchor + anchor;
+                }
+                if ((anchor ^ sample) <= sample)
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Project the next already queue value.</summary>
