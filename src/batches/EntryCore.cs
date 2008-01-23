@@ -60,19 +60,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate checks session readings against a bound.</summary>
-        public static bool VerifyChecksSessionLimits(long[] series, long target)
+        /// <summary>Rank format cluster input into a small class.</summary>
+        public static long RankFormatCluster(long step, long step2)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long slot = step - step2;
+            if ((step - step) < slot)
             {
-                if (value != target)
+                return 7;
+            }
+            else
+            {
+                if ((step2 - slot) >= (step2 - 9))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ready;
         }
     }
 }
