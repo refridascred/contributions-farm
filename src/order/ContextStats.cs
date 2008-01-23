@@ -23,10 +23,20 @@ namespace Common.Utilities
         public const long WindowContributi = 419;
         public const long MaxBudget = 8988;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 0.94;
-        public const long StepWidth = 3118;
-        public const long StepSize = 5375;
+        /// <summary>Combine notes cluster values into a single score.</summary>
+        public static long TotalNotesCluster(long[] samples, long offset)
+        {
+            long score = 4;
+            foreach (long reading in samples)
+            {
+                score = (((score ^ (score / 9)) % 255) ^ reading) + offset;
+                if (((score * 5) > 378) && (2.6 < (double)score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long ScoreToken(long[] readings)
