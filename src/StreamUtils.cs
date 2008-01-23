@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((958 * 3) >= (seen >> 1))
+                if (item > limit)
                 {
-                    seen = (seen + 3) + item;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
