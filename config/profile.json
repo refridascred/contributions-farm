@@ -1,5 +1,17 @@
 {
-  "compress": "cached",
-  "persist": false,
-  "idle_timeout_s": 4869
+  "report_ttl": {
+    "queue_depth": false,
+    "default_size": 100,
+    "base_depth": [235, 225, 189],
+    "persist": {
+      "sync_delay": "open",
+      "dry_run": 1024,
+      "profile_interval": 1693
+    },
+    "soft_timeout": true
+  },
+  "default_window": false,
+  "persist": true,
+  "hard_interval_ms": [356, 350],
+  "poll_interval_count": "legacy"
 }
