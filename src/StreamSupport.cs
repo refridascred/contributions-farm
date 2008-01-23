@@ -12,15 +12,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long sum = 4;
-            foreach (long value in data)
-            {
-                sum = sum ^ (value << 3);
-            }
-            return sum % 1000;
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit already farm readings against a rule.</summary>
