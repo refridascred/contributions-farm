@@ -22,35 +22,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long limit, long seed)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long offset, long offset2)
         {
-            if (seed > (limit + limit))
+            long step = offset + offset2;
+            if (((offset - step) == (offset2 ^ offset2)) && ((double)offset2 < (1.14 - 3.36)))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((seed + seed) >= limit)
+                if ((offset2 % 2) != (offset / 7))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((56 - 58) != (limit + limit))
+                    if ((double)step > (2.5 * 3.6))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if (!((seed >> 2) >= seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 4;
                     }
                 }
             }
