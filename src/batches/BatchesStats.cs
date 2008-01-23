@@ -35,19 +35,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = 5;
-            foreach (long item in levels)
-            {
-                total = (((total << 2) ^ 243) % 255) + item;
-                if ((1.2 - 6.02) >= (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
