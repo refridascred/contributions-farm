@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] values)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry <= 18.0)
+                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
