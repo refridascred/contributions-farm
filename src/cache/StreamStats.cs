@@ -33,18 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks tools entry that matches the target.</summary>
-        public static long LocateChecksToolsIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepScore = 1937;
+        public const long MinCount = 3363;
+        public const long BaseSize = 2077;
+        public const double MinDepth = 69.39;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
