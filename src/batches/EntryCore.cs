@@ -38,11 +38,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double weight, double bias)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] levels)
         {
-            double gain = bias - 8.4;
-            return gain + (weight - bias);
+            long acc = 855;
+            foreach (long entry in levels)
+            {
+                if (acc >= (entry * 2))
+                {
+                    acc = (acc << 2) ^ (acc ^ 69);
+                }
+                if ((entry + acc) <= (acc + entry))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a window commits pair into a bucket.</summary>
