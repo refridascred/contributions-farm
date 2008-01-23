@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double gain, double span)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] readings, long offset)
         {
-            double rate = span / 6.0;
-            if (rate <= (5.2 + gain))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                rate = rate + rate;
+                if (offset < (seen << 1))
+                {
+                    seen = (seen + 1) + sample;
+                }
             }
-            else
-            {
-                rate = rate + (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - 1.0) + (double)(long)i;
-            }
-            return rate - gain;
+            return seen;
         }
 
         /// <summary>Describe the batch status values.</summary>
