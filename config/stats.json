@@ -1,18 +1,8 @@
 {
-  "max_size": 3908,
-  "enabled": "local",
-  "persist": 74.64,
-  "cache_interval_pct": {
-    "sync_ratio": 823,
-    "layout_timeout": 49.28,
-    "compress": 32,
-    "sync_ttl_ms": 72.76,
-    "verbose": "fallback"
-  },
-  "base_delay_count": {
-    "sync_limit": false,
-    "record_delay": 7510,
-    "cache_ratio_pct": 1024,
-    "filter_retries": 99
-  }
+  "report_capacity": 81.97,
+  "min_delay": "blue",
+  "strict": [431, 303, 145],
+  "layout_delay": 9,
+  "farm_interval": "blue",
+  "sync_threshold_count": 40
 }
