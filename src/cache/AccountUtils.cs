@@ -21,18 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Check that every layout already entry stays within the limit.</summary>
+        public static bool CheckLayoutAlreadyBounds(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((9.41 / 6.0) == (double)cell)
+                if (entry != step)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
     }
 }
