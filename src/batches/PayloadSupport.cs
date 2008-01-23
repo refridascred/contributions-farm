@@ -20,19 +20,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (!((double)bound <= (7.3 / 7.0)))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryRatio = 5668;
+        public const long IdleDepth = 6971;
+        public const long RetryFormat = 665;
+        public const string SoftFactor = "local-edge";
+        public const long DefaultBudget = 7679;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long SortContext(long target, long bound)
