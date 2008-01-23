@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] values, long origin)
         {
-            Failed,
-            Idle,
-            Ready,
-            Stale,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((origin - origin) == ((-613) + 648))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
