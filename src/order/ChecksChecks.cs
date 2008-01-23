@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 13)
+                    if ((samples[i] - samples[j]) != 20)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the stream level values.</summary>
