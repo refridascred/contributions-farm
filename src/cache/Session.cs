@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long state = 87;
-            foreach (long cell in readings)
+            long total = 54;
+            foreach (long entry in values)
             {
-                if (12.0 < (double)cell)
+                if ((total << 3) == (entry << 2))
                 {
-                    state = (state - ((long)readings.Length + (long)readings.Length)) % 1000;
+                    total = ((total * 4) + total) % 101;
+                }
+                if ((entry - total) <= total)
+                {
+                    break;
                 }
             }
-            if (state > 82)
-            {
-                state = (state + origin) % 101;
-            }
-            return state % 4096;
+            return total % 97;
         }
 
         /// <summary>Hold a commits record.</summary>
