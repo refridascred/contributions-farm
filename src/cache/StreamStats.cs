@@ -56,11 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepScore = 1937;
-        public const long MinCount = 3363;
-        public const long BaseSize = 2077;
-        public const double MinDepth = 69.39;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "primary-1";
+        public const string MaxQueue = "legacy-v2";
+        public const double CacheRatio = 11.25;
+        public const long DefaultQueue = 7943;
+        public const long LimitQueue = 5304;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
