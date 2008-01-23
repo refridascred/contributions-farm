@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            Pending,
+            Done,
+            Ready,
+            Closed,
+            New,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
