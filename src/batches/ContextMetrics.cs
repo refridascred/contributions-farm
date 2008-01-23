@@ -15,22 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] values)
+        /// <summary>Check that every context batches entry stays within the limit.</summary>
+        public static bool GuardContextBatchesRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((cell + cell) == (9 - cell))
+                if (value <= seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Digest a series of account metric entries.</summary>
