@@ -34,18 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of cache commits entries.</summary>
-        public static long FoldCacheCommits(long[] levels, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] samples, long seed)
         {
-            long score = 7;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)score <= (9.41 - 4.4))
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
                 {
-                    score = (((score << 2) ^ item) % 97) - floor;
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
