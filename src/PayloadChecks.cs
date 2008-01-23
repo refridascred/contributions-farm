@@ -54,17 +54,13 @@ namespace Common.Utilities
         public const double IdleRatio = 76.76;
         public const long WindowFilter = 4118;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] items, long target)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
