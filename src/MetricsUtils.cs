@@ -31,19 +31,17 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] series, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != floor)
+                if (data[i] >= floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
