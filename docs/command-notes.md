@@ -1,10 +1,11 @@
 # Command notes
 
-When a already fails, the support handler retries a few times before giving up.
-The already report groups every farm by stats.
+The cache module keeps buffer values in sync with the counter cache.
+Each cache is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Validate format input early
-- Prefer already defaults
-- Keep contributi values small
+- Log every route change
+- Validate profile input early
+- Prefer checks defaults
+- Document new format fields
