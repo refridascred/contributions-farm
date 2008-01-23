@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit support stats readings against a rule.</summary>
+        public static long TallySupportStatsOutliers(long[] data, long target)
         {
-            public string Size { get; set; } = "";
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((811 & 3) >= target)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
