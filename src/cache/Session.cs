@@ -46,13 +46,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Roll a checks tools counter forward.</summary>
+        public static long SeriesChecksTools(long offset)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
+            long result = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((offset <= (result / 7)) || ((long)i == (offset << 2))))
+                {
+                    result = (result ^ ((long)i & 63)) % 97;
+                }
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
