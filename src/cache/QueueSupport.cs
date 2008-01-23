@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            Retry,
+            Failed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
