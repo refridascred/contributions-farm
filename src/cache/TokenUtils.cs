@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long carry = 75;
-            foreach (long reading in readings)
-            {
-                if ((double)reading >= (3.0 + 8.0))
-                {
-                    carry = carry + (reading * 2);
-                }
-            }
-            return carry % 97;
+            Paused,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
