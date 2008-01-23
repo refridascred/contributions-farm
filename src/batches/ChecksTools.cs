@@ -26,22 +26,13 @@ namespace Common.Utilities
         public const double MaxBudget = 12.78;
         public const long BurstPayload = 7564;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] data, long origin)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long acc = 0;
-            foreach (long reading in data)
-            {
-                if (!((reading >> 2) >= origin))
-                {
-                    acc = ((acc << 3) ^ (acc << 2)) % 255;
-                }
-                else
-                {
-                    acc = acc + (reading >> 2);
-                }
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
