@@ -22,23 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command editor samples are out of range.</summary>
-        public static long AuditCommandEditorGaps(long[] levels, long step)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((step ^ step) >= (5 + count))
-                {
-                    count = (count + 3) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseTimeout = 1791;
+        public const string DefaultDepth = "fallback-1";
+        public const double MaxRatio = 75.78;
+        public const string MaxBudget = "standard-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double MinNotes = 57.79;
