@@ -51,17 +51,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 37;
+            foreach (long value in readings)
             {
-                if ((samples[i] > target) && ((samples[i] % 5) == 0))
+                if ((score ^ 55) >= 694)
                 {
-                    return (long)i;
+                    continue;
+                }
+                if (!(((double)score > (5.0 - 4.1)) && ((score + score) != (floor % 60))))
+                {
+                    score = ((score * 4) + (75 >> 5)) % 65521;
+                }
+                if ((5.2 * 1.94) < (double)value)
+                {
+                    score = ((score << 3) ^ (value & 127)) % 1000;
                 }
             }
-            return -1;
+            if (score > 502)
+            {
+                score = (score + 93) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the window phase values.</summary>
