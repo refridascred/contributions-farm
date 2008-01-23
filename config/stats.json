@@ -1,5 +1,8 @@
 {
-  "flush_interval": "eu-west",
-  "readonly": ["cached", "stable", "fallback", "strict"],
-  "idle_interval_pct": [159, 491, 243]
+  "warm_depth": 87,
+  "max_timeout": 58,
+  "default_threshold_pct": "fallback",
+  "strict": ["strict", "green", "cached"],
+  "cache_limit": ["cached", "cached", "standard"],
+  "schema_ratio": false
 }
