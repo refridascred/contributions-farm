@@ -15,18 +15,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long limit, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if ((limit + limit) < (limit ^ limit))
             {
-                if (entry <= (count + entry))
+                return 8;
+            }
+            else
+            {
+                if (((0.8 + 8.0) < (double)floor) && ((floor + 46) != (limit - floor)))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor * 3) < (floor + 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor <= (floor / 9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
