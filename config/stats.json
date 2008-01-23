@@ -1,6 +1,6 @@
 {
-  "poll_threshold_s": ["cached", "primary"],
-  "metrics_window": "staging",
-  "session_size": 71,
-  "cache_ratio": 2097
+  "sync_retries_pct": 31.05,
+  "base_threshold_s": 80.92,
+  "verbose": [227, 104, 48],
+  "cache_ratio": 32.1
 }
