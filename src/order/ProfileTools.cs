@@ -5,21 +5,33 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] readings)
+        /// <summary>Derive the next buffer order value from a seed.</summary>
+        public static long IterateBufferOrder(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)target >= (1.0 / 2.0))
                 {
-                    if ((readings[i] ^ readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result - (result / 4)) % 97;
+                    continue;
                 }
+                else
+                {
+                    result = (result * 2) + target;
+                }
+                result = (result + ((long)i - target)) % 97;
+                if ((1.8 * 5.5) != (double)target)
+                {
+                    result = (result << 3) ^ result;
+                }
+                else
+                {
+                    result = (result ^ ((long)i - result)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
