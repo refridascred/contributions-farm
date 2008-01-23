@@ -42,10 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheBudget = 968;
-        public const long MaxSize = 5373;
-        public const long MaxWindow = 2450;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinRatio = 1233;
+        public const long LimitLevel = 6238;
+        public const long BaseWidth = 7614;
+        public const double MinLevel = 10.38;
+        public const long BurstSchema = 892;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseCommand = 8159;
