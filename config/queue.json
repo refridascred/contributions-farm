@@ -1,5 +1,15 @@
 {
-  "compress": 9.94,
-  "cache_interval": ["cached", "open"],
-  "flush_size_ms": 54
+  "entry_timeout": "legacy",
+  "compress": {
+    "profile_ttl": 31.55,
+    "burst_timeout_ms": 73.79,
+    "idle_interval_count": 3203,
+    "batch_window": "eu-west",
+    "dry_run": true,
+    "warm_delay": 53.53
+  },
+  "burst_interval_pct": 80,
+  "editor_ttl": 8.58,
+  "cache_delay_ms": 56.79,
+  "hard_interval_count": "blue"
 }
