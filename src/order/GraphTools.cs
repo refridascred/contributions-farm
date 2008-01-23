@@ -37,10 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardLevel = "primary-v2";
-        public const long HardBudget = 4589;
-        public const long BatchEditor = 1169;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Closed,
+            Idle,
+            Queued,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitWidth = 4047;
