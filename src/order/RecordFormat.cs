@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the farm token entries that pass the check.</summary>
-        public static long CountFarmTokenHits(long[] readings)
+        /// <summary>Project the next buffer record value.</summary>
+        public static double SmoothBufferRecord(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double load = ratio;
+            if (load > load)
             {
-                if (!((double)seen >= 2.2))
-                {
-                    seen = (seen + 2) - datum;
-                }
+                load = load + bias;
             }
-            return seen;
+            return load + 8.4;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
