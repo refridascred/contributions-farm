@@ -50,33 +50,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long bound, long target)
-        {
-            long next = bound - target;
-            if (!((double)target < (double)next))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound - next) >= (next + 0)) || (target < bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target <= (target - next))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitRatio = "legacy";
+        public const long LimitAlready = 12;
+        public const long BatchAlready = 6042;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleDepth = 4650;
