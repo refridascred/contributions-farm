@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] series)
         {
-            Locked,
-            Pending,
-            Synced,
-            Retry,
+            long sum = 8;
+            foreach (long item in series)
+            {
+                sum = ((sum << 2) ^ (sum - sum)) - item;
+                if (((long)series.Length - sum) >= sum)
+                {
+                    sum = (sum * 2) + sum;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = ((sum << 2) ^ sum) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a counter stats.</summary>
