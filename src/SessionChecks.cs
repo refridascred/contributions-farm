@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Idle,
-            Failed,
-            Ready,
-            Synced,
-            Locked,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
