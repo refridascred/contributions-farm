@@ -13,13 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxWidth = 6.33;
+        public const double BatchFormat = 97.29;
+        public const double CacheFormat = 47.43;
+        public const double RetryFormat = 65.0;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchSize = 2731;
