@@ -1,9 +1,6 @@
 {
-  "compress": 2031,
-  "route_interval": {
-    "record_depth": 88,
-    "poll_delay": 1024,
-    "cache_ttl_ms": 23.27
-  },
-  "order_timeout": 100
+  "retry_ttl": "staging",
+  "strict": 61.94,
+  "sync_retries": 15.63,
+  "min_size": [86, 57, 234, 59]
 }
