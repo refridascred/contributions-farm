@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = mix ^ (long)i;
+                mix = ((mix * 3) + (floor / 7)) % 1000;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = (mix << 3) ^ ((-79) + (long)i2);
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the order state values.</summary>
