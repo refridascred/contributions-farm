@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many farm metric samples are out of range.</summary>
-        public static long AuditFarmMetricGaps(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((9.0 / 5.0) == (double)reading)
+                if (sample > seed)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
