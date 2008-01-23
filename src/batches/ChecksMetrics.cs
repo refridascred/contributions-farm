@@ -19,39 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long SortReportProfile(long limit, long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long diff = limit ^ seed;
-            if ((seed + seed) >= (205 ^ limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if (761 < diff)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (2 < (limit ^ limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((diff + seed) > (seed + limit)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
