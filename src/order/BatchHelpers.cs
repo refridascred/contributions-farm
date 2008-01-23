@@ -22,22 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up editor entry samples.</summary>
-        public static long CompareEditorEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardSize = 7535;
+        public const long BurstAlready = 6863;
+        public const string IdleSize = "legacy-edge";
+        public const string IdleBudget = "staging";
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
