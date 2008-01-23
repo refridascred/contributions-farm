@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "stable-v2";
-        public const string BurstBudget = "open-edge";
-        public const string HardDepth = "staging-edge";
-        public const long WindowSpan = 9872;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxFactor = 5930;
+        public const long RetryBudget = 9290;
+        public const double RetryInterval = 29.19;
+        public const long BurstReport = 2647;
+        public const long RetryRatio = 2563;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
