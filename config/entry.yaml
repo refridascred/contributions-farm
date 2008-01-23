@@ -1,6 +1,14 @@
 # entry settings
-strict: 30
-min_window_ms: blue
-batch_delay_ms: false
-soft_size_ms: eu-west
-persist: edge
+retry_window:
+  - 356
+  - 105
+  - 360
+flush_size_pct:
+  sync_threshold_count: 36
+  filter_interval: 9.77
+  compress: 100
+  window_size: true
+  soft_threshold_ms: local
+readonly: edge
+strict: 82.2
+audit: blue
