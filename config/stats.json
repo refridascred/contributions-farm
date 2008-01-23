@@ -1,6 +1,6 @@
 {
-  "retry_ttl_s": "stable",
-  "format_ratio": "green",
-  "idle_size_ms": "open",
-  "base_ratio_pct": 3109
+  "strict": 1024,
+  "batch_threshold": "legacy",
+  "flush_ratio_pct": 9855,
+  "readonly": 250
 }
