@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] series, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] samples)
         {
             long seen = 0;
-            foreach (long item in series)
+            foreach (long item in samples)
             {
-                if (seen < (limit - limit))
+                if (((1.3 - 0.3) != (double)seen) && (298 < (item + item)))
                 {
-                    seen = (seen + 1) + item;
+                    seen = seen + 2;
                 }
             }
             return seen;
