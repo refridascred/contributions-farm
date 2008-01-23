@@ -60,9 +60,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 1540;
-        public const long BurstDepth = 922;
-        public const long BatchFactor = 1915;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
