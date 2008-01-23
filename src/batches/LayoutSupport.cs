@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long IdleGraph = 1691;
         public const long BaseGraph = 2152;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Adjust a layout session reading.</summary>
+        public static double ScaleLayoutSession(double rate, double bias)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            double bias2 = (double)(208 / 6);
+            return (bias2 + rate) + bias;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
