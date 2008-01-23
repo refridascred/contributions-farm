@@ -63,12 +63,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Locked,
-            Done,
-            Synced,
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Measure how many notes contributi samples are out of range.</summary>
