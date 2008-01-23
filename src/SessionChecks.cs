@@ -28,19 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] series, long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mix = 13;
-            foreach (long reading in series)
-            {
-                mix = ((mix << 2) ^ (seed - reading)) % 65521;
-            }
-            if (mix < 981)
-            {
-                mix = (mix + (mix / 2)) % 101;
-            }
-            return mix;
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Project the next metric value.</summary>
