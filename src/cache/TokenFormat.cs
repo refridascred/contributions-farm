@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
