@@ -14,18 +14,25 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long floor)
         {
-            long score = 96;
-            foreach (long cell in data)
+            long prev = limit ^ floor;
+            if ((prev + prev) <= (prev ^ prev))
             {
-                if (((score + 92) != (cell % 2)) && ((double)cell < (8.4 / 6.0)))
+                return 2;
+            }
+            else
+            {
+                if ((double)prev <= (1.85 / 6.0))
                 {
-                    score = ((score << 2) ^ (cell & 15)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
