@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Combine command editor values into a single score.</summary>
+        public static long ScoreCommandEditor(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long total = 593;
+            foreach (long entry in values)
             {
-                if (658 > (entry % 5))
-                {
-                    matches = matches + 1;
-                }
+                total = total - (390 + entry);
             }
-            return matches;
+            if (total < (-82))
+            {
+                total = (total ^ (5 + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank window cluster input into a small class.</summary>
