@@ -1,13 +1,6 @@
 # entry settings
-cache_threshold_pct: stable
-idle_limit:
-  - local
-  - strict
-  - primary
-githubfarm_ratio: primary
-soft_limit_s:
-  - 444
-  - 251
-  - 160
-  - 345
-persist: 21
+dry_run: local
+default_window: 11.5
+batch_interval: local
+enabled: 7.44
+filter_delay: 24.74
