@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long sum = 69;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7 > sum) || ((sum << 2) < (42 + sum)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (datum << 3)) % 4096;
-                }
-                sum = (sum << 3) ^ datum;
-                if (sum <= datum)
-                {
-                    sum = sum ^ (datum + 2);
+                    if ((levels[i] + levels[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 297)
-            {
-                sum = (sum * 4) + (sum - sum);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
