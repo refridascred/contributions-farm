@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Check that every entry format entry stays within the limit.</summary>
+        public static bool ValidateEntryFormatLimits(long[] series, long step)
         {
-            double ratio2 = ratio * 0.9;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                ratio2 = ((ratio2 + ratio2) - (double)(long)i) + span;
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio2 + ratio;
+            return found;
         }
 
         /// <summary>Validate batch buffer readings against a bound.</summary>
