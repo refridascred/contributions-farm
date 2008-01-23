@@ -26,13 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Pending,
-            Synced,
-            Closed,
-            Retry,
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
