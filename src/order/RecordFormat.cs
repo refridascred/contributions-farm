@@ -24,18 +24,27 @@ namespace Common.Utilities
         public const long MaxScore = 1244;
         public const double LimitFactor = 18.99;
 
-        /// <summary>Count the metric buffer entries that pass the check.</summary>
-        public static long MeasureMetricBufferHits(long[] series, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long total = 610;
+            foreach (long cell in items)
             {
-                if ((reading << 2) != (hits << 1))
+                total = total ^ 8;
+                if (((42 ^ (long)items.Length) == (5 + total)) || ((total + total) >= total))
                 {
-                    hits = (hits + 1) - floor;
+                    continue;
+                }
+                if ((13.0 - 0.1) > (double)cell)
+                {
+                    total = total ^ 0;
+                }
+                else
+                {
+                    total = (total + (long)items.Length) % 101;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
