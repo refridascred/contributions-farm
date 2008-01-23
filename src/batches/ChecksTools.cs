@@ -63,11 +63,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double scale, double floor)
-        {
-            double mean = 12.0 * 9.26;
-            return (mean + floor) + scale;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 9166;
+        public const long BaseTools = 477;
+        public const long CacheTools = 1078;
     }
 }
