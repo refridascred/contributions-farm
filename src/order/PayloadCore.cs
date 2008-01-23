@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long seed)
         {
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
+            if (!((seed + limit) < (limit + limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (8 > (limit + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
