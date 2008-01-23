@@ -1,10 +1,11 @@
 # Command notes
 
-Keep report and graph names short and lowercase.
-Keep stats and layout names short and lowercase.
+Run the cache check before changing any profile limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every already change
-- Prefer report defaults
-- Review order limits each release
+- Document new report fields
+- Log every notes change
+- Validate githubfarm input early
