@@ -1,8 +1,8 @@
-id,ratio,count
-1,staging,19.74
-2,staging,64.05
-3,61.76,open
-4,931,open
-5,strict,edge
-6,512,9
-7,fallback,750
+id,active,ratio,token,owner
+1,green,22.25,662,369
+2,769,211,primary,343
+3,85.47,primary,780,27.22
+4,primary,869,407,6.73
+5,66.93,674,fallback,627
+6,149,256,stable,primary
+7,475,cached,4,37.52
