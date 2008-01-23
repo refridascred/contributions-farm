@@ -1,7 +1,15 @@
 {
-  "sync_retries_s": [204, 441, 488],
-  "cache_ratio": "open",
-  "batch_ratio": "standard",
-  "burst_retries_count": 10.31,
-  "min_size_ms": false
+  "idle_threshold_ms": false,
+  "dry_run": 32,
+  "poll_limit_count": [390, 402],
+  "warm_capacity_pct": "edge",
+  "min_depth_s": {
+    "profile_ttl": 2572,
+    "command_retries": {
+      "max_threshold": 9812,
+      "warm_depth": 44.41,
+      "poll_ttl_s": 48.57
+    },
+    "command_interval": 95
+  }
 }
