@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=114
+CHANNEL_LIMIT=368
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-open}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
+for item in green cached latest strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
