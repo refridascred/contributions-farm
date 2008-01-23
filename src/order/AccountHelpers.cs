@@ -63,18 +63,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] series, long target)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell > (double)target))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many notes contributi samples are out of range.</summary>
