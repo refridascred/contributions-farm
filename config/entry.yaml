@@ -1,8 +1,28 @@
 # entry settings
-tools_threshold: 39.38
-channel_size: latest
-compress:
-  soft_interval: 4677
-  default_depth_s: 78.9
-  commits_ttl: 250
-  profile_interval: 2646
+cache_timeout_s:
+  queue_capacity:
+    - 440
+    - 147
+    - 227
+    - 378
+  idle_window_s: fallback
+  order_retries: edge
+  soft_window_count: 6848
+stream_limit: true
+soft_limit: 40.26
+githubfarm_timeout:
+  filter_interval: 30
+  hard_limit_ms: latest
+  sync_capacity: 19.6
+  burst_limit_count:
+    - local
+    - green
+    - latest
+    - primary
+  default_window:
+    - 402
+    - 268
+    - 347
+    - 454
+  audit: 77
+tools_limit: false
