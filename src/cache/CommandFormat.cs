@@ -37,17 +37,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] levels, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long carry = 25;
+            foreach (long item in levels)
             {
-                result = (result ^ (offset & 31)) % 101;
-                result = result ^ (result & 1);
-                result = ((result * 5) + (long)i) % 1000;
+                if ((95 - carry) <= (item / 9))
+                {
+                    carry = (carry ^ carry) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (bound & 255)) % 101;
+                }
             }
-            return result;
+            if (carry < (-209))
+            {
+                carry = (carry - (9 * 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the already phase values.</summary>
