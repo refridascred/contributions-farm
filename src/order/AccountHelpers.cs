@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long HardLayout = 2324;
         public const long WindowLayout = 7584;
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] readings, long target)
         {
-            Pending,
-            Closed,
-            Stale,
-            Ready,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
