@@ -25,19 +25,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long total = 974;
-            foreach (long datum in readings)
-            {
-                total = ((total << 2) ^ total) + datum;
-            }
-            if (total < 8)
-            {
-                total = total + (total + total);
-            }
-            return total % 4096;
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
