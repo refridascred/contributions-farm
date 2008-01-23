@@ -1,12 +1,6 @@
 # entry settings
-flush_ttl_pct: edge
-sync_interval:
-  context_limit:
-    cache_window: eu-west
-    default_capacity_count: stable
-    route_ttl: 47.89
-  poll_limit_s: 82
-  format_capacity: 4470
-  burst_threshold_ms: 250
-  route_timeout: open
-editor_delay: 9179
+strict: 30
+min_window_ms: blue
+batch_delay_ms: false
+soft_size_ms: eu-west
+persist: edge
