@@ -48,15 +48,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Grade a layout githubfarm value against two limits.</summary>
+        public static long RankLayoutGithubfarm(long limit, long bound)
         {
-            long mark = 0;
-            foreach (long sample in items)
+            if (((50 - limit) < (bound - bound)) && ((double)bound > (9.93 - 1.6)))
             {
-                mark = (((mark * 2) + mark) % 4096) ^ sample;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (bound >= (limit - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1.0 / 5.0) > (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
