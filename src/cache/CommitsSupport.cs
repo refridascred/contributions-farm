@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] levels, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((limit << 2) != (limit + limit))
+                if (sample >= seed)
                 {
-                    total = (total << 3) ^ limit;
+                    flag = false;
+                    break;
                 }
-                if ((5 / 6) <= (total ^ total))
-                {
-                    long count = limit;
-                    total = total + (count * 4);
-                }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a editor header.</summary>
