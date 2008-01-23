@@ -34,18 +34,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long origin, long target)
         {
-            long total = 43;
-            foreach (long cell in samples)
+            if (!((origin - target) < (204 + origin)))
             {
-                if ((total + total) >= (total ^ total))
+                return 0;
+            }
+            else
+            {
+                if ((target + origin) != (origin & 15))
                 {
-                    total = (total - (total << 1)) - cell;
+                    return 8;
+                }
+                else
+                {
+                    if ((4.75 / 3.0) < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
