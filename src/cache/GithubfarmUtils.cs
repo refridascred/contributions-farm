@@ -38,22 +38,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] values)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value * 4) >= hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
