@@ -1,16 +1,15 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the buffer list.
-A metric that stays idle for too long is moved to the context list.
-The entry report groups every tools by buffer.
+Run the filter check before changing any buffer limits.
+Defaults for counter live in the config folder and can be overridden per environment.
+Each batch is validated before it reaches the githubfarm queue.
 
-Use channel settings to tune how often notes data is refreshed.
-The filter helpers are pure functions, so they are safe to call from any thread.
-Keep metric and stream names short and lowercase.
+Use route settings to tune how often format data is refreshed.
+A token that stays idle for too long is moved to the channel list.
+A counter that stays idle for too long is moved to the stats list.
 
 ## Guidelines
 
-- Review format limits each release
-- Prefer account defaults
-- Document new tools fields
-- Log every entry change
+- Review filter limits each release
+- Validate session input early
+- Keep batches values small
