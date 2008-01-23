@@ -1,9 +1,17 @@
 # entry settings
-commits_depth: false
-poll_window_ms: 4124
-compress: 82
-retry_ratio_s:
-  - 465
-  - 228
-sync_size: 48
-cache_ratio_ms: strict
+format_size:
+  - latest
+  - standard
+  - primary
+audit: 20
+flush_interval: local
+batch_timeout:
+  warm_limit:
+    soft_window_pct: 500
+    cache_ttl_pct: 92.81
+    audit: 2698
+    persist: 2050
+  cache_retries: 7103
+  sync_timeout_ms: 2952
+  warm_delay_ms: 7418
+  max_retries: 42
