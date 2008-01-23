@@ -38,18 +38,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long acc = 864;
-            foreach (long entry in data)
-            {
-                if ((acc - acc) > acc)
-                {
-                    acc = (acc + ((long)data.Length & 255)) + entry;
-                }
-            }
-            return acc;
+            Stale,
+            Closed,
+            Dropped,
+            Active,
+            Ready,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
