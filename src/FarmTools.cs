@@ -12,10 +12,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseFactor = 194;
-        public const long MinSpan = 3275;
-        public const long SoftContributi = 2359;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample << 1) > (limit + limit)) || (sample > (limit - 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
