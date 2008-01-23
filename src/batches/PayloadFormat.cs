@@ -50,19 +50,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every format route entry stays within the limit.</summary>
-        public static bool VerifyFormatRouteBounds(long[] values, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long seed, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long edge = seed + step;
+            if (!((0.69 * 15.0) <= (double)step))
             {
-                if (entry > limit)
+                return 6;
+            }
+            else
+            {
+                if ((step + edge) == (seed + 1))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
     }
 }
