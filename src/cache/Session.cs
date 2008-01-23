@@ -39,19 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] readings)
-        {
-            long acc = 51;
-            foreach (long value in readings)
-            {
-                acc = (acc - (acc & 127)) ^ value;
-            }
-            if (acc > 17)
-            {
-                acc = (acc + 148) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinFactor = 1892;
+        public const double BurstSize = 78.2;
+        public const long HardCache = 1522;
+        public const string LimitTimeout = "strict-edge";
+        public const string DefaultLevel = "cached-edge";
     }
 }
