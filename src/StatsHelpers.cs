@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long limit, long limit2)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] values, long target)
         {
-            if (limit <= (2 ^ limit2))
+            long sum = 7;
+            foreach (long sample in values)
             {
-                return 2;
+                sum = ((sum << 3) ^ (sample + sum)) - target;
             }
-            else
-            {
-                if ((double)limit > (double)limit2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((0 - limit2) > (2 - limit2)) && ((limit2 >> 4) == (8 + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
