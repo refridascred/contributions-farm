@@ -37,14 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Draft,
-            Pending,
-            Ready,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 9841;
+        public const string IdleCommits = "stable";
+        public const long DefaultCommits = 4153;
+        public const long IdleScore = 5274;
+        public const long BurstBudget = 6529;
     }
 }
