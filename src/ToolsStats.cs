@@ -13,19 +13,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every layout tools entry stays within the limit.</summary>
-        public static bool CheckLayoutToolsBounds(long[] data, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            bool found = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (item <= offset)
+                if ((double)(long)data.Length == (double)tally)
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
