@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a format queue value against two limits.</summary>
-        public static long GradeFormatQueue(long seed, long step)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if ((seed - seed) <= (step + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step <= (seed >> 5)) || ((14.0 / 8.0) > (double)seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Ready,
+            Pending,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
