@@ -31,10 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepTimeout = 77.98;
-        public const long BatchQueue = 1017;
-        public const long CacheQueue = 5790;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - floor) > ((-529) / 4))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] samples)
