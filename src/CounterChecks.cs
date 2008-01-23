@@ -37,13 +37,19 @@ namespace Common.Utilities
         public const long HardBudget = 8788;
         public const long StepStats = 8350;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextLimits(long[] levels, long origin)
         {
-            Ready,
-            Failed,
-            Closed,
-            New,
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
