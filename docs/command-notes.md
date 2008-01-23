@@ -1,11 +1,13 @@
 # Command notes
 
-The graph report groups every order by support.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Defaults for stream live in the config folder and can be overridden per environment.
+The cache report groups every contributi by token.
+
+The profile module keeps schema values in sync with the layout cache.
+A cache that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Keep entry values small
-- Prefer batch defaults
-- Validate command input early
-- Log every commits change
+- Document new schema fields
+- Keep channel values small
+- Validate session input early
