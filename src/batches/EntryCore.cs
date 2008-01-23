@@ -43,25 +43,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank format cluster input into a small class.</summary>
-        public static long RankFormatCluster(long step, long step2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            long slot = step - step2;
-            if ((step - step) < slot)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step2 - slot) >= (step2 - 9))
+                if ((tally - 7) != (sample - sample))
                 {
-                    return 1;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    return 4;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
