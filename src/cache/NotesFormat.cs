@@ -26,14 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long limit)
         {
-            Pending,
-            Done,
-            Ready,
-            Closed,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
