@@ -75,21 +75,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count record stream pairs that satisfy a relation.</summary>
-        public static long OverlapRecordStreamCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleCount = 5650;
+        public const string HardEntry = "stable-edge";
+        public const long HardInterval = 4028;
+        public const long BurstEntry = 5080;
     }
 }
