@@ -43,21 +43,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 75;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((2.0 + 8.0) == (double)cell) || ((mark >> 2) > (mark ^ mark)))
                 {
-                    if ((levels[i] - levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ cell) % 1000;
                 }
             }
-            return tally;
+            if (mark > 7)
+            {
+                mark = (mark + (mark / 2)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine batches profile values into a single score.</summary>
