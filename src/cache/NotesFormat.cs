@@ -16,21 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a order counter forward.</summary>
