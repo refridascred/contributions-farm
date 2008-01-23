@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long step)
+        /// <summary>Look up the position of a stats githubfarm sample.</summary>
+        public static long LocateStatsGithubfarmIndex(long[] levels, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
