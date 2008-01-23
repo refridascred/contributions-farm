@@ -1,5 +1,10 @@
 # support settings
-window_interval: stable
-batches_depth: 22
-flush_interval_pct: strict
-min_size_pct: stable
+notes_timeout:
+  - 138
+  - 249
+persist:
+  - 260
+  - 463
+  - 399
+  - 255
+cache_threshold_pct: 57.47
