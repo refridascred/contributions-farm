@@ -55,19 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double rate, double span)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] series, long floor)
         {
-            double drift = span;
-            if (drift >= (double)5)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                drift = drift - rate;
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - drift;
-            }
-            return drift - (double)434;
+            return ok;
         }
 
         /// <summary>Describe the format state values.</summary>
