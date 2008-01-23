@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 43.69;
+        public const long MaxGithubfarm = 7352;
+        public const double LimitWidth = 25.15;
+        public const long MinGithubfarm = 80;
+        public const double DefaultGithubfarm = 24.93;
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] values, long origin)
