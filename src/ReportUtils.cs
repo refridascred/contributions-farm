@@ -65,17 +65,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long bound)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ (31 + (long)i)) % 97;
-                carry = carry - (carry + carry);
-                carry = ((carry * 3) + (long)i) % 101;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
