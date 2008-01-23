@@ -69,18 +69,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] values, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin > (9.26 + 8.5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
