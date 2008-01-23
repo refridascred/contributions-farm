@@ -32,26 +32,15 @@ namespace Common.Utilities
         public const long BaseRoute = 8612;
         public const long RetryRoute = 7108;
 
-        /// <summary>Fold a list of checks stats readings.</summary>
-        public static long ScoreChecksStats(long[] readings, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double gain, double bias)
         {
-            long total = 86;
-            foreach (long value in readings)
+            double load = (double)(0 - 783);
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)total < (6.33 / 3.0))
-                {
-                    total = (total - (934 / 4)) - value;
-                }
-                else
-                {
-                    total = ((total * 3) + (bound + 6)) % 65521;
-                }
+                load = (((load - (load + load)) + (double)(long)i) + gain) - bias;
             }
-            if (total < 4)
-            {
-                total = total + bound;
-            }
-            return total;
+            return load - load;
         }
 
         /// <summary>Describe the format status values.</summary>
