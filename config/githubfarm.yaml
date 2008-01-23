@@ -1,5 +1,6 @@
 # githubfarm settings
-checks_timeout: stable
-warm_limit: false
-soft_capacity_count: 37.29
-audit: 1024
+audit: 41.44
+token_depth: standard
+record_size: blue
+tools_ttl: 24
+cache_depth_pct: staging
