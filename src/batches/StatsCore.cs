@@ -33,18 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long anchor = 980;
-            foreach (long cell in series)
-            {
-                if ((anchor - cell) < 4)
-                {
-                    anchor = (anchor * 3) + 4;
-                }
-            }
-            return anchor % 4096;
+            Ready,
+            Retry,
+            Locked,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a report options.</summary>
