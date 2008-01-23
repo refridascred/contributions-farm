@@ -90,9 +90,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 936;
-        public const double SoftWidth = 40.23;
-        public const long LimitSession = 5122;
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
+        {
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
