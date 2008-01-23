@@ -42,13 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Stale,
-            Done,
-            Failed,
-            Synced,
+            Retry,
+            Paused,
+            Pending,
         }
 
         /// <summary>Grade a notes contributi value against two limits.</summary>
