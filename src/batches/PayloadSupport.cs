@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinInterval = 5479;
-        public const long SoftOrder = 2510;
-        public const long StepOrder = 2381;
-        public const string HardBudget = "open-edge";
-        public const long CacheInterval = 2426;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 2431;
