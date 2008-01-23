@@ -1,16 +1,18 @@
 # support settings
-enabled: false
-readonly: eu-west
-audit:
-  - staging
-  - edge
-  - blue
-  - cached
-metric_threshold: open
-retry_size_ms:
-  enabled: 71
-  editor_depth: 26
-  batch_retries_count: legacy
-poll_size_pct:
-  - 214
-  - 36
+burst_depth_pct: 250
+poll_threshold_count:
+  - green
+  - green
+  - latest
+soft_depth_s:
+  min_window: 50
+  readonly: true
+  contributi_depth: 3373
+  cache_timeout: 100
+  tools_capacity: latest
+  verbose:
+    persist: staging
+    command_capacity: 88.37
+    idle_ratio_s: 5911
+    verbose: 84
+dry_run: 2277
