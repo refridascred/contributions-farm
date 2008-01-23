@@ -29,15 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next payload order value.</summary>
-        public static double AdjustPayloadOrder(double scale, double offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            double mean = offset;
-            if (mean >= mean)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - 7.6) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + (mean - offset);
+            return seen;
         }
     }
 }
