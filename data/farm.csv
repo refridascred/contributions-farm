@@ -1,6 +1,10 @@
-id,active,state,count
-1,132,eu-west,71.93
-2,38.86,local,988
-3,green,7,open
-4,stable,373,primary
-5,green,11.81,318
+id,label,active,rank,level
+1,75.69,63.25,7.06,824
+2,strict,20.41,51.81,52.6
+3,258,599,cached,794
+4,334,600,eu-west,standard
+5,stable,green,574,48
+6,stable,241,448,open
+7,staging,cached,70.76,6.12
+8,latest,988,staging,424
+9,local,678,43.28,34.21
