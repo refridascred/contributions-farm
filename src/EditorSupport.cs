@@ -58,11 +58,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
