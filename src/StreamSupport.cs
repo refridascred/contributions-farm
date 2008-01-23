@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((98 & 63) >= cell)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 9096;
+        public const long CacheWidth = 8485;
+        public const long DefaultDepth = 2480;
+        public const long BatchWidth = 1675;
+        public const long CacheInterval = 7584;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsOutliers(long[] series, long floor)
