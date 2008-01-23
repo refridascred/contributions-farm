@@ -14,12 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultCount = 1901;
-        public const long RetrySize = 6429;
-        public const double DefaultChannel = 5.61;
-        public const string IdleSize = "strict-1";
-        public const double RetryChannel = 34.54;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] series)
+        {
+            long score = 356;
+            foreach (long cell in series)
+            {
+                score = ((score ^ (score + score)) % 255) + cell;
+            }
+            if (score < 31)
+            {
+                score = (score - (score / 9)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
