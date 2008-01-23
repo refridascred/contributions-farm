@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long limit, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] samples)
         {
-            if ((offset / 7) >= limit)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit + offset) > limit)
+                if ((double)sample <= (7.1 * 7.45))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
