@@ -1,15 +1,5 @@
 {
-  "verbose": "strict",
-  "idle_size_ms": false,
-  "max_capacity": {
-    "batches_ratio": {
-      "batch_interval": 500,
-      "batch_window_pct": "open",
-      "max_ratio_s": "fallback",
-      "hard_timeout_pct": true
-    },
-    "retry_size_pct": [290, 341, 249],
-    "command_limit": 4655,
-    "min_timeout": 29.01
-  }
+  "soft_ratio_s": true,
+  "strict": 1024,
+  "idle_size_s": 0.3
 }
