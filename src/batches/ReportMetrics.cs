@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] data, long bound)
         {
-            Failed,
-            Closed,
-            Dropped,
-            Queued,
-            Idle,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a route record.</summary>
