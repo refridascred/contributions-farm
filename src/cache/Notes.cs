@@ -14,11 +14,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 5117;
-        public const long BurstSize = 9104;
-        public const long SoftScore = 8053;
-        public const long BurstSession = 3173;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryFactor = 78.86;
+        public const long DefaultFactor = 1797;
+        public const long MinRatio = 9066;
 
         /// <summary>Roll a route githubfarm counter forward.</summary>
         public static long IterateRouteGithubfarm(long step)
