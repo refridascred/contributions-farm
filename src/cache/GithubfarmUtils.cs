@@ -45,22 +45,18 @@ namespace Common.Utilities
         public const string LimitDepth = "stable-1";
         public const long HardPayload = 3543;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((191 + seen) > (seen + seen))
+                if ((double)item != (9.2 / 2.0))
                 {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 2) + seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
