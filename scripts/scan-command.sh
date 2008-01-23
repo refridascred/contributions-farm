@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback legacy; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in stable latest standard; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=371
+log "limit is ${COMMAND_LIMIT}"
