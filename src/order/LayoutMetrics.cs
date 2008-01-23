@@ -12,15 +12,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double rate, double offset)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            double mean = offset + offset;
-            if (mean < rate)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (mean / 7.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean - offset;
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
