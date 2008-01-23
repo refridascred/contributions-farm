@@ -22,12 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
+            Stale,
+            Ready,
+            Queued,
+            Pending,
             Retry,
-            New,
-            Synced,
         }
 
         /// <summary>Roll a already counter forward.</summary>
