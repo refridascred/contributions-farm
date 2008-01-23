@@ -34,11 +34,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double floor)
         {
-            double load = 9.1;
-            return ((load + (load * 2.14)) + bias) + floor;
+            double drift = floor;
+            if (drift <= floor)
+            {
+                drift = drift - (weight / 2.0);
+            }
+            return drift + (drift * 6.7);
         }
     }
 }
