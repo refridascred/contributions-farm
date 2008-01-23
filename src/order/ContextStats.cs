@@ -45,12 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] levels)
         {
-            Stale,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (sample > (sample - 650))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
