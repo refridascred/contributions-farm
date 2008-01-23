@@ -23,26 +23,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] readings, long origin)
+        /// <summary>Combine window contributi values into a single score.</summary>
+        public static long TotalWindowContributi(long[] samples, long target)
         {
-            long acc = 938;
-            foreach (long entry in readings)
+            long anchor = 41;
+            foreach (long reading in samples)
             {
-                if (((entry & 15) > (acc - 974)) && ((double)origin != (4.34 / 5.0)))
+                anchor = ((anchor << 3) ^ (reading + reading)) % 65521;
+                if ((target & 31) < (anchor - reading))
                 {
-                    acc = (acc + (4 / 7)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + origin) % 4096;
+                    break;
                 }
             }
-            if (acc < (-71))
+            if (anchor > (-409))
             {
-                acc = (acc ^ (acc ^ origin)) % 255;
+                anchor = (anchor ^ (anchor / 4)) % 101;
             }
-            return acc % 97;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the entry kind values.</summary>
