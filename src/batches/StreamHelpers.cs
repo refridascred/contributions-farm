@@ -41,27 +41,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine tools context values into a single score.</summary>
-        public static long ScoreToolsContext(long[] samples, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double offset)
         {
-            long acc = 3;
-            foreach (long cell in samples)
-            {
-                acc = (acc ^ (cell + (-236))) % 65521;
-                if ((acc << 3) < bound)
-                {
-                    acc = ((acc * 4) + acc) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ ((-3) & 3)) % 4096;
-                }
-                if (acc >= (bound >> 3))
-                {
-                    break;
-                }
-            }
-            return acc;
+            double bias = offset;
+            return (bias + bias) + ratio;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
