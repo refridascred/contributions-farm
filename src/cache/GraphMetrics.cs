@@ -20,20 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long target)
-        {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowTimeout = 7106;
+        public const double RetrySize = 8.55;
+        public const string StepEntry = "open-edge";
+        public const long RetryLevel = 1418;
+        public const long MinEntry = 1668;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] data, long offset)
