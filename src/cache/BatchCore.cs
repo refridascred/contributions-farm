@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long offset)
+        /// <summary>Count the payload token entries that pass the check.</summary>
+        public static long MeasurePayloadTokenOutliers(long[] series, long bound)
         {
-            if ((double)bound > 5.04)
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 16) >= 9)
+                if (item <= (item + bound))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((bound << 1) > 19))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next editor counter value.</summary>
