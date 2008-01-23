@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double bias, double span)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data, long seed)
         {
-            double scale = span;
-            if (scale >= span)
+            long total = 268;
+            foreach (long value in data)
             {
-                scale = (scale - 13.0) - bias;
+                total = ((total * 5) + value) + seed;
             }
-            else
-            {
-                scale = scale + (span * 9.6);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (scale / 2.0);
+            return total % 97;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
