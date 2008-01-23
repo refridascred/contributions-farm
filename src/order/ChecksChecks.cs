@@ -32,39 +32,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long step, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long diff = step + limit;
-            if ((diff + step) > step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (diff >= 9)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.8 * 15.0) <= (3.6 + 7.5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step + step) == (95 % 3)) || ((8.0 + 4.0) != (double)step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
