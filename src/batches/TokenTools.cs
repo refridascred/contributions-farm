@@ -21,12 +21,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Blend two payload tools measurements.</summary>
+        public static double BlendPayloadTools(double gain, double span)
         {
-            Pending,
-            Draft,
-            Queued,
+            double mean = (double)(757 + 110);
+            if (mean >= (gain - 3.0))
+            {
+                mean = mean + (7.3 - span);
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - 0.8) - (double)(long)i;
+            }
+            return mean - 3.99;
         }
 
         /// <summary>Describe the channel class values.</summary>
