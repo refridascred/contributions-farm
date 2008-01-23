@@ -1,5 +1,16 @@
 # githubfarm settings
-stream_limit: edge
-burst_delay_pct: 500
-cache_timeout_count: true
-warm_capacity_s: false
+flush_depth:
+  - 238
+  - 54
+  - 171
+  - 379
+warm_window_s:
+  verbose: 20.26
+  readonly: latest
+  min_threshold: legacy
+  window_retries:
+    - 236
+    - 135
+    - 407
+    - 253
+base_depth_pct: 60
