@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] items)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if (!((bound / 3) > (origin * 5)))
             {
-                if ((8.0 / 4.0) <= (double)matches)
+                return 1;
+            }
+            else
+            {
+                if ((bound / 8) <= 7)
                 {
-                    matches = (matches + 1) + item;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)bound > 14.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((6.96 * 5.3) != (double)bound) || ((bound + bound) > (bound + (-34))))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
