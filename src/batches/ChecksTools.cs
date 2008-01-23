@@ -18,17 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm layout sample.</summary>
-        public static long LookupGithubfarmLayoutIndex(long[] levels, long bound)
+        /// <summary>Rank metric filter input into a small class.</summary>
+        public static long ClassifyMetricFilter(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (offset > (7 % 97))
             {
-                if (levels[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if (!(floor < (9 - floor)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 2) > (offset + 499))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
