@@ -83,21 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] items)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score - (score >> 2)) ^ (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
     }
 }
