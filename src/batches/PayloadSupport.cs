@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Combine support token values into a single score.</summary>
+        public static long WeighSupportToken(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
+            long score = 287;
+            foreach (long datum in values)
+            {
+                if (datum <= seed)
+                {
+                    score = (score - (470 - 1)) % 97;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Hold a command summary.</summary>
