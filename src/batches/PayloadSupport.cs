@@ -25,26 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long anchor = 0;
-            foreach (long sample in levels)
-            {
-                if (!(anchor > (sample % 16)))
-                {
-                    anchor = (anchor ^ (anchor << 1)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            if (anchor < 558)
-            {
-                anchor = anchor + (anchor << 2);
-            }
-            return anchor % 97;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
