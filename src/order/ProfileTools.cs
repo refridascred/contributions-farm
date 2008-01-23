@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a checks metrics reading by value.</summary>
-        public static long LookupChecksMetricsIndex(long[] readings, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                if ((double)tally >= 3.54)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) - sample) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
