@@ -32,17 +32,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] readings, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 64;
+            foreach (long datum in readings)
             {
-                if (readings[i] < step)
+                if ((2.94 + 2.6) >= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor + anchor) % 1000;
+                }
+                if (((anchor >> 2) > (datum ^ anchor)) && ((datum << 2) > 8))
+                {
+                    anchor = ((anchor << 2) ^ (datum * 3)) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
