@@ -42,15 +42,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long step)
         {
-            double load = offset;
-            if (load > (offset + offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (gain - gain);
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return load + gain;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
