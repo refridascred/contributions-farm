@@ -39,38 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long limit, long target)
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool VerifySupportPayloadRange(long[] series, long target)
         {
-            if ((77 / 2) >= (target * 2))
+            bool ready = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((16.0 + 1.08) >= (double)limit))
+                if (item < target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((12.0 + 15.0) < (double)limit) && (limit >= ((-7) + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit < (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
