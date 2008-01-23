@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] levels, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] series, long step)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long datum in series)
             {
-                if (!(((bound - entry) < (tally + tally)) && ((bound / 2) <= tally)))
+                if (!(7.2 <= (double)step))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) + datum;
                 }
             }
             return tally;
