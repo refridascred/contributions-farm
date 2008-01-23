@@ -74,11 +74,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleSpan = 4747;
-        public const double StepLevel = 74.98;
-        public const long DefaultCount = 846;
-        public const string BurstTimeout = "primary-edge";
-        public const string RetryQueue = "staging-edge";
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
