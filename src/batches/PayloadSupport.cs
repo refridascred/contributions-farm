@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine support token values into a single score.</summary>
-        public static long WeighSupportToken(long[] values, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long score = 287;
-            foreach (long datum in values)
+            long carry = 4;
+            foreach (long value in levels)
             {
-                if (datum <= seed)
+                if ((6.1 / 5.0) < (double)value)
                 {
-                    score = (score - (470 - 1)) % 97;
+                    carry = ((carry << 3) ^ (carry + 810)) % 4096;
                 }
             }
-            return score % 65521;
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
