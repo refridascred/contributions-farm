@@ -64,11 +64,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 81.51;
-        public const long LimitQueue = 7415;
-        public const double CacheBudget = 65.35;
-        public const long HardQueue = 2704;
-        public const double IdleQueue = 3.32;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] samples)
+        {
+            long mix = 331;
+            foreach (long entry in samples)
+            {
+                mix = (mix + (mix - (-445))) % 97;
+                if ((entry / 5) == (mix + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
