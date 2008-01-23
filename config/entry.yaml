@@ -1,15 +1,8 @@
 # entry settings
-default_threshold_ms:
-  batch_capacity_count: cached
-  verbose: true
-  idle_size:
-    command_window: stable
-    sync_interval_ms:
-      - strict
-      - stable
-      - legacy
-      - latest
-    batch_ratio: standard
-  batch_ratio: blue
-account_capacity: 16.56
-batch_timeout_ms: 61.83
+poll_ttl_count: 37.39
+warm_ratio_s:
+  - green
+  - local
+  - fallback
+idle_timeout_ms: latest
+idle_depth_ms: 30
