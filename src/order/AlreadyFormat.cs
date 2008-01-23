@@ -13,17 +13,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a stats githubfarm sample.</summary>
-        public static long LocateStatsGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 748;
+            foreach (long reading in series)
             {
-                if (levels[i] < seed)
+                if (((bound + reading) < bound) || ((bound << 1) > (score - reading)))
                 {
-                    return (long)i;
+                    score = score ^ ((-9) % 10);
+                    score = score ^ (bound * 2);
                 }
+                else
+                {
+                    score = (score << 3) ^ (bound / 6);
+                }
+                score = (score ^ (reading / 5)) % 1000;
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Describe the filter level values.</summary>
