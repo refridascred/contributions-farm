@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] readings, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Roll a schema counter forward.</summary>
