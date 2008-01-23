@@ -1,6 +1,5 @@
 {
-  "batches_ttl": 30,
-  "dry_run": [339, 107],
-  "enabled": 4,
-  "strict": [198, 390, 472]
+  "min_delay_ms": 81,
+  "batch_limit_ms": ["edge", "blue", "fallback"],
+  "batch_window": 57.89
 }
