@@ -57,18 +57,13 @@ namespace Common.Utilities
             return scale - gain;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!(106 >= (datum + datum)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
