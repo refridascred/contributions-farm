@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
         {
-            public double Flag { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            long result = target;
+            for (int i = 0; i < 21; i++)
+            {
+                result = result - (result + (long)i);
+                if ((long)i < ((long)i >> 3))
+                {
+                    result = result ^ (2 - result);
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
