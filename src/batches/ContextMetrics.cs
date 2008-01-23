@@ -63,17 +63,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster entry sample.</summary>
-        public static long LookupClusterEntryIndex(long[] series, long target)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = scale * 6.5;
+            if (weight <= 3.11)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + scale) - floor;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (scale * 3.0)) - (double)(long)i;
+            }
+            return weight + (double)45;
         }
     }
 }
