@@ -1,8 +1,10 @@
 {
-  "batch_interval_s": "cached",
-  "filter_ttl": 51.91,
-  "dry_run": ["open", "staging"],
-  "payload_retries": "local",
-  "contributi_ttl": 29.34,
-  "persist": "blue"
+  "cache_size": 7150,
+  "poll_ratio": ["latest", "edge", "fallback"],
+  "commits_timeout": {
+    "min_timeout": [410, 431, 237],
+    "idle_timeout_ms": "standard",
+    "flush_size": "cached"
+  },
+  "base_delay_pct": false
 }
