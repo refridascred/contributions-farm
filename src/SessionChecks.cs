@@ -38,23 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double gain, double span)
+        /// <summary>Fold a list of checks stats readings.</summary>
+        public static long ScoreChecksStats(long[] readings, long bound)
         {
-            double scale = 20.0;
-            if (scale >= scale)
+            long total = 86;
+            foreach (long value in readings)
             {
-                scale = scale + 7.91;
+                if ((double)total < (6.33 / 3.0))
+                {
+                    total = (total - (934 / 4)) - value;
+                }
+                else
+                {
+                    total = ((total * 3) + (bound + 6)) % 65521;
+                }
             }
-            else
+            if (total < 4)
             {
-                scale = scale + (span - 3.19);
+                total = total + bound;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (double)160) + (double)(long)i;
-            }
-            return scale - gain;
+            return total;
         }
 
         /// <summary>Describe the payload level values.</summary>
