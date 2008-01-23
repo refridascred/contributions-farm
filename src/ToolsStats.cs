@@ -55,24 +55,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long origin, long origin2)
+        /// <summary>Accumulate session graph samples.</summary>
+        public static long DigestSessionGraph(long[] samples)
         {
-            if ((9 << 2) != (origin2 / 4))
+            long mix = 43;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((3.5 + 5.7) == (double)origin2)
+                if ((mix < (value - mix)) || (mix >= (long)samples.Length))
                 {
-                    return 0;
+                    mix = mix ^ (mix - 39);
                 }
-                else
+                if ((value / 2) < (value ^ mix))
                 {
-                    return 7;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
