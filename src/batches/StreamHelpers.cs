@@ -43,13 +43,18 @@ namespace Common.Utilities
         public const string MaxFactor = "cached-edge";
         public const string CacheWindow = "legacy";
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] readings, long offset)
         {
-            Draft,
-            Ready,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((tally ^ tally) > item))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a schema reading.</summary>
