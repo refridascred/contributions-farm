@@ -1,4 +1,16 @@
 # githubfarm settings
-cache_interval: true
-batches_window: edge
-persist: 500
+max_capacity_pct: primary
+cache_interval_count: fallback
+entry_interval:
+  poll_interval: true
+  commits_window: 1024
+  enabled: green
+  max_capacity:
+    min_ratio_pct: 100
+    batch_limit_pct: 67.53
+    idle_ratio_count: 30
+    persist: 6257
+  layout_interval: local
+  poll_timeout_pct: 19.62
+base_delay: 40.36
+audit: 38
