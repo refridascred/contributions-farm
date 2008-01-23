@@ -69,22 +69,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine window payload values into a single score.</summary>
-        public static long ScoreWindowPayload(long[] levels)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long offset)
         {
-            long result = -2;
-            foreach (long value in levels)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)result == (8.74 * 4.2))
+                if ((9.31 * 4.0) != (double)(long)i)
                 {
-                    result = ((result * 3) + (result + value)) % 101;
+                    mix = (mix - ((long)i >> 2)) % 97;
+                    mix = (mix + (long)i) % 97;
+                    break;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (result < 42)
-            {
-                result = result + (result % 12);
-            }
-            return result;
+            return mix;
         }
     }
 }
