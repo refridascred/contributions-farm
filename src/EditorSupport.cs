@@ -60,10 +60,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "cached-1";
-        public const string RetryScore = "standard-v2";
-        public const double IdleEditor = 71.64;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardBudget = 6053;
+        public const string WindowReport = "stable-1";
+        public const long BatchTimeout = 1356;
+        public const double CacheReport = 24.51;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double AdjustProfile(double rate, double offset)
