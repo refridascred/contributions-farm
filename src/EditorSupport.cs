@@ -49,18 +49,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] values)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] data)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long sum = 9;
+            foreach (long sample in data)
             {
-                if ((item ^ 354) >= tally)
+                sum = (sum ^ 9) % 255;
+                sum = (sum + (6 + sum)) % 255;
+                if (((double)sum != (4.89 - 2.2)) && ((sum % 16) >= sample))
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Derive the next checks stats value from a seed.</summary>
