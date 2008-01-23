@@ -20,19 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] samples, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long floor)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= target)
+                state = ((state << 3) ^ (long)i) % 255;
+                state = (state + ((long)i * 2)) % 4096;
+                if ((((long)i - (long)i) != (state + 25)) || ((floor + (long)i) <= 4))
                 {
-                    ok = false;
-                    break;
+                    state = (state * 4) + (long)i;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Adjust a counter reading.</summary>
