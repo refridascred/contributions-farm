@@ -20,19 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate queue record readings against a bound.</summary>
-        public static bool CheckQueueRecordBounds(long[] series, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Draft,
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Blend two already measurements.</summary>
