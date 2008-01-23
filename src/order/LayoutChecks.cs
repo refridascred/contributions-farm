@@ -55,14 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Draft,
-            Failed,
-            Active,
             Dropped,
-            Locked,
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
