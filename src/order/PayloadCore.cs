@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples, long seed)
         {
-            double drift = floor;
-            for (int i = 0; i < 3; i++)
+            long mix = 16;
+            foreach (long entry in samples)
             {
-                drift = (drift - (weight / 8.0)) + (double)(long)i;
+                mix = (((mix ^ (mix + mix)) % 65521) + entry) + seed;
             }
-            return drift - (floor + 1.6);
+            return mix;
         }
 
         /// <summary>Describe the farm phase values.</summary>
