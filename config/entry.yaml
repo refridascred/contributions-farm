@@ -1,6 +1,13 @@
 # entry settings
-persist: false
-batch_delay_ms:
-  - 253
-  - 293
-soft_interval_s: latest
+enabled:
+  retry_capacity_pct: fallback
+  soft_retries_ms: staging
+  burst_interval:
+    burst_limit_count: false
+    cache_ttl: 60
+    persist: 68
+persist: 23.62
+dry_run:
+  - blue
+  - cached
+  - eu-west
