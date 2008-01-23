@@ -26,21 +26,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] levels)
+        /// <summary>Audit entry notes readings against a rule.</summary>
+        public static long CountEntryNotesGaps(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)offset == (9.1 - 20.0)))
                 {
-                    if ((levels[i] - levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
