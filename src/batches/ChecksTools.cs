@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] items, long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] items, long offset)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] > seed)
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
