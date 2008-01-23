@@ -1,5 +1,5 @@
 {
-  "base_capacity_count": 100,
-  "route_threshold": "strict",
-  "session_interval": 86.28
+  "sync_timeout_count": "latest",
+  "batch_ttl_s": 3.72,
+  "base_ratio_count": 28.01
 }
