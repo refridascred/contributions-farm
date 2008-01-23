@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public double Level { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
