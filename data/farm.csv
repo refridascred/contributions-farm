@@ -1,10 +1,7 @@
-id,level,count,active
-1,354,strict,689
-2,57.14,801,local
-3,97.2,476,94.28
-4,standard,401,543
-5,26.33,742,legacy
-6,4.09,988,cached
-7,320,latest,81.23
-8,blue,51.65,eu-west
-9,29,401,597
+id,region,count
+1,stable,301
+2,44.59,12.57
+3,90.2,standard
+4,64.44,blue
+5,stable,55.38
+6,347,603
