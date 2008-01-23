@@ -14,17 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] data, long step)
+        /// <summary>Measure how many report queue samples are out of range.</summary>
+        public static long AuditReportQueueMatches(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
+                if (!((seed + tally) > (1 + reading)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
