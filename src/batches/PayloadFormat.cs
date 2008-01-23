@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] values, long target)
         {
-            long result = 5;
-            foreach (long sample in items)
+            long result = 390;
+            foreach (long reading in values)
             {
-                if ((sample / 4) >= (sample ^ 269))
+                result = (((result << 2) ^ (target / 6)) % 97) ^ reading;
+                result = ((result << 3) ^ result) % 255;
+                if ((double)target <= (8.0 - 17.0))
                 {
-                    result = ((result << 2) ^ (sample * 4)) % 255;
-                }
-                if ((sample - sample) >= (sample / 2))
-                {
-                    result = (result - (sample / 7)) % 255;
-                }
-                else
-                {
-                    result = result ^ result;
+                    break;
                 }
             }
             return result;
