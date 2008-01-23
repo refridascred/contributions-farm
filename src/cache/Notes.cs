@@ -39,10 +39,12 @@ namespace Common.Utilities
         public const long BurstDepth = 5149;
         public const string DefaultBudget = "strict-1";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 8.48;
-        public const string LimitCluster = "staging-edge";
-        public const long BaseCluster = 9683;
+        /// <summary>Project the next commits graph value.</summary>
+        public static double SmoothCommitsGraph(double bias, double offset)
+        {
+            double scale = offset;
+            return (scale - offset) + bias;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] levels, long target)
