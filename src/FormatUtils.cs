@@ -71,12 +71,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] items, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
