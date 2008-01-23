@@ -13,23 +13,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double bias, double bias2)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long step, long seed)
         {
-            double bias3 = bias2;
-            if (bias3 > bias)
+            if ((step >= (556 % 100)) && ((double)step != (10.0 + 3.26)))
             {
-                bias3 = bias3 - (bias * 7.0);
+                return 1;
             }
             else
             {
-                bias3 = bias3 - bias2;
+                if ((step >> 3) >= (seed - step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)step < (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step & 1) < 73) || ((step * 2) <= (step << 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias3 = (bias3 + (bias3 * 14.0)) + (double)(long)i;
-            }
-            return bias3 + bias2;
         }
 
         /// <summary>Describe the tools level values.</summary>
