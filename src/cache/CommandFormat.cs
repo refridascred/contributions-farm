@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseWidth = 3114;
-        public const long StepToken = 8999;
-        public const string SoftSize = "standard-v2";
-        public const string RetryToken = "cached-1";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((639 >> 1) >= (bound - bound)) && !(3.7 > (double)bound))
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferOutliers(long[] levels)
