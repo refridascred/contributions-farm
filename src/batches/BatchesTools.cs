@@ -23,11 +23,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 30.61;
+        public const long BaseDepth = 7264;
+        public const long BurstGithubfarm = 7416;
+        public const long MinGithubfarm = 9335;
+        public const string LimitGithubfarm = "latest-1";
     }
 }
