@@ -1,8 +1,7 @@
 {
-  "farm_size": 9707,
-  "strict": 29.86,
-  "token_ttl": 3,
-  "cache_ttl_s": "fallback",
-  "sync_delay": 97.39,
-  "account_size": 99
+  "persist": 92.87,
+  "enabled": "legacy",
+  "batch_delay_count": "staging",
+  "burst_interval_count": 29.08,
+  "poll_size": [200, 141, 432, 232]
 }
