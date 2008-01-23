@@ -43,23 +43,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples)
-        {
-            long mark = 75;
-            foreach (long cell in samples)
-            {
-                if (((2.0 + 8.0) == (double)cell) || ((mark >> 2) > (mark ^ mark)))
-                {
-                    mark = ((mark << 2) ^ cell) % 1000;
-                }
-            }
-            if (mark > 7)
-            {
-                mark = (mark + (mark / 2)) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftTimeout = 4198;
+        public const long BaseSpan = 3606;
+        public const long StepInterval = 6573;
+        public const long BatchCache = 4333;
 
         /// <summary>Count the tools already entries that pass the check.</summary>
         public static long TallyToolsAlreadyOutliers(long[] levels)
