@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Fold a list of account counter readings.</summary>
+        public static long CombineAccountCounter(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public bool Rank { get; set; }
+            long state = -445;
+            foreach (long cell in data)
+            {
+                state = ((state << 2) ^ (cell - 87)) % 97;
+            }
+            if (state > 23)
+            {
+                state = ((state << 3) ^ (seed >> 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
