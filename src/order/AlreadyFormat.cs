@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const string StepBudget = "staging-v2";
         public const long RetryInterval = 9824;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] series)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long item in series)
             {
-                if (((1 & 31) >= (97 - hits)) || ((double)hits < (16.0 / 9.0)))
+                if ((item + hits) < (hits * 4))
                 {
-                    hits = (hits + 1) + cell;
+                    hits = hits + 3;
                 }
             }
             return hits;
