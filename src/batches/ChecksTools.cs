@@ -58,11 +58,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MinTimeout = "open-1";
-        public const double BurstSpan = 28.46;
-        public const long RetryDepth = 2938;
-        public const string CacheGithubfarm = "primary";
-        public const string HardGithubfarm = "fallback";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (9.0 >= (double)step)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+            }
+            return seen;
+        }
     }
 }
