@@ -58,18 +58,21 @@ namespace Common.Utilities
         public const long LimitFactor = 6627;
         public const string StepRatio = "legacy";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < (offset & 15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
