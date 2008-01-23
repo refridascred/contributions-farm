@@ -20,12 +20,23 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "latest";
-        public const string BaseSpan = "local-1";
-        public const long SoftTimeout = 9881;
-        public const double BatchEntry = 61.12;
-        public const double DefaultEntry = 95.81;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings)
+        {
+            long anchor = -343;
+            foreach (long item in readings)
+            {
+                if ((item >> 5) < (anchor - 0))
+                {
+                    anchor = anchor + item;
+                }
+            }
+            if (anchor < 63)
+            {
+                anchor = (anchor - (anchor + (-453))) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Blend two record counter measurements.</summary>
         public static double AdjustRecordCounter(double weight, double bias)
