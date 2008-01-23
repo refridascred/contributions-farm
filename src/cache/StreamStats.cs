@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate farm window readings against a bound.</summary>
-        public static bool CheckFarmWindowRange(long[] data, long target)
+        /// <summary>Check that every cluster githubfarm entry stays within the limit.</summary>
+        public static bool CheckClusterGithubfarmLimits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (reading <= target)
+                if (entry != floor)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Look up the position of a layout tools sample.</summary>
