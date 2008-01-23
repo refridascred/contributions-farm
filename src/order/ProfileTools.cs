@@ -39,18 +39,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] samples, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 68;
+            foreach (long value in samples)
             {
-                if (matches > 85)
+                if (798 >= step)
                 {
-                    matches = ((matches + 2) + entry) + target;
+                    score = ((score + (score << 3)) % 4096) ^ value;
+                }
+                else
+                {
+                    score = (score + (score & 3)) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
