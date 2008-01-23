@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftLevel = 8455;
-        public const long MaxSize = 1764;
-        public const long LimitDepth = 8953;
-        public const long CacheDepth = 9672;
+        /// <summary>Project the next support context value.</summary>
+        public static double AdjustSupportContext(double weight, double bias)
+        {
+            double scale = 5.0 + (4.4 / 9.0);
+            if (scale <= scale)
+            {
+                scale = (scale - (double)387) + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (scale - bias);
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 214;
