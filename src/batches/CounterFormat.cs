@@ -27,39 +27,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long step)
-        {
-            long cur = bound - step;
-            if (step <= (bound << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)step == (8.0 - 7.76)) && ((cur >> 4) <= (74 << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)cur > (3.0 + 3.33))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (9.33 > (double)cur)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftWidth = 35;
+        public const string BaseFactor = "open";
+        public const double IdleStream = 51.5;
+        public const long BurstFactor = 6217;
+        public const double LimitStream = 75.43;
     }
 }
