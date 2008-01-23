@@ -13,21 +13,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.9 - 7.78) != (double)entry)
                 {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
