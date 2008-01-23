@@ -74,20 +74,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] readings)
-        {
-            long result = 6;
-            foreach (long value in readings)
-            {
-                result = (result ^ result) % 101;
-                result = ((result << 3) ^ (value + value)) % 255;
-            }
-            if (result < 38)
-            {
-                result = (result - result) % 101;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryCount = 1725;
+        public const long MinSize = 1127;
+        public const long MaxCount = 5298;
+        public const double SoftPayload = 76.89;
     }
 }
