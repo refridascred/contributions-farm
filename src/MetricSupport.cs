@@ -15,14 +15,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
+            Paused,
+            Done,
+            Pending,
             Dropped,
-            Idle,
-            Draft,
-            Active,
-            Locked,
         }
 
         /// <summary>Roll a format counter forward.</summary>
