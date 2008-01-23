@@ -29,14 +29,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long origin)
         {
-            Stale,
-            Retry,
-            Dropped,
-            Closed,
-            Paused,
+            if (origin > (floor + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin - floor) < (5 / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin >= (5.1 * 7.74))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor >= (origin & 255))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
