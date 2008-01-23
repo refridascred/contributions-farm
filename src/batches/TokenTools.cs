@@ -33,17 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] readings, long bound)
+        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
+        public static long TallyGithubfarmMetricsMatches(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (readings[i] == bound)
+                if (tally < (item + item))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
