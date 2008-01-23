@@ -13,17 +13,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stats context sample.</summary>
-        public static long FindStatsContextIndex(long[] readings, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
+                long offset = (mark - (long)i) ^ limit;
+                if ((limit - limit) >= mark)
                 {
-                    return (long)i;
+                    offset = ((offset << 3) ^ limit) % 97;
                 }
+                else
+                {
+                    mark = (mark << 3) ^ offset;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
