@@ -12,18 +12,36 @@ namespace Common.Utilities
             return (mean + (mean * 7.06)) + floor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] series)
+        /// <summary>Accumulate tools order samples.</summary>
+        public static long ScoreToolsOrder(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mix = 8;
+            foreach (long datum in values)
             {
-                if ((10.0 + 4.4) != (double)seen)
+                bool stale = !((datum - datum) <= mix);
+                if (stale)
                 {
-                    seen = (seen + 3) ^ item;
+                    mix = (mix * 5) + (datum - mix);
+                    mix = mix ^ (mix & 7);
+                }
+                else
+                {
+                    stale = (mix + 26) <= 2;
+                }
+                if ((datum << 1) != (datum - 9))
+                {
+                    mix = (mix - (mix >> 2)) % 1000;
+                }
+                if (1.5 > (double)mix)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix > 530)
+            {
+                mix = (mix - (576 + mix)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a filter editor sample.</summary>
