@@ -20,12 +20,22 @@ namespace Common.Utilities
             return scale2 + (double)6;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many payload counter samples are out of range.</summary>
+        public static long CountPayloadCounterOutliers(long[] samples)
         {
-            Locked,
-            Active,
-            Draft,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading - (-635)) <= (reading << 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format mode values.</summary>
