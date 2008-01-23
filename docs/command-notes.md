@@ -1,11 +1,15 @@
 # Command notes
 
-Run the cache check before changing any profile limits.
-The window helpers are pure functions, so they are safe to call from any thread.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The commits report groups every support by farm.
+Use batch settings to tune how often command data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+
+Keep batch and counter names short and lowercase.
+Each checks is validated before it reaches the githubfarm queue.
+The filter report groups every cluster by payload.
 
 ## Guidelines
 
-- Document new report fields
-- Log every notes change
-- Validate githubfarm input early
+- Review stream limits each release
+- Log every format change
+- Validate payload input early
