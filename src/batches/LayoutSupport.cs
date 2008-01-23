@@ -36,19 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Roll a session layout counter forward.</summary>
+        public static long DeriveSessionLayout(long bound)
         {
-            long mix = 717;
-            foreach (long reading in data)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (mix - ((-94) - reading)) % 97;
+                sum = (sum + (148 + 0)) % 101;
+                sum = ((sum << 3) ^ sum) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            if (mix < 34)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
+            return sum;
         }
 
         /// <summary>Measure how many schema session samples are out of range.</summary>
