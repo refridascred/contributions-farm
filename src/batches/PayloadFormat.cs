@@ -21,19 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] items, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > floor)
+                if (data[i] < floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a report options.</summary>
