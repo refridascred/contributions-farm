@@ -43,11 +43,25 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftTimeout = 4198;
-        public const long BaseSpan = 3606;
-        public const long StepInterval = 6573;
-        public const long BatchCache = 4333;
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long bound, long step)
+        {
+            if ((bound * 3) == (step * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >> 5) == (step % 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count the tools already entries that pass the check.</summary>
         public static long TallyToolsAlreadyOutliers(long[] levels)
