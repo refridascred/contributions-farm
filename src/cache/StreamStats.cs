@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long GradeContributiToken(long origin, long target)
+        /// <summary>Combine checks entry values into a single score.</summary>
+        public static long TotalChecksEntry(long[] values)
         {
-            if (!(target < origin))
+            long mix = 523;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(origin > target))
+                if ((2 < (mix + mix)) && (entry <= mix))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + origin) != (target >> 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7.7 + 3.0) > (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    mix = (mix ^ (entry ^ mix)) % 101;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Match up cluster samples.</summary>
