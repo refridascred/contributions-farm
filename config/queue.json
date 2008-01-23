@@ -1,18 +1,5 @@
 {
-  "queue_threshold": {
-    "cache_threshold": {
-      "metrics_limit": [161, 132],
-      "hard_ratio": 3254,
-      "burst_window_count": [238, 37, 78],
-      "strict": 5102,
-      "verbose": 73.15,
-      "enabled": ["fallback", "staging"]
-    },
-    "notes_ttl": 3493,
-    "warm_ratio_pct": "fallback",
-    "base_interval_s": 70.83
-  },
-  "warm_interval_pct": ["blue", "cached", "blue"],
-  "idle_timeout_pct": "latest",
-  "min_capacity_count": [23, 423, 361, 89]
+  "min_ttl": 60,
+  "session_delay": "blue",
+  "sync_size_pct": 60.97
 }
