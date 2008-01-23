@@ -69,12 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardDepth = "staging-v2";
+        public const long HardToken = 4094;
+        public const long WindowToken = 5274;
+        public const long HardSpan = 5938;
+        public const long DefaultToken = 2125;
     }
 }
