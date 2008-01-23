@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Queued,
-            Closed,
-            New,
+            Paused,
+            Idle,
+            Pending,
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
