@@ -22,19 +22,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every report stats entry stays within the limit.</summary>
-        public static bool ValidateReportStatsRange(long[] values, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (value != step)
+                if (0 >= (sample ^ target))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
