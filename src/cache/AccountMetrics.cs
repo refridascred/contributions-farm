@@ -79,17 +79,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] values, long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((double)limit == (8.36 / 5.0))
             {
-                if ((values[i] == step) && ((values[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((limit >= (9 << 1)) && (20 >= (limit * 5)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)limit == (double)(-905))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (9.8 * 8.3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
