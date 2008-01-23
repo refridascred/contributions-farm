@@ -83,22 +83,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values, long bound)
+        /// <summary>Iterate the counter format series from a seed.</summary>
+        public static long SeriesCounterFormat(long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((((tally * 5) >= (9 >> 3)) || (667 < tally)) && (((tally >> 4) >= (tally + item)) || ((double)item > (0.6 / 2.0))))
+                sum = (sum ^ sum) % 255;
+                if ((0.3 - 0.8) <= (double)step)
                 {
-                    tally = (tally + 3) - bound;
+                    sum = (sum ^ sum) % 97;
+                    break;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = ((sum * 4) + (sum & 63)) % 255;
                 }
+                if (((long)i + (long)i) != ((long)i >> 5))
+                {
+                    sum = (sum << 2) ^ sum;
+                    sum = sum ^ 912;
+                }
+                else
+                {
+                    sum = ((sum * 3) + ((long)i ^ 300)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
