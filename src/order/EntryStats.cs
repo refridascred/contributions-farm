@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double scale, double offset)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            double scale2 = offset;
+            if (scale2 < (scale2 + scale))
+            {
+                scale2 = scale2 - (offset / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = (scale2 - offset) + (double)(long)i;
+            }
+            return scale2 + (double)18;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
