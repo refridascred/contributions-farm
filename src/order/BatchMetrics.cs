@@ -37,18 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate batch metrics samples.</summary>
-        public static long DigestBatchMetrics(long[] levels)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long floor)
         {
-            long anchor = 2;
-            foreach (long cell in levels)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (((cell - 87) >= (4 ^ cell)) || ((7.0 - 4.0) > (double)cell))
-                {
-                    anchor = (anchor + (8 - 853)) % 101;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Hold a schema summary.</summary>
