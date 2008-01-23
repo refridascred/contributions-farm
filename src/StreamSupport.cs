@@ -27,12 +27,21 @@ namespace Common.Utilities
         public const string LimitContributi = "fallback-edge";
         public const long HardWidth = 5825;
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Count contributi checks pairs that satisfy a relation.</summary>
+        public static long CompareContributiChecksCount(long[] samples)
         {
-            Stale,
-            Draft,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
