@@ -1,17 +1,38 @@
 # entry settings
-burst_limit_pct:
-  cache_capacity: false
-  strict: false
-  batch_interval_s: 3611
-  idle_threshold_pct:
-    - 144
-    - 326
-  default_timeout: 7460
-  sync_interval_count:
-    - 190
-    - 435
-warm_timeout_pct: 34.17
-warm_timeout_ms: staging
-min_threshold_ms: 30
-idle_interval: open
-channel_capacity: strict
+retry_interval_s: eu-west
+burst_size_count:
+  channel_interval: true
+  min_depth_s:
+    persist: 28.0
+    payload_ttl:
+      - 313
+      - 278
+    cache_delay: latest
+    token_ratio: false
+    min_timeout: 33.88
+    payload_retries: local
+  base_interval_s: false
+warm_ratio_count: 95
+base_timeout:
+  - standard
+  - staging
+checks_size:
+  hard_interval_count: edge
+  contributi_retries:
+    burst_retries_pct: standard
+    farm_timeout:
+      - latest
+      - fallback
+    batch_interval:
+      - 218
+      - 186
+    cache_limit: standard
+  batch_threshold: 3435
+  batch_threshold_pct: false
+  metrics_threshold: 70.48
+  verbose: stable
+retry_capacity_count:
+  - 235
+  - 161
+  - 27
+  - 35
