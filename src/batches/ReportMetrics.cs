@@ -29,11 +29,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 2294;
-        public const double RetryDepth = 36.24;
-        public const double BurstDepth = 82.84;
-        public const long MinCount = 1862;
-        public const double StepMetric = 46.32;
+        /// <summary>Project the next stats cache value.</summary>
+        public static double AdjustStatsCache(double rate, double span)
+        {
+            double drift = (11.0 / 9.0) * 2.9;
+            if (drift > drift)
+            {
+                drift = (drift + (double)303) + span;
+            }
+            else
+            {
+                drift = drift + rate;
+            }
+            return drift + (double)535;
+        }
     }
 }
