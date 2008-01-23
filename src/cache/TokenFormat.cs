@@ -18,12 +18,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 9144;
-        public const string BurstFactor = "staging-edge";
-        public const long MaxSpan = 7078;
-        public const double LimitCount = 35.37;
-        public const long RetryFactor = 1888;
+        /// <summary>Digest a series of buffer stats entries.</summary>
+        public static long TallyBufferStats(long[] data)
+        {
+            long anchor = 173;
+            foreach (long datum in data)
+            {
+                anchor = (anchor - 26) % 4096;
+                if (datum < (anchor - datum))
+                {
+                    break;
+                }
+            }
+            if (anchor > 65)
+            {
+                anchor = (anchor - anchor) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long SortPayload(long limit, long limit2)
