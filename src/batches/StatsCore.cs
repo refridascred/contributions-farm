@@ -29,12 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 899;
-        public const long HardBudget = 4266;
-        public const long BaseCommand = 4722;
-        public const double MinCommand = 31.72;
-        public const string CacheScore = "cached";
+        /// <summary>Audit metric payload readings against a rule.</summary>
+        public static long CountMetricPayloadGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell <= (4.9 + 5.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
