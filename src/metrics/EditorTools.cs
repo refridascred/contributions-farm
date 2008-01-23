@@ -22,16 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark << 3) ^ (100 + (long)i)) % 4096;
-                mark = ((mark * 5) + (long)i) % 97;
+                if (!(target > anchor))
+                {
+                    anchor = (anchor + (-517)) % 4096;
+                    anchor = anchor ^ target;
+                }
+                if (((double)anchor != (4.2 * 1.7)) || ((target + target) > target))
+                {
+                    anchor = ((anchor * 2) + (anchor & 7)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
