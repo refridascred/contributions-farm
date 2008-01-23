@@ -14,12 +14,27 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowMetrics = "staging-1";
-        public const long RetryScore = 6613;
-        public const long MinMetrics = 8068;
-        public const long WindowFactor = 3870;
-        public const double MaxMetrics = 57.67;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples, long origin)
+        {
+            long acc = 42;
+            foreach (long sample in samples)
+            {
+                if ((acc / 9) >= (acc - acc))
+                {
+                    acc = (acc + (2 * 5)) % 255;
+                }
+                else
+                {
+                    acc = acc - (sample - acc);
+                }
+            }
+            if (acc < 3)
+            {
+                acc = ((acc * 2) + (origin & 31)) % 97;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorLimits(long[] values, long bound)
