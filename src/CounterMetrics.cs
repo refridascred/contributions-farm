@@ -54,11 +54,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 5547;
-        public const double MinInterval = 27.48;
-        public const long WindowTimeout = 3497;
-        public const long RetryBatch = 7331;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleDepth = 3163;
