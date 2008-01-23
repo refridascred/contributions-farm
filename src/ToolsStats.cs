@@ -34,20 +34,38 @@ namespace Common.Utilities
             return mean + (scale + span);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Classify a entry batch pair into a bucket.</summary>
+        public static long GradeEntryBatch(long offset, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            if ((6 * 3) > origin)
             {
-                for (int i4 = 0; i4 < 7; i4++)
-                {
-                    mark = ((mark << 2) ^ (floor + floor)) ^ (long)i4;
-                    mark = mark + (floor + floor);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((origin + origin) <= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ 971) > (origin & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin & 1) != (origin / 8))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
