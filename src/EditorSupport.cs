@@ -65,17 +65,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks stats value from a seed.</summary>
-        public static long IterateChecksStats(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] values, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                carry = (carry - origin) % 4096;
-                carry = (carry - carry) % 97;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((double)count > 12.0)
+                {
+                    count = ((count + 1) - entry) - step;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
