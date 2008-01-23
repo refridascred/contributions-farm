@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long IdleWidth = 8440;
         public const double HardRecord = 42.12;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] items, long target)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
