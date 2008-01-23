@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = (mix + (target + (long)i)) % 4096;
-                if ((double)(long)i <= (0.87 * 4.8))
+                if (((8.2 - 2.8) >= (double)value) && ((value << 3) >= (hits >> 1)))
                 {
-                    mix = mix + mix;
+                    hits = hits + 2;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a already header.</summary>
