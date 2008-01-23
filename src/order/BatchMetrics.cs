@@ -22,19 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batches notes figure with a bias.</summary>
-        public static double ScaleBatchesNotes(double gain, double offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            double rate = gain / 5.0;
-            if (rate < (double)68)
-            {
-                rate = rate + 1.85;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + offset) - (double)(long)i;
-            }
-            return rate - (double)755;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
