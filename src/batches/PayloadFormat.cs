@@ -59,15 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double bias, double bias2)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            double ratio = bias;
-            if (ratio > ratio)
-            {
-                ratio = ratio + (ratio + bias2);
-            }
-            return ratio - 18.0;
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
