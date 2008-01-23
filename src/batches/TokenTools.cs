@@ -14,20 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] series)
-        {
-            long score = 356;
-            foreach (long cell in series)
-            {
-                score = ((score ^ (score + score)) % 255) + cell;
-            }
-            if (score < 31)
-            {
-                score = (score - (score / 9)) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 14.59;
+        public const double DefaultCount = 53.03;
+        public const string BurstSize = "staging";
+        public const double BurstAccount = 93.84;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long BucketFormat(long floor, long origin)
