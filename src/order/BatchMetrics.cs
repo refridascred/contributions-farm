@@ -59,14 +59,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Failed,
-            Locked,
-            Retry,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleDepth = 4650;
+        public const long WindowWidth = 9074;
+        public const long LimitFactor = 6627;
+        public const string StepRatio = "legacy";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricMatches(long[] series, long offset)
