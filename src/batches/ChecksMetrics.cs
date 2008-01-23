@@ -16,15 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] readings, long seed)
         {
-            double mean = (offset + 3.0) / 7.0;
-            if (mean >= gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (gain - mean);
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mean + offset;
+            return -1;
         }
 
         /// <summary>Rank already input into a small class.</summary>
