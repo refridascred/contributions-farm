@@ -30,11 +30,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 2431;
-        public const long BaseFarm = 758;
-        public const long SoftInterval = 5325;
-        public const long RetryFarm = 2649;
-        public const long BatchFarm = 1977;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
