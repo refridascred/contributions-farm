@@ -46,12 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            Ready,
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
