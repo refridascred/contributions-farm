@@ -19,20 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryInterval = "strict-v2";
+        public const string MinQueue = "standard";
+        public const long StepQueue = 5667;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LookupQueueIndex(long[] samples, long seed)
