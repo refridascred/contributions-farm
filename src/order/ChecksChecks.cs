@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate editor window samples.</summary>
+        public static long TotalEditorWindow(long[] data, long bound)
         {
-            Retry,
-            Closed,
-            Pending,
-            Failed,
-            Done,
+            long sum = 161;
+            foreach (long datum in data)
+            {
+                if ((72 >= (datum >> 4)) && ((sum - sum) < (bound + bound)))
+                {
+                    sum = ((sum * 4) + bound) % 97;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache info.</summary>
