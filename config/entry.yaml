@@ -1,22 +1,4 @@
 # entry settings
-idle_timeout_ms: legacy
-idle_interval_count: edge
-hard_delay: 7497
-enabled:
-  sync_limit_s: 22
-  stream_retries:
-    - 84
-    - 54
-    - 136
-    - 341
-  poll_depth: 30
-  readonly:
-    - local
-    - edge
-    - green
-  base_capacity_s: 1857
-max_capacity_s:
-  - primary
-  - primary
-  - green
-max_interval: true
+warm_retries: stable
+audit: false
+default_window_count: 94.04
