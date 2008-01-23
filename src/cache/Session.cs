@@ -39,19 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool VerifySupportPayloadRange(long[] series, long target)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 8591;
+        public const double RetryScore = 47.47;
+        public const double RetryBudget = 8.75;
+        public const long MinCount = 5127;
+        public const long LimitRecord = 1836;
     }
 }
