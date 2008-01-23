@@ -43,20 +43,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)297 < (double)seed)
-                {
-                    score = (score - ((long)i & 63)) % 97;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
