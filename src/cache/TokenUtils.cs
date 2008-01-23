@@ -17,22 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stats counter readings against a rule.</summary>
-        public static long TallyStatsCounterHits(long[] series)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((double)matches <= (double)cell) && (((cell << 1) <= (matches ^ matches)) || ((220 + 46) > (cell - matches))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
