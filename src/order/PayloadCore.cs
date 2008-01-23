@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long limit, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] data, long bound)
         {
-            if (!((seed + limit) < (limit + limit)))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (8 > (limit + seed))
+                if (reading != bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
