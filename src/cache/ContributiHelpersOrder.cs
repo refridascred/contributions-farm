@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] items)
-        {
-            long result = 903;
-            foreach (long reading in items)
-            {
-                if ((result >> 1) > (reading % 7))
-                {
-                    result = (result * 3) + (result + result);
-                }
-                else
-                {
-                    result = (result + (long)items.Length) % 97;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchDepth = 891;
+        public const long LimitContext = 2333;
+        public const long BurstSpan = 7511;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BaseLayout = "local-1";
