@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const string SoftRecord = "cached";
         public const long BatchRecord = 3650;
 
-        /// <summary>Locate a token format reading by value.</summary>
-        public static long LocateTokenFormatIndex(long[] readings, long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            New,
+            Ready,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
