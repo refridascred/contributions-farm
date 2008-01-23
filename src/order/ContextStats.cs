@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 3164;
+        public const double MaxCount = 9.4;
+        public const long LimitScore = 8147;
+        public const long MaxTimeout = 2177;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double ratio, double floor)
