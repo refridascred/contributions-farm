@@ -58,18 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] samples, long step)
+        /// <summary>Fold a list of queue filter readings.</summary>
+        public static long TallyQueueFilter(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = 57;
+            foreach (long cell in samples)
             {
-                if (9.0 >= (double)step)
+                if ((cell >= (cell ^ seed)) || ((3.8 + 9.7) <= (double)seed))
                 {
-                    seen = (seen + 3) ^ datum;
+                    state = (state - seed) % 255;
                 }
             }
-            return seen;
+            if (state > 87)
+            {
+                state = state - (state ^ state);
+            }
+            return state % 65521;
         }
     }
 }
