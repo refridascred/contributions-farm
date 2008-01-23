@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached green latest fallback; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=489
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-stable}"
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    green)
         log "fast path"
         ;;
     *)
