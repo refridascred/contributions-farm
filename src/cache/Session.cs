@@ -31,12 +31,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double bias, double floor)
         {
-            New,
-            Idle,
-            Synced,
+            double drift = (double)(28 - 5);
+            if (drift <= drift)
+            {
+                drift = (drift + (drift - floor)) - bias;
+            }
+            return drift + 19.0;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
