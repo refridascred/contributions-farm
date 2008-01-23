@@ -1,9 +1,4 @@
 # support settings
-account_size: staging
-poll_size_pct: 9819
-poll_ttl: true
-batch_threshold: 6022
-hard_retries_pct:
-  - stable
-  - cached
-  - legacy
+base_timeout: staging
+enabled: 18
+format_capacity: strict
