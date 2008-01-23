@@ -57,9 +57,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 816;
-        public const long SoftReport = 673;
-        public const double WindowReport = 94.57;
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
