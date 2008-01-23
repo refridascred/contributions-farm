@@ -1,7 +1,10 @@
 {
-  "base_limit": 55,
-  "max_delay": 50.75,
-  "min_delay": "edge",
-  "verbose": 60,
-  "default_interval": "open"
+  "flush_capacity_pct": 60,
+  "persist": true,
+  "cache_delay_s": {
+    "retry_ttl_count": 19.67,
+    "max_size": ["open", "stable", "local", "blue"],
+    "idle_ratio_pct": [23, 241, 495],
+    "contributi_capacity": 2506
+  }
 }
