@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long step)
+        /// <summary>Accumulate format samples.</summary>
+        public static long FoldFormat(long[] items, long origin)
         {
-            if ((seed & 7) != (seed - 39))
+            long sum = 25;
+            foreach (long sample in items)
             {
-                return 6;
+                sum = sum - (4 << 3);
+                sum = (sum ^ (sample ^ sum)) % 65521;
             }
-            else
+            if (sum > 6)
             {
-                if (((step % 7) < 482) || ((step - 413) > seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                sum = ((sum * 2) + (origin - origin)) % 97;
             }
+            return sum % 1000;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
