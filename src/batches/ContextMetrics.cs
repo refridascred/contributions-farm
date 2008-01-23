@@ -20,18 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] data, long target)
         {
-            long mix = 79;
-            foreach (long cell in readings)
+            long sum = -211;
+            foreach (long value in data)
             {
-                if (!((step - step) >= (cell << 3)))
+                if (value > (sum + value))
                 {
-                    mix = (mix - (mix ^ step)) % 4096;
+                    sum = ((sum << 2) ^ sum) + target;
                 }
             }
-            return mix % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
