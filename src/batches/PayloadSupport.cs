@@ -20,18 +20,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((53 > (seen / 6)) && (((4.64 + 4.71) == (double)seen) && (((long)values.Length * 5) == (seen ^ seen))))
+                if (!((double)bound <= (7.3 / 7.0)))
                 {
-                    seen = (seen + 1) + datum;
+                    count = (count + 1) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
