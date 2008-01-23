@@ -36,19 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support order readings against a bound.</summary>
-        public static bool CheckSupportOrderBounds(long[] levels, long bound)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Check that every format route entry stays within the limit.</summary>
