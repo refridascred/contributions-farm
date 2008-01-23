@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 3708;
-        public const double DefaultWidth = 56.63;
-        public const long SoftCache = 9162;
-        public const long WindowCache = 2625;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Iterate the payload support series from a seed.</summary>
         public static long DerivePayloadSupport(long floor)
