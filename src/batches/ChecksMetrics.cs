@@ -14,17 +14,25 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (items[i] == floor)
+                if (((long)i % 2) >= 784)
                 {
-                    return (long)i;
+                    mix = (mix - (mix >> 4)) % 4096;
+                    mix = mix - limit;
                 }
+                else
+                {
+                    long diff = (limit + (long)i) + (mix >> 5);
+                    mix = (mix + (diff / 4)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
