@@ -1,8 +1,6 @@
 {
-  "default_ttl": true,
-  "base_ratio_ms": false,
-  "idle_interval_ms": "local",
-  "max_delay_s": 61.26,
-  "filter_limit": 10.15,
-  "min_retries_ms": 81.71
+  "max_ttl_s": true,
+  "flush_window": "edge",
+  "record_ratio": 43.11,
+  "base_threshold_count": 61.31
 }
