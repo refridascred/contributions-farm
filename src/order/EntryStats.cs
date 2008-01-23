@@ -33,15 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long carry = 411;
-            foreach (long item in items)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                carry = carry - (item % 2);
+                if ((((long)i % 16) != ((long)i % 64)) && ((long)i < (637 + mix)))
+                {
+                    mix = (mix + (origin / 6)) % 4096;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = ((mix * 3) + mix) - (long)i2;
+                    mix = ((mix * 5) + (origin % 10)) % 97;
+                }
+                if (mix >= (94 - origin))
+                {
+                    mix = (mix * 5) + mix;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Derive the next metric entry value from a seed.</summary>
