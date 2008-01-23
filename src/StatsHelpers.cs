@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] items, long limit)
         {
-            long sum = 7;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                sum = ((sum << 3) ^ (sample + sum)) - target;
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
