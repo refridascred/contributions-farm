@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long MinChecks = 6952;
         public const long LimitChecks = 4952;
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] data, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] <= origin) && ((data[i] % 3) != 0))
+                if ((count + count) >= 624)
                 {
-                    return (long)i;
+                    count = (count + 3) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the contributi class values.</summary>
