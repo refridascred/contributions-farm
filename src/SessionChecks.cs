@@ -39,15 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double gain, double bias)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            double load = (double)(0 - 783);
-            for (int i = 0; i < 8; i++)
-            {
-                load = (((load - (load + load)) + (double)(long)i) + gain) - bias;
-            }
-            return load - load;
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
