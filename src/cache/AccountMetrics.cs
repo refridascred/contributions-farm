@@ -17,11 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 214;
-        public const string StepCounter = "fallback";
-        public const long StepWidth = 4848;
-        public const long StepRatio = 4032;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
