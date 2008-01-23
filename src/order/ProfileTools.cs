@@ -57,11 +57,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardDepth = "staging-v2";
-        public const long HardToken = 4094;
-        public const long WindowToken = 5274;
-        public const long HardSpan = 5938;
-        public const long DefaultToken = 2125;
+        /// <summary>Count counter session pairs that satisfy a relation.</summary>
+        public static long MatchCounterSessionCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
