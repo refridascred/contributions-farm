@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a metrics buffer counter forward.</summary>
-        public static long IterateMetricsBuffer(long seed)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = anchor + seed;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Failed,
+            Pending,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
