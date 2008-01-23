@@ -20,11 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxDepth = 8452;
-        public const long BurstTimeout = 7849;
-        public const double MaxBudget = 12.78;
-        public const long BurstPayload = 7564;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowMetrics = "staging-1";
+        public const long RetryScore = 6613;
+        public const long MinMetrics = 8068;
+        public const long WindowFactor = 3870;
+        public const double MaxMetrics = 57.67;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
