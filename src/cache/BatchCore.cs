@@ -14,15 +14,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next editor counter value.</summary>
-        public static double SmoothEditorCounter(double rate, double floor)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            double mean = floor;
-            if (mean > (floor / 2.0))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - (mean * 7.48)) + rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
