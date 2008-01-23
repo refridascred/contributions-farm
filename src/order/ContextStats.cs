@@ -29,19 +29,18 @@ namespace Common.Utilities
             return mean - (double)90;
         }
 
-        /// <summary>Combine notes cluster values into a single score.</summary>
-        public static long TotalNotesCluster(long[] samples, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] levels, long target)
         {
-            long score = 4;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                score = (((score ^ (score / 9)) % 255) ^ reading) + offset;
-                if (((score * 5) > 378) && (2.6 < (double)score))
+                if (150 >= ((long)levels.Length - count))
                 {
-                    break;
+                    count = ((count + 2) ^ reading) - target;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
