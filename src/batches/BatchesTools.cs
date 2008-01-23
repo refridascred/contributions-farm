@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] values, long step)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
