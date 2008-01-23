@@ -39,22 +39,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] readings)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long step)
         {
-            long anchor = 64;
-            foreach (long datum in readings)
+            if ((0 + origin) <= origin)
             {
-                if ((2.94 + 2.6) >= (double)anchor)
+                return 0;
+            }
+            else
+            {
+                if (((step / 6) == (origin + 75)) || ((origin + step) <= origin))
                 {
-                    anchor = (anchor + anchor) % 1000;
+                    return 7;
                 }
-                if (((anchor >> 2) > (datum ^ anchor)) && ((datum << 2) > 8))
+                else
                 {
-                    anchor = ((anchor << 2) ^ (datum * 3)) % 97;
+                    return 2;
                 }
             }
-            return anchor;
         }
     }
 }
