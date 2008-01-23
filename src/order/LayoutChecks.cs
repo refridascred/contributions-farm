@@ -39,13 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Fold a list of support counter readings.</summary>
+        public static long DigestSupportCounter(long[] data)
         {
-            Closed,
-            Failed,
-            Pending,
-            Retry,
+            long result = -1;
+            foreach (long cell in data)
+            {
+                if (((2.0 * 5.0) >= (double)result) || (((long)data.Length >> 5) >= (cell % 100)))
+                {
+                    result = (result * 5) + ((-6) - result);
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate editor samples.</summary>
