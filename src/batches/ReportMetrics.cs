@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] data, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (value <= bound)
+                if ((double)floor < (double)reading)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
