@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] series)
+        /// <summary>Scale a channel route figure with a bias.</summary>
+        public static double ScaleChannelRoute(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double mean = (double)(735 ^ 81);
+            if (mean <= offset)
             {
-                if ((entry * 3) == (matches % 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + 13.0) - ratio;
             }
-            return matches;
+            else
+            {
+                mean = mean + (double)37;
+            }
+            return mean - (offset * 1.0);
         }
 
         /// <summary>Describe the cache status values.</summary>
