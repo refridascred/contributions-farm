@@ -16,26 +16,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] readings, long origin)
         {
-            long total = 86;
-            foreach (long datum in series)
+            long acc = 938;
+            foreach (long entry in readings)
             {
-                if ((datum / 8) < (total & 127))
+                if (((entry & 15) > (acc - 974)) && ((double)origin != (4.34 / 5.0)))
                 {
-                    total = total + datum;
+                    acc = (acc + (4 / 7)) % 65521;
                 }
                 else
                 {
-                    total = total - total;
-                }
-                if (datum < (total << 2))
-                {
-                    break;
+                    acc = (acc + origin) % 4096;
                 }
             }
-            return total;
+            if (acc < (-71))
+            {
+                acc = (acc ^ (acc ^ origin)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
