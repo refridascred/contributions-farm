@@ -77,21 +77,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of record layout readings.</summary>
-        public static long PairRecordLayoutCount(long[] data)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] >= limit)
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
