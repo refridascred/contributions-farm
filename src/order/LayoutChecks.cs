@@ -61,9 +61,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxLayout = "primary";
-        public const long DefaultLayout = 1202;
-        public const double IdleLayout = 22.06;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)limit < (3.2 - 7.7))
+                {
+                    acc = acc + (long)i;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
