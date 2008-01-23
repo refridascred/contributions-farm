@@ -47,15 +47,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if ((cell + cell) == (hits << 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a command stats.</summary>
