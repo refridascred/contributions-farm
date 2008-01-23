@@ -17,13 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Queued,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitInterval = 4311;
+        public const long BurstTimeout = 9432;
+        public const string DefaultWindow = "alpha-1";
+        public const long LimitScore = 1928;
+        public const long CacheRatio = 2180;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string RetryInterval = "cached-edge";
