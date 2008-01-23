@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate report cluster samples.</summary>
-        public static long FoldReportCluster(long[] series, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            long score = 398;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                score = ((((score << 3) ^ score) % 4096) ^ value) - offset;
+                if ((double)matches != (3.86 / 6.0))
+                {
+                    matches = (matches + 1) + cell;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
