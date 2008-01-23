@@ -71,19 +71,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics queue readings against a bound.</summary>
-        public static bool GuardMetricsQueueBounds(long[] values, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long anchor = 9;
+            foreach (long item in levels)
             {
-                if (value < offset)
+                anchor = (anchor - (item + bound)) % 255;
+                if (((bound - bound) <= 379) || ((1.7 - 8.0) != (double)item))
                 {
-                    ok = false;
+                    anchor = ((anchor * 4) + (item & 1)) % 65521;
+                }
+                if ((bound - bound) < anchor)
+                {
                     break;
                 }
             }
-            return ok;
+            return anchor;
         }
     }
 }
