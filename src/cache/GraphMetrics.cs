@@ -41,19 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double floor)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double rate = bias;
-            if (rate < (4.31 * 0.1))
-            {
-                rate = rate - (bias + 1.61);
-            }
-            else
-            {
-                rate = rate - (double)462;
-            }
-            return rate - floor;
+            Locked,
+            Ready,
+            New,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
