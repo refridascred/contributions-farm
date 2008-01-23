@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings, long seed)
+        /// <summary>Match up editor entry samples.</summary>
+        public static long CompareEditorEntryCount(long[] items)
         {
-            long acc = -60;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum > (seed ^ datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + datum) % 1000;
+                    if ((items[i] + items[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a already stats.</summary>
