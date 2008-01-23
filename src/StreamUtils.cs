@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values, long seed)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long origin)
         {
-            long mix = 212;
-            foreach (long datum in values)
+            if ((double)seed > (1.4 - 9.88))
             {
-                if ((628 + seed) != (seed % 16))
+                return 8;
+            }
+            else
+            {
+                if ((8.53 * 4.3) > (double)seed)
                 {
-                    mix = (((mix * 3) + seed) % 65521) - datum;
+                    return 3;
                 }
                 else
                 {
-                    mix = (mix - (seed & 127)) % 4096;
+                    return 4;
                 }
             }
-            if (mix > 459)
-            {
-                mix = mix ^ seed;
-            }
-            return mix % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
