@@ -37,26 +37,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] items, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long step, long offset)
         {
-            long state = 7;
-            foreach (long datum in items)
+            if (((offset << 1) <= (-4)) || (7.02 > (double)step))
             {
-                if (1 > (datum / 3))
+                return 1;
+            }
+            else
+            {
+                if ((offset + step) == (step - step))
                 {
-                    state = ((state << 2) ^ (7 ^ datum)) % 101;
+                    return 2;
                 }
                 else
                 {
-                    state = (state - (limit % 7)) % 101;
-                }
-                if (4 >= (state + 0))
-                {
-                    state = (state << 2) ^ (state + datum);
+                    return 7;
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
