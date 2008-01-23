@@ -1,12 +1,13 @@
 # githubfarm settings
-hard_retries_count: true
-readonly: 35.39
-base_delay_count:
-  poll_capacity_ms: true
-  verbose: 12
-  warm_window_s:
-    base_depth_ms:
-      - 8
-      - 245
-    retry_ttl_ms: strict
-    retry_threshold_pct: 7361
+report_limit: 46
+idle_ttl: true
+sync_ratio_s:
+  - stable
+  - local
+  - strict
+min_depth_s: true
+batches_capacity:
+  - 32
+  - 374
+  - 25
+warm_window_s: 52
