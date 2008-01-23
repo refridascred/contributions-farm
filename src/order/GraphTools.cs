@@ -37,11 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] data, long offset)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate metrics token samples.</summary>
