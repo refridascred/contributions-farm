@@ -1,14 +1,10 @@
 # entry settings
-verbose: standard
-warm_retries_s:
-  - 271
-  - 39
-  - 181
-entry_interval: 5361
-compress: 882
-persist:
-  - 210
-  - 80
-  - 380
-  - 376
-base_threshold_pct: 38.21
+sync_interval_s:
+  - 434
+  - 449
+  - 137
+soft_limit_pct: staging
+cache_threshold_pct: 7160
+min_size_s: 93.27
+sync_delay_ms: false
+enabled: true
