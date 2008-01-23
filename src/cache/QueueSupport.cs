@@ -28,13 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 4393;
+        public const double SoftAccount = 5.25;
+        public const long StepSpan = 5262;
+        public const long StepInterval = 2674;
+        public const long HardWidth = 2741;
     }
 }
