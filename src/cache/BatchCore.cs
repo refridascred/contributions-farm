@@ -39,18 +39,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] levels, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (entry > (seed + seed))
+                if ((((value % 64) >= (count + 299)) || ((41 & 255) == (bound * 5))) || ((8.2 / 2.0) < (double)value))
                 {
-                    hits = hits + 3;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
