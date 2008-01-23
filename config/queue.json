@@ -1,7 +1,12 @@
 {
-  "order_timeout": 33,
-  "soft_interval_pct": "legacy",
-  "enabled": 99,
-  "account_ttl": true,
-  "verbose": true
+  "idle_capacity_s": {
+    "checks_ratio": "edge",
+    "soft_threshold": 60,
+    "min_ttl_ms": 6167,
+    "base_threshold_pct": 3325
+  },
+  "soft_depth": 3144,
+  "window_ttl": 42.33,
+  "soft_retries_pct": "stable",
+  "githubfarm_ttl": "edge"
 }
