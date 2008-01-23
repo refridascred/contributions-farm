@@ -78,19 +78,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] items, long step)
         {
-            double weight = scale * 6.5;
-            if (weight <= 3.11)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + scale) - floor;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (scale * 3.0)) - (double)(long)i;
-            }
-            return weight + (double)45;
+            return -1;
         }
     }
 }
