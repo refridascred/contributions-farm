@@ -24,24 +24,18 @@ namespace Common.Utilities
             return (bias2 + rate) + bias;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long limit, long offset)
+        /// <summary>Accumulate route metric samples.</summary>
+        public static long TallyRouteMetric(long[] series, long limit)
         {
-            if (19.0 >= (double)offset)
+            long acc = 965;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset / 5) <= (493 + 308))
+                if ((double)limit > (14.0 / 4.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    acc = (acc + (limit * 3)) ^ value;
                 }
             }
+            return acc;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
