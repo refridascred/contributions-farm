@@ -39,18 +39,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] items, long target)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.84 + 1.0) <= (double)item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - target;
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the graph level values.</summary>
