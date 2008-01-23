@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            New,
+            Paused,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Roll a account stats counter forward.</summary>
