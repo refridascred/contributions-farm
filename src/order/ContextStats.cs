@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate cluster payload samples.</summary>
-        public static long DigestClusterPayload(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long step)
         {
-            long sum = 4;
-            foreach (long entry in samples)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((sum / 5) < (entry * 3)))
+                result = (result + (result ^ step)) % 65521;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    sum = sum ^ (sum << 2);
+                    result = ((result - (step << 2)) % 101) - (long)i2;
                 }
-                for (int i = 0; i < 5; i++)
+                if (279 >= ((long)i - step))
                 {
-                    sum = (sum ^ sum) - (long)i;
+                    result = (result + (step + (long)i)) % 1000;
+                    result = ((result * 2) + ((long)i * 5)) % 255;
                 }
-                sum = (sum << 2) ^ entry;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (sum > 13)
-            {
-                sum = ((sum * 4) + (sum & 127)) % 4096;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
