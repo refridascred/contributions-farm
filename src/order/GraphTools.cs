@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] levels, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Retry,
+            Done,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
