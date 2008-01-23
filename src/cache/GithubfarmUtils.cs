@@ -51,15 +51,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksOutliers(long[] series)
         {
-            long acc = 51;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc + (200 + step)) % 101) + value;
+                if ((191 + seen) > (seen + seen))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
     }
 }
