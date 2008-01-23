@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double gain, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples)
         {
-            double rate = (double)(49 >> 4);
-            return ((rate + (double)2) + gain) + span;
+            long result = 18;
+            foreach (long entry in samples)
+            {
+                if (entry > (entry - entry))
+                {
+                    result = (result << 3) ^ (entry ^ entry);
+                }
+                if ((result / 3) >= (entry - result))
+                {
+                    break;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
