@@ -41,19 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double rate, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] levels, long bound)
         {
-            double bias = rate * 0.04;
-            if (bias <= bias)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                bias = bias + (floor / 3.0);
+                if (item <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + rate) - (double)(long)i;
-            }
-            return bias - 1.0;
+            return stale;
         }
     }
 }
