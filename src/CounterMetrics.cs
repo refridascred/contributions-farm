@@ -71,29 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] series, long target)
         {
-            long mark = 954;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((7.51 / 7.0) > (double)cell)
+                if ((target * 2) < (251 ^ 8))
                 {
-                    mark = mark ^ bound;
-                    mark = mark ^ (54 & 63);
+                    tally = (tally + 3) + sample;
                 }
-                if (bound >= cell)
-                {
-                    mark = ((mark * 4) + 4) % 1000;
-                    break;
-                }
-                mark = ((mark * 4) + (mark + cell)) % 101;
             }
-            if (mark < 5)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 65521;
+            return tally;
         }
     }
 }
