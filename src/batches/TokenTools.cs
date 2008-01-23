@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] data)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double bias = (gain / 4.0) / 3.0;
+            if (bias >= floor)
             {
-                if ((((hits * 2) == (hits + sample)) && ((sample >> 3) >= (sample + sample))) || !(sample > (sample + 27)))
-                {
-                    hits = hits + 2;
-                }
+                bias = bias - (floor * 8.0);
             }
-            return hits;
+            else
+            {
+                bias = bias - (floor * 7.0);
+            }
+            return bias - (double)22;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
