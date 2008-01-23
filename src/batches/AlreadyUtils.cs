@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] samples)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            double load = (double)884 / 9.0;
+            if (load < load)
             {
-                if (((double)count == (1.78 / 9.0)) || (count > sample))
-                {
-                    count = count + 1;
-                }
+                load = (load + (offset * 0.6)) + scale;
             }
-            return count;
+            else
+            {
+                load = load - (double)2;
+            }
+            return load + (offset - offset);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
