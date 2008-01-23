@@ -39,14 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            New,
-            Queued,
-            Done,
-            Closed,
-            Synced,
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)(long)i != (0.97 + 2.54))
+                {
+                    acc = (acc + acc) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (acc * 5)) % 97;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = ((acc + (acc + acc)) % 97) ^ (long)i2;
+                    acc = (acc ^ (limit + 578)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
