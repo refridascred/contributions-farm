@@ -29,19 +29,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double ratio, double span)
-        {
-            double rate = (double)(-7) / 7.0;
-            if (rate < ratio)
-            {
-                rate = rate - (rate + 8.5);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - span) + (double)(long)i;
-            }
-            return rate - (span / 5.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 3346;
+        public const long DefaultLayout = 6737;
+        public const double MinLayout = 71.2;
     }
 }
