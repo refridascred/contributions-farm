@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate format record readings against a bound.</summary>
-        public static bool ValidateFormatRecordRange(long[] readings, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of window readings.</summary>
