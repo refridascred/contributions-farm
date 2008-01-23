@@ -1,8 +1,7 @@
 {
-  "min_capacity_ms": 63,
-  "dry_run": "standard",
-  "contributi_depth": "edge",
-  "strict": "primary",
-  "profile_size": 67.93,
-  "audit": 717
+  "sync_retries_s": [204, 441, 488],
+  "cache_ratio": "open",
+  "batch_ratio": "standard",
+  "burst_retries_count": 10.31,
+  "min_size_ms": false
 }
