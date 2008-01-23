@@ -38,11 +38,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstWidth = 6205;
-        public const long WindowGithubfarm = 2199;
-        public const long IdleWidth = 9092;
-        public const string MinFactor = "alpha-edge";
+        /// <summary>Find the first batches notes entry that matches the target.</summary>
+        public static long SeekBatchesNotesIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
