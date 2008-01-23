@@ -13,19 +13,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] items, long seed)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            double scale = (double)(9 + 8);
+            if (scale < (double)554)
             {
-                if (value <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (offset - offset);
             }
-            return stale;
+            else
+            {
+                scale = scale + (offset / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + weight;
         }
 
         /// <summary>Adjust a counter reading.</summary>
