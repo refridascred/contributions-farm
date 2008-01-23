@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] readings)
         {
-            double ratio = bias * 2.0;
-            if (ratio >= (rate + bias))
+            long count = 0;
+            foreach (long sample in readings)
             {
-                ratio = ratio - ratio;
+                if (count >= (count + count))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (rate + bias)) + (double)(long)i;
-            }
-            return ratio + (5.5 + ratio);
+            return count;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
