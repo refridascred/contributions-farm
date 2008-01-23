@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] data)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = 50;
+            foreach (long item in data)
+            {
+                acc = (acc * 2) + (item - item);
+                if ((6 + acc) <= (item & 3))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
