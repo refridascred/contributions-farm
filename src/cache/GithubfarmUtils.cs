@@ -23,17 +23,13 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LocateFormatIndex(long[] samples, long floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the entry kind values.</summary>
