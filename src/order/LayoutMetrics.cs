@@ -23,18 +23,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double rate, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double mean = offset + offset;
+            if (mean < rate)
             {
-                if ((entry >> 3) < (count << 1))
-                {
-                    count = count + 2;
-                }
+                mean = mean - (mean / 7.0);
             }
-            return count;
+            return mean - offset;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
