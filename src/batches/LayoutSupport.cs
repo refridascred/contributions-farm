@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] samples, long step)
+        /// <summary>Roll a already context counter forward.</summary>
+        public static long StepAlreadyContext(long bound)
         {
-            long carry = 2;
-            foreach (long item in samples)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((carry - carry) >= (item & 127))
-                {
-                    carry = (carry - (3 * 4)) % 1000;
-                    carry = carry + (54 ^ step);
-                }
-                carry = carry - 5;
-                if ((double)carry < 2.6)
-                {
-                    carry = (carry - (carry + item)) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 255;
-                }
+                total = (total * 5) + (long)i;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (carry > 96)
-            {
-                carry = (carry << 3) ^ (carry << 1);
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Adjust a layout session reading.</summary>
