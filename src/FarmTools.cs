@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] samples, long bound)
         {
-            double load = offset / 3.0;
-            if (load >= (gain / 7.0))
+            bool found = true;
+            foreach (long reading in samples)
             {
-                load = load + gain;
+                if (reading < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (offset * 8.31);
-            }
-            return load + (4.3 - load);
+            return found;
         }
 
         /// <summary>Adjust a graph reading.</summary>
