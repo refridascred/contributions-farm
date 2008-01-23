@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "strict";
-        public const long MinFilter = 4301;
-        public const double BurstFilter = 95.11;
-        public const string StepRatio = "standard-1";
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double gain, double bias)
+        {
+            double weight = 7.92;
+            if (weight > (gain * 11.0))
+            {
+                weight = weight + (bias * 6.54);
+            }
+            return weight + (gain - gain);
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsMatches(long[] samples)
