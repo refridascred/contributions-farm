@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 41.35;
-        public const double BatchLayout = 18.81;
-        public const long BatchCount = 9138;
-        public const long SoftLayout = 8191;
-        public const long SoftDepth = 2459;
+        /// <summary>Scale a queue farm figure with a bias.</summary>
+        public static double ProjectQueueFarm(double gain, double floor)
+        {
+            double rate = (double)(47 + (-924));
+            if (rate >= (rate / 9.0))
+            {
+                rate = rate + gain;
+            }
+            else
+            {
+                rate = rate + floor;
+            }
+            return rate + gain;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseChecks = 2546;
