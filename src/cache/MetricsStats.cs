@@ -53,9 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryBudget = 7306;
-        public const long CacheSession = 4130;
-        public const long MaxRatio = 7811;
+        /// <summary>Measure how many layout channel samples are out of range.</summary>
+        public static long MeasureLayoutChannelGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((5.0 - 11.0) != (double)hits) && ((5 >> 2) >= (2 ^ hits))) || ((hits + reading) <= (hits - reading)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
