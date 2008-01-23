@@ -50,23 +50,21 @@ namespace Common.Utilities
         public const long WindowCount = 6553;
         public const long MinLevel = 3121;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long target)
         {
-            long score = 824;
-            foreach (long entry in samples)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 7; i++)
+                bool ready = ((long)i >> 3) >= target;
+                ready = ((target << 3) != (target >> 4)) || ((mix << 3) >= (5 % 100));
+                if (ready)
                 {
-                    score = ((score << 3) ^ (entry + (long)samples.Length)) + (long)i;
+                    ready = (mix + mix) != (mix << 2);
                 }
-                score = score - (entry & 7);
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (score > 24)
-            {
-                score = (score + (score / 5)) % 4096;
-            }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Accumulate notes samples.</summary>
