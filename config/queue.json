@@ -1,7 +1,5 @@
 {
-  "batch_delay": "standard",
-  "cache_retries": 250,
-  "flush_interval_ms": "standard",
-  "queue_delay": "fallback",
-  "warm_delay": false
+  "githubfarm_timeout": false,
+  "idle_ratio": "stable",
+  "soft_timeout": 3358
 }
