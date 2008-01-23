@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Draft,
-            Idle,
-            Synced,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 4647;
+        public const long BatchTools = 5550;
+        public const long MinTools = 8863;
+        public const long BatchSpan = 7173;
+        public const string BaseDepth = "stable-1";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long CountCacheOutliers(long[] values)
