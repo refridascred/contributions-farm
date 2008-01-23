@@ -36,39 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long limit, long limit2)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long offset)
         {
-            long edge = limit ^ limit2;
-            if ((78 % 5) <= (edge + edge))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(3.53 <= (double)limit))
+                if (datum > offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit2 % 7) >= edge))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((7.0 - 9.0) > (double)limit2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
