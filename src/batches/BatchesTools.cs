@@ -35,15 +35,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] readings, long floor)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long limit)
         {
-            long anchor = 2;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor - anchor) % 1000) ^ cell) + floor;
+                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
