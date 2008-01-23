@@ -55,38 +55,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a layout githubfarm value against two limits.</summary>
-        public static long RankLayoutGithubfarm(long limit, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            if (((50 - limit) < (bound - bound)) && ((double)bound > (9.93 - 1.6)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound >= (limit - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.0 / 5.0) > (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Failed,
+            Paused,
+            New,
         }
     }
 }
