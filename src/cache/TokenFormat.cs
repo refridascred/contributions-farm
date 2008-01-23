@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long bound, long target)
         {
-            Idle,
-            Draft,
-            Stale,
-            Pending,
+            if (!(bound >= (target + target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target >> 5) != (target + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a commits info.</summary>
