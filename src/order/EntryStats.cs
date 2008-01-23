@@ -20,18 +20,14 @@ namespace Common.Utilities
             return scale2 + (double)18;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] data)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((18.0 * 9.5) > (double)sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
