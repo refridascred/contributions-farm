@@ -1,8 +1,5 @@
 {
-  "soft_timeout_pct": 83,
-  "notes_delay": 1,
-  "compress": [43, 315, 337],
-  "stream_window": 91.12,
-  "soft_ttl": 66,
-  "record_capacity": "green"
+  "contributi_threshold": false,
+  "order_interval": false,
+  "notes_timeout": "edge"
 }
