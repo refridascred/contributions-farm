@@ -50,23 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long floor)
-        {
-            long mix = 64;
-            foreach (long value in series)
-            {
-                if (1.31 <= (double)mix)
-                {
-                    mix = ((mix * 3) + (39 + floor)) ^ value;
-                }
-                if ((mix + mix) < floor)
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 46.29;
+        public const double DefaultBudget = 39.56;
+        public const double MinScore = 61.37;
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] items, long step)
