@@ -14,13 +14,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double bias2)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
+            double gain = bias2;
+            if (gain > (bias * 9.47))
+            {
+                gain = gain - (5.0 + bias2);
+            }
+            else
+            {
+                gain = gain + (bias + bias2);
+            }
+            return gain - (double)88;
         }
 
         /// <summary>Match up channel samples.</summary>
