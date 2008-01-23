@@ -19,17 +19,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long limit)
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long ScoreMetricCache(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 31;
+            foreach (long sample in samples)
             {
-                if ((levels[i] == limit) && ((levels[i] % 5) == 0))
+                if ((score >> 1) != (418 + sample))
                 {
-                    return (long)i;
+                    score = (score ^ (score >> 1)) + origin;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
