@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine already queue values into a single score.</summary>
-        public static long TotalAlreadyQueue(long[] levels)
+        /// <summary>Count route order pairs that satisfy a relation.</summary>
+        public static long PairRouteOrderCount(long[] series)
         {
-            long sum = -188;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample - sum) == (sample / 7)) || ((4.1 / 5.0) != (double)sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum ^ (271 - (-52))) % 97;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 70)
-            {
-                sum = ((sum << 3) ^ 25) % 255;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate stats report samples.</summary>
