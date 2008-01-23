@@ -29,11 +29,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSize = 549;
-        public const string MaxLevel = "cached";
-        public const long WindowRatio = 7088;
-        public const long MaxWidth = 5778;
+        /// <summary>Validate support order readings against a bound.</summary>
+        public static bool CheckSupportOrderBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] data, long limit)
