@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsLimits(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= step)
                 {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a route record.</summary>
