@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long IdleWidth = 8440;
         public const double HardRecord = 42.12;
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] items, long target)
         {
-            Locked,
-            Closed,
-            Idle,
-            Done,
-            Draft,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the queue state values.</summary>
