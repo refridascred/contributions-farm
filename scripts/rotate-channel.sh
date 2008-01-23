@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+mode="${1:-fallback}"
 case "${mode}" in
     blue)
         log "fast path"
@@ -16,6 +16,11 @@ case "${mode}" in
         ;;
 esac
 
-for item in primary fallback open legacy; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
+
+CHANNEL_LIMIT=264
+log "limit is ${CHANNEL_LIMIT}"
