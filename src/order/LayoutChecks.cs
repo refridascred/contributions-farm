@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Active,
+            Synced,
+            Stale,
+            Retry,
+            Locked,
         }
 
         /// <summary>Grade a order value against two limits.</summary>
