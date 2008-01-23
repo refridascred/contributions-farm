@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings, long bound)
         {
-            Active,
-            Synced,
-            Stale,
-            Retry,
-            Locked,
+            long score = 887;
+            foreach (long value in readings)
+            {
+                if ((9.1 * 20.0) == (double)score)
+                {
+                    score = ((score + (score << 2)) % 255) - value;
+                }
+            }
+            if (score < 424)
+            {
+                score = score ^ (53 ^ bound);
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
