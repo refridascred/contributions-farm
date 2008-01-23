@@ -1,8 +1,8 @@
 {
-  "sync_retries_count": 85,
-  "record_timeout": "cached",
-  "poll_ratio": 39,
-  "default_capacity_ms": [27, 161, 182],
-  "max_delay_pct": ["latest", "legacy"],
-  "hard_depth_count": "blue"
+  "dry_run": "cached",
+  "default_depth_s": "local",
+  "max_threshold_count": 57,
+  "warm_size": "legacy",
+  "enabled": true,
+  "sync_interval": 1024
 }
