@@ -42,22 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseBudget = 7827;
+        public const long MinChecks = 5505;
+        public const string BaseChecks = "strict-1";
+        public const long HardChecks = 5211;
+        public const long BatchCount = 5028;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
