@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 8050;
-        public const double LimitInterval = 71.55;
-        public const long WindowSpan = 6842;
-        public const long BurstLevel = 4876;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long bound, long offset)
+        {
+            if ((double)bound < (9.0 / 9.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((10.0 - 13.0) > (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound <= 8.66)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((287 - offset) > bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] items, long target)
