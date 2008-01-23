@@ -63,11 +63,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public bool Size { get; set; }
-            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
