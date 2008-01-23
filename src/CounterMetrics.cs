@@ -37,19 +37,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double bias)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long target, long floor)
         {
-            double mean = (double)((-30) % 10);
-            if (mean <= (mean - scale))
+            if (((floor % 60) != (target >> 1)) || ((target >> 5) <= target))
             {
-                mean = mean + (bias + scale);
+                return 5;
             }
             else
             {
-                mean = mean + (scale * 9.2);
+                if (!((target >> 2) < (9 - target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 4) < (441 >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor >> 2) == (112 ^ (-209)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mean + 3.0;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
