@@ -25,18 +25,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] readings, long origin)
+        /// <summary>Validate route entry readings against a bound.</summary>
+        public static bool VerifyRouteEntryRange(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((origin <= (seen ^ (-61))) || ((value + value) > (seen ^ 31))) && (((double)seen > 8.17) && ((1 ^ seen) >= value)))
+                if (item >= step)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Digest a series of command entries.</summary>
