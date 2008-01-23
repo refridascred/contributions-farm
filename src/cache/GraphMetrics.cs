@@ -41,18 +41,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels, long target)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches - target) <= (reading & 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
