@@ -46,11 +46,26 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 3396;
-        public const double StepFactor = 58.73;
-        public const long SoftCounter = 5957;
-        public const long DefaultCounter = 3374;
+        /// <summary>Rank tools already input into a small class.</summary>
+        public static long BucketToolsAlready(long limit, long floor)
+        {
+            long delta = limit ^ floor;
+            if (delta <= (delta >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (delta <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] readings, long target)
