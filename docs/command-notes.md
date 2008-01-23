@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The filter module keeps route values in sync with the command cache.
+The graph report groups every batch by tools.
+When a batch fails, the record handler retries a few times before giving up.
+Run the contributi check before changing any window limits.
 
 ## Guidelines
 
-- Document new commits fields
-- Review metrics limits each release
-- Prefer schema defaults
-- Log every context change
+- Review editor limits each release
+- Log every layout change
+- Document new stats fields
