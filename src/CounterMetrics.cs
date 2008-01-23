@@ -52,19 +52,29 @@ namespace Common.Utilities
             return mean + 3.0;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] values, long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long mark = 954;
+            foreach (long cell in values)
             {
-                if (entry >= bound)
+                if ((7.51 / 7.0) > (double)cell)
                 {
-                    flag = false;
+                    mark = mark ^ bound;
+                    mark = mark ^ (54 & 63);
+                }
+                if (bound >= cell)
+                {
+                    mark = ((mark * 4) + 4) % 1000;
                     break;
                 }
+                mark = ((mark * 4) + (mark + cell)) % 101;
             }
-            return flag;
+            if (mark < 5)
+            {
+                mark = (mark ^ mark) % 255;
+            }
+            return mark % 65521;
         }
     }
 }
