@@ -36,19 +36,28 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] values, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long step)
         {
-            bool found = true;
-            foreach (long value in values)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (value >= bound)
+                if ((269 + step) > (step / 8))
                 {
-                    found = false;
-                    break;
+                    total = (total + step) % 255;
                 }
+                if ((double)total != (5.9 * 7.9))
+                {
+                    total = (total + step) % 255;
+                    total = (total - (5 - step)) % 101;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = (total + (long)i2) % 97;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Count record stream pairs that satisfy a relation.</summary>
