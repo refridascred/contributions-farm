@@ -5,25 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long mix = 11;
+            foreach (long sample in levels)
             {
-                if (!((target + 1) > (sum & 1)))
+                if (((mix >> 4) > mix) && (sample > (577 - mix)))
                 {
-                    sum = (sum + ((long)i ^ (-6))) % 101;
+                    mix = mix + (mix << 3);
+                    mix = ((mix * 4) + sample) % 101;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((sample - mix) > mix)
                 {
-                    sum = ((sum + (target >> 5)) % 101) - (long)i2;
-                    sum = (sum ^ (sum / 8)) % 65521;
+                    mix = mix - (mix << 3);
                 }
-                sum = (sum ^ (sum + 68)) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
+                else
+                {
+                    mix = ((mix * 4) + (71 & 1)) % 97;
+                }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
