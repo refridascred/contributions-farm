@@ -1,14 +1,7 @@
 # entry settings
-retry_window:
-  - 356
-  - 105
-  - 360
-flush_size_pct:
-  sync_threshold_count: 36
-  filter_interval: 9.77
-  compress: 100
-  window_size: true
-  soft_threshold_ms: local
-readonly: edge
-strict: 82.2
-audit: blue
+format_timeout: 50.68
+default_delay_pct: latest
+dry_run: false
+retry_window: primary
+hard_threshold_s: true
+min_window_s: 39.71
