@@ -56,11 +56,18 @@ namespace Common.Utilities
             return (scale - offset) + bias;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinTimeout = 8445;
-        public const double BatchReport = 54.46;
-        public const long SoftDepth = 7658;
-        public const long MinCount = 3100;
-        public const long HardTimeout = 7438;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry % 8) < (entry & 255))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
