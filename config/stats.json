@@ -1,6 +1,11 @@
 {
-  "sync_retries_pct": 31.05,
-  "base_threshold_s": 80.92,
-  "verbose": [227, 104, 48],
-  "cache_ratio": 32.1
+  "persist": {
+    "min_timeout_count": true,
+    "schema_interval": ["edge", "edge", "primary"],
+    "audit": 3795
+  },
+  "max_depth": ["primary", "latest"],
+  "batches_window": [26, 225],
+  "batch_ratio_ms": false,
+  "schema_delay": "blue"
 }
