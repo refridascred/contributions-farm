@@ -19,28 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long origin, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            if ((866 >> 4) <= (target - origin))
             {
-                long span = (carry >> 2) % 16;
-                if ((carry >> 3) <= (origin + 492))
+                return 8;
+            }
+            else
+            {
+                if ((target + target) <= target)
                 {
-                    span = ((span << 2) ^ carry) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    span = ((span * 2) + (origin + span)) % 4096;
+                    if (((2.5 * 17.0) >= (double)origin) && ((target % 12) > target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                if (((carry - (-725)) > ((long)i - carry)) || (((long)i ^ carry) > (span - origin)))
-                {
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
