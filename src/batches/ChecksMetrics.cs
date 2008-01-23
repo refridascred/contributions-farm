@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseWidth = 61.72;
+        public const double MaxMetrics = 31.84;
+        public const long StepMetrics = 5636;
+        public const string DefaultFactor = "strict-1";
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long limit)
