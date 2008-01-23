@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] values, long origin)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((origin - origin) == ((-613) + 648))
+                if (reading > floor)
                 {
-                    tally = (tally + 3) - item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
