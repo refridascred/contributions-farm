@@ -55,21 +55,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)376;
+            if (load <= (9.7 * 3.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = ((load - (double)984) + scale) + offset;
             }
-            return matches;
+            return load - (double)2;
         }
     }
 }
