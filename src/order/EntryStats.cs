@@ -20,15 +20,15 @@ namespace Common.Utilities
             return scale2 + (double)18;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] levels, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double weight, double span)
         {
-            long mark = 5;
-            foreach (long value in levels)
+            double ratio = (double)(634 & 127);
+            if (ratio >= (weight * 12.0))
             {
-                mark = ((mark - (152 + value)) % 4096) + origin;
+                ratio = (ratio + (ratio + 0.6)) + span;
             }
-            return mark;
+            return ratio + weight;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
