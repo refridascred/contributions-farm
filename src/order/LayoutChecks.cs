@@ -39,19 +39,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support counter readings.</summary>
-        public static long DigestSupportCounter(long[] data)
-        {
-            long result = -1;
-            foreach (long cell in data)
-            {
-                if (((2.0 * 5.0) >= (double)result) || (((long)data.Length >> 5) >= (cell % 100)))
-                {
-                    result = (result * 5) + ((-6) - result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 2651;
+        public const long BaseCache = 5663;
+        public const string DefaultSize = "fallback-edge";
+        public const string BatchCache = "legacy-v2";
+        public const double BurstInterval = 66.49;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] items)
