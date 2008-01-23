@@ -78,10 +78,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "strict";
-        public const long IdleChannel = 4982;
-        public const long IdleScore = 1408;
-        public const double StepSize = 6.59;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Done,
+            Paused,
+            Synced,
+            Ready,
+        }
     }
 }
