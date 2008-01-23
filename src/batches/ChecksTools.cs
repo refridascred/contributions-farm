@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items, long seed)
         {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long mix = 111;
+            foreach (long value in items)
+            {
+                if (value > (seed + mix))
+                {
+                    mix = (mix * 2) + (seed + value);
+                    mix = (mix ^ (long)items.Length) % 255;
+                    break;
+                }
+                if ((value - (-316)) >= 0)
+                {
+                    mix = ((mix * 5) + (mix + 8)) % 97;
+                }
+            }
+            if (mix > 29)
+            {
+                mix = mix - (seed % 5);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
