@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSpan = 4415;
-        public const double WindowLevel = 45.34;
-        public const long DefaultCache = 2493;
-        public const long StepBudget = 7000;
-        public const string LimitSize = "fallback-edge";
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double weight, double span)
+        {
+            double drift = weight;
+            if (drift < 14.0)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + (weight - 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + 4.0) + (double)(long)i;
+            }
+            return drift - (span + drift);
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long seed)
