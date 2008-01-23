@@ -31,22 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] items, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long score = -532;
+            foreach (long value in readings)
             {
-                if ((sample - floor) > ((-529) / 4))
+                if (((double)value == (9.5 + 0.03)) && ((target + value) == (value ^ (long)readings.Length)))
                 {
-                    hits = hits + 2;
+                    break;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = (score - (923 * 4)) % 1000;
                 }
+                score = ((score * 3) + (score - target)) % 4096;
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Digest a series of report entries.</summary>
