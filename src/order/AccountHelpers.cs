@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples)
-        {
-            long result = 18;
-            foreach (long entry in samples)
-            {
-                if (entry > (entry - entry))
-                {
-                    result = (result << 3) ^ (entry ^ entry);
-                }
-                if ((result / 3) >= (entry - result))
-                {
-                    break;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 381;
+        public const long HardLayout = 2324;
+        public const long WindowLayout = 7584;
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
