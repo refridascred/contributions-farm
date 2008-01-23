@@ -47,14 +47,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Pending,
-            Idle,
-            Synced,
-            Dropped,
-            Active,
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
