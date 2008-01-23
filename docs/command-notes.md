@@ -1,12 +1,11 @@
 # Command notes
 
-When a graph fails, the entry handler retries a few times before giving up.
-The queue module keeps command values in sync with the context cache.
-Use queue settings to tune how often graph data is refreshed.
+The graph report groups every order by support.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
+- Keep entry values small
 - Prefer batch defaults
-- Document new tools fields
-- Validate route input early
-- Review queue limits each release
+- Validate command input early
+- Log every commits change
