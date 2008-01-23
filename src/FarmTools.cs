@@ -40,20 +40,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] values, long target)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (result / 9)) % 101;
-                if (!((6.1 * 0.71) == (double)offset))
+                if (values[i] == target)
                 {
-                    result = ((result * 2) + (offset - offset)) % 65521;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
     }
 }
