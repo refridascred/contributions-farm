@@ -17,18 +17,18 @@ namespace Common.Utilities
         public const long SoftFarm = 8658;
         public const long StepScore = 9337;
 
-        /// <summary>Measure how many metric report samples are out of range.</summary>
-        public static long MeasureMetricReportHits(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((value ^ value) != (value - value))
+                if ((offset % 2) < (offset - offset))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
