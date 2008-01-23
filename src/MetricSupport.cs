@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 133;
-            foreach (long cell in data)
-            {
-                result = ((result - (result / 2)) % 4096) ^ cell;
-            }
-            return result % 97;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a order header.</summary>
