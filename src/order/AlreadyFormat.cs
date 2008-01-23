@@ -33,13 +33,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            Dropped,
-            Active,
-            Done,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 4) + (986 >> 1)) % 255;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order level values.</summary>
