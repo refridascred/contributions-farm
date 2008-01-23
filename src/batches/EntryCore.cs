@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Project the next format payload value.</summary>
+        public static double ScaleFormatPayload(double rate, double span)
         {
-            Ready,
-            Locked,
-            Active,
-            New,
-            Queued,
+            double mean = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - rate) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
