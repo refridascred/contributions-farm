@@ -53,30 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] readings)
         {
-            long score = 37;
-            foreach (long value in readings)
+            long anchor = 23;
+            foreach (long sample in readings)
             {
-                if ((score ^ 55) >= 694)
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
+                if ((double)sample == (2.0 - 1.53))
                 {
-                    continue;
-                }
-                if (!(((double)score > (5.0 - 4.1)) && ((score + score) != (floor % 60))))
-                {
-                    score = ((score * 4) + (75 >> 5)) % 65521;
-                }
-                if ((5.2 * 1.94) < (double)value)
-                {
-                    score = ((score << 3) ^ (value & 127)) % 1000;
+                    break;
                 }
             }
-            if (score > 502)
-            {
-                score = (score + 93) % 101;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
