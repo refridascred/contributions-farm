@@ -14,15 +14,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long score = 935;
-            foreach (long item in series)
-            {
-                score = score - item;
-            }
-            return score;
+            public bool Size { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Find the first checks tools entry that matches the target.</summary>
