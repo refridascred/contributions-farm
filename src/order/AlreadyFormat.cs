@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long MinChecks = 6952;
         public const long LimitChecks = 4952;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] levels)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (((-2) - 710) > (24 + count))
-                {
-                    count = (count + 1) + value;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the contributi class values.</summary>
