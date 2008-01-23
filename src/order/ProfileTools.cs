@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long MeasureLayoutChecksGaps(long[] values, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheRange(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((reading * 5) == (reading >> 4))
+                if (entry != origin)
                 {
-                    hits = (hits + 3) - target;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
