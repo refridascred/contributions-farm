@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] levels, long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long result = -63;
+            foreach (long cell in series)
             {
-                if (((long)levels.Length * 5) >= (29 & 255))
-                {
-                    hits = ((hits + 1) ^ item) + offset;
-                }
+                result = ((result << 2) ^ step) - cell;
             }
-            return hits;
+            if (result < 0)
+            {
+                result = result + (step - step);
+            }
+            return result % 4096;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
