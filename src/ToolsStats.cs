@@ -51,12 +51,12 @@ namespace Common.Utilities
         public const string SoftSpan = "cached-v2";
         public const long IdleCount = 7281;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] items, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= seed)
+                if (data[i] >= seed)
                 {
                     return (long)i;
                 }
