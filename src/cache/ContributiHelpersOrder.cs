@@ -40,19 +40,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long offset)
         {
-            double scale = floor;
-            if (scale <= (bias / 9.0))
+            if (((origin % 97) >= (origin + offset)) && ((offset >> 5) > origin))
             {
-                scale = scale - (floor + 6.6);
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale + bias) + (double)(long)i;
+                if ((offset - origin) != (9 + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return scale + (scale / 7.0);
         }
     }
 }
