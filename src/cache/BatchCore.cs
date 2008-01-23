@@ -31,22 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricHits(long[] levels)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count > (double)sample)
+                if (series[i] > limit)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
