@@ -86,13 +86,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
             public string Region { get; set; } = "";
-            public long Weight { get; set; }
         }
     }
 }
