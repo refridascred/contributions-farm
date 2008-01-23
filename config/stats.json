@@ -1,5 +1,5 @@
 {
-  "batches_capacity": 93,
-  "strict": [47, 258, 328, 173],
-  "default_retries_count": false
+  "enabled": 93.12,
+  "default_window_count": "latest",
+  "warm_limit_ms": [379, 327, 193, 463]
 }
