@@ -58,19 +58,10 @@ namespace Common.Utilities
         public const long CacheBuffer = 4136;
         public const double BatchScore = 85.99;
 
-        /// <summary>Validate session filter readings against a bound.</summary>
-        public static bool CheckSessionFilterBounds(long[] levels, long floor)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseRatio = 2710;
+        public const long MinPayload = 1485;
+        public const long StepPayload = 9866;
+        public const string BatchPayload = "open-v2";
     }
 }
