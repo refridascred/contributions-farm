@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
-        public static long AuditMetricsBufferGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((tally ^ tally) != (tally - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 8623;
+        public const long SoftMetrics = 6415;
+        public const long StepMetrics = 3280;
+        public const long HardMetrics = 1791;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 174;
