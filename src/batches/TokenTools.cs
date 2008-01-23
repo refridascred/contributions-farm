@@ -33,18 +33,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit githubfarm metrics readings against a rule.</summary>
-        public static long TallyGithubfarmMetricsMatches(long[] items)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (tally < (item + item))
+                if ((values[i] > floor) && ((values[i] % 5) == 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
