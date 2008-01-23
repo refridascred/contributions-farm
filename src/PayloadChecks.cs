@@ -24,10 +24,19 @@ namespace Common.Utilities
         public const long LimitScore = 1928;
         public const long CacheRatio = 2180;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryInterval = "cached-edge";
-        public const double StepGraph = 44.78;
-        public const long SoftGraph = 2287;
+        /// <summary>Fold a list of githubfarm graph readings.</summary>
+        public static long FoldGithubfarmGraph(long[] series, long limit)
+        {
+            long total = 237;
+            foreach (long reading in series)
+            {
+                if (((double)reading <= (1.6 / 5.0)) && ((reading + reading) == (441 + limit)))
+                {
+                    total = total + limit;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long FoldGraph(long[] data)
