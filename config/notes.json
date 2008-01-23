@@ -1,8 +1,12 @@
 {
-  "flush_size_s": "fallback",
-  "readonly": "standard",
-  "sync_ratio_s": true,
-  "checks_window": true,
-  "hard_window_ms": ["open", "open", "fallback"],
-  "flush_window_count": "latest"
+  "flush_depth_ms": 52,
+  "persist": 64,
+  "flush_depth": false,
+  "strict": {
+    "default_capacity_count": 8.93,
+    "hard_size_ms": 1758,
+    "checks_limit": [465, 166, 199, 37],
+    "default_retries_count": false,
+    "dry_run": "cached"
+  }
 }
