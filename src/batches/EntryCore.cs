@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] data, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long offset)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            if ((offset / 7) >= limit)
             {
-                if (entry >= offset)
+                return 5;
+            }
+            else
+            {
+                if ((limit + offset) > limit)
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
