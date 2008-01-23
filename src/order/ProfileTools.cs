@@ -19,16 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long state = -383;
+            foreach (long sample in series)
             {
-                carry = (carry ^ ((long)i - 4)) % 65521;
-                carry = ((carry * 5) + (long)i) % 1000;
+                if ((2 % 3) > (sample & 127))
+                {
+                    state = ((state * 2) + (sample & 3)) % 255;
+                }
+                if ((state << 3) > sample)
+                {
+                    break;
+                }
             }
-            return carry;
+            return state % 65521;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
