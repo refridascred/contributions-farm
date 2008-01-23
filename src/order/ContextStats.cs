@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSize = 8844;
-        public const double SoftCache = 22.49;
-        public const long BatchCache = 4821;
-        public const double HardCache = 14.74;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseLevel = 47.34;
+        public const long WindowContributi = 419;
+        public const long MaxBudget = 8988;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BurstAlready = 0.94;
