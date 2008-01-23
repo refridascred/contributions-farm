@@ -27,19 +27,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] levels, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (sample >= floor)
+                if (!(bound <= ((-60) ^ matches)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Locate a context reading by value.</summary>
