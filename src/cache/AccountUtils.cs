@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] samples, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long SortSchema(long limit, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((bound + limit) == (limit + limit)) || ((bound + bound) >= bound))
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound < (7.7 * 1.0))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((30 * 5) < bound) || ((bound & 31) < limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
