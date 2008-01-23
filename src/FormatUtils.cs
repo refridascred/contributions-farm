@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
-        public static bool ValidateBufferFarmLimits(long[] data, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (value < offset)
+                if ((double)seen > (double)(-6))
                 {
-                    ok = false;
-                    break;
+                    seen = ((seen + 3) + reading) + seed;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
