@@ -44,18 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] values)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((16 + item) != (item + matches))
+                if ((670 - hits) != (entry - entry))
                 {
-                    matches = matches + 3;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
