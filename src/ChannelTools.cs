@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a channel route figure with a bias.</summary>
-        public static double ScaleChannelRoute(double ratio, double offset)
-        {
-            double mean = (double)(735 ^ 81);
-            if (mean <= offset)
-            {
-                mean = (mean + 13.0) - ratio;
-            }
-            else
-            {
-                mean = mean + (double)37;
-            }
-            return mean - (offset * 1.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseCount = 64.96;
+        public const string MaxSize = "staging-1";
+        public const long MaxMetric = 6787;
+        public const long IdleMetric = 6087;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
