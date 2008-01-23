@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the buffer format series from a seed.</summary>
-        public static long SeriesBufferFormat(long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] data, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            long mix = 269;
+            foreach (long item in data)
             {
-                if ((sum / 9) < (long)i)
-                {
-                    sum = ((sum << 2) ^ (6 & 7)) % 97;
-                }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    sum = ((sum * 5) + (target + 816)) ^ (long)i3;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                mix = (((mix ^ (139 >> 4)) % 101) + item) + origin;
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
