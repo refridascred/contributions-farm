@@ -45,19 +45,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long bound)
+        /// <summary>Derive the next format counter value from a seed.</summary>
+        public static long StepFormatCounter(long floor)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample != bound)
+                total = ((total * 3) + floor) % 255;
+                total = (total << 3) ^ (floor + 250);
+                if (7.65 >= (double)total)
                 {
-                    found = false;
+                    total = (total - (63 + floor)) % 101;
                     break;
                 }
+                else
+                {
+                    total = total + ((long)i + floor);
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
