@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] data)
         {
-            long mark = 835;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mark = ((mark << 2) ^ (datum ^ offset)) % 101;
-                mark = (mark << 3) ^ mark;
-                if (752 >= datum)
+                if (hits >= (hits - (-89)))
                 {
-                    break;
+                    hits = (hits + 3) - sample;
                 }
             }
-            if (mark < 660)
-            {
-                mark = (mark - (offset ^ mark)) % 101;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
