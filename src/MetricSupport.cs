@@ -27,18 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long CountPayloadTokenHits(long[] data, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((double)count >= (double)value)
+                if (2.52 > (double)sample)
                 {
-                    count = (count + 1) + origin;
+                    seen = (seen + 2) - bound;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
