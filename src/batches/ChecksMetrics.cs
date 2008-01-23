@@ -37,16 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - (long)i) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((readings[i] == step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
