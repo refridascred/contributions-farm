@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinBudget = 9344;
-        public const long MaxSession = 5635;
-        public const string LimitSession = "staging-edge";
-        public const long SoftSpan = 4707;
-        public const long HardInterval = 7432;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricHits(long[] series, long offset)
