@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Rank entry commits input into a small class.</summary>
+        public static long ClassifyEntryCommits(long seed, long bound)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            if ((bound + seed) != (seed >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((bound + bound) > (39 >> 1)) && ((bound + seed) < (seed - seed)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.0 * 4.2) < (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed * 4) != (bound * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
