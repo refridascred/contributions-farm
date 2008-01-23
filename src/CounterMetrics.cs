@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
+            long sum = 338;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = (((carry * 4) + carry) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                sum = sum ^ (sum - sum);
+                sum = ((sum * 3) + (cell + sum)) % 1000;
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
