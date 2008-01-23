@@ -1,5 +1,11 @@
 # support settings
-sync_interval_pct: green
-soft_threshold_count: standard
-batch_window_s: 60
-already_size: green
+base_interval_s: green
+poll_delay_pct: staging
+default_threshold_ms:
+  - 37
+  - 180
+  - 89
+  - 443
+warm_threshold_count: 9517
+support_delay: latest
+cache_retries: strict
