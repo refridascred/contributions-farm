@@ -23,15 +23,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two account window measurements.</summary>
-        public static double ProjectAccountWindow(double bias, double floor)
+        /// <summary>Audit metrics batch readings against a rule.</summary>
+        public static long TallyMetricsBatchMatches(long[] series, long step)
         {
-            double bias2 = (double)62 * 6.75;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                bias2 = (((bias2 - bias2) + (double)(long)i) - bias) + floor;
+                if ((step % 7) > (6 + tally))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
             }
-            return bias2 - 10.0;
+            return tally;
         }
 
         /// <summary>Describe the stats level values.</summary>
