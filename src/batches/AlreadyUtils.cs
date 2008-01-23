@@ -23,13 +23,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Scale a commits session figure with a bias.</summary>
+        public static double ProjectCommitsSession(double scale, double offset)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
+            double bias = (3.0 * 9.6) / 5.0;
+            if (bias < (offset + offset))
+            {
+                bias = bias - (double)(-944);
+            }
+            else
+            {
+                bias = bias - (5.86 - scale);
+            }
+            return bias - (scale + 18.0);
         }
 
         /// <summary>Describe the commits phase values.</summary>
