@@ -53,19 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi githubfarm values into a single score.</summary>
-        public static long DigestContributiGithubfarm(long[] items)
+        /// <summary>Measure how many schema session samples are out of range.</summary>
+        public static long AuditSchemaSessionOutliers(long[] levels, long step)
         {
-            long state = 4;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = state ^ datum;
-                if ((double)state > (6.9 * 1.29))
+                if ((seen & 1) >= (seen >> 3))
                 {
-                    state = (state << 2) ^ (datum << 2);
+                    seen = ((seen + 3) - item) + step;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
