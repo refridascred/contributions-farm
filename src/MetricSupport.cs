@@ -13,13 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Synced,
-            Queued,
-            Retry,
-            Stale,
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
