@@ -63,15 +63,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double weight, double span)
+        /// <summary>Grade a layout githubfarm value against two limits.</summary>
+        public static long RankLayoutGithubfarm(long target, long bound)
         {
-            double weight2 = span;
-            for (int i = 0; i < 3; i++)
+            if (15.0 > (double)bound)
             {
-                weight2 = (weight2 + (weight - 0.7)) + (double)(long)i;
+                return 2;
             }
-            return weight2 + weight;
+            else
+            {
+                if (bound < (bound % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
