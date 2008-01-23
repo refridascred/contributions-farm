@@ -43,22 +43,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally - 7) != (sample - sample))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 1193;
+        public const string RetryWindow = "local-1";
+        public const string DefaultWindow = "primary";
+        public const double LimitSize = 84.63;
     }
 }
