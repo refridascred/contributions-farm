@@ -17,11 +17,11 @@ namespace Common.Utilities
         public const long RetryDepth = 7170;
         public const double BaseStats = 36.47;
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the metrics level values.</summary>
