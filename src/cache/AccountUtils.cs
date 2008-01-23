@@ -18,13 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long limit)
         {
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor + (anchor + anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next support route value.</summary>
