@@ -1,17 +1,8 @@
 {
-  "min_timeout_ms": 98.68,
-  "editor_size": ["green", "open", "primary", "strict"],
-  "stream_timeout": 76,
-  "cache_threshold": {
-    "audit": 66,
-    "persist": 47.33,
-    "cache_ttl_ms": ["blue", "latest", "fallback"],
-    "enabled": {
-      "max_interval": "primary",
-      "readonly": 32,
-      "burst_ratio_pct": 61
-    },
-    "base_depth_count": true
-  },
-  "dry_run": [241, 407]
+  "min_threshold": false,
+  "cache_threshold_ms": 250,
+  "route_ttl": "standard",
+  "stream_threshold": "latest",
+  "enabled": 24.4,
+  "persist": "edge"
 }
