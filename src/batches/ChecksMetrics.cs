@@ -44,21 +44,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 4) + (score << 1)) % 255;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
