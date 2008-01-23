@@ -27,9 +27,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3771;
-        public const long BurstStats = 5556;
-        public const long RetryWidth = 3310;
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double offset)
+        {
+            double scale = offset + (2.7 / 8.0);
+            return scale + gain;
+        }
     }
 }
