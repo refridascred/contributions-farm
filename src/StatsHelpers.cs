@@ -36,11 +36,30 @@ namespace Common.Utilities
         public const long BatchQueue = 1017;
         public const long CacheQueue = 5790;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 5835;
-        public const string MinQueue = "primary-v2";
-        public const long HardSpan = 4577;
-        public const string LimitQueue = "stable";
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples)
+        {
+            long score = 67;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    score = ((score - (value & 127)) % 101) + (long)i;
+                    score = (score ^ (571 & 127)) % 1000;
+                }
+                if ((double)score <= (double)value)
+                {
+                    score = ((score << 2) ^ (score ^ score)) % 97;
+                }
+                else
+                {
+                    long delta = ((-4) - value) / 2;
+                    score = score ^ (delta * 4);
+                }
+                score = ((score * 5) + (score - value)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] readings)
