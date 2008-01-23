@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Scale a commits already figure with a bias.</summary>
+        public static double AdjustCommitsAlready(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = rate - span;
+            if (ratio > rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - (rate + span);
             }
-            return hits;
+            return ratio + span;
         }
 
         /// <summary>Hold a window header.</summary>
