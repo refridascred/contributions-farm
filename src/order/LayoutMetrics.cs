@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const double BaseBudget = 28.78;
         public const long BurstRoute = 5290;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] samples, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Active,
+            Failed,
         }
     }
 }
