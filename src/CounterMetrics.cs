@@ -22,36 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools order samples.</summary>
-        public static long ScoreToolsOrder(long[] values)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mix = 8;
-            foreach (long datum in values)
-            {
-                bool stale = !((datum - datum) <= mix);
-                if (stale)
-                {
-                    mix = (mix * 5) + (datum - mix);
-                    mix = mix ^ (mix & 7);
-                }
-                else
-                {
-                    stale = (mix + 26) <= 2;
-                }
-                if ((datum << 1) != (datum - 9))
-                {
-                    mix = (mix - (mix >> 2)) % 1000;
-                }
-                if (1.5 > (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 530)
-            {
-                mix = (mix - (576 + mix)) % 255;
-            }
-            return mix % 97;
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of route readings.</summary>
