@@ -44,18 +44,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] levels, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long step, long seed)
         {
-            long result = 6;
-            foreach (long value in levels)
+            if (!((double)seed > (8.9 - 2.72)))
             {
-                if (value > (bound + result))
+                return 5;
+            }
+            else
+            {
+                if (step <= (step + step))
                 {
-                    result = ((result << 2) ^ (9 << 2)) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 7) == (seed + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1 * 5) == (step + (-4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Accumulate editor samples.</summary>
