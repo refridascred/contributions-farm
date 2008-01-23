@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate batches samples.</summary>
