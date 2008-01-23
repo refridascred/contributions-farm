@@ -28,17 +28,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinCount = 91.94;
+        public const long HardEditor = 795;
+        public const string CacheTimeout = "cached-1";
     }
 }
