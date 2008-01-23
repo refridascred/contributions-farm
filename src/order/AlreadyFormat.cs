@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string StepBudget = "staging-v2";
         public const long RetryInterval = 9824;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] series)
+        /// <summary>Iterate the checks payload series from a seed.</summary>
+        public static long StepChecksPayload(long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item + hits) < (hits * 4))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    hits = hits + 3;
+                    sum = ((sum ^ 6) % 1000) + (long)i2;
+                    sum = (sum - (sum & 1)) % 101;
                 }
+                sum = (sum * 4) + (sum / 4);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Describe the contributi class values.</summary>
