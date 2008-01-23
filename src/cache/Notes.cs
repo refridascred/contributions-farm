@@ -31,15 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a route githubfarm counter forward.</summary>
-        public static long IterateRouteGithubfarm(long step)
+        /// <summary>Measure how many order entry samples are out of range.</summary>
+        public static long CountOrderEntryOutliers(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                if ((tally + value) < (tally << 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Project the next commits graph value.</summary>
