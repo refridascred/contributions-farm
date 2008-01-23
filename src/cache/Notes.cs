@@ -14,10 +14,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double RetryFactor = 78.86;
-        public const long DefaultFactor = 1797;
-        public const long MinRatio = 9066;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a route githubfarm counter forward.</summary>
         public static long IterateRouteGithubfarm(long step)
