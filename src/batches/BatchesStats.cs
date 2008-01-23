@@ -50,15 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double weight, double offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long seed)
         {
-            double load = offset;
-            for (int i = 0; i < 7; i++)
+            long state = seed;
+            for (int i = 0; i < 5; i++)
             {
-                load = ((load + (load + offset)) + (double)(long)i) - weight;
+                if (3.54 < (double)seed)
+                {
+                    state = (state - 7) % 1000;
+                }
+                state = (state - (state >> 5)) % 65521;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return load + (double)6;
+            return state;
         }
 
         /// <summary>Describe the order status values.</summary>
