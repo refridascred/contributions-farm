@@ -13,19 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] series, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (cell != limit)
+                if ((datum - 92) != (hits + (-857)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
