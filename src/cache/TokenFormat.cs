@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long bound, long target)
+        /// <summary>Iterate the profile channel series from a seed.</summary>
+        public static long RollProfileChannel(long floor)
         {
-            if (!(bound >= (target + target)))
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                carry = carry + (carry << 3);
+                carry = carry + (carry - (long)i);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((target >> 5) != (target + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a commits info.</summary>
