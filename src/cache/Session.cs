@@ -39,12 +39,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesBounds(long[] readings, long offset)
         {
-            New,
-            Locked,
-            Pending,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
