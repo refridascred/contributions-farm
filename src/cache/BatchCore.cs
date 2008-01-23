@@ -13,21 +13,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up contributi schema samples.</summary>
-        public static long PairContributiSchemaCount(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = 4.3;
+            if (bias <= (4.3 / 7.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + weight) + offset;
             }
-            return tally;
+            else
+            {
+                bias = bias + (double)84;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (weight + weight)) + (double)(long)i;
+            }
+            return bias - (double)89;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
