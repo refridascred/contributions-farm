@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long target, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = target ^ offset;
+            if ((offset - offset2) > (offset2 + offset2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((80 + offset2) < 9))
                 {
-                    if ((series[i] + series[j]) > 19)
+                    return 8;
+                }
+                else
+                {
+                    if ((offset2 + offset2) > offset)
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
