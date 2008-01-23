@@ -51,19 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order metrics readings against a bound.</summary>
-        public static bool GuardOrderMetricsLimits(long[] series, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a metric layout figure with a bias.</summary>
