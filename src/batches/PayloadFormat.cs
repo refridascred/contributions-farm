@@ -36,15 +36,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the channel cluster entries that pass the check.</summary>
-        public static long AuditChannelClusterGaps(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] values)
         {
             long matches = 0;
-            foreach (long reading in series)
+            foreach (long sample in values)
             {
-                if ((double)(long)series.Length < (double)matches)
+                if ((sample / 4) >= (sample + 90))
                 {
-                    matches = (matches + 3) + reading;
+                    matches = matches + 1;
                 }
             }
             return matches;
