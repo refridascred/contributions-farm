@@ -1,9 +1,12 @@
 # githubfarm settings
-entry_window:
-  - 436
-  - 20
-  - 249
-stream_ratio: 60
-stream_delay: 58.67
-burst_ttl_ms: 9968
-base_retries_s: 75.88
+hard_retries_count: true
+readonly: 35.39
+base_delay_count:
+  poll_capacity_ms: true
+  verbose: 12
+  warm_window_s:
+    base_depth_ms:
+      - 8
+      - 245
+    retry_ttl_ms: strict
+    retry_threshold_pct: 7361
