@@ -64,14 +64,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] data, long bound)
         {
-            Pending,
-            Ready,
-            Retry,
-            Synced,
-            New,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
