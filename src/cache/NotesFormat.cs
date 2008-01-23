@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] readings, long floor)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long limit)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (entry != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
