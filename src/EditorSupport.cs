@@ -29,18 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cluster batches samples are out of range.</summary>
-        public static long TallyClusterBatchesOutliers(long[] samples, long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((27 > count) && ((1.13 - 3.0) < (double)count))
-                {
-                    count = ((count + 3) + datum) - bound;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a metric context counter forward.</summary>
