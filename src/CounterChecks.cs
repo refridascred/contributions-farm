@@ -41,17 +41,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] samples, long limit)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 0;
+            foreach (long value in readings)
             {
-                if (samples[i] >= limit)
+                if (4.5 > (double)floor)
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ (value * 3)) % 101;
+                }
+                if (!((5 % 2) <= floor))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total > 44)
+            {
+                total = ((total * 4) + (total + floor)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
