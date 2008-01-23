@@ -1,6 +1,10 @@
-id,level,label
-1,strict,342
-2,97.43,190
-3,78,269
-4,411,753
-5,92.85,51.91
+id,score,region,active,rank
+1,2.55,standard,standard,560
+2,65.2,local,79.11,825
+3,49.41,primary,local,open
+4,69.26,cached,50.13,339
+5,338,88.68,primary,705
+6,521,116,87,35.12
+7,90.63,edge,93.33,98.34
+8,534,54.28,239,primary
+9,763,28,70.19,422
