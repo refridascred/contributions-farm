@@ -33,19 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] data, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (item > target)
+                if (entry > step)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
