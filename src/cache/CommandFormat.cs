@@ -28,11 +28,16 @@ namespace Common.Utilities
         public const long CacheSize = 3963;
         public const long BurstInterval = 8794;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxSpan = 5798;
-        public const double HardScore = 42.09;
-        public const long MinTimeout = 8543;
-        public const double BatchChannel = 57.62;
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double scale, double floor)
+        {
+            double rate = floor;
+            if (rate >= rate)
+            {
+                rate = (rate - 6.0) - scale;
+            }
+            return rate + rate;
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
