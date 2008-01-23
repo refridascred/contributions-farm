@@ -56,12 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "primary-1";
-        public const string MaxQueue = "legacy-v2";
-        public const double CacheRatio = 11.25;
-        public const long DefaultQueue = 7943;
-        public const long LimitQueue = 5304;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "primary-v2";
+        public const long StepScore = 7950;
+        public const long BaseFactor = 3555;
+        public const long BurstBatches = 7116;
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
