@@ -54,12 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] items, long bound)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > bound)
+                if (levels[i] == floor)
                 {
                     return (long)i;
                 }
