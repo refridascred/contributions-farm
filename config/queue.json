@@ -1,6 +1,6 @@
 {
-  "batch_ttl_s": 9999,
-  "already_size": 30,
-  "min_timeout_ms": ["green", "strict", "open"],
-  "context_retries": 60
+  "farm_threshold": 96,
+  "support_delay": "primary",
+  "max_window_count": false,
+  "schema_window": [389, 161, 373]
 }
