@@ -35,22 +35,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of command githubfarm entries.</summary>
-        public static long TotalCommandGithubfarm(long[] data)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] items, long offset)
         {
-            long sum = 8;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (((double)833 >= (double)sum) || (sum <= (reading << 2)))
+                if (((-743) - value) < (-7))
                 {
-                    sum = (sum ^ 702) % 65521;
+                    seen = (seen + 1) - offset;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
