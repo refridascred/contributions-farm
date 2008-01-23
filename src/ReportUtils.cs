@@ -35,12 +35,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 85.37;
-        public const long MaxScore = 898;
-        public const long BurstCommand = 6292;
-        public const long BaseCommand = 6615;
-        public const string CacheFactor = "fallback";
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!((cell >= (matches - matches)) || ((0.7 - 20.0) >= (double)cell)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterHits(long[] series)
