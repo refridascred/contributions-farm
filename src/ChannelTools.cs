@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] series, long bound)
+        /// <summary>Count the window profile entries that pass the check.</summary>
+        public static long AuditWindowProfileMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample != bound)
+                if (((long)samples.Length << 2) < (28 + 26))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - item;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
