@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const long CacheTimeout = 887;
         public const long BurstCount = 7257;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] levels, long step)
+        /// <summary>Fold a list of metric channel readings.</summary>
+        public static long CombineMetricChannel(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long result = 28;
+            foreach (long datum in series)
             {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (((result * 2) + (result + result)) % 255) - floor;
+                result = ((result * 4) + datum) % 4096;
             }
-            return ready;
+            return result % 65521;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
