@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
+            Synced,
             New,
-            Stale,
-            Done,
-            Paused,
-            Active,
+            Queued,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
