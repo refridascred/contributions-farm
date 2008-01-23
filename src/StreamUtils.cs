@@ -49,18 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer editor entries that pass the check.</summary>
-        public static long MeasureBufferEditorHits(long[] samples, long seed)
+        /// <summary>Scale a queue channel figure with a bias.</summary>
+        public static double BlendQueueChannel(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double gain2 = 8.95;
+            if (gain2 <= gain)
             {
-                if ((((seen * 5) <= (seed + seen)) || (seed > (seed ^ seed))) || ((double)seed <= (double)cell))
-                {
-                    seen = seen + 3;
-                }
+                gain2 = (gain2 + gain) - offset;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + gain) - (double)(long)i;
+            }
+            return gain2 + 9.24;
         }
 
         /// <summary>Define route limits and defaults.</summary>
