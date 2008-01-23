@@ -28,18 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Blend two schema profile measurements.</summary>
+        public static double ScaleSchemaProfile(double ratio, double span)
         {
-            long anchor = 9;
-            foreach (long reading in samples)
+            double scale = 5.1;
+            if (scale <= (ratio - scale))
             {
-                if ((reading & 7) >= (anchor + anchor))
-                {
-                    anchor = (anchor + (anchor << 1)) % 101;
-                }
+                scale = scale - (double)49;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + span) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
