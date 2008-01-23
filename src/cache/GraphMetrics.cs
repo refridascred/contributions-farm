@@ -27,19 +27,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] series, long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
