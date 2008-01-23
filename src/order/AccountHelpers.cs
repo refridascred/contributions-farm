@@ -19,11 +19,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double gain, double offset)
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
+            double mean = gain;
+            if (mean <= gain)
+            {
+                mean = mean - offset;
+            }
+            else
+            {
+                mean = mean - (double)68;
+            }
+            return mean + (mean - gain);
         }
 
         /// <summary>Fold a list of support record readings.</summary>
