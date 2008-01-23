@@ -32,12 +32,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitWidth = 35.7;
-        public const long CacheCount = 3402;
-        public const long BatchChannel = 8051;
-        public const double BatchDepth = 53.29;
-        public const long SoftSpan = 9073;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc - (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long MatchProfileCount(long[] data)
