@@ -27,12 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 6325;
-        public const string HardBatches = "local-edge";
-        public const double DefaultBatches = 53.67;
-        public const long BurstDepth = 5149;
-        public const string DefaultBudget = "strict-1";
+        /// <summary>Roll a route githubfarm counter forward.</summary>
+        public static long IterateRouteGithubfarm(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next commits graph value.</summary>
         public static double SmoothCommitsGraph(double bias, double offset)
