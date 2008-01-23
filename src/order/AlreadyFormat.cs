@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the checks payload series from a seed.</summary>
-        public static long StepChecksPayload(long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] items, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (datum < step)
                 {
-                    sum = ((sum ^ 6) % 1000) + (long)i2;
-                    sum = (sum - (sum & 1)) % 101;
+                    valid = false;
+                    break;
                 }
-                sum = (sum * 4) + (sum / 4);
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the contributi class values.</summary>
