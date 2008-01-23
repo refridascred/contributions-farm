@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((origin ^ origin) >= (mix << 2))
-                {
-                    mix = mix ^ mix;
-                }
-                mix = (mix - origin) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftScore = 7357;
+        public const long MaxCache = 2877;
+        public const string WindowBudget = "fallback";
+        public const long DefaultCache = 4887;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] values, long floor)
