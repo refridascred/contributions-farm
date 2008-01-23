@@ -52,22 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (7.7 > (double)datum)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two editor measurements.</summary>
