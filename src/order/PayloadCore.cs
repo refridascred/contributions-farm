@@ -49,12 +49,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] data, long bound)
         {
-            Dropped,
-            Idle,
-            New,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
