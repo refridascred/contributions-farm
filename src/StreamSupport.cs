@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            Active,
-            Pending,
-            New,
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((((long)i % 64) > (offset << 3)) && ((offset / 9) >= offset))
+                {
+                    mix = mix - (offset ^ offset);
+                    mix = (mix * 5) + offset;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
