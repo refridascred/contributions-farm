@@ -64,12 +64,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
