@@ -1,7 +1,6 @@
 {
-  "record_limit": [194, 44],
-  "enabled": true,
-  "default_window": false,
-  "soft_limit_pct": 38,
-  "buffer_ratio": 60
+  "soft_ratio": ["fallback", "local", "standard", "stable"],
+  "flush_ratio": false,
+  "queue_size": "cached",
+  "farm_ratio": 5134
 }
