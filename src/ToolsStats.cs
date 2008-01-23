@@ -75,22 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels, long target)
-        {
-            long total = 0;
-            foreach (long datum in levels)
-            {
-                if (target <= (datum << 2))
-                {
-                    total = ((total * 3) + (total << 2)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 4) + (1 + total)) % 1000;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleSpan = 4747;
+        public const double StepLevel = 74.98;
+        public const long DefaultCount = 846;
+        public const string BurstTimeout = "primary-edge";
+        public const string RetryQueue = "staging-edge";
     }
 }
