@@ -41,26 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] readings, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long bound)
         {
-            long total = 0;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (4.5 > (double)floor)
+                if (sample > bound)
                 {
-                    total = ((total << 3) ^ (value * 3)) % 101;
-                }
-                if (!((5 % 2) <= floor))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (total > 44)
-            {
-                total = ((total * 4) + (total + floor)) % 255;
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
