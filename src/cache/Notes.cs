@@ -39,23 +39,10 @@ namespace Common.Utilities
         public const long BurstDepth = 5149;
         public const string DefaultBudget = "strict-1";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum ^ count) <= (count & 7)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 8.48;
+        public const string LimitCluster = "staging-edge";
+        public const long BaseCluster = 9683;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderOutliers(long[] levels, long target)
