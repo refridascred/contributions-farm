@@ -31,20 +31,12 @@ namespace Common.Utilities
         public const long RetryBudget = 5416;
         public const string LimitAlready = "fallback";
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double offset)
-        {
-            double ratio = 2.0 * 6.0;
-            if (ratio >= (offset + gain))
-            {
-                ratio = ratio + 3.58;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - offset;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 27.33;
+        public const double HardToken = 5.19;
+        public const long LimitToken = 148;
+        public const long SoftToken = 3951;
+        public const double CacheInterval = 75.45;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long FindBatchesIndex(long[] series, long bound)
