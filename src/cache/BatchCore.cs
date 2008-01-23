@@ -43,18 +43,21 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            long mix = 766;
-            foreach (long reading in levels)
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (((mix >> 5) <= (mix / 6)) && (((long)levels.Length << 1) <= (mix << 3)))
+                if (!((double)result <= (19.0 + 4.8)))
                 {
-                    mix = ((mix - (mix >> 5)) % 255) + reading;
+                    result = (result - (result ^ result)) % 97;
+                    break;
                 }
+                result = (result ^ ((long)i & 3)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
