@@ -53,10 +53,10 @@ namespace Common.Utilities
             return gain - (gain / 4.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxBudget = 8410;
-        public const double DefaultCommand = 40.37;
-        public const long BatchRatio = 9704;
-        public const long LimitInterval = 2445;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxFactor = 8267;
+        public const string RetryDepth = "staging-edge";
+        public const long CacheInterval = 7300;
+        public const string WindowRecord = "staging-v2";
     }
 }
