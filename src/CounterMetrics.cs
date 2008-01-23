@@ -33,21 +33,10 @@ namespace Common.Utilities
         public const string IdleFactor = "open-v2";
         public const double BatchEntry = 51.93;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleDepth = 3163;
+        public const long IdleQueue = 6874;
+        public const long StepBudget = 564;
+        public const string BaseSize = "alpha-1";
     }
 }
