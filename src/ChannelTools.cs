@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "stable-v2";
+        public const string BurstBudget = "open-edge";
+        public const string HardDepth = "staging-edge";
+        public const long WindowSpan = 9872;
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
