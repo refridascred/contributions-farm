@@ -23,10 +23,14 @@ namespace Common.Utilities
         public const long StepWidth = 4848;
         public const long StepRatio = 4032;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxTimeout = 9252;
-        public const long CacheDepth = 6788;
-        public const long BaseContributi = 9407;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            New,
+            Ready,
+            Draft,
+            Active,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepQueue = 34.73;
