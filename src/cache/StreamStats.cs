@@ -17,12 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Look up the position of a layout tools sample.</summary>
+        public static long LookupLayoutToolsIndex(long[] data, long seed)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first checks tools entry that matches the target.</summary>
