@@ -44,17 +44,12 @@ namespace Common.Utilities
         public const long IdleSession = 359;
         public const long StepFactor = 4494;
 
-        /// <summary>Locate a farm stats reading by value.</summary>
-        public static long LocateFarmStatsIndex(long[] levels, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Iterate the counter format series from a seed.</summary>
