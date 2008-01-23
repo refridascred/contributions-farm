@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 14.73;
-        public const long RetryQueue = 2689;
-        public const long StepQueue = 4408;
+        /// <summary>Measure how many order account samples are out of range.</summary>
+        public static long TallyOrderAccountGaps(long[] samples, long seed)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((long)samples.Length / 6) < matches)
+                {
+                    matches = ((matches + 3) + value) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
