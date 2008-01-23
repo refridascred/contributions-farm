@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings, long bound)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] series, long seed)
         {
-            long score = 887;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((9.1 * 20.0) == (double)score)
+                if (datum > seed)
                 {
-                    score = ((score + (score << 2)) % 255) - value;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 424)
-            {
-                score = score ^ (53 ^ bound);
-            }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
