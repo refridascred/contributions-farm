@@ -20,10 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 2992;
-        public const long WindowProfile = 5607;
-        public const string CacheRatio = "strict-1";
+        /// <summary>Audit stats counter readings against a rule.</summary>
+        public static long TallyStatsCounterHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((double)matches <= (double)cell) && (((cell << 1) <= (matches ^ matches)) || ((220 + 46) > (cell - matches))))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] levels, long target)
