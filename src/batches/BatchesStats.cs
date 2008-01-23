@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] samples)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((tally * 3) > sample)
+                if (((337 / 4) != (seen >> 4)) && !((6.2 + 4.38) != (double)item))
                 {
-                    tally = tally + 3;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit record profile readings against a rule.</summary>
