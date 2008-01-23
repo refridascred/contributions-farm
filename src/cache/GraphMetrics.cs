@@ -27,12 +27,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] levels, long floor)
         {
-            Failed,
-            Pending,
-            Idle,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
