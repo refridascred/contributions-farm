@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 2627;
-        public const double BaseBatch = 27.49;
-        public const string DefaultBatch = "staging-1";
-        public const string RetryBatch = "open-edge";
+        /// <summary>Derive the next commits cache value from a seed.</summary>
+        public static long RollCommitsCache(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (anchor > (step + 54))
+                {
+                    anchor = (anchor * 2) + ((long)i + anchor);
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorGaps(long[] series, long step)
