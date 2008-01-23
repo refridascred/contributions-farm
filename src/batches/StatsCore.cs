@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long bound = offset + target;
-            if ((offset * 4) >= target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)bound == (1.8 * 4.6)) || ((target - offset) < 25))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.3 * 17.0) >= 3.9)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Describe the context phase values.</summary>
