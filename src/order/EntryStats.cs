@@ -20,17 +20,18 @@ namespace Common.Utilities
             return scale2 + (double)18;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] readings, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) != 0))
+                if ((18.0 * 9.5) > (double)sample)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
