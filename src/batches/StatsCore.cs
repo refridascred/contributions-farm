@@ -31,15 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Retry,
-            Queued,
-            Failed,
-            New,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 899;
+        public const long HardBudget = 4266;
+        public const long BaseCommand = 4722;
+        public const double MinCommand = 31.72;
+        public const string CacheScore = "cached";
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
