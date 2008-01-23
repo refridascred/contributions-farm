@@ -52,13 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
