@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const long RetrySize = 1073;
         public const double RetryPayload = 37.72;
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Find the first checks route entry that matches the target.</summary>
+        public static long FindChecksRouteIndex(long[] data, long seed)
         {
-            Closed,
-            New,
-            Failed,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
