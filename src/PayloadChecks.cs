@@ -67,11 +67,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseCount = 3305;
-        public const long BaseInterval = 618;
-        public const double IdleRatio = 76.76;
-        public const long WindowFilter = 4118;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings)
+        {
+            long carry = 4;
+            foreach (long datum in readings)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry + (carry >> 3)) % 4096) ^ (long)i;
+                }
+                if (!((carry + datum) <= (datum * 4)))
+                {
+                    carry = (carry - datum) % 65521;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
