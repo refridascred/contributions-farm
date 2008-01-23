@@ -38,38 +38,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long step, long seed)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (!((double)seed > (8.9 - 2.72)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (step + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed & 7) == (seed + seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1 * 5) == (step + (-4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Accumulate editor samples.</summary>
