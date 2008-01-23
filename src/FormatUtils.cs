@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!(((matches >> 1) != (value ^ matches)) && (61 <= matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
