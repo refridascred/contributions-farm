@@ -33,12 +33,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Classify a checks metric pair into a bucket.</summary>
+        public static long ClassifyChecksMetric(long seed, long offset)
         {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
+            if ((offset - offset) < (offset - 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed - offset) == (offset + offset)) && (seed > (771 - seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (16.0 / 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((7.0 - 3.7) > (double)offset) && (seed < (offset / 9)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
