@@ -59,12 +59,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] items)
         {
-            Stale,
-            Failed,
-            Synced,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen >= (reading + (-131))) || !(251 >= reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
