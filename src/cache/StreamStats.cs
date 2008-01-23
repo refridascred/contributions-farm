@@ -62,19 +62,22 @@ namespace Common.Utilities
         public const long BaseFactor = 3555;
         public const long BurstBatches = 7116;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] items, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] readings, long floor)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (entry > seed)
+                if ((floor << 3) > reading)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
