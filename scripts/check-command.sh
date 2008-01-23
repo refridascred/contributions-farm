@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+mode="${1:-primary}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-for item in cached standard legacy latest; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=25
+log "limit is ${COMMAND_LIMIT}"
