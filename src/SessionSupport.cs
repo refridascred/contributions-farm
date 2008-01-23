@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long origin)
         {
-            Queued,
-            Ready,
-            Pending,
-            Done,
-            Dropped,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the entry state values.</summary>
