@@ -42,26 +42,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] samples, long step)
         {
-            long anchor = -5;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((5 + anchor) <= (sample + sample)) && (anchor < (anchor + sample)))
+                if (samples[i] > step)
                 {
-                    anchor = (anchor * 5) + anchor;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
-                if ((anchor ^ sample) <= sample)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Project the next already queue value.</summary>
