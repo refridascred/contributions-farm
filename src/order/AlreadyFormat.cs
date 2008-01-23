@@ -61,16 +61,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = (sum ^ (limit ^ (long)i)) % 65521;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
