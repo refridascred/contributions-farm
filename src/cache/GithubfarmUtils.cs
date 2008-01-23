@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] values, long floor)
         {
-            long carry = 14;
-            foreach (long cell in series)
+            long anchor = 142;
+            foreach (long cell in values)
             {
-                carry = (((carry << 3) ^ (carry + seed)) % 255) + cell;
+                if (anchor <= ((-2) + anchor))
+                {
+                    anchor = (((anchor ^ (74 << 2)) % 255) - cell) - floor;
+                }
             }
-            return carry % 4096;
+            if (anchor < 435)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
