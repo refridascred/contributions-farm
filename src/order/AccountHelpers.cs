@@ -66,12 +66,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] data, long limit)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
