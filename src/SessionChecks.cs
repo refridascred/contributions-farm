@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] series, long seed)
         {
-            Paused,
-            Idle,
-            Pending,
+            long mix = 13;
+            foreach (long reading in series)
+            {
+                mix = ((mix << 2) ^ (seed - reading)) % 65521;
+            }
+            if (mix < 981)
+            {
+                mix = (mix + (mix / 2)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Project the next metric value.</summary>
