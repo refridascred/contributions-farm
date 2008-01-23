@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] samples, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((8.0 / 6.0) == (double)(long)samples.Length)
+                if ((double)cell <= (4.6 / 7.0))
                 {
-                    tally = ((tally + 1) + entry) + origin;
+                    matches = (matches + 1) + seed;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the counter phase values.</summary>
