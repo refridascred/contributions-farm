@@ -36,9 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 37.8;
-        public const long LimitSupport = 8152;
-        public const long LimitWidth = 1158;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleCount = 3394;
+        public const long CacheScore = 5353;
+        public const long BurstFactor = 9256;
+        public const long IdleContributi = 939;
+        public const string DefaultContributi = "legacy";
     }
 }
