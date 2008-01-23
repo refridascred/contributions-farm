@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsLimits(long[] series, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (reading >= step)
+                if (tally < (reading - tally))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a route record.</summary>
