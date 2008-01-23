@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] readings, long floor)
         {
-            if ((floor << 1) > seed)
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed / 2) < (floor - seed))
+                if (item <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > 940)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
