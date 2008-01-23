@@ -1,21 +1,8 @@
 # githubfarm settings
-flush_interval: false
-idle_retries:
-  default_timeout_ms: 8108
-  base_depth_count: 44.75
-  max_threshold: 6.71
-  sync_timeout_count: 82
-  checks_ttl: 93.62
-  sync_size_ms:
-    - 292
-    - 469
-hard_ttl_count:
-  - 40
-  - 68
-  - 453
-  - 83
-farm_ratio:
-  warm_interval_ms: open
-  batch_threshold_count: false
-  tools_limit: 30
-  checks_depth: 8
+batch_timeout:
+  - local
+  - standard
+  - fallback
+  - eu-west
+cache_retries: fallback
+max_delay_s: blue
