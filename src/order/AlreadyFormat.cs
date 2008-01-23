@@ -24,15 +24,36 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of counter report entries.</summary>
-        public static long FoldCounterReport(long[] levels)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long origin)
         {
-            long total = 68;
-            foreach (long datum in levels)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                total = total ^ datum;
+                if (((long)i % 10) >= ((long)i + (long)i))
+                {
+                    carry = carry ^ (carry ^ 804);
+                    carry = (carry + origin) % 1000;
+                }
+                else
+                {
+                    carry = (carry - (carry >> 3)) % 97;
+                }
+                long span = (carry >> 4) + carry;
+                if ((double)carry != (9.0 * 9.81))
+                {
+                    long tally = (60 ^ carry) * 5;
+                    span = span - (carry + tally);
+                    break;
+                }
+                else
+                {
+                    long diff = span;
+                    carry = (carry - diff) % 4096;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return total % 65521;
+            return carry;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
