@@ -51,18 +51,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long limit)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)datum >= (10.0 - 15.0)) || ((tally - tally) != (tally << 2)))
-                {
-                    tally = tally + 1;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
     }
 }
