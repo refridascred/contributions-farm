@@ -1,6 +1,17 @@
 # githubfarm settings
-audit: 41.44
-token_depth: standard
-record_size: blue
-tools_ttl: 24
-cache_depth_pct: staging
+max_size_pct: 18
+compress:
+  burst_timeout: false
+  stats_delay:
+    - 225
+    - 117
+  retry_depth: 54
+  persist: true
+  cache_delay:
+    metric_interval: green
+    support_ttl: fallback
+    metric_depth: 500
+    warm_window_pct: fallback
+  strict: open
+dry_run: 60
+flush_threshold_ms: 40
