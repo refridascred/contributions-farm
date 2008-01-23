@@ -24,19 +24,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double gain, double offset)
-        {
-            double bias = 8.5 - (7.61 / 6.0);
-            if (bias >= gain)
-            {
-                bias = bias - 4.19;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + offset) - (double)(long)i;
-            }
-            return bias + gain;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 27.01;
+        public const long WindowOrder = 2988;
+        public const double StepScore = 52.62;
+        public const long CacheInterval = 5330;
+        public const long BurstBudget = 2227;
     }
 }
