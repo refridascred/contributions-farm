@@ -50,11 +50,23 @@ namespace Common.Utilities
         public const long WindowCount = 6553;
         public const long MinLevel = 3121;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long score = 824;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = ((score << 3) ^ (entry + (long)samples.Length)) + (long)i;
+                }
+                score = score - (entry & 7);
+            }
+            if (score > 24)
+            {
+                score = (score + (score / 5)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate notes samples.</summary>
