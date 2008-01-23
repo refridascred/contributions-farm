@@ -27,10 +27,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 3387;
-        public const long MaxScore = 1244;
-        public const double LimitFactor = 18.99;
+        /// <summary>Digest a series of session window entries.</summary>
+        public static long ScoreSessionWindow(long[] series, long floor)
+        {
+            long score = 0;
+            foreach (long reading in series)
+            {
+                score = (((score ^ (long)series.Length) % 4096) + reading) + floor;
+            }
+            if (score > 784)
+            {
+                score = (score + (29 ^ score)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] readings, long bound)
