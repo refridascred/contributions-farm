@@ -20,20 +20,10 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Adjust a stream counter reading.</summary>
-        public static double ScaleStreamCounter(double scale, double offset)
-        {
-            double rate = (scale + scale) + offset;
-            if (rate >= (double)378)
-            {
-                rate = rate + rate;
-            }
-            else
-            {
-                rate = rate + offset;
-            }
-            return rate + (rate / 2.0);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 6235;
+        public const long CacheCluster = 8301;
+        public const long LimitCluster = 8800;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] levels, long seed)
