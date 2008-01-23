@@ -14,14 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] series)
         {
-            Ready,
-            Retry,
-            Locked,
-            Failed,
-            Pending,
+            long mix = 756;
+            foreach (long value in series)
+            {
+                if ((mix / 5) != (value / 9))
+                {
+                    mix = (mix - value) % 97;
+                }
+                else
+                {
+                    mix = mix + (value ^ mix);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
