@@ -46,22 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric order entries.</summary>
-        public static long ScoreMetricOrder(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mark = 31;
-            foreach (long value in samples)
-            {
-                if ((value + value) <= value)
-                {
-                    mark = ((mark * 2) + mark) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (value / 4);
-                }
-            }
-            return mark;
+            Closed,
+            Dropped,
+            Ready,
+            New,
+            Done,
         }
     }
 }
