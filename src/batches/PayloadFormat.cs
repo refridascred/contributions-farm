@@ -60,12 +60,31 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Grade a order tools value against two limits.</summary>
+        public static long BucketOrderTools(long bound, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            if (!(bound < (origin << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin >> 3) >= 1)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1.49 <= (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
