@@ -28,24 +28,14 @@ namespace Common.Utilities
         public const string IdleSize = "strict-1";
         public const double RetryChannel = 34.54;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long bound, long limit)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            if ((limit - 3) >= (limit + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit <= (9.4 - 9.57))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Retry,
+            Dropped,
+            Closed,
+            Paused,
         }
     }
 }
