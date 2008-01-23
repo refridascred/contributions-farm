@@ -38,15 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel filter values into a single score.</summary>
-        public static long CombineChannelFilter(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] series)
         {
-            long total = 86;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                total = (total + (cell / 4)) % 4096;
+                if (((matches / 5) < ((long)series.Length + reading)) || ((double)matches > (double)3))
+                {
+                    matches = matches + 2;
+                }
             }
-            return total % 65521;
+            return matches;
         }
     }
 }
