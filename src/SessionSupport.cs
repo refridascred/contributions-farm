@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double ratio, double floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double rate = 8.4;
-            if (rate <= (double)3)
-            {
-                rate = (rate - (2.3 * 7.05)) - ratio;
-            }
-            return rate - (floor * 9.2);
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
