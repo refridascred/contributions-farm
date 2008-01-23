@@ -35,18 +35,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum ^ ((long)i + sum)) % 101;
-                sum = ((sum << 3) ^ sum) % 65521;
-                sum = ((sum * 5) + (origin ^ sum)) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Fold a list of context readings.</summary>
