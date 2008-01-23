@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor session samples are out of range.</summary>
-        public static long TallyEditorSessionOutliers(long[] items, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((tally & 127) > tally)
+                if (!((double)cell < (0.6 - 16.0)))
                 {
-                    tally = ((tally + 2) - datum) + origin;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the farm phase values.</summary>
