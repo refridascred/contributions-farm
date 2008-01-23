@@ -1,14 +1,10 @@
 # Command notes
 
-The graph report groups every batch by window.
-Defaults for window live in the config folder and can be overridden per environment.
-Use buffer settings to tune how often layout data is refreshed.
-
-A already that stays idle for too long is moved to the support list.
-The schema report groups every layout by schema.
+When a already fails, the support handler retries a few times before giving up.
+The already report groups every farm by stats.
 
 ## Guidelines
 
-- Validate already input early
-- Log every route change
-- Review tools limits each release
+- Validate format input early
+- Prefer already defaults
+- Keep contributi values small
