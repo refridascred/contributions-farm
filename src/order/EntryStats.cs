@@ -43,27 +43,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine batch cluster values into a single score.</summary>
-        public static long CombineBatchCluster(long[] samples, long floor)
-        {
-            long anchor = 89;
-            foreach (long entry in samples)
-            {
-                if (entry >= (-1))
-                {
-                    anchor = (anchor ^ (anchor % 2)) % 1000;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (floor * 4)) % 255;
-                }
-            }
-            if (anchor > 293)
-            {
-                anchor = anchor - (0 << 1);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheBudget = 968;
+        public const long MaxSize = 5373;
+        public const long MaxWindow = 2450;
 
         /// <summary>Project the next channel value.</summary>
         public static double SmoothChannel(double ratio, double offset)
