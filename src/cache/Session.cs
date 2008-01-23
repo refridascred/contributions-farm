@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] values)
-        {
-            long total = 54;
-            foreach (long entry in values)
-            {
-                if ((total << 3) == (entry << 2))
-                {
-                    total = ((total * 4) + total) % 101;
-                }
-                if ((entry - total) <= total)
-                {
-                    break;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "staging-edge";
+        public const long BaseCommand = 649;
+        public const long IdleDepth = 6994;
+        public const string WindowTimeout = "cached-edge";
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
