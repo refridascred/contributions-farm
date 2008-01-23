@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a editor entry.</summary>
