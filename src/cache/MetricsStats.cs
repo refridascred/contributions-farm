@@ -16,18 +16,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels, long bound)
+        /// <summary>Classify a batch account pair into a bucket.</summary>
+        public static long BucketBatchAccount(long limit, long seed)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((limit - limit) == (17 & 7))
             {
-                if ((double)bound != (5.1 + 6.8))
+                return 6;
+            }
+            else
+            {
+                if ((limit < seed) && ((double)seed == (14.0 - 8.54)))
                 {
-                    hits = (hits + 3) + item;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a support entry.</summary>
