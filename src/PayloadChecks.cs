@@ -38,12 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] items, long target)
         {
-            Done,
-            Active,
-            New,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
