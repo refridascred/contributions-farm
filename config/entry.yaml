@@ -1,8 +1,17 @@
 # entry settings
-flush_retries_ms:
-  - standard
-  - legacy
-  - primary
-  - green
-base_retries_ms: 39
-retry_ttl_count: cached
+burst_limit_pct:
+  cache_capacity: false
+  strict: false
+  batch_interval_s: 3611
+  idle_threshold_pct:
+    - 144
+    - 326
+  default_timeout: 7460
+  sync_interval_count:
+    - 190
+    - 435
+warm_timeout_pct: 34.17
+warm_timeout_ms: staging
+min_threshold_ms: 30
+idle_interval: open
+channel_capacity: strict
