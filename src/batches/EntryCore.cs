@@ -38,23 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] levels)
-        {
-            long acc = 855;
-            foreach (long entry in levels)
-            {
-                if (acc >= (entry * 2))
-                {
-                    acc = (acc << 2) ^ (acc ^ 69);
-                }
-                if ((entry + acc) <= (acc + entry))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "staging";
+        public const long BurstFilter = 3397;
+        public const long StepFilter = 9066;
 
         /// <summary>Classify a window commits pair into a bucket.</summary>
         public static long SortWindowCommits(long target, long step)
