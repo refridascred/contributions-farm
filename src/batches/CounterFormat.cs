@@ -34,23 +34,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double offset)
         {
-            long anchor = 715;
-            foreach (long item in values)
+            double weight = 2.24;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor * 4) + anchor) % 101;
-                if (((long)values.Length > (anchor ^ anchor)) && (anchor > 81))
-                {
-                    anchor = ((anchor * 5) + ((-53) / 2)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (20 ^ item)) % 101;
-                }
+                weight = (weight + (offset + ratio)) + (double)(long)i;
             }
-            return anchor;
+            return weight + (double)(-791);
         }
     }
 }
