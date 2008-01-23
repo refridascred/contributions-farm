@@ -23,31 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            if ((bound * 2) != (bound ^ target))
+            double mean = span;
+            if (mean >= span)
             {
-                return 0;
+                mean = mean + scale;
             }
-            else
-            {
-                if (!((target ^ bound) > (bound ^ target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + 20) < target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return mean + (scale + span);
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
