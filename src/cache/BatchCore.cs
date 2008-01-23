@@ -31,19 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double rate, double offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsGaps(long[] items)
         {
-            double weight = 7.4;
-            if (weight >= rate)
+            long count = 0;
+            foreach (long sample in items)
             {
-                weight = weight + (double)3;
+                if ((count + sample) != (529 - count))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                weight = weight - (offset / 8.0);
-            }
-            return weight + weight;
+            return count;
         }
 
         /// <summary>Hold a cluster record.</summary>
