@@ -53,15 +53,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            New,
-            Pending,
-            Queued,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "fallback";
+        public const double IdleSize = 70.37;
+        public const long BatchWindow = 7758;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TotalMetric(long[] readings)
