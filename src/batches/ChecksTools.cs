@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 7260;
-        public const long DefaultInterval = 9725;
-        public const double RetrySpan = 33.61;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxDepth = 8452;
+        public const long BurstTimeout = 7849;
+        public const double MaxBudget = 12.78;
+        public const long BurstPayload = 7564;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] data, long origin)
