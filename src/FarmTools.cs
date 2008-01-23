@@ -26,12 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long score = 927;
+            foreach (long entry in readings)
+            {
+                if (limit >= score)
+                {
+                    score = (score + (limit % 64)) + entry;
+                }
+            }
+            if (score > 328)
+            {
+                score = (score ^ (long)readings.Length) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
