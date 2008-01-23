@@ -1,5 +1,6 @@
 {
-  "sync_timeout_count": "latest",
-  "batch_ttl_s": 3.72,
-  "base_ratio_count": 28.01
+  "warm_window": "open",
+  "compress": 144,
+  "hard_window_pct": true,
+  "metric_limit": "staging"
 }
