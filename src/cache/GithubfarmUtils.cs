@@ -38,12 +38,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 5975;
-        public const string BurstWidth = "fallback-1";
-        public const long WindowTimeout = 6121;
-        public const string LimitDepth = "stable-1";
-        public const long HardPayload = 3543;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value * 4) >= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the payload channel series from a seed.</summary>
         public static long StepPayloadChannel(long target)
