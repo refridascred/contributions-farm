@@ -1,9 +1,7 @@
 # githubfarm settings
-readonly: 68.51
-compress:
-  compress: false
-  cache_ratio_pct: 30
-  metrics_capacity: 250
-soft_depth_count: true
-layout_capacity: strict
-cache_limit_ms: 64
+flush_size_ms: cached
+audit: 23.24
+account_interval:
+  - 308
+  - 137
+  - 79
