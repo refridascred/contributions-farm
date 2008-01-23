@@ -26,18 +26,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((92 & 3) > item))
-                {
-                    seen = seen + 3;
-                }
+                result = (result ^ (offset & 31)) % 101;
+                result = result ^ (result & 1);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the already phase values.</summary>
