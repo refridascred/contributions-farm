@@ -65,23 +65,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double ratio, double offset)
         {
-            long acc = 354;
-            foreach (long entry in items)
-            {
-                if (!((double)acc <= (8.9 + 4.83)))
-                {
-                    acc = (acc + 285) % 101;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                acc = (acc - (entry % 8)) % 97;
-            }
-            return acc % 97;
+            double scale = ratio;
+            return (scale + (double)6) + offset;
         }
     }
 }
