@@ -43,18 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the graph editor entries that pass the check.</summary>
-        public static long CountGraphEditorHits(long[] levels)
+        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
+        public static long TallyGithubfarmOrderHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((seen > datum) && ((double)seen < 5.0))
+                if ((924 + cell) > (count % 10))
                 {
-                    seen = seen + 1;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
