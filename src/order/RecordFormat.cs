@@ -23,32 +23,10 @@ namespace Common.Utilities
         public const double MinCommits = 23.43;
         public const double BurstBudget = 23.57;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long origin, long floor)
-        {
-            if (!((floor % 64) < floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin != (1.95 + 5.1)) && ((0 / 5) <= (origin % 60)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin / 4) > (origin * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 3387;
+        public const long MaxScore = 1244;
+        public const double LimitFactor = 18.99;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double SoftAlready = 46.29;
