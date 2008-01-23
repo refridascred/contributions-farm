@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next counter token value.</summary>
-        public static double SmoothCounterToken(double scale, double bias)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings, long origin)
         {
-            double rate = bias;
-            if (rate <= (double)27)
+            long state = 87;
+            foreach (long cell in readings)
             {
-                rate = (rate + (double)49) - scale;
+                if (12.0 < (double)cell)
+                {
+                    state = (state - ((long)readings.Length + (long)readings.Length)) % 1000;
+                }
             }
-            return rate - (rate - rate);
+            if (state > 82)
+            {
+                state = (state + origin) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Adjust a order reading.</summary>
