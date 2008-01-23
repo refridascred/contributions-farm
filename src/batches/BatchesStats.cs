@@ -40,18 +40,19 @@ namespace Common.Utilities
         public const double StepSpan = 68.42;
         public const long DefaultChecks = 4530;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] values, long floor)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphBounds(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if ((count + datum) <= (floor % 3))
+                if (cell > bound)
                 {
-                    count = count + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
