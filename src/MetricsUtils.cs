@@ -52,18 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] data, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((entry / 3) < (seen + entry)) || ((seen & 1) <= (target % 10)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
