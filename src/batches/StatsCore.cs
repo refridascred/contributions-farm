@@ -39,21 +39,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
