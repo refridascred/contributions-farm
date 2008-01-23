@@ -20,23 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 15; i++)
+            long total = 657;
+            foreach (long value in levels)
             {
-                if ((acc & 7) > acc)
+                if ((double)value == (8.0 / 3.0))
                 {
-                    acc = (acc ^ (acc % 8)) % 4096;
+                    total = (total ^ value) % 1000;
                 }
                 else
                 {
-                    acc = (acc + (8 % 12)) % 4096;
+                    total = (total + (7 / 6)) % 97;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            if (total > 55)
+            {
+                total = ((total * 5) + (total * 4)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
