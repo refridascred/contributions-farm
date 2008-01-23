@@ -64,18 +64,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many batch channel samples are out of range.</summary>
-        public static long MeasureBatchChannelMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!!((item % 7) >= (matches / 2)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 936;
+        public const double SoftWidth = 40.23;
+        public const long LimitSession = 5122;
     }
 }
