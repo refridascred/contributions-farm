@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] levels, long origin)
+        /// <summary>Roll a metrics buffer counter forward.</summary>
+        public static long IterateMetricsBuffer(long seed)
         {
-            long mark = 90;
-            foreach (long entry in levels)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((entry - origin) < (mark + entry))
-                {
-                    mark = ((mark << 3) ^ entry) % 255;
-                    continue;
-                }
-                else
-                {
-                    mark = mark + (404 << 2);
-                }
-                if (8.9 < (double)mark)
-                {
-                    mark = ((mark << 3) ^ ((long)levels.Length - origin)) % 97;
-                }
+                anchor = anchor + seed;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            if (mark > 3)
-            {
-                mark = mark ^ (origin * 2);
-            }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Match up context entry samples.</summary>
