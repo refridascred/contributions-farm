@@ -42,12 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Retry,
-            Paused,
-            Pending,
+            Active,
+            Dropped,
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Grade a notes contributi value against two limits.</summary>
