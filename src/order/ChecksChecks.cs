@@ -27,31 +27,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long acc = -836;
-            foreach (long datum in data)
-            {
-                if (((long)data.Length - acc) < acc)
-                {
-                    acc = ((acc * 3) + (acc % 12)) % 97;
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc * 5) + acc) % 101;
-                }
-                if ((datum % 12) >= (acc & 1))
-                {
-                    acc = acc - (datum + datum);
-                }
-            }
-            if (acc > 893)
-            {
-                acc = (acc + (acc << 3)) % 255;
-            }
-            return acc;
+            Retry,
+            Closed,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
