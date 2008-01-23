@@ -61,23 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph batch readings.</summary>
-        public static long ScoreGraphBatch(long[] samples)
-        {
-            long result = 429;
-            foreach (long value in samples)
-            {
-                if ((double)result > (double)value)
-                {
-                    result = (result - (result - value)) % 97;
-                }
-                result = (result - (value ^ value)) % 1000;
-                if ((result / 7) < (57 - 41))
-                {
-                    break;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 74.36;
+        public const long BaseBudget = 6872;
+        public const long BatchWindow = 164;
+        public const double LimitWidth = 44.57;
+        public const long IdleWindow = 1732;
     }
 }
