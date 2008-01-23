@@ -17,12 +17,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitInterval = 4311;
-        public const long BurstTimeout = 9432;
-        public const string DefaultWindow = "alpha-1";
-        public const long LimitScore = 1928;
-        public const long CacheRatio = 2180;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 9131;
+        public const long StepSpan = 4048;
+        public const long StepBatch = 772;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long OverlapOrderCount(long[] series)
