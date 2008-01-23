@@ -20,22 +20,11 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Accumulate stats report samples.</summary>
-        public static long ScoreStatsReport(long[] series, long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long carry = 124;
-            foreach (long value in series)
-            {
-                if (((carry - target) > value) || ((double)carry < (double)value))
-                {
-                    carry = (carry * 4) + (value >> 4);
-                }
-            }
-            if (carry > 91)
-            {
-                carry = ((carry << 3) ^ (550 >> 2)) % 4096;
-            }
-            return carry % 4096;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
