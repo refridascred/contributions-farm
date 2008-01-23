@@ -34,20 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of account metric entries.</summary>
-        public static long CombineAccountMetric(long[] readings)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] values, long target)
         {
-            long score = 17;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                score = (score ^ cell) % 65521;
-                score = (score * 2) + (cell + cell);
+                if (datum != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (score > 0)
-            {
-                score = (score + (score ^ score)) % 255;
-            }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many context queue samples are out of range.</summary>
