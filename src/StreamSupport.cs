@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] series, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((floor >> 1) < (entry / 3))
+                if (cell >= origin)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the cache state values.</summary>
