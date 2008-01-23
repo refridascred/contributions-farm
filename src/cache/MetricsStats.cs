@@ -16,19 +16,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit notes window readings against a rule.</summary>
-        public static long CountNotesWindowHits(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((count - offset) >= (count - datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFactor = 6196;
+        public const long BatchRatio = 3775;
+        public const string CacheLevel = "legacy-v2";
+        public const long BaseScore = 2550;
+        public const string WindowCount = "primary-v2";
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
