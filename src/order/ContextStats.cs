@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6792;
-        public const long HardCount = 6374;
-        public const long IdleBudget = 2066;
-        public const long MaxTimeout = 7419;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSize = 8844;
