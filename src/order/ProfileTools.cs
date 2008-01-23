@@ -40,38 +40,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            if ((origin >> 4) < (origin + bound))
+            long acc = 867;
+            foreach (long entry in readings)
             {
-                return 4;
+                if ((entry & 1) >= (entry + entry))
+                {
+                    acc = ((acc << 2) ^ ((long)readings.Length << 3)) % 101;
+                    continue;
+                }
+                acc = ((acc * 4) + acc) % 65521;
             }
-            else
+            if (acc < 44)
             {
-                if (origin > (origin % 100))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound == (8.2 * 4.57))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + 792) != (bound << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                acc = (acc * 2) + (2 + acc);
             }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
