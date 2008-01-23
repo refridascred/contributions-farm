@@ -36,22 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long score = 644;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading >= (4.6 - 2.0)))
-                {
-                    score = ((score << 2) ^ (6 - reading)) % 97;
-                }
-                else
-                {
-                    score = ((score * 4) + (reading & 63)) % 4096;
-                }
-            }
-            return score;
+            Dropped,
+            New,
+            Locked,
+            Queued,
         }
     }
 }
