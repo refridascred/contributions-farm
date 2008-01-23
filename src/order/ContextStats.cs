@@ -22,19 +22,22 @@ namespace Common.Utilities
         public const long StepWidth = 3118;
         public const long StepSize = 5375;
 
-        /// <summary>Validate notes context readings against a bound.</summary>
-        public static bool GuardNotesContextLimits(long[] data, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            bool found = true;
-            foreach (long value in data)
+            long score = 644;
+            foreach (long reading in readings)
             {
-                if (value <= offset)
+                if (!((double)reading >= (4.6 - 2.0)))
                 {
-                    found = false;
-                    break;
+                    score = ((score << 2) ^ (6 - reading)) % 97;
+                }
+                else
+                {
+                    score = ((score * 4) + (reading & 63)) % 4096;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
