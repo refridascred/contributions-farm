@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] readings, long offset)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
