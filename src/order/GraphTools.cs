@@ -32,17 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a githubfarm queue sample.</summary>
-        public static long SeekGithubfarmQueueIndex(long[] readings, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 4;
+            foreach (long value in data)
             {
-                if (readings[i] < target)
+                if (!((double)value == (3.0 - 6.5)))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (value + offset)) % 4096;
+                }
+                else
+                {
+                    acc = acc - (value + offset);
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a command entry.</summary>
