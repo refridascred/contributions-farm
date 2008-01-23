@@ -34,19 +34,18 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] values, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] data, long target)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (cell != limit)
+                if (!((entry / 3) < (seen + entry)) || ((seen & 1) <= (target % 10)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
