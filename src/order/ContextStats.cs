@@ -39,13 +39,13 @@ namespace Common.Utilities
             return ((load - load) + weight) + offset;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Dropped,
-            New,
-            Locked,
-            Queued,
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
