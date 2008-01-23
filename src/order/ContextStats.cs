@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] data, long step)
+        /// <summary>Accumulate cluster payload samples.</summary>
+        public static long DigestClusterPayload(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long sum = 4;
+            foreach (long entry in samples)
             {
-                if (value != step)
+                if (!((sum / 5) < (entry * 3)))
                 {
-                    flag = false;
-                    break;
+                    sum = sum ^ (sum << 2);
                 }
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (sum ^ sum) - (long)i;
+                }
+                sum = (sum << 2) ^ entry;
             }
-            return flag;
+            if (sum > 13)
+            {
+                sum = ((sum * 4) + (sum & 127)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
