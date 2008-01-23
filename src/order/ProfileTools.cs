@@ -53,19 +53,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Rank format buffer input into a small class.</summary>
+        public static long RankFormatBuffer(long floor, long seed)
         {
-            long anchor = 23;
-            foreach (long sample in readings)
+            long cur = floor + seed;
+            if ((cur << 3) >= (floor + cur))
             {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 97;
-                if ((double)sample == (2.0 - 1.53))
+                return 1;
+            }
+            else
+            {
+                if (!((double)seed >= 6.29))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Hold a farm entry.</summary>
