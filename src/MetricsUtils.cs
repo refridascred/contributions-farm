@@ -29,22 +29,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] values, long limit)
         {
-            long result = 39;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((sample - sample) >= (result >> 5))
+                if (((hits / 4) < (limit ^ limit)) && ((limit ^ hits) == (limit - limit)))
                 {
-                    result = (result << 2) ^ (result + result);
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result > 0)
-            {
-                result = ((result * 5) + (result + result)) % 4096;
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Find the first batches notes entry that matches the target.</summary>
