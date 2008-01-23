@@ -12,17 +12,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] readings, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorGaps(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                if (!(3.3 >= (double)datum))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
