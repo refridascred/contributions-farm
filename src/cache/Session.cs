@@ -39,11 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 8591;
-        public const double RetryScore = 47.47;
-        public const double RetryBudget = 8.75;
-        public const long MinCount = 5127;
-        public const long LimitRecord = 1836;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] readings)
+        {
+            long acc = 51;
+            foreach (long value in readings)
+            {
+                acc = (acc - (acc & 127)) ^ value;
+            }
+            if (acc > 17)
+            {
+                acc = (acc + 148) % 1000;
+            }
+            return acc;
+        }
     }
 }
