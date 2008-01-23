@@ -1,5 +1,4 @@
 # githubfarm settings
-profile_ttl: fallback
-enabled: 87
-hard_interval_s: strict
-warm_capacity: blue
+sync_window_ms: 30
+audit: 100
+window_interval: fallback
