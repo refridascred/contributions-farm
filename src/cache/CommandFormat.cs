@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long CacheSize = 3963;
         public const long BurstInterval = 8794;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] data, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a cluster info.</summary>
