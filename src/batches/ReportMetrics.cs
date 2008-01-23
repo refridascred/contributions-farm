@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a metrics header.</summary>
