@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next record context value.</summary>
-        public static double SmoothRecordContext(double bias, double floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double bias, double offset)
         {
-            double drift = 5.57;
-            if (drift >= drift)
+            double weight = bias * 3.03;
+            if (weight >= weight)
             {
-                drift = ((drift + (7.09 * 5.5)) + bias) - floor;
+                weight = (weight + (double)6) - offset;
             }
-            return drift - (14.0 / 3.0);
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + bias;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
