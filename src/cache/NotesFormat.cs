@@ -20,23 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double rate, double floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            double weight = floor;
-            if (weight < (rate * 0.54))
+            long acc = limit;
+            for (int i = 0; i < 15; i++)
             {
-                weight = weight - rate;
+                if ((acc & 7) > acc)
+                {
+                    acc = (acc ^ (acc % 8)) % 4096;
+                }
+                else
+                {
+                    acc = (acc + (8 % 12)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight - (double)9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + floor) - (double)(long)i;
-            }
-            return weight - 1.89;
+            return acc;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
