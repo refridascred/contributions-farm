@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long offset, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] series, long target)
         {
-            long prev = offset + step;
-            if ((9.77 + 7.1) <= (double)offset)
+            long mix = 212;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev + offset) == (step % 16))
+                if ((double)mix == (0.13 / 7.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step / 6) == (offset >> 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mix = (((mix * 2) + (target + mix)) % 65521) + reading;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
