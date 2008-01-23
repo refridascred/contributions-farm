@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchInterval = "stable-edge";
-        public const long IdleReport = 7711;
-        public const double CacheSpan = 56.78;
-        public const string MinReport = "stable-1";
-        public const long SoftBudget = 2149;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - count) <= (92 + count))
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
+        }
     }
 }
