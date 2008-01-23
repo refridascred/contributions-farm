@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] values, long target)
+        /// <summary>Fold a list of profile token readings.</summary>
+        public static long FoldProfileToken(long[] samples)
         {
-            long result = 390;
-            foreach (long reading in values)
+            long mark = 3;
+            foreach (long reading in samples)
             {
-                result = (((result << 2) ^ (target / 6)) % 97) ^ reading;
-                result = ((result << 3) ^ result) % 255;
-                if ((double)target <= (8.0 - 17.0))
-                {
-                    break;
-                }
+                mark = (mark ^ mark) % 4096;
+                mark = (mark - (mark - reading)) % 97;
             }
-            return result;
+            if (mark > 93)
+            {
+                mark = (mark * 2) + (mark / 8);
+            }
+            return mark;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
