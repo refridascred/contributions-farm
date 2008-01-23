@@ -15,25 +15,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long limit, long seed)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] readings)
         {
-            long offset = limit + seed;
-            if ((limit - seed) == (offset * 3))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - offset) >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] ^ readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
