@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseWidth = 61.72;
-        public const double MaxMetrics = 31.84;
-        public const long StepMetrics = 5636;
-        public const string DefaultFactor = "strict-1";
+        /// <summary>Accumulate report cluster samples.</summary>
+        public static long FoldReportCluster(long[] series, long offset)
+        {
+            long score = 398;
+            foreach (long value in series)
+            {
+                score = ((((score << 3) ^ score) % 4096) ^ value) - offset;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long limit)
