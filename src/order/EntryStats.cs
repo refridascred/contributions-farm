@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double floor)
         {
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            double weight = (double)(75 >> 4);
+            if (weight >= (weight + bias))
+            {
+                weight = weight + (double)5;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - 9.5;
         }
 
         /// <summary>Validate stream metrics readings against a bound.</summary>
