@@ -73,17 +73,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(659 >> 5);
+            if (drift < (double)55)
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (rate + rate)) - offset;
             }
-            return -1;
+            return drift + (double)53;
         }
     }
 }
