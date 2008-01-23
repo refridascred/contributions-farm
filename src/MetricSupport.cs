@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Dropped,
+            Draft,
+            Ready,
             Active,
-            Locked,
-            Paused,
-            Closed,
         }
 
         /// <summary>Describe the farm mode values.</summary>
