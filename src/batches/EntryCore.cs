@@ -38,17 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route schema sample.</summary>
-        public static long LookupRouteSchemaIndex(long[] data, long target)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = bias - 8.4;
+            return gain + (weight - bias);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
