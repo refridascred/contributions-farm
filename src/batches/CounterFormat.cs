@@ -19,21 +19,39 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of context account readings.</summary>
-        public static long OverlapContextAccountCount(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound - step;
+            if (step <= (bound << 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((double)step == (8.0 - 7.76)) && ((cur >> 4) <= (74 << 1)))
                 {
-                    if ((levels[i] - levels[j]) > 6)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)cur > (3.0 + 3.33))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (9.33 > (double)cur)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
