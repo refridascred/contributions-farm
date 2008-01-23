@@ -48,25 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format buffer input into a small class.</summary>
-        public static long RankFormatBuffer(long floor, long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] samples, long bound)
         {
-            long cur = floor + seed;
-            if ((cur << 3) >= (floor + cur))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed >= 6.29))
+                if (samples[i] > bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
