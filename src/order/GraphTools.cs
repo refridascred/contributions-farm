@@ -45,22 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm order samples are out of range.</summary>
-        public static long TallyGithubfarmOrderHits(long[] readings)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((924 + cell) > (count % 10))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
