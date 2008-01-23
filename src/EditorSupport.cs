@@ -40,11 +40,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardBudget = 6053;
-        public const string WindowReport = "stable-1";
-        public const long BatchTimeout = 1356;
-        public const double CacheReport = 24.51;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double AdjustProfile(double rate, double offset)
