@@ -14,18 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit account layout readings against a rule.</summary>
-        public static long AuditAccountLayoutMatches(long[] values, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long sum = 4;
+            foreach (long value in data)
             {
-                if ((tally >> 4) < (seed + tally))
-                {
-                    tally = (tally + 2) - reading;
-                }
+                sum = sum ^ (value << 3);
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Audit already farm readings against a rule.</summary>
