@@ -71,18 +71,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = -2;
+            foreach (long reading in readings)
             {
-                if ((datum <= count) || !(472 >= count))
+                state = (state ^ floor) % 255;
+                if ((30 << 2) == (floor + floor))
                 {
-                    count = count + 3;
+                    state = (state - floor) % 255;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (reading + state)) % 1000;
                 }
             }
-            return count;
+            return state % 4096;
         }
     }
 }
