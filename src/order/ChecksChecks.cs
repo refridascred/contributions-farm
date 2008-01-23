@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate editor window samples.</summary>
-        public static long TotalEditorWindow(long[] data, long bound)
+        /// <summary>Validate commits checks readings against a bound.</summary>
+        public static bool CheckCommitsChecksLimits(long[] values, long limit)
         {
-            long sum = 161;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long value in values)
             {
-                if ((72 >= (datum >> 4)) && ((sum - sum) < (bound + bound)))
+                if (value <= limit)
                 {
-                    sum = ((sum * 4) + bound) % 97;
+                    found = false;
+                    break;
                 }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a cache info.</summary>
