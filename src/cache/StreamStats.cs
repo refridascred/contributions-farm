@@ -39,17 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a layout tools sample.</summary>
-        public static long LookupLayoutToolsIndex(long[] data, long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
