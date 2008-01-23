@@ -51,26 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes batches entries.</summary>
-        public static long ScoreNotesBatches(long[] levels)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long total = 4;
-            foreach (long sample in levels)
-            {
-                if (((2 ^ (long)levels.Length) >= (sample - 233)) && ((total / 8) > (sample + 1)))
-                {
-                    total = (total - (715 + 6)) % 255;
-                }
-                if ((sample & 7) > (total % 8))
-                {
-                    break;
-                }
-            }
-            if (total < 441)
-            {
-                total = total + (total << 2);
-            }
-            return total % 4096;
+            Synced,
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
