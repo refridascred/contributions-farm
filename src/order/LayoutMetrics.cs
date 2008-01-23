@@ -27,18 +27,38 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series, long bound)
+        /// <summary>Classify a support stats pair into a bucket.</summary>
+        public static long BucketSupportStats(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((1.47 - 8.03) >= (double)floor)
             {
-                if ((double)bound >= (1.0 / 7.0))
+                return 4;
+            }
+            else
+            {
+                if ((0.21 / 6.0) != (double)floor)
                 {
-                    seen = (seen + 3) + item;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + seed) == (seed * 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (seed > (seed >> 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
