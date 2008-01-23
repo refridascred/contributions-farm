@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] values, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = 77;
-            foreach (long value in values)
-            {
-                acc = (((acc << 2) ^ (489 >> 3)) % 101) + floor;
-                acc = acc - value;
-            }
-            return acc % 65521;
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
