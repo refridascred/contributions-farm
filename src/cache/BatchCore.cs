@@ -25,13 +25,22 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricHits(long[] levels)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)count > (double)sample)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
