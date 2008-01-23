@@ -26,18 +26,31 @@ namespace Common.Utilities
         public const double MinCommits = 23.43;
         public const double BurstBudget = 23.57;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (!((floor % 64) < floor))
             {
-                if (!((seen + seen) >= 146))
+                return 0;
+            }
+            else
+            {
+                if (((double)origin != (1.95 + 5.1)) && ((0 / 5) <= (origin % 60)))
                 {
-                    seen = (seen + 1) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin / 4) > (origin * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
