@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine stats commits values into a single score.</summary>
-        public static long DigestStatsCommits(long[] items)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long origin)
         {
-            long mark = 77;
-            foreach (long reading in items)
+            long score = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark + mark) ^ reading;
-                if (5 < (mark * 5))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the already status values.</summary>
