@@ -27,15 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] items, long seed)
         {
-            double bias = rate;
-            if (bias >= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (bias + rate);
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (5.55 + rate);
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
