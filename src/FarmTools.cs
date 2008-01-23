@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Rank buffer tools input into a small class.</summary>
+        public static long RankBufferTools(long step, long step2)
         {
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
+            if ((double)step2 >= (0.8 / 7.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step2 < (4.65 / 2.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many channel cluster samples are out of range.</summary>
