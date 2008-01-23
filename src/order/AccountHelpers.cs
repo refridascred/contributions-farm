@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long TallyStatsBufferHits(long[] series, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((double)cell <= 9.5) && ((double)tally < (double)cell))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
+            double rate = (double)(49 >> 4);
+            return ((rate + (double)2) + gain) + span;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
