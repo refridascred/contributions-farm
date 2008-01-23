@@ -1,5 +1,8 @@
 {
-  "enabled": 93.12,
-  "default_window_count": "latest",
-  "warm_limit_ms": [379, 327, 193, 463]
+  "metrics_ttl": "legacy",
+  "queue_limit": "fallback",
+  "graph_limit": 63.02,
+  "strict": ["blue", "eu-west"],
+  "checks_timeout": 5429,
+  "max_threshold_s": "latest"
 }
