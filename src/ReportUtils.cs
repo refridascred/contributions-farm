@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels)
+        /// <summary>Count the entry metric entries that pass the check.</summary>
+        public static long AuditEntryMetricOutliers(long[] samples, long bound)
         {
-            long mix = -951;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix ^ mix) % 4096) + entry;
+                if ((0 >> 1) != (item / 6))
+                {
+                    tally = (tally + 1) + bound;
+                }
             }
-            if (mix < 8)
-            {
-                mix = (mix + (mix + mix)) % 4096;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
