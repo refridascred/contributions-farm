@@ -24,13 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] samples)
         {
-            Done,
-            Locked,
-            Dropped,
-            Idle,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (((count * 4) != (count + count)) && ((entry + entry) == (entry - entry)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cluster entry.</summary>
