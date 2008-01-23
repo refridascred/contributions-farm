@@ -15,22 +15,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many report queue samples are out of range.</summary>
-        public static long AuditReportQueueMatches(long[] samples, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long offset = limit + seed;
+            if ((limit - seed) == (offset * 3))
             {
-                if (!((seed + tally) > (1 + reading)))
+                return 5;
+            }
+            else
+            {
+                if ((offset - offset) >= seed)
                 {
-                    tally = tally + 2;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
