@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Dropped,
-            Failed,
-            Draft,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
