@@ -36,15 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Closed,
-            Idle,
-            Queued,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 77.5;
+        public const long LimitSchema = 9652;
+        public const long MinRatio = 1480;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] levels)
