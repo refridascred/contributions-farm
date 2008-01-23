@@ -19,13 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            Locked,
+            Ready,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
