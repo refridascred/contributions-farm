@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public double Region { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
