@@ -45,31 +45,16 @@ namespace Common.Utilities
         public const string LimitDepth = "stable-1";
         public const long HardPayload = 3543;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long limit)
+        /// <summary>Iterate the payload channel series from a seed.</summary>
+        public static long StepPayloadChannel(long target)
         {
-            if (5.42 > (double)origin)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                mix = (mix << 2) ^ mix;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((909 & 31) >= (limit % 64)) && ((5.01 / 2.0) > (double)limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin <= (origin / 2)) && ((double)(-5) <= (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
