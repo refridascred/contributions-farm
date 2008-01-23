@@ -19,20 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] samples, long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long origin)
         {
-            long carry = 330;
-            foreach (long value in samples)
+            long total = origin;
+            for (int i = 0; i < 23; i++)
             {
-                carry = ((carry - limit) % 255) + value;
-                carry = ((carry << 2) ^ (limit / 4)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (carry > 15)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Accumulate stream metric samples.</summary>
