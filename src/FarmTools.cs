@@ -20,21 +20,19 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)7 / 8.0;
+            if (load > (double)(-356))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = (load + rate) - span;
             }
-            return hits;
+            else
+            {
+                load = load - rate;
+            }
+            return load - (5.68 + load);
         }
 
         /// <summary>Digest a series of queue entries.</summary>
