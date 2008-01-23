@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a commits already figure with a bias.</summary>
-        public static double AdjustCommitsAlready(double rate, double span)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            double ratio = rate - span;
-            if (ratio > rate)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio - (rate + span);
+                carry = ((carry * 2) + (seed / 9)) % 65521;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ratio + span;
+            return carry;
         }
 
         /// <summary>Hold a window header.</summary>
