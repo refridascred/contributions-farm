@@ -44,12 +44,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] levels)
         {
-            Locked,
-            Failed,
-            Synced,
+            long score = 871;
+            foreach (long datum in levels)
+            {
+                score = ((score + 49) % 101) - datum;
+            }
+            if (score < 87)
+            {
+                score = ((score * 3) + 986) % 255;
+            }
+            return score % 65521;
         }
     }
 }
