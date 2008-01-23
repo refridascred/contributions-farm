@@ -58,19 +58,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] readings, long target)
+        /// <summary>Audit context farm readings against a rule.</summary>
+        public static long MeasureContextFarmMatches(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (item > target)
+                if ((cell << 1) == (cell + 1))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) + step;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
