@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] data, long offset)
         {
             long matches = 0;
-            foreach (long value in data)
+            foreach (long cell in data)
             {
-                if ((value >> 1) >= matches)
+                if ((9.0 <= (double)(long)data.Length) && ((double)cell >= (0.3 - 0.5)))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) - offset;
                 }
                 else
                 {
