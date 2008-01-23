@@ -26,22 +26,10 @@ namespace Common.Utilities
         public const long IdleWidth = 8440;
         public const double HardRecord = 42.12;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 34.96;
+        public const long DefaultRoute = 3152;
+        public const string HardLevel = "alpha-v2";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 3396;
