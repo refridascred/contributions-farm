@@ -12,12 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 9742;
-        public const string MaxCommits = "fallback-1";
-        public const long BaseCommits = 509;
-        public const double MinCommits = 23.43;
-        public const double BurstBudget = 23.57;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((4.7 / 4.0) == (double)(long)samples.Length)
+                {
+                    seen = ((seen + 1) ^ item) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultRoute = 3387;
