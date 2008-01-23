@@ -24,18 +24,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many buffer already samples are out of range.</summary>
-        public static long AuditBufferAlreadyMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits * 3) >= sample)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 8504;
+        public const long SoftChannel = 2285;
+        public const string MaxLevel = "fallback";
+        public const long BurstChannel = 8188;
     }
 }
