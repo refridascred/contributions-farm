@@ -24,12 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public string Offset { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchLevel = 3455;
+        public const double BurstCommand = 64.67;
+        public const double BaseFactor = 26.62;
+        public const long CacheTimeout = 2352;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
