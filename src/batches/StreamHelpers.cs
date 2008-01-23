@@ -57,11 +57,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseCount = 3081;
-        public const double MinRecord = 1.62;
-        public const string HardCount = "latest-v2";
-        public const long DefaultRecord = 5713;
+        /// <summary>Classify a support contributi pair into a bucket.</summary>
+        public static long SortSupportContributi(long target, long bound)
+        {
+            if (((double)bound == (3.53 * 15.0)) || ((double)bound >= (6.2 / 2.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound >= (bound / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] levels, long bound)
