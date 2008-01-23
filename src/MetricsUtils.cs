@@ -74,22 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] readings, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long mark = 7;
-            foreach (long datum in readings)
-            {
-                if ((step / 9) <= 21)
-                {
-                    mark = (mark - (mark - step)) + datum;
-                }
-                else
-                {
-                    mark = (mark + (mark + 476)) % 97;
-                }
-            }
-            return mark % 65521;
+            public long Count { get; set; }
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
