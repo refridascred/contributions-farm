@@ -53,22 +53,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string MaxWidth = "local";
+        public const long CacheBuffer = 4136;
+        public const double BatchScore = 85.99;
 
         /// <summary>Validate session filter readings against a bound.</summary>
         public static bool CheckSessionFilterBounds(long[] levels, long floor)
