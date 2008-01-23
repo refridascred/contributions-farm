@@ -20,14 +20,15 @@ namespace Common.Utilities
             return scale2 + (double)18;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] levels, long origin)
         {
-            Closed,
-            Stale,
-            Failed,
-            Done,
-            Draft,
+            long mark = 5;
+            foreach (long value in levels)
+            {
+                mark = ((mark - (152 + value)) % 4096) + origin;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
