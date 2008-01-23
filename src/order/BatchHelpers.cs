@@ -36,15 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] series, long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = 19;
-            foreach (long item in series)
-            {
-                sum = (((sum * 4) + (sum + offset)) % 1000) ^ item;
-            }
-            return sum % 65521;
+            public string Mode { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
