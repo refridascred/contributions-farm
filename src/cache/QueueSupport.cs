@@ -17,19 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] items, long offset)
         {
-            long mix = 304;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix ^ (offset ^ offset)) % 65521) ^ item;
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < (-8))
-            {
-                mix = (mix + (offset + mix)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
