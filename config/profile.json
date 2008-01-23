@@ -1,8 +1,5 @@
 {
-  "burst_capacity_s": 94.01,
-  "idle_timeout": 65.38,
-  "compress": "eu-west",
-  "flush_timeout_ms": 20,
-  "burst_limit_ms": 70,
-  "route_size": 31.65
+  "enabled": "standard",
+  "channel_size": 7174,
+  "sync_interval_ms": 74
 }
