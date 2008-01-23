@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series, long origin)
         {
-            long score = 15;
-            foreach (long datum in values)
+            long state = 7;
+            foreach (long value in series)
             {
-                if ((datum + score) <= (datum / 3))
+                state = ((state * 2) + (value >> 3)) % 1000;
+                if (((double)origin > (7.3 / 9.0)) || (origin <= (origin & 3)))
                 {
-                    score = ((score * 3) + (score - score)) % 97;
+                    state = (state - origin) % 65521;
+                }
+                else
+                {
+                    state = state + (state ^ 20);
                 }
             }
-            return score % 97;
+            if (state > 87)
+            {
+                state = (state ^ (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many command editor samples are out of range.</summary>
