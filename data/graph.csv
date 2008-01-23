@@ -1,8 +1,6 @@
-id,level,owner,state
-1,staging,stable,blue
-2,57.04,latest,standard
-3,689,23.62,standard
-4,810,496,72.02
-5,510,282,16.14
-6,400,open,66.64
-7,cached,local,blue
+id,token,active
+1,17.48,standard
+2,576,75
+3,26.01,707
+4,407,98.64
+5,10.78,378
