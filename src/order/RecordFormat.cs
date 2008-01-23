@@ -40,12 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
             public double Token { get; set; }
         }
 
