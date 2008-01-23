@@ -44,17 +44,24 @@ namespace Common.Utilities
         public const long SoftToken = 3951;
         public const double CacheInterval = 75.45;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] series, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long origin, long origin2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((9 << 2) != (origin2 / 4))
             {
-                if (series[i] >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((3.5 + 5.7) == (double)origin2)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a stream info.</summary>
