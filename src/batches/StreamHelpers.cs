@@ -60,15 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double bias)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double gain = 0.56 - (bias / 5.0);
-            if (gain > bias)
-            {
-                gain = gain - ratio;
-            }
-            return gain + 2.74;
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
