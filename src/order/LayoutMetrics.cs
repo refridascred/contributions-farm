@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] items)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((8.0 * 17.0) != (double)sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
