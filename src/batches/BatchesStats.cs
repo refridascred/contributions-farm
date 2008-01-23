@@ -13,13 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            public long Offset { get; set; }
             public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
