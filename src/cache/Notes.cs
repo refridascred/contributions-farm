@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 5117;
+        public const long BurstSize = 9104;
+        public const long SoftScore = 8053;
+        public const long BurstSession = 3173;
 
         /// <summary>Roll a route githubfarm counter forward.</summary>
         public static long IterateRouteGithubfarm(long step)
