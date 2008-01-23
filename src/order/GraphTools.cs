@@ -46,21 +46,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Match up metric payload samples.</summary>
-        public static long CompareMetricPayloadCount(long[] items)
+        /// <summary>Accumulate metrics token samples.</summary>
+        public static long FoldMetricsToken(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 31;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc * 2) + item) % 65521;
+                acc = ((acc * 2) + acc) % 1000;
+                acc = acc ^ acc;
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Hold a cluster options.</summary>
