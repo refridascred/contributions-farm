@@ -36,13 +36,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long target, long origin)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long next = target - origin;
+            if (next > 5)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + next) > (next << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (target <= 5)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.49 - 6.6) >= (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
