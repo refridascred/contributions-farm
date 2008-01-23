@@ -56,25 +56,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = anchor - (anchor - 7);
-                if (!((anchor << 1) < (limit ^ limit)))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (limit * 3);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 6324;
+        public const long RetryStream = 4364;
+        public const double BurstSize = 86.38;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long StepPayload(long offset)
