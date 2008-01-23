@@ -40,24 +40,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long step, long offset)
-        {
-            if ((158 * 2) < (offset % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset / 5) != (offset & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowFactor = 7567;
+        public const long BaseStream = 2886;
+        public const long DefaultStream = 6540;
+        public const long WindowStream = 8933;
+        public const double SoftSize = 41.82;
     }
 }
