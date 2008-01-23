@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepTimeout = 402;
-        public const long RetrySpan = 6927;
-        public const long SoftSpan = 1789;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Paused,
+            Draft,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] samples, long step)
