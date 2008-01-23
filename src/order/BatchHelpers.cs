@@ -16,11 +16,11 @@ namespace Common.Utilities
         public const string MaxScore = "latest-1";
         public const long LimitFormat = 6064;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 89.65;
-        public const long IdleCount = 6026;
-        public const long DefaultSpan = 8107;
-        public const long LimitCounter = 7691;
-        public const string StepSize = "open-1";
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
+        {
+            public long Total { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
