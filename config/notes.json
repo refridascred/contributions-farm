@@ -1,5 +1,8 @@
 {
-  "record_threshold": [79, 224, 182, 480],
-  "hard_capacity_s": "blue",
-  "strict": "edge"
+  "flush_size_s": "fallback",
+  "readonly": "standard",
+  "sync_ratio_s": true,
+  "checks_window": true,
+  "hard_window_ms": ["open", "open", "fallback"],
+  "flush_window_count": "latest"
 }
