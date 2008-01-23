@@ -46,22 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long carry = 4;
+            foreach (long item in data)
             {
-                if ((522 % 100) < (776 + seen))
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry << 2) ^ (offset + offset)) ^ item;
             }
-            return seen;
+            if (carry > 629)
+            {
+                carry = ((carry * 4) + (carry & 1)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
