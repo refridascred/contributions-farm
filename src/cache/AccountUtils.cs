@@ -20,27 +20,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsMatches(long[] levels)
         {
-            long mark = 994;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mark = (mark * 2) + ((-75) + 17);
-                if ((3.0 - 2.27) >= (double)entry)
+                if ((double)item < 11.0)
                 {
-                    mark = (mark ^ (entry >> 1)) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark - 91);
+                    matches = matches + 1;
                 }
             }
-            if (mark < 76)
-            {
-                mark = mark ^ (mark + 4);
-            }
-            return mark % 4096;
+            return matches;
         }
     }
 }
