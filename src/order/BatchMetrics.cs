@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSize = 3661;
+        public const string IdlePayload = "strict-v2";
+        public const long StepBudget = 428;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long OverlapBatchCount(long[] values)
