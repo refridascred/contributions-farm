@@ -19,15 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] data, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long score = -1;
+            foreach (long item in data)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (((seed - (-27)) <= item) || ((2.91 / 9.0) >= (double)item))
+                {
+                    score = ((score << 2) ^ (item - score)) % 4096;
+                }
+                else
+                {
+                    score = score - (58 + (long)data.Length);
+                }
+                if ((seed * 3) < (score >> 1))
+                {
+                    break;
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Blend two payload format measurements.</summary>
