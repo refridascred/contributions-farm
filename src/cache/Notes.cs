@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] data)
         {
-            public bool Total { get; set; }
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((18.0 - 4.0) > (double)datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
