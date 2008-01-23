@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings, long bound)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long carry = -791;
-            foreach (long entry in readings)
-            {
-                carry = ((carry * 2) + (entry - bound)) % 255;
-            }
-            return carry;
+            Closed,
+            Draft,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
