@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftRatio = 40.76;
+        public const double BasePayload = 12.09;
+        public const double HardPayload = 48.4;
+        public const long BurstRatio = 5141;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool GuardChannelRange(long[] items, long seed)
