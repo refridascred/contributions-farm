@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] levels, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix + ((long)i >> 2)) % 4096;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
