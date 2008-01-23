@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] data, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((floor + hits) <= (128 + 483))
+                {
+                    hits = (hits + 3) - datum;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a token entry.</summary>
