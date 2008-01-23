@@ -28,14 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Find the first counter session entry that matches the target.</summary>
+        public static long SeekCounterSessionIndex(long[] data, long origin)
         {
-            Dropped,
-            Idle,
-            Done,
-            Closed,
-            New,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next token value.</summary>
