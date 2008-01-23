@@ -49,15 +49,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double weight, double span)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] levels, long bound)
         {
-            double load = (double)132 / 6.0;
-            for (int i = 0; i < 3; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                load = (((load - load) + (double)(long)i) - weight) - span;
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + 5.3;
+            return ok;
         }
     }
 }
