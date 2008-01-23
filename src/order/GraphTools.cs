@@ -22,18 +22,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of support stream entries.</summary>
-        public static long CombineSupportStream(long[] values, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long state = 61;
-            foreach (long sample in values)
-            {
-                if ((state + (long)values.Length) < 74)
-                {
-                    state = ((state ^ (sample << 1)) % 97) + limit;
-                }
-            }
-            return state;
+            public bool Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
