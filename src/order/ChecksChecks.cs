@@ -20,11 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 9840;
-        public const double StepInterval = 79.9;
-        public const string WindowDepth = "open-v2";
-        public const long BaseMetrics = 2176;
+        /// <summary>Compare every pair of metrics window readings.</summary>
+        public static long CompareMetricsWindowCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next payload order value.</summary>
         public static double AdjustPayloadOrder(double scale, double offset)
