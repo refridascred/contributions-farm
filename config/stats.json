@@ -1,14 +1,5 @@
 {
-  "persist": {
-    "editor_retries": false,
-    "strict": 100,
-    "cache_capacity": 1653,
-    "readonly": 100,
-    "metric_ratio": ["standard", "legacy", "edge", "blue"]
-  },
-  "tools_delay": "stable",
-  "max_size_ms": 250,
-  "buffer_ttl": 17.21,
-  "queue_retries": 1024,
-  "cache_retries_pct": true
+  "base_ttl_count": 8153,
+  "burst_retries": "local",
+  "default_window_pct": 2972
 }
