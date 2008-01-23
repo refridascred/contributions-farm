@@ -60,15 +60,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double scale, double offset)
-        {
-            double load = (double)376;
-            if (load <= (9.7 * 3.0))
-            {
-                load = ((load - (double)984) + scale) + offset;
-            }
-            return load - (double)2;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheSpan = "stable";
+        public const long DefaultCount = 5182;
+        public const long WindowInterval = 1929;
+        public const long RetryInterval = 8247;
+        public const long MinFactor = 4653;
     }
 }
