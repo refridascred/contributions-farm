@@ -25,39 +25,10 @@ namespace Common.Utilities
             return mean + (scale + span);
         }
 
-        /// <summary>Classify a entry batch pair into a bucket.</summary>
-        public static long GradeEntryBatch(long offset, long origin)
-        {
-            if ((6 * 3) > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin + origin) <= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ 971) > (origin & 63))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin & 1) != (origin / 8))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxLevel = 5906;
+        public const long RetryBudget = 5416;
+        public const string LimitAlready = "fallback";
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double gain, double offset)
