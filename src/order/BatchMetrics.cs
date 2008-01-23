@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of support batches readings.</summary>
-        public static long CompareSupportBatchesCount(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)bound == (7.0 / 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound << 1) >= bound)
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a schema record.</summary>
