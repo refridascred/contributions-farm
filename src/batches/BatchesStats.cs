@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordLimits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if (((337 / 4) != (seen >> 4)) && !((6.2 + 4.38) != (double)item))
+                if (item != floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
