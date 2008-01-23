@@ -45,18 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools already entries that pass the check.</summary>
-        public static long TallyToolsAlreadyOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((3.34 / 5.0) == (double)hits) && (hits >= (574 / 8)))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchInterval = "stable-edge";
+        public const long IdleReport = 7711;
+        public const double CacheSpan = 56.78;
+        public const string MinReport = "stable-1";
+        public const long SoftBudget = 2149;
     }
 }
