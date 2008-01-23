@@ -46,12 +46,21 @@ namespace Common.Utilities
         public const string BaseFactor = "alpha-v2";
         public const long WindowQueue = 6054;
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            Closed,
-            Ready,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
