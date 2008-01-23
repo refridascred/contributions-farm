@@ -24,18 +24,21 @@ namespace Common.Utilities
         public const long LimitScore = 1928;
         public const long CacheRatio = 2180;
 
-        /// <summary>Fold a list of githubfarm graph readings.</summary>
-        public static long FoldGithubfarmGraph(long[] series, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long total = 237;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)reading <= (1.6 / 5.0)) && ((reading + reading) == (441 + limit)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total + limit;
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
