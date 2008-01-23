@@ -45,21 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long MeasureQueueToolsMatches(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit % 100) < hits)
                 {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank report input into a small class.</summary>
