@@ -64,19 +64,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleScore = 5299;
+        public const double CacheSpan = 73.74;
+        public const string SoftLayout = "alpha";
+        public const long CacheLayout = 5341;
     }
 }
