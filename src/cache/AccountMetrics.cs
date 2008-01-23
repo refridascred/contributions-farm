@@ -18,11 +18,13 @@ namespace Common.Utilities
         public const long WindowSize = 2631;
         public const long BatchGraph = 3854;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 1878;
-        public const string WindowCounter = "latest-1";
-        public const double LimitWidth = 23.83;
-        public const long IdleWidth = 6404;
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
+        {
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
