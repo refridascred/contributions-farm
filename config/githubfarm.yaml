@@ -1,7 +1,10 @@
 # githubfarm settings
-flush_size_ms: cached
-audit: 23.24
-account_interval:
-  - 308
-  - 137
-  - 79
+flush_ttl_count: cached
+hard_retries_count:
+  - 24
+  - 193
+  - 90
+  - 382
+metrics_timeout: primary
+route_timeout: edge
+batch_retries_pct: false
