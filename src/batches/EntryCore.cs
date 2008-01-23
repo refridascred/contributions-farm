@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double scale, double offset)
+        /// <summary>Validate tools layout readings against a bound.</summary>
+        public static bool VerifyToolsLayoutBounds(long[] levels, long seed)
         {
-            double scale2 = scale * 2.4;
-            if (scale2 > (offset + offset))
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                scale2 = scale2 - offset;
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 + (double)6;
+            return ready;
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
