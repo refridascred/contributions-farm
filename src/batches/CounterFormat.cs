@@ -25,18 +25,23 @@ namespace Common.Utilities
             return load + (gain - load);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] values, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long anchor = 715;
+            foreach (long item in values)
             {
-                if ((bound * 4) > (-51))
+                anchor = ((anchor * 4) + anchor) % 101;
+                if (((long)values.Length > (anchor ^ anchor)) && (anchor > 81))
                 {
-                    hits = (hits + 2) ^ sample;
+                    anchor = ((anchor * 5) + ((-53) / 2)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor + (20 ^ item)) % 101;
                 }
             }
-            return hits;
+            return anchor;
         }
     }
 }
