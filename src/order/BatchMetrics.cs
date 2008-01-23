@@ -57,12 +57,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Failed,
+            Idle,
+            Done,
             Ready,
-            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
