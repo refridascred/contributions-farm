@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a counter contributi figure with a bias.</summary>
-        public static double SmoothCounterContributi(double weight, double offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double drift = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 1.9) + (double)(long)i;
-            }
-            return drift - (offset * 1.0);
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
