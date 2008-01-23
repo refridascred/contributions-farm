@@ -1,7 +1,4 @@
 # entry settings
-default_ratio:
-  batch_threshold: 30
-  base_window_s: 9521
-  max_window_ms: 100
-tools_capacity: latest
-strict: 10.74
+verbose: latest
+base_depth_s: primary
+persist: 513
