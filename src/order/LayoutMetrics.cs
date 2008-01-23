@@ -26,12 +26,13 @@ namespace Common.Utilities
         public const double BaseBudget = 28.78;
         public const long BurstRoute = 5290;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            New,
             Draft,
-            Active,
+            Pending,
+            Ready,
+            Locked,
             Failed,
         }
     }
