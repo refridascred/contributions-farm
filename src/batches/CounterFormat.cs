@@ -22,18 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)value >= (double)seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double load = (bias / 6.0) * 9.46;
+            return load + (gain - load);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
