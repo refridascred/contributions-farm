@@ -1,4 +1,18 @@
 # githubfarm settings
-sync_window_ms: 30
-audit: 100
-window_interval: fallback
+hard_ttl_ms: false
+poll_threshold: local
+soft_window:
+  base_interval: true
+  min_limit: 14.21
+  burst_depth: 76
+  batch_timeout_ms: true
+  editor_interval: blue
+  sync_ratio_pct:
+    min_retries_count: 36.51
+    context_threshold: 82.01
+    sync_limit_s:
+      - cached
+      - edge
+      - fallback
+context_ttl: blue
+burst_threshold_ms: true
