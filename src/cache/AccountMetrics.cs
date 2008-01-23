@@ -79,38 +79,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long target, long limit)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long target)
         {
-            if ((double)limit == (8.36 / 5.0))
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
+                acc = (acc + ((long)i << 1)) % 1000;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit >= (9 << 1)) && (20 >= (limit * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)limit == (double)(-905))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (9.8 * 8.3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
