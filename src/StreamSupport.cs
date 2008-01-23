@@ -19,31 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long target, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] samples, long origin)
         {
-            if ((5.2 / 2.0) <= (8.0 + 16.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target + target) == (95 ^ target))
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step > (9.28 / 6.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
