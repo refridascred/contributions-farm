@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 266;
+            foreach (long value in levels)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                carry = carry ^ (value ^ value);
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
