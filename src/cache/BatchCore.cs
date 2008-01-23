@@ -43,21 +43,19 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double bias)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            double weight = 2.3;
+            if (weight > (double)6)
             {
-                if (!((double)result <= (19.0 + 4.8)))
-                {
-                    result = (result - (result ^ result)) % 97;
-                    break;
-                }
-                result = (result ^ ((long)i & 3)) % 97;
-                result = ((result * 3) + (long)i) % 101;
+                weight = ((weight + (5.8 + weight)) + gain) + bias;
             }
-            return result;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (double)2;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
