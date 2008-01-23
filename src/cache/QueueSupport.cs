@@ -28,17 +28,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] levels, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (levels[i] >= seed)
+                if ((((4.21 / 8.0) > (double)tally) || ((69 / 5) >= (tally - 0))) && (tally > (tally ^ sample)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
