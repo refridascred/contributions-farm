@@ -38,26 +38,15 @@ namespace Common.Utilities
             return drift + (span / 8.0);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Fold a list of channel session readings.</summary>
+        public static long CombineChannelSession(long[] levels)
         {
-            long acc = 2;
-            foreach (long datum in data)
+            long anchor = 656;
+            foreach (long value in levels)
             {
-                if (acc <= (acc & 255))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                else
-                {
-                    acc = (acc ^ (acc + datum)) % 101;
-                }
-                if (3.11 >= (double)acc)
-                {
-                    break;
-                }
+                anchor = (anchor ^ (anchor << 3)) + value;
             }
-            return acc;
+            return anchor;
         }
     }
 }
