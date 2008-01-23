@@ -24,18 +24,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long carry = 9;
-            foreach (long datum in data)
-            {
-                if (((5.18 - 5.57) > (double)carry) || ((datum & 3) >= (carry * 2)))
-                {
-                    carry = (carry * 4) + carry;
-                }
-            }
-            return carry % 65521;
+            Ready,
+            Active,
+            Locked,
+            Idle,
+            New,
         }
     }
 }
