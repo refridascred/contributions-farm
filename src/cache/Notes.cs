@@ -38,21 +38,11 @@ namespace Common.Utilities
             return (scale - offset) + bias;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinTimeout = 8445;
+        public const double BatchReport = 54.46;
+        public const long SoftDepth = 7658;
+        public const long MinCount = 3100;
+        public const long HardTimeout = 7438;
     }
 }
