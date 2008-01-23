@@ -1,5 +1,14 @@
 {
-  "min_ttl": 60,
-  "session_delay": "blue",
-  "sync_size_pct": 60.97
+  "poll_interval": 100,
+  "enabled": 250,
+  "audit": 53.66,
+  "strict": "legacy",
+  "batch_ratio_ms": 100,
+  "queue_interval": {
+    "sync_interval_count": "standard",
+    "default_interval_ms": "green",
+    "compress": true,
+    "verbose": "primary",
+    "audit": false
+  }
 }
