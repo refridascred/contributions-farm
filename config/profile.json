@@ -1,6 +1,9 @@
 {
-  "queue_window": 7090,
-  "verbose": 75.51,
-  "poll_window_count": false,
-  "flush_timeout_s": 100
+  "stats_timeout": "green",
+  "burst_size_s": {
+    "batch_window_count": true,
+    "cache_depth_count": "blue",
+    "base_window": "eu-west"
+  },
+  "warm_depth_count": "local"
 }
