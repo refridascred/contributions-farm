@@ -57,16 +57,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total - (long)i) % 255;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Stale,
+            Idle,
+            Ready,
+            Paused,
         }
     }
 }
