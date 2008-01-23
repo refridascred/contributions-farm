@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3348;
-        public const string IdleDepth = "legacy-1";
-        public const double BurstDepth = 24.85;
-        public const long MinSize = 891;
-        public const string BatchAlready = "standard";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 1759;
+        public const string BurstInterval = "staging";
+        public const long SoftFactor = 6372;
+        public const long DefaultDepth = 4142;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
