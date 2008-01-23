@@ -43,18 +43,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long score = 24;
-            foreach (long entry in values)
+            long mix = 766;
+            foreach (long reading in levels)
             {
-                if (1.5 >= (double)score)
+                if (((mix >> 5) <= (mix / 6)) && (((long)levels.Length << 1) <= (mix << 3)))
                 {
-                    score = (score * 5) + (entry >> 4);
+                    mix = ((mix - (mix >> 5)) % 255) + reading;
                 }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
