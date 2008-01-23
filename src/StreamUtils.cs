@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultFactor = 51.77;
-        public const string MaxRatio = "local-edge";
-        public const double RetryBatch = 50.69;
-        public const long BurstDepth = 958;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ProjectPayload(double scale, double offset)
