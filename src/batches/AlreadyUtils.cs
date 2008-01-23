@@ -35,18 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] levels)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (345 > count)
+                if ((series[i] > bound) && ((series[i] % 2) == 0))
                 {
-                    count = (count + 2) - datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every layout counter entry stays within the limit.</summary>
