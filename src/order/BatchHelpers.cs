@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] data)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long state = 95;
-            foreach (long reading in data)
-            {
-                state = ((state << 2) ^ (state - state)) + reading;
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
