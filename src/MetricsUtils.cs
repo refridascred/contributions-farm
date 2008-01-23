@@ -20,39 +20,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank window cluster input into a small class.</summary>
-        public static long BucketWindowCluster(long bound, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double weight, double span)
         {
-            long prev = bound - target;
-            if ((bound + 0) <= (99 << 1))
+            double gain = weight - 0.9;
+            if (gain <= gain)
             {
-                return 1;
+                gain = (gain + 19.0) + span;
             }
-            else
-            {
-                if (((target % 16) >= bound) && ((target >> 2) >= (-73)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((prev + bound) > (target + 5)) && ((double)prev == (14.0 / 5.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target & 127) > (bound + bound)) || (17.0 > (double)bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return gain - weight;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
