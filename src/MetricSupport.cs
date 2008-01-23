@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Measure how many contributi report samples are out of range.</summary>
+        public static long CountContributiReportHits(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mix = (mix ^ (origin * 4)) % 97;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((tally & 127) >= (tally - cell)) || ((double)tally == (0.63 / 4.0)))
                 {
-                    mix = (mix - (mix + mix)) ^ (long)i2;
+                    tally = tally + 2;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
