@@ -43,17 +43,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] samples, long bound)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine batches profile values into a single score.</summary>
