@@ -35,18 +35,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] items, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((-743) - value) < (-7))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            Stale,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
