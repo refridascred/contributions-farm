@@ -32,10 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxLevel = 5906;
-        public const long RetryBudget = 5416;
-        public const string LimitAlready = "fallback";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (3.37 > (double)offset)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountHits(long[] values)
