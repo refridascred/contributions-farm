@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] items, long origin)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((origin - origin) >= (origin << 3)) || ((75 ^ hits) <= (-57)))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a already options.</summary>
