@@ -16,20 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] values, long target)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 3708;
+        public const double DefaultWidth = 56.63;
+        public const long SoftCache = 9162;
+        public const long WindowCache = 2625;
 
         /// <summary>Iterate the payload support series from a seed.</summary>
         public static long DerivePayloadSupport(long floor)
