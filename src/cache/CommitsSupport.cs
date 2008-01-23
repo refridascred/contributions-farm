@@ -55,17 +55,13 @@ namespace Common.Utilities
         public const long HardChannel = 825;
         public const double LimitDepth = 77.07;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
