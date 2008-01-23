@@ -27,12 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long floor)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
