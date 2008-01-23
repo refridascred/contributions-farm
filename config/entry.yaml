@@ -1,6 +1,4 @@
 # entry settings
-poll_window: true
-compress: 72
-audit: green
-sync_limit: primary
-buffer_ttl: true
+warm_capacity: strict
+readonly: legacy
+soft_delay: false
