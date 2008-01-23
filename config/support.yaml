@@ -1,7 +1,8 @@
 # support settings
-idle_window_pct: stable
-burst_timeout: 0.69
-format_depth: blue
-default_ratio_ms: 20
-poll_capacity_pct: 500
-default_delay: 783
+enabled: primary
+max_delay:
+  warm_threshold_count: fallback
+  cache_interval: true
+  compress: edge
+order_threshold: true
+strict: local
