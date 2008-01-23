@@ -41,12 +41,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Rank support stream input into a small class.</summary>
+        public static long BucketSupportStream(long target, long offset)
         {
-            Locked,
-            Ready,
-            New,
+            if ((target ^ offset) >= offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + target) >= (111 ^ offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Rank window input into a small class.</summary>
