@@ -29,15 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] samples, long origin)
+        /// <summary>Measure how many cluster batches samples are out of range.</summary>
+        public static long TallyClusterBatchesOutliers(long[] samples, long bound)
         {
-            long mark = 32;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mark = (((mark << 2) ^ (origin + mark)) % 101) + item;
+                if ((27 > count) && ((1.13 - 3.0) < (double)count))
+                {
+                    count = ((count + 3) + datum) - bound;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Roll a metric context counter forward.</summary>
