@@ -24,14 +24,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Draft,
-            Pending,
-            Ready,
+            Active,
+            New,
             Done,
-            Failed,
         }
 
         /// <summary>Project the next support value.</summary>
