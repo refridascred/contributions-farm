@@ -23,9 +23,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 42.1;
-        public const long BurstBudget = 2492;
-        public const string CacheCount = "latest-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 3031;
+        public const long RetryLevel = 5619;
+        public const string MinCache = "primary-edge";
+        public const string DefaultCache = "primary-edge";
     }
 }
