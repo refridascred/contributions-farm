@@ -33,19 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportRange(long[] readings, long limit)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double rate = (double)863 / 5.0;
+            if (rate < (double)4)
             {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + (double)(-496)) + ratio;
             }
-            return ok;
+            return rate + offset;
         }
     }
 }
