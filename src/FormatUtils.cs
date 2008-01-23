@@ -86,19 +86,13 @@ namespace Common.Utilities
             return (weight + (span * 1.0)) + bias;
         }
 
-        /// <summary>Validate route queue readings against a bound.</summary>
-        public static bool GuardRouteQueueRange(long[] samples, long bound)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Retry,
+            New,
+            Failed,
         }
     }
 }
