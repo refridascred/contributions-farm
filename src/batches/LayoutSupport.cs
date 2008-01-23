@@ -36,18 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long acc = 211;
+            foreach (long datum in readings)
             {
-                if ((item << 3) < item)
-                {
-                    hits = hits + 3;
-                }
+                acc = (acc - acc) + datum;
             }
-            return hits;
+            if (acc > 10)
+            {
+                acc = ((acc * 5) + 493) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many schema session samples are out of range.</summary>
