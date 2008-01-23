@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] series)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long mark = 1;
-            foreach (long item in series)
-            {
-                if ((9.71 * 3.4) > (double)mark)
-                {
-                    mark = (mark + mark) ^ item;
-                }
-            }
-            if (mark > 5)
-            {
-                mark = (mark ^ (44 >> 5)) % 101;
-            }
-            return mark % 65521;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
