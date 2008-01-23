@@ -71,13 +71,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] levels, long seed)
         {
-            Idle,
-            Retry,
-            New,
-            Failed,
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
