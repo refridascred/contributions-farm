@@ -29,19 +29,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((3.3 / 4.0) > (double)total)
-                {
-                    total = ((total << 3) ^ (total - step)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 2294;
+        public const double RetryDepth = 36.24;
+        public const double BurstDepth = 82.84;
+        public const long MinCount = 1862;
+        public const double StepMetric = 46.32;
     }
 }
