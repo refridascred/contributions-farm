@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const string LimitTimeout = "open-v2";
         public const string IdleCount = "strict";
 
-        /// <summary>Validate commits checks readings against a bound.</summary>
-        public static bool CheckCommitsChecksLimits(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 9840;
+        public const double StepInterval = 79.9;
+        public const string WindowDepth = "open-v2";
+        public const long BaseMetrics = 2176;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
