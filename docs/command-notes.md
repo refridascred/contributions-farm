@@ -1,14 +1,11 @@
 # Command notes
 
-Use record settings to tune how often cache data is refreshed.
-When a counter fails, the context handler retries a few times before giving up.
-
-Use commits settings to tune how often metrics data is refreshed.
-Use command settings to tune how often metric data is refreshed.
-Use profile settings to tune how often report data is refreshed.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+The stats report groups every support by window.
 
 ## Guidelines
 
-- Document new stats fields
-- Validate schema input early
-- Review layout limits each release
+- Prefer cluster defaults
+- Review record limits each release
+- Keep contributi values small
+- Log every stream change
