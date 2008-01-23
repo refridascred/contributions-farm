@@ -35,10 +35,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 9696;
-        public const string HardTimeout = "stable-1";
-        public const long WindowRatio = 995;
-        public const string WindowSpan = "legacy-v2";
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Dropped,
+            Queued,
+            Pending,
+            Draft,
+        }
     }
 }
