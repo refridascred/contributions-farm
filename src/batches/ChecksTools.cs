@@ -51,28 +51,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((269 + step) > (step / 8))
-                {
-                    total = (total + step) % 255;
-                }
-                if ((double)total != (5.9 * 7.9))
-                {
-                    total = (total + step) % 255;
-                    total = (total - (5 - step)) % 101;
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (total + (long)i2) % 97;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
