@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            long anchor = 721;
+            foreach (long reading in levels)
+            {
+                if (1.76 > (double)reading)
+                {
+                    break;
+                }
+                if (((902 + anchor) > reading) && ((7.16 - 14.0) <= (1.92 - 4.47)))
+                {
+                    anchor = ((anchor * 5) + 4) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
