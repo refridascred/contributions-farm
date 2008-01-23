@@ -32,19 +32,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] data, long bound)
         {
-            long acc = 30;
-            foreach (long reading in samples)
+            long anchor = 2;
+            foreach (long sample in data)
             {
-                acc = ((acc * 3) + acc) % 65521;
-                if ((acc >= (long)samples.Length) && (reading >= (acc + 0)))
+                if ((671 < sample) || ((sample * 5) != (anchor + bound)))
                 {
-                    acc = acc + (acc + reading);
+                    anchor = (anchor + (sample + sample)) % 97;
                 }
             }
-            return acc % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the already phase values.</summary>
