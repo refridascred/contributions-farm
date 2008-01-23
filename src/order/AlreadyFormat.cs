@@ -45,12 +45,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Ready,
-            Failed,
+            Active,
             Pending,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
