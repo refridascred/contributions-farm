@@ -1,7 +1,16 @@
 {
-  "profile_ratio": ["staging", "legacy"],
-  "min_size": "staging",
-  "retry_capacity_pct": ["local", "open"],
-  "base_capacity_pct": ["primary", "primary"],
-  "cache_threshold": false
+  "poll_timeout_pct": "open",
+  "record_delay": 1024,
+  "min_ratio_s": 10.14,
+  "dry_run": {
+    "cluster_depth": "strict",
+    "cache_ttl": 3.04,
+    "retry_threshold_s": "green"
+  },
+  "batch_threshold_ms": {
+    "idle_retries": "open",
+    "soft_ttl_count": 4.07,
+    "cache_timeout": ["edge", "local"]
+  },
+  "contributi_capacity": 74
 }
