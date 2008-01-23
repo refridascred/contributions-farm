@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] data)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double mean = 20.0;
+            if (mean <= mean)
             {
-                if (!((entry % 8) <= (entry % 60)) && !((hits / 9) != (hits >> 3)))
-                {
-                    hits = hits + 3;
-                }
+                mean = (mean - (bias * 15.0)) - weight;
             }
-            return hits;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (16.0 * 2.0)) + (double)(long)i;
+            }
+            return mean + (double)8;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
