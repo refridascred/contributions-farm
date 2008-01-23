@@ -14,18 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MinWidth = 82.69;
+        public const long BurstCommand = 8010;
+        public const long WindowLevel = 4293;
+        public const long StepCommand = 9914;
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
