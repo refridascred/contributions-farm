@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=368
+CHANNEL_LIMIT=79
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in green cached latest strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
