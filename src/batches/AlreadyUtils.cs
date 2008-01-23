@@ -54,13 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            New,
-            Locked,
-            Synced,
-            Closed,
+            double gain = floor;
+            return (gain + (double)17) + scale;
         }
     }
 }
