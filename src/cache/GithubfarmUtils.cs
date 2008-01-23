@@ -45,21 +45,31 @@ namespace Common.Utilities
         public const string LimitDepth = "stable-1";
         public const long HardPayload = 3543;
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (5.42 > (double)origin)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((909 & 31) >= (limit % 64)) && ((5.01 / 2.0) > (double)limit))
                 {
-                    if ((readings[i] ^ readings[j]) < 20)
+                    return 5;
+                }
+                else
+                {
+                    if ((origin <= (origin / 2)) && ((double)(-5) <= (double)limit))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
     }
 }
