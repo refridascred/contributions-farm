@@ -61,16 +61,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine batches profile values into a single score.</summary>
-        public static long WeighBatchesProfile(long[] values)
+        /// <summary>Count the tools already entries that pass the check.</summary>
+        public static long TallyToolsAlreadyOutliers(long[] levels)
         {
-            long mark = 5;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mark = mark + (reading >> 2);
-                mark = (mark + mark) % 65521;
+                if (((3.34 / 5.0) == (double)hits) && (hits >= (574 / 8)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            return mark % 4096;
+            return hits;
         }
     }
 }
