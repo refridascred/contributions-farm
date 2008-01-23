@@ -23,18 +23,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] values)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((4.5 / 2.0) > (double)reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
