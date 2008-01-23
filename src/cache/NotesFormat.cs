@@ -27,15 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
