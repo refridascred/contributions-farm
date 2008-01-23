@@ -72,21 +72,21 @@ namespace Common.Utilities
         public const long IdleWidth = 9092;
         public const string MinFactor = "alpha-edge";
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
+        /// <summary>Combine githubfarm cluster values into a single score.</summary>
+        public static long WeighGithubfarmCluster(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 1;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc + (cell ^ acc)) % 255;
+                if ((7.84 / 6.0) > (double)target)
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + target) % 97;
+                    acc = (acc + (cell >> 2)) % 4096;
                 }
+                acc = (acc << 2) ^ (cell + target);
             }
-            return seen;
+            return acc % 4096;
         }
     }
 }
