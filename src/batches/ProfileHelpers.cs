@@ -44,14 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] values)
         {
-            Paused,
-            New,
-            Locked,
-            Active,
-            Closed,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((16 + item) != (item + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
