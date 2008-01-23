@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples, long step)
         {
-            Failed,
-            Pending,
-            Synced,
-            Ready,
+            long state = 465;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    state = (state + 149) - (long)i;
+                }
+                state = state - (cell + step);
+            }
+            return state % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
