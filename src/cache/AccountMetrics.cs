@@ -42,24 +42,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long origin, long offset)
-        {
-            if ((offset >= (offset / 8)) && ((offset << 2) == (offset << 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin ^ offset) <= (696 >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 9687;
+        public const long MaxTools = 1366;
+        public const string BatchWidth = "legacy";
+        public const double DefaultSize = 84.11;
     }
 }
