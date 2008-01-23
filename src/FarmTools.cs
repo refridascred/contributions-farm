@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count route order pairs that satisfy a relation.</summary>
-        public static long PairRouteOrderCount(long[] series)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(-273) - (floor + floor);
+            if (weight < (double)18)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = (weight - (double)3) + bias;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - (floor - floor);
         }
 
         /// <summary>Accumulate stats report samples.</summary>
