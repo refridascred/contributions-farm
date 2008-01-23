@@ -14,15 +14,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            double mean = span;
-            if (mean >= span)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean + scale;
+                anchor = (anchor * 3) + (bound % 97);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return mean + (scale + span);
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
