@@ -42,11 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftRatio = "strict-1";
-        public const long BurstFactor = 3527;
-        public const string MaxInterval = "fallback-v2";
-        public const long BatchTimeout = 7639;
+        /// <summary>Check that every layout counter entry stays within the limit.</summary>
+        public static bool CheckLayoutCounterRange(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long TallyBufferHits(long[] items, long offset)
