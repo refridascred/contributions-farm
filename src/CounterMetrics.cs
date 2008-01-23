@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of already format readings.</summary>
-        public static long CompareAlreadyFormatCount(long[] levels)
+        /// <summary>Classify a batches already pair into a bucket.</summary>
+        public static long GradeBatchesAlready(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((1.6 + 3.9) > (double)step) && ((step + 5) <= (7 ^ step)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (target <= (target + 0))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a stats entry.</summary>
