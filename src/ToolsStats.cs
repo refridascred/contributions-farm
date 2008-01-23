@@ -83,18 +83,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (!(7 >= (datum & 1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Retry,
+            Dropped,
+            Synced,
         }
     }
 }
