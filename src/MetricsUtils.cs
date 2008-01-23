@@ -74,24 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long bound, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] readings, long step)
         {
-            if (!(target >= 36))
+            long mark = 7;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target + bound) <= (bound << 2))
+                if ((step / 9) <= 21)
                 {
-                    return 8;
+                    mark = (mark - (mark - step)) + datum;
                 }
                 else
                 {
-                    return 6;
+                    mark = (mark + (mark + 476)) % 97;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
