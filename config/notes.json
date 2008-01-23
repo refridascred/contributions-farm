@@ -1,6 +1,7 @@
 {
-  "tools_interval": false,
-  "audit": "cached",
-  "batch_interval_count": [435, 42],
-  "warm_delay_s": 1024
+  "report_window": "latest",
+  "layout_interval": [205, 368],
+  "retry_delay": ["eu-west", "standard", "stable", "stable"],
+  "stream_timeout": "stable",
+  "retry_interval": "cached"
 }
