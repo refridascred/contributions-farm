@@ -35,13 +35,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            Stale,
-            Queued,
-            Dropped,
-            Failed,
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = (sum ^ (limit ^ (long)i)) % 65521;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
