@@ -55,13 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] values, long floor)
         {
-            Retry,
-            Failed,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (9.92 < (double)tally)
+                {
+                    tally = ((tally + 3) - reading) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
