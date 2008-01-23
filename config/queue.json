@@ -1,8 +1,7 @@
 {
-  "min_threshold": 2373,
-  "burst_delay": 68,
-  "retry_ttl_ms": 60,
-  "burst_limit_count": 250,
-  "dry_run": 62.6,
-  "cache_threshold": false
+  "record_limit": [194, 44],
+  "enabled": true,
+  "default_window": false,
+  "soft_limit_pct": 38,
+  "buffer_ratio": 60
 }
