@@ -21,16 +21,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long result = 45;
+            foreach (long value in items)
             {
-                mix = ((mix * 5) + (mix >> 1)) % 4096;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (result <= 847)
+                {
+                    result = (result * 5) + (result / 5);
+                }
+                if (212 > ((long)items.Length + value))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (result < 645)
+            {
+                result = ((result * 4) + (result + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
