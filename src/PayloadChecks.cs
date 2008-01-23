@@ -61,12 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long step)
         {
-            public bool Total { get; set; }
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            long acc = step;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many entry checks samples are out of range.</summary>
