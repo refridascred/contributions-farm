@@ -41,15 +41,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] series)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long acc = 0;
-            foreach (long cell in series)
-            {
-                acc = (acc + (acc - cell)) % 65521;
-            }
-            return acc % 97;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a stream info.</summary>
