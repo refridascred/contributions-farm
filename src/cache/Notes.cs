@@ -38,12 +38,11 @@ namespace Common.Utilities
             return (scale - offset) + bias;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 1458;
+        public const long RetryCache = 6565;
+        public const long LimitSize = 228;
+        public const double LimitCache = 13.34;
+        public const long CacheLevel = 9298;
     }
 }
