@@ -13,24 +13,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                long offset = (mark - (long)i) ^ limit;
-                if ((limit - limit) >= mark)
-                {
-                    offset = ((offset << 3) ^ limit) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ offset;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
