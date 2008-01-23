@@ -40,13 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Count the farm buffer entries that pass the check.</summary>
+        public static long AuditFarmBufferOutliers(long[] readings, long target)
         {
-            Pending,
-            Retry,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (item >= (923 % 3))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
     }
 }
