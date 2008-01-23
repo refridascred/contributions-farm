@@ -1,7 +1,11 @@
 # entry settings
-format_timeout: 50.68
-default_delay_pct: latest
-dry_run: false
-retry_window: primary
-hard_threshold_s: true
-min_window_s: 39.71
+batch_retries_count: edge
+payload_retries:
+  - 130
+  - 30
+  - 1
+  - 307
+retry_window: 1782
+burst_window_count: true
+max_window_pct: 78.87
+retry_threshold_ms: strict
