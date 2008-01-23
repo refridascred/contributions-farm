@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            Locked,
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a counter stats.</summary>
