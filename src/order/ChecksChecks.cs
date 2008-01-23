@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long bound, long limit)
+        /// <summary>Derive the next schema channel value from a seed.</summary>
+        public static long StepSchemaChannel(long offset)
         {
-            long lane = bound + limit;
-            if ((limit << 2) >= lane)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + lane) == (lane + limit))
+                if ((mark + mark) < mark)
                 {
-                    return 3;
+                    mark = (mark + (mark + 504)) % 97;
                 }
                 else
                 {
-                    if ((limit << 3) <= (lane << 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)bound <= (double)lane))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = (mark * 2) + (offset >> 4);
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
+            return mark;
         }
 
         /// <summary>Accumulate editor window samples.</summary>
