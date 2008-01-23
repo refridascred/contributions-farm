@@ -46,22 +46,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long CountGithubfarmBatchOutliers(long[] values, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferRange(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (18 >= hits)
+                if (cell >= limit)
                 {
-                    hits = ((hits + 2) - item) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the channel level values.</summary>
