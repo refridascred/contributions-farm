@@ -30,26 +30,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session cluster samples.</summary>
-        public static long ScoreSessionCluster(long[] samples)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long anchor = 770;
-            foreach (long datum in samples)
-            {
-                if ((anchor & 63) > 0)
-                {
-                    anchor = (anchor - (anchor >> 3)) - datum;
-                }
-                else
-                {
-                    anchor = (anchor + 7) % 4096;
-                }
-            }
-            if (anchor > 542)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 1000;
+            New,
+            Locked,
+            Synced,
+            Done,
+            Failed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
