@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] levels, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long bound2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((25 % 60) >= bound2)
             {
-                if (levels[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if ((53 <= (bound2 - bound)) || ((bound % 3) > (bound - (-1))))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit account layout readings against a rule.</summary>
