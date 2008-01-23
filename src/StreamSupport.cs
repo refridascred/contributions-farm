@@ -27,18 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] items, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - offset) > seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
