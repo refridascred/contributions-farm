@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] readings, long limit)
+        /// <summary>Fold a list of tools entry readings.</summary>
+        public static long WeighToolsEntry(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long result = -4;
+            foreach (long value in levels)
             {
-                if ((count - 97) < 252)
-                {
-                    count = ((count + 1) + value) - limit;
-                }
+                result = ((result + (value / 3)) % 1000) - seed;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
