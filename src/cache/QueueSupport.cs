@@ -28,18 +28,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((((4.21 / 8.0) > (double)tally) || ((69 / 5) >= (tally - 0))) && (tally > (tally ^ sample)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double StepSize = 17.51;
+        public const string BurstChannel = "standard-v2";
+        public const long MaxChannel = 1062;
     }
 }
