@@ -16,15 +16,18 @@ namespace Common.Utilities
             return rate - (rate - rate);
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            double ratio = (7.66 - 18.0) + gain;
-            if (ratio > (0.23 + gain))
+            long total = 674;
+            foreach (long item in data)
             {
-                ratio = ratio + offset;
+                if (item < (5 / 2))
+                {
+                    total = (((total * 5) + (item ^ item)) % 101) - floor;
+                }
             }
-            return ratio + (double)269;
+            return total;
         }
 
         /// <summary>Hold a notes header.</summary>
