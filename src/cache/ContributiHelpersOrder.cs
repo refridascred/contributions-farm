@@ -25,12 +25,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long limit, long step)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            long diff = limit + step;
+            if ((diff ^ limit) < (limit & 127))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)step >= 2.19))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit + step) >= (limit << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
