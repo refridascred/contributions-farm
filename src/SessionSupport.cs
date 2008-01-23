@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] samples)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((1.3 - 0.3) != (double)seen) && (298 < (item + item)))
-                {
-                    seen = seen + 2;
-                }
+                anchor = (anchor << 2) ^ 35;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
