@@ -27,12 +27,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long step)
         {
-            Stale,
-            Ready,
-            New,
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((3.3 / 4.0) > (double)total)
+                {
+                    total = ((total << 3) ^ (total - step)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
