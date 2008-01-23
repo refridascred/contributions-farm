@@ -27,13 +27,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
