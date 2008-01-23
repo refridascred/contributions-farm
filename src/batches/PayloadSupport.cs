@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinRatio = 26.2;
-        public const long IdleCount = 8316;
-        public const double SoftScore = 34.85;
-        public const long DefaultMetric = 8862;
-        public const long WindowMetric = 5518;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Combine support token values into a single score.</summary>
         public static long WeighSupportToken(long[] values, long seed)
