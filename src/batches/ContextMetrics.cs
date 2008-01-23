@@ -58,14 +58,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long CountGithubfarmBatchOutliers(long[] values, long step)
         {
-            Pending,
-            Draft,
-            Done,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (18 >= hits)
+                {
+                    hits = ((hits + 2) - item) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a commits reading.</summary>
