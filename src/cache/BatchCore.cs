@@ -30,19 +30,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double bias)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            double weight = 2.3;
-            if (weight > (double)6)
-            {
-                weight = ((weight + (5.8 + weight)) + gain) + bias;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + (double)2;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
