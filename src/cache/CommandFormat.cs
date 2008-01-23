@@ -23,10 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleWidth = 64.28;
-        public const long CacheSize = 3963;
-        public const long BurstInterval = 8794;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Locked,
+            Queued,
+            Closed,
+            Idle,
+            Done,
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double ScaleStats(double scale, double floor)
