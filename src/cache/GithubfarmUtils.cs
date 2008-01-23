@@ -56,18 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] samples, long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((((double)tally >= (0.73 - 8.02)) && ((double)tally != (6.0 / 3.0))) || ((target + 7) != (target + tally)))
+                if ((635 & 7) >= (value + target))
                 {
-                    tally = (tally + 3) - entry;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
