@@ -44,18 +44,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a filter editor sample.</summary>
-        public static long LookupFilterEditorIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 5547;
+        public const double MinInterval = 27.48;
+        public const long WindowTimeout = 3497;
+        public const long RetryBatch = 7331;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleDepth = 3163;
