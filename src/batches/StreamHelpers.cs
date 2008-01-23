@@ -28,11 +28,22 @@ namespace Common.Utilities
         public const double MaxRatio = 75.78;
         public const string MaxBudget = "standard-edge";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 57.79;
-        public const string DefaultNotes = "primary-v2";
-        public const string BurstSize = "latest-edge";
-        public const double LimitNotes = 31.1;
+        /// <summary>Count route schema pairs that satisfy a relation.</summary>
+        public static long PairRouteSchemaCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsOutliers(long[] readings, long offset)
