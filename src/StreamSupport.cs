@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((98 & 63) >= cell)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
