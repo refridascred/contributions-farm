@@ -28,17 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter session entry that matches the target.</summary>
-        public static long SeekCounterSessionIndex(long[] data, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if (data[i] >= origin)
+                if (datum >= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Project the next token value.</summary>
