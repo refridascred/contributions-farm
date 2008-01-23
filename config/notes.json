@@ -1,15 +1,5 @@
 {
-  "cache_capacity": {
-    "max_retries_s": 93.05,
-    "profile_timeout": "stable",
-    "buffer_ttl": "edge",
-    "compress": 8897,
-    "persist": 28,
-    "audit": "cached"
-  },
-  "idle_size_count": 58.91,
-  "cluster_ratio": 2472,
-  "burst_timeout_ms": 17.59,
-  "strict": 92,
-  "idle_depth_s": 250
+  "idle_timeout": 60,
+  "idle_threshold": 3176,
+  "sync_depth_s": 30
 }
