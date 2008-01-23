@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstBudget = "primary-edge";
+        public const long MaxLevel = 3315;
+        public const long LimitFactor = 8519;
+        public const long IdleFactor = 7640;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSize = 8844;
