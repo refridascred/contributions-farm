@@ -38,21 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] readings)
+        /// <summary>Project the next already queue value.</summary>
+        public static double ProjectAlreadyQueue(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (scale - scale) / 9.0;
+            if (gain < offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - gain;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - (9.3 * 15.0)) - (double)(long)i;
+            }
+            return gain - (gain / 4.0);
         }
 
         /// <summary>Rank window input into a small class.</summary>
