@@ -24,12 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] readings, long origin)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!((613 + matches) > item))
+                {
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
