@@ -30,15 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record payload entries.</summary>
-        public static long TotalRecordPayload(long[] series, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long carry = 37;
-            foreach (long reading in series)
-            {
-                carry = ((((carry * 3) + ((-50) & 127)) % 101) + reading) + offset;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
