@@ -61,10 +61,19 @@ namespace Common.Utilities
         public const double CacheSize = 22.18;
         public const long StepDepth = 2779;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 5320;
-        public const long RetryBudget = 8202;
-        public const long CacheMetrics = 365;
-        public const double IdleMetrics = 59.41;
+        /// <summary>Blend two payload editor measurements.</summary>
+        public static double SmoothPayloadEditor(double bias, double bias2)
+        {
+            double mean = bias2;
+            if (mean >= (double)186)
+            {
+                mean = mean + (mean / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (bias + mean)) + (double)(long)i;
+            }
+            return mean + bias;
+        }
     }
 }
