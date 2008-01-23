@@ -27,32 +27,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] series, long origin)
         {
-            long cur = target + floor;
-            if (floor >= (target + cur))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) < floor)
+                if (datum > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (718 < cur)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
