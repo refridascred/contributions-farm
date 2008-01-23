@@ -16,15 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] levels, long step)
+        /// <summary>Measure how many metrics format samples are out of range.</summary>
+        public static long TallyMetricsFormatOutliers(long[] readings)
         {
-            long sum = -38;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                sum = (sum ^ (step - reading)) % 101;
+                if ((4.69 / 2.0) >= (double)hits)
+                {
+                    hits = (hits + 2) - value;
+                }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Iterate the payload support series from a seed.</summary>
