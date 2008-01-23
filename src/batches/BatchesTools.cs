@@ -26,11 +26,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 30.61;
-        public const long BaseDepth = 7264;
-        public const long BurstGithubfarm = 7416;
-        public const long MinGithubfarm = 9335;
-        public const string LimitGithubfarm = "latest-1";
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
