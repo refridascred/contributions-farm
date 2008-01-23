@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public double Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
