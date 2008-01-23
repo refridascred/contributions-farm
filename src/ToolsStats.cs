@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] samples, long step)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen - seen) < (step & 15))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
