@@ -47,11 +47,26 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] values, long bound)
         {
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long carry = 3;
+            foreach (long sample in values)
+            {
+                if (((bound << 2) > (bound + sample)) || (carry >= (sample << 2)))
+                {
+                    carry = ((carry * 2) + (carry + bound)) % 65521;
+                }
+                if ((bound + sample) <= (sample - carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
