@@ -38,18 +38,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (0 >= (sample ^ target))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxGraph = 56.06;
+        public const long BurstSpan = 4140;
+        public const long MaxSpan = 482;
     }
 }
