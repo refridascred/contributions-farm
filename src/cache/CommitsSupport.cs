@@ -34,11 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Digest a series of cache commits entries.</summary>
+        public static long FoldCacheCommits(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long score = 7;
+            foreach (long item in levels)
+            {
+                if ((double)score <= (9.41 - 4.4))
+                {
+                    score = (((score << 2) ^ item) % 97) - floor;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
