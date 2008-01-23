@@ -12,19 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] samples, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] readings)
         {
-            long mark = 7;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mark = ((((mark << 2) ^ (mark & 255)) % 1000) + entry) - target;
+                if (!((matches >= (reading >> 2)) || ((matches ^ matches) <= (matches - reading))))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (mark < 44)
-            {
-                mark = (mark - mark) % 65521;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Hold a schema entry.</summary>
