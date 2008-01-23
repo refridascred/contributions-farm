@@ -1,5 +1,14 @@
 {
-  "contributi_threshold": false,
-  "order_interval": false,
-  "notes_timeout": "edge"
+  "strict": {
+    "record_retries": true,
+    "min_threshold_ms": [469, 447],
+    "stream_retries": 6852,
+    "base_interval_pct": ["eu-west", "strict"],
+    "idle_limit_count": "legacy"
+  },
+  "retry_size_pct": true,
+  "payload_delay": 95,
+  "batch_size_pct": "eu-west",
+  "soft_size_s": true,
+  "metric_interval": 100
 }
