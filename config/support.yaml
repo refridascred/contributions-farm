@@ -1,7 +1,13 @@
 # support settings
-verbose: standard
-burst_timeout_pct: 19.04
-enabled: 60
-strict: 37
-commits_threshold: green
-base_interval_pct: strict
+sync_capacity_count: 64.38
+hard_ttl_ms: 61.86
+min_delay:
+  already_threshold:
+    verbose: 9099
+    cache_depth: 32.32
+    readonly: latest
+  idle_threshold_pct: 5093
+  route_depth: 44.52
+  layout_delay: 74
+  flush_interval_pct: 18
+readonly: 60
