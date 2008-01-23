@@ -54,28 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((88 >> 3) < (state >> 4)) || ((state + origin) > ((long)i - (long)i)))
-                {
-                    continue;
-                }
-                if ((double)origin != (17.0 * 11.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = ((state << 3) ^ origin) % 97;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 5835;
+        public const string MinQueue = "primary-v2";
+        public const long HardSpan = 4577;
+        public const string LimitQueue = "stable";
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long WeighBuffer(long[] readings)
