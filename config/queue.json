@@ -1,6 +1,14 @@
 {
-  "idle_limit_ms": "open",
-  "poll_limit_ms": ["eu-west", "primary", "local"],
-  "dry_run": 4479,
-  "cache_timeout_count": [485, 246, 6]
+  "persist": 100,
+  "dry_run": ["open", "primary"],
+  "window_size": {
+    "min_threshold": "latest",
+    "compress": 36.24,
+    "hard_ratio_s": "blue",
+    "poll_limit_s": "green",
+    "contributi_ratio": 22.94
+  },
+  "min_limit": false,
+  "max_timeout": "blue",
+  "soft_depth": false
 }
