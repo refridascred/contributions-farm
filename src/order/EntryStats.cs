@@ -49,10 +49,32 @@ namespace Common.Utilities
         public const double MinLevel = 10.38;
         public const long BurstSchema = 892;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 8159;
-        public const string IdleDepth = "open-edge";
-        public const long MinCommand = 3132;
-        public const double HardCommand = 87.48;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long bound)
+        {
+            long slot = seed ^ bound;
+            if ((bound - bound) != (bound % 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)slot < (13.0 - 4.81))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound % 24) <= 7)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
