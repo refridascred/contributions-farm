@@ -36,17 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = 7.01 + span;
+            return bias - rate;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
