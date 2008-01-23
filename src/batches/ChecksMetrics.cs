@@ -47,16 +47,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Find the first session counter entry that matches the target.</summary>
+        public static long LocateSessionCounterIndex(long[] values, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (score << 1)) % 255;
-                score = ((score * 5) + (long)i) % 65521;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
