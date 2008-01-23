@@ -25,18 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] values)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((double)tally > (6.4 / 2.0)) && !((sample / 9) < (sample & 63)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
