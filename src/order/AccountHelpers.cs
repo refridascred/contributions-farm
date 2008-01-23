@@ -25,12 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetrySpan = 9439;
-        public const double LimitMetric = 93.41;
-        public const string WindowSize = "alpha-1";
-        public const long RetrySize = 8169;
-        public const long StepMetric = 7834;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseDepth = 7774;
+        public const double IdleMetrics = 98.86;
+        public const double BatchMetrics = 0.78;
+        public const double StepMetrics = 32.98;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values)
