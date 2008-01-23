@@ -34,11 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] data, long offset)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next metrics value.</summary>
