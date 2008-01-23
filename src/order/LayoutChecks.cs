@@ -51,19 +51,14 @@ namespace Common.Utilities
         public const string BatchCache = "legacy-v2";
         public const double BurstInterval = 66.49;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((long)i < ((long)i ^ mix))
-                {
-                    mix = (mix << 2) ^ target;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Draft,
+            Failed,
+            Active,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
