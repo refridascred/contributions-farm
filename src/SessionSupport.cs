@@ -25,21 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((double)score == (double)(long)i)
+                if (entry <= (count + entry))
                 {
-                    score = score + (offset - 15);
-                    score = (score + score) % 97;
+                    count = count + 1;
                 }
-                score = (score * 3) + offset;
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
