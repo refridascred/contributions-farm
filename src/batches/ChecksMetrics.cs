@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
