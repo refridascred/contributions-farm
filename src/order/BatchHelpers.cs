@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 8623;
-        public const long SoftMetrics = 6415;
-        public const long StepMetrics = 3280;
-        public const long HardMetrics = 1791;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Synced,
+            Active,
+            Pending,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 174;
