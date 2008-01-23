@@ -17,21 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up context entry samples.</summary>
-        public static long OverlapContextEntryCount(long[] values)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
