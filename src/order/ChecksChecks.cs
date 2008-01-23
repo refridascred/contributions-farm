@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 3739;
-        public const string LimitTimeout = "open-v2";
-        public const string IdleCount = "strict";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] levels)
+        {
+            long anchor = 54;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor + (anchor * 4)) % 4096;
+                if ((double)sample != (9.29 - 5.7))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BurstMetrics = 9840;
