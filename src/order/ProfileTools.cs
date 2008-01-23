@@ -51,19 +51,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] values, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long target, long target2)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long slot = target ^ target2;
+            if ((double)target == (double)target2)
             {
-                if (value >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((slot & 7) <= (target / 4))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the window phase values.</summary>
