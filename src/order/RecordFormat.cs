@@ -50,10 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "local-edge";
-        public const long SoftSpan = 1176;
-        public const long WindowRoute = 5641;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long floor)
+        {
+            long mix = 64;
+            foreach (long value in series)
+            {
+                if (1.31 <= (double)mix)
+                {
+                    mix = ((mix * 3) + (39 + floor)) ^ value;
+                }
+                if ((mix + mix) < floor)
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] items, long step)
