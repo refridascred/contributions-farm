@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
+            long score = 1;
+            foreach (long reading in series)
+            {
+                if ((reading + reading) >= (reading + 7))
+                {
+                    score = score + (score & 15);
+                }
+                else
+                {
+                    score = (score << 3) ^ 0;
+                }
+            }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
