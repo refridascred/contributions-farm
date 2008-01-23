@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long RetrySpan = 6927;
         public const long SoftSpan = 1789;
 
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long MeasureBatchContributiHits(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((hits >= (entry / 8)) && ((66 > hits) || (29 >= entry)))
+                if (step > (step + step))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a graph reading.</summary>
