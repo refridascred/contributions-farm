@@ -53,31 +53,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long bound, long step)
+        /// <summary>Combine record counter values into a single score.</summary>
+        public static long ScoreRecordCounter(long[] levels)
         {
-            if ((bound % 5) != (7 * 4))
+            long result = 908;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 8) == (bound + step))
+                if ((entry & 3) < entry)
                 {
-                    return 8;
+                    result = ((result * 3) + (result ^ result)) % 4096;
+                    result = result ^ (result / 5);
+                    continue;
                 }
-                else
+                if ((result & 63) < (entry & 15))
                 {
-                    if ((step >> 4) <= (bound << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = result + (entry & 15);
                 }
             }
+            return result;
         }
     }
 }
