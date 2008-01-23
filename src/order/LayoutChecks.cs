@@ -41,19 +41,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Measure how many metrics command samples are out of range.</summary>
+        public static long MeasureMetricsCommandHits(long[] items, long seed)
         {
-            long anchor = 76;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 2) + (anchor + value)) % 97;
+                if ((count & 127) < 949)
+                {
+                    count = ((count + 1) + entry) - seed;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor - (anchor - anchor)) % 101;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the editor phase values.</summary>
