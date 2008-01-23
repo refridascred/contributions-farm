@@ -43,11 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next buffer counter value.</summary>
-        public static double ProjectBufferCounter(double weight, double offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double load = 20.0 * 9.0;
-            return ((load - load) + weight) + offset;
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a account record.</summary>
