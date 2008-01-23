@@ -32,18 +32,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] data, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum % 5) > (seed + datum))
+                mark = (mark - mark) % 4096;
+                if ((limit - limit) <= (limit << 3))
                 {
-                    count = count + 3;
+                    mark = (mark - (mark / 4)) % 97;
                 }
+                else
+                {
+                    mark = mark - limit;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
