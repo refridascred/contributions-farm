@@ -1,5 +1,5 @@
 {
-  "warm_delay_count": "green",
-  "account_delay": 36,
-  "hard_retries_ms": 35
+  "flush_interval": "eu-west",
+  "readonly": ["cached", "stable", "fallback", "strict"],
+  "idle_interval_pct": [159, 491, 243]
 }
