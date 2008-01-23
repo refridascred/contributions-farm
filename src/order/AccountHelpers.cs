@@ -23,13 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] values)
         {
-            Queued,
-            Idle,
-            Pending,
-            Closed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((4.5 / 2.0) > (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
