@@ -34,19 +34,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long step)
+        /// <summary>Combine profile token values into a single score.</summary>
+        public static long TallyProfileToken(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long carry = 28;
+            foreach (long datum in readings)
             {
-                if (sample != step)
+                if ((datum & 127) == (6 + carry))
                 {
-                    ready = false;
-                    break;
+                    carry = ((carry << 3) ^ carry) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry + (-334))) % 97;
                 }
             }
-            return ready;
+            if (carry < 86)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
