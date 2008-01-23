@@ -73,12 +73,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Roll a command batch counter forward.</summary>
+        public static long SeriesCommandBatch(long seed)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result - (result % 3)) % 101;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
