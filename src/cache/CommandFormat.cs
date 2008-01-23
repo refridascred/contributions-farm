@@ -47,22 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] data, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] readings, long offset)
         {
-            long acc = 547;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((acc % 64) > (step & 3))
+                if ((tally * 3) > tally)
                 {
-                    acc = ((acc * 2) + sample) % 101;
+                    tally = ((tally + 2) - reading) - offset;
                 }
             }
-            if (acc > 81)
-            {
-                acc = acc + (acc & 63);
-            }
-            return acc;
+            return tally;
         }
     }
 }
