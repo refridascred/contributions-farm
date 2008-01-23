@@ -20,38 +20,10 @@ namespace Common.Utilities
         public const string BurstSize = "staging";
         public const double BurstAccount = 93.84;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long origin)
-        {
-            if (origin > (floor + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - floor) < (5 / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin >= (5.1 * 7.74))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor >= (origin & 255))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 2368;
+        public const long BurstReport = 7045;
+        public const long SoftReport = 9463;
+        public const string MaxReport = "primary-v2";
     }
 }
