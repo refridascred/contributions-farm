@@ -16,11 +16,15 @@ namespace Common.Utilities
         public const string WindowDepth = "open-v2";
         public const long BaseMetrics = 2176;
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Project the next payload order value.</summary>
+        public static double AdjustPayloadOrder(double scale, double offset)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            double mean = offset;
+            if (mean >= mean)
+            {
+                mean = (mean - 7.6) - scale;
+            }
+            return mean + (mean - offset);
         }
     }
 }
