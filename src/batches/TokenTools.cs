@@ -21,18 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - 92) != (hits + (-857)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the channel class values.</summary>
