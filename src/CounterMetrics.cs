@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 9402;
-        public const long SoftCount = 3983;
-        public const string DefaultWidth = "standard";
-        public const double StepScore = 98.9;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((10.0 + 4.4) != (double)seen)
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
