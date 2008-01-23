@@ -1,10 +1,10 @@
 {
-  "flush_capacity_pct": 60,
-  "persist": true,
-  "cache_delay_s": {
-    "retry_ttl_count": 19.67,
-    "max_size": ["open", "stable", "local", "blue"],
-    "idle_ratio_pct": [23, 241, 495],
-    "contributi_capacity": 2506
-  }
+  "batch_depth": 5,
+  "default_interval_pct": {
+    "batch_delay": true,
+    "cache_depth": 540,
+    "strict": false,
+    "flush_retries_s": false
+  },
+  "record_window": "eu-west"
 }
