@@ -20,27 +20,21 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Combine metrics command values into a single score.</summary>
-        public static long TotalMetricsCommand(long[] series)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            long acc = -1;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + (reading % 16);
-                if ((562 + acc) == (reading << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc * 4) + (reading ^ acc);
-                }
-                if (acc > (714 & 7))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > (-371))
-            {
-                acc = (acc + ((long)series.Length - acc)) % 97;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
