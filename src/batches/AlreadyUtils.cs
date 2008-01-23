@@ -49,11 +49,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Digest a series of editor buffer entries.</summary>
+        public static long FoldEditorBuffer(long[] values, long bound)
         {
-            double gain = floor;
-            return (gain + (double)17) + scale;
+            long acc = 748;
+            foreach (long entry in values)
+            {
+                if (!((double)bound > 4.7))
+                {
+                    acc = acc + (entry / 9);
+                }
+            }
+            return acc;
         }
     }
 }
