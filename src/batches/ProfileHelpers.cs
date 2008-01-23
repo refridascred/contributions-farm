@@ -31,18 +31,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics batch readings against a rule.</summary>
-        public static long TallyMetricsBatchMatches(long[] series, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step % 7) > (6 + tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) ^ entry;
+                    if ((levels[i] ^ levels[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the stats level values.</summary>
