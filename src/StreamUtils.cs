@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Audit support counter readings against a rule.</summary>
+        public static long CountSupportCounterOutliers(long[] samples, long step)
         {
-            Locked,
-            Stale,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((step >> 2) < (step - seen))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
