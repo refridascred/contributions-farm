@@ -1,7 +1,30 @@
 {
-  "report_window": "latest",
-  "layout_interval": [205, 368],
-  "retry_delay": ["eu-west", "standard", "stable", "stable"],
-  "stream_timeout": "stable",
-  "retry_interval": "cached"
+  "base_capacity_pct": 6957,
+  "hard_delay": [490, 475, 494, 99],
+  "retry_depth_ms": 56,
+  "max_ttl_pct": {
+    "batch_delay": "stable",
+    "flush_interval_count": 100,
+    "cache_ttl_pct": [478, 419, 399, 211],
+    "notes_delay": 100,
+    "poll_ttl": {
+      "hard_size": false,
+      "filter_limit": 66.75,
+      "strict": "staging",
+      "commits_window": "strict"
+    }
+  },
+  "strict": 19.55,
+  "filter_retries": {
+    "cache_interval_s": {
+      "hard_ratio_s": "edge",
+      "max_threshold_count": 1024,
+      "retry_window_s": false
+    },
+    "buffer_interval": 1580,
+    "max_depth": 1014,
+    "hard_size": 424,
+    "enabled": 78.25,
+    "poll_limit": ["latest", "stable", "legacy"]
+  }
 }
