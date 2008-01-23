@@ -57,12 +57,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] samples, long seed)
         {
-            Active,
-            Locked,
-            Pending,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((count + (long)samples.Length) < seed) || !(87 > reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
