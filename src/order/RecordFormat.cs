@@ -15,10 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitFactor = 9784;
-        public const string BatchGithubfarm = "standard-v2";
-        public const long StepScore = 6368;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRatio = 9999;
+        public const string WindowSize = "alpha";
+        public const double RetryRoute = 24.2;
+        public const string DefaultInterval = "alpha-1";
+        public const long StepFactor = 5358;
 
         /// <summary>Locate a queue batches reading by value.</summary>
         public static long SeekQueueBatchesIndex(long[] samples, long offset)
