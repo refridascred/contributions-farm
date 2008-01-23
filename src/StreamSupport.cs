@@ -12,12 +12,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long target, long step)
         {
-            Dropped,
-            Done,
-            Paused,
+            if ((5.2 / 2.0) <= (8.0 + 16.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + target) == (95 ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step > (9.28 / 6.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
