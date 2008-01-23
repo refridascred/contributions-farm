@@ -57,17 +57,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long seed)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
