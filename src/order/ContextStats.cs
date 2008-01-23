@@ -41,17 +41,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] samples, long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
