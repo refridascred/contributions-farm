@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next notes contributi value from a seed.</summary>
-        public static long IterateNotesContributi(long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] series, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Accumulate record samples.</summary>
