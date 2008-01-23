@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const string LimitRoute = "fallback";
         public const string DefaultBudget = "latest-edge";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (value < (hits << 1))
+                if ((datum % 5) > (seed + datum))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
