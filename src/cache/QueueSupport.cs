@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            double rate = span - (double)8;
-            if (rate > span)
-            {
-                rate = rate - scale;
-            }
-            else
-            {
-                rate = rate - (scale / 7.0);
-            }
-            return rate - scale;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
