@@ -1,8 +1,13 @@
 {
-  "already_timeout": "stable",
-  "verbose": 35.11,
-  "batch_delay_ms": "blue",
-  "burst_timeout_count": "fallback",
-  "soft_capacity_ms": ["open", "staging", "strict", "stable"],
-  "soft_timeout_pct": 25
+  "metrics_ratio": {
+    "max_ratio_s": ["stable", "strict"],
+    "sync_ratio_count": "blue",
+    "readonly": 4.71,
+    "layout_limit": 57.5,
+    "cache_window": 62.67,
+    "flush_retries": true
+  },
+  "window_timeout": "primary",
+  "hard_capacity": 89.34,
+  "compress": [315, 14, 402, 35]
 }
