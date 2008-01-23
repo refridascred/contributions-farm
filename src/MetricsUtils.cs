@@ -55,13 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double rate, double span)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            double drift = span;
+            if (drift >= (double)5)
+            {
+                drift = drift - rate;
+            }
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (double)434;
         }
 
         /// <summary>Describe the format state values.</summary>
