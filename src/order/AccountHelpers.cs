@@ -32,31 +32,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a payload commits pair into a bucket.</summary>
-        public static long GradePayloadCommits(long bound, long bound2)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if ((bound + bound2) != (bound ^ bound2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound > (bound2 >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound2 % 2) <= bound2) && ((7.2 / 5.0) <= (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of support record readings.</summary>
