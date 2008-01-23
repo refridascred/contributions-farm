@@ -56,16 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload channel series from a seed.</summary>
-        public static long StepPayloadChannel(long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix << 2) ^ mix;
-                mix = ((mix * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
