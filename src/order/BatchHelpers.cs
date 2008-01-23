@@ -16,11 +16,10 @@ namespace Common.Utilities
         public const string MaxScore = "latest-1";
         public const long LimitFormat = 6064;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public long Total { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 6852;
+        public const long SoftInterval = 2454;
+        public const long BatchEntry = 6726;
+        public const long CacheEntry = 7424;
     }
 }
