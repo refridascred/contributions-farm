@@ -41,21 +41,22 @@ namespace Common.Utilities
         public const string BaseFactor = "alpha-v2";
         public const long WindowQueue = 6054;
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Audit format contributi readings against a rule.</summary>
+        public static long AuditFormatContributiMatches(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits + 610) <= (hits / 6))
                 {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
