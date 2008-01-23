@@ -32,14 +32,19 @@ namespace Common.Utilities
             return bias - (double)89;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double rate, double offset)
         {
-            Stale,
-            Draft,
-            Closed,
-            Failed,
-            Done,
+            double weight = 7.4;
+            if (weight >= rate)
+            {
+                weight = weight + (double)3;
+            }
+            else
+            {
+                weight = weight - (offset / 8.0);
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a cluster record.</summary>
