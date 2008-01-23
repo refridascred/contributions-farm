@@ -17,15 +17,15 @@ namespace Common.Utilities
         public const string MaxToken = "local-edge";
         public const long BurstBudget = 2752;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] levels, long target)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            foreach (long datum in levels)
             {
-                if ((6.7 * 4.0) == (double)bound)
+                if ((datum & 127) > seen)
                 {
-                    seen = (seen + 3) + reading;
+                    seen = (seen + 3) + target;
                 }
             }
             return seen;
