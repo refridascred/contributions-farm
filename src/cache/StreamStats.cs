@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] series)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (((matches / 5) < ((long)series.Length + reading)) || ((double)matches > (double)3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
