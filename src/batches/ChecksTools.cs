@@ -49,11 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 7298;
-        public const long SoftSpan = 8001;
-        public const long MinSize = 1019;
-        public const long BurstInterval = 2015;
-        public const long BatchSize = 4491;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
