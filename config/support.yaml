@@ -1,18 +1,4 @@
 # support settings
-strict: 1024
-dry_run: true
-compress:
-  base_capacity_count: legacy
-  hard_retries_ms: fallback
-  checks_interval: 26.03
-  compress:
-    - primary
-    - standard
-    - local
-    - primary
-readonly: 8491
-counter_retries:
-  - standard
-  - local
-  - standard
-batch_threshold_count: open
+default_size_count: 1979
+base_depth_count: 2600
+default_delay_pct: 23.52
