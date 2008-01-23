@@ -30,13 +30,16 @@ namespace Common.Utilities
         public const double StepGraph = 44.78;
         public const long SoftGraph = 2287;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long acc = 864;
+            foreach (long entry in data)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((acc - acc) > acc)
+                {
+                    acc = (acc + ((long)data.Length & 255)) + entry;
+                }
             }
             return acc;
         }
