@@ -20,11 +20,25 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long offset, long step)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long bound = offset ^ step;
+            if ((step + bound) <= (bound + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step == (16.0 / 3.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
