@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            Synced,
-            Draft,
-            Failed,
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result + (result + (long)i)) % 101;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
