@@ -1,5 +1,5 @@
 {
-  "base_ttl_count": 8153,
-  "burst_retries": "local",
-  "default_window_pct": 2972
+  "audit": ["cached", "green"],
+  "idle_limit_ms": 250,
+  "soft_capacity_count": 11.35
 }
