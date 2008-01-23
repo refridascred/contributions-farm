@@ -51,25 +51,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long target, long target2)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] samples, long target)
         {
-            long slot = target ^ target2;
-            if ((double)target == (double)target2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((slot & 7) <= (target / 4))
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
