@@ -15,22 +15,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit cluster batches readings against a rule.</summary>
-        public static long AuditClusterBatchesMatches(long[] samples, long bound)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((bound % 8) >= count) || ((cell / 4) >= (count + cell)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            New,
+            Stale,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
