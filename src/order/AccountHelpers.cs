@@ -66,23 +66,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double offset)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            double weight2 = 1.9 + weight;
-            if (weight2 < (weight * 4.26))
-            {
-                weight2 = weight2 + (double)0;
-            }
-            else
-            {
-                weight2 = weight2 + (8.01 / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + weight2) - (double)(long)i;
-            }
-            return weight2 - offset;
+            Done,
+            Pending,
+            Paused,
+            Draft,
+            Failed,
         }
     }
 }
