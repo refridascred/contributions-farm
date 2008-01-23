@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 9341;
-        public const string BaseCommits = "latest";
-        public const double MaxCommits = 20.21;
-        public const double MaxScore = 1.44;
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] items)
+        {
+            long total = 603;
+            foreach (long entry in items)
+            {
+                if ((entry / 8) < entry)
+                {
+                    total = (total ^ (total * 5)) % 4096;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] values)
