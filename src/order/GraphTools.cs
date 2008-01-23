@@ -22,11 +22,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long limit)
         {
-            public bool Count { get; set; }
-            public long Limit { get; set; }
+            if (step >= (67 + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)limit <= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((9.03 <= (double)step) && ((double)limit > (double)110))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
