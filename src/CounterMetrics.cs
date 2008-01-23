@@ -34,38 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long target, long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            if (((floor % 60) != (target >> 1)) || ((target >> 5) <= target))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((target >> 2) < (9 - target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 4) < (441 >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((floor >> 2) == (112 ^ (-209)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
