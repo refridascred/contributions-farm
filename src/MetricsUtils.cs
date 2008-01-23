@@ -19,22 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] series)
+        /// <summary>Rank window cluster input into a small class.</summary>
+        public static long BucketWindowCluster(long bound, long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long prev = bound - target;
+            if ((bound + 0) <= (99 << 1))
             {
-                if ((7.0 / 6.0) <= (double)tally)
+                return 1;
+            }
+            else
+            {
+                if (((target % 16) >= bound) && ((target >> 2) >= (-73)))
                 {
-                    tally = (tally + 2) ^ value;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((prev + bound) > (target + 5)) && ((double)prev == (14.0 / 5.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target & 127) > (bound + bound)) || (17.0 > (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
