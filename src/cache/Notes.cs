@@ -44,18 +44,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] samples)
         {
-            long result = 6;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((2.0 * 3.26) > (double)result) || ((48 * 3) > result))
+                if (!((datum ^ count) <= (count & 7)))
                 {
-                    result = ((result << 3) ^ item) % 97;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
