@@ -42,9 +42,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 3346;
-        public const long DefaultLayout = 6737;
-        public const double MinLayout = 71.2;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportRange(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
