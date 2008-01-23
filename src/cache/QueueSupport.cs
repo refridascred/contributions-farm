@@ -13,22 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseFactor = 11.28;
+        public const long IdleMetric = 8930;
+        public const long HardLevel = 1094;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long FoldRoute(long[] samples)
