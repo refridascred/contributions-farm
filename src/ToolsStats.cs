@@ -64,24 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a layout githubfarm value against two limits.</summary>
-        public static long RankLayoutGithubfarm(long target, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] series, long bound)
         {
-            if (15.0 > (double)bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (bound % 97))
+                if (series[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
