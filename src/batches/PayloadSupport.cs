@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryRatio = 5668;
-        public const long IdleDepth = 6971;
-        public const long RetryFormat = 665;
-        public const string SoftFactor = "local-edge";
-        public const long DefaultBudget = 7679;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 2431;
