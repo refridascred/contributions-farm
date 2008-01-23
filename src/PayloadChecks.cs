@@ -25,13 +25,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Closed,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryInterval = "cached-edge";
+        public const double StepGraph = 44.78;
+        public const long SoftGraph = 2287;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long StepLayout(long step)
