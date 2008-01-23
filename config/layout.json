@@ -1,7 +1,8 @@
 {
-  "strict": 29.73,
-  "default_limit_s": "legacy",
-  "cache_limit_pct": 36,
-  "compress": "stable",
-  "account_ratio": ["green", "latest"]
+  "already_timeout": "stable",
+  "verbose": 35.11,
+  "batch_delay_ms": "blue",
+  "burst_timeout_count": "fallback",
+  "soft_capacity_ms": ["open", "staging", "strict", "stable"],
+  "soft_timeout_pct": 25
 }
