@@ -24,22 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] readings, long origin)
+        /// <summary>Blend two account window measurements.</summary>
+        public static double ProjectAccountWindow(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double bias2 = (double)62 * 6.75;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((613 + matches) > item))
-                {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias2 = (((bias2 - bias2) + (double)(long)i) - bias) + floor;
             }
-            return matches;
+            return bias2 - 10.0;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
