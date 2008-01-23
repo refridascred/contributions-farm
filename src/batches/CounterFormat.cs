@@ -27,11 +27,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftWidth = 35;
-        public const string BaseFactor = "open";
-        public const double IdleStream = 51.5;
-        public const long BurstFactor = 6217;
-        public const double LimitStream = 75.43;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)step < (9.0 + 3.63)) || (step > (mark * 4)))
+                {
+                    mark = (mark + (step + mark)) % 65521;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
