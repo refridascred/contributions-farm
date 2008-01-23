@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] data, long floor)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 66;
+            foreach (long reading in items)
             {
-                if ((floor + hits) <= (128 + 483))
+                if (carry > reading)
                 {
-                    hits = (hits + 3) - datum;
+                    carry = ((carry + (carry & 63)) % 1000) + offset;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
