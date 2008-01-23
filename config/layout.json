@@ -1,13 +1,5 @@
 {
-  "metrics_ratio": {
-    "max_ratio_s": ["stable", "strict"],
-    "sync_ratio_count": "blue",
-    "readonly": 4.71,
-    "layout_limit": 57.5,
-    "cache_window": 62.67,
-    "flush_retries": true
-  },
-  "window_timeout": "primary",
-  "hard_capacity": 89.34,
-  "compress": [315, 14, 402, 35]
+  "compress": 1713,
+  "audit": "fallback",
+  "idle_retries_s": 70.55
 }
