@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] data)
         {
-            public long Level { get; set; }
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            long carry = 9;
+            foreach (long datum in data)
+            {
+                if (((5.18 - 5.57) > (double)carry) || ((datum & 3) >= (carry * 2)))
+                {
+                    carry = (carry * 4) + carry;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
