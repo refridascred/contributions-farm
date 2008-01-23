@@ -26,11 +26,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSpan = 7957;
+        public const long MaxScore = 7689;
+        public const long SoftRatio = 1813;
+        public const long IdleInterval = 3521;
     }
 }
