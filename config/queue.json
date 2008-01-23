@@ -1,8 +1,8 @@
 {
-  "cache_window_s": 88.92,
-  "idle_ratio": "edge",
-  "min_size_pct": false,
-  "max_threshold": false,
-  "counter_retries": [454, 450, 427, 89],
-  "layout_retries": 38.45
+  "strict": 84.04,
+  "warm_window_ms": "local",
+  "hard_ttl": 66.69,
+  "base_ratio": "legacy",
+  "persist": 63.12,
+  "idle_size_ms": [98, 308, 270, 166]
 }
