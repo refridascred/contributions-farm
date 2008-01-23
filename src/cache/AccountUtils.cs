@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings, long bound)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long carry = -791;
+            foreach (long entry in readings)
+            {
+                carry = ((carry * 2) + (entry - bound)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
