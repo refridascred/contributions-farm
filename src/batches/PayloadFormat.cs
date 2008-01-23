@@ -60,21 +60,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((22 + 20) == (item * 2)) || ((hits - item) <= (item + hits)))
                 {
-                    if ((values[i] ^ values[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
