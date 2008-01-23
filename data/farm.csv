@@ -1,8 +1,6 @@
-id,active,ratio,token,owner
-1,green,22.25,662,369
-2,769,211,primary,343
-3,85.47,primary,780,27.22
-4,primary,869,407,6.73
-5,66.93,674,fallback,627
-6,149,256,stable,primary
-7,475,cached,4,37.52
+id,active,region
+1,17.73,strict
+2,standard,181
+3,517,727
+4,primary,10.03
+5,open,198
