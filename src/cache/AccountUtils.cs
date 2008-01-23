@@ -23,19 +23,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every layout already entry stays within the limit.</summary>
-        public static bool CheckLayoutAlreadyBounds(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 42.1;
+        public const long BurstBudget = 2492;
+        public const string CacheCount = "latest-edge";
     }
 }
