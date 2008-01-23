@@ -1,6 +1,10 @@
-id,state,region,count,active
-1,57.34,323,527,local
-2,661,98.42,latest,34.67
-3,353,11.0,989,stable
-4,58.33,local,70.59,754
-5,primary,open,blue,83.85
+id,level,active
+1,65.21,77.71
+2,75.46,latest
+3,legacy,fallback
+4,759,primary
+5,651,59.23
+6,244,345
+7,620,81.71
+8,green,645
+9,695,39.05
