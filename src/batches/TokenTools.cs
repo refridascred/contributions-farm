@@ -40,13 +40,24 @@ namespace Common.Utilities
             return mean - 3.99;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long bound, long limit)
         {
-            Dropped,
-            Queued,
-            Pending,
-            Draft,
+            if ((limit - 3) >= (limit + bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (9.4 - 9.57))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
