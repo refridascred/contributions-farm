@@ -59,21 +59,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Combine report layout values into a single score.</summary>
+        public static long ScoreReportLayout(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 59;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (((score << 2) ^ (sample / 6)) % 65521) - seed;
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
