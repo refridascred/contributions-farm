@@ -33,19 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a commits session figure with a bias.</summary>
-        public static double ProjectCommitsSession(double scale, double offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] readings, long floor)
         {
-            double bias = (3.0 * 9.6) / 5.0;
-            if (bias < (offset + offset))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                bias = bias - (double)(-944);
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (5.86 - scale);
-            }
-            return bias - (scale + 18.0);
+            return flag;
         }
 
         /// <summary>Describe the commits phase values.</summary>
