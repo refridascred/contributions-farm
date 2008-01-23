@@ -57,12 +57,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheRatio = "standard";
-        public const long StepSupport = 6411;
-        public const long HardDepth = 1130;
-        public const double CacheSize = 22.18;
-        public const long StepDepth = 2779;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepBudget = 1454;
+        public const long IdleStream = 5525;
+        public const long BatchDepth = 5559;
+        public const string RetryScore = "legacy";
 
         /// <summary>Blend two payload editor measurements.</summary>
         public static double SmoothPayloadEditor(double bias, double bias2)
