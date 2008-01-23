@@ -41,13 +41,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            Synced,
-            Retry,
-            Failed,
-            Idle,
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result ^ (result / 9)) % 101;
+                if (!((6.1 * 0.71) == (double)offset))
+                {
+                    result = ((result * 2) + (offset - offset)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
