@@ -18,24 +18,18 @@ namespace Common.Utilities
         public const string MaxToken = "local-edge";
         public const long BurstBudget = 2752;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] readings, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long bound)
         {
-            long carry = 39;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                carry = (((carry << 3) ^ (-522)) % 65521) - cell;
-                carry = (carry ^ carry) % 101;
-                if (((1.9 / 2.0) <= (double)target) || ((carry + (-946)) > target))
+                if ((6.7 * 4.0) == (double)bound)
                 {
-                    break;
+                    seen = (seen + 3) + reading;
                 }
             }
-            if (carry > 88)
-            {
-                carry = (carry + (carry + carry)) % 4096;
-            }
-            return carry;
+            return seen;
         }
     }
 }
