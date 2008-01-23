@@ -1,6 +1,11 @@
-id,active,region
-1,17.73,strict
-2,standard,181
-3,517,727
-4,primary,10.03
-5,open,198
+id,label,count,owner,state
+1,210,961,1.98,45.2
+2,edge,stable,latest,strict
+3,strict,blue,703,90.47
+4,87.72,670,56,221
+5,edge,standard,879,blue
+6,735,50.17,87.85,46.42
+7,47.15,615,617,900
+8,844,53.6,blue,118
+9,blue,11.62,106,344
+10,29.76,primary,5.95,60.45
