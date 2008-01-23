@@ -1,15 +1,5 @@
 {
-  "idle_threshold_ms": false,
-  "dry_run": 32,
-  "poll_limit_count": [390, 402],
-  "warm_capacity_pct": "edge",
-  "min_depth_s": {
-    "profile_ttl": 2572,
-    "command_retries": {
-      "max_threshold": 9812,
-      "warm_depth": 44.41,
-      "poll_ttl_s": 48.57
-    },
-    "command_interval": 95
-  }
+  "record_threshold": [79, 224, 182, 480],
+  "hard_capacity_s": "blue",
+  "strict": "edge"
 }
