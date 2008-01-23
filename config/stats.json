@@ -1,6 +1,5 @@
 {
-  "strict": 1024,
-  "batch_threshold": "legacy",
-  "flush_ratio_pct": 9855,
-  "readonly": 250
+  "warm_delay_count": "green",
+  "account_delay": 36,
+  "hard_retries_ms": 35
 }
