@@ -36,10 +36,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "primary-v2";
-        public const long HardRatio = 8958;
-        public const string IdleStats = "legacy-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "strict";
+        public const long BaseScore = 63;
+        public const long IdleRoute = 8868;
+        public const string BatchRoute = "strict-v2";
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long IterateSchema(long bound)
