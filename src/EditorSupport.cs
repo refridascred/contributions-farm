@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Synced,
-            New,
-            Dropped,
-            Paused,
-            Draft,
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
