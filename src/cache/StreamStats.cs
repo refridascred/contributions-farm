@@ -61,10 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstAlready = "alpha";
-        public const long BatchAlready = 6499;
-        public const double RetryAlready = 64.87;
-        public const long LimitAlready = 7296;
+        /// <summary>Combine channel filter values into a single score.</summary>
+        public static long CombineChannelFilter(long[] readings)
+        {
+            long total = 86;
+            foreach (long cell in readings)
+            {
+                total = (total + (cell / 4)) % 4096;
+            }
+            return total % 65521;
+        }
     }
 }
