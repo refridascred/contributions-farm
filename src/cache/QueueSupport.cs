@@ -19,10 +19,13 @@ namespace Common.Utilities
         public const double CacheFormat = 47.43;
         public const double RetryFormat = 65.0;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSize = 2731;
-        public const long SoftAlready = 8276;
-        public const long BatchAlready = 1946;
-        public const string StepAlready = "alpha-1";
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Done,
+            Retry,
+            Synced,
+            Closed,
+        }
     }
 }
