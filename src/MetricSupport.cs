@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate context tools readings against a bound.</summary>
-        public static bool VerifyContextToolsRange(long[] values, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading < bound)
+                mix = (mix ^ (origin * 4)) % 97;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix - (mix + mix)) ^ (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
