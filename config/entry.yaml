@@ -1,16 +1,5 @@
 # entry settings
-retry_interval_count: legacy
-token_timeout:
-  hard_limit_pct: legacy
-  default_ttl: true
-  persist: 2540
-account_delay: primary
-audit: 30
-warm_timeout:
-  default_depth_ms: false
-  base_capacity_count: blue
-  poll_timeout_ms: latest
-  readonly: 29
-graph_ttl:
-  - 121
-  - 280
+verbose: true
+tools_depth: 98
+command_delay: true
+context_timeout: primary
