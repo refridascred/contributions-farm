@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every record contributi entry stays within the limit.</summary>
-        public static bool ValidateRecordContributiRange(long[] readings, long bound)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long origin, long target)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            if ((double)origin < (8.1 - 9.0))
             {
-                if (value > bound)
+                return 1;
+            }
+            else
+            {
+                if (!((origin + 7) >= (target ^ 338)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (6.0 < (2.54 + 7.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
