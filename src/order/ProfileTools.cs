@@ -77,12 +77,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Active,
-            Stale,
-            Ready,
+            Locked,
+            Retry,
+            New,
+            Paused,
         }
     }
 }
