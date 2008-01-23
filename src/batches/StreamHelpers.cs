@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] readings, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double rate = (double)(25 >> 4);
+            if (rate >= bias2)
             {
-                if (((954 > limit) || (limit >= (seen + seen))) || ((6.2 + 6.0) != (double)limit))
-                {
-                    seen = (seen + 1) + cell;
-                }
+                rate = rate - bias;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - bias2;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
