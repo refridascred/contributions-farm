@@ -11,17 +11,25 @@ namespace Common.Utilities
         public const double RetryBudget = 40.75;
         public const long IdleSession = 9291;
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] readings, long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset = bound - seed;
+            if (offset >= seed)
             {
-                if (readings[i] > step)
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) >= (seed - seed))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
