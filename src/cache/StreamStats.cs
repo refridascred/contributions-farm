@@ -29,19 +29,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] data, long target)
+        /// <summary>Find the first checks tools entry that matches the target.</summary>
+        public static long LocateChecksToolsIndex(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < target)
+                if (series[i] > floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Combine channel filter values into a single score.</summary>
