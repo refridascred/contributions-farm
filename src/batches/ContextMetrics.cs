@@ -64,17 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long step)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Queued,
+            Locked,
+            Retry,
+            New,
         }
     }
 }
