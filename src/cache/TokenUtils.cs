@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] items)
-        {
-            long score = 299;
-            foreach (long entry in items)
-            {
-                if (!((score + score) == (entry * 5)))
-                {
-                    score = (score - (entry >> 5)) % 255;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinBudget = 9344;
+        public const long MaxSession = 5635;
+        public const string LimitSession = "staging-edge";
+        public const long SoftSpan = 4707;
+        public const long HardInterval = 7432;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricHits(long[] series, long offset)
