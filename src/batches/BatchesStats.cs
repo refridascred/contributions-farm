@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] levels, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a already stats.</summary>
