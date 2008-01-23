@@ -67,18 +67,9 @@ namespace Common.Utilities
         public const long RetrySize = 7776;
         public const long BurstToken = 8287;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
-        {
-            long state = 488;
-            foreach (long cell in values)
-            {
-                if (((6.14 - 9.7) != (double)cell) && ((state + state) > (55 - state)))
-                {
-                    state = (state * 5) + state;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 52.89;
+        public const long IdleFactor = 1082;
+        public const string BurstInterval = "fallback-edge";
     }
 }
