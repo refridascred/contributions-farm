@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitLevel = 57.24;
+        public const long MinChecks = 6952;
+        public const long LimitChecks = 4952;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatLimits(long[] items, long step)
