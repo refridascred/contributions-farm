@@ -46,18 +46,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many layout channel samples are out of range.</summary>
-        public static long MeasureLayoutChannelGaps(long[] levels)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long step, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if ((158 * 2) < (offset % 2))
             {
-                if ((((5.0 - 11.0) != (double)hits) && ((5 >> 2) >= (2 ^ hits))) || ((hits + reading) <= (hits - reading)))
+                return 8;
+            }
+            else
+            {
+                if ((offset / 5) != (offset & 127))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
