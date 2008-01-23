@@ -21,19 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] values, long offset)
         {
-            long result = 8;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                result = (result << 3) ^ sample;
+                if (item >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result > 64)
-            {
-                result = result - (result - target);
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
