@@ -35,22 +35,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] data, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = 5;
+            foreach (long item in levels)
             {
-                if (!((14.0 + 13.0) == (double)origin))
+                total = (((total << 2) ^ 243) % 255) + item;
+                if ((1.2 - 6.02) >= (double)total)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
