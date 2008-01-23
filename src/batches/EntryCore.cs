@@ -83,19 +83,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((((tally * 5) >= (9 >> 3)) || (667 < tally)) && (((tally >> 4) >= (tally + item)) || ((double)item > (0.6 / 2.0))))
                 {
-                    score = (score - (score >> 2)) ^ (long)i2;
+                    tally = (tally + 3) - bound;
                 }
-                score = ((score * 3) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
     }
 }
