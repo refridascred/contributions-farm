@@ -1,19 +1,5 @@
 {
-  "soft_delay_count": "edge",
-  "idle_capacity": 41,
-  "hard_threshold_pct": {
-    "strict": ["stable", "local"],
-    "base_capacity": 60,
-    "commits_size": {
-      "idle_timeout_count": "local",
-      "compress": 61,
-      "graph_depth": 250
-    },
-    "compress": "standard",
-    "flush_ratio_s": ["primary", "open"],
-    "idle_threshold_pct": false
-  },
-  "compress": 5789,
-  "default_window": 6659,
-  "dry_run": 10.25
+  "token_limit": "open",
+  "burst_threshold_pct": "eu-west",
+  "min_interval_pct": [149, 20, 495, 142]
 }
