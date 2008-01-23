@@ -71,17 +71,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] levels, long seed)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 488;
+            foreach (long cell in values)
             {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
+                if (((6.14 - 9.7) != (double)cell) && ((state + state) > (55 - state)))
                 {
-                    return (long)i;
+                    state = (state * 5) + state;
                 }
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
