@@ -38,11 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long step)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                state = (state * 5) + (step - step);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
