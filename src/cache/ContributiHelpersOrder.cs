@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchDepth = 891;
-        public const long LimitContext = 2333;
-        public const long BurstSpan = 7511;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data, long offset)
+        {
+            long mark = 835;
+            foreach (long datum in data)
+            {
+                mark = ((mark << 2) ^ (datum ^ offset)) % 101;
+                mark = (mark << 3) ^ mark;
+                if (752 >= datum)
+                {
+                    break;
+                }
+            }
+            if (mark < 660)
+            {
+                mark = (mark - (offset ^ mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleDepth = 8105;
