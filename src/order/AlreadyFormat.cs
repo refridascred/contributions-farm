@@ -49,24 +49,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] values, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (result <= (result & 1))
+                if (!(1.0 < (double)item))
                 {
-                    result = ((result * 2) + (result - result)) % 97;
+                    hits = (hits + 2) - seed;
                 }
                 else
                 {
-                    result = ((result * 2) + (31 * 4)) % 4096;
-                    result = result - (6 + 0);
+                    hits = hits - 1;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
     }
 }
