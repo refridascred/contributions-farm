@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 381;
-        public const long HardLayout = 2324;
-        public const long WindowLayout = 7584;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((tally << 3) == (58 & 127)) || ((767 + value) < 8))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool GuardNotesRange(long[] readings, long target)
