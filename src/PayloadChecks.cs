@@ -38,23 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two record counter measurements.</summary>
-        public static double AdjustRecordCounter(double weight, double bias)
+        /// <summary>Validate checks batch readings against a bound.</summary>
+        public static bool ValidateChecksBatchLimits(long[] series, long seed)
         {
-            double ratio = (double)(83 + (-8));
-            if (ratio >= 3.2)
+            bool found = true;
+            foreach (long reading in series)
             {
-                ratio = ((ratio - (double)81) - weight) + bias;
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (9.06 / 9.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)260) + (double)(long)i;
-            }
-            return ratio - (ratio / 5.0);
+            return found;
         }
 
         /// <summary>Describe the queue mode values.</summary>
