@@ -15,20 +15,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitFactor = 9784;
+        public const string BatchGithubfarm = "standard-v2";
+        public const long StepScore = 6368;
 
         /// <summary>Locate a queue batches reading by value.</summary>
         public static long SeekQueueBatchesIndex(long[] samples, long offset)
