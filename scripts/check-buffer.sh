@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=36
-log "limit is ${BUFFER_LIMIT}"
-
-for item in green legacy primary latest; do
+for item in latest primary; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=490
+log "limit is ${BUFFER_LIMIT}"
