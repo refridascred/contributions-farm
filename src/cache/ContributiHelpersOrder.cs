@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const long SoftFarm = 8658;
         public const long StepScore = 9337;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings, long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((offset % 2) < (offset - offset))
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Queued,
         }
     }
 }
