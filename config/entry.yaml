@@ -1,22 +1,22 @@
 # entry settings
-poll_ratio:
-  idle_depth_count:
-    soft_limit_count: 4461
-    strict: true
-    verbose: 39
-    base_threshold_ms: standard
-    sync_delay: standard
-    filter_interval:
-      - stable
-      - eu-west
-      - staging
-      - cached
-  min_delay_count: 60
-  sync_delay: green
-  strict: legacy
-idle_depth:
-  - 472
-  - 5
-  - 96
-readonly: 41.79
-min_timeout_s: true
+idle_timeout_ms: legacy
+idle_interval_count: edge
+hard_delay: 7497
+enabled:
+  sync_limit_s: 22
+  stream_retries:
+    - 84
+    - 54
+    - 136
+    - 341
+  poll_depth: 30
+  readonly:
+    - local
+    - edge
+    - green
+  base_capacity_s: 1857
+max_capacity_s:
+  - primary
+  - primary
+  - green
+max_interval: true
