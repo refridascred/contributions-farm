@@ -35,12 +35,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            Synced,
-            Stale,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = carry ^ (carry ^ seed);
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every batch cluster entry stays within the limit.</summary>
