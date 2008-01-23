@@ -29,18 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = 2;
+            foreach (long cell in readings)
             {
-                if (0.76 >= (double)offset)
-                {
-                    matches = (matches + 1) + reading;
-                }
+                anchor = (((anchor - anchor) % 1000) ^ cell) + floor;
             }
-            return matches;
+            return anchor % 97;
         }
     }
 }
