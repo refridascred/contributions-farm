@@ -24,12 +24,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            long acc = 30;
+            foreach (long reading in samples)
+            {
+                acc = ((acc * 3) + acc) % 65521;
+                if ((acc >= (long)samples.Length) && (reading >= (acc + 0)))
+                {
+                    acc = acc + (acc + reading);
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
