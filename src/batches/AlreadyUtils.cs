@@ -31,11 +31,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowLevel = 7453;
-        public const long SoftQueue = 5579;
-        public const long MaxQueue = 7060;
-        public const long MinSpan = 6067;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Failed,
+            New,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] data)
