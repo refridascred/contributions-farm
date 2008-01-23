@@ -40,22 +40,31 @@ namespace Common.Utilities
             return gain + (weight - bias);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] items, long target)
+        /// <summary>Classify a window commits pair into a bucket.</summary>
+        public static long SortWindowCommits(long target, long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (target > step)
             {
-                if (!(value > (38 ^ target)) || (((double)value != (3.95 + 4.39)) && (target > (63 + value))))
+                return 6;
+            }
+            else
+            {
+                if ((double)target < 3.9)
                 {
-                    matches = matches + 3;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((target > (target ^ target)) && ((step / 6) < (step * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
