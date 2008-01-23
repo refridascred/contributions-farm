@@ -39,18 +39,9 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((((value % 64) >= (count + 299)) || ((41 & 255) == (bound * 5))) || ((8.2 / 2.0) < (double)value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 7948;
+        public const long CacheScore = 916;
+        public const long BaseInterval = 2960;
     }
 }
