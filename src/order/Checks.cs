@@ -17,11 +17,18 @@ namespace Common.Utilities
         public const long RetryDepth = 7170;
         public const double BaseStats = 36.47;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] samples, long floor)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((double)floor > (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metrics level values.</summary>
