@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] levels, long limit)
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit account layout readings against a rule.</summary>
