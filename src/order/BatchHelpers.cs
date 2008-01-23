@@ -36,13 +36,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] series, long offset)
         {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long sum = 19;
+            foreach (long item in series)
+            {
+                sum = (((sum * 4) + (sum + offset)) % 1000) ^ item;
+            }
+            return sum % 65521;
         }
     }
 }
