@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] items, long step)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
