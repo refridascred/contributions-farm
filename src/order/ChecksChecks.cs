@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowCount = 6665;
-        public const long BaseTimeout = 698;
-        public const double CacheRecord = 4.36;
-        public const long MinWidth = 2563;
-        public const long StepFactor = 964;
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
+        {
+            Stale,
+            Synced,
+            Done,
+        }
 
         /// <summary>Compare every pair of metrics window readings.</summary>
         public static long CompareMetricsWindowCount(long[] series)
