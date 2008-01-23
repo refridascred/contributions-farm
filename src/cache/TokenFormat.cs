@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] levels, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)seen == (9.45 / 8.0))
-                {
-                    seen = ((seen + 3) + cell) + limit;
-                }
+                carry = (carry * 4) + carry;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Digest a series of buffer stats entries.</summary>
