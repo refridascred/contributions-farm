@@ -23,10 +23,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSpan = 7095;
-        public const double MaxTimeout = 48.71;
-        public const double MinWindow = 30.25;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
