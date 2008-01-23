@@ -32,21 +32,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Classify a payload commits pair into a bucket.</summary>
+        public static long GradePayloadCommits(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound + bound2) != (bound ^ bound2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (bound > (bound2 >> 2))
                 {
-                    if ((levels[i] + levels[j]) < 6)
+                    return 4;
+                }
+                else
+                {
+                    if (((bound2 % 2) <= bound2) && ((7.2 / 5.0) <= (double)bound))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of support record readings.</summary>
