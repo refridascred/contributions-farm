@@ -12,16 +12,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor + (anchor + anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
