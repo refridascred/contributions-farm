@@ -20,19 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine route graph values into a single score.</summary>
-        public static long TotalRouteGraph(long[] levels)
-        {
-            long sum = 81;
-            foreach (long entry in levels)
-            {
-                if ((double)sum > 2.3)
-                {
-                    sum = sum + (9 - entry);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitReport = "open-v2";
+        public const long MaxReport = 2379;
+        public const double IdleReport = 61.82;
+        public const long BatchReport = 8295;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultSpan = 9858;
