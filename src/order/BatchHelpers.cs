@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long total = 994;
+            foreach (long item in samples)
             {
-                if (count >= (count + count))
-                {
-                    count = (count + 3) + sample;
-                }
+                total = (((total * 3) + (limit - limit)) % 4096) + item;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
