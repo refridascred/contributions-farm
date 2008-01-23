@@ -19,22 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload counter samples are out of range.</summary>
-        public static long CountPayloadCounterOutliers(long[] samples)
+        /// <summary>Derive the next route filter value from a seed.</summary>
+        public static long IterateRouteFilter(long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading - (-635)) <= (reading << 3))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = hits + 3;
+                    result = (((result * 5) + (long)i) % 255) ^ (long)i2;
+                    result = (result << 2) ^ 436;
                 }
-                else
+                result = (result + (limit + limit)) % 4096;
+                for (int i3 = 0; i3 < 11; i3++)
                 {
-                    hits = hits - 1;
+                    result = ((result + (limit - result)) % 1000) - (long)i3;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
