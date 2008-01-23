@@ -47,11 +47,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 9841;
-        public const string IdleCommits = "stable";
-        public const long DefaultCommits = 4153;
-        public const long IdleScore = 5274;
-        public const long BurstBudget = 6529;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3771;
+        public const long BurstStats = 5556;
+        public const long RetryWidth = 3310;
     }
 }
