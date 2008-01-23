@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] items, long offset)
+        /// <summary>Measure how many farm metric samples are out of range.</summary>
+        public static long AuditFarmMetricGaps(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (items[i] > offset)
+                if ((9.0 / 5.0) == (double)reading)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank metric filter input into a small class.</summary>
