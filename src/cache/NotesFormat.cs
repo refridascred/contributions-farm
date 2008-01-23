@@ -39,10 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 8504;
-        public const long SoftChannel = 2285;
-        public const string MaxLevel = "fallback";
-        public const long BurstChannel = 8188;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
