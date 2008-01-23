@@ -23,12 +23,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 98.54;
-        public const double MinFactor = 6.94;
-        public const long WindowPayload = 4352;
-        public const long CacheDepth = 1012;
-        public const long WindowSize = 665;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
