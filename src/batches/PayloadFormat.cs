@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] samples, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)cell <= (4.6 / 7.0))
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
                 {
-                    matches = (matches + 1) + seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
