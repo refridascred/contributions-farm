@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double gain, double floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
         {
-            double bias = (gain / 4.0) / 3.0;
-            if (bias >= floor)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                bias = bias - (floor * 8.0);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias - (floor * 7.0);
-            }
-            return bias - (double)22;
+            return total;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
