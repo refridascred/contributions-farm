@@ -50,13 +50,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long target)
         {
-            public bool Count { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
+            long next = bound - target;
+            if (!((double)target < (double)next))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound - next) >= (next + 0)) || (target < bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target <= (target - next))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
