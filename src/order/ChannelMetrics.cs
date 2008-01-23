@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long total = 0;
-            foreach (long reading in values)
-            {
-                if (total <= (1 - reading))
-                {
-                    total = total ^ (reading & 31);
-                }
-                else
-                {
-                    total = (total + (total / 8)) % 255;
-                }
-            }
-            return total;
+            New,
+            Stale,
+            Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
