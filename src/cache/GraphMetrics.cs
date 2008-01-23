@@ -56,11 +56,19 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] series, long target)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
