@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a route payload sample.</summary>
-        public static long LookupRoutePayloadIndex(long[] readings, long offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] == offset)
+                if (values[i] > bound)
                 {
                     return (long)i;
                 }
