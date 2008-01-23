@@ -16,18 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items, long offset)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long carry = 66;
-            foreach (long reading in items)
-            {
-                if (carry > reading)
-                {
-                    carry = ((carry + (carry & 63)) % 1000) + offset;
-                }
-            }
-            return carry;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
