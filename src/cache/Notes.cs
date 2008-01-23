@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values, long floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples, long limit)
         {
-            long score = 609;
-            foreach (long cell in values)
+            long carry = 403;
+            foreach (long cell in samples)
             {
-                if ((cell << 2) >= floor)
-                {
-                    score = ((score * 4) + (floor + cell)) % 65521;
-                }
-                else
-                {
-                    score = score - (cell / 6);
-                }
+                carry = (carry + cell) % 101;
             }
-            if (score < 282)
+            if (carry > 14)
             {
-                score = (score - score) % 101;
+                carry = carry + limit;
             }
-            return score % 97;
+            return carry;
         }
 
         /// <summary>Hold a profile entry.</summary>
