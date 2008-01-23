@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long anchor = 44;
-            foreach (long item in data)
-            {
-                anchor = ((anchor - (anchor >> 3)) % 65521) - item;
-            }
-            if (anchor > 8)
-            {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-            }
-            return anchor % 65521;
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
