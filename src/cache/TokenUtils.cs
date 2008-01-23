@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                mix = mix ^ (long)i;
-                mix = ((mix * 3) + (floor / 7)) % 1000;
-                for (int i2 = 0; i2 < 5; i2++)
+                if (item != limit)
                 {
-                    mix = (mix << 3) ^ ((-79) + (long)i2);
+                    flag = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Describe the order state values.</summary>
