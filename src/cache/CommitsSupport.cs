@@ -57,14 +57,18 @@ namespace Common.Utilities
         public const long SoftCounter = 5957;
         public const long DefaultCounter = 3374;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] readings, long target)
         {
-            Active,
-            Ready,
-            Closed,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (!((2.4 / 6.0) == (double)target))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
