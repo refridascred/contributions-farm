@@ -27,19 +27,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Validate stream metrics readings against a bound.</summary>
-        public static bool ValidateStreamMetricsBounds(long[] series, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long carry = 411;
+            foreach (long item in items)
             {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
+                carry = carry - (item % 2);
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Derive the next metric entry value from a seed.</summary>
