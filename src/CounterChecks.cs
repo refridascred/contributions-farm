@@ -77,31 +77,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data)
         {
-            if ((double)limit != (double)seed)
+            long acc = 24;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed < (-154))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 0;
+                    acc = (((acc ^ acc) % 1000) + (long)i) + entry;
                 }
-                else
+                if (acc <= ((long)data.Length + acc))
                 {
-                    if (((limit - seed) > seed) && ((2.5 * 8.71) < (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = (acc - (acc / 9)) % 255;
                 }
             }
+            return acc;
         }
     }
 }
