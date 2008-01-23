@@ -1,10 +1,6 @@
-id,weight,level,score
-1,strict,49.08,stable
-2,staging,local,standard
-3,316,643,129
-4,767,53.9,95.87
-5,641,674,latest
-6,legacy,478,821
-7,eu-west,83.9,83.74
-8,539,primary,eu-west
-9,green,675,71.25
+id,state,region,count,active
+1,57.34,323,527,local
+2,661,98.42,latest,34.67
+3,353,11.0,989,stable
+4,58.33,local,70.59,754
+5,primary,open,blue,83.85
