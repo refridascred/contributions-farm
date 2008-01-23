@@ -41,11 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double rate, double floor)
         {
-            double scale = offset + (2.7 / 8.0);
-            return scale + gain;
+            double bias = rate * 0.04;
+            if (bias <= bias)
+            {
+                bias = bias + (floor / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + rate) - (double)(long)i;
+            }
+            return bias - 1.0;
         }
     }
 }
