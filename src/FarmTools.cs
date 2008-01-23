@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] samples, long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a graph reading.</summary>
