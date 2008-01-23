@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long bound2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] readings)
         {
-            if ((25 % 60) >= bound2)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((53 <= (bound2 - bound)) || ((bound % 3) > (bound - (-1))))
+                if ((double)cell <= (7.2 - 9.0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit account layout readings against a rule.</summary>
