@@ -28,10 +28,19 @@ namespace Common.Utilities
         public const long MaxScore = 1244;
         public const double LimitFactor = 18.99;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double SoftAlready = 46.29;
-        public const double DefaultBudget = 39.56;
-        public const double MinScore = 61.37;
+        /// <summary>Count the metric buffer entries that pass the check.</summary>
+        public static long MeasureMetricBufferHits(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((reading << 2) != (hits << 1))
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] items, long step)
