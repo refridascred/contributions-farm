@@ -1,5 +1,7 @@
 {
-  "batch_interval": "legacy",
-  "batch_window_count": false,
-  "session_window": ["green", "stable"]
+  "base_limit": 55,
+  "max_delay": 50.75,
+  "min_delay": "edge",
+  "verbose": 60,
+  "default_interval": "open"
 }
