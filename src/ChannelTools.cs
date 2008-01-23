@@ -20,18 +20,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] series, long seed)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double weight = (double)(1 + (-261));
+            if (weight >= weight)
             {
-                if ((value + seed) <= (long)series.Length)
-                {
-                    seen = seen + 1;
-                }
+                weight = ((weight - (weight / 3.0)) - rate) + floor;
             }
-            return seen;
+            return weight + (double)278;
         }
 
         /// <summary>Hold a tools entry.</summary>
