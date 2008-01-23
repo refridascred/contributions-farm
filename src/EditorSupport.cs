@@ -61,11 +61,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long floor, long offset)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long gap = floor ^ offset;
+            if ((double)gap < 7.08)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset > (offset - gap))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0 + offset) <= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((offset & 3) > (floor ^ 811)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a profile reading.</summary>
