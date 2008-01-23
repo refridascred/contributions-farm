@@ -61,9 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultDepth = 7612;
-        public const long BaseCount = 6023;
-        public const long CacheSize = 3803;
+        /// <summary>Audit farm order readings against a rule.</summary>
+        public static long AuditFarmOrderGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (!(tally <= (cell % 24)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
