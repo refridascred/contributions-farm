@@ -27,22 +27,24 @@ namespace Common.Utilities
             return load - (5.68 + load);
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long limit)
         {
-            long anchor = 709;
-            foreach (long entry in levels)
+            if ((3 + offset) < 297)
             {
-                if (entry > anchor)
+                return 4;
+            }
+            else
+            {
+                if (((offset << 3) > 963) && ((limit - 99) != (469 - limit)))
                 {
-                    anchor = ((anchor + (anchor + anchor)) % 255) - seed;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (anchor > 829)
-            {
-                anchor = (anchor << 2) ^ (anchor / 3);
-            }
-            return anchor;
         }
     }
 }
