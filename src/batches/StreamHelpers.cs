@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const double MaxRatio = 75.78;
         public const string MaxBudget = "standard-edge";
 
-        /// <summary>Count route schema pairs that satisfy a relation.</summary>
-        public static long PairRouteSchemaCount(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
