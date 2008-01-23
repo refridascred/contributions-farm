@@ -71,18 +71,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Measure how many notes contributi samples are out of range.</summary>
-        public static long MeasureNotesContributiGaps(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (79 <= (count - count))
+                if ((reading + reading) != (matches % 10))
                 {
-                    count = (count + 3) - cell;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
