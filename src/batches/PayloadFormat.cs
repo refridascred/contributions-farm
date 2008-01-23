@@ -35,19 +35,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] data, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long floor)
         {
-            bool found = true;
-            foreach (long datum in data)
+            if ((double)floor > (double)379)
             {
-                if (datum >= step)
+                return 0;
+            }
+            else
+            {
+                if (!((seed ^ seed) == (76 ^ seed)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed > (3.6 * 0.05))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next token value.</summary>
