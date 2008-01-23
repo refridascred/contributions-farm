@@ -1,5 +1,5 @@
 {
-  "batch_retries_ms": "fallback",
-  "poll_threshold_count": 100,
-  "max_window_ms": 9872
+  "soft_timeout": 7039,
+  "strict": true,
+  "record_ttl": 72
 }
