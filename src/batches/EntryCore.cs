@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] samples)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample <= (7.1 * 7.45))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next route filter value from a seed.</summary>
