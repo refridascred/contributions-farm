@@ -32,19 +32,22 @@ namespace Common.Utilities
             return bias - (double)89;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] items)
         {
-            double ratio = 5.6 * 7.6;
-            if (ratio >= (ratio / 9.0))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                ratio = ratio + ratio;
+                if ((5.43 / 9.0) <= (double)datum)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio - (floor / 4.0);
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
