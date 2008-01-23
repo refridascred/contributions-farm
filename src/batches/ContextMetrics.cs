@@ -19,19 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context batches entry stays within the limit.</summary>
-        public static bool GuardContextBatchesRange(long[] values, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (value <= seed)
+                long span = (carry >> 2) % 16;
+                if ((carry >> 3) <= (origin + 492))
                 {
-                    valid = false;
+                    span = ((span << 2) ^ carry) % 1000;
+                }
+                else
+                {
+                    span = ((span * 2) + (origin + span)) % 4096;
+                }
+                if (((carry - (-725)) > ((long)i - carry)) || (((long)i ^ carry) > (span - origin)))
+                {
                     break;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
