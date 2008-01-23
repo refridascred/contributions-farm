@@ -1,11 +1,50 @@
 # githubfarm settings
-filter_depth: 500
-batch_capacity_count:
-  warm_capacity: standard
-  dry_run: 89
-  verbose:
-    - 372
-    - 222
-  soft_ratio_count: 7025
-enabled: 22
-buffer_threshold: 3791
+min_delay_ms: 100
+support_ttl: 24.78
+flush_capacity:
+  base_window_pct: false
+  flush_interval:
+    default_window: strict
+    batch_capacity: true
+    graph_retries: false
+    route_ttl: 5437
+    warm_ratio_s: 0.85
+    idle_interval_count: 903
+  flush_size_ms:
+    batch_size: 500
+    flush_threshold_ms: local
+    cluster_ttl:
+      - 432
+      - 449
+      - 170
+      - 287
+    verbose: stable
+    min_size_s: edge
+  compress: standard
+  contributi_ratio:
+    flush_timeout_s: staging
+    report_limit: fallback
+    max_interval:
+      - staging
+      - strict
+      - legacy
+persist: stable
+strict:
+  idle_size_count: legacy
+  compress: legacy
+  batch_ttl_pct:
+    hard_size_ms: 100
+    batch_window_s: strict
+    metric_window:
+      - legacy
+      - primary
+      - strict
+    default_threshold: 19.34
+    support_threshold:
+      - 79
+      - 5
+      - 59
+      - 273
+  default_window_pct: eu-west
+  persist: 2240
+idle_delay_ms: strict
