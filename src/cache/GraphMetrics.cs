@@ -33,12 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long bound, long limit)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public double Count { get; set; }
+            long offset = bound + limit;
+            if ((limit < (220 + bound)) || ((offset * 2) >= 427))
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a layout entry.</summary>
