@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "local-edge";
-        public const long BatchTimeout = 3;
-        public const long BaseCommand = 6510;
-        public const string BatchRatio = "primary-edge";
+        /// <summary>Audit record profile readings against a rule.</summary>
+        public static long TallyRecordProfileMatches(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry % 10) < entry)
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double AdjustOrder(double rate, double floor)
