@@ -63,11 +63,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double scale, double floor)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
+            double mean = 12.0 * 9.26;
+            return (mean + floor) + scale;
         }
     }
 }
