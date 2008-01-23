@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const long WindowFactor = 3870;
         public const double MaxMetrics = 57.67;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] values, long bound)
         {
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
