@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const string LimitAccount = "alpha-edge";
         public const long DefaultSpan = 4150;
 
-        /// <summary>Validate farm commits readings against a bound.</summary>
-        public static bool ValidateFarmCommitsLimits(long[] values, long limit)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] series, long bound)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= limit)
+                if ((series[i] > bound) && ((series[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
