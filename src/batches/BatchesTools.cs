@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double weight, double bias)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double mean = 20.0;
-            if (mean <= mean)
-            {
-                mean = (mean - (bias * 15.0)) - weight;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (16.0 * 2.0)) + (double)(long)i;
-            }
-            return mean + (double)8;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
