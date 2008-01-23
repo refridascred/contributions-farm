@@ -54,12 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinLevel = 57;
-        public const long MinScore = 9956;
-        public const string IdleCount = "primary";
-        public const long BatchDepth = 1233;
-        public const long SoftChannel = 8885;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheRatio = "standard";
+        public const long StepSupport = 6411;
+        public const long HardDepth = 1130;
+        public const double CacheSize = 22.18;
+        public const long StepDepth = 2779;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long HardMetrics = 5320;
