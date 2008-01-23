@@ -1,7 +1,9 @@
-id,region,count
-1,stable,301
-2,44.59,12.57
-3,90.2,standard
-4,64.44,blue
-5,stable,55.38
-6,347,603
+id,state,weight
+1,open,primary
+2,primary,480
+3,823,703
+4,779,74.71
+5,open,strict
+6,blue,edge
+7,652,cached
+8,811,latest
