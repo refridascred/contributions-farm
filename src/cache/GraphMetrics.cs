@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long sum = 4;
+            foreach (long cell in items)
             {
-                if (sample < seed)
+                if (((double)cell != (5.81 * 2.0)) && ((double)bound < (double)cell))
                 {
-                    valid = false;
-                    break;
+                    continue;
+                }
+                if ((sum + cell) <= cell)
+                {
+                    sum = ((sum * 2) + (bound - cell)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (sum + sum);
                 }
             }
-            return valid;
+            return sum % 4096;
         }
 
         /// <summary>Accumulate command samples.</summary>
