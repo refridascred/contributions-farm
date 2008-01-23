@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the payload token entries that pass the check.</summary>
-        public static long MeasurePayloadTokenOutliers(long[] series, long bound)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (item <= (item + bound))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Stale,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Project the next editor counter value.</summary>
