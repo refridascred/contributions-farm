@@ -23,18 +23,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine tools context values into a single score.</summary>
-        public static long TotalToolsContext(long[] readings, long seed)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] samples, long floor)
         {
-            long score = 22;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seed & 255) == (entry - 77)))
+                if (samples[i] == floor)
                 {
-                    score = (score - (score % 5)) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the entry kind values.</summary>
