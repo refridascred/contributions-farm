@@ -15,10 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 174;
-        public const string MaxScore = "latest-1";
-        public const long LimitFormat = 6064;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] samples, long limit)
+        {
+            long carry = 330;
+            foreach (long value in samples)
+            {
+                carry = ((carry - limit) % 255) + value;
+                carry = ((carry << 2) ^ (limit / 4)) % 1000;
+            }
+            if (carry > 15)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate stream metric samples.</summary>
         public static long FoldStreamMetric(long[] readings)
