@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] data)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((count / 8) > cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Look up the position of a stats githubfarm sample.</summary>
