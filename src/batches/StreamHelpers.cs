@@ -57,19 +57,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((seen >= (reading + (-131))) || !(251 >= reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseCount = 3081;
+        public const double MinRecord = 1.62;
+        public const string HardCount = "latest-v2";
+        public const long DefaultRecord = 5713;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long FoldNotes(long[] levels, long bound)
