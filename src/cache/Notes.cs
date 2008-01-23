@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] data)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((18.0 - 4.0) > (double)datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public double Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
