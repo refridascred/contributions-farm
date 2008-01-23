@@ -64,13 +64,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many notes contributi samples are out of range.</summary>
+        public static long MeasureNotesContributiGaps(long[] data)
         {
-            Queued,
-            Retry,
-            Done,
-            Active,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (79 <= (count - count))
+                {
+                    count = (count + 3) - cell;
+                }
+            }
+            return count;
         }
     }
 }
