@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Combine stats commits values into a single score.</summary>
+        public static long DigestStatsCommits(long[] items)
         {
-            New,
-            Synced,
-            Pending,
+            long mark = 77;
+            foreach (long reading in items)
+            {
+                mark = (mark + mark) ^ reading;
+                if (5 < (mark * 5))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
