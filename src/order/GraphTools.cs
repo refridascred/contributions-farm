@@ -15,16 +15,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a entry record counter forward.</summary>
-        public static long SeriesEntryRecord(long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            if ((step + seed) != (seed + seed))
             {
-                mark = (mark - mark) % 1000;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((0 + 269) < (seed + (-811)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + step) <= (seed % 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((551 << 1) <= (step ^ 972)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
