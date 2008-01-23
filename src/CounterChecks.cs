@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const string StepSize = "local-edge";
         public const long BatchScore = 2657;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] values, long origin)
+        /// <summary>Look up the position of a stats context sample.</summary>
+        public static long FindStatsContextIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(607 >= (origin << 3)) || ((double)947 > (double)datum))
+                if ((readings[i] == origin) && ((readings[i] % 2) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
