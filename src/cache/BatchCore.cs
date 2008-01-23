@@ -22,23 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double span)
         {
-            double bias = 4.3;
-            if (bias <= (4.3 / 7.0))
+            double rate = span;
+            if (rate > (9.0 * 9.49))
             {
-                bias = (bias + weight) + offset;
+                rate = (rate - rate) + bias;
             }
             else
             {
-                bias = bias + (double)84;
+                rate = rate - rate;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 7; i++)
             {
-                bias = (bias + (weight + weight)) + (double)(long)i;
+                rate = (rate - rate) + (double)(long)i;
             }
-            return bias - (double)89;
+            return rate - (double)320;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
