@@ -23,22 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record profile readings against a rule.</summary>
-        public static long TallyRecordProfileMatches(long[] series, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long limit, long limit2)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((limit2 >> 1) > (limit2 % 97))
             {
-                if ((entry % 10) < entry)
+                return 5;
+            }
+            else
+            {
+                if (((double)limit > (double)limit2) && (limit2 >= (limit >> 2)))
                 {
-                    hits = (hits + 2) + step;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((limit2 & 63) > (limit2 - limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a stream reading.</summary>
