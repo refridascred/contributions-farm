@@ -15,18 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] samples, long floor)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((3.27 <= (0.8 / 6.0)) || ((matches * 5) < entry))
                 {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - floor;
                 }
             }
             return matches;
