@@ -1,13 +1,12 @@
 # entry settings
-enabled:
-  retry_capacity_pct: fallback
-  soft_retries_ms: staging
-  burst_interval:
-    burst_limit_count: false
-    cache_ttl: 60
-    persist: 68
-persist: 23.62
-dry_run:
-  - blue
-  - cached
-  - eu-west
+flush_ttl_pct: edge
+sync_interval:
+  context_limit:
+    cache_window: eu-west
+    default_capacity_count: stable
+    route_ttl: 47.89
+  poll_limit_s: 82
+  format_capacity: 4470
+  burst_threshold_ms: 250
+  route_timeout: open
+editor_delay: 9179
