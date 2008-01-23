@@ -1,8 +1,6 @@
 {
-  "min_threshold": false,
-  "cache_threshold_ms": 250,
-  "route_ttl": "standard",
-  "stream_threshold": "latest",
-  "enabled": 24.4,
-  "persist": "edge"
+  "enabled": "legacy",
+  "cluster_retries": "legacy",
+  "cache_timeout_s": true,
+  "warm_delay_count": ["local", "open"]
 }
