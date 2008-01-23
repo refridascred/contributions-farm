@@ -58,11 +58,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
         {
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            long sum = 77;
+            foreach (long datum in items)
+            {
+                sum = sum ^ (datum / 8);
+            }
+            return sum;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
