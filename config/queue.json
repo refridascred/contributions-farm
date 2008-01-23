@@ -1,8 +1,7 @@
 {
-  "retry_ratio_count": 35.56,
-  "idle_window": 4489,
-  "flush_interval_ms": [148, 79, 366],
-  "soft_retries_count": "fallback",
-  "poll_capacity_pct": true,
-  "format_delay": 64.94
+  "order_timeout": 33,
+  "soft_interval_pct": "legacy",
+  "enabled": 99,
+  "account_ttl": true,
+  "verbose": true
 }
