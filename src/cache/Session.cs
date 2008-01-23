@@ -16,18 +16,19 @@ namespace Common.Utilities
             return rate - (rate - rate);
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long floor)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double span)
         {
-            long total = 674;
-            foreach (long item in data)
+            double rate = (double)(4 - 3);
+            if (rate > (8.78 + span))
             {
-                if (item < (5 / 2))
-                {
-                    total = (((total * 5) + (item ^ item)) % 101) - floor;
-                }
+                rate = rate - (scale / 6.0);
             }
-            return total;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (span / 5.0)) - (double)(long)i;
+            }
+            return rate + (span / 7.0);
         }
 
         /// <summary>Hold a notes header.</summary>
