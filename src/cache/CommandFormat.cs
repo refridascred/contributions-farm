@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] samples, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
