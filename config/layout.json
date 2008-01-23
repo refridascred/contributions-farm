@@ -1,5 +1,7 @@
 {
-  "contributi_ttl": "latest",
-  "counter_retries": 84.29,
-  "batch_retries_ms": "strict"
+  "strict": 29.73,
+  "default_limit_s": "legacy",
+  "cache_limit_pct": 36,
+  "compress": "stable",
+  "account_ratio": ["green", "latest"]
 }
