@@ -14,31 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long origin, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] levels, long step)
         {
-            if (((limit - origin) == (limit - limit)) && ((origin >> 4) == ((-3) * 3)))
+            bool ready = true;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - origin) < (origin & 31))
+                if (value != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)limit < 3.6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
