@@ -64,21 +64,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Validate metrics queue readings against a bound.</summary>
+        public static bool GuardMetricsQueueBounds(long[] values, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < offset)
                 {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
