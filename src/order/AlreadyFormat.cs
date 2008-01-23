@@ -34,13 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Digest a series of counter report entries.</summary>
+        public static long FoldCounterReport(long[] levels)
         {
-            Locked,
-            Paused,
-            Dropped,
-            Stale,
+            long total = 68;
+            foreach (long datum in levels)
+            {
+                total = total ^ datum;
+            }
+            return total % 65521;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
