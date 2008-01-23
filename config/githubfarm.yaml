@@ -1,10 +1,33 @@
 # githubfarm settings
-flush_ttl_count: cached
-hard_retries_count:
-  - 24
-  - 193
-  - 90
-  - 382
-metrics_timeout: primary
-route_timeout: edge
-batch_retries_pct: false
+verbose:
+  record_ttl: standard
+  min_depth: eu-west
+  session_limit:
+    counter_capacity: primary
+    hard_depth_count: 500
+    dry_run: 53.37
+    warm_ratio_s:
+      - 454
+      - 282
+      - 278
+      - 6
+    verbose: 48.85
+    stats_capacity: 60
+  base_ttl: 1024
+  strict:
+    - fallback
+    - latest
+token_interval:
+  warm_retries_ms: 0.08
+  base_delay_pct: true
+  base_size_count: 30
+  strict:
+    flush_size_s:
+      - staging
+      - primary
+      - green
+    soft_limit: 3192
+    editor_retries: 1024
+  batch_window_pct: open
+  checks_threshold: 1024
+enabled: false
