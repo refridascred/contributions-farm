@@ -37,12 +37,23 @@ namespace Common.Utilities
         public const long RetryBudget = 5416;
         public const string LimitAlready = "fallback";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 27.33;
-        public const double HardToken = 5.19;
-        public const long LimitToken = 148;
-        public const long SoftToken = 3951;
-        public const double CacheInterval = 75.45;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((522 % 100) < (776 + seen))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long ClassifyBatch(long origin, long origin2)
