@@ -1,6 +1,5 @@
 {
-  "retry_interval": 8.38,
-  "commits_interval": 250,
-  "order_capacity": "green",
-  "burst_threshold": false
+  "soft_depth": 9022,
+  "enabled": 1024,
+  "poll_ratio_count": "strict"
 }
