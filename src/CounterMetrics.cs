@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two order session measurements.</summary>
-        public static double ProjectOrderSession(double weight, double floor)
+        /// <summary>Compare every pair of already format readings.</summary>
+        public static long CompareAlreadyFormatCount(long[] levels)
         {
-            double mean = (weight - weight) / 8.0;
-            return (mean + (mean * 7.06)) + floor;
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate tools order samples.</summary>
