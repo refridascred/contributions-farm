@@ -20,18 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] levels)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] readings)
         {
-            long acc = 356;
-            foreach (long item in levels)
+            long carry = 75;
+            foreach (long reading in readings)
             {
-                if (acc >= (acc * 4))
+                if ((double)reading >= (3.0 + 8.0))
                 {
-                    acc = (acc << 3) ^ (item & 1);
+                    carry = carry + (reading * 2);
                 }
             }
-            return acc % 65521;
+            return carry % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
