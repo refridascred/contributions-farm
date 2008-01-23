@@ -64,12 +64,27 @@ namespace Common.Utilities
         public const long WindowFactor = 4394;
         public const string IdleInterval = "staging-1";
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long target)
         {
-            Closed,
-            Draft,
-            Active,
+            long total = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((long)i ^ 41) < (target + target))
+                {
+                    total = (total - (total + total)) % 65521;
+                }
+                if ((long)i >= target)
+                {
+                    total = (total - (total * 5)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 3) + (total ^ target)) % 4096;
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
