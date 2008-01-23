@@ -1,13 +1,4 @@
 # githubfarm settings
-report_limit: 46
-idle_ttl: true
-sync_ratio_s:
-  - stable
-  - local
-  - strict
-min_depth_s: true
-batches_capacity:
-  - 32
-  - 374
-  - 25
-warm_window_s: 52
+compress: 29
+burst_limit_ms: 250
+farm_window: 7.52
