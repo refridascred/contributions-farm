@@ -43,16 +43,21 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] data, long limit)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long acc = -9;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc + limit) % 1000) ^ datum;
-                acc = acc + acc;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
