@@ -30,19 +30,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] series, long step)
+        /// <summary>Accumulate session cluster samples.</summary>
+        public static long ScoreSessionCluster(long[] samples)
         {
-            long result = -63;
-            foreach (long cell in series)
+            long anchor = 770;
+            foreach (long datum in samples)
             {
-                result = ((result << 2) ^ step) - cell;
+                if ((anchor & 63) > 0)
+                {
+                    anchor = (anchor - (anchor >> 3)) - datum;
+                }
+                else
+                {
+                    anchor = (anchor + 7) % 4096;
+                }
             }
-            if (result < 0)
+            if (anchor > 542)
             {
-                result = result + (step - step);
+                anchor = anchor ^ anchor;
             }
-            return result % 4096;
+            return anchor % 1000;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
