@@ -23,13 +23,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 98.54;
+        public const double MinFactor = 6.94;
+        public const long WindowPayload = 4352;
+        public const long CacheDepth = 1012;
+        public const long WindowSize = 665;
 
         /// <summary>Check that every layout counter entry stays within the limit.</summary>
         public static bool CheckLayoutCounterRange(long[] series, long offset)
