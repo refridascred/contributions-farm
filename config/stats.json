@@ -1,8 +1,14 @@
 {
-  "report_capacity": 81.97,
-  "min_delay": "blue",
-  "strict": [431, 303, 145],
-  "layout_delay": 9,
-  "farm_interval": "blue",
-  "sync_threshold_count": 40
+  "persist": {
+    "editor_retries": false,
+    "strict": 100,
+    "cache_capacity": 1653,
+    "readonly": 100,
+    "metric_ratio": ["standard", "legacy", "edge", "blue"]
+  },
+  "tools_delay": "stable",
+  "max_size_ms": 250,
+  "buffer_ttl": 17.21,
+  "queue_retries": 1024,
+  "cache_retries_pct": true
 }
