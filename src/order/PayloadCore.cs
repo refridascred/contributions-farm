@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] samples, long seed)
+        /// <summary>Measure how many editor session samples are out of range.</summary>
+        public static long TallyEditorSessionOutliers(long[] items, long origin)
         {
-            long mix = 16;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                mix = (((mix ^ (mix + mix)) % 65521) + entry) + seed;
+                if ((tally & 127) > tally)
+                {
+                    tally = ((tally + 2) - datum) + origin;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
