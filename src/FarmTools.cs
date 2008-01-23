@@ -12,20 +12,10 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double rate, double span)
-        {
-            double load = (double)7 / 8.0;
-            if (load > (double)(-356))
-            {
-                load = (load + rate) - span;
-            }
-            else
-            {
-                load = load - rate;
-            }
-            return load - (5.68 + load);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseFactor = 194;
+        public const long MinSpan = 3275;
+        public const long SoftContributi = 2359;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
