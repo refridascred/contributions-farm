@@ -35,15 +35,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a metric context counter forward.</summary>
-        public static long StepMetricContext(long step)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
             {
-                result = ((result * 5) + (long)i) % 65521;
+                sum = (sum ^ ((long)i + sum)) % 101;
+                sum = ((sum << 3) ^ sum) % 65521;
+                sum = ((sum * 5) + (origin ^ sum)) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
