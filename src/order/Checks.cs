@@ -47,14 +47,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Grade a notes contributi value against two limits.</summary>
+        public static long BucketNotesContributi(long step, long limit)
         {
-            Idle,
-            Synced,
-            New,
-            Stale,
-            Locked,
+            long edge = step + limit;
+            if ((double)edge >= (3.49 / 4.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit <= (697 - 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (edge <= (limit + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
