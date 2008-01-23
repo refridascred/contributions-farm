@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] items, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] readings)
         {
-            long sum = 205;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum ^ cell) != (target - sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum ^ target) % 1000;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum < (-74))
-            {
-                sum = sum + (sum % 60);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
