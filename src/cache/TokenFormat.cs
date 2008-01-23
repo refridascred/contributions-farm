@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const double LimitCount = 35.37;
         public const long RetryFactor = 1888;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double weight, double span)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] readings, long origin)
         {
-            double bias = weight + (double)5;
-            if (bias > bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias + (bias * 14.0)) - span;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)4;
+            return -1;
         }
     }
 }
