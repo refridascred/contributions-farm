@@ -27,18 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] readings, long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits & 255) <= hits)
-                {
-                    hits = ((hits + 2) + entry) + offset;
-                }
-            }
-            return hits;
+            Stale,
+            Ready,
+            New,
         }
     }
 }
