@@ -27,12 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinDepth = 57.65;
-        public const double SoftGraph = 93.0;
-        public const double CacheWidth = 21.49;
-        public const string BurstFactor = "fallback-v2";
-        public const long BaseGraph = 1821;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series)
+        {
+            long mark = 812;
+            foreach (long item in series)
+            {
+                if (!((item * 3) >= mark))
+                {
+                    mark = (mark << 2) ^ (mark & 15);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] samples, long limit)
