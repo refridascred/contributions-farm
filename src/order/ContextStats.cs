@@ -28,21 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] levels, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell <= origin)
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
