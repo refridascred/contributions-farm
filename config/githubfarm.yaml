@@ -1,4 +1,4 @@
 # githubfarm settings
-soft_window: 64
-poll_window_s: legacy
-poll_limit: eu-west
+cache_size: 30
+persist: 85
+burst_delay_count: 88.97
