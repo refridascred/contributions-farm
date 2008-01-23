@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] data)
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long anchor = 44;
+            foreach (long item in data)
+            {
+                anchor = ((anchor - (anchor >> 3)) % 65521) - item;
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
