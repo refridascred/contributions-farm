@@ -27,12 +27,32 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 1212;
-        public const long StepCount = 1595;
-        public const long IdleRoute = 4046;
-        public const string LimitRoute = "fallback";
-        public const string DefaultBudget = "latest-edge";
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] data)
+        {
+            long acc = -836;
+            foreach (long datum in data)
+            {
+                if (((long)data.Length - acc) < acc)
+                {
+                    acc = ((acc * 3) + (acc % 12)) % 97;
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc * 5) + acc) % 101;
+                }
+                if ((datum % 12) >= (acc & 1))
+                {
+                    acc = acc - (datum + datum);
+                }
+            }
+            if (acc > 893)
+            {
+                acc = (acc + (acc << 3)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsOutliers(long[] data, long seed)
