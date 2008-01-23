@@ -48,19 +48,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double weight, double floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double span)
         {
-            double weight2 = (double)((-21) - 304);
-            if (weight2 > (floor * 7.3))
+            double bias = weight + (double)5;
+            if (bias > bias)
             {
-                weight2 = weight2 - (9.35 - weight2);
+                bias = (bias + (bias * 14.0)) - span;
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 + 15.0;
+            return bias + (double)4;
         }
     }
 }
