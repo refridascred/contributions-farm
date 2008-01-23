@@ -23,22 +23,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Project the next support route value.</summary>
+        public static double SmoothSupportRoute(double scale, double floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double weight = floor;
+            if (weight > 6.9)
             {
-                if ((sample / 7) != (count + sample))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight = weight + (scale - floor);
             }
-            return count;
+            else
+            {
+                weight = weight + (double)960;
+            }
+            return weight + 1.4;
         }
     }
 }
