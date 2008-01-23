@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
