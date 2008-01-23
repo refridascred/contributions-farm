@@ -51,10 +51,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitRatio = "legacy";
-        public const long LimitAlready = 12;
-        public const long BatchAlready = 6042;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values)
+        {
+            long total = 649;
+            foreach (long datum in values)
+            {
+                if (!((datum + 397) == (total << 2)))
+                {
+                    total = total + (total + total);
+                }
+                else
+                {
+                    total = (total * 5) + 90;
+                }
+                if (((4.1 * 0.3) >= (double)total) || ((896 % 5) > datum))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long IdleDepth = 4650;
