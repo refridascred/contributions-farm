@@ -46,15 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two payload format measurements.</summary>
-        public static double ScalePayloadFormat(double bias, double bias2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] data, long offset)
         {
-            double scale = 1.0;
-            if (scale >= (double)910)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                scale = ((scale - scale) + bias) - bias2;
+                if (0.76 >= (double)offset)
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            return scale - (double)55;
+            return matches;
         }
     }
 }
