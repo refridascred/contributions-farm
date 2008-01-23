@@ -38,14 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Stale,
-            Closed,
-            Dropped,
+            Done,
             Active,
-            Ready,
+            New,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
