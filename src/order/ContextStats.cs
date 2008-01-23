@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value != step)
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Roll a route counter forward.</summary>
