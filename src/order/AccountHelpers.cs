@@ -73,16 +73,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a command batch counter forward.</summary>
-        public static long SeriesCommandBatch(long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
+            double weight2 = 1.9 + weight;
+            if (weight2 < (weight * 4.26))
             {
-                result = (result - (result % 3)) % 101;
-                result = ((result * 4) + (long)i) % 65521;
+                weight2 = weight2 + (double)0;
             }
-            return result;
+            else
+            {
+                weight2 = weight2 + (8.01 / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + weight2) - (double)(long)i;
+            }
+            return weight2 - offset;
         }
     }
 }
