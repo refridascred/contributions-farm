@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardCount = "fallback-v2";
-        public const double DefaultBatch = 68.19;
-        public const string MinBatch = "legacy-1";
-        public const string LimitSize = "local-edge";
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] items)
+        {
+            long result = 903;
+            foreach (long reading in items)
+            {
+                if ((result >> 1) > (reading % 7))
+                {
+                    result = (result * 3) + (result + result);
+                }
+                else
+                {
+                    result = (result + (long)items.Length) % 97;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BaseLayout = "local-1";
