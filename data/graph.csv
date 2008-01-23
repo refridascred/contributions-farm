@@ -1,7 +1,8 @@
-id,state,weight,rank
-1,39.0,417,61.25
-2,green,39.21,strict
-3,178,27.98,9.08
-4,stable,green,33.58
-5,957,968,16.47
-6,local,97.66,3.86
+id,level
+1,13.84
+2,98.2
+3,8.04
+4,strict
+5,eu-west
+6,477
+7,899
