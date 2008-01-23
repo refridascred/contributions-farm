@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((1.7 / 4.0) <= (double)bound)
-                {
-                    hits = (hits + 1) - cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "legacy";
+        public const long RetrySession = 7425;
+        public const double RetryBudget = 40.75;
+        public const long IdleSession = 9291;
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
