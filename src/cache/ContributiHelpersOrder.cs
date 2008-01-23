@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] data)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (hits >= (hits - (-89)))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
