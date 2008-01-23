@@ -36,11 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
