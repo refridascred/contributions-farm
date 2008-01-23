@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] values, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((double)step < (double)entry)
+                if ((53 > (seen / 6)) && (((4.64 + 4.71) == (double)seen) && (((long)values.Length * 5) == (seen ^ seen))))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank context input into a small class.</summary>
