@@ -1,6 +1,8 @@
 {
-  "persist": "primary",
-  "default_size_ms": true,
-  "idle_size": "fallback",
-  "flush_retries_pct": 100
+  "sync_retries_count": 85,
+  "record_timeout": "cached",
+  "poll_ratio": 39,
+  "default_capacity_ms": [27, 161, 182],
+  "max_delay_pct": ["latest", "legacy"],
+  "hard_depth_count": "blue"
 }
