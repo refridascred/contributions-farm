@@ -56,18 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] series)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long datum in series)
+            double gain = (double)4 + (bias + bias);
+            if (gain >= bias2)
             {
-                if (((count >= (datum << 1)) && ((count & 127) <= 709)) && !((2.61 + 4.0) == (double)datum))
-                {
-                    count = count + 3;
-                }
+                gain = gain + (bias2 - bias2);
             }
-            return count;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (bias - gain)) + (double)(long)i;
+            }
+            return gain - (double)494;
         }
     }
 }
