@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the profile channel series from a seed.</summary>
-        public static long RollProfileChannel(long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] levels, long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                carry = carry + (carry << 3);
-                carry = carry + (carry - (long)i);
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((double)seen == (9.45 / 8.0))
+                {
+                    seen = ((seen + 3) + cell) + limit;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of buffer stats entries.</summary>
