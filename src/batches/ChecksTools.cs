@@ -19,32 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metric filter input into a small class.</summary>
-        public static long ClassifyMetricFilter(long offset, long floor)
-        {
-            if (offset > (7 % 97))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(floor < (9 - floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor * 2) > (offset + 499))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 2336;
+        public const long StepInterval = 4449;
+        public const string StepCommits = "local-v2";
+        public const string CacheCommits = "alpha";
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] data, long origin)
