@@ -38,23 +38,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stream support values into a single score.</summary>
-        public static long CombineStreamSupport(long[] readings)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long target, long bound)
         {
-            long mark = 303;
-            foreach (long datum in readings)
+            long prev = target - bound;
+            if (prev <= (233 - target))
             {
-                mark = ((mark << 2) ^ ((-1) & 15)) % 4096;
-                if (!((datum * 4) > datum))
+                return 7;
+            }
+            else
+            {
+                if ((prev - bound) <= prev)
                 {
-                    mark = (mark - ((long)readings.Length - 44)) % 65521;
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound << 2) < bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (88 > (2 - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mark < 2)
-            {
-                mark = (mark + mark) % 255;
-            }
-            return mark;
         }
     }
 }
