@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] values, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] items)
         {
-            long anchor = 142;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (anchor <= ((-2) + anchor))
+                if ((8.0 / 4.0) <= (double)matches)
                 {
-                    anchor = (((anchor ^ (74 << 2)) % 255) - cell) - floor;
+                    matches = (matches + 1) + item;
                 }
             }
-            if (anchor < 435)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Hold a window header.</summary>
