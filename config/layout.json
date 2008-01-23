@@ -1,5 +1,10 @@
 {
-  "compress": 1713,
-  "audit": "fallback",
-  "idle_retries_s": 70.55
+  "soft_limit_s": {
+    "warm_delay_count": [167, 416],
+    "compress": 5.26,
+    "burst_ratio_count": false
+  },
+  "hard_ratio_count": 7117,
+  "sync_interval": [344, 337, 370],
+  "min_window_ms": 250
 }
