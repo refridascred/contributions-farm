@@ -13,18 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] series, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] items)
         {
-            long mix = -370;
-            foreach (long sample in series)
+            long carry = -85;
+            foreach (long sample in items)
             {
-                if (!(mix <= (sample - mix)))
+                if ((carry ^ (long)items.Length) <= (carry - carry))
                 {
-                    mix = (((mix << 2) ^ (mix % 60)) % 101) + bound;
+                    carry = (carry * 2) + sample;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ ((-786) ^ carry)) % 101;
                 }
             }
-            return mix % 4096;
+            return carry;
         }
 
         /// <summary>Check that every batch profile entry stays within the limit.</summary>
