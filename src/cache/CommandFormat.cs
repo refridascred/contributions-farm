@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long CacheSize = 3963;
         public const long BurstInterval = 8794;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] data, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (sample >= seed)
+                if ((tally ^ value) >= value)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Hold a cluster info.</summary>
