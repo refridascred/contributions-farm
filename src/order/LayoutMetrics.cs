@@ -41,19 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSchema = "staging";
+        public const string BatchFactor = "local";
+        public const long StepSchema = 8981;
+        public const long IdleSchema = 8814;
+        public const double BurstFactor = 9.36;
     }
 }
