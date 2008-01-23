@@ -34,15 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double floor)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] values, long floor)
         {
-            double weight = (double)(1 + (-261));
-            if (weight >= weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = ((weight - (weight / 3.0)) - rate) + floor;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)278;
+            return -1;
         }
 
         /// <summary>Hold a farm options.</summary>
