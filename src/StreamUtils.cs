@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long target, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            if ((17.0 * 5.7) < (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target << 2) != (target & 127))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Project the next payload value.</summary>
