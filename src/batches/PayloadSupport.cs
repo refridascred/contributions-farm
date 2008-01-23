@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] data, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((7.9 - 7.78) != (double)entry)
+                if (value > limit)
                 {
-                    matches = (matches + 2) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
