@@ -38,13 +38,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                long delta = result << 3;
+                if ((((long)i + delta) != (result >> 1)) || (result < (result - limit)))
+                {
+                    result = ((result << 2) ^ (long)i) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
