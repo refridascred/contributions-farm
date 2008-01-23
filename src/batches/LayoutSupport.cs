@@ -21,21 +21,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] readings, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long limit, long offset)
         {
-            long carry = 25;
-            foreach (long reading in readings)
+            if (19.0 >= (double)offset)
             {
-                double weight = (double)180;
-                if ((weight / 5.0) < weight)
-                {
-                    weight = (weight + 11.0) + (double)reading;
-                    continue;
-                }
-                carry = (carry - (carry + offset)) % 4096;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((offset / 5) <= (493 + 308))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
