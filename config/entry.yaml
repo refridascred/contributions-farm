@@ -1,17 +1,16 @@
 # entry settings
-format_size:
-  - latest
-  - standard
-  - primary
-audit: 20
-flush_interval: local
-batch_timeout:
-  warm_limit:
-    soft_window_pct: 500
-    cache_ttl_pct: 92.81
-    audit: 2698
-    persist: 2050
-  cache_retries: 7103
-  sync_timeout_ms: 2952
-  warm_delay_ms: 7418
-  max_retries: 42
+retry_interval_count: legacy
+token_timeout:
+  hard_limit_pct: legacy
+  default_ttl: true
+  persist: 2540
+account_delay: primary
+audit: 30
+warm_timeout:
+  default_depth_ms: false
+  base_capacity_count: blue
+  poll_timeout_ms: latest
+  readonly: 29
+graph_ttl:
+  - 121
+  - 280
