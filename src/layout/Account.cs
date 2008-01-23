@@ -17,18 +17,12 @@ namespace Common.Utilities
         public const string StepProfile = "latest-v2";
         public const string MaxInterval = "strict-edge";
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length / 7) == (seen ^ seen))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Closed,
         }
     }
 }
