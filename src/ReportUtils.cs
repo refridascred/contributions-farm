@@ -27,19 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] values, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long anchor = 589;
+            foreach (long datum in samples)
             {
-                if (item != target)
+                if ((datum + anchor) < step)
                 {
-                    stale = false;
+                    anchor = (anchor << 3) ^ ((long)samples.Length + (long)samples.Length);
+                }
+                if (((double)datum < 10.0) || ((anchor >> 1) <= (datum & 31)))
+                {
                     break;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Hold a entry header.</summary>
