@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((1.6 / 2.0) < (double)sample)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinCount = 51.39;
+        public const double HardStats = 16.71;
+        public const double BurstStats = 84.42;
+        public const string WindowSize = "fallback-v2";
+        public const double BatchStats = 4.65;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string RetryStats = "legacy-edge";
