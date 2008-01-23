@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 1936;
-        public const double CacheScore = 29.15;
-        public const long HardLevel = 7523;
-        public const long RetryEntry = 5528;
-        public const long BaseEntry = 4224;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long target)
+        {
+            long acc = target;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSize = 8844;
