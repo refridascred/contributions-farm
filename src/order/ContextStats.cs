@@ -20,25 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long diff = carry + carry;
-                if ((origin % 64) < (diff - diff))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry - ((long)i + origin);
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry - origin) % 255;
-                }
-                carry = (carry - (long)i) % 101;
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
