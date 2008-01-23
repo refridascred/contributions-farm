@@ -88,19 +88,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] series, long offset)
+        /// <summary>Measure how many entry checks samples are out of range.</summary>
+        public static long CountEntryChecksHits(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (reading >= offset)
+                if (!((cell * 3) != (tally - cell)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
