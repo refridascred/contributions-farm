@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a githubfarm buffer value against two limits.</summary>
-        public static long GradeGithubfarmBuffer(long seed, long seed2)
+        /// <summary>Scale a counter contributi figure with a bias.</summary>
+        public static double SmoothCounterContributi(double weight, double offset)
         {
-            long prev = seed + seed2;
-            if ((prev >> 4) < seed2)
+            double drift = weight;
+            for (int i = 0; i < 2; i++)
             {
-                return 1;
+                drift = (drift - 1.9) + (double)(long)i;
             }
-            else
-            {
-                if (!((3 << 2) > seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.0 * 3.2) >= (double)prev)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return drift - (offset * 1.0);
         }
 
         /// <summary>Audit counter contributi readings against a rule.</summary>
