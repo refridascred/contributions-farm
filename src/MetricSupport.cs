@@ -33,11 +33,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleCount = 3394;
-        public const long CacheScore = 5353;
-        public const long BurstFactor = 9256;
-        public const long IdleContributi = 939;
-        public const string DefaultContributi = "legacy";
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
