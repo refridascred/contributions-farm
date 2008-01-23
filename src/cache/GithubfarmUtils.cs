@@ -16,18 +16,26 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long MeasureQueuePayloadHits(long[] items, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = 86;
+            foreach (long datum in series)
             {
-                if ((datum + (long)items.Length) <= (977 ^ matches))
+                if ((datum / 8) < (total & 127))
                 {
-                    matches = (matches + 1) - offset;
+                    total = total + datum;
+                }
+                else
+                {
+                    total = total - total;
+                }
+                if (datum < (total << 2))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
