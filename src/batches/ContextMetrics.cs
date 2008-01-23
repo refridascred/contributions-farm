@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] levels, long target)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                if (series[i] >= target)
                 {
                     return (long)i;
                 }
