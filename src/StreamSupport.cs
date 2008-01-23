@@ -33,38 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks metric pair into a bucket.</summary>
-        public static long ClassifyChecksMetric(long seed, long offset)
+        /// <summary>Audit already farm readings against a rule.</summary>
+        public static long AuditAlreadyFarmOutliers(long[] series, long floor)
         {
-            if ((offset - offset) < (offset - 7))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed - offset) == (offset + offset)) && (seed > (771 - seed)))
+                if ((double)floor >= (double)tally)
                 {
-                    return 2;
+                    tally = (tally + 2) + cell;
                 }
                 else
                 {
-                    if ((double)offset > (16.0 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((7.0 - 3.7) > (double)offset) && (seed < (offset / 9)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
