@@ -14,12 +14,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Classify a contributi filter pair into a bucket.</summary>
+        public static long BucketContributiFilter(long limit, long origin)
         {
-            Retry,
-            Idle,
-            Ready,
+            if ((99 - origin) <= (limit ^ limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((802 - 1) > (limit / 8)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit >= (origin - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
