@@ -38,12 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string DefaultWidth = "standard-1";
-        public const double CacheCounter = 28.04;
-        public const long BatchCounter = 9079;
-        public const long MaxCounter = 8209;
-        public const long DefaultDepth = 6207;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 5975;
+        public const string BurstWidth = "fallback-1";
+        public const long WindowTimeout = 6121;
+        public const string LimitDepth = "stable-1";
+        public const long HardPayload = 3543;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksOutliers(long[] series)
