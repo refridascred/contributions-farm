@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double weight = (double)(75 >> 4);
-            if (weight >= (weight + bias))
-            {
-                weight = weight + (double)5;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight - 9.5;
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate stream metrics readings against a bound.</summary>
