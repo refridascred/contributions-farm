@@ -24,11 +24,14 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            double load = (bias / 6.0) * 9.46;
-            return load + (gain - load);
+            Draft,
+            Pending,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
