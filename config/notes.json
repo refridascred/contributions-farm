@@ -1,5 +1,7 @@
 {
-  "payload_depth": 250,
-  "stream_capacity": "cached",
-  "hard_interval": true
+  "profile_ratio": ["staging", "legacy"],
+  "min_size": "staging",
+  "retry_capacity_pct": ["local", "open"],
+  "base_capacity_pct": ["primary", "primary"],
+  "cache_threshold": false
 }
