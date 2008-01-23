@@ -25,19 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route entry readings against a bound.</summary>
-        public static bool VerifyRouteEntryRange(long[] readings, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (item >= step)
+                if (((double)tally > (6.4 / 2.0)) && !((sample / 9) < (sample & 63)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Digest a series of command entries.</summary>
