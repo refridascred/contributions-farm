@@ -1,4 +1,19 @@
 # entry settings
-warm_capacity: strict
-readonly: legacy
-soft_delay: false
+route_capacity:
+  - green
+  - primary
+  - fallback
+  - open
+warm_threshold_count: 9980
+githubfarm_capacity:
+  soft_delay: false
+  support_window: 0.99
+  readonly:
+    - 68
+    - 238
+    - 419
+  min_ttl_s: 8.41
+  cache_ttl_ms: 7555
+cache_retries: 5225
+default_retries_s: edge
+metrics_size: 86
