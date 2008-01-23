@@ -26,21 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up command checks samples.</summary>
-        public static long OverlapCommandChecksCount(long[] items)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 5.6 * 7.6;
+            if (ratio >= (ratio / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + ratio;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            return ratio - (floor / 4.0);
         }
 
         /// <summary>Hold a cluster record.</summary>
