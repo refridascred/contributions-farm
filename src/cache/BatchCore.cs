@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] samples, long floor)
         {
-            Stale,
-            Done,
-            Closed,
-            Idle,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)floor <= (3.59 + 0.52))
+                {
+                    count = (count + 2) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
