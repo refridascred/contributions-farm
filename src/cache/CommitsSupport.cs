@@ -19,12 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseLevel = "fallback";
-        public const double HardScore = 47.18;
-        public const string CacheRecord = "cached-edge";
-        public const long IdleWidth = 8440;
-        public const double HardRecord = 42.12;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long origin, long seed)
+        {
+            if ((1.31 * 4.13) > (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin >= (11.0 - 5.05))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed == (3.52 - 6.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double BurstRoute = 34.96;
