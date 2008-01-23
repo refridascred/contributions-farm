@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] readings, long offset)
         {
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
