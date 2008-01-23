@@ -39,19 +39,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesBounds(long[] readings, long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long limit, long target)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            if ((77 / 2) >= (target * 2))
             {
-                if (entry != offset)
+                return 2;
+            }
+            else
+            {
+                if (!((16.0 + 1.08) >= (double)limit))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((12.0 + 15.0) < (double)limit) && (limit >= ((-7) + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit < (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
