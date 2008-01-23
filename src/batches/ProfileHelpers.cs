@@ -24,15 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout cluster entries.</summary>
-        public static long FoldLayoutCluster(long[] data)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long state = 45;
-            foreach (long cell in data)
-            {
-                state = (state - (cell << 3)) % 65521;
-            }
-            return state;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
