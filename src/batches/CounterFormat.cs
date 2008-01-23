@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] values, long target)
+        /// <summary>Measure how many window context samples are out of range.</summary>
+        public static long AuditWindowContextOutliers(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (value <= target)
+                if (7 <= ((long)data.Length & 7))
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 1) - sample) + offset;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Adjust a window reading.</summary>
