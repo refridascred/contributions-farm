@@ -20,39 +20,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long floor, long limit)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long gap = floor - limit;
-            if (gap < (128 + 782))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor >= limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)gap <= (18.0 - 4.2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (gap <= (gap + gap))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            New,
+            Queued,
+            Done,
+            Closed,
+            Synced,
         }
     }
 }
