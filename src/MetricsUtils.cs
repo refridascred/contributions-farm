@@ -39,17 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] items, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 8;
+            foreach (long item in values)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                acc = (((acc << 2) ^ (0 >> 1)) - item) - step;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Hold a account stats.</summary>
