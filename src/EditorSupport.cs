@@ -32,12 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] readings, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
