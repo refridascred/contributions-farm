@@ -22,14 +22,11 @@ namespace Common.Utilities
         public const long CacheDepth = 6788;
         public const long BaseContributi = 9407;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 34.73;
+        public const double SoftQueue = 44.19;
+        public const double HardQueue = 8.11;
+        public const string CacheLevel = "legacy-edge";
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
