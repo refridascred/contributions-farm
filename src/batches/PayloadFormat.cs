@@ -28,31 +28,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if ((double)floor > (double)379)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed ^ seed) == (76 ^ seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed > (3.6 * 0.05))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Project the next token value.</summary>
