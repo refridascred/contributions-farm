@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long origin, long origin2)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] data)
         {
-            if ((origin2 >> 1) >= ((-53) >> 1))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin > (origin << 2))
+                if ((count / 8) > cell)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-962) / 5) != (origin + origin2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin2 & 31) == (origin2 << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a stats githubfarm sample.</summary>
