@@ -41,19 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum + sum) < offset)
+                if (readings[i] == bound)
                 {
-                    sum = ((sum * 2) + (sum % 12)) % 65521;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
     }
 }
