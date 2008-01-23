@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Stale,
-            New,
-            Active,
-            Dropped,
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
