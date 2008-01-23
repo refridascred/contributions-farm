@@ -1,11 +1,6 @@
 # entry settings
-flush_threshold_ms:
-  - edge
-  - green
-min_capacity_pct: 2052
-strict:
-  - cached
-  - blue
-soft_ratio_pct: false
-soft_depth: 92.27
-max_ttl: green
+poll_window: true
+compress: 72
+audit: green
+sync_limit: primary
+buffer_ttl: true
