@@ -20,12 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a context counter sample.</summary>
