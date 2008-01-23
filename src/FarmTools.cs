@@ -20,21 +20,27 @@ namespace Common.Utilities
             return load + (4.3 - load);
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Combine metrics command values into a single score.</summary>
+        public static long TotalMetricsCommand(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -1;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = acc + (reading % 16);
+                if ((562 + acc) == (reading << 1))
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc * 4) + (reading ^ acc);
+                }
+                if (acc > (714 & 7))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc > (-371))
+            {
+                acc = (acc + ((long)series.Length - acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
