@@ -1,6 +1,14 @@
 {
-  "batch_depth_pct": "green",
-  "default_depth_pct": 44.1,
-  "report_interval": [399, 457, 317, 465],
-  "dry_run": false
+  "min_retries_ms": {
+    "context_window": ["eu-west", "standard", "strict", "edge"],
+    "poll_window_count": "strict",
+    "persist": 87,
+    "max_threshold_ms": 78,
+    "poll_window_ms": 3863
+  },
+  "channel_retries": "blue",
+  "default_retries_s": 60,
+  "cache_ttl_ms": 56,
+  "window_depth": false,
+  "audit": 500
 }
