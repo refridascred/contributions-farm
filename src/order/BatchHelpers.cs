@@ -16,20 +16,11 @@ namespace Common.Utilities
         public const string MaxScore = "latest-1";
         public const long LimitFormat = 6064;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
-            {
-                long seen = step & 7;
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = (((anchor << 2) ^ (seen & 63)) % 97) - (long)i2;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 89.65;
+        public const long IdleCount = 6026;
+        public const long DefaultSpan = 8107;
+        public const long LimitCounter = 7691;
+        public const string StepSize = "open-1";
     }
 }
