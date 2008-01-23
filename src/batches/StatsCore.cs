@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Locked,
-            Closed,
-            New,
-            Active,
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
