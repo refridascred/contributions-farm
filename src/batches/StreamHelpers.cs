@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseTimeout = 1791;
-        public const string DefaultDepth = "fallback-1";
-        public const double MaxRatio = 75.78;
-        public const string MaxBudget = "standard-edge";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] readings, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((954 > limit) || (limit >= (seen + seen))) || ((6.2 + 6.0) != (double)limit))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long origin, long limit)
