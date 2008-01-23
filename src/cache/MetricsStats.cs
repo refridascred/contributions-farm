@@ -30,11 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Digest a series of record payload entries.</summary>
+        public static long TotalRecordPayload(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
+            long carry = 37;
+            foreach (long reading in series)
+            {
+                carry = ((((carry * 3) + ((-50) & 127)) % 101) + reading) + offset;
+            }
+            return carry;
         }
 
         /// <summary>Check that every command metrics entry stays within the limit.</summary>
