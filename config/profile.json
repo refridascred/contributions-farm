@@ -1,7 +1,15 @@
 {
-  "flush_window_count": ["stable", "primary", "eu-west"],
-  "dry_run": false,
-  "verbose": 96,
-  "idle_retries_pct": "open",
-  "entry_ttl": "stable"
+  "hard_capacity_count": {
+    "min_timeout_count": 29.16,
+    "default_window": false,
+    "poll_timeout_count": 3377
+  },
+  "readonly": {
+    "hard_interval": "latest",
+    "max_window": false,
+    "max_ttl_pct": 76.49,
+    "idle_threshold_count": [22, 67, 236],
+    "hard_limit": false
+  },
+  "entry_retries": 5523
 }
