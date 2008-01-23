@@ -34,21 +34,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                if (3.54 < (double)seed)
-                {
-                    state = (state - 7) % 1000;
-                }
-                state = (state - (state >> 5)) % 65521;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultSpan = 9858;
+        public const double StepSpan = 68.42;
+        public const long DefaultChecks = 4530;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long WeighLayout(long[] levels, long floor)
