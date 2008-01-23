@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] readings, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long carry = 98;
+            foreach (long entry in samples)
             {
-                if (((639 >> 1) >= (bound - bound)) && !(3.7 > (double)bound))
+                if ((long)samples.Length < (483 / 8))
                 {
-                    matches = (matches + 2) + value;
+                    carry = ((carry + carry) % 1000) ^ entry;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
