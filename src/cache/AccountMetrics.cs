@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long LimitDepth = 8953;
         public const long CacheDepth = 9672;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 7028;
-        public const long CacheScore = 6489;
-        public const double BatchRatio = 94.42;
-        public const long WindowSize = 2631;
-        public const long BatchGraph = 3854;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 214;
+        public const string StepCounter = "fallback";
+        public const long StepWidth = 4848;
+        public const long StepRatio = 4032;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
