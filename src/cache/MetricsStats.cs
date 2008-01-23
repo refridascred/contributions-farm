@@ -16,24 +16,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a batch account pair into a bucket.</summary>
-        public static long BucketBatchAccount(long limit, long seed)
+        /// <summary>Audit notes window readings against a rule.</summary>
+        public static long CountNotesWindowHits(long[] values, long offset)
         {
-            if ((limit - limit) == (17 & 7))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit < seed) && ((double)seed == (14.0 - 8.54)))
+                if ((count - offset) >= (count - datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a support entry.</summary>
