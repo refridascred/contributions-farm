@@ -1,15 +1,9 @@
 # entry settings
-editor_timeout: 30
-max_limit_count: legacy
-commits_interval:
-  checks_ttl: 79.58
-  buffer_interval: 6.86
-  verbose: 30
-soft_delay_count:
-  - 281
-  - 408
-  - 393
-max_window_pct:
-  - 218
-  - 59
-warm_window_s: 89
+commits_depth: false
+poll_window_ms: 4124
+compress: 82
+retry_ratio_s:
+  - 465
+  - 228
+sync_size: 48
+cache_ratio_ms: strict
