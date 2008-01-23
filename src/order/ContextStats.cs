@@ -11,15 +11,25 @@ namespace Common.Utilities
         public const long LimitScore = 8147;
         public const long MaxTimeout = 2177;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long origin)
         {
-            double mean = ratio - (17.0 * 2.38);
-            if (mean >= 2.0)
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
             {
-                mean = mean + floor;
+                long diff = carry + carry;
+                if ((origin % 64) < (diff - diff))
+                {
+                    carry = carry - ((long)i + origin);
+                }
+                else
+                {
+                    carry = (carry - origin) % 255;
+                }
+                carry = (carry - (long)i) % 101;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return mean - (double)90;
+            return carry;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
