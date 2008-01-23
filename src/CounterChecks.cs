@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
-            Ready,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample >= (double)tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
