@@ -1,6 +1,10 @@
-id,owner,ratio
-1,52.13,latest
-2,65.55,strict
-3,cached,500
-4,94.78,334
-5,cached,219
+id,ratio,count,score,state
+1,staging,34.54,66.97,744
+2,12.1,618,latest,21.33
+3,primary,859,95.16,47.39
+4,657,stable,144,601
+5,24,17.04,60.1,legacy
+6,65.11,339,97.01,strict
+7,625,legacy,56.59,fallback
+8,832,846,16.04,288
+9,staging,125,26.36,571
