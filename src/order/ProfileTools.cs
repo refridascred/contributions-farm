@@ -5,33 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next buffer order value from a seed.</summary>
-        public static long IterateBufferOrder(long target)
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long MeasureLayoutChecksGaps(long[] values, long target)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)target >= (1.0 / 2.0))
+                if ((reading * 5) == (reading >> 4))
                 {
-                    result = (result - (result / 4)) % 97;
-                    continue;
+                    hits = (hits + 3) - target;
                 }
-                else
-                {
-                    result = (result * 2) + target;
-                }
-                result = (result + ((long)i - target)) % 97;
-                if ((1.8 * 5.5) != (double)target)
-                {
-                    result = (result << 3) ^ result;
-                }
-                else
-                {
-                    result = (result ^ ((long)i - result)) % 255;
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
