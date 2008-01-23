@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] readings, long limit)
         {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((count - 97) < 252)
+                {
+                    count = ((count + 1) + value) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
