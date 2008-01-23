@@ -41,11 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] values, long target)
         {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)matches != (2.0 - 3.6))
+                {
+                    matches = ((matches + 1) - sample) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the schema state values.</summary>
