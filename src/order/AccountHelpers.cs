@@ -45,22 +45,12 @@ namespace Common.Utilities
             return weight + (bias * 6.26);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long anchor = 95;
-            foreach (long value in values)
-            {
-                if (value <= (47 - value))
-                {
-                    anchor = (anchor << 2) ^ (anchor * 4);
-                }
-            }
-            if (anchor > 478)
-            {
-                anchor = (anchor - (anchor + anchor)) % 65521;
-            }
-            return anchor % 65521;
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a profile summary.</summary>
