@@ -1,7 +1,6 @@
 {
-  "persist": 92.87,
-  "enabled": "legacy",
-  "batch_delay_count": "staging",
-  "burst_interval_count": 29.08,
-  "poll_size": [200, 141, 432, 232]
+  "default_interval_pct": 1024,
+  "max_timeout_ms": true,
+  "dry_run": 78.28,
+  "default_retries_count": false
 }
