@@ -33,19 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] readings, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long origin, long step)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((step - step) == (origin / 9))
             {
-                if (sample != origin)
+                return 4;
+            }
+            else
+            {
+                if ((double)113 <= (double)step)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin & 127) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
