@@ -20,32 +20,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long lane = limit - seed;
-            if ((limit & 255) <= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)lane >= 0.5)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) <= (lane % 16))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
