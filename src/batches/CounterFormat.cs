@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Scale a graph buffer figure with a bias.</summary>
+        public static double AdjustGraphBuffer(double rate, double bias)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            double drift = rate;
+            if (drift < rate)
+            {
+                drift = drift - (bias / 8.0);
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Describe the batch status values.</summary>
