@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultRatio = 34.34;
-        public const long BurstFactor = 6171;
-        public const long IdleCommand = 8828;
-        public const long WindowBudget = 597;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                score = (score - score) % 101;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long RetryCounter = 214;
