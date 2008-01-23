@@ -32,11 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 34.73;
-        public const double SoftQueue = 44.19;
-        public const double HardQueue = 8.11;
-        public const string CacheLevel = "legacy-edge";
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long CountLayoutChecksMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((9.18 - 9.0) < (double)matches)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
