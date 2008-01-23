@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the account farm entries that pass the check.</summary>
+        public static long TallyAccountFarmMatches(long[] series, long floor)
         {
-            Failed,
-            Locked,
-            Ready,
-            Pending,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)floor < 12.0)
+                {
+                    seen = (seen + 2) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many report queue samples are out of range.</summary>
