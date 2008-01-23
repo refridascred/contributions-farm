@@ -13,11 +13,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long seed)
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
+            long lane = limit - seed;
+            if ((limit & 255) <= limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)lane >= 0.5)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) <= (lane % 16))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
