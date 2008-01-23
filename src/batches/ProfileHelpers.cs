@@ -31,21 +31,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] levels)
+        /// <summary>Scale a record cluster figure with a bias.</summary>
+        public static double ProjectRecordCluster(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = (double)(7 >> 2);
+            if (rate2 <= (bias - bias))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = rate2 - rate;
             }
-            return hits;
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 - (double)7;
         }
 
         /// <summary>Describe the stats level values.</summary>
