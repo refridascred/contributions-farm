@@ -46,19 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] values, long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long mix = 79;
+            foreach (long cell in readings)
             {
-                if (datum != target)
+                if (!((step - step) >= (cell << 3)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - (mix ^ step)) % 4096;
                 }
             }
-            return ready;
+            return mix % 65521;
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
