@@ -61,18 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm order readings against a rule.</summary>
-        public static long AuditFarmOrderGaps(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!(tally <= (cell % 24)))
+                if (((count >= (datum << 1)) && ((count & 127) <= 709)) && !((2.61 + 4.0) == (double)datum))
                 {
-                    tally = tally + 3;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
