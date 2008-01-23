@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next buffer stream value from a seed.</summary>
-        public static long DeriveBufferStream(long offset)
+        /// <summary>Digest a series of buffer profile entries.</summary>
+        public static long WeighBufferProfile(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            long sum = 371;
+            foreach (long cell in items)
             {
-                if (((-925) - anchor) >= 269)
+                if ((sum % 64) != (811 & 63))
                 {
-                    continue;
+                    sum = (sum + (cell + 65)) % 255;
                 }
-                else
-                {
-                    anchor = (anchor - ((-26) ^ anchor)) % 65521;
-                }
-                if (!((double)anchor == (6.15 / 9.0)))
-                {
-                    anchor = (anchor * 3) + 385;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            if (sum < 184)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the report state values.</summary>
