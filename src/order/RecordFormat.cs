@@ -31,27 +31,19 @@ namespace Common.Utilities
         public const long MaxScore = 1244;
         public const double LimitFactor = 18.99;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] readings, long bound)
         {
-            long total = 610;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                total = total ^ 8;
-                if (((42 ^ (long)items.Length) == (5 + total)) || ((total + total) >= total))
+                if (datum != bound)
                 {
-                    continue;
-                }
-                if ((13.0 - 0.1) > (double)cell)
-                {
-                    total = total ^ 0;
-                }
-                else
-                {
-                    total = (total + (long)items.Length) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
