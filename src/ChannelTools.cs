@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel batches samples.</summary>
-        public static long ScoreChannelBatches(long[] data, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long mix = 6;
-            foreach (long sample in data)
-            {
-                mix = ((mix << 2) ^ (mix << 3)) - sample;
-                if (!(66 <= (mix ^ offset)))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (370 + (long)data.Length)) % 255;
-            }
-            return mix;
+            Retry,
+            New,
+            Synced,
         }
 
         /// <summary>Roll a already counter forward.</summary>
