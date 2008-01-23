@@ -12,22 +12,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftRoute = 4638;
+        public const long StepRoute = 9884;
+        public const double BaseBudget = 28.78;
+        public const long BurstRoute = 5290;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] samples, long bound)
