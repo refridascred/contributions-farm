@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchSize = "staging-v2";
-        public const long BurstTimeout = 326;
-        public const long BatchLevel = 5027;
-        public const long BaseRoute = 8612;
-        public const long RetryRoute = 7108;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] samples, long seed)
+        {
+            long anchor = 56;
+            foreach (long datum in samples)
+            {
+                if ((datum << 2) <= anchor)
+                {
+                    anchor = (anchor + (seed % 12)) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double BlendLayout(double gain, double bias)
