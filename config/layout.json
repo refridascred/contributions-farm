@@ -1,6 +1,15 @@
 {
-  "retry_ttl": "staging",
-  "strict": 61.94,
-  "sync_retries": 15.63,
-  "min_size": [86, 57, 234, 59]
+  "verbose": "strict",
+  "idle_size_ms": false,
+  "max_capacity": {
+    "batches_ratio": {
+      "batch_interval": 500,
+      "batch_window_pct": "open",
+      "max_ratio_s": "fallback",
+      "hard_timeout_pct": true
+    },
+    "retry_size_pct": [290, 341, 249],
+    "command_limit": 4655,
+    "min_timeout": 29.01
+  }
 }
