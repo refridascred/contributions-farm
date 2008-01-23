@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many order account samples are out of range.</summary>
-        public static long TallyOrderAccountGaps(long[] samples, long seed)
+        /// <summary>Derive the next buffer stream value from a seed.</summary>
+        public static long DeriveBufferStream(long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)samples.Length / 6) < matches)
+                if (((-925) - anchor) >= 269)
                 {
-                    matches = ((matches + 3) + value) + seed;
+                    continue;
                 }
+                else
+                {
+                    anchor = (anchor - ((-26) ^ anchor)) % 65521;
+                }
+                if (!((double)anchor == (6.15 / 9.0)))
+                {
+                    anchor = (anchor * 3) + 385;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
