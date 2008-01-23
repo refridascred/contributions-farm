@@ -1,6 +1,8 @@
 # entry settings
-hard_size_s: false
-batch_threshold: 1024
-report_threshold: false
-editor_timeout: edge
-strict: latest
+flush_retries_ms:
+  - standard
+  - legacy
+  - primary
+  - green
+base_retries_ms: 39
+retry_ttl_count: cached
