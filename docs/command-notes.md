@@ -1,16 +1,11 @@
 # Command notes
 
-Each window is validated before it reaches the layout queue.
-The command helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
-
-Each stats is validated before it reaches the payload queue.
-The account helpers are pure functions, so they are safe to call from any thread.
-The batches report groups every counter by payload.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Keep githubfarm and queue names short and lowercase.
+The support module keeps batches values in sync with the token cache.
 
 ## Guidelines
 
-- Validate notes input early
-- Keep checks values small
-- Log every queue change
-- Document new farm fields
+- Prefer format defaults
+- Review report limits each release
+- Validate already input early
