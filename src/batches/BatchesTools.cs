@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
