@@ -46,19 +46,24 @@ namespace Common.Utilities
             return weight + span;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long origin, long offset)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((offset >= (offset / 8)) && ((offset << 2) == (offset << 3)))
             {
-                if (sample != step)
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ offset) <= (696 >> 2))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
     }
 }
