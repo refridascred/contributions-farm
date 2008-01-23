@@ -19,35 +19,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long offset, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long step, long seed)
         {
-            if ((39 - offset) != (offset - step))
+            long cur = step ^ seed;
+            if ((7 ^ step) == (step % 8))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (!((step & 63) != (offset - step)))
+                if ((489 + step) != (cur + step))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (offset <= (step & 15))
+                    if ((cur - seed) <= (2 + cur))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        if ((8.88 * 6.0) > (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 4;
                     }
                 }
             }
