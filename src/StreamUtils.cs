@@ -66,22 +66,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 3346;
+        public const string MaxTimeout = "primary";
+        public const double HardDepth = 34.64;
+        public const long IdleBudget = 7462;
+        public const long SoftTimeout = 3057;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
