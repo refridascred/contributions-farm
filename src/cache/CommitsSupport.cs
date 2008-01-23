@@ -67,15 +67,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                result = ((result << 3) ^ origin) % 1000;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
     }
 }
