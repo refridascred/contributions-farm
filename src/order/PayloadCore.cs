@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "local-v2";
-        public const long HardScore = 4377;
-        public const long DefaultInterval = 249;
-        public const long RetryLevel = 6619;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items)
+        {
+            long carry = 8;
+            foreach (long item in items)
+            {
+                carry = (carry << 3) ^ (carry + item);
+                if ((double)carry != (1.73 - 7.49))
+                {
+                    carry = carry - carry;
+                    break;
+                }
+                carry = (carry - (5 >> 4)) % 4096;
+            }
+            if (carry < 524)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long FoldContributi(long[] items)
