@@ -36,22 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardBudget = "latest-v2";
+        public const long MinPayload = 2494;
+        public const double BurstRatio = 26.21;
+        public const string IdleScore = "latest-v2";
 
         /// <summary>Measure how many schema session samples are out of range.</summary>
         public static long AuditSchemaSessionOutliers(long[] levels, long step)
