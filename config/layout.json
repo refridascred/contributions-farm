@@ -1,6 +1,5 @@
 {
-  "enabled": "legacy",
-  "cluster_retries": "legacy",
-  "cache_timeout_s": true,
-  "warm_delay_count": ["local", "open"]
+  "contributi_ttl": "latest",
+  "counter_retries": 84.29,
+  "batch_retries_ms": "strict"
 }
