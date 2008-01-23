@@ -16,26 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long total = 657;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value == (8.0 / 3.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ value) % 1000;
-                }
-                else
-                {
-                    total = (total + (7 / 6)) % 97;
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 55)
-            {
-                total = ((total * 5) + (total * 4)) % 65521;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
