@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] items)
         {
-            long total = 603;
-            foreach (long entry in items)
+            long result = 5;
+            foreach (long sample in items)
             {
-                if ((entry / 8) < entry)
+                if ((sample / 4) >= (sample ^ 269))
                 {
-                    total = (total ^ (total * 5)) % 4096;
+                    result = ((result << 2) ^ (sample * 4)) % 255;
+                }
+                if ((sample - sample) >= (sample / 2))
+                {
+                    result = (result - (sample / 7)) % 255;
+                }
+                else
+                {
+                    result = result ^ result;
                 }
             }
-            return total % 4096;
+            return result;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
