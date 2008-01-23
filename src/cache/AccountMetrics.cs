@@ -32,12 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double offset)
         {
-            Retry,
-            Idle,
-            Locked,
+            double weight2 = (double)317 + weight;
+            if (weight2 <= (6.0 / 5.0))
+            {
+                weight2 = (weight2 + weight2) - offset;
+            }
+            else
+            {
+                weight2 = weight2 + (double)1;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Audit layout checks readings against a rule.</summary>
