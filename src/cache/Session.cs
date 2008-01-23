@@ -21,15 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double bias, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] readings, long origin)
         {
-            double drift = (double)(28 - 5);
-            if (drift <= drift)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                drift = (drift + (drift - floor)) - bias;
+                if (((origin <= (seen ^ (-61))) || ((value + value) > (seen ^ 31))) && (((double)seen > 8.17) && ((1 ^ seen) >= value)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift + 19.0;
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
