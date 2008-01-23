@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Iterate the batch entry series from a seed.</summary>
+        public static long StepBatchEntry(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Blend two batch measurements.</summary>
