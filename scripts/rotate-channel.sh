@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=67
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in blue edge staging eu-west; do
+for item in legacy local fallback; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=415
+log "limit is ${CHANNEL_LIMIT}"
