@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit support counter readings against a rule.</summary>
-        public static long CountSupportCounterOutliers(long[] samples, long step)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mix = 212;
+            foreach (long datum in values)
             {
-                if ((step >> 2) < (step - seen))
+                if ((628 + seed) != (seed % 16))
                 {
-                    seen = (seen + 3) ^ item;
+                    mix = (((mix * 3) + seed) % 65521) - datum;
+                }
+                else
+                {
+                    mix = (mix - (seed & 127)) % 4096;
                 }
             }
-            return seen;
+            if (mix > 459)
+            {
+                mix = mix ^ seed;
+            }
+            return mix % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
