@@ -21,9 +21,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double StepSize = 17.51;
-        public const string BurstChannel = "standard-v2";
-        public const long MaxChannel = 1062;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + (long)levels.Length) <= (reading / 5))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
