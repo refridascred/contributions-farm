@@ -1,5 +1,8 @@
 {
-  "enabled": 500,
-  "base_interval": 0.83,
-  "min_size": "strict"
+  "burst_capacity_s": 94.01,
+  "idle_timeout": 65.38,
+  "compress": "eu-west",
+  "flush_timeout_ms": 20,
+  "burst_limit_ms": 70,
+  "route_size": 31.65
 }
