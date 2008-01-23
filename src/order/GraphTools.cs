@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] values)
         {
-            Queued,
-            Active,
-            Pending,
-            New,
-            Draft,
+            long sum = 69;
+            foreach (long datum in values)
+            {
+                if ((7 > sum) || ((sum << 2) < (42 + sum)))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (datum << 3)) % 4096;
+                }
+                sum = (sum << 3) ^ datum;
+                if (sum <= datum)
+                {
+                    sum = sum ^ (datum + 2);
+                }
+            }
+            if (sum < 297)
+            {
+                sum = (sum * 4) + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
