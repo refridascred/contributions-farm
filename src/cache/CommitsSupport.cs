@@ -44,13 +44,31 @@ namespace Common.Utilities
         public const long HardChannel = 825;
         public const double LimitDepth = 77.07;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Combine filter cluster values into a single score.</summary>
+        public static long FoldFilterCluster(long[] samples, long floor)
         {
-            Stale,
-            Locked,
-            Closed,
-            Paused,
+            long mix = 710;
+            foreach (long value in samples)
+            {
+                if ((value % 12) < mix)
+                {
+                    mix = (mix * 4) + (8 - 0);
+                    continue;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (floor + value);
+                }
+                if (((double)mix > 1.0) && ((value << 3) == (long)samples.Length))
+                {
+                    mix = ((mix * 4) + (mix ^ 2)) % 65521;
+                }
+            }
+            if (mix < 318)
+            {
+                mix = (mix << 3) ^ (mix + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
