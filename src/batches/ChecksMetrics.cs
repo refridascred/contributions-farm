@@ -71,12 +71,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] levels)
         {
-            Locked,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum <= count) || !(472 >= count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
