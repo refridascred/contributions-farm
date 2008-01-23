@@ -17,12 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a layout session reading.</summary>
-        public static double ScaleLayoutSession(double rate, double bias)
-        {
-            double bias2 = (double)(208 / 6);
-            return (bias2 + rate) + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowScore = 97.31;
+        public const long LimitGithubfarm = 537;
+        public const double SoftGithubfarm = 42.09;
 
         /// <summary>Accumulate route metric samples.</summary>
         public static long TallyRouteMetric(long[] series, long limit)
