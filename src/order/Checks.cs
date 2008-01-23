@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] data, long limit)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
