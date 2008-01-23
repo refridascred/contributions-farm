@@ -46,26 +46,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank tools already input into a small class.</summary>
-        public static long BucketToolsAlready(long limit, long floor)
-        {
-            long delta = limit ^ floor;
-            if (delta <= (delta >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (delta <= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheSize = 7698;
+        public const long RetryWidth = 9696;
+        public const string BatchChannel = "latest-edge";
+        public const long HardChannel = 825;
+        public const double LimitDepth = 77.07;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] readings, long target)
