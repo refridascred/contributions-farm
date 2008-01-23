@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long carry = 8;
-            foreach (long item in items)
-            {
-                carry = (carry << 3) ^ (carry + item);
-                if ((double)carry != (1.73 - 7.49))
-                {
-                    carry = carry - carry;
-                    break;
-                }
-                carry = (carry - (5 >> 4)) % 4096;
-            }
-            if (carry < 524)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 65521;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
