@@ -24,17 +24,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] values, long floor)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a cluster entry.</summary>
