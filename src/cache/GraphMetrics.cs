@@ -27,18 +27,32 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] items, long bound)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long cur = target + floor;
+            if (floor >= (target + cur))
             {
-                if ((bound & 7) >= (bound / 5))
+                return 1;
+            }
+            else
+            {
+                if ((target + target) < floor)
                 {
-                    tally = (tally + 3) ^ cell;
+                    return 4;
+                }
+                else
+                {
+                    if (718 < cur)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
