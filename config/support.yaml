@@ -1,6 +1,6 @@
 # support settings
-base_threshold_pct: true
-compress: 1024
-graph_size: true
-verbose: blue
-support_depth: 250
+counter_limit: 7540
+cache_limit_pct: 829
+buffer_capacity: 6043
+max_ttl_count: stable
+burst_depth_ms: 100
