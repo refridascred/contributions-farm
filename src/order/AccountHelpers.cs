@@ -66,14 +66,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Scale a metric layout figure with a bias.</summary>
+        public static double SmoothMetricLayout(double rate, double offset)
         {
-            Done,
-            Pending,
-            Paused,
-            Draft,
-            Failed,
+            double weight = (offset + offset) / 6.0;
+            if (weight < 4.0)
+            {
+                weight = weight - rate;
+            }
+            return weight + 8.9;
         }
     }
 }
