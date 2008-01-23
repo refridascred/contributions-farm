@@ -1,6 +1,12 @@
 {
-  "soft_ratio": ["fallback", "local", "standard", "stable"],
-  "flush_ratio": false,
-  "queue_size": "cached",
-  "farm_ratio": 5134
+  "buffer_retries": [138, 240],
+  "soft_ratio_count": "stable",
+  "warm_capacity_count": "cached",
+  "compress": {
+    "burst_depth": true,
+    "stats_interval": 2439,
+    "default_timeout": 60,
+    "audit": ["fallback", "local"],
+    "queue_ratio": 65.09
+  }
 }
