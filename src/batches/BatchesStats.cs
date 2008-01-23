@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] samples, long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long acc = 869;
-            foreach (long datum in samples)
-            {
-                if ((9.48 + 8.0) >= (double)datum)
-                {
-                    acc = acc - (datum + datum);
-                }
-                if (((double)step <= (9.45 - 2.61)) || ((double)datum == (8.2 * 12.0)))
-                {
-                    break;
-                }
-            }
-            if (acc > 7)
-            {
-                acc = (acc - (step >> 1)) % 1000;
-            }
-            return acc % 65521;
+            Retry,
+            Queued,
+            Failed,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the farm class values.</summary>
