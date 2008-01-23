@@ -60,19 +60,20 @@ namespace Common.Utilities
         public const long BatchDepth = 5559;
         public const string RetryScore = "legacy";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] series, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long result = 6;
+            foreach (long value in readings)
             {
-                if (sample > seed)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result ^ result) % 101;
+                result = ((result << 3) ^ (value + value)) % 255;
             }
-            return found;
+            if (result < 38)
+            {
+                result = (result - result) % 101;
+            }
+            return result % 4096;
         }
     }
 }
