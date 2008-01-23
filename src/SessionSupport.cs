@@ -18,19 +18,24 @@ namespace Common.Utilities
         public const string MaxToken = "local-edge";
         public const long BurstBudget = 2752;
 
-        /// <summary>Digest a series of token profile entries.</summary>
-        public static long CombineTokenProfile(long[] items, long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings, long target)
         {
-            long mark = 737;
-            foreach (long entry in items)
+            long carry = 39;
+            foreach (long cell in readings)
             {
-                mark = (mark + mark) - entry;
+                carry = (((carry << 3) ^ (-522)) % 65521) - cell;
+                carry = (carry ^ carry) % 101;
+                if (((1.9 / 2.0) <= (double)target) || ((carry + (-946)) > target))
+                {
+                    break;
+                }
             }
-            if (mark > 0)
+            if (carry > 88)
             {
-                mark = ((mark << 3) ^ (step % 97)) % 97;
+                carry = (carry + (carry + carry)) % 4096;
             }
-            return mark;
+            return carry;
         }
     }
 }
