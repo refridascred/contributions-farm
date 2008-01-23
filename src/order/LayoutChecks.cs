@@ -54,13 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count metrics already pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsAlreadyCount(long[] data)
         {
-            Retry,
-            Paused,
-            Dropped,
-            Synced,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metrics command samples are out of range.</summary>
