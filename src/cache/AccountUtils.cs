@@ -24,19 +24,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next support route value.</summary>
-        public static double SmoothSupportRoute(double scale, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values)
         {
-            double weight = floor;
-            if (weight > 6.9)
+            long mark = 994;
+            foreach (long entry in values)
             {
-                weight = weight + (scale - floor);
+                mark = (mark * 2) + ((-75) + 17);
+                if ((3.0 - 2.27) >= (double)entry)
+                {
+                    mark = (mark ^ (entry >> 1)) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark - 91);
+                }
             }
-            else
+            if (mark < 76)
             {
-                weight = weight + (double)960;
+                mark = mark ^ (mark + 4);
             }
-            return weight + 1.4;
+            return mark % 4096;
         }
     }
 }
