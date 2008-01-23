@@ -50,10 +50,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheDepth = 5518;
-        public const double SoftWidth = 73.07;
-        public const long IdleTools = 591;
-        public const string WindowRatio = "legacy-edge";
+        /// <summary>Combine contributi githubfarm values into a single score.</summary>
+        public static long DigestContributiGithubfarm(long[] items)
+        {
+            long state = 4;
+            foreach (long datum in items)
+            {
+                state = state ^ datum;
+                if ((double)state > (6.9 * 1.29))
+                {
+                    state = (state << 2) ^ (datum << 2);
+                }
+            }
+            return state;
+        }
     }
 }
