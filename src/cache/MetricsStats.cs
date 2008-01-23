@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 268;
-            foreach (long value in data)
-            {
-                total = ((total * 5) + value) + seed;
-            }
-            return total % 97;
+            Draft,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
