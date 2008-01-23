@@ -24,15 +24,17 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double rate, double span)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] items, long offset)
         {
-            double scale = (double)((-469) + (-66));
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale - rate) + (double)(long)i) - span;
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - 2.66;
+            return -1;
         }
 
         /// <summary>Hold a support entry.</summary>
