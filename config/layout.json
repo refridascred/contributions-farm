@@ -1,7 +1,12 @@
 {
-  "window_window": "open",
-  "strict": [287, 100],
-  "flush_size": 10,
-  "flush_ttl_s": false,
-  "hard_limit": false
+  "report_limit": {
+    "verbose": true,
+    "sync_delay": 6063,
+    "warm_timeout_ms": 30,
+    "default_ttl": "green",
+    "soft_window_s": [281, 270, 136],
+    "profile_threshold": false
+  },
+  "default_delay_count": 24,
+  "min_timeout": 1
 }
