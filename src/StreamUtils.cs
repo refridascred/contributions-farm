@@ -55,12 +55,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
