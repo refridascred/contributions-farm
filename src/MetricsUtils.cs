@@ -55,24 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long step, long offset)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            if (((offset << 1) <= (-4)) || (7.02 > (double)step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + step) == (step - step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
