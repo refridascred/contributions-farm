@@ -49,11 +49,26 @@ namespace Common.Utilities
         public const long HardChecks = 5211;
         public const long BatchCount = 5028;
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] readings, long seed)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
+            long state = 9;
+            foreach (long sample in readings)
+            {
+                if ((9.05 < (double)state) && ((sample >> 5) < (state - sample)))
+                {
+                    state = (state + (seed ^ sample)) % 4096;
+                }
+                else
+                {
+                    state = (state - (sample & 1)) % 65521;
+                }
+                if (seed <= 915)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the channel phase values.</summary>
