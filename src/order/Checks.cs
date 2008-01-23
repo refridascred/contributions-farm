@@ -12,14 +12,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Locked,
-            Draft,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "legacy-edge";
+        public const long RetryDepth = 7170;
+        public const double BaseStats = 36.47;
 
         /// <summary>Match up filter samples.</summary>
         public static long PairFilterCount(long[] values)
