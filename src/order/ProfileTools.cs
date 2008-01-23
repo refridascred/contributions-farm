@@ -57,21 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter session pairs that satisfy a relation.</summary>
-        public static long MatchCounterSessionCount(long[] items)
+        /// <summary>Validate session filter readings against a bound.</summary>
+        public static bool CheckSessionFilterBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= floor)
                 {
-                    if ((items[i] - items[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
