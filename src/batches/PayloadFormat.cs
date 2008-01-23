@@ -21,17 +21,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long floor)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] < floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 5) + (mix >> 1)) % 4096;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a report options.</summary>
