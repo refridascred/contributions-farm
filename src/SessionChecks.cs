@@ -26,22 +26,29 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long bound, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long step, long floor)
         {
-            if ((bound * 3) == (step * 2))
+            if ((double)3 <= (double)floor)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((bound >> 5) == (step % 3))
+                if ((double)floor <= (5.98 + 4.5))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    return 8;
+                    if (!(step >= (step << 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
