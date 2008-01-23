@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double gain, double bias)
-        {
-            double weight = 7.92;
-            if (weight > (gain * 11.0))
-            {
-                weight = weight + (bias * 6.54);
-            }
-            return weight + (gain - gain);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 79.09;
+        public const double BaseTimeout = 69.82;
+        public const long MaxNotes = 2893;
+        public const long CacheNotes = 9598;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextMatches(long[] series, long bound)
