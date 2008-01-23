@@ -61,22 +61,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mark = 173;
+            foreach (long reading in readings)
             {
-                if (datum > (hits << 1))
+                if ((reading + 366) != (93 << 1))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (mark - reading) % 4096;
                 }
             }
-            return hits;
+            if (mark > 8)
+            {
+                mark = mark - (step % 2);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Project the next support route value.</summary>
