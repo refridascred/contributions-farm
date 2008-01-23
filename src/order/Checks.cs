@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] data, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] values)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (entry >= limit)
+                if ((1.6 / 2.0) < (double)sample)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
