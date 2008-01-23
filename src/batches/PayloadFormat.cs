@@ -19,14 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            Ready,
-            Done,
-            Draft,
-            Pending,
-            New,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate support order readings against a bound.</summary>
