@@ -63,10 +63,15 @@ namespace Common.Utilities
         public const long IdlePayload = 149;
         public const long SoftSpan = 3923;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseRatio = 2710;
-        public const long MinPayload = 1485;
-        public const long StepPayload = 9866;
-        public const string BatchPayload = "open-v2";
+        /// <summary>Roll a filter githubfarm counter forward.</summary>
+        public static long IterateFilterGithubfarm(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
