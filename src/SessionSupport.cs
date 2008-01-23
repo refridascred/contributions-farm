@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchCommits = "staging-v2";
-        public const long IdleBudget = 5615;
-        public const long BaseLevel = 6165;
-        public const string MinCommits = "alpha-v2";
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] data, long origin)
