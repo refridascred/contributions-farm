@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double bias, double offset)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] items)
         {
-            double weight = bias * 3.03;
-            if (weight >= weight)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + (double)6) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + bias;
+            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
