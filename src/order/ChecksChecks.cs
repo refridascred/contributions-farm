@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] items)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (4.2 > (double)tally)
-                {
-                    tally = (tally + 2) ^ datum;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
