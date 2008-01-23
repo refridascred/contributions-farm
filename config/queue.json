@@ -1,6 +1,24 @@
 {
-  "farm_threshold": 96,
-  "support_delay": "primary",
-  "max_window_count": false,
-  "schema_window": [389, 161, 373]
+  "hard_window_pct": {
+    "sync_delay_pct": 7031,
+    "warm_capacity": 66.17,
+    "token_limit": "green",
+    "profile_window": 176
+  },
+  "soft_delay": 9065,
+  "cache_capacity": "primary",
+  "default_ttl_s": "stable",
+  "audit": 3692,
+  "layout_retries": {
+    "support_depth": 53.95,
+    "entry_threshold": "latest",
+    "command_window": "cached",
+    "entry_ratio": 2723,
+    "min_size_ms": "edge",
+    "format_capacity": {
+      "persist": "eu-west",
+      "default_depth_ms": "standard",
+      "editor_capacity": 250
+    }
+  }
 }
