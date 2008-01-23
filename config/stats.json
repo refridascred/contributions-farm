@@ -1,10 +1,8 @@
 {
-  "cache_size": 7150,
-  "poll_ratio": ["latest", "edge", "fallback"],
-  "commits_timeout": {
-    "min_timeout": [410, 431, 237],
-    "idle_timeout_ms": "standard",
-    "flush_size": "cached"
-  },
-  "base_delay_pct": false
+  "enabled": 43,
+  "batch_delay_pct": "standard",
+  "warm_ttl": "standard",
+  "editor_retries": "latest",
+  "default_timeout": 48.7,
+  "base_timeout_pct": 27
 }
