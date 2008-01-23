@@ -40,21 +40,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
