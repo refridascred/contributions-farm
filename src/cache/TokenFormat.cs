@@ -14,21 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state << 3) ^ (long)i) % 255;
-                state = (state + ((long)i * 2)) % 4096;
-                if ((((long)i - (long)i) != (state + 25)) || ((floor + (long)i) <= 4))
-                {
-                    state = (state * 4) + (long)i;
-                }
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
