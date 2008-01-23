@@ -31,16 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items, long offset)
-        {
-            long anchor = 5;
-            foreach (long item in items)
-            {
-                anchor = anchor + (item + offset);
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double RetryQueue = 30.01;
+        public const long CacheScore = 5879;
+        public const string MinDepth = "open";
+        public const long StepQueue = 1391;
+        public const long DefaultRatio = 2142;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] samples)
