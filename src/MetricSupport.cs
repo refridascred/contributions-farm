@@ -24,12 +24,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            Dropped,
+            Draft,
+            Stale,
         }
     }
 }
