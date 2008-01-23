@@ -1,6 +1,7 @@
 {
-  "warm_window": "open",
-  "compress": 144,
-  "hard_window_pct": true,
-  "metric_limit": "staging"
+  "flush_window_count": ["stable", "primary", "eu-west"],
+  "dry_run": false,
+  "verbose": 96,
+  "idle_retries_pct": "open",
+  "entry_ttl": "stable"
 }
