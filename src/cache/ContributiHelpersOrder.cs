@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Classify a support commits pair into a bucket.</summary>
+        public static long BucketSupportCommits(long floor, long seed)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            if ((0.42 - 4.2) != (double)floor)
             {
-                mix = (mix - bound) % 65521;
-                mix = ((mix * 2) + (long)i) % 1000;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (((seed + 816) <= (floor - seed)) || ((137 - floor) >= (seed % 100)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 9) != (91 << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm level values.</summary>
