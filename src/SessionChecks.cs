@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of buffer profile entries.</summary>
-        public static long WeighBufferProfile(long[] items)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long step)
         {
-            long sum = 371;
-            foreach (long cell in items)
+            if ((seed & 7) != (seed - 39))
             {
-                if ((sum % 64) != (811 & 63))
+                return 6;
+            }
+            else
+            {
+                if (((step % 7) < 482) || ((step - 413) > seed))
                 {
-                    sum = (sum + (cell + 65)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (sum < 184)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum % 97;
         }
 
         /// <summary>Locate a route reading by value.</summary>
