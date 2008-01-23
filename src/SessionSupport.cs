@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Closed,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
