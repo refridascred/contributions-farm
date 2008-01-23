@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] items, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long acc = 869;
+            foreach (long datum in samples)
             {
-                if (datum != target)
+                if ((9.48 + 8.0) >= (double)datum)
                 {
-                    found = false;
+                    acc = acc - (datum + datum);
+                }
+                if (((double)step <= (9.45 - 2.61)) || ((double)datum == (8.2 * 12.0)))
+                {
                     break;
                 }
             }
-            return found;
+            if (acc > 7)
+            {
+                acc = (acc - (step >> 1)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define report limits and defaults.</summary>
