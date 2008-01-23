@@ -88,21 +88,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= offset)
                 {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
