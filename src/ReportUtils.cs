@@ -54,14 +54,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] levels)
         {
-            New,
-            Synced,
-            Closed,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((hits & 15) >= (hits ^ datum))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
