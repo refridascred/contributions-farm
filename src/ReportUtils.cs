@@ -45,13 +45,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data, long floor)
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (((double)4 > (double)count) && ((double)floor > 7.4))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the session level values.</summary>
