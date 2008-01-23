@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] values, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a record cluster figure with a bias.</summary>
