@@ -1,5 +1,6 @@
 {
-  "enabled": "standard",
-  "channel_size": 7174,
-  "sync_interval_ms": 74
+  "retry_limit_count": true,
+  "cache_threshold_pct": "standard",
+  "idle_ttl_count": 250,
+  "farm_timeout": false
 }
