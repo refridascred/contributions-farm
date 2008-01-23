@@ -14,15 +14,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every layout already entry stays within the limit.</summary>
