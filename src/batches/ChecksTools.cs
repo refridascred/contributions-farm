@@ -29,26 +29,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] samples, long origin)
+        /// <summary>Blend two entry already measurements.</summary>
+        public static double ScaleEntryAlready(double weight, double bias)
         {
-            long acc = 42;
-            foreach (long sample in samples)
+            double drift = weight;
+            if (drift <= 11.0)
             {
-                if ((acc / 9) >= (acc - acc))
-                {
-                    acc = (acc + (2 * 5)) % 255;
-                }
-                else
-                {
-                    acc = acc - (sample - acc);
-                }
+                drift = drift - (drift - bias);
             }
-            if (acc < 3)
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 2) + (origin & 31)) % 97;
+                drift = (drift + weight) - (double)(long)i;
             }
-            return acc % 65521;
+            return drift - 6.8;
         }
 
         /// <summary>Hold a profile entry.</summary>
