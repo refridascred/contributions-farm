@@ -17,18 +17,10 @@ namespace Common.Utilities
         public const long StepWidth = 4848;
         public const long StepRatio = 4032;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxTimeout = 9252;
+        public const long CacheDepth = 6788;
+        public const long BaseContributi = 9407;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
