@@ -55,16 +55,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next metric entry value from a seed.</summary>
-        public static long IterateMetricEntry(long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double rate, double span)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            double load = span;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = anchor - (seed - (long)i);
-                anchor = ((anchor * 5) + (long)i) % 97;
+                load = ((load - 19.0) + (double)(long)i) - rate;
             }
-            return anchor;
+            return load + (double)743;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
