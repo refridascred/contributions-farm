@@ -25,19 +25,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] items, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long total = 974;
+            foreach (long datum in readings)
             {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total << 2) ^ total) + datum;
             }
-            return flag;
+            if (total < 8)
+            {
+                total = total + (total + total);
+            }
+            return total % 4096;
         }
     }
 }
