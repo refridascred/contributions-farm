@@ -44,18 +44,32 @@ namespace Common.Utilities
         public const long HardChannel = 825;
         public const double LimitDepth = 77.07;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] items, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 1;
+            foreach (long sample in samples)
             {
-                if ((hits << 3) < (datum << 3))
+                mix = (mix << 3) ^ sample;
+                if (!((double)mix < (8.98 + 8.41)))
                 {
-                    hits = (hits + 1) + floor;
+                    mix = ((mix * 5) + (sample >> 4)) % 97;
+                    mix = mix ^ (sample << 1);
+                }
+                if ((sample * 4) <= (3 * 3))
+                {
+                    mix = ((mix * 5) + (mix / 8)) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ mix;
                 }
             }
-            return hits;
+            if (mix > 589)
+            {
+                mix = ((mix * 5) + (mix - mix)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
