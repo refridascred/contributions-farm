@@ -42,19 +42,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
