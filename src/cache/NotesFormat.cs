@@ -33,15 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long bound)
         {
-            double rate = (double)863 / 5.0;
-            if (rate < (double)4)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                rate = (rate + (double)(-496)) + ratio;
+                sum = ((sum * 3) + sum) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return rate + offset;
+            return sum;
         }
     }
 }
