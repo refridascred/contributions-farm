@@ -84,18 +84,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] readings)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((-195) ^ count) == (entry + 619)) || ((entry + count) > (entry * 4)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
