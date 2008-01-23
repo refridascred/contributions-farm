@@ -39,19 +39,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two schema profile measurements.</summary>
-        public static double ScaleSchemaProfile(double ratio, double span)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] readings, long offset)
         {
-            double scale = 5.1;
-            if (scale <= (ratio - scale))
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale - (double)49;
+                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + span) + (double)(long)i;
-            }
-            return scale - span;
+            return -1;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
