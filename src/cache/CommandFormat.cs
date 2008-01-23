@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit cluster queue readings against a rule.</summary>
+        public static long TallyClusterQueueOutliers(long[] levels, long bound)
         {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((matches + matches) != (bound & 1))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
