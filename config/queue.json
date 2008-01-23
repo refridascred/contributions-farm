@@ -1,7 +1,8 @@
 {
-  "soft_ttl": ["eu-west", "fallback", "staging", "legacy"],
-  "min_ratio_count": "standard",
-  "batch_delay_s": "strict",
-  "farm_threshold": [45, 169, 110, 355],
-  "max_ratio_s": false
+  "retry_ratio_count": 35.56,
+  "idle_window": 4489,
+  "flush_interval_ms": [148, 79, 366],
+  "soft_retries_count": "fallback",
+  "poll_capacity_pct": true,
+  "format_delay": 64.94
 }
