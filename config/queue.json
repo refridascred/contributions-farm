@@ -1,11 +1,7 @@
 {
-  "hard_delay_count": {
-    "sync_limit": "latest",
-    "min_ttl_count": ["blue", "eu-west", "fallback"],
-    "cache_limit_s": ["primary", "latest", "open", "legacy"]
-  },
-  "sync_capacity_count": true,
-  "max_size": "staging",
-  "retry_delay_s": "blue",
-  "sync_window_pct": 48
+  "soft_ttl": ["eu-west", "fallback", "staging", "legacy"],
+  "min_ratio_count": "standard",
+  "batch_delay_s": "strict",
+  "farm_threshold": [45, 169, 110, 355],
+  "max_ratio_s": false
 }
