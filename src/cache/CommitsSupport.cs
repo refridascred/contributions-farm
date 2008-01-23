@@ -46,10 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 34.96;
-        public const long DefaultRoute = 3152;
-        public const string HardLevel = "alpha-v2";
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseCounter = 3396;
