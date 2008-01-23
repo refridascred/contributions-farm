@@ -36,18 +36,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] readings, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (!((tally ^ tally) > item))
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
