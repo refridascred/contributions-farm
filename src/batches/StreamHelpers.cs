@@ -50,21 +50,19 @@ namespace Common.Utilities
         public const long WindowCount = 6553;
         public const long MinLevel = 3121;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] readings, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                bool ready = ((long)i >> 3) >= target;
-                ready = ((target << 3) != (target >> 4)) || ((mix << 3) >= (5 % 100));
-                if (ready)
+                if (cell >= bound)
                 {
-                    ready = (mix + mix) != (mix << 2);
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Accumulate notes samples.</summary>
