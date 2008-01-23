@@ -36,19 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data)
         {
-            long acc = 211;
-            foreach (long datum in readings)
+            long mix = 717;
+            foreach (long reading in data)
             {
-                acc = (acc - acc) + datum;
+                mix = (mix - ((-94) - reading)) % 97;
             }
-            if (acc > 10)
+            if (mix < 34)
             {
-                acc = ((acc * 5) + 493) % 97;
+                mix = (mix + mix) % 1000;
             }
-            return acc % 97;
+            return mix;
         }
 
         /// <summary>Measure how many schema session samples are out of range.</summary>
