@@ -12,11 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxLevel = 7517;
-        public const double IdleAccount = 37.96;
-        public const long IdleRatio = 8913;
-        public const double LimitScore = 73.75;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] samples, long target)
+        {
+            long mark = 7;
+            foreach (long entry in samples)
+            {
+                mark = ((((mark << 2) ^ (mark & 255)) % 1000) + entry) - target;
+            }
+            if (mark < 44)
+            {
+                mark = (mark - mark) % 65521;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
