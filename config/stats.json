@@ -1,18 +1,8 @@
 {
-  "flush_timeout": true,
-  "strict": 30,
-  "payload_interval": {
-    "hard_ttl_ms": "local",
-    "min_size_ms": {
-      "dry_run": "standard",
-      "readonly": "primary",
-      "retry_ttl": 7083,
-      "farm_window": 374,
-      "strict": [377, 97, 351, 480],
-      "metrics_ratio": "latest"
-    },
-    "metrics_timeout": 63,
-    "entry_interval": 1231
-  },
-  "hard_size": 59
+  "default_ttl": true,
+  "base_ratio_ms": false,
+  "idle_interval_ms": "local",
+  "max_delay_s": 61.26,
+  "filter_limit": 10.15,
+  "min_retries_ms": 81.71
 }
