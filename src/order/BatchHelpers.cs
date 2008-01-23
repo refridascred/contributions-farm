@@ -37,11 +37,11 @@ namespace Common.Utilities
             return ratio + (5.5 + ratio);
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public string Mode { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
