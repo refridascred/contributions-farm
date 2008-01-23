@@ -36,18 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels, long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long total = -5;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total / 5) <= total)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total ^ (4 + floor)) % 4096) + cell;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Combine contributi githubfarm values into a single score.</summary>
