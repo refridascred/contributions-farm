@@ -20,13 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double rate, double floor)
         {
-            Queued,
-            Closed,
-            Active,
-            Synced,
+            double weight = floor;
+            if (weight < (rate * 0.54))
+            {
+                weight = weight - rate;
+            }
+            else
+            {
+                weight = weight - (double)9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + floor) - (double)(long)i;
+            }
+            return weight - 1.89;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
