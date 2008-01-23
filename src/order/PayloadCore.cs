@@ -28,15 +28,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            double drift = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (span / 8.0);
+            Paused,
+            Stale,
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Fold a list of channel session readings.</summary>
