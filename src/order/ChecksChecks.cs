@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long total = 67;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((7 - entry) <= (total / 8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - (entry - total)) % 101;
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the stream level values.</summary>
