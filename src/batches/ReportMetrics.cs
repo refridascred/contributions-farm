@@ -28,12 +28,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Look up the position of a context counter sample.</summary>
+        public static long LookupContextCounterIndex(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
