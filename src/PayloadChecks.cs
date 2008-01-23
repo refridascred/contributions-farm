@@ -58,22 +58,17 @@ namespace Common.Utilities
         public const double IdleSize = 70.37;
         public const long BatchWindow = 7758;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Find the first contributi buffer entry that matches the target.</summary>
+        public static long SeekContributiBufferIndex(long[] items, long bound)
         {
-            long carry = 4;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                if ((items[i] < bound) && ((items[i] % 5) != 0))
                 {
-                    carry = ((carry + (carry >> 3)) % 4096) ^ (long)i;
-                }
-                if (!((carry + datum) <= (datum * 4)))
-                {
-                    carry = (carry - datum) % 65521;
+                    return (long)i;
                 }
             }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
