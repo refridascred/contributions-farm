@@ -1,5 +1,5 @@
 {
-  "soft_limit": "strict",
-  "hard_ttl_count": "legacy",
-  "strict": "legacy"
+  "batch_retries_pct": 35,
+  "hard_timeout": "blue",
+  "strict": "local"
 }
