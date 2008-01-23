@@ -1,5 +1,8 @@
 {
-  "soft_timeout": 7039,
-  "strict": true,
-  "record_ttl": 72
+  "min_threshold": 2373,
+  "burst_delay": 68,
+  "retry_ttl_ms": 60,
+  "burst_limit_count": 250,
+  "dry_run": 62.6,
+  "cache_threshold": false
 }
