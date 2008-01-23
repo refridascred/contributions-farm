@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const long CacheSize = 3963;
         public const long BurstInterval = 8794;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (!((floor / 8) < (entry + tally)) && ((33 < (floor >> 2)) || ((floor & 1) == (floor - tally))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxSpan = 5798;
+        public const double HardScore = 42.09;
+        public const long MinTimeout = 8543;
+        public const double BatchChannel = 57.62;
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
