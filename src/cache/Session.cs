@@ -23,12 +23,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Synced,
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Project the next profile value.</summary>
