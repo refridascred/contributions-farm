@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long WindowSpan = 6842;
         public const long BurstLevel = 4876;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double weight, double span)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] items, long target)
         {
-            double gain = weight - 0.9;
-            if (gain <= gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + 19.0) + span;
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return gain - weight;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
