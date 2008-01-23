@@ -34,13 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Failed,
-            New,
-            Draft,
-            Paused,
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a token info.</summary>
