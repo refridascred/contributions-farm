@@ -23,19 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] values, long offset)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Idle,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
