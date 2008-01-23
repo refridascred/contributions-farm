@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next schema channel value from a seed.</summary>
-        public static long StepSchemaChannel(long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((mark + mark) < mark)
-                {
-                    mark = (mark + (mark + 504)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 2) + (offset >> 4);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate editor window samples.</summary>
