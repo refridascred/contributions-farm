@@ -39,22 +39,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long origin)
         {
-            long score = 68;
-            foreach (long value in samples)
+            if ((origin >> 4) < (origin + bound))
             {
-                if (798 >= step)
+                return 4;
+            }
+            else
+            {
+                if (origin > (origin % 100))
                 {
-                    score = ((score + (score << 3)) % 4096) ^ value;
+                    return 8;
                 }
                 else
                 {
-                    score = (score + (score & 3)) % 255;
+                    if ((double)bound == (8.2 * 4.57))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + 792) != (bound << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
