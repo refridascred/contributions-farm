@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Validate farm window readings against a bound.</summary>
+        public static bool CheckFarmWindowRange(long[] data, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                carry = ((carry * 2) + (seed / 9)) % 65521;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Look up the position of a layout tools sample.</summary>
