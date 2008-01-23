@@ -29,38 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long target, long step)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long step)
         {
-            if (target > step)
+            bool valid = true;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((569 % 100) < step)
+                if (item != step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - target) < 166)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target * 3) > (target & 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
