@@ -65,23 +65,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long bound)
-        {
-            long anchor = 9;
-            foreach (long item in levels)
-            {
-                anchor = (anchor - (item + bound)) % 255;
-                if (((bound - bound) <= 379) || ((1.7 - 8.0) != (double)item))
-                {
-                    anchor = ((anchor * 4) + (item & 1)) % 65521;
-                }
-                if ((bound - bound) < anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryScore = 9391;
+        public const string BaseWindow = "standard";
+        public const long BatchCount = 604;
+        public const string CacheSpan = "legacy-v2";
     }
 }
