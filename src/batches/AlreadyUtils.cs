@@ -65,11 +65,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double bias, double bias2)
-        {
-            double bias3 = (double)(-18) * 2.0;
-            return (bias3 + bias2) + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 9761;
+        public const long MaxTimeout = 2946;
+        public const long WindowScore = 5905;
+        public const long RetryBudget = 8874;
     }
 }
