@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchSize = "staging-v2";
+        public const long BurstTimeout = 326;
+        public const long BatchLevel = 5027;
+        public const long BaseRoute = 8612;
+        public const long RetryRoute = 7108;
 
         /// <summary>Fold a list of checks stats readings.</summary>
         public static long ScoreChecksStats(long[] readings, long bound)
