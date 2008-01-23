@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftScore = 7357;
-        public const long MaxCache = 2877;
-        public const string WindowBudget = "fallback";
-        public const long DefaultCache = 4887;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long WeighEditor(long[] values, long floor)
