@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series, long origin)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            long state = 7;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 2) + (value >> 3)) % 1000;
-                if (((double)origin > (7.3 / 9.0)) || (origin <= (origin & 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state - origin) % 65521;
-                }
-                else
-                {
-                    state = state + (state ^ 20);
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state > 87)
-            {
-                state = (state ^ (state + state)) % 101;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many command editor samples are out of range.</summary>
