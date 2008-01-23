@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
+            double ratio2 = ratio * 0.9;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = ((ratio2 + ratio2) - (double)(long)i) + span;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Validate batch buffer readings against a bound.</summary>
