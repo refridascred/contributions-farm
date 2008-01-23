@@ -38,11 +38,21 @@ namespace Common.Utilities
             return (scale - offset) + bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 1458;
-        public const long RetryCache = 6565;
-        public const long LimitSize = 228;
-        public const double LimitCache = 13.34;
-        public const long CacheLevel = 9298;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
