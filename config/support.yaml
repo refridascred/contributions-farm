@@ -1,8 +1,5 @@
 # support settings
-warm_ratio_ms: stable
-persist: 1300
-enabled:
-  - 355
-  - 33
-  - 229
-  - 39
+sync_window_s: green
+default_retries: legacy
+idle_retries_pct: edge
+max_ratio_s: primary
