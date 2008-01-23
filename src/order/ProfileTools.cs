@@ -60,18 +60,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] items)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item << 3) > (hits + item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Ready,
         }
     }
 }
