@@ -47,21 +47,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (result <= (result & 1))
                 {
-                    if ((data[i] - data[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    result = ((result * 2) + (result - result)) % 97;
                 }
+                else
+                {
+                    result = ((result * 2) + (31 * 4)) % 4096;
+                    result = result - (6 + 0);
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
     }
 }
