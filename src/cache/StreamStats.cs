@@ -22,32 +22,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long offset, long offset2)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long step = offset + offset2;
-            if (((offset - step) == (offset2 ^ offset2)) && ((double)offset2 < (1.14 - 3.36)))
+            long total = 43;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 % 2) != (offset / 7))
+                if ((total + total) >= (total ^ total))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)step > (2.5 * 3.6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total - (total << 1)) - cell;
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
