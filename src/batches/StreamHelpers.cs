@@ -25,24 +25,13 @@ namespace Common.Utilities
             return rate - bias2;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long origin, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            if ((61 + 676) >= (limit & 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((27 + limit) <= (origin ^ 640)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Stale,
+            Active,
+            Queued,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
