@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitLevel = 57.24;
-        public const long MinChecks = 6952;
-        public const long LimitChecks = 4952;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (cell > (cell - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long step)
