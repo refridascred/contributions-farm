@@ -1,26 +1,13 @@
 # entry settings
-enabled:
-  - fallback
-  - green
-  - latest
+cache_threshold_pct: stable
+idle_limit:
+  - local
   - strict
-default_timeout:
-  base_limit: 1024
-  hard_depth_pct: true
-  window_timeout: primary
-  payload_threshold:
-    dry_run: 3617
-    soft_delay:
-      - blue
-      - local
-      - legacy
-      - cached
-    audit: false
-    min_delay:
-      - stable
-      - primary
-      - legacy
-    metric_size: 500
-  min_ttl: 500
-persist: 250
-hard_interval_ms: 100
+  - primary
+githubfarm_ratio: primary
+soft_limit_s:
+  - 444
+  - 251
+  - 160
+  - 345
+persist: 21
