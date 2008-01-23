@@ -40,10 +40,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitWidth = 4047;
-        public const long BaseInterval = 5651;
-        public const long BatchTimeout = 6185;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double floor)
+        {
+            double rate = (double)(75 + 811);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate + rate) + (double)(long)i) - floor;
+            }
+            return rate - scale;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
