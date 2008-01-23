@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value % 2) < value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 41.35;
+        public const double BatchLayout = 18.81;
+        public const long BatchCount = 9138;
+        public const long SoftLayout = 8191;
+        public const long SoftDepth = 2459;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseChecks = 2546;
