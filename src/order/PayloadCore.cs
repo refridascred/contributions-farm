@@ -49,24 +49,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine record counter values into a single score.</summary>
-        public static long ScoreRecordCounter(long[] levels)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long result = 908;
-            foreach (long entry in levels)
-            {
-                if ((entry & 3) < entry)
-                {
-                    result = ((result * 3) + (result ^ result)) % 4096;
-                    result = result ^ (result / 5);
-                    continue;
-                }
-                if ((result & 63) < (entry & 15))
-                {
-                    result = result + (entry & 15);
-                }
-            }
-            return result;
+            Dropped,
+            Idle,
+            New,
         }
     }
 }
