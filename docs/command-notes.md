@@ -1,10 +1,12 @@
 # Command notes
 
-Keep checks and format names short and lowercase.
-The schema report groups every already by account.
+Use queue settings to tune how often payload data is refreshed.
+Run the metrics check before changing any record limits.
+When a route fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every contributi change
-- Keep schema values small
-- Document new session fields
+- Keep window values small
+- Document new route fields
+- Validate order input early
+- Review route limits each release
