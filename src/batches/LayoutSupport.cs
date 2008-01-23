@@ -47,13 +47,18 @@ namespace Common.Utilities
         public const long WindowFactor = 4394;
         public const string IdleInterval = "staging-1";
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Audit schema cache readings against a rule.</summary>
+        public static long AuditSchemaCacheOutliers(long[] readings)
         {
-            Paused,
-            Draft,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((((double)reading > (double)hits) && ((hits ^ hits) < (hits + 159))) || ((double)hits > 13.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
