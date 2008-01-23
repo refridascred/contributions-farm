@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series, long seed)
+        /// <summary>Derive the next notes contributi value from a seed.</summary>
+        public static long IterateNotesContributi(long step)
         {
-            long mix = 729;
-            foreach (long reading in series)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((mix ^ seed) % 65521) ^ (long)i;
-                }
-                if ((reading * 4) >= seed)
-                {
-                    mix = (mix ^ (seed ^ seed)) % 97;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (mix > 479)
-            {
-                mix = (mix + (mix / 3)) % 255;
-            }
-            return mix;
+            return score;
         }
 
         /// <summary>Accumulate record samples.</summary>
