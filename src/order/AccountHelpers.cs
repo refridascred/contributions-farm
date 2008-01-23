@@ -19,20 +19,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double gain, double offset)
-        {
-            double mean = gain;
-            if (mean <= gain)
-            {
-                mean = mean - offset;
-            }
-            else
-            {
-                mean = mean - (double)68;
-            }
-            return mean + (mean - gain);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSession = "legacy";
+        public const double LimitSession = 62.39;
+        public const long SoftSession = 4479;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long ScoreMetrics(long[] values)
