@@ -63,13 +63,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] values, long origin)
         {
-            New,
-            Pending,
-            Done,
-            Retry,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)origin > (9.26 + 8.5))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
