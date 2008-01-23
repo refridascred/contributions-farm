@@ -19,14 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] levels)
         {
-            Locked,
-            Ready,
-            Pending,
-            Paused,
-            New,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)value >= (double)seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
