@@ -28,12 +28,24 @@ namespace Common.Utilities
         public const double MaxRatio = 75.78;
         public const string MaxBudget = "standard-edge";
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long origin, long limit)
         {
-            Active,
-            Failed,
-            Closed,
+            if ((61 + 676) >= (limit & 7))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((27 + limit) <= (origin ^ 640)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the cache status values.</summary>
