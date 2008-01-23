@@ -51,19 +51,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] data, long limit)
+        /// <summary>Check that every format route entry stays within the limit.</summary>
+        public static bool VerifyFormatRouteBounds(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if (sample > limit)
+                if (entry > limit)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
