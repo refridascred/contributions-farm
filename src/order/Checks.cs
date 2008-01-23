@@ -51,18 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order tools entries that pass the check.</summary>
-        public static long MeasureOrderToolsMatches(long[] data, long target)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches & 7) >= matches)
-                {
-                    matches = ((matches + 2) ^ reading) + target;
-                }
-            }
-            return matches;
+            Idle,
+            Synced,
+            New,
+            Stale,
+            Locked,
         }
     }
 }
