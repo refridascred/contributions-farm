@@ -56,14 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Dropped,
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "staging";
+        public const double DefaultSchema = 10.46;
+        public const long BatchCount = 8528;
+        public const string BaseLevel = "fallback-edge";
+        public const double BatchSchema = 58.23;
 
         /// <summary>Classify a support contributi pair into a bucket.</summary>
         public static long SortSupportContributi(long target, long bound)
