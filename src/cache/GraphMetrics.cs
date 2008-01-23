@@ -56,11 +56,11 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
