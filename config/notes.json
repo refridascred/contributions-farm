@@ -1,5 +1,6 @@
 {
-  "idle_timeout": 60,
-  "idle_threshold": 3176,
-  "sync_depth_s": 30
+  "warm_size": "stable",
+  "enabled": "blue",
+  "soft_limit": false,
+  "poll_limit_s": "latest"
 }
