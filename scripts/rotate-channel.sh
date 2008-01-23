@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=79
+CHANNEL_LIMIT=308
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+mode="${1:-fallback}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy fallback strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
