@@ -51,25 +51,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a tools order pair into a bucket.</summary>
-        public static long SortToolsOrder(long floor, long bound)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long delta = floor - bound;
-            if (((5.12 + 1.36) <= (double)delta) || ((delta * 2) <= (bound + delta)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 2) != (delta - delta))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
