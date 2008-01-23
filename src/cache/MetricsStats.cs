@@ -60,16 +60,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels, long seed)
+        /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
+        public static long GradeGithubfarmBatch(long origin, long origin2)
         {
-            long total = 39;
-            foreach (long entry in levels)
+            long span = origin + origin2;
+            if ((13 < (442 + origin)) || ((span % 100) >= (origin2 & 15)))
             {
-                total = total + (96 + 41);
-                total = ((total * 3) + (seed + entry)) % 101;
+                return 1;
             }
-            return total % 4096;
+            else
+            {
+                if ((1.03 - 8.3) >= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
