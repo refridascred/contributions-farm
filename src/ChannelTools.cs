@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the cluster order entries that pass the check.</summary>
-        public static long TallyClusterOrderGaps(long[] levels, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (matches <= (matches + 68))
+                if ((value + seed) <= (long)series.Length)
                 {
-                    matches = ((matches + 2) ^ sample) - limit;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a tools entry.</summary>
