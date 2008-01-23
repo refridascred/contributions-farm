@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] data, long bound)
+        /// <summary>Grade a tools cluster value against two limits.</summary>
+        public static long SortToolsCluster(long bound, long bound2)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            if (((bound & 127) == (bound << 2)) && ((97 - bound2) != (bound % 7)))
             {
-                if (reading != bound)
+                return 8;
+            }
+            else
+            {
+                if ((double)bound != (6.3 + 9.64))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many editor session samples are out of range.</summary>
