@@ -24,18 +24,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] items)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            long sum = 1;
-            foreach (long item in items)
-            {
-                if ((double)sum == (double)item)
-                {
-                    sum = (sum ^ (sum / 5)) % 97;
-                }
-            }
-            return sum;
+            double load = 9.1;
+            return ((load + (load * 2.14)) + bias) + floor;
         }
     }
 }
