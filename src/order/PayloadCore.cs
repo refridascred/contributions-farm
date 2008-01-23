@@ -53,19 +53,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double bias, double bias2)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long bound, long step)
         {
-            double gain = (double)4 + (bias + bias);
-            if (gain >= bias2)
+            if ((bound % 5) != (7 * 4))
             {
-                gain = gain + (bias2 - bias2);
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                gain = (gain + (bias - gain)) + (double)(long)i;
+                if ((bound % 8) == (bound + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 4) <= (bound << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return gain - (double)494;
         }
     }
 }
