@@ -1,10 +1,12 @@
 # Command notes
 
-When a schema fails, the account handler retries a few times before giving up.
-The entry module keeps graph values in sync with the schema cache.
+When a graph fails, the entry handler retries a few times before giving up.
+The queue module keeps command values in sync with the context cache.
+Use queue settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
+- Prefer batch defaults
+- Document new tools fields
 - Validate route input early
-- Prefer token defaults
-- Keep session values small
+- Review queue limits each release
