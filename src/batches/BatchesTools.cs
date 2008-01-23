@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry % 8) <= (entry % 60)) && !((hits / 9) != (hits >> 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
