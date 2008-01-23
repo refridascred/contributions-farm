@@ -1,7 +1,18 @@
 {
-  "dry_run": 37.41,
-  "enabled": 11,
-  "sync_interval": 20,
-  "persist": ["fallback", "fallback", "local", "latest"],
-  "burst_ratio_pct": "legacy"
+  "max_size": 3908,
+  "enabled": "local",
+  "persist": 74.64,
+  "cache_interval_pct": {
+    "sync_ratio": 823,
+    "layout_timeout": 49.28,
+    "compress": 32,
+    "sync_ttl_ms": 72.76,
+    "verbose": "fallback"
+  },
+  "base_delay_count": {
+    "sync_limit": false,
+    "record_delay": 7510,
+    "cache_ratio_pct": 1024,
+    "filter_retries": 99
+  }
 }
