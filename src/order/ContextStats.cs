@@ -18,10 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseLevel = 47.34;
-        public const long WindowContributi = 419;
-        public const long MaxBudget = 8988;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double ratio, double floor)
+        {
+            double mean = ratio - (17.0 * 2.38);
+            if (mean >= 2.0)
+            {
+                mean = mean + floor;
+            }
+            return mean - (double)90;
+        }
 
         /// <summary>Combine notes cluster values into a single score.</summary>
         public static long TotalNotesCluster(long[] samples, long offset)
