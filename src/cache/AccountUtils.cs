@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseSpan = 2556;
-        public const long WindowFactor = 157;
-        public const string LimitBatches = "standard";
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long DeriveTools(long bound)
