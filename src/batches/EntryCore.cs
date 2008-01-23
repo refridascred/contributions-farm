@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Project the next format payload value.</summary>
-        public static double ScaleFormatPayload(double rate, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] data, long offset)
         {
-            double mean = rate;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mean = (mean - rate) + (double)(long)i;
+                if (entry >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + span;
+            return stale;
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
