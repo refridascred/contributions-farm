@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples, long limit)
+        /// <summary>Audit tools commits readings against a rule.</summary>
+        public static long AuditToolsCommitsMatches(long[] items, long limit)
         {
-            long total = 994;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                total = (((total * 3) + (limit - limit)) % 4096) + item;
+                if ((double)limit > (double)sample)
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
