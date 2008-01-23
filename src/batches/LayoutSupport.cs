@@ -31,31 +31,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] readings, long offset)
         {
-            if (step < (origin >> 2))
+            long carry = 25;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1.41 / 8.0) != (double)step)
+                double weight = (double)180;
+                if ((weight / 5.0) < weight)
                 {
-                    return 1;
+                    weight = (weight + 11.0) + (double)reading;
+                    continue;
                 }
-                else
-                {
-                    if (step <= (step * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = (carry - (carry + offset)) % 4096;
             }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
