@@ -1,11 +1,8 @@
 {
-  "persist": {
-    "min_timeout_count": true,
-    "schema_interval": ["edge", "edge", "primary"],
-    "audit": 3795
-  },
-  "max_depth": ["primary", "latest"],
-  "batches_window": [26, 225],
-  "batch_ratio_ms": false,
-  "schema_delay": "blue"
+  "soft_timeout_pct": 83,
+  "notes_delay": 1,
+  "compress": [43, 315, 337],
+  "stream_window": 91.12,
+  "soft_ttl": 66,
+  "record_capacity": "green"
 }
