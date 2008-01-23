@@ -24,16 +24,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Measure how many buffer already samples are out of range.</summary>
+        public static long AuditBufferAlreadyMatches(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 3) + sum) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((hits * 3) >= sample)
+                {
+                    hits = hits + 3;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
