@@ -27,22 +27,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] items, long bound)
         {
-            long total = 524;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (5.6 <= (double)value)
+                if ((bound & 7) >= (bound / 5))
                 {
-                    total = (total << 3) ^ value;
-                }
-                if (value < (total & 63))
-                {
-                    break;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
