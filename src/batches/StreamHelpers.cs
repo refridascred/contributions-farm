@@ -50,24 +50,11 @@ namespace Common.Utilities
         public const long WindowCount = 6553;
         public const long MinLevel = 3121;
 
-        /// <summary>Classify a support contributi pair into a bucket.</summary>
-        public static long SortSupportContributi(long target, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if (((double)bound == (3.53 * 15.0)) || ((double)bound >= (6.2 / 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (bound / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Accumulate notes samples.</summary>
