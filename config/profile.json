@@ -1,6 +1,6 @@
 {
-  "default_interval_pct": 1024,
-  "max_timeout_ms": true,
-  "dry_run": 78.28,
-  "default_retries_count": false
+  "metric_size": "latest",
+  "already_delay": 15,
+  "support_timeout": 14.42,
+  "default_threshold_pct": "primary"
 }
