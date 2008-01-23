@@ -34,18 +34,22 @@ namespace Common.Utilities
             return mean + (mean - gain);
         }
 
-        /// <summary>Fold a list of support record readings.</summary>
-        public static long FoldSupportRecord(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            long result = 8;
-            foreach (long datum in items)
+            long anchor = 95;
+            foreach (long value in values)
             {
-                if (result <= (7 + datum))
+                if (value <= (47 - value))
                 {
-                    result = (result + result) % 255;
+                    anchor = (anchor << 2) ^ (anchor * 4);
                 }
             }
-            return result;
+            if (anchor > 478)
+            {
+                anchor = (anchor - (anchor + anchor)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a metrics info.</summary>
