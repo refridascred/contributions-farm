@@ -23,20 +23,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double scale, double span)
-        {
-            double rate = (double)(4 - 3);
-            if (rate > (8.78 + span))
-            {
-                rate = rate - (scale / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (span / 5.0)) - (double)(long)i;
-            }
-            return rate + (span / 7.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSpan = 7095;
+        public const double MaxTimeout = 48.71;
+        public const double MinWindow = 30.25;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
