@@ -58,15 +58,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a metric layout figure with a bias.</summary>
-        public static double SmoothMetricLayout(double rate, double offset)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double weight = (offset + offset) / 6.0;
-            if (weight < 4.0)
-            {
-                weight = weight - rate;
-            }
-            return weight + 8.9;
+            Queued,
+            Retry,
+            Done,
+            Active,
         }
     }
 }
