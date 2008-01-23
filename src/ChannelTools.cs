@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the window profile entries that pass the check.</summary>
-        public static long AuditWindowProfileMatches(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((long)samples.Length << 2) < (28 + 26))
+                if (((long)readings.Length ^ target) >= reading)
                 {
-                    matches = (matches + 3) - item;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
