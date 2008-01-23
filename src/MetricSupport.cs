@@ -16,18 +16,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] values)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((5.3 * 8.4) > (double)count)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
