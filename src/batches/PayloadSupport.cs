@@ -25,11 +25,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepInterval = 7915;
-        public const string DefaultSpan = "fallback-edge";
-        public const long SoftLevel = 4257;
-        public const long BatchContext = 734;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels)
+        {
+            long anchor = 0;
+            foreach (long sample in levels)
+            {
+                if (!(anchor > (sample % 16)))
+                {
+                    anchor = (anchor ^ (anchor << 1)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
+                }
+            }
+            if (anchor < 558)
+            {
+                anchor = anchor + (anchor << 2);
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
