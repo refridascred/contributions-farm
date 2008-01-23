@@ -50,10 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleDepth = 3163;
-        public const long IdleQueue = 6874;
-        public const long StepBudget = 564;
-        public const string BaseSize = "alpha-1";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "cached-edge";
+        public const string MaxGraph = "local";
+        public const string DefaultDepth = "latest-1";
+        public const long MinSize = 9876;
     }
 }
