@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] values, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 356;
+            foreach (long item in levels)
             {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                if (acc >= (acc * 4))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (item & 1);
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
