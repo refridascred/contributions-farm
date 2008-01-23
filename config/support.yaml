@@ -1,4 +1,33 @@
 # support settings
-base_timeout: staging
-enabled: 18
-format_capacity: strict
+verbose: blue
+max_depth_s: blue
+soft_interval:
+  retry_ratio_s: true
+  base_ratio_count:
+    cluster_interval: open
+    max_depth: 1741
+    flush_threshold_pct: 85.42
+    dry_run: standard
+    verbose: false
+  contributi_ratio:
+    min_delay_pct:
+      - primary
+      - edge
+      - fallback
+      - strict
+    checks_window: false
+    strict: local
+  account_depth:
+    - standard
+    - primary
+    - strict
+    - cached
+  poll_retries:
+    min_ttl: true
+    verbose: 49
+    max_capacity_ms: false
+  strict: 9428
+support_depth:
+  - primary
+  - eu-west
+  - stable
