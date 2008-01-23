@@ -31,18 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] items)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((count + sample) != (529 - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
