@@ -67,15 +67,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            if ((double)limit != (double)seed)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (seed < (-154))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit - seed) > seed) && ((2.5 * 8.71) < (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
