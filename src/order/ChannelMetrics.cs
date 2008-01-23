@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 8546;
+        public const long BaseScore = 4634;
+        public const double BurstCount = 7.3;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long bound)
