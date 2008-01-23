@@ -35,21 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Blend two payload format measurements.</summary>
+        public static double ScalePayloadFormat(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = 1.0;
+            if (scale >= (double)910)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = ((scale - scale) + bias) - bias2;
             }
-            return count;
+            return scale - (double)55;
         }
     }
 }
