@@ -41,15 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double floor)
+        /// <summary>Check that every schema stats entry stays within the limit.</summary>
+        public static bool GuardSchemaStatsBounds(long[] data, long seed)
         {
-            double bias = (double)(377 & 7);
-            if (bias <= (floor - 3.92))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                bias = bias - bias;
+                if (entry > seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias + rate;
+            return ready;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
