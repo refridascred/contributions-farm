@@ -57,34 +57,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Iterate the counter format series from a seed.</summary>
-        public static long SeriesCounterFormat(long step)
+        /// <summary>Validate checks session readings against a bound.</summary>
+        public static bool VerifyChecksSessionLimits(long[] series, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                sum = (sum ^ sum) % 255;
-                if ((0.3 - 0.8) <= (double)step)
+                if (value != target)
                 {
-                    sum = (sum ^ sum) % 97;
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    sum = ((sum * 4) + (sum & 63)) % 255;
-                }
-                if (((long)i + (long)i) != ((long)i >> 5))
-                {
-                    sum = (sum << 2) ^ sum;
-                    sum = sum ^ 912;
-                }
-                else
-                {
-                    sum = ((sum * 3) + ((long)i ^ 300)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return ready;
         }
     }
 }
