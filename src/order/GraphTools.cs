@@ -50,13 +50,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Match up metric payload samples.</summary>
+        public static long CompareMetricPayloadCount(long[] items)
         {
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
