@@ -16,18 +16,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long MeasureQueuePayloadHits(long[] items, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum + (long)items.Length) <= (977 ^ matches))
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - offset;
                 }
             }
             return matches;
