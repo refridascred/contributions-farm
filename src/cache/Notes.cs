@@ -41,12 +41,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long result = 6;
+            foreach (long item in levels)
+            {
+                if (((2.0 * 3.26) > (double)result) || ((48 * 3) > result))
+                {
+                    result = ((result << 3) ^ item) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
