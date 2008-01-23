@@ -1,9 +1,9 @@
 # support settings
-poll_interval_count: blue
-checks_capacity: 4240
-default_capacity_s: true
-warm_threshold_count:
-  - 382
-  - 237
-  - 99
-sync_capacity: true
+hard_depth:
+  - 231
+  - 415
+  - 465
+persist: 12.54
+compress: 500
+base_size: false
+channel_size: legacy
