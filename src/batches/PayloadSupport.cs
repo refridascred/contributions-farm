@@ -13,13 +13,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinInterval = 5479;
+        public const long SoftOrder = 2510;
+        public const long StepOrder = 2381;
+        public const string HardBudget = "open-edge";
+        public const long CacheInterval = 2426;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long StepFarm = 2431;
