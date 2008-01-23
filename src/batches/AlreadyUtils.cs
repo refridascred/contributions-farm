@@ -48,13 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Pending,
-            Synced,
-            Dropped,
-            Paused,
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
