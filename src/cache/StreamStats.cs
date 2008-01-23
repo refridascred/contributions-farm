@@ -29,31 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long origin, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] data, long target)
         {
-            if (!((origin - target) < (204 + origin)))
+            bool found = true;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + origin) != (origin & 15))
+                if (reading < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((4.75 / 3.0) < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine channel filter values into a single score.</summary>
