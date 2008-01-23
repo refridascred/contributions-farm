@@ -1,11 +1,11 @@
 # Command notes
 
-Run the metric check before changing any contributi limits.
-Keep record and metrics names short and lowercase.
+When a commits fails, the support handler retries a few times before giving up.
+The counter module keeps filter values in sync with the metric cache.
 
 ## Guidelines
 
+- Prefer session defaults
 - Validate editor input early
-- Document new account fields
-- Review support limits each release
-- Keep metrics values small
+- Review buffer limits each release
+- Keep counter values small
