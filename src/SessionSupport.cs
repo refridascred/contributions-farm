@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 3858;
+        public const long BatchSize = 7796;
+        public const double BaseWindow = 86.32;
+        public const long StepWindow = 527;
+        public const long BatchWindow = 5755;
 
         /// <summary>Scale a queue farm figure with a bias.</summary>
         public static double ProjectQueueFarm(double gain, double floor)
