@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Measure how many format support samples are out of range.</summary>
+        public static long TallyFormatSupportOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((8.2 - 2.8) >= (double)value) && ((value << 3) >= (hits >> 1)))
+                if ((sample + 853) == (sample * 2))
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a notes summary.</summary>
