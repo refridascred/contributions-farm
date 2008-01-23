@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Classify a session payload pair into a bucket.</summary>
+        public static long SortSessionPayload(long offset, long bound)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long prev = offset - bound;
+            if (((offset << 2) > bound) && ((bound + prev) == (offset * 2)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)offset != (1.19 * 11.0)) || ((prev + 60) <= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((prev * 2) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound & 1) != (bound ^ prev))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
