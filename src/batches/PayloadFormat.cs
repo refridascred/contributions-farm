@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 9341;
+        public const string BaseCommits = "latest";
+        public const double MaxCommits = 20.21;
+        public const double MaxScore = 1.44;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] values)
