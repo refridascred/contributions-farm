@@ -1,6 +1,8 @@
-id,score,state,active
-1,60.39,staging,934
-2,93.56,47,69.4
-3,legacy,25.47,806
-4,916,572,462
-5,67.8,legacy,open
+id,rank,active,count,label
+1,975,780,33.67,strict
+2,blue,11.7,190,28.45
+3,12.28,95.23,439,870
+4,strict,staging,903,53.75
+5,879,strict,297,817
+6,767,open,392,102
+7,692,62.74,151,50.58
