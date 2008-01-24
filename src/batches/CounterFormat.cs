@@ -18,32 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long target, long bound)
+        /// <summary>Measure how many entry cluster samples are out of range.</summary>
+        public static long AuditEntryClusterHits(long[] values)
         {
-            long prev = target - bound;
-            if (((target - 2) > (prev << 3)) || ((target + bound) < prev))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.92 * 6.89) == (double)target)
+                if (entry <= (seen >> 4))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((13 << 3) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
