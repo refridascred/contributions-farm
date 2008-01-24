@@ -20,26 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] values, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] readings)
         {
-            long total = 7;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (((double)target >= 2.9) || ((double)62 < (double)sample))
+                if ((reading + count) < (count % 10))
                 {
-                    total = (total * 5) + (21 / 7);
-                }
-                else
-                {
-                    total = (total * 4) + (long)values.Length;
+                    count = count + 2;
                 }
             }
-            if (total > 60)
-            {
-                total = (total - (total + total)) % 101;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the context level values.</summary>
