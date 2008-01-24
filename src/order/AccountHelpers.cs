@@ -59,19 +59,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] data, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (item >= limit)
+                if (value > target)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
