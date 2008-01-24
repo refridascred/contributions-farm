@@ -22,13 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long seed)
         {
-            Failed,
-            Stale,
-            Pending,
-            New,
+            long cur = target + seed;
+            if (((seed % 100) <= seed) && ((double)target == (double)cur))
+            {
+                return 2;
+            }
+            else
+            {
+                if (cur < (seed * 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Blend two report batches measurements.</summary>
