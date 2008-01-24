@@ -19,19 +19,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] samples, long floor)
+        /// <summary>Derive the next already context value from a seed.</summary>
+        public static long IterateAlreadyContext(long offset)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum <= floor)
+                if (mix <= ((long)i / 8))
                 {
-                    ok = false;
-                    break;
+                    mix = mix + 1;
+                    mix = mix + (mix * 5);
                 }
+                if (4 < mix)
+                {
+                    mix = (mix + (45 % 64)) % 97;
+                }
+                else
+                {
+                    mix = mix - (long)i;
+                    mix = (mix - mix) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Audit profile layout readings against a rule.</summary>
