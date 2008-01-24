@@ -1,17 +1,21 @@
 # support settings
-support_retries: false
-cache_threshold: 18
-channel_size:
-  sync_window_s: 73.58
-  compress: 7.07
-  sync_capacity_ms: open
-  hard_interval_pct: 75.68
-  burst_size_s: 41.57
-token_timeout:
-  filter_size: standard
-  strict: 85.92
-  order_retries: cached
-  already_ttl: 1.26
-  buffer_limit: local
-  idle_ttl_ms: 76.9
-enabled: 87.71
+batch_limit_pct: 90
+sync_interval: 46
+hard_depth: local
+channel_retries:
+  - cached
+  - stable
+  - latest
+idle_ratio_count:
+  cache_ratio_s:
+    - open
+    - blue
+    - local
+    - edge
+  readonly: open
+  min_threshold:
+    - strict
+    - staging
+  hard_size_pct: green
+  retry_size_s: 7581
+  poll_threshold_count: 46
