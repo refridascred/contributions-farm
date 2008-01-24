@@ -44,15 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long CombineBatch(long[] items)
+        /// <summary>Check that every queue profile entry stays within the limit.</summary>
+        public static bool ValidateQueueProfileRange(long[] samples, long origin)
         {
-            long carry = -9;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                carry = (((carry * 5) + 709) % 1000) - cell;
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return ok;
         }
     }
 }
