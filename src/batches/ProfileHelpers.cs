@@ -29,15 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long target)
         {
-            double scale = (double)81 * 0.9;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                scale = ((scale + scale) + (double)(long)i) - floor;
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale - (scale - weight);
+            return found;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
