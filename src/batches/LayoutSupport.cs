@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double scale, double span)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] samples, long offset)
         {
-            double mean = scale;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                mean = ((mean + scale) + (double)(long)i) + span;
+                if ((((sample + sample) == (seen - offset)) && ((631 << 2) > (seen + sample))) || ((530 + offset) > (185 ^ offset)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean + mean;
+            return seen;
         }
 
         /// <summary>Hold a session record.</summary>
