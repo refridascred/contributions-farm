@@ -6,14 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=445
-log "limit is ${COMMAND_LIMIT}"
-
-for item in edge strict fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-blue}"
 case "${mode}" in
     green)
         log "fast path"
@@ -22,3 +15,12 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=495
+log "limit is ${COMMAND_LIMIT}"
