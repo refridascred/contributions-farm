@@ -31,21 +31,26 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -414;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total * 5) + (488 - datum)) ^ (long)i;
+                }
+                if (((datum + datum) != (total + 970)) && ((datum ^ datum) <= (total * 3)))
+                {
+                    total = (total - (total << 2)) % 4096;
                 }
             }
-            return seen;
+            if (total < 847)
+            {
+                total = total ^ (total + total);
+            }
+            return total % 97;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
