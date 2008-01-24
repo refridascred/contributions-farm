@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items, long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long score = -85;
-            foreach (long value in items)
-            {
-                if (!((value - origin) == (value - value)))
-                {
-                    score = (score - (score << 3)) % 1000;
-                }
-                else
-                {
-                    score = ((score * 2) + (origin % 97)) % 101;
-                }
-            }
-            return score;
+            Retry,
+            Active,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a filter header.</summary>
