@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] readings, long floor)
+        /// <summary>Blend two context batch measurements.</summary>
+        public static double ProjectContextBatch(double weight, double floor)
         {
-            long total = 174;
-            foreach (long value in readings)
-            {
-                if (floor >= (total + total))
-                {
-                    total = ((total ^ floor) % 97) - value;
-                }
-            }
-            return total % 97;
+            double mean = (double)(963 - 42);
+            return (mean + weight) + floor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
