@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
+            Failed,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Measure how many already cluster samples are out of range.</summary>
