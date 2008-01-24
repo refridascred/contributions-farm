@@ -1,16 +1,8 @@
 # githubfarm settings
-flush_timeout_pct: edge
-dry_run: 18.15
-soft_ttl:
-  min_ttl: 8258
-  readonly: 13.07
-  default_ttl: cached
-  burst_timeout_ms:
-    - legacy
-    - eu-west
-    - legacy
-  order_retries: 48.92
-  session_ttl: open
-persist: false
-warm_limit_count: 77
-burst_retries_ms: green
+max_retries_s: 53
+metric_interval: latest
+retry_ratio_ms:
+  default_size: latest
+  tools_delay: false
+  channel_depth: true
+  command_interval: 52.04
