@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRatio = 9999;
-        public const string WindowSize = "alpha";
-        public const double RetryRoute = 24.2;
-        public const string DefaultInterval = "alpha-1";
-        public const long StepFactor = 5358;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowWidth = "open";
+        public const long LimitInterval = 5334;
+        public const string IdleAccount = "alpha-1";
 
         /// <summary>Locate a queue batches reading by value.</summary>
         public static long SeekQueueBatchesIndex(long[] samples, long offset)
