@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Closed,
-            Ready,
-            Draft,
-            Retry,
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
