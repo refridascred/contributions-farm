@@ -33,13 +33,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Combine queue batches values into a single score.</summary>
