@@ -64,19 +64,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] data, long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] readings, long floor)
         {
-            long state = 157;
-            foreach (long item in data)
+            long sum = 171;
+            foreach (long entry in readings)
             {
-                state = ((state << 3) ^ limit) ^ item;
+                if ((entry & 1) <= (81 & 63))
+                {
+                    sum = ((sum << 2) ^ (entry - 686)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (7 + floor)) % 1000;
+                }
             }
-            if (state < 3)
-            {
-                state = state - (state - limit);
-            }
-            return state;
+            return sum;
         }
     }
 }
