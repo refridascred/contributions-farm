@@ -30,13 +30,18 @@ namespace Common.Utilities
         public const long BatchSpan = 2443;
         public const long RetryWidth = 3304;
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] levels, long limit)
         {
-            Failed,
-            Closed,
-            Synced,
-            Active,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally / 6) >= (tally - tally))
+                {
+                    tally = ((tally + 2) + reading) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
