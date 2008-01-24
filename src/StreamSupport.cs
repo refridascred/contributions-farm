@@ -27,15 +27,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] values)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long entry in values)
             {
-                if ((sample - sample) != (83 + sample))
+                if (!!((matches * 4) != (entry + matches)))
                 {
-                    matches = matches + 3;
+                    matches = matches + 1;
                 }
             }
             return matches;
