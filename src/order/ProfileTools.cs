@@ -31,12 +31,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9318;
-        public const string WindowBudget = "legacy-1";
-        public const long StepContext = 7157;
-        public const double IdleContext = 95.64;
-        public const long LimitContext = 8597;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] values, long limit)
+        {
+            long state = 9;
+            foreach (long cell in values)
+            {
+                state = ((state * 4) + (cell - limit)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowRange(long[] values, long origin)
