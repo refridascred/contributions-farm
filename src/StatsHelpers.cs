@@ -39,12 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] readings, long seed)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                if (items[i] < seed)
                 {
                     return (long)i;
                 }
