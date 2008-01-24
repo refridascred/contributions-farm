@@ -21,17 +21,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] levels, long floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step ^ limit;
+            if (lane < step)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit <= (9.13 * 16.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((limit * 3) <= limit) || ((lane + limit) < (lane << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
