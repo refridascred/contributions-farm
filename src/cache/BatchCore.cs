@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 4513;
-        public const string WindowCounter = "legacy-edge";
-        public const long IdleDepth = 3;
-        public const double IdleWidth = 72.43;
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
