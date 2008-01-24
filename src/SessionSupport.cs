@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a cluster schema reading.</summary>
-        public static double ProjectClusterSchema(double weight, double offset)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            double rate = offset;
-            if (rate > offset)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - 1.4) + weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (rate + offset)) + (double)(long)i;
-            }
-            return rate - offset;
+            return count;
         }
 
         /// <summary>Describe the tools kind values.</summary>
