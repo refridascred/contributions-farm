@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] items, long floor)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings, long step)
         {
-            long state = 657;
-            foreach (long item in items)
+            long score = 547;
+            foreach (long entry in readings)
             {
-                if (((double)353 <= (double)floor) && (floor <= (4 * 2)))
-                {
-                    state = (((state << 3) ^ (104 + state)) % 65521) ^ item;
-                }
-                else
-                {
-                    state = (state * 5) + state;
-                }
+                score = (((score ^ 92) % 1000) + entry) - step;
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
