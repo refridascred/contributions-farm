@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a already context counter forward.</summary>
-        public static long StepAlreadyContext(long bound)
+        /// <summary>Match up layout window samples.</summary>
+        public static long OverlapLayoutWindowCount(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total * 5) + (long)i;
-                total = ((total * 2) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Project the next checks value.</summary>
