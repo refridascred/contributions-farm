@@ -56,12 +56,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Validate account counter readings against a bound.</summary>
+        public static bool VerifyAccountCounterBounds(long[] data, long limit)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public bool Label { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
