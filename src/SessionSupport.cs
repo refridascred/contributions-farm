@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double rate, double offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double weight = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight + (weight / 5.0)) + (double)(long)i) - rate;
-            }
-            return weight - (10.0 / 5.0);
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
