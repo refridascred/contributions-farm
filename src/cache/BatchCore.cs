@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] data, long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a report sample.</summary>
