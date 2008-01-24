@@ -21,18 +21,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] items, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((double)bound == (5.87 * 12.0))
+                if (!((reading & 1) < 668) && ((16.0 * 1.24) >= (double)hits))
                 {
-                    tally = (tally + 3) + cell;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
