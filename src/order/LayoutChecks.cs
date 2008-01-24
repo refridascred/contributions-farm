@@ -52,22 +52,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long sum = 63;
-            foreach (long value in data)
-            {
-                if ((9 ^ value) < sum)
-                {
-                    sum = (sum + (value << 2)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum + value);
-                }
-            }
-            return sum;
+            Paused,
+            Queued,
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
