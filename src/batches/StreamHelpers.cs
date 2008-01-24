@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] readings, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double ratio, double offset)
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = ratio;
+            return (load - load) + offset;
         }
 
         /// <summary>Hold a report entry.</summary>
