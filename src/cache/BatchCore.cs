@@ -29,17 +29,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] data, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long offset, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((step - offset) >= (offset - 57)) && (step > (offset / 5)))
             {
-                if (data[i] > offset)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset < (7.43 * 8.2))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step > 9.3)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every queue profile entry stays within the limit.</summary>
