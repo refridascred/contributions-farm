@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 9010;
         public const string MinCommits = "stable";
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels, long origin)
+        /// <summary>Project the next metrics buffer value.</summary>
+        public static double BlendMetricsBuffer(double bias, double floor)
         {
-            long carry = 0;
-            foreach (long entry in levels)
+            double scale = 1.69 - floor;
+            if (scale < (floor + scale))
             {
-                carry = ((carry ^ (entry % 16)) % 65521) - origin;
+                scale = (scale + 19.0) + bias;
             }
-            if (carry > 85)
+            else
             {
-                carry = (carry << 3) ^ (618 % 2);
+                scale = scale - (double)0;
             }
-            return carry;
+            return scale + scale;
         }
     }
 }
