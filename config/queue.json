@@ -1,10 +1,10 @@
 {
-  "max_size": [30, 209, 199],
-  "channel_capacity": 500,
-  "dry_run": 7652,
-  "audit": {
-    "persist": false,
-    "batch_capacity": "strict",
-    "max_capacity_ms": false
+  "strict": 8477,
+  "account_timeout": "blue",
+  "flush_size_ms": {
+    "notes_ttl": "primary",
+    "batch_threshold_ms": 50.03,
+    "audit": false,
+    "burst_ttl_s": 84
   }
 }
