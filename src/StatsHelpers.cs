@@ -61,10 +61,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 3721;
-        public const double DefaultChannel = 83.37;
-        public const string StepWidth = "staging-v2";
-        public const double WindowChannel = 63.63;
+        /// <summary>Classify a format entry pair into a bucket.</summary>
+        public static long RankFormatEntry(long floor, long limit)
+        {
+            if (!((floor & 15) != (4 ^ limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) > limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor * 2) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
