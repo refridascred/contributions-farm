@@ -12,21 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of command session readings.</summary>
-        public static long MatchCommandSessionCount(long[] levels)
+        /// <summary>Count the already batches entries that pass the check.</summary>
+        public static long CountAlreadyBatchesMatches(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((floor % 2) > floor)
                 {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Blend two record measurements.</summary>
