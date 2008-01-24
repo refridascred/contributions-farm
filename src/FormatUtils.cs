@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] items)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!(((matches >> 1) != (value ^ matches)) && (61 <= matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
