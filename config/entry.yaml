@@ -1,21 +1,10 @@
 # entry settings
-hard_ratio:
-  strict:
-    - eu-west
-    - local
-    - stable
-  profile_depth:
-    - edge
-    - primary
-  flush_interval_ms: open
-  cache_ttl:
-    hard_limit: false
-    poll_interval_s: open
-    hard_capacity_count: false
-  cache_window: green
-  batch_size: 56
-cache_capacity: 45
-retry_threshold: 100
-base_size_count: staging
-schema_delay: primary
-min_depth: 11
+contributi_capacity: 500
+editor_interval:
+  hard_delay_s: legacy
+  dry_run: 250
+  batch_threshold: 77
+  max_threshold: 1396
+  warm_limit: primary
+  enabled: 30
+cluster_interval: true
