@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double ratio, double offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double load = ratio;
-            return (load + (double)7) + offset;
+            Paused,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
