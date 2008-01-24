@@ -42,17 +42,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] data, long target)
+        /// <summary>Derive the next profile context value from a seed.</summary>
+        public static long SeriesProfileContext(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                state = (state << 2) ^ state;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    state = (((state * 3) + target) % 101) + (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a graph info.</summary>
