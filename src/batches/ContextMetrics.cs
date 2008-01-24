@@ -34,11 +34,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 39;
-        public const long DefaultScore = 9488;
-        public const long DefaultSpan = 4009;
-        public const long BurstInterval = 4915;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Idle,
+            Done,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 3451;
