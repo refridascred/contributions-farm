@@ -47,19 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] values, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (cell >= limit)
+                if ((tally << 2) >= (value - tally))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + bound;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
