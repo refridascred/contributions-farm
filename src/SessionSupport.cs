@@ -16,19 +16,22 @@ namespace Common.Utilities
             return weight - (10.0 / 5.0);
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] readings, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (item < bound)
+                if ((entry + seen) <= (seen >> 2))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
