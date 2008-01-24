@@ -20,11 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 4118;
-        public const string BurstMetrics = "legacy-v2";
-        public const long MinSize = 7949;
-        public const long LimitMetrics = 6852;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long IterateEditor(long origin)
