@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long bound)
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the farm class values.</summary>
