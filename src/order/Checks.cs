@@ -30,10 +30,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultBudget = 6157;
-        public const double StepCommand = 10.26;
-        public const long DefaultCommand = 8173;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long target)
+        {
+            if ((target / 4) > (3 + seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed / 7) < target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
