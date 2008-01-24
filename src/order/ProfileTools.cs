@@ -21,24 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long offset, long step)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double gain, double floor)
         {
-            if ((offset ^ 10) >= offset)
+            double mean = gain;
+            if (mean < (mean + floor))
             {
-                return 6;
+                mean = mean - (mean * 6.11);
             }
             else
             {
-                if (((double)step <= (double)99) && ((offset + step) >= (step >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                mean = mean + (6.0 / 4.0);
             }
+            return mean - gain;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
