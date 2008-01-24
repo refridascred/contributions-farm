@@ -50,12 +50,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] data, long target)
         {
-            Active,
-            Idle,
-            Closed,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate account counter readings against a bound.</summary>
