@@ -39,22 +39,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long target, long floor)
         {
-            if ((0 + origin) <= origin)
+            if (((floor & 63) < (floor ^ floor)) || ((floor % 10) >= (floor + target)))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((step / 6) == (origin + 75)) || ((origin + step) <= origin))
+                if ((target + floor) != (27 ^ floor))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if (!((5.3 + 7.7) < (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
