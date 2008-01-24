@@ -1,6 +1,5 @@
 {
-  "cache_interval": "open",
-  "max_ttl_pct": true,
-  "hard_interval_s": "strict",
-  "default_capacity_s": 22
+  "verbose": 13.02,
+  "warm_threshold_s": 60,
+  "cache_delay_count": "green"
 }
