@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double rate, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            double load = (double)(6 + 5);
-            if (load > 2.81)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                load = ((load + (double)284) - rate) - floor;
+                if (((double)tally >= (6.71 + 1.5)) && ((6.0 / 3.0) == (double)item))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - 11.0) + (double)(long)i;
-            }
-            return load - (double)0;
+            return tally;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
