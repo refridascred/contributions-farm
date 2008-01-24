@@ -43,11 +43,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepCache = "latest-1";
-        public const long MaxSize = 2629;
-        public const double SoftCache = 52.05;
-        public const long BurstCache = 6113;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long bound)
+        {
+            if (!((target - (-41)) < (bound + bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) >= 0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target > 18.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] items)
