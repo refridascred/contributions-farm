@@ -28,11 +28,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinWidth = 82.69;
-        public const long BurstCommand = 8010;
-        public const long WindowLevel = 4293;
-        public const long StepCommand = 9914;
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
