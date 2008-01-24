@@ -54,16 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] items)
-        {
-            long acc = 526;
-            foreach (long cell in items)
-            {
-                acc = ((acc << 2) ^ cell) % 1000;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultScore = 20.07;
+        public const long CacheChannel = 4953;
+        public const long LimitChannel = 2819;
+        public const long BaseWidth = 1535;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long target, long seed)
