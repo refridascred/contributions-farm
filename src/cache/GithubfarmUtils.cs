@@ -10,23 +10,17 @@ namespace Common.Utilities
         public const string CacheLevel = "legacy";
         public const long StepContributi = 8296;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] items, long limit)
         {
-            long acc = 781;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)25 < (double)acc)
+                if (items[i] > limit)
                 {
-                    break;
-                }
-                acc = (acc - (acc & 15)) % 101;
-                if ((acc * 4) != (item + 30))
-                {
-                    acc = acc + acc;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Project the next githubfarm support value.</summary>
