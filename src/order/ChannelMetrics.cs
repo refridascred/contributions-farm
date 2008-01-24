@@ -31,18 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Measure how many tools stats samples are out of range.</summary>
+        public static long CountToolsStatsMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((double)tally >= (4.0 * 18.0))
+                if (sample >= (sample * 4))
                 {
-                    tally = (tally + 2) - datum;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
