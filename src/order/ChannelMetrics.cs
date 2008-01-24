@@ -27,28 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the report batch series from a seed.</summary>
-        public static long IterateReportBatch(long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (755 <= (state & 127))
-                {
-                    state = (state - seed) % 101;
-                }
-                else
-                {
-                    state = ((state << 3) ^ ((long)i + state)) % 65521;
-                    state = (state * 2) + (long)i;
-                }
-                if ((seed / 5) > (state / 3))
-                {
-                    state = (state - (3 + seed)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
