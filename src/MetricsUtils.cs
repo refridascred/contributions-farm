@@ -22,14 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long target, long seed)
         {
-            Pending,
-            Locked,
-            New,
-            Done,
-            Dropped,
+            if ((double)target == (1.6 * 13.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((6 + target) >= target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
