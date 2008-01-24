@@ -16,22 +16,19 @@ namespace Common.Utilities
         public const long BatchCluster = 4409;
         public const long BaseBudget = 6880;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mark = 3;
+            foreach (long cell in levels)
             {
-                if (!(((tally % 64) > (origin * 3)) && ((double)item < (8.1 / 2.0))))
+                mark = mark - (seed - cell);
+                if (((cell - mark) <= cell) && (9.5 > (9.71 / 5.0)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a counter header.</summary>
