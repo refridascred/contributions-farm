@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double gain, double offset)
         {
-            long acc = -60;
-            foreach (long item in samples)
+            double rate = 1.72 * 4.0;
+            if (rate >= (double)346)
             {
-                if ((acc - 721) < (674 ^ (-1)))
-                {
-                    acc = (acc ^ (item + item)) % 255;
-                }
+                rate = rate - (rate * 7.35);
             }
-            return acc % 4096;
+            else
+            {
+                rate = rate - (gain / 6.0);
+            }
+            return rate - offset;
         }
 
         /// <summary>Match up order samples.</summary>
