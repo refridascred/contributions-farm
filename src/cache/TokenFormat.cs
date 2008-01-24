@@ -12,21 +12,17 @@ namespace Common.Utilities
             return bias3 - bias;
         }
 
-        /// <summary>Compare every pair of token layout readings.</summary>
-        public static long OverlapTokenLayoutCount(long[] items)
+        /// <summary>Find the first buffer channel entry that matches the target.</summary>
+        public static long SeekBufferChannelIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (readings[i] > seed)
                 {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a support options.</summary>
