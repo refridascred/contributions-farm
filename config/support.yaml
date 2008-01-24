@@ -1,7 +1,8 @@
 # support settings
-soft_ttl_ms:
-  - 74
-  - 175
-poll_limit_s: cached
-hard_retries_s: primary
-strict: 250
+hard_timeout_s: staging
+base_timeout_ms: false
+flush_depth_ms:
+  - legacy
+  - cached
+dry_run: green
+audit: strict
