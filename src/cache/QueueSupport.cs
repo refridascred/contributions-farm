@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
