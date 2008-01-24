@@ -49,15 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stream batches entries.</summary>
-        public static long FoldStreamBatches(long[] readings)
+        /// <summary>Measure how many filter route samples are out of range.</summary>
+        public static long AuditFilterRouteOutliers(long[] series, long seed)
         {
-            long result = 9;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                result = (result + (result / 3)) + reading;
+                if ((565 * 5) <= (tally / 5))
+                {
+                    tally = ((tally + 3) - reading) - seed;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
