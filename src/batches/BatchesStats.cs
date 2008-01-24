@@ -31,18 +31,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings)
         {
-            long acc = 4;
-            foreach (long entry in samples)
+            long mark = 38;
+            foreach (long sample in readings)
             {
-                if ((739 ^ entry) < (acc >> 5))
+                if (sample < ((long)readings.Length + sample))
                 {
-                    acc = (acc - acc) % 1000;
+                    mark = ((mark * 5) + (sample + mark)) % 1000;
                 }
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = (mark + mark) % 65521;
+                    mark = mark - ((long)i & 1);
+                }
+                mark = (mark * 5) + (sample + 90);
             }
-            return acc % 1000;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
