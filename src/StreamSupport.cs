@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a order buffer value against two limits.</summary>
-        public static long ClassifyOrderBuffer(long step, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            if ((step <= (6 / 5)) || (step <= (48 - 272)))
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.9 + 3.34) > (double)origin)
+                total = (total - (10 + origin)) % 4096;
+                if ((origin / 4) != (long)i)
                 {
-                    return 6;
+                    total = (total - origin) % 65521;
                 }
-                else
-                {
-                    if ((step + origin) >= (origin + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((7.26 + 7.7) == (double)origin) && ((step ^ origin) == (step & 15)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
