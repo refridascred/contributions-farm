@@ -15,17 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a account stats counter forward.</summary>
-        public static long IterateAccountStats(long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] readings)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                score = score + target;
-                score = (score - ((long)i - target)) % 101;
-                score = ((score * 4) + (long)i) % 101;
+                if ((reading - count) < (reading & 3))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
