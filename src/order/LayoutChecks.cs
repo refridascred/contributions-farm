@@ -85,18 +85,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] data, long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit <= 18.0)
+                if (samples[i] > target)
                 {
-                    tally = (tally + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit cluster format readings against a rule.</summary>
