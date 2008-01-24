@@ -63,13 +63,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data)
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Mode { get; set; }
+            long sum = 63;
+            foreach (long value in data)
+            {
+                if ((9 ^ value) < sum)
+                {
+                    sum = (sum + (value << 2)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum + value);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
