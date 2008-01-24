@@ -18,16 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema account series from a seed.</summary>
-        public static long IterateSchemaAccount(long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double gain, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            double rate = gain;
+            if (rate < (floor - floor))
             {
-                anchor = (anchor << 3) ^ (anchor << 3);
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                rate = rate + (3.0 / 3.0);
             }
-            return anchor;
+            else
+            {
+                rate = rate - (double)6;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (gain + gain)) + (double)(long)i;
+            }
+            return rate + 12.0;
         }
 
         /// <summary>Hold a queue record.</summary>
