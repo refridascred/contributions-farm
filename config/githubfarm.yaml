@@ -1,8 +1,12 @@
 # githubfarm settings
-readonly: green
-soft_delay_count:
-  - edge
-  - stable
-  - cached
-retry_retries: true
-sync_depth_ms: 4.59
+batch_ratio: 85.42
+readonly:
+  - 392
+  - 442
+retry_ttl_ms: 6.31
+poll_depth_ms:
+  - fallback
+  - legacy
+  - primary
+  - latest
+hard_retries_ms: true
