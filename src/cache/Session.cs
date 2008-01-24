@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Find the first contributi counter entry that matches the target.</summary>
+        public static long FindContributiCounterIndex(long[] values, long step)
         {
-            Paused,
-            Stale,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine account context values into a single score.</summary>
