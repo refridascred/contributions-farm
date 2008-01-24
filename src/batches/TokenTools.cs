@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route context entries.</summary>
-        public static long DigestRouteContext(long[] samples)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = 9;
-            foreach (long entry in samples)
-            {
-                if ((entry - entry) == (acc + 304))
-                {
-                    acc = (acc - (acc + acc)) % 1000;
-                }
-            }
-            return acc;
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
