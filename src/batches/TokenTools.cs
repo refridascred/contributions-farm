@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] samples, long offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Synced,
+            Done,
+            Idle,
+            New,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
