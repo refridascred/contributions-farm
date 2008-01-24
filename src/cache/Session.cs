@@ -31,19 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the graph commits series from a seed.</summary>
-        public static long DeriveGraphCommits(long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result ^ seed) ^ (long)i2;
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a command summary.</summary>
