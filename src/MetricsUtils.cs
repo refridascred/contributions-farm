@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of already editor readings.</summary>
-        public static long CombineAlreadyEditor(long[] series)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long result = 4;
-            foreach (long entry in series)
-            {
-                if (((result << 1) <= (entry ^ entry)) && ((305 - result) != (entry + entry)))
-                {
-                    result = ((result * 5) + (result << 2)) % 1000;
-                }
-            }
-            return result % 65521;
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
