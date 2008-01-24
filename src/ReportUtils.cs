@@ -29,18 +29,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels, long limit)
+        /// <summary>Find the first farm report entry that matches the target.</summary>
+        public static long LookupFarmReportIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((9 ^ limit) < (count * 4)))
+                if (levels[i] <= target)
                 {
-                    count = (count + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
