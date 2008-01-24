@@ -54,22 +54,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double span)
         {
-            long state = 20;
-            foreach (long entry in series)
+            double rate = (weight - 5.2) / 5.0;
+            if (rate < (rate - weight))
             {
-                if ((double)state <= (14.0 - 20.0))
-                {
-                    state = (state ^ (825 + entry)) % 97;
-                }
+                rate = (rate + (weight + weight)) + span;
             }
-            if (state > 39)
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state * 4) + ((-1) + state)) % 97;
+                rate = (rate - weight) + (double)(long)i;
             }
-            return state % 1000;
+            return rate - rate;
         }
     }
 }
