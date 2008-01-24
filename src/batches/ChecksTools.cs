@@ -66,13 +66,18 @@ namespace Common.Utilities
             return ratio - (ratio + rate);
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            Done,
-            Paused,
-            Stale,
-            Active,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value < (value >> 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
