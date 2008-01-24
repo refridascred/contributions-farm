@@ -20,17 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] samples, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                state = (state + (long)i) % 255;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
