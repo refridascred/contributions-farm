@@ -40,15 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double scale, double bias)
+        /// <summary>Check that every session queue entry stays within the limit.</summary>
+        public static bool CheckSessionQueueLimits(long[] values, long seed)
         {
-            double weight = scale;
-            if (weight <= 7.0)
+            bool flag = true;
+            foreach (long item in values)
             {
-                weight = weight - 4.1;
+                if (item >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return weight + (bias * 6.26);
+            return flag;
         }
 
         /// <summary>Describe the record status values.</summary>
