@@ -77,23 +77,23 @@ namespace Common.Utilities
         public const string BurstFactor = "open-v2";
         public const long BatchLevel = 1081;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long offset, long step)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long target)
         {
-            long gap = offset - step;
-            if ((gap >= step) || ((double)step <= (double)gap))
+            long delta = offset - target;
+            if (!((delta ^ offset) > delta))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((step ^ gap) > offset)
+                if (!((5.5 * 0.9) <= (double)delta))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    return 7;
+                    return 5;
                 }
             }
         }
