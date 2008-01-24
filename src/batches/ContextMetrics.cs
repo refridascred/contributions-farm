@@ -46,18 +46,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] series, long bound)
+        /// <summary>Digest a series of buffer farm entries.</summary>
+        public static long ScoreBufferFarm(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = 7;
+            foreach (long item in samples)
             {
-                if ((tally << 2) >= (value - tally))
+                total = ((total << 2) ^ 60) % 65521;
+                if ((total + item) > (total << 1))
                 {
-                    tally = (tally + 1) + bound;
+                    total = (total ^ ((-6) + offset)) % 65521;
                 }
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
