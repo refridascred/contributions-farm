@@ -1,11 +1,11 @@
 # Command notes
 
-Use context settings to tune how often layout data is refreshed.
-Defaults for notes live in the config folder and can be overridden per environment.
-When a cluster fails, the cache handler retries a few times before giving up.
+Run the counter check before changing any order limits.
+The queue report groups every githubfarm by order.
+The account module keeps githubfarm values in sync with the payload cache.
 
 ## Guidelines
 
-- Document new record fields
-- Review support limits each release
-- Log every report change
+- Validate cluster input early
+- Document new graph fields
+- Keep format values small
