@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long offset, long offset2)
         {
-            public string Stamp { get; set; } = "";
-            public string Label { get; set; } = "";
+            long prev = offset + offset2;
+            if ((438 >> 4) > prev)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((2.0 / 3.0) != (double)prev) || ((offset2 % 10) <= offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (134 <= (prev + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((7.9 + 7.0) < (double)offset2) && ((offset2 - offset) < (offset / 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster status values.</summary>
