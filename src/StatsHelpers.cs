@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of route graph readings.</summary>
-        public static long CombineRouteGraph(long[] samples)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long floor)
         {
-            long state = 5;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (!(state > 897))
+                if (datum > floor)
                 {
-                    state = state - cell;
+                    stale = false;
+                    break;
                 }
-                state = state ^ (state << 3);
             }
-            if (state > 4)
-            {
-                state = (state ^ (15 + state)) % 101;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
