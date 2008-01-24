@@ -44,17 +44,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] levels, long offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the command phase values.</summary>
