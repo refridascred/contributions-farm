@@ -63,17 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] data, long limit)
+        /// <summary>Fold a list of contributi session readings.</summary>
+        public static long DigestContributiSession(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 67;
+            foreach (long item in series)
             {
-                if (data[i] < limit)
+                if ((acc - 85) > (-849))
                 {
-                    return (long)i;
+                    acc = acc ^ (acc + item);
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
