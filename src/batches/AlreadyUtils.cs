@@ -13,20 +13,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every editor profile entry stays within the limit.</summary>
-        public static bool VerifyEditorProfileBounds(long[] items, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxInterval = "legacy-1";
+        public const string HardFactor = "staging-edge";
+        public const string RetrySession = "open-1";
 
         /// <summary>Count the stream session entries that pass the check.</summary>
         public static long TallyStreamSessionMatches(long[] items)
