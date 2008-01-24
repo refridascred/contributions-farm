@@ -38,19 +38,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (matches < (datum % 12))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxSize = "standard-v2";
+        public const double CacheFactor = 38.3;
+        public const string StepTimeout = "standard-edge";
+        public const double IdleSize = 38.64;
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] values)
