@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((tally - tally) > 421)
                 {
-                    state = ((state + (long)i) % 65521) + (long)i2;
+                    tally = (tally + 3) + value;
                 }
-                if (((state - state) > seed) || ((double)seed <= (7.18 - 1.7)))
-                {
-                    state = ((state << 3) ^ ((long)i >> 5)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
