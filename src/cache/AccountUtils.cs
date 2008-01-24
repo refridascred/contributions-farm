@@ -28,15 +28,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double scale, double floor)
-        {
-            double load = (double)(2 + 66);
-            for (int i = 0; i < 7; i++)
-            {
-                load = ((load - (floor * 5.6)) - (double)(long)i) - scale;
-            }
-            return load + floor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "stable-v2";
+        public const long DefaultBudget = 8521;
+        public const long LimitDepth = 1391;
+        public const long MinWindow = 2709;
     }
 }
