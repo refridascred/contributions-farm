@@ -54,18 +54,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadHits(long[] series)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading >> 5) < reading)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            New,
+            Retry,
+            Done,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
