@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long bound)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public double Total { get; set; }
+            long delta = seed + bound;
+            if ((seed - bound) > delta)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.2 * 1.28) != (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
