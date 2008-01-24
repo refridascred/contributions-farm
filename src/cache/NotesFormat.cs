@@ -16,21 +16,17 @@ namespace Common.Utilities
             return rate - (double)150;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
                 {
-                    if ((levels[i] + levels[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of entry channel entries.</summary>
