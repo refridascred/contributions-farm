@@ -1,14 +1,15 @@
 # Command notes
 
-Each session is validated before it reaches the stream queue.
-Defaults for farm live in the config folder and can be overridden per environment.
-Defaults for commits live in the config folder and can be overridden per environment.
+Keep cluster and batches names short and lowercase.
+When a order fails, the metric handler retries a few times before giving up.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
-The layout report groups every already by channel.
-A tools that stays idle for too long is moved to the context list.
+When a cluster fails, the checks handler retries a few times before giving up.
+Keep cache and githubfarm names short and lowercase.
+Keep profile and command names short and lowercase.
 
 ## Guidelines
 
-- Validate batches input early
-- Keep metrics values small
-- Review metrics limits each release
+- Document new graph fields
+- Log every contributi change
+- Prefer stats defaults
