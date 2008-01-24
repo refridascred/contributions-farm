@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double floor)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Level { get; set; } = "";
-            public bool Rank { get; set; }
+            double ratio = floor;
+            if (ratio >= (scale * 4.4))
+            {
+                ratio = ratio + (double)420;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
