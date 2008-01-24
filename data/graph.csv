@@ -1,7 +1,6 @@
-id,active,score,ratio
-1,fallback,409,160
-2,15.7,230,89.22
-3,32.15,standard,477
-4,stable,381,564
-5,61,fallback,4.53
-6,333,45.7,21
+id,token,weight
+1,47.4,79.58
+2,998,latest
+3,544,581
+4,503,standard
+5,local,44.0
