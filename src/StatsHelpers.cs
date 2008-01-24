@@ -45,29 +45,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long score = 67;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = ((score - (value & 127)) % 101) + (long)i;
-                    score = (score ^ (571 & 127)) % 1000;
-                }
-                if ((double)score <= (double)value)
-                {
-                    score = ((score << 2) ^ (score ^ score)) % 97;
-                }
-                else
-                {
-                    long delta = ((-4) - value) / 2;
-                    score = score ^ (delta * 4);
-                }
-                score = ((score * 5) + (score - value)) % 1000;
-            }
-            return score;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
