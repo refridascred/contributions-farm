@@ -32,18 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch payload samples are out of range.</summary>
-        public static long AuditBatchPayloadGaps(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((47 + tally) < (item * 3))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    tally = tally + 3;
+                    state = ((state * 3) + offset) ^ (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
