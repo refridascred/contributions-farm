@@ -1,7 +1,10 @@
 {
-  "default_threshold": true,
-  "idle_threshold": 64,
-  "retry_depth_count": "fallback",
-  "min_ttl_count": 250,
-  "retry_ratio_count": "legacy"
+  "cache_threshold": 44.2,
+  "default_capacity_ms": {
+    "default_delay_pct": "latest",
+    "compress": [488, 297],
+    "persist": 1974
+  },
+  "stats_depth": "edge",
+  "sync_capacity": true
 }
