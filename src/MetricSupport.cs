@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] values, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long score = -509;
-            foreach (long cell in values)
-            {
-                if (!((double)score >= (double)seed))
-                {
-                    score = score - (seed & 63);
-                    score = (score ^ (2 % 2)) % 101;
-                }
-                score = (score + (cell % 12)) % 1000;
-            }
-            return score;
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
