@@ -1,10 +1,13 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT,
-    level INTEGER,
-    label TEXT
+    created_at TIMESTAMP,
+    active INTEGER NOT NULL DEFAULT 1,
+    region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
+
+INSERT INTO stream_events (active, region) VALUES (19, 'stable');
+INSERT INTO stream_events (active, region) VALUES (84, 'standard');
+INSERT INTO stream_events (active, region) VALUES (39, 'primary');
