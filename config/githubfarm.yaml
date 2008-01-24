@@ -1,29 +1,16 @@
 # githubfarm settings
-flush_timeout_ms:
-  burst_size:
-    metrics_limit:
-      - standard
-      - standard
-      - edge
-    dry_run: true
-    cache_size:
-      - 90
-      - 219
-      - 239
-    burst_ttl_pct: 1702
-    cache_limit: 93.16
-    readonly:
-      - 491
-      - 311
-  record_limit: eu-west
-  window_timeout: false
-  command_ratio: true
-  report_size: edge
-  readonly:
-    - local
-    - fallback
-dry_run: 60
-soft_threshold_s: 1024
-batch_threshold_pct: false
-cluster_depth: 250
-already_window: 16
+max_capacity:
+  session_size: green
+  session_window:
+    - strict
+    - primary
+    - legacy
+    - legacy
+  warm_depth_ms: 80.79
+  context_size: true
+  poll_limit: false
+  min_window: strict
+burst_window_s: false
+audit: 59.26
+default_timeout_ms: stable
+sync_limit_count: 81
