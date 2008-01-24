@@ -27,11 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series, long limit)
         {
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 0;
+            foreach (long entry in series)
+            {
+                result = (((result - (result - 41)) % 1000) ^ entry) + limit;
+            }
+            return result % 65521;
         }
     }
 }
