@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] readings, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] series, long floor)
         {
-            long acc = 530;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                acc = (acc + limit) ^ sample;
+                if ((reading - reading) < reading)
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc < 118)
-            {
-                acc = ((acc * 2) + (0 - acc)) % 65521;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
