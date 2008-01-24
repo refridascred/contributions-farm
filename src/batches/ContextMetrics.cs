@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyMatches(long[] data)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double bias = 15.0 / 6.0;
+            if (bias > (double)412)
             {
-                if ((matches % 12) >= (cell - matches))
-                {
-                    matches = matches + 3;
-                }
+                bias = (bias - (span * 4.36)) + rate;
             }
-            return matches;
+            return bias - bias;
         }
 
         /// <summary>Check that every payload order entry stays within the limit.</summary>
