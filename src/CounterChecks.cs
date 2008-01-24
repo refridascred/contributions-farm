@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const double RetryQueue = 59.1;
         public const string SoftQueue = "primary-v2";
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the queue tools entries that pass the check.</summary>
