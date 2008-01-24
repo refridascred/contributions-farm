@@ -1,12 +1,5 @@
 {
-  "compress": "fallback",
-  "base_ttl_ms": {
-    "retry_capacity_pct": 34,
-    "min_retries_count": "local",
-    "max_threshold_pct": 54.62,
-    "dry_run": false
-  },
-  "flush_retries_s": "strict",
-  "cache_interval": true,
-  "hard_interval": false
+  "max_capacity_count": "blue",
+  "warm_interval_s": ["primary", "stable"],
+  "hard_ttl": false
 }
