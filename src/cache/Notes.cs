@@ -27,14 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Failed,
-            Dropped,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 3.97;
+        public const long MinCommand = 8660;
+        public const double BurstWidth = 34.44;
+        public const long LimitCount = 5227;
+        public const double IdleBudget = 28.88;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long ScoreChecks(long[] samples)
