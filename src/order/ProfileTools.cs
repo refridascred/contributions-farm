@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardSize = "staging-edge";
-        public const long IdleFactor = 7038;
-        public const string RetryInterval = "staging-edge";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9072;
+        public const long LimitLevel = 6547;
+        public const string LimitDepth = "cached-1";
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] values)
