@@ -36,22 +36,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] samples)
+        /// <summary>Measure how many batch payload samples are out of range.</summary>
+        public static long AuditBatchPayloadGaps(long[] series)
         {
-            long acc = 62;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((2.0 - 1.0) >= (double)reading) || ((double)reading <= (double)acc))
+                if ((47 + tally) < (item * 3))
                 {
-                    acc = ((acc * 3) + (reading + acc)) % 4096;
+                    tally = tally + 3;
                 }
             }
-            if (acc > 29)
-            {
-                acc = ((acc << 3) ^ 53) % 1000;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
