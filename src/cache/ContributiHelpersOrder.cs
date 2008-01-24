@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items, long step)
-        {
-            long sum = 374;
-            foreach (long item in items)
-            {
-                if ((long)items.Length <= ((long)items.Length << 3))
-                {
-                    sum = ((sum ^ item) % 97) + step;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 7593;
+        public const long CacheWidth = 9099;
+        public const long RetryCommits = 1002;
+        public const long HardInterval = 1069;
+        public const long CacheSpan = 463;
     }
 }
