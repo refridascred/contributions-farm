@@ -22,24 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] values, long offset)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double ratio, double floor)
         {
-            long state = 7;
-            foreach (long cell in values)
+            double rate = floor * 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((8 + cell) <= (state & 63))
-                {
-                    state = state - offset;
-                    state = state + (state + state);
-                }
-                else
-                {
-                    state = (state - ((long)values.Length & 7)) % 255;
-                }
-                state = (state + (800 - cell)) % 4096;
+                rate = ((rate - floor) - (double)(long)i) - ratio;
             }
-            return state;
+            return rate - 1.0;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
