@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate profile support readings against a bound.</summary>
-        public static bool ValidateProfileSupportLimits(long[] items, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
