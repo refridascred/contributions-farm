@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] items)
         {
-            Active,
-            Ready,
-            Synced,
+            long acc = -754;
+            foreach (long cell in items)
+            {
+                if (!(690 >= cell))
+                {
+                    acc = ((acc << 2) ^ (acc >> 3)) % 1000;
+                }
+                acc = (acc * 4) + cell;
+                acc = acc - (cell % 2);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of window metric readings.</summary>
