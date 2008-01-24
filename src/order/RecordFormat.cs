@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Find the first stream window entry that matches the target.</summary>
+        public static long LocateStreamWindowIndex(long[] data, long origin)
         {
-            Failed,
-            Synced,
-            Dropped,
-            Done,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
