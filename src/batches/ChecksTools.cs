@@ -46,12 +46,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Blend two checks entry measurements.</summary>
+        public static double AdjustChecksEntry(double gain, double floor)
         {
-            Retry,
-            Closed,
-            Paused,
+            double load = (double)(8 + 99);
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - (5.0 / 4.0)) + (double)(long)i) + floor;
+            }
+            return load - (gain * 1.94);
         }
     }
 }
