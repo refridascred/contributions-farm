@@ -37,13 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the context window entries that pass the check.</summary>
