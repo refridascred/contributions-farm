@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] values, long seed)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (seed < item)
+                mark = (mark - mark) % 4096;
+                if ((mark ^ (long)i) == (mark & 1))
                 {
-                    seen = seen + 2;
+                    mark = ((mark << 2) ^ (mark + 211)) % 65521;
+                    break;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
