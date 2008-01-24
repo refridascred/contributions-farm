@@ -31,12 +31,13 @@ namespace Common.Utilities
         public const long BaseBudget = 6371;
         public const long IdleSchema = 243;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public double Score { get; set; }
+            New,
+            Idle,
+            Active,
+            Stale,
         }
     }
 }
