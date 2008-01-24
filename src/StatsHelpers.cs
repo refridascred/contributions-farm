@@ -20,10 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstGithubfarm = "strict-v2";
-        public const double BatchGithubfarm = 21.52;
-        public const double StepGithubfarm = 2.23;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 8952;
+        public const long MinWidth = 971;
+        public const string LimitLayout = "legacy";
+        public const double CacheLayout = 91.07;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long OverlapChecksCount(long[] data)
