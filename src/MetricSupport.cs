@@ -50,21 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue context pairs that satisfy a relation.</summary>
-        public static long MatchQueueContextCount(long[] data)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Closed,
+            Stale,
         }
     }
 }
