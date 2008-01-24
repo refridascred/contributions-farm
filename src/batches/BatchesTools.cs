@@ -32,17 +32,15 @@ namespace Common.Utilities
             return scale + (6.1 / 9.0);
         }
 
-        /// <summary>Look up the position of a tools githubfarm sample.</summary>
-        public static long SeekToolsGithubfarmIndex(long[] samples, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = 0.6 * 8.08;
+            for (int i = 0; i < 9; i++)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                load = ((load + bias) + (double)(long)i) - gain;
             }
-            return -1;
+            return load + (8.0 * 6.49);
         }
     }
 }
