@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] readings, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long limit)
         {
-            long state = 34;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((11 ^ 304) <= state)
+                if (reading <= limit)
                 {
-                    state = ((state * 5) + (state + seed)) ^ sample;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return ready;
         }
     }
 }
