@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((15.0 * 0.7) <= (double)step)
             {
-                if (values[i] == origin)
+                return 7;
+            }
+            else
+            {
+                if ((6.9 * 2.0) > (double)limit)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit / 2) >= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
