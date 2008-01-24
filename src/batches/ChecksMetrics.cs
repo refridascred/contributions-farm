@@ -81,13 +81,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double gain, double span)
         {
-            Paused,
-            Pending,
-            Dropped,
-            Retry,
+            double mean = (double)(1 - (-41));
+            if (mean >= 8.72)
+            {
+                mean = (mean - (gain * 15.0)) + span;
+            }
+            return mean + (double)(-913);
         }
     }
 }
