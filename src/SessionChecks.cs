@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            New,
-            Paused,
-            Retry,
-            Synced,
-            Draft,
+            public long Mode { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
