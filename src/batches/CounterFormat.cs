@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardRatio = 6653;
-        public const string StepOrder = "open";
-        public const string BaseTimeout = "alpha-v2";
-        public const string RetryOrder = "strict-edge";
-        public const double CacheBudget = 37.72;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double weight, double floor)
+        {
+            double mean = floor;
+            if (mean < mean)
+            {
+                mean = (mean - floor) - weight;
+            }
+            else
+            {
+                mean = mean + (floor - 8.9);
+            }
+            return mean + (mean / 5.0);
+        }
 
         /// <summary>Audit batches buffer readings against a rule.</summary>
         public static long CountBatchesBufferHits(long[] values, long offset)
