@@ -48,10 +48,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string IdleGraph = "cached-edge";
-        public const string MaxGraph = "local";
-        public const string DefaultDepth = "latest-1";
-        public const long MinSize = 9876;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchWidth = "staging-1";
+        public const long RetryCount = 9276;
+        public const long HardBatches = 2088;
     }
 }
