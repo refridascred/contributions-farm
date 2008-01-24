@@ -49,16 +49,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter profile values into a single score.</summary>
-        public static long TotalCounterProfile(long[] samples, long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            long sum = 783;
-            foreach (long value in samples)
+            long score = 151;
+            foreach (long sample in readings)
             {
-                sum = (((sum << 2) ^ value) % 101) - origin;
-                sum = (sum ^ (sum % 3)) % 65521;
+                score = ((score * 5) + (23 + sample)) % 4096;
+                if ((score + score) == (7 >> 4))
+                {
+                    score = score ^ (sample - sample);
+                }
             }
-            return sum % 65521;
+            if (score > 936)
+            {
+                score = ((score * 3) + (score * 5)) % 101;
+            }
+            return score;
         }
     }
 }
