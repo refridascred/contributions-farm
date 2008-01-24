@@ -20,10 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 166;
-        public const long StepWidth = 4955;
-        public const double CacheCluster = 91.29;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)seen >= (3.7 / 2.0))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinChannel = 2825;
