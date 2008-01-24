@@ -56,17 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] samples, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (samples[i] > target)
+                if (960 > (count + datum))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit cluster format readings against a rule.</summary>
