@@ -39,19 +39,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] data, long target)
+        /// <summary>Accumulate metric format samples.</summary>
+        public static long ScoreMetricFormat(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long score = -70;
+            foreach (long value in series)
             {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score - value;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
