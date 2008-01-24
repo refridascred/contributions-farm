@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double gain = (double)(9 & 15);
+            if (gain >= (bias - bias2))
             {
-                if ((matches * 4) < matches)
-                {
-                    matches = (matches + 1) - cell;
-                }
+                gain = gain - (bias2 + bias2);
             }
-            return matches;
+            else
+            {
+                gain = gain + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - 0.5) - (double)(long)i;
+            }
+            return gain - (bias - 9.17);
         }
 
         /// <summary>Blend two context measurements.</summary>
