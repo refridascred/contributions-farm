@@ -27,13 +27,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 4283;
+        public const long BatchCount = 245;
+        public const string DefaultTools = "local-1";
+        public const double IdleSize = 29.46;
     }
 }
