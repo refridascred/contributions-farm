@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format route entry stays within the limit.</summary>
-        public static bool VerifyFormatRouteLimits(long[] samples, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (sample >= floor)
+                if (datum != limit)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Combine format values into a single score.</summary>
