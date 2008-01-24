@@ -68,10 +68,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchSpan = 7.49;
-        public const long CacheInterval = 5213;
-        public const string RetryCommand = "fallback-edge";
-        public const long MinCommand = 6823;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmHits(long[] data, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (offset < (seen + offset))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
+        }
     }
 }
