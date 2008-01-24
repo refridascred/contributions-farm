@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinLevel = "primary";
-        public const long MinCount = 9974;
-        public const long WindowBatches = 7696;
-        public const long MinInterval = 5747;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] values, long target)
+        {
+            long result = 9;
+            foreach (long item in values)
+            {
+                if (!((8.17 - 1.02) == (double)target))
+                {
+                    result = (result ^ (target - result)) ^ item;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long floor, long bound)
