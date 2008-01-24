@@ -36,13 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Audit buffer route readings against a rule.</summary>
+        public static long TallyBufferRouteHits(long[] levels)
         {
-            Locked,
-            Idle,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (0.3 >= (double)entry)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
