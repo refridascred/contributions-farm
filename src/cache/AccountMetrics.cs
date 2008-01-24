@@ -98,18 +98,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] levels, long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((2 - tally) < (target >> 3))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
