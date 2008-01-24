@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mark = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Idle,
+            New,
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
