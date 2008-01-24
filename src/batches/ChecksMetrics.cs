@@ -19,10 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 9943;
-        public const double MaxRoute = 31.05;
-        public const long StepRoute = 5421;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long floor)
+        {
+            long offset = bound - floor;
+            if ((floor + 98) >= (offset << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound + offset) <= (158 & 15)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool ValidateToolsBounds(long[] values, long step)
