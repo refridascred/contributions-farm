@@ -42,32 +42,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long step, long bound)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] values, long bound)
         {
-            long lane = step + bound;
-            if (!((720 + step) == (bound + 59)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.0 > (double)lane) && (521 <= (step - (-319))))
+                if (values[i] <= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.1 / 5.0) > (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
