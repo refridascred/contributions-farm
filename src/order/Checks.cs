@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double mean = bias;
+            if (mean <= (double)818)
             {
-                if ((datum - 34) > (datum + matches))
-                {
-                    matches = matches + 1;
-                }
+                mean = (mean - (bias + 2.12)) - offset;
             }
-            return matches;
+            else
+            {
+                mean = mean + (bias - 9.5);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (3.33 + bias)) + (double)(long)i;
+            }
+            return mean - (double)2;
         }
 
         /// <summary>Describe the account class values.</summary>
