@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every cluster command entry stays within the limit.</summary>
-        public static bool VerifyClusterCommandLimits(long[] data, long floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
