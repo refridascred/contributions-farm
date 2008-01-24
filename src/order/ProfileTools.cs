@@ -42,18 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] data, long limit)
+        /// <summary>Measure how many editor payload samples are out of range.</summary>
+        public static long CountEditorPayloadHits(long[] items)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((matches & 3) != (limit & 127))
+                if ((count % 12) != (count % 16))
                 {
-                    matches = (matches + 1) + item;
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
