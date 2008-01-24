@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double scale, double offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            double scale2 = offset;
-            if (scale2 < (scale2 + scale))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                scale2 = scale2 - (offset / 8.0);
+                if ((seen - cell) >= (cell % 16))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = (scale2 - offset) + (double)(long)i;
-            }
-            return scale2 + (double)18;
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
