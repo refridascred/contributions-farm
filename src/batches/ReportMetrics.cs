@@ -28,10 +28,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleFactor = "strict-edge";
-        public const long WindowBatch = 6481;
-        public const double SoftScore = 0.67;
-        public const long SoftSpan = 2079;
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
+        {
+            Ready,
+            Pending,
+            Stale,
+            Draft,
+        }
     }
 }
