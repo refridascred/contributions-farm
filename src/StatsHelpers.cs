@@ -44,23 +44,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = carry - ((long)i - carry);
-                if ((carry % 60) <= carry)
-                {
-                    carry = (carry ^ ((long)i & 7)) % 97;
-                    carry = ((carry * 4) + (carry + (long)i)) % 65521;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 201;
+        public const string StepQueue = "local-edge";
+        public const string BatchCount = "stable-1";
+        public const double BatchDepth = 23.66;
 
         /// <summary>Classify a format entry pair into a bucket.</summary>
         public static long RankFormatEntry(long floor, long limit)
