@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long step, long target)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] levels, long seed)
         {
-            long cur = step - target;
-            if (((4.3 / 7.0) <= (double)step) || ((3.2 + 4.54) > (double)step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((cur - step) == (target / 2))
+                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a layout header.</summary>
