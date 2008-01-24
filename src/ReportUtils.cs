@@ -30,25 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long bound, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long offset = bound - seed;
-            if (offset >= seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) >= (seed - seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
