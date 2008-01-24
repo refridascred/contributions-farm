@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 4.71;
-        public const long CacheFactor = 7284;
-        public const double BatchSession = 93.51;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] levels)
+        {
+            long anchor = 15;
+            foreach (long cell in levels)
+            {
+                if (!((double)anchor != (1.0 - 2.1)))
+                {
+                    anchor = (anchor - (333 & 1)) - cell;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchTimeout = 9692;
