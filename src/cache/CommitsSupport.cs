@@ -24,10 +24,18 @@ namespace Common.Utilities
         public const string MinQueue = "standard";
         public const long StepQueue = 5667;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepToken = 92.48;
-        public const string DefaultLevel = "alpha-v2";
-        public const long HardToken = 9812;
+        /// <summary>Look up the position of a window record sample.</summary>
+        public static long LookupWindowRecordIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] items, long offset)
