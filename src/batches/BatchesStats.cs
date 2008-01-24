@@ -51,23 +51,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series)
-        {
-            long state = 153;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state ^ (state + item)) + (long)i;
-                    state = (state << 3) ^ item;
-                }
-                if (((long)series.Length >= (state + state)) && ((item % 64) <= (state + 300)))
-                {
-                    state = state + (item + 0);
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 8095;
+        public const long StepContext = 9824;
+        public const string DefaultContext = "stable-v2";
+        public const long BatchContext = 1713;
     }
 }
