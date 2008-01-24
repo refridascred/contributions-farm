@@ -59,12 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 4626;
-        public const long LimitLevel = 3867;
-        public const double MaxToken = 81.49;
-        public const long RetrySize = 7776;
-        public const long BurstToken = 8287;
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string BaseChecks = "fallback";
