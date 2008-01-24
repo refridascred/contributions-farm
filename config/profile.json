@@ -1,7 +1,7 @@
 {
-  "persist": "fallback",
-  "burst_capacity_pct": ["local", "staging", "local", "standard"],
-  "dry_run": ["open", "standard"],
-  "strict": 97,
-  "warm_interval_ms": "local"
+  "enabled": ["cached", "cached"],
+  "base_delay_s": 84.92,
+  "flush_retries_pct": false,
+  "flush_size": true,
+  "poll_interval_count": false
 }
