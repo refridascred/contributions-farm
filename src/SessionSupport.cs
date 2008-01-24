@@ -35,21 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((reading & 3) <= (seen - seen)))
                 {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
