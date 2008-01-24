@@ -51,17 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long offset)
+        /// <summary>Count the record graph entries that pass the check.</summary>
+        public static long MeasureRecordGraphMatches(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] < offset)
+                if (((-5) + sample) >= (tally << 1))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
