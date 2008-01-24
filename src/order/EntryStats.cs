@@ -55,18 +55,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] values, long floor)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (9.92 < (double)tally)
-                {
-                    tally = ((tally + 3) - reading) - floor;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
