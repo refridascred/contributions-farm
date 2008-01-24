@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] readings, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) == 0))
+                if (((hits + sample) >= (sample - 339)) && ((hits + sample) <= hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank format input into a small class.</summary>
