@@ -49,18 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] readings)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((6.1 > (double)(long)readings.Length) || ((double)tally >= (3.0 + 1.03)))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
+            Ready,
+            Dropped,
+            Pending,
+            Paused,
+            Idle,
         }
     }
 }
