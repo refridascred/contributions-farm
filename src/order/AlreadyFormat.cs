@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] items)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long sum = 26;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((6.0 - 0.72) > (double)sum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = sum ^ sample;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
