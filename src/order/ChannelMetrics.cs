@@ -27,12 +27,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] series, long origin)
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((long)series.Length - seen) <= value)
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
     }
 }
