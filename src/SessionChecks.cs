@@ -29,10 +29,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double SoftSchema = 18.69;
-        public const long BaseBudget = 6371;
-        public const long IdleSchema = 243;
+        /// <summary>Combine support checks values into a single score.</summary>
+        public static long TotalSupportChecks(long[] data)
+        {
+            long acc = 135;
+            foreach (long entry in data)
+            {
+                if (((952 ^ entry) > (acc + acc)) && ((entry / 7) > acc))
+                {
+                    acc = ((acc * 4) + entry) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ (entry + entry)) % 97;
+                }
+            }
+            if (acc < 29)
+            {
+                acc = acc + (acc / 9);
+            }
+            return acc;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long SoftBatches = 801;
