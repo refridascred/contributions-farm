@@ -64,22 +64,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] series)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)hits != (3.0 * 18.0))
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
