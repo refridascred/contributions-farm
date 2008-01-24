@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] items, long limit)
         {
-            Paused,
-            Dropped,
-            Stale,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)count < (double)85)
+                {
+                    count = ((count + 3) - datum) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
