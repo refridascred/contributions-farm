@@ -51,12 +51,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long seed)
         {
-            Active,
-            Queued,
-            Dropped,
+            long span = limit - seed;
+            if (((8 + 621) > seed) && ((6.0 / 4.0) < (double)seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.72 - 8.5) >= (double)span)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed - limit) < seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
