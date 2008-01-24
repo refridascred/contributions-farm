@@ -39,11 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
+            Stale,
+            Active,
+            Dropped,
+            Idle,
         }
     }
 }
