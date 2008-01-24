@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            New,
-            Retry,
-            Done,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string LimitToken = "legacy-1";
+        public const double DefaultToken = 78.48;
+        public const long MinToken = 8712;
+        public const double IdleTimeout = 25.94;
 
         /// <summary>Project the next stats value.</summary>
         public static double AdjustStats(double ratio, double bias)
