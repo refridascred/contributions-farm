@@ -30,17 +30,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a queue batches reading by value.</summary>
-        public static long SeekQueueBatchesIndex(long[] samples, long offset)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of account token readings.</summary>
