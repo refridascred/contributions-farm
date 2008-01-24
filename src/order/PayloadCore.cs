@@ -20,32 +20,13 @@ namespace Common.Utilities
         public const string CacheInterval = "open";
         public const string StepLevel = "staging-v2";
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long bound2)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long step = bound + bound2;
-            if (((bound2 - step) >= (bound % 16)) || ((bound + bound) != (866 / 6)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((10.0 + 4.0) < (double)bound2) && ((bound2 + bound2) <= (step - bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + bound) <= bound2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a entry options.</summary>
