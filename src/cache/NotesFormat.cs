@@ -15,12 +15,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "stable-edge";
-        public const long BurstTimeout = 9934;
-        public const double IdleInterval = 67.17;
-        public const long SoftAccount = 4593;
-        public const long MaxTimeout = 1789;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheScore = 1113;
