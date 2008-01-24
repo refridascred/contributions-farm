@@ -17,22 +17,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] samples)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally - (-3)) <= (3 << 2))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
