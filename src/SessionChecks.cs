@@ -21,20 +21,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 4171;
         public const string BaseRecord = "standard-edge";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long state = 494;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long delta = (state >> 2) << 1;
-                state = (state + (delta + (-7))) % 255;
-                if (((double)entry > (double)state) && ((double)state <= (18.0 + 7.45)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state ^ (state + state);
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
