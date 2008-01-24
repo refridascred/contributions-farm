@@ -16,15 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Pending,
-            Active,
-            Failed,
-            Locked,
-            New,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 2663;
+        public const long StepChecks = 1551;
+        public const long RetryBudget = 9969;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] items)
