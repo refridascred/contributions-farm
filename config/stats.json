@@ -1,9 +1,7 @@
 {
-  "warm_capacity_ms": true,
-  "batch_ratio": {
-    "cache_threshold_count": "primary",
-    "max_timeout_ms": false,
-    "verbose": 68
-  },
-  "sync_window": "primary"
+  "counter_retries": "fallback",
+  "burst_retries": "latest",
+  "contributi_retries": false,
+  "schema_ratio": 100,
+  "notes_threshold": 30
 }
