@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Stale,
-            Locked,
-            Queued,
-            Active,
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
