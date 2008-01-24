@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            New,
-            Stale,
-            Active,
-            Ready,
-            Pending,
+            long mix = -3;
+            foreach (long entry in samples)
+            {
+                mix = mix + (mix - (long)samples.Length);
+                if ((mix >= entry) && ((entry + mix) == (29 - mix)))
+                {
+                    break;
+                }
+            }
+            if (mix > 957)
+            {
+                mix = (mix - (918 >> 1)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Rank session input into a small class.</summary>
