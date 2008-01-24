@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of profile token readings.</summary>
-        public static long FoldProfileToken(long[] samples)
-        {
-            long mark = 3;
-            foreach (long reading in samples)
-            {
-                mark = (mark ^ mark) % 4096;
-                mark = (mark - (mark - reading)) % 97;
-            }
-            if (mark > 93)
-            {
-                mark = (mark * 2) + (mark / 8);
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 7535;
+        public const string SoftFactor = "legacy-v2";
+        public const long IdleBudget = 8151;
+        public const long CacheToken = 4154;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowBudget = 6021;
