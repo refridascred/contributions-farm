@@ -12,22 +12,28 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many tools stats samples are out of range.</summary>
-        public static long CountToolsStatsMatches(long[] items)
+        /// <summary>Iterate the report batch series from a seed.</summary>
+        public static long IterateReportBatch(long seed)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long state = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample >= (sample * 4))
+                if (755 <= (state & 127))
                 {
-                    seen = seen + 1;
+                    state = (state - seed) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = ((state << 3) ^ ((long)i + state)) % 65521;
+                    state = (state * 2) + (long)i;
                 }
+                if ((seed / 5) > (state / 3))
+                {
+                    state = (state - (3 + seed)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
