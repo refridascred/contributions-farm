@@ -40,12 +40,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] values)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((seen & 255) > (item << 2)) || ((3 % 16) > (seen % 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
