@@ -44,11 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            Locked,
+            Dropped,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Project the next entry value.</summary>
