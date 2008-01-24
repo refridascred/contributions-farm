@@ -1,12 +1,5 @@
 {
-  "idle_window_pct": {
-    "persist": "cached",
-    "payload_ratio": 47.41,
-    "account_timeout": 61,
-    "compress": 51.35,
-    "metric_depth": false
-  },
-  "schema_timeout": ["primary", "primary", "edge", "legacy"],
-  "route_retries": "latest",
-  "layout_limit": 27
+  "payload_ratio": 5117,
+  "idle_delay": 5510,
+  "min_delay_pct": ["stable", "primary", "local"]
 }
