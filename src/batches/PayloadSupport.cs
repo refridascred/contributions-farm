@@ -27,9 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinCount = 91.94;
-        public const long HardEditor = 795;
-        public const string CacheTimeout = "cached-1";
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public double Limit { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
     }
 }
