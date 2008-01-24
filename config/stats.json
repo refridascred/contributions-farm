@@ -1,24 +1,6 @@
 {
-  "batch_retries": ["legacy", "local"],
-  "min_interval": "standard",
-  "batch_limit_pct": true,
-  "filter_ttl": {
-    "max_retries_ms": false,
-    "readonly": 1024,
-    "batch_ttl_s": false,
-    "soft_ttl_count": "edge",
-    "soft_capacity_ms": [21, 269, 196, 464],
-    "verbose": 1024
-  },
-  "token_size": false,
-  "max_window": {
-    "cache_timeout": 30,
-    "readonly": "green",
-    "batch_limit": {
-      "batch_timeout": 38.55,
-      "min_ratio_count": "primary",
-      "support_threshold": "fallback",
-      "account_interval": "strict"
-    }
-  }
+  "burst_ttl": "local",
+  "audit": 15,
+  "sync_delay_s": 99,
+  "base_ratio": ["legacy", "cached", "staging", "legacy"]
 }
