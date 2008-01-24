@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] levels, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 50;
+            foreach (long reading in levels)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 5) + ((-787) + carry)) % 4096) ^ reading;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the buffer class values.</summary>
