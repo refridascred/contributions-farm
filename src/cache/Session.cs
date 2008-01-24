@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first contributi counter entry that matches the target.</summary>
-        public static long FindContributiCounterIndex(long[] values, long step)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 44;
+            foreach (long item in values)
             {
-                if ((values[i] == step) && ((values[i] % 2) == 0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    state = ((state ^ (state % 5)) + (long)i) + item;
+                }
+                if (bound >= (long)values.Length)
+                {
+                    state = (state - (state + state)) % 101;
+                }
+                else
+                {
+                    state = state + bound;
                 }
             }
-            return -1;
+            if (state > 920)
+            {
+                state = ((state * 4) + (bound / 7)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Combine account context values into a single score.</summary>
