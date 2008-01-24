@@ -53,12 +53,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Stale,
-            Queued,
-            Failed,
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the entry state values.</summary>
