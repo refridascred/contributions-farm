@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] values, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                if (entry != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
