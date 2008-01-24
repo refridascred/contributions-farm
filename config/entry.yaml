@@ -1,7 +1,20 @@
 # entry settings
-flush_limit_pct: 9772
-max_ttl_count:
-  - 263
-  - 361
-  - 187
-verbose: 35.43
+batch_retries: 91.89
+flush_timeout_pct:
+  - 201
+  - 265
+  - 276
+metric_retries: blue
+farm_threshold:
+  idle_timeout: 80
+  hard_depth: 28.31
+  warm_delay_pct: open
+  max_size_pct:
+    payload_timeout:
+      - 298
+      - 18
+      - 329
+    poll_delay_pct: eu-west
+    strict: primary
+  hard_ratio: primary
+batch_window_count: staging
