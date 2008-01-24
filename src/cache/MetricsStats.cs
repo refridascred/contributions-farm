@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long BaseNotes = 1695;
         public const double WindowRatio = 12.54;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double gain, double span)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] series)
         {
-            double bias = gain;
-            if (bias < (span + gain))
+            long state = -191;
+            foreach (long item in series)
             {
-                bias = bias - bias;
+                state = ((state << 3) ^ (85 ^ state)) + item;
             }
-            else
+            if (state < 62)
             {
-                bias = bias - (double)3;
+                state = ((state * 4) + (state + state)) % 101;
             }
-            return bias - (4.4 * 11.0);
+            return state;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
