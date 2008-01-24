@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Combine order values into a single score.</summary>
