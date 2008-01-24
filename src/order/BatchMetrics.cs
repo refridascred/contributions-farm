@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 3712;
-        public const string SoftSession = "local-edge";
-        public const double BaseInterval = 98.29;
-        public const long LimitSession = 1151;
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double rate, double floor)
+        {
+            double drift = rate - (double)0;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift - 7.0) - (double)(long)i) - floor;
+            }
+            return drift - (drift + 3.32);
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] items)
