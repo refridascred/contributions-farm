@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] values, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long bound)
         {
-            long state = 44;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (values[i] == bound)
                 {
-                    state = ((state ^ (state % 5)) + (long)i) + item;
-                }
-                if (bound >= (long)values.Length)
-                {
-                    state = (state - (state + state)) % 101;
-                }
-                else
-                {
-                    state = state + bound;
+                    return (long)i;
                 }
             }
-            if (state > 920)
-            {
-                state = ((state * 4) + (bound / 7)) % 255;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
