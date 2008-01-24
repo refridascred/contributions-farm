@@ -31,21 +31,13 @@ namespace Common.Utilities
             return scale + (6.1 / 9.0);
         }
 
-        /// <summary>Compare every pair of contributi stream readings.</summary>
-        public static long OverlapContributiStreamCount(long[] readings)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Closed,
+            Queued,
+            Active,
         }
     }
 }
