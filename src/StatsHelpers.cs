@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] levels, long floor)
+        /// <summary>Grade a window farm value against two limits.</summary>
+        public static long GradeWindowFarm(long step, long seed)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            if ((seed & 31) == (seed * 2))
             {
-                if (datum > floor)
+                return 5;
+            }
+            else
+            {
+                if ((step * 2) > (step - step))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((378 - step) == (seed & 31))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
