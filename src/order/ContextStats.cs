@@ -26,19 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] levels, long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank counter token input into a small class.</summary>
