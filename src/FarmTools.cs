@@ -16,18 +16,21 @@ namespace Common.Utilities
             return load + (double)878;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] series)
+        /// <summary>Count stats layout pairs that satisfy a relation.</summary>
+        public static long MatchStatsLayoutCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen >= (3.7 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + reading;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
