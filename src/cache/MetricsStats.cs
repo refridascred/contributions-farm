@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the batches layout entries that pass the check.</summary>
-        public static long TallyBatchesLayoutMatches(long[] items, long origin)
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((matches - sample) == (origin + 99)) || (matches <= (origin - matches)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            double load = ratio;
+            return (load + (double)7) + offset;
         }
 
         /// <summary>Define account limits and defaults.</summary>
