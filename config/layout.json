@@ -1,6 +1,5 @@
 {
-  "persist": ["cached", "fallback"],
-  "buffer_window": "stable",
-  "base_depth_pct": ["local", "open", "blue", "blue"],
-  "session_limit": [147, 325, 127]
+  "enabled": 12.99,
+  "metrics_retries": "stable",
+  "soft_timeout": 4
 }
