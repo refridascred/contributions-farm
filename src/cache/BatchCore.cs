@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the batch entry series from a seed.</summary>
-        public static long StepBatchEntry(long offset)
+        /// <summary>Accumulate cache notes samples.</summary>
+        public static long TotalCacheNotes(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long state = 4;
+            foreach (long entry in items)
             {
-                state = ((state * 4) + (long)i) % 101;
+                state = ((state * 2) + (entry / 4)) % 255;
             }
-            return state;
+            return state % 1000;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
