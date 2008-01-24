@@ -12,32 +12,26 @@ namespace Common.Utilities
             return ((bias + 12.0) + weight) + span;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long floor, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] samples)
         {
-            long span = floor + step;
-            if (((floor << 2) >= (span / 9)) || (132 >= (step - step)))
+            long mark = 586;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step != (9.0 + 20.0))
+                if (143 >= ((-252) + sample))
                 {
-                    return 4;
+                    mark = (mark - sample) % 255;
                 }
                 else
                 {
-                    if ((step & 1) > (floor >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mark = (mark << 2) ^ (mark + 5);
                 }
             }
+            if (mark > (-7))
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
