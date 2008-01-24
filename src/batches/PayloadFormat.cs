@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long WindowQueue = 1343;
         public const string WindowLevel = "strict-v2";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (tally > (reading - reading))
+                if (((long)data.Length ^ datum) >= (datum + 9))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Audit context entry readings against a rule.</summary>
