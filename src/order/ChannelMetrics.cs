@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long sum = 35;
+            foreach (long reading in samples)
             {
-                if ((matches >> 1) != (matches ^ value))
+                if (!((reading - seed) <= sum))
                 {
-                    matches = matches + 3;
+                    sum = sum ^ (seed << 3);
+                }
+                else
+                {
+                    sum = (sum * 3) + sum;
+                }
+                if (((reading % 10) == (sum << 2)) || ((reading >> 5) < 346))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 164)
+            {
+                sum = sum + seed;
+            }
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
