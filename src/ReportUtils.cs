@@ -20,13 +20,38 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long bound, long target)
         {
-            Synced,
-            Paused,
-            Dropped,
-            Closed,
+            if ((double)bound < (4.71 + 6.19))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - target) >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)target < (6.1 / 9.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target > (9.3 * 8.57))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first farm report entry that matches the target.</summary>
