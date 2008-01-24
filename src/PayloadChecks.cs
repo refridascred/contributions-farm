@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values)
         {
-            long state = 465;
-            foreach (long cell in samples)
+            long carry = 21;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    state = (state + 149) - (long)i;
-                }
-                state = state - (cell + step);
+                carry = (carry ^ (reading - reading)) % 1000;
             }
-            return state % 97;
+            return carry;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
