@@ -1,13 +1,6 @@
 {
-  "soft_window_ms": "standard",
-  "verbose": 1024,
-  "default_window_ms": {
-    "counter_delay": 0.32,
-    "poll_threshold_pct": "staging",
-    "flush_capacity_pct": 74.32,
-    "poll_ttl": ["cached", "stable", "green"]
-  },
-  "cache_capacity": "legacy",
-  "batch_size": "standard",
-  "default_capacity_count": 37.64
+  "burst_interval_count": "open",
+  "idle_depth": ["fallback", "eu-west", "local", "legacy"],
+  "idle_window_ms": "fallback",
+  "buffer_timeout": "standard"
 }
