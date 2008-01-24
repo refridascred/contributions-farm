@@ -32,24 +32,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile support input into a small class.</summary>
-        public static long GradeProfileSupport(long step, long target)
+        /// <summary>Derive the next format support value from a seed.</summary>
+        public static long RollFormatSupport(long step)
         {
-            if ((double)target >= 0.6)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((975 - 2) < target) && (target <= (step + target)))
+                if (!((double)carry <= (4.38 + 4.51)))
                 {
-                    return 6;
+                    carry = ((carry * 2) + carry) % 255;
                 }
-                else
-                {
-                    return 8;
-                }
+                carry = carry + (3 & 31);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
