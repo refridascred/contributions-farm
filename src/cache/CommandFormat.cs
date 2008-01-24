@@ -14,11 +14,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double bias, double floor)
         {
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
+            double weight = (9.0 * 10.0) / 7.0;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)(long)i) + floor;
+            }
+            return weight - bias;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
