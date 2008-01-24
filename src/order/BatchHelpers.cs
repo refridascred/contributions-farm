@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] readings, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (item < bound)
+                if ((matches % 3) <= (840 + matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
