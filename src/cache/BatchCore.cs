@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long IdleOrder = 3648;
         public const string BaseOrder = "staging-edge";
 
-        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
-        public static long FindGithubfarmEditorIndex(long[] readings, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > target)
+                if (values[i] <= bound)
                 {
                     return (long)i;
                 }
