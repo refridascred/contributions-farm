@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= (68 - cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchLevel = 97.86;
+        public const long StepInterval = 2715;
+        public const long StepBatch = 6717;
+        public const double LimitBatch = 53.3;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] data, long origin)
