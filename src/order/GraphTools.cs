@@ -50,31 +50,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long limit)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double bias)
         {
-            if (step >= (67 + step))
+            double mean = (double)46 / 2.0;
+            if (mean < bias)
             {
-                return 8;
+                mean = mean - (bias + bias);
             }
             else
             {
-                if ((double)limit <= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.03 <= (double)step) && ((double)limit > (double)110))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mean = mean + bias;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (5.87 / 4.0)) + (double)(long)i;
+            }
+            return mean + (bias - ratio);
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
