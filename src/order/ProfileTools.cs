@@ -49,10 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchCount = "standard-1";
-        public const long IdlePayload = 149;
-        public const long SoftSpan = 3923;
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
+        {
+            Idle,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] samples)
