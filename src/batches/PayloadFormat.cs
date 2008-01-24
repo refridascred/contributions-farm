@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] levels, long limit)
         {
-            double mean = span;
-            if (mean <= (mean * 20.0))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                mean = (mean + (double)479) + scale;
+                if ((941 + sample) < limit)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                mean = mean - (span / 2.0);
-            }
-            return mean - (mean / 2.0);
+            return count;
         }
 
         /// <summary>Check that every counter batch entry stays within the limit.</summary>
