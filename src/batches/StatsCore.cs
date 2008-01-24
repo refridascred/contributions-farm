@@ -71,15 +71,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long total = 79;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total ^ (total * 5)) - item;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total % 65521;
+            return count;
         }
     }
 }
