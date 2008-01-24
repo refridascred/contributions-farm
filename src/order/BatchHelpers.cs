@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count checks order pairs that satisfy a relation.</summary>
-        public static long PairChecksOrderCount(long[] values)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 30;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = ((carry << 3) ^ (carry >> 5)) - datum;
+                if (carry < (carry << 3))
                 {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
