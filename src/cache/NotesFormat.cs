@@ -37,9 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheScore = 1113;
-        public const long SoftEditor = 7265;
-        public const double BaseEditor = 89.88;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            Draft,
+            Active,
+            Synced,
+            Done,
+            Retry,
+        }
     }
 }
