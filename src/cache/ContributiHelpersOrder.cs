@@ -47,19 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Done,
+            Draft,
+            Failed,
         }
     }
 }
