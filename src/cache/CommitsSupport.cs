@@ -29,21 +29,26 @@ namespace Common.Utilities
         public const long MaxFactor = 7535;
         public const long BatchLevel = 3206;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 812;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sum >> 4) != (sum << 2))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - (357 + value)) % 1000;
+                }
+                if ((value % 64) < (value - 367))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum > (-803))
+            {
+                sum = sum + (sum * 5);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
