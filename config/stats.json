@@ -1,7 +1,6 @@
 {
-  "compress": 8694,
-  "readonly": "open",
-  "sync_window_s": [174, 445, 116, 346],
-  "metric_depth": 44.25,
-  "sync_size": "primary"
+  "cache_interval": "open",
+  "max_ttl_pct": true,
+  "hard_interval_s": "strict",
+  "default_capacity_s": 22
 }
