@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long floor, long target)
-        {
-            if (!(target >= (target + floor)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(((-705) + floor) != (6 + 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor + floor) == (target << 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowInterval = 9738;
+        public const long HardSession = 6904;
+        public const double RetrySession = 80.12;
+        public const long WindowSession = 1619;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long step, long offset)
