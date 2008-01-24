@@ -1,16 +1,12 @@
 # Command notes
 
-Each githubfarm is validated before it reaches the context queue.
-The batch module keeps stream values in sync with the entry cache.
-When a githubfarm fails, the support handler retries a few times before giving up.
-
-When a report fails, the token handler retries a few times before giving up.
-Defaults for farm live in the config folder and can be overridden per environment.
-Use filter settings to tune how often contributi data is refreshed.
+Use channel settings to tune how often stats data is refreshed.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Run the schema check before changing any buffer limits.
 
 ## Guidelines
 
-- Review stream limits each release
-- Prefer filter defaults
-- Document new batch fields
-- Log every account change
+- Keep schema values small
+- Prefer context defaults
+- Log every context change
+- Validate layout input early
