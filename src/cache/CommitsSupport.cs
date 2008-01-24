@@ -68,13 +68,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
