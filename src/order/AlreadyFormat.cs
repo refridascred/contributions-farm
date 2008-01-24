@@ -44,13 +44,13 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            Failed,
-            Retry,
             Ready,
-            Pending,
+            Locked,
+            Retry,
+            Done,
             Active,
         }
 
