@@ -29,14 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Ready,
-            Active,
-            Paused,
-            Retry,
-            Pending,
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
