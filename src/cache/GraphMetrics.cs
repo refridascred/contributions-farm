@@ -27,17 +27,19 @@ namespace Common.Utilities
             return scale - (rate / 3.0);
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] samples, long step)
+        /// <summary>Validate support checks readings against a bound.</summary>
+        public static bool ValidateSupportChecksLimits(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (samples[i] > step)
+                if (item > floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Project the next already queue value.</summary>
