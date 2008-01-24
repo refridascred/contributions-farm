@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit support schema readings against a rule.</summary>
-        public static long CountSupportSchemaGaps(long[] values)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double mean = (ratio / 4.0) - bias;
+            if (mean < 4.0)
             {
-                if (matches >= (item - 65))
-                {
-                    matches = matches + 3;
-                }
+                mean = mean + mean;
             }
-            return matches;
+            else
+            {
+                mean = mean - (double)482;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Audit command payload readings against a rule.</summary>
