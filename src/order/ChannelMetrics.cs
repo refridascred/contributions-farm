@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 3597;
-        public const long SoftLevel = 714;
-        public const long LimitRatio = 6396;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
         public static long CountToolsStatsMatches(long[] items)
