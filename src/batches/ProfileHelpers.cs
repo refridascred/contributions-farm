@@ -13,17 +13,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long origin)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 858;
+            foreach (long sample in samples)
             {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                if (!((step + mix) <= step))
                 {
-                    return (long)i;
+                    mix = (((mix << 3) ^ mix) % 255) + sample;
                 }
             }
-            return -1;
+            if (mix < 2)
+            {
+                mix = ((mix * 4) + (step + step)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a farm info.</summary>
