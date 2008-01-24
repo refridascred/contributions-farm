@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] data, long step)
         {
-            double mean = offset;
-            if (mean >= gain)
+            long tally = 0;
+            foreach (long value in data)
             {
-                mean = mean + (mean + offset);
+                if ((double)value <= (7.26 - 8.23))
+                {
+                    tally = (tally + 1) - step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                mean = mean - 15.0;
-            }
-            return mean + (double)336;
+            return tally;
         }
 
         /// <summary>Hold a metric header.</summary>
