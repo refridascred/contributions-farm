@@ -16,13 +16,13 @@ namespace Common.Utilities
             return weight - (10.0 / 5.0);
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] data, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] readings, long bound)
         {
             bool ready = true;
-            foreach (long value in data)
+            foreach (long item in readings)
             {
-                if (value <= seed)
+                if (item < bound)
                 {
                     ready = false;
                     break;
