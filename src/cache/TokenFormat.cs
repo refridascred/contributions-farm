@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two counter schema measurements.</summary>
-        public static double ProjectCounterSchema(double bias, double bias2)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double bias3 = bias2;
-            return bias3 - bias;
+            Idle,
+            Synced,
+            New,
+            Done,
         }
 
         /// <summary>Find the first buffer channel entry that matches the target.</summary>
