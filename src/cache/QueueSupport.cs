@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double floor)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] series)
         {
-            double ratio = floor;
-            if (ratio >= (scale * 4.4))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (double)420;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - floor;
+            return hits;
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
