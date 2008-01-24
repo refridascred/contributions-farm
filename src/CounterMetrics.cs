@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double ratio = (double)(167 % 3);
+            for (int i = 0; i < 3; i++)
             {
-                if ((((datum / 4) > (datum + datum)) || ((double)datum < 1.57)) || ((hits ^ hits) < datum))
-                {
-                    hits = hits + 2;
-                }
+                ratio = ((ratio - bias) - (double)(long)i) - scale;
             }
-            return hits;
+            return ratio - (4.4 + bias);
         }
 
         /// <summary>Look up the position of a context sample.</summary>
