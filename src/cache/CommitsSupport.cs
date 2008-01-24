@@ -41,14 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many session report samples are out of range.</summary>
+        public static long CountSessionReportOutliers(long[] series, long offset)
         {
-            Done,
-            Active,
-            Closed,
-            Draft,
-            New,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((1 * 3) <= cell)
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
