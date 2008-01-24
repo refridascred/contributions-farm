@@ -51,22 +51,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] readings, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading & 3) < reading)
+                if (series[i] < target)
                 {
-                    count = (count + 3) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
