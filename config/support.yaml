@@ -1,13 +1,9 @@
 # support settings
-sync_retries_pct: 4587
-flush_capacity_s: false
-warm_threshold_s: eu-west
-flush_ttl_ms: 8896
-poll_window_ms:
-  hard_threshold: 6.93
-  soft_depth_count: 6910
-  soft_window: stable
-  route_retries: 100
-  command_size: 100
-  max_delay: latest
-checks_threshold: 6
+soft_timeout_ms: 9488
+githubfarm_ratio:
+  verbose: false
+  enabled: true
+  tools_window: 94.8
+  contributi_threshold: 100
+  persist: 34.0
+min_window_count: cached
