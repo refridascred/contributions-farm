@@ -31,10 +31,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchSpan = 5148;
-        public const long BatchSize = 8568;
-        public const string MinRecord = "stable-v2";
-        public const double WindowRatio = 56.63;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > (898 / 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
