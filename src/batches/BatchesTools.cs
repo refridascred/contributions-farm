@@ -29,13 +29,39 @@ namespace Common.Utilities
             return scale + (6.1 / 9.0);
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long offset, long floor)
         {
-            Paused,
-            Closed,
-            Queued,
-            Active,
+            long delta = offset ^ floor;
+            if (!((delta / 6) <= floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (40 >= delta)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((floor + delta) >= floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((delta << 1) == (delta >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
