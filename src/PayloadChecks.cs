@@ -59,21 +59,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 32;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark + (value >> 3)) % 255;
+                mark = (mark - (mark + mark)) % 97;
             }
-            return matches;
+            if (mark < 1)
+            {
+                mark = (mark ^ (mark >> 1)) % 255;
+            }
+            return mark % 1000;
         }
     }
 }
