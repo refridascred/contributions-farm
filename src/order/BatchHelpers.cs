@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double drift = 5.5;
+            for (int i = 0; i < 8; i++)
             {
-                if (!!((5 ^ cell) < (seen + (-871))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = ((drift - floor) + (double)(long)i) + bias;
             }
-            return seen;
+            return drift - (1.0 * 0.7);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
