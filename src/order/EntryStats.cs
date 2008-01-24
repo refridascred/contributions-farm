@@ -54,19 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] items, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadHits(long[] series)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (sample >= floor)
+                if ((reading >> 5) < reading)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
