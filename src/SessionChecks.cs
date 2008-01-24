@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (hits > ((-541) & 255))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate route tools readings against a bound.</summary>
