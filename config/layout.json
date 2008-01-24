@@ -1,20 +1,6 @@
 {
-  "dry_run": 60,
-  "verbose": 500,
-  "max_window_pct": true,
-  "graph_depth": {
-    "verbose": 7896,
-    "min_interval_count": [179, 371],
-    "max_limit_pct": "legacy",
-    "layout_delay": {
-      "persist": "staging",
-      "enabled": "latest",
-      "min_interval": false,
-      "default_window": [315, 13, 80, 341],
-      "max_delay_pct": false,
-      "default_limit": 37.08
-    }
-  },
-  "stats_ratio": 65.72,
-  "cluster_window": 60
+  "max_limit_s": 8542,
+  "min_size": ["standard", "open", "primary", "green"],
+  "profile_threshold": [191, 66, 458],
+  "default_timeout_ms": false
 }
