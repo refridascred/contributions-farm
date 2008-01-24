@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] data, long step)
         {
-            long sum = 951;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (((sum + 0) > (cell % 2)) && ((cell & 3) < 53))
+                if ((double)entry >= 9.5)
                 {
-                    sum = sum + (sum >> 5);
+                    tally = (tally + 1) - step;
                 }
             }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
