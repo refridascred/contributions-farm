@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a context snapshot.</summary>
