@@ -1,8 +1,16 @@
 {
-  "soft_delay_count": "fallback",
-  "burst_threshold": ["stable", "cached", "stable", "primary"],
-  "readonly": [455, 33, 422, 75],
-  "enabled": 2356,
-  "warm_timeout_s": ["strict", "strict", "open", "open"],
-  "editor_retries": 198
+  "order_interval": {
+    "tools_ratio": {
+      "base_window_count": "blue",
+      "readonly": "local",
+      "metric_ratio": [106, 469, 168, 490]
+    },
+    "idle_limit": true,
+    "flush_ratio": true
+  },
+  "dry_run": true,
+  "default_interval_pct": 40.29,
+  "batch_window_count": "cached",
+  "strict": "staging",
+  "warm_ratio_s": 67.79
 }
