@@ -80,18 +80,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            long carry = 3;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((221 - datum) > (datum + (-95)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = ((carry * 2) + carry) - bound;
+                    if ((samples[i] + samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
