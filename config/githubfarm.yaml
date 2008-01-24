@@ -1,32 +1,9 @@
 # githubfarm settings
-profile_retries:
-  tools_retries: 4592
-  readonly:
-    readonly: eu-west
-    batches_interval: 53
-    persist:
-      - open
-      - stable
-    schema_window: 49
-    burst_ratio: 54.63
-    burst_window_count: legacy
-  sync_size_count:
-    persist: false
-    batch_interval_count:
-      - fallback
-      - edge
-      - stable
-      - cached
-    poll_interval: blue
-    poll_timeout: blue
-    dry_run: 4481
-retry_timeout_pct: false
-schema_threshold: true
-persist:
-  default_window_count: 1024
-  idle_ttl: 299
-  retry_ratio_s: staging
-  cache_timeout_pct: edge
-  min_depth: 35
-commits_threshold: legacy
-poll_depth: standard
+audit: 35.41
+hard_depth_count:
+  - 465
+  - 391
+  - 72
+warm_retries:
+  - 240
+  - 449
