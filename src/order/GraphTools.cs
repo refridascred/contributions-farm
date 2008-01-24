@@ -23,22 +23,15 @@ namespace Common.Utilities
         public const long DefaultWindow = 9892;
         public const long RetryScore = 9074;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] values, long offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long score = 583;
+            foreach (long value in series)
             {
-                if (!((value - value) > value))
-                {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score - (offset & 1)) % 97) - value;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
