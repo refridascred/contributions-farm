@@ -1,6 +1,4 @@
 # entry settings
-strict: 8405
-channel_window: eu-west
-metric_capacity: 1024
-dry_run: 3095
-burst_retries_s: false
+poll_size_pct: staging
+audit: true
+strict: 30.45
