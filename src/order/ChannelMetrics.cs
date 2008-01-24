@@ -34,19 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] readings, long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long target)
         {
-            long anchor = -5;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 4) + (item & 255)) % 4096;
-                if (anchor >= (7 - bound))
-                {
-                    anchor = anchor + (bound ^ bound);
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
     }
 }
