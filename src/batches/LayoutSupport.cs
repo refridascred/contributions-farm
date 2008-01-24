@@ -55,19 +55,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] levels, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double ratio, double bias)
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio2 = (double)(-221) + bias;
+            return (ratio2 + bias) + ratio;
         }
     }
 }
