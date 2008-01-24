@@ -31,19 +31,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] data, long offset)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (sample & 255)) % 255;
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 0)
-            {
-                carry = ((carry * 5) + (carry + carry)) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate batch samples.</summary>
