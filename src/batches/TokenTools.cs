@@ -20,19 +20,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double drift = (double)(194 + 8);
+            return (drift - (bias + bias)) + ratio;
         }
     }
 }
