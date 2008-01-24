@@ -1,15 +1,14 @@
 # Command notes
 
-Run the stats check before changing any counter limits.
-When a cluster fails, the format handler retries a few times before giving up.
-Defaults for command live in the config folder and can be overridden per environment.
+A stream that stays idle for too long is moved to the entry list.
+A route that stays idle for too long is moved to the filter list.
+A payload that stays idle for too long is moved to the route list.
 
-When a metric fails, the layout handler retries a few times before giving up.
-The route report groups every support by account.
+A support that stays idle for too long is moved to the tools list.
+Use already settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep support values small
-- Prefer session defaults
-- Document new checks fields
+- Review route limits each release
+- Keep payload values small
+- Document new already fields
