@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] series, long offset)
+        /// <summary>Check that every order stats entry stays within the limit.</summary>
+        public static bool GuardOrderStatsBounds(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (entry != offset)
+                if (value != offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
