@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
             Synced,
-            Locked,
-            Retry,
-            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Describe the stats mode values.</summary>
