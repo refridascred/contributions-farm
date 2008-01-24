@@ -26,26 +26,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] items, long target)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] values, long origin)
         {
-            long result = 8;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
                 {
-                    result = ((result * 5) + target) ^ (long)i;
-                }
-                if ((long)items.Length != (item ^ target))
-                {
-                    result = (result + (item ^ result)) % 101;
+                    return (long)i;
                 }
             }
-            if (result > 83)
-            {
-                result = (result << 2) ^ (result << 3);
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Classify a githubfarm support pair into a bucket.</summary>
