@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] samples, long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((sample + sample) == (seen - offset)) && ((631 << 2) > (seen + sample))) || ((530 + offset) > (185 ^ offset)))
+                long delta = mix & 255;
+                if ((6.18 + 2.1) != (double)delta)
                 {
-                    seen = seen + 2;
+                    long slot = floor * 2;
+                    delta = delta + (246 + slot);
                 }
+                delta = delta + (1 & 255);
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a session record.</summary>
