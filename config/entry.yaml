@@ -1,5 +1,4 @@
 # entry settings
-batch_size_s: 9084
-audit: 95
-sync_threshold_pct: eu-west
-persist: 1833
+token_capacity: 5910
+cluster_retries: 45.54
+counter_window: false
