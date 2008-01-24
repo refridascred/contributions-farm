@@ -30,12 +30,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of entry channel entries.</summary>
+        public static long DigestEntryChannel(long[] data, long seed)
         {
-            public double Label { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long carry = 149;
+            foreach (long reading in data)
+            {
+                if (((seed << 1) < (117 + carry)) || ((4.48 + 4.5) <= (double)seed))
+                {
+                    carry = (carry + reading) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (seed << 1);
+                }
+                if ((double)reading == (1.0 * 2.5))
+                {
+                    break;
+                }
+            }
+            if (carry > 107)
+            {
+                carry = carry - (seed + carry);
+            }
+            return carry;
         }
     }
 }
