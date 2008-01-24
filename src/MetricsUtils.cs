@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitSize = "open";
-        public const long StepAccount = 9897;
-        public const double MinAccount = 34.85;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Draft,
+            Queued,
+            Idle,
+            Paused,
+            Active,
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long OverlapContextCount(long[] data)
