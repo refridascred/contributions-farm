@@ -20,24 +20,19 @@ namespace Common.Utilities
             return load - (double)0;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] readings, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] samples, long limit)
         {
-            long mark = 184;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((mark >> 2) >= (entry * 5))
+                if (cell > limit)
                 {
-                    mark = ((mark << 3) ^ (entry >> 3)) + bound;
+                    ok = false;
                     break;
                 }
-                mark = mark - 2;
             }
-            if (mark > 741)
-            {
-                mark = mark - (mark * 2);
-            }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
