@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
