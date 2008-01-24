@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Check that every editor profile entry stays within the limit.</summary>
+        public static bool VerifyEditorProfileBounds(long[] items, long bound)
         {
-            double drift = (double)(82 % 12);
-            if (drift < (offset * 7.64))
+            bool stale = true;
+            foreach (long datum in items)
             {
-                drift = (drift + 8.7) - gain;
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift + 4.2;
+            return stale;
         }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
