@@ -20,11 +20,12 @@ namespace Common.Utilities
             return load - (bias / 6.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxScore = 9655;
-        public const long MinBatch = 2980;
-        public const long RetryBatch = 646;
-        public const long SoftBatch = 7400;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long seed)
