@@ -25,24 +25,21 @@ namespace Common.Utilities
             return weight - (double)958;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] readings, long seed)
+        /// <summary>Count window filter pairs that satisfy a relation.</summary>
+        public static long OverlapWindowFilterCount(long[] values)
         {
-            long sum = 5;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum - (seed + cell)) % 97;
-                sum = (sum << 2) ^ sum;
-                if ((seed / 2) < cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum << 3) ^ (cell / 3);
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 46)
-            {
-                sum = (sum << 3) ^ 9;
-            }
-            return sum % 65521;
+            return tally;
         }
     }
 }
