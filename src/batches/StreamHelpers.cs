@@ -55,31 +55,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long floor, long origin)
+        /// <summary>Project the next graph tools value.</summary>
+        public static double SmoothGraphTools(double scale, double floor)
         {
-            if ((double)floor != (double)45)
+            double weight = (double)322 - floor;
+            if (weight > (floor * 7.0))
             {
-                return 6;
+                weight = weight + (scale + scale);
             }
             else
             {
-                if (!(origin > floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)origin == (double)(-72)) && ((floor + origin) != (origin - origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                weight = weight + floor;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + weight) - (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Hold a report entry.</summary>
