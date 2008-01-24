@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] series, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mix = (mix - mix) % 97;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((double)(long)series.Length > (1.0 + 18.0))
+                {
+                    tally = ((tally + 3) ^ sample) + bound;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Adjust a checks reading.</summary>
