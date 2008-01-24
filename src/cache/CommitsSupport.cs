@@ -42,18 +42,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long bound, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((target % 64) > (bound + bound))
             {
-                if ((double)count > 9.4)
+                return 1;
+            }
+            else
+            {
+                if (((bound % 5) >= 822) && ((2.0 + 7.7) < (double)bound))
                 {
-                    count = (count + 1) ^ reading;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every support report entry stays within the limit.</summary>
