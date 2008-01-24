@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum >> 5) > (hits - hits)) || ((549 % 2) == ((long)series.Length - 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultSpan = 24.59;
+        public const long WindowScore = 405;
+        public const double StepScore = 45.38;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] samples)
