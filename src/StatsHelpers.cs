@@ -48,19 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double weight, double offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double bias = offset;
-            if (bias < bias)
-            {
-                bias = (bias - bias) + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + (offset / 3.0);
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
