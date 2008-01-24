@@ -1,14 +1,14 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the entry list.
-A route that stays idle for too long is moved to the filter list.
-A payload that stays idle for too long is moved to the route list.
+Keep already and filter names short and lowercase.
+The cluster report groups every report by support.
 
-A support that stays idle for too long is moved to the tools list.
-Use already settings to tune how often stats data is refreshed.
+Run the batch check before changing any report limits.
+Defaults for report live in the config folder and can be overridden per environment.
+Run the token check before changing any account limits.
 
 ## Guidelines
 
-- Review route limits each release
-- Keep payload values small
-- Document new already fields
+- Keep account values small
+- Document new counter fields
+- Validate buffer input early
