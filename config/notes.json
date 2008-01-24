@@ -1,6 +1,21 @@
 {
-  "max_interval_pct": 5094,
-  "warm_limit_count": [22, 4, 438, 89],
-  "persist": "cached",
-  "cache_delay": 3827
+  "batch_limit": 1401,
+  "compress": {
+    "batch_size_ms": {
+      "poll_window_s": 2208,
+      "metrics_limit": 25.61,
+      "verbose": 52,
+      "token_timeout": ["eu-west", "fallback", "local", "cached"],
+      "batch_limit_pct": true,
+      "burst_limit": 1024
+    },
+    "cache_size": [335, 353, 495, 417],
+    "base_capacity": false,
+    "cache_delay": "cached",
+    "audit": ["eu-west", "stable", "staging"],
+    "sync_capacity_count": "open"
+  },
+  "persist": ["eu-west", "local", "open", "local"],
+  "contributi_timeout": 82,
+  "verbose": [265, 164, 471, 403]
 }
