@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const long StepBatch = 6717;
         public const double LimitBatch = 53.3;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] data, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long score = 346;
+            foreach (long item in items)
             {
-                if (value > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score << 2) ^ step) % 255;
+                score = ((score * 5) + (item + 1)) % 65521;
             }
-            return valid;
+            if (score > 16)
+            {
+                score = (score ^ (score / 7)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a order stats.</summary>
