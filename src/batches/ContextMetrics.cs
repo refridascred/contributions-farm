@@ -53,39 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long target, long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels, long offset)
         {
-            long prev = target - origin;
-            if (((1 >> 4) >= prev) || (1 <= (target >> 2)))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target > (double)origin)
+                if ((((double)tally > (7.0 + 7.8)) || ((offset - tally) < tally)) || ((tally + value) > (683 % 64)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)prev <= 13.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((prev + 0) >= (prev + prev))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
