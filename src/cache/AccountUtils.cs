@@ -26,20 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record window entry stays within the limit.</summary>
-        public static bool CheckRecordWindowRange(long[] series, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 1911;
+        public const long BaseInterval = 1527;
+        public const long SoftEntry = 2163;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] readings)
