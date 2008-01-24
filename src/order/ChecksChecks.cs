@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample != (6.0 - 16.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 4732;
+        public const long MinBuffer = 6815;
+        public const long WindowBuffer = 896;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
