@@ -32,19 +32,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two metrics format measurements.</summary>
-        public static double ScaleMetricsFormat(double rate, double offset)
+        /// <summary>Audit account support readings against a rule.</summary>
+        public static long TallyAccountSupportMatches(long[] series)
         {
-            double rate2 = (double)((-652) - 725);
-            if (rate2 >= (5.24 - rate))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                rate2 = (rate2 + 5.4) - offset;
+                if (((-4) + 236) <= (cell & 255))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - (double)7;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
