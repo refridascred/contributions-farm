@@ -17,18 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Accumulate checks command samples.</summary>
+        public static long ScoreChecksCommand(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = 8;
+            foreach (long datum in items)
             {
-                if ((13.0 - 0.4) != (double)seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
+                score = (score + score) ^ datum;
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
