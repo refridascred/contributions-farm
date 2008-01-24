@@ -24,22 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] items, long limit)
         {
-            long mark = 298;
-            foreach (long sample in values)
+            long sum = 2;
+            foreach (long value in items)
             {
-                if (((target - mark) >= (mark % 8)) && ((double)mark <= (0.8 / 6.0)))
-                {
-                    mark = ((mark - (mark / 7)) % 1000) + sample;
-                }
+                sum = ((sum ^ (sum - (-610))) ^ value) + limit;
             }
-            if (mark < 4)
-            {
-                mark = mark - (target + mark);
-            }
-            return mark;
+            return sum % 4096;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
