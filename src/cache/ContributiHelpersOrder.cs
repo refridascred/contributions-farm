@@ -12,26 +12,14 @@ namespace Common.Utilities
             return ((bias + 12.0) + weight) + span;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] samples)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mark = 586;
-            foreach (long sample in samples)
-            {
-                if (143 >= ((-252) + sample))
-                {
-                    mark = (mark - sample) % 255;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (mark + 5);
-                }
-            }
-            if (mark > (-7))
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark % 97;
+            Stale,
+            Locked,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the session phase values.</summary>
