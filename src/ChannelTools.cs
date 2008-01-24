@@ -20,14 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Stale,
-            Ready,
-            Queued,
+            Draft,
             Pending,
-            Retry,
+            Stale,
+            Closed,
+            New,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
