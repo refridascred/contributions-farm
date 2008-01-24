@@ -12,10 +12,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinWidth = 9925;
-        public const long BatchCluster = 4409;
-        public const long BaseBudget = 6880;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (tally > (reading - reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit context entry readings against a rule.</summary>
         public static long TallyContextEntryHits(long[] series, long target)
