@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Roll a layout route counter forward.</summary>
+        public static long StepLayoutRoute(long seed)
         {
-            double ratio = (double)(634 & 127);
-            if (ratio >= (weight * 12.0))
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                ratio = (ratio + (ratio + 0.6)) + span;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ratio + weight;
+            return sum;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
