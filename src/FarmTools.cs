@@ -34,22 +34,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings, long limit)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long score = 927;
-            foreach (long entry in readings)
-            {
-                if (limit >= score)
-                {
-                    score = (score + (limit % 64)) + entry;
-                }
-            }
-            if (score > 328)
-            {
-                score = (score ^ (long)readings.Length) % 65521;
-            }
-            return score % 1000;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
