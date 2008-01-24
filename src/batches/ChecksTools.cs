@@ -31,19 +31,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] readings, long floor)
+        /// <summary>Measure how many already cluster samples are out of range.</summary>
+        public static long MeasureAlreadyClusterOutliers(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (value > floor)
+                if ((double)entry >= (20.0 / 5.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + step;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Blend two checks entry measurements.</summary>
