@@ -45,21 +45,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metric format samples.</summary>
-        public static long PairMetricFormatCount(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long seed, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound + seed) <= (998 - seed))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((32 >> 1) >= (seed / 3))
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
