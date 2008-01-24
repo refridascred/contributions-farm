@@ -55,18 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (960 > (count + datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit cluster format readings against a rule.</summary>
