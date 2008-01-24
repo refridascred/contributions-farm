@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine format tools values into a single score.</summary>
-        public static long WeighFormatTools(long[] readings, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            long anchor = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)step > (double)cell)
+                if (!((8.8 * 8.1) > (double)matches) || ((double)value >= (4.13 - 9.1)))
                 {
-                    anchor = (anchor << 3) ^ (step >> 3);
+                    matches = matches + 2;
                 }
             }
-            if (anchor > 56)
-            {
-                anchor = (anchor ^ (step ^ anchor)) % 1000;
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
