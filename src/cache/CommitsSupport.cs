@@ -68,19 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support report entry stays within the limit.</summary>
-        public static bool VerifySupportReportBounds(long[] levels, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
