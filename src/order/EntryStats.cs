@@ -19,15 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout route counter forward.</summary>
-        public static long StepLayoutRoute(long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = ((state + (long)i) % 65521) + (long)i2;
+                }
+                if (((state - state) > seed) || ((double)seed <= (7.18 - 1.7)))
+                {
+                    state = ((state << 3) ^ ((long)i >> 5)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
