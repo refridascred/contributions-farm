@@ -48,25 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long floor, long floor2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long span = floor ^ floor2;
-            if ((floor2 + floor) >= (span * 4))
+            long score = 2;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span - span) >= (floor2 / 5))
+                if (((5 >> 4) != (score / 2)) && ((double)value == (8.5 + 8.4)))
                 {
-                    return 5;
+                    score = (score << 2) ^ (value / 8);
                 }
                 else
                 {
-                    return 8;
+                    score = ((score << 2) ^ (value + score)) % 1000;
+                }
+                if ((score * 5) > score)
+                {
+                    break;
                 }
             }
+            return score % 4096;
         }
     }
 }
