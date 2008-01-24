@@ -14,19 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] items)
         {
-            double mean = (ratio / 4.0) - bias;
-            if (mean < 4.0)
+            long count = 0;
+            foreach (long datum in items)
             {
-                mean = mean + mean;
+                if (datum >= 268)
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                mean = mean - (double)482;
-            }
-            return mean + ratio;
+            return count;
         }
 
         /// <summary>Audit command payload readings against a rule.</summary>
