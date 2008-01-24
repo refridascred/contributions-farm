@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "staging";
-        public const string WindowSize = "open-edge";
-        public const string BurstFactor = "open-edge";
-        public const long MaxFactor = 4787;
-        public const string BurstEntry = "open-v2";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long bound)
+        {
+            if ((bound + limit) > bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) >= (194 % 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((2.3 - 6.3) < (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound - bound) >= (limit - 3)) && ((6.0 * 6.5) <= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileHits(long[] readings, long offset)
