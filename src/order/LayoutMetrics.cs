@@ -27,20 +27,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] samples)
-        {
-            long mix = 7;
-            foreach (long datum in samples)
-            {
-                mix = (mix ^ (mix >> 2)) % 1000;
-                if ((datum << 3) <= (369 / 4))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 2735;
+        public const string DefaultAlready = "local-1";
+        public const string LimitFactor = "open-1";
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long floor, long floor2)
