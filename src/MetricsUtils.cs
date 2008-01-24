@@ -55,13 +55,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the payload route entries that pass the check.</summary>
+        public static long TallyPayloadRouteOutliers(long[] data, long target)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((target + hits) < (hits >> 5))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
