@@ -12,25 +12,12 @@ namespace Common.Utilities
             return ((gain2 + (double)117) + gain) + span;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long bound, long origin)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long slot = bound + origin;
-            if (((bound + bound) < (-65)) && (8.1 >= (double)slot))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin + slot) > (slot - bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the format status values.</summary>
