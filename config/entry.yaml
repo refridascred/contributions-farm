@@ -1,4 +1,5 @@
 # entry settings
-flush_capacity: fallback
-queue_capacity: standard
-max_depth_ms: 98
+batch_size_s: 9084
+audit: 95
+sync_threshold_pct: eu-west
+persist: 1833
