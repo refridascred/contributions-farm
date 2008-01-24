@@ -55,19 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] data, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long acc = 62;
+            foreach (long reading in samples)
             {
-                if (item >= limit)
+                if (((2.0 - 1.0) >= (double)reading) || ((double)reading <= (double)acc))
                 {
-                    ready = false;
-                    break;
+                    acc = ((acc * 3) + (reading + acc)) % 4096;
                 }
             }
-            return ready;
+            if (acc > 29)
+            {
+                acc = ((acc << 3) ^ 53) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the record phase values.</summary>
