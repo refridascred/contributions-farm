@@ -48,30 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the payload support series from a seed.</summary>
-        public static long DerivePayloadSupport(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((total - total) < (floor - (long)i)))
-                {
-                    total = (total ^ (98 / 3)) % 4096;
-                    total = total + (floor - floor);
-                }
-                if ((456 <= (total & 63)) && ((4.1 / 4.0) > (double)floor))
-                {
-                    break;
-                }
-                if ((total <= (long)i) && (((long)i - total) <= (total * 5)))
-                {
-                    total = total ^ (-280);
-                    total = (total ^ (floor / 9)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "latest-1";
+        public const long MaxSize = 2629;
+        public const double SoftCache = 52.05;
+        public const long BurstCache = 6113;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
