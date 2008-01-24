@@ -29,12 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitFactor = 2951;
+        public const long LimitSpan = 6247;
+        public const long MaxWidth = 4688;
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] samples)
