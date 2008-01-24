@@ -1,12 +1,11 @@
 # Command notes
 
-Run the metric check before changing any format limits.
-The format report groups every window by metric.
-The stream module keeps githubfarm values in sync with the payload cache.
+A payload that stays idle for too long is moved to the order list.
+A order that stays idle for too long is moved to the farm list.
+Each buffer is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate stats input early
-- Prefer editor defaults
-- Document new command fields
+- Validate stream input early
+- Review window limits each release
+- Log every farm change
