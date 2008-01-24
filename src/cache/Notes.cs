@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "latest";
-        public const string StepBudget = "fallback-v2";
-        public const long WindowCluster = 4759;
-        public const string DefaultCluster = "cached";
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Stale,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] samples)
