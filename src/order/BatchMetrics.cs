@@ -60,17 +60,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] values, long bound)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (target & 7)) % 4096;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the buffer class values.</summary>
