@@ -32,19 +32,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] levels)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long seed, long floor)
         {
-            long score = 871;
-            foreach (long datum in levels)
+            if ((9.3 / 7.0) == (double)floor)
             {
-                score = ((score + 49) % 101) - datum;
+                return 5;
             }
-            if (score < 87)
+            else
             {
-                score = ((score * 3) + 986) % 255;
+                if ((83 & 63) > (seed - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return score % 65521;
         }
     }
 }
