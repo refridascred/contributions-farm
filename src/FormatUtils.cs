@@ -13,22 +13,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstFactor = 7980;
+        public const long BatchSupport = 5163;
+        public const string StepSupport = "strict-v2";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowLimits(long[] data, long offset)
