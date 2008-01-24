@@ -1,8 +1,7 @@
 {
-  "poll_threshold_pct": "latest",
-  "hard_timeout_pct": 42.73,
-  "poll_delay": ["cached", "stable", "stable", "fallback"],
-  "strict": "edge",
-  "report_depth": "green",
-  "enabled": 40
+  "retry_window_count": 20.98,
+  "compress": true,
+  "record_threshold": [491, 206, 332, 432],
+  "min_ttl_ms": "strict",
+  "warm_delay_pct": [382, 2, 498]
 }
