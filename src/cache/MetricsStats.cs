@@ -74,32 +74,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long target, long offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long next = target + offset;
-            if ((offset * 4) > target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((next + next) > (offset - next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((next % 5) <= (172 % 100))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Queued,
         }
     }
 }
