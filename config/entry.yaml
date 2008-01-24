@@ -1,10 +1,4 @@
 # entry settings
-contributi_capacity: 500
-editor_interval:
-  hard_delay_s: legacy
-  dry_run: 250
-  batch_threshold: 77
-  max_threshold: 1396
-  warm_limit: primary
-  enabled: 30
-cluster_interval: true
+burst_retries_pct: 7.81
+min_size_ms: 25
+warm_limit_s: blue
