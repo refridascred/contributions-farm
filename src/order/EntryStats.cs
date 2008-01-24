@@ -55,12 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double span)
         {
-            Synced,
-            Active,
-            Ready,
+            double bias = (double)9 + (5.0 + span);
+            return (bias - (bias / 3.0)) + weight;
         }
     }
 }
