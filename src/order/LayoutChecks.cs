@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Locked,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardWidth = 317;
+        public const double LimitContext = 66.71;
+        public const string BaseSpan = "cached-v2";
+        public const long BurstContext = 2064;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long IdleFactor = 4122;
