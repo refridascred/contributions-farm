@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const string LimitLayout = "legacy";
         public const double CacheLayout = 91.07;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 545;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (total > (total - cell))
                 {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total + (802 + cell);
                 }
             }
-            return hits;
+            if (total > 0)
+            {
+                total = (total << 3) ^ (total << 3);
+            }
+            return total;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
