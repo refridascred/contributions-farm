@@ -1,4 +1,4 @@
 # support settings
-hard_retries_s: 23.1
-base_interval_s: strict
-stats_threshold: green
+default_window_ms: 24
+route_ttl: false
+audit: 6.98
