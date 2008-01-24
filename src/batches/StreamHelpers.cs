@@ -42,18 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] samples, long limit)
+        /// <summary>Measure how many checks payload samples are out of range.</summary>
+        public static long MeasureChecksPayloadHits(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((double)limit == (12.0 - 8.4)) && (((12.0 * 9.7) < (double)(long)samples.Length) && ((double)count != (7.36 - 20.0))))
+                if (!((tally + origin) < (52 % 8)))
                 {
-                    count = (count + 2) + item;
+                    tally = (tally + 2) - reading;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next graph tools value.</summary>
