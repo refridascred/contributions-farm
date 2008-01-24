@@ -1,6 +1,23 @@
 {
-  "max_window_ms": false,
-  "cache_retries_ms": "edge",
-  "poll_ttl_ms": 57,
-  "warm_window": ["strict", "stable"]
+  "metric_retries": {
+    "entry_depth": 9661,
+    "schema_ttl": "fallback",
+    "burst_window_pct": 12,
+    "batch_limit": "cached",
+    "batch_limit_count": "open"
+  },
+  "strict": {
+    "strict": 250,
+    "soft_threshold_s": "local",
+    "readonly": {
+      "hard_ratio_count": 1627,
+      "warm_size_pct": 28,
+      "farm_interval": 9.73
+    },
+    "channel_ratio": 69.67
+  },
+  "entry_capacity": [258, 264],
+  "poll_interval_count": [431, 277, 39, 27],
+  "readonly": 3044,
+  "compress": 7672
 }
