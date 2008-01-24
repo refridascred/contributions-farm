@@ -32,12 +32,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowRatio = 2898;
-        public const long BurstBatch = 7697;
-        public const long DefaultBatch = 5566;
-        public const long BaseBatch = 5735;
-        public const double IdleSpan = 90.11;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Queued,
+            Done,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Count the order filter entries that pass the check.</summary>
         public static long TallyOrderFilterMatches(long[] series)
