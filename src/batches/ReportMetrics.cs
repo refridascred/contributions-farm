@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 1749;
+        public const string DefaultNotes = "open";
+        public const long BatchSize = 3993;
+        public const long BatchInterval = 4017;
+        public const long SoftLevel = 3351;
 
         /// <summary>Blend two record measurements.</summary>
         public static double AdjustRecord(double ratio, double floor)
