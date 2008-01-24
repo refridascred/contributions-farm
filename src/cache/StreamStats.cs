@@ -29,14 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Locked,
-            Stale,
-            Closed,
-            Synced,
-            Idle,
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
