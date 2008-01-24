@@ -1,4 +1,9 @@
 # entry settings
-poll_size_pct: staging
-audit: true
-strict: 30.45
+warm_interval: 59
+burst_limit_count: 60
+profile_interval:
+  - 487
+  - 95
+window_ratio:
+  - standard
+  - blue
