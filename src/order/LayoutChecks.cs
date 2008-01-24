@@ -20,18 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] readings)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((datum * 3) < (datum - matches))
-                {
-                    matches = matches + 2;
-                }
+                total = total - (738 + seed);
+                total = ((total * 2) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
