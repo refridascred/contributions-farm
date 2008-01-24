@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 7370;
-        public const string BurstInterval = "legacy-1";
-        public const long BatchRatio = 2280;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (seed < item)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] values, long limit)
