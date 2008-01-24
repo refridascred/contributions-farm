@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] readings)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((((item + matches) == (item * 3)) && ((matches + matches) != (matches * 2))) || !((item + (long)readings.Length) < 514))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Adjust a payload reading.</summary>
