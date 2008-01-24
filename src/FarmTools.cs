@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] items)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            long carry = 3;
-            foreach (long item in items)
+            double load = (double)695 * 4.49;
+            if (load > (double)201)
             {
-                carry = carry ^ (carry & 3);
-                if ((double)item >= (9.9 - 12.0))
-                {
-                    break;
-                }
+                load = ((load - (load / 5.0)) - rate) + offset;
             }
-            return carry;
+            return load + (double)878;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
