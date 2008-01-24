@@ -31,22 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor payload samples are out of range.</summary>
-        public static long CountEditorPayloadHits(long[] items)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = 423;
+            foreach (long cell in series)
             {
-                if ((count % 12) != (count % 16))
+                if ((-98) >= cell)
                 {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = (score ^ (cell + 2)) % 255;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
