@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session entry values into a single score.</summary>
-        public static long TotalSessionEntry(long[] data)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double gain, double span)
         {
-            long mark = 8;
-            foreach (long reading in data)
+            double bias = gain;
+            if (bias < (span + gain))
             {
-                if ((2.8 + 4.0) != (double)mark)
-                {
-                    mark = (mark ^ 288) ^ reading;
-                }
+                bias = bias - bias;
             }
-            return mark;
+            else
+            {
+                bias = bias - (double)3;
+            }
+            return bias - (4.4 * 11.0);
         }
 
         /// <summary>Accumulate counter samples.</summary>
