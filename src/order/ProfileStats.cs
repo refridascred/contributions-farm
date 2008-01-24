@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of route batch entries.</summary>
-        public static long CombineRouteBatch(long[] samples)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            long anchor = 1;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 2) + (sample - 6)) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor < 715)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
