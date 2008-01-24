@@ -49,14 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every commits record entry stays within the limit.</summary>
+        public static bool VerifyCommitsRecordBounds(long[] items, long origin)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Closed,
-            Pending,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate stats samples.</summary>
