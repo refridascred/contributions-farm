@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 3421;
-        public const string CacheChecks = "strict-edge";
-        public const string BurstFactor = "staging-v2";
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Find the first buffer channel entry that matches the target.</summary>
         public static long SeekBufferChannelIndex(long[] readings, long seed)
