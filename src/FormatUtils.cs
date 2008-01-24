@@ -64,22 +64,18 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Audit format contributi readings against a rule.</summary>
-        public static long AuditFormatContributiMatches(long[] values)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((hits + 610) <= (hits / 6))
+                if ((((datum % 24) <= bound) || (433 < (datum >> 1))) || !((datum >> 3) < (datum * 3)))
                 {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank context tools input into a small class.</summary>
