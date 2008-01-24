@@ -61,11 +61,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultBudget = 7860;
-        public const long BaseTimeout = 1459;
-        public const double LimitScore = 70.93;
-        public const double MaxSize = 45.43;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] series, long bound)
+        {
+            long carry = -45;
+            foreach (long sample in series)
+            {
+                carry = ((carry * 5) + bound) % 255;
+                if (((7.03 / 9.0) < (double)carry) || ((double)sample <= (1.2 / 6.0)))
+                {
+                    carry = (carry ^ bound) % 255;
+                }
+            }
+            if (carry < 86)
+            {
+                carry = (carry - (carry - bound)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
