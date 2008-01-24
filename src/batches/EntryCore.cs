@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values, long floor)
         {
-            Ready,
-            Pending,
-            Draft,
+            long result = 14;
+            foreach (long reading in values)
+            {
+                if ((result + 6) > reading)
+                {
+                    result = (result ^ (reading - floor)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a window reading by value.</summary>
