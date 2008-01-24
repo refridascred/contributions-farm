@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] readings)
         {
-            long total = -3;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((entry + 287) != (total + total))
+                if ((((item + matches) == (item * 3)) && ((matches + matches) != (matches * 2))) || !((item + (long)readings.Length) < 514))
                 {
-                    total = total - total;
-                }
-                else
-                {
-                    total = ((total * 2) + (total ^ total)) % 101;
+                    matches = matches + 3;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
