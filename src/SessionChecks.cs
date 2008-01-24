@@ -30,12 +30,10 @@ namespace Common.Utilities
         public const long BaseBudget = 6371;
         public const long IdleSchema = 243;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Failed,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinScore = 36.92;
+        public const long BaseDepth = 4124;
+        public const long HardCount = 6172;
+        public const long BatchSpan = 8514;
     }
 }
