@@ -28,11 +28,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Compare every pair of window metric readings.</summary>
+        public static long MatchWindowMetricCount(long[] series)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
