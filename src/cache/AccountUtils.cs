@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double bias2)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            double drift = (double)54 * 0.9;
-            if (drift <= bias2)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift - bias2;
+            return count;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
