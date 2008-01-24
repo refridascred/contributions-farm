@@ -42,12 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesBounds(long[] readings, long target)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a queue summary.</summary>
