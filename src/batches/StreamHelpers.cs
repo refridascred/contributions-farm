@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long IdleSupport = 2281;
         public const string HardLevel = "latest";
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double bias, double bias2)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double rate = (double)(25 >> 4);
-            if (rate >= bias2)
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - bias2;
+            Pending,
+            Active,
+            Failed,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the stats status values.</summary>
