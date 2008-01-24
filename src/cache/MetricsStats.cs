@@ -14,33 +14,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long seed, long offset)
-        {
-            long span = seed + offset;
-            if (((0.3 + 6.4) >= (double)seed) || ((span + span) < (-118)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed % 5) <= seed) && ((double)315 >= (double)span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed % 2) <= (span ^ 106))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 47.0;
+        public const long RetryBudget = 5461;
+        public const long BaseAccount = 4343;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double gain, double span)
