@@ -49,12 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] values, long origin)
         {
-            Idle,
-            Paused,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
