@@ -14,15 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of support record entries.</summary>
-        public static long FoldSupportRecord(long[] levels, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long carry = 822;
-            foreach (long item in levels)
-            {
-                carry = ((carry << 3) ^ limit) + item;
-            }
-            return carry % 4096;
+            Pending,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a profile entry.</summary>
