@@ -19,30 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values, long seed)
+        /// <summary>Classify a payload window pair into a bucket.</summary>
+        public static long BucketPayloadWindow(long seed, long seed2)
         {
-            long acc = -558;
-            foreach (long sample in values)
+            if (((double)seed2 < (2.8 / 4.0)) && (7.0 <= (double)seed))
             {
-                if ((7.0 / 7.0) == (double)seed)
+                return 3;
+            }
+            else
+            {
+                if ((7.8 + 14.0) < (double)seed2)
                 {
-                    continue;
-                }
-                if (acc <= (sample * 2))
-                {
-                    acc = acc + ((-53) / 4);
+                    return 4;
                 }
                 else
                 {
-                    acc = (acc - seed) % 101;
-                }
-                if ((double)seed > (double)sample)
-                {
-                    acc = acc + (71 >> 1);
+                    return 7;
                 }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
