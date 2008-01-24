@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-When a payload fails, the stats handler retries a few times before giving up.
+The filter module keeps order values in sync with the format cache.
+A format that stays idle for too long is moved to the editor list.
+Each filter is validated before it reaches the metric queue.
+
+Use schema settings to tune how often command data is refreshed.
+Run the payload check before changing any checks limits.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Document new batch fields
-- Keep metric values small
-- Log every record change
+- Document new graph fields
+- Review filter limits each release
+- Prefer window defaults
