@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long LimitLevel = 6547;
         public const string LimitDepth = "cached-1";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long step)
         {
-            long mix = 2;
-            foreach (long sample in values)
+            long acc = step;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix * 4) + (mix + sample)) % 101;
+                if ((double)step >= 5.18)
+                {
+                    acc = (acc + (acc + step)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return mix % 4096;
+            return acc;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
