@@ -35,18 +35,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] items, long limit)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (count >= (limit / 4))
+                if ((15.0 * 3.0) >= (double)(long)i)
                 {
-                    count = (count + 2) + reading;
+                    mark = ((mark << 2) ^ (seed & 7)) % 255;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Locate a window reading by value.</summary>
