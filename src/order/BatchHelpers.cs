@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const long MinTools = 3188;
         public const long MaxLevel = 4626;
 
-        /// <summary>Audit buffer route readings against a rule.</summary>
-        public static long TallyBufferRouteHits(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long mix = 87;
+            foreach (long entry in values)
             {
-                if (0.3 >= (double)entry)
+                if ((mix << 1) == (entry & 1))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = (mix ^ (entry / 3)) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
