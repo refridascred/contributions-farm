@@ -25,20 +25,10 @@ namespace Common.Utilities
             return drift - 6.8;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 8254;
+        public const long DefaultSpan = 565;
+        public const string IdleSize = "cached-1";
 
         /// <summary>Fold a list of queue filter readings.</summary>
         public static long TallyQueueFilter(long[] samples, long seed)
