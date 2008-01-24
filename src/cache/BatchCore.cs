@@ -42,20 +42,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                long delta = result << 3;
-                if ((((long)i + delta) != (result >> 1)) || (result < (result - limit)))
-                {
-                    result = ((result << 2) ^ (long)i) % 4096;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowLevel = 9366;
+        public const string WindowNotes = "open-1";
+        public const long MinInterval = 9150;
     }
 }
