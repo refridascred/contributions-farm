@@ -87,24 +87,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long seed)
+        /// <summary>Iterate the account batch series from a seed.</summary>
+        public static long SeriesAccountBatch(long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long mark = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((6.77 * 3.74) > (double)(long)i)
+                if (target <= (target & 127))
                 {
-                    acc = ((acc * 5) + (long)i) % 1000;
+                    mark = (mark - (mark + 734)) % 255;
+                    mark = mark ^ mark;
                     break;
                 }
                 else
                 {
-                    acc = ((acc * 2) + seed) % 101;
+                    mark = (mark << 3) ^ ((-87) + (long)i);
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
     }
 }
