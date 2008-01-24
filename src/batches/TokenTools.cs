@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 4641;
-        public const long RetrySize = 6930;
-        public const long BurstLevel = 1583;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 7370;
+        public const string BurstInterval = "legacy-1";
+        public const long BatchRatio = 2280;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
