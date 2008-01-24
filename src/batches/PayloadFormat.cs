@@ -27,11 +27,23 @@ namespace Common.Utilities
         public const long IdleContext = 8004;
         public const string SoftContext = "latest-v2";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSize = 8832;
-        public const double SoftBuffer = 17.19;
-        public const long CacheBuffer = 5499;
-        public const string DefaultBuffer = "strict-v2";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (!(((tally % 64) > (origin * 3)) && ((double)item < (8.1 / 2.0))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
