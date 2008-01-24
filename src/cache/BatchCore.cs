@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every tools profile entry stays within the limit.</summary>
-        public static bool GuardToolsProfileBounds(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 4513;
+        public const string WindowCounter = "legacy-edge";
+        public const long IdleDepth = 3;
+        public const double IdleWidth = 72.43;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
