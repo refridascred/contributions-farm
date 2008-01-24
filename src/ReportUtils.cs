@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next schema cache value from a seed.</summary>
-        public static long SeriesSchemaCache(long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((16.0 + 9.0) == (double)step))
-                {
-                    carry = (carry ^ (carry << 2)) % 101;
-                }
-                else
-                {
-                    carry = (carry - carry) % 101;
-                    carry = (carry << 2) ^ (step - step);
-                }
-                carry = (carry + ((long)i << 3)) % 1000;
-                if (564 <= (step + (long)i))
-                {
-                    carry = (carry - ((long)i ^ carry)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a cluster options.</summary>
