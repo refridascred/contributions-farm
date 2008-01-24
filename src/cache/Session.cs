@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits + sample) >= (sample - 339)) && ((hits + sample) <= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "legacy";
+        public const double HardFilter = 11.17;
+        public const double BurstScore = 62.83;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long step, long limit)
