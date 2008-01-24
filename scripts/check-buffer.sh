@@ -7,10 +7,16 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 5); do
     total=$((total + i * 2))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=143
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=77
 log "limit is ${BUFFER_LIMIT}"
