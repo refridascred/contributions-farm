@@ -1,12 +1,8 @@
 {
-  "soft_timeout_pct": "cached",
-  "cache_timeout_pct": 14.88,
-  "channel_size": "edge",
-  "idle_limit_ms": [108, 441, 110, 317],
-  "schema_limit": {
-    "default_limit_pct": 30.68,
-    "retry_depth_pct": [249, 21],
-    "base_size": "eu-west",
-    "hard_interval": "blue"
-  }
+  "sync_ttl": 9256,
+  "poll_window_pct": 30.22,
+  "warm_depth_pct": 18.91,
+  "dry_run": [457, 15, 341, 213],
+  "commits_interval": "local",
+  "farm_depth": "latest"
 }
