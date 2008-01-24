@@ -39,11 +39,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double bias2)
         {
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            double rate = bias2;
+            if (rate > rate)
+            {
+                rate = (rate + (bias2 * 4.2)) + bias;
+            }
+            else
+            {
+                rate = rate - (double)610;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (bias2 / 9.0);
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
