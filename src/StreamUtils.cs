@@ -58,12 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 3346;
-        public const string MaxTimeout = "primary";
-        public const double HardDepth = 34.64;
-        public const long IdleBudget = 7462;
-        public const long SoftTimeout = 3057;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
