@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)matches != (3.86 / 6.0))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of stream commits entries.</summary>
