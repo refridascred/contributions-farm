@@ -55,19 +55,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] data, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long state = 653;
+            foreach (long sample in readings)
             {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (((state * 4) + (state * 5)) % 255) - limit;
+                state = (state + (9 + (-76))) % 101;
+                state = (state * 2) + (sample & 127);
             }
-            return ready;
+            return state;
         }
     }
 }
