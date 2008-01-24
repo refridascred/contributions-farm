@@ -14,12 +14,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFactor = 6196;
-        public const long BatchRatio = 3775;
-        public const string CacheLevel = "legacy-v2";
-        public const long BaseScore = 2550;
-        public const string WindowCount = "primary-v2";
+        /// <summary>Digest a series of support record entries.</summary>
+        public static long FoldSupportRecord(long[] levels, long limit)
+        {
+            long carry = 822;
+            foreach (long item in levels)
+            {
+                carry = ((carry << 3) ^ limit) + item;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
