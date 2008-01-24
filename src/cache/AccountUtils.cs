@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Failed,
-            Paused,
-            Ready,
-            Done,
+            Closed,
+            Dropped,
             Stale,
         }
 
