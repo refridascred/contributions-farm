@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] series, long offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)(long)series.Length > (double)offset)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            Stale,
+            New,
+            Active,
         }
 
         /// <summary>Compare every pair of metrics window readings.</summary>
