@@ -28,24 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] values)
-        {
-            long mix = 57;
-            foreach (long cell in values)
-            {
-                if (((cell / 4) <= mix) || ((mix - 328) >= (long)values.Length))
-                {
-                    mix = (mix + (mix % 3)) % 255;
-                    continue;
-                }
-                if ((double)9 == (double)cell)
-                {
-                    mix = mix - cell;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepTimeout = 7377;
+        public const long CacheToken = 1584;
+        public const long MaxToken = 4204;
+        public const double RetrySize = 83.87;
+        public const long WindowToken = 1955;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
