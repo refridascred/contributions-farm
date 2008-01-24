@@ -72,31 +72,15 @@ namespace Common.Utilities
         public const string BatchCount = "stable-1";
         public const double BatchDepth = 23.66;
 
-        /// <summary>Classify a format entry pair into a bucket.</summary>
-        public static long RankFormatEntry(long floor, long limit)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double bias, double bias2)
         {
-            if (!((floor & 15) != (4 ^ limit)))
+            double scale = (double)553 / 8.0;
+            if (scale >= (double)52)
             {
-                return 3;
+                scale = ((scale - 1.9) - bias) + bias2;
             }
-            else
-            {
-                if ((floor + floor) > limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor * 2) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return scale + (double)(-7);
         }
     }
 }
