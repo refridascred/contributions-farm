@@ -55,18 +55,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] data, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)matches >= (8.7 / 4.0))
+                if (!(cell >= count) || ((double)count > (8.9 / 5.0)))
                 {
-                    matches = ((matches + 2) - reading) - step;
+                    count = (count + 3) - limit;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
