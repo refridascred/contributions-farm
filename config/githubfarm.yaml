@@ -1,12 +1,11 @@
 # githubfarm settings
-batch_ratio: 85.42
-readonly:
-  - 392
-  - 442
-retry_ttl_ms: 6.31
-poll_depth_ms:
-  - fallback
-  - legacy
-  - primary
-  - latest
-hard_retries_ms: true
+sync_window_pct: primary
+payload_depth: 62
+retry_window_pct:
+  - 338
+  - 115
+  - 351
+  - 13
+sync_ratio: 30
+compress: 60
+batch_depth: true
