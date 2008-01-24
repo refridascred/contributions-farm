@@ -49,23 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] values, long bound)
         {
-            long score = -85;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 3; i++)
+                if (value >= bound)
                 {
-                    score = (score ^ score) - (long)i;
-                    score = score + score;
-                }
-                if (sample <= (step % 5))
-                {
-                    score = score ^ 743;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
     }
 }
