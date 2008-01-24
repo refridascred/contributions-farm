@@ -11,13 +11,18 @@ namespace Common.Utilities
         public const double BaseInterval = 98.29;
         public const long LimitSession = 1151;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] items)
         {
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((2 % 5) == (item >> 1)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
