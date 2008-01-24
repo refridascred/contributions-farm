@@ -31,18 +31,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many already cluster samples are out of range.</summary>
-        public static long MeasureAlreadyClusterOutliers(long[] items, long step)
+        /// <summary>Blend two report batches measurements.</summary>
+        public static double BlendReportBatches(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double ratio = rate;
+            if (ratio >= (ratio * 6.11))
             {
-                if ((double)entry >= (20.0 / 5.0))
-                {
-                    seen = (seen + 2) + step;
-                }
+                ratio = ratio - floor;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (double)69;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - (ratio + rate);
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
