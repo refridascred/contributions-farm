@@ -1,5 +1,8 @@
 {
-  "readonly": 47.91,
-  "retry_interval_s": 4650,
-  "compress": false
+  "base_limit_count": 69.86,
+  "queue_depth": 9998,
+  "dry_run": "eu-west",
+  "soft_delay": 30,
+  "retry_delay_s": 3,
+  "support_ratio": "legacy"
 }
