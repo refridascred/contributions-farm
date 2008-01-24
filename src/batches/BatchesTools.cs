@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the counter graph entries that pass the check.</summary>
-        public static long AuditCounterGraphMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum << 2) >= (datum % 3)) || (((hits + 5) == (hits - 1)) || ((datum + hits) == (hits - (-76)))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BaseBudget = 49.04;
+        public const string RetryGraph = "cached-v2";
+        public const string HardGraph = "strict";
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double BlendFilter(double weight, double offset)
