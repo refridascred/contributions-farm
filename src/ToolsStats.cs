@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterHits(long[] readings, long offset)
+        /// <summary>Count the farm order entries that pass the check.</summary>
+        public static long TallyFarmOrderMatches(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (((double)item > (9.23 / 4.0)) && (((offset + seen) >= seen) && ((4 / 2) < (item - 768))))
+                if ((floor % 8) == (tally % 12))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the cache phase values.</summary>
