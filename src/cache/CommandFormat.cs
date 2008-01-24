@@ -14,15 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double bias, double floor)
+        /// <summary>Roll a entry metrics counter forward.</summary>
+        public static long IterateEntryMetrics(long offset)
         {
-            double weight = (9.0 * 10.0) / 7.0;
-            for (int i = 0; i < 2; i++)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                weight = (weight - (double)(long)i) + floor;
+                mix = mix ^ (3 % 2);
+                mix = ((mix << 2) ^ (long)i) % 97;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return weight - bias;
+            return mix;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
