@@ -31,21 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((hits + hits) >= (item << 3))
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a command summary.</summary>
