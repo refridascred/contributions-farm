@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long carry = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (value >= target)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    ready = false;
-                    break;
+                    carry = (((carry << 3) ^ (long)i) % 1000) ^ (long)i2;
+                    carry = (carry ^ (carry * 3)) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Project the next stream cluster value.</summary>
