@@ -49,10 +49,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryScore = 9391;
-        public const string BaseWindow = "standard";
-        public const long BatchCount = 604;
-        public const string CacheSpan = "legacy-v2";
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+        }
     }
 }
