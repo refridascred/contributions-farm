@@ -20,18 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] items)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((item % 60) < ((-17) << 2)) || ((item - 629) >= (seen - 99)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit buffer route readings against a rule.</summary>
