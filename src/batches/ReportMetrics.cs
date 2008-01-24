@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] series)
+        /// <summary>Adjust a checks stats reading.</summary>
+        public static double ScaleChecksStats(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = 1.0;
+            if (mean < (9.06 / 7.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - (double)2) - gain;
             }
-            return seen;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean - mean;
         }
 
         /// <summary>Blend two record measurements.</summary>
