@@ -14,20 +14,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate route tools readings against a bound.</summary>
-        public static bool CheckRouteToolsRange(long[] levels, long floor)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftRecord = "strict-v2";
+        public const long StepFactor = 2034;
+        public const long DefaultSpan = 4171;
+        public const string BaseRecord = "standard-edge";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] data)
