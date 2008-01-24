@@ -53,17 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] readings, long seed)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if (readings[i] <= seed)
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
