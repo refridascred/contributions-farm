@@ -25,12 +25,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] values, long floor)
         {
-            Queued,
-            Stale,
-            Draft,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!(43 >= (datum & 7)))
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a format reading by value.</summary>
