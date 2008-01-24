@@ -28,13 +28,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepTimeout = 3745;
+        public const long BurstScore = 9496;
+        public const string CacheRoute = "open";
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] values)
