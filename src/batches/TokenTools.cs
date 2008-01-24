@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
-        {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 4641;
+        public const long RetrySize = 6930;
+        public const long BurstLevel = 1583;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
