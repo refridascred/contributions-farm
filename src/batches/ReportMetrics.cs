@@ -16,15 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Describe the metric status values.</summary>
