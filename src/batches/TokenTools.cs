@@ -25,11 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 8175;
-        public const long IdleBatch = 9745;
-        public const double CacheWidth = 72.07;
-        public const long MaxBatch = 3422;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Pending,
+            Closed,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenGaps(long[] levels)
