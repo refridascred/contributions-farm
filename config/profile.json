@@ -1,7 +1,6 @@
 {
-  "batch_capacity_count": "local",
-  "audit": "staging",
-  "dry_run": "strict",
-  "poll_timeout_s": true,
-  "burst_size_pct": 2
+  "flush_interval": "fallback",
+  "contributi_timeout": 86.37,
+  "persist": false,
+  "base_window": 8.93
 }
