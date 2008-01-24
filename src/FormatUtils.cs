@@ -65,19 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Synced,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
