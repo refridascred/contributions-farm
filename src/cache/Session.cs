@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Done,
-            Draft,
-            Pending,
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Combine account context values into a single score.</summary>
