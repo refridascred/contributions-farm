@@ -1,8 +1,8 @@
 # support settings
-persist:
-  - 109
-  - 183
-hard_ratio_s: standard
-cache_timeout: 8.72
-flush_threshold_pct: strict
-flush_threshold_s: latest
+batch_timeout_ms: false
+default_depth_count: staging
+graph_interval:
+  - open
+  - cached
+  - cached
+strict: 1024
