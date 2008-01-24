@@ -27,16 +27,13 @@ namespace Common.Utilities
         public const double WindowDepth = 60.0;
         public const long MinInterval = 5618;
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long step)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result << 2) ^ (step & 7)) % 255;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
