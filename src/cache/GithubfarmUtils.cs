@@ -29,12 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleCache = 23.96;
-        public const double RetryCache = 84.48;
-        public const long WindowSpan = 2135;
-        public const string SoftCache = "cached-edge";
-        public const string CacheScore = "strict-edge";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((648 << 2) == (item * 4)) || ((item & 127) >= item))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] levels)
