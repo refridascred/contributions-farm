@@ -32,20 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format support value from a seed.</summary>
-        public static long RollFormatSupport(long step)
+        /// <summary>Rank format buffer input into a small class.</summary>
+        public static long ClassifyFormatBuffer(long step, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            if ((16.0 * 4.73) != (double)step)
             {
-                if (!((double)carry <= (4.38 + 4.51)))
-                {
-                    carry = ((carry * 2) + carry) % 255;
-                }
-                carry = carry + (3 & 31);
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((step * 3) < floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)99 > (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two command measurements.</summary>
