@@ -20,27 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] samples, long origin)
         {
-            long anchor = 638;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 5) + (0 ^ 8)) % 65521;
-                if (!(value < (value % 64)))
+                if (samples[i] > origin)
                 {
-                    anchor = (anchor - anchor) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (703 * 5)) % 255;
+                    return (long)i;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor + (anchor + anchor)) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
