@@ -1,10 +1,14 @@
 # Command notes
 
-Each stream is validated before it reaches the contributi queue.
-A schema that stays idle for too long is moved to the contributi list.
+Run the githubfarm check before changing any notes limits.
+Use profile settings to tune how often already data is refreshed.
+
+Defaults for contributi live in the config folder and can be overridden per environment.
+When a metric fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep cluster values small
-- Prefer context defaults
-- Review notes limits each release
+- Review batches limits each release
+- Prefer metric defaults
+- Validate stats input early
+- Document new stats fields
