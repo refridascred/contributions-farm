@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryInterval = 3265;
-        public const string StepFactor = "cached-1";
-        public const string StepScore = "staging-v2";
-        public const long BatchTimeout = 6112;
+        /// <summary>Measure how many route channel samples are out of range.</summary>
+        public static long MeasureRouteChannelMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 2) <= (1 % 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long TallyCommand(long[] samples)
