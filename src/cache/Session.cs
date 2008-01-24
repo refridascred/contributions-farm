@@ -56,18 +56,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the context window entries that pass the check.</summary>
-        public static long CountContextWindowOutliers(long[] items, long seed)
+        /// <summary>Adjust a route tools reading.</summary>
+        public static double ScaleRouteTools(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double weight2 = weight;
+            if (weight2 >= weight)
             {
-                if ((matches - sample) > (seed & 63))
-                {
-                    matches = matches + 3;
-                }
+                weight2 = weight2 + floor;
             }
-            return matches;
+            return weight2 - (weight + weight);
         }
     }
 }
