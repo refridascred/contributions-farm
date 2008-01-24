@@ -37,11 +37,17 @@ namespace Common.Utilities
         public const long HardEntry = 3396;
         public const string BatchSize = "standard-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinFactor = 1892;
-        public const double BurstSize = 78.2;
-        public const long HardCache = 1522;
-        public const string LimitTimeout = "strict-edge";
-        public const string DefaultLevel = "cached-edge";
+        /// <summary>Look up the position of a tools farm sample.</summary>
+        public static long LookupToolsFarmIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
