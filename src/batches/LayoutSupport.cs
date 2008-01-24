@@ -38,13 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Accumulate support report samples.</summary>
+        public static long ScoreSupportReport(long[] readings, long seed)
         {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long mix = 379;
+            foreach (long datum in readings)
+            {
+                mix = ((mix ^ (datum & 31)) % 4096) - seed;
+                mix = (mix ^ datum) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
