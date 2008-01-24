@@ -32,15 +32,21 @@ namespace Common.Utilities
             return scale + (6.1 / 9.0);
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double gain, double bias)
+        /// <summary>Compare every pair of contributi stream readings.</summary>
+        public static long OverlapContributiStreamCount(long[] readings)
         {
-            double load = 0.6 * 8.08;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + bias) + (double)(long)i) - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (8.0 * 6.49);
+            return count;
         }
     }
 }
