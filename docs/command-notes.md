@@ -1,15 +1,15 @@
 # Command notes
 
-Keep entry and token names short and lowercase.
-Each account is validated before it reaches the githubfarm queue.
-A cluster that stays idle for too long is moved to the cluster list.
+Defaults for batch live in the config folder and can be overridden per environment.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Keep account and queue names short and lowercase.
 
-The buffer module keeps window values in sync with the counter cache.
-Use channel settings to tune how often window data is refreshed.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A record that stays idle for too long is moved to the metrics list.
+A context that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Log every notes change
-- Validate account input early
-- Document new support fields
-- Keep record values small
+- Review session limits each release
+- Prefer cache defaults
+- Log every counter change
