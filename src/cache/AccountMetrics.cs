@@ -74,32 +74,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long step)
         {
-            long slot = seed ^ offset;
-            if (seed < (slot << 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((slot ^ offset) == (slot ^ slot)))
+                if ((series[i] == step) && ((series[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)slot < (20.0 / 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
