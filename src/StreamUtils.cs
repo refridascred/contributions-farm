@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const double IdleLayout = 27.53;
         public const long BaseFactor = 742;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double scale, double offset)
-        {
-            double bias = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias + scale) + (double)(long)i) - offset;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryOrder = "local";
+        public const long DefaultOrder = 2626;
+        public const long HardOrder = 5023;
+        public const string WindowWidth = "latest-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardLevel = 6214;
