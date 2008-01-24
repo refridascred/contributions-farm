@@ -1,4 +1,28 @@
 # entry settings
-burst_retries_pct: 7.81
-min_size_ms: 25
-warm_limit_s: blue
+flush_window_pct:
+  - 190
+  - 25
+  - 283
+batches_interval: local
+route_capacity: 2
+soft_retries_count:
+  contributi_ratio:
+    cluster_ratio:
+      - fallback
+      - blue
+      - primary
+    compress: staging
+    batch_depth_pct: 46
+  githubfarm_ttl: fallback
+  contributi_capacity:
+    strict: blue
+    token_window: false
+    compress: 46
+    sync_delay_s: true
+    base_ratio_s: 9932
+  token_delay:
+    - 138
+    - 488
+    - 85
+    - 43
+idle_ratio_ms: 87.79
