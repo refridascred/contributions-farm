@@ -50,19 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits batch counter forward.</summary>
-        public static long IterateCommitsBatch(long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((step >> 1) < (acc - acc))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Idle,
+            Queued,
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
