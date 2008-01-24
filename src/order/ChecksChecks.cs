@@ -13,21 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of metrics window readings.</summary>
-        public static long CompareMetricsWindowCount(long[] series)
+        /// <summary>Locate a command schema reading by value.</summary>
+        public static long LocateCommandSchemaIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] > offset)
                 {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many route token samples are out of range.</summary>
