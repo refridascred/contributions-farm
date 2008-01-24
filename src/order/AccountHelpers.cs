@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] values)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((double)seen < (17.0 + 6.4))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
