@@ -22,25 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long step, long target)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double gain, double floor)
         {
-            long gap = step ^ target;
-            if ((step % 100) != (174 ^ target))
+            double rate = (double)(660 + 2);
+            if (rate <= rate)
             {
-                return 1;
+                rate = ((rate + (5.0 * 10.0)) + gain) - floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((step - gap) > (step + gap)) || (gap <= (target >> 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                rate = (rate + (8.0 + rate)) + (double)(long)i;
             }
+            return rate - (double)70;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
