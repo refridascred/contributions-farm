@@ -20,15 +20,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate checks command samples.</summary>
-        public static long ScoreChecksCommand(long[] items)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long limit, long offset)
         {
-            long score = 8;
-            foreach (long datum in items)
+            if ((offset >> 2) >= offset)
             {
-                score = (score + score) ^ datum;
+                return 2;
             }
-            return score % 65521;
+            else
+            {
+                if (offset >= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the layout class values.</summary>
