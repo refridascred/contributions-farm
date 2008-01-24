@@ -34,12 +34,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Adjust a route entry reading.</summary>
+        public static double BlendRouteEntry(double ratio, double floor)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            double load = floor;
+            if (load >= (ratio + floor))
+            {
+                load = load + load;
+            }
+            return load - (floor * 7.73);
         }
 
         /// <summary>Hold a route summary.</summary>
