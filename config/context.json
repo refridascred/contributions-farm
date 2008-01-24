@@ -1,20 +1,5 @@
 {
-  "idle_capacity_ms": 1024,
-  "soft_retries": 82,
-  "verbose": {
-    "buffer_threshold": {
-      "sync_window_pct": true,
-      "enabled": true,
-      "readonly": "green",
-      "warm_capacity_count": 85.11
-    },
-    "burst_capacity_s": 501,
-    "retry_retries": false,
-    "window_threshold": 43,
-    "readonly": 4467,
-    "enabled": 44
-  },
-  "account_size": 25,
-  "persist": 70.89,
-  "burst_threshold_pct": 58.34
+  "verbose": 250,
+  "graph_timeout": false,
+  "batch_size_s": "green"
 }
