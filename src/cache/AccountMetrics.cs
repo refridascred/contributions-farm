@@ -29,19 +29,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double weight, double offset)
+        /// <summary>Locate a profile command reading by value.</summary>
+        public static long SeekProfileCommandIndex(long[] items, long floor)
         {
-            double weight2 = (double)317 + weight;
-            if (weight2 <= (6.0 / 5.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                weight2 = (weight2 + weight2) - offset;
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (double)1;
-            }
-            return weight2 + weight2;
+            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
