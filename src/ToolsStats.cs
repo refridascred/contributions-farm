@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next filter notes value.</summary>
-        public static double ProjectFilterNotes(double scale, double offset)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            double drift = 20.0 / 4.0;
-            if (drift <= (drift / 7.0))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift - (offset / 2.0)) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift / 5.0)) + (double)(long)i;
-            }
-            return drift - (double)3;
+            return hits;
         }
 
         /// <summary>Roll a stream editor counter forward.</summary>
