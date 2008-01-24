@@ -1,5 +1,5 @@
 {
-  "base_delay_count": [253, 62, 220],
-  "idle_limit": ["standard", "stable"],
-  "default_size_s": 1024
+  "poll_depth": [115, 63, 312, 215],
+  "editor_depth": 250,
+  "strict": ["green", "blue", "primary", "staging"]
 }
