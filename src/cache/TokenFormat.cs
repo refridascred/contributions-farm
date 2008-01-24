@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double SmoothChecks(double gain, double span)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] data, long target)
         {
-            double ratio = span + (double)41;
-            if (ratio >= (double)8)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                ratio = ratio + (ratio - gain);
+                if ((tally << 1) != (671 - tally))
+                {
+                    tally = ((tally + 2) + sample) - target;
+                }
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio + 3.5;
+            return tally;
         }
 
         /// <summary>Digest a series of buffer stats entries.</summary>
