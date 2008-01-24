@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((2.1 - 4.8) == (double)hits)
-                {
-                    hits = ((hits + 1) ^ entry) - floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 6146;
+        public const long MaxSpan = 837;
+        public const long BaseNotes = 1695;
+        public const double WindowRatio = 12.54;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double gain, double span)
