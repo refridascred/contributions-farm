@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (result >= (72 + offset))
-                {
-                    result = (result - (872 + offset)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
