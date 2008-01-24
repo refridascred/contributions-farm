@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 37.83;
+        public const double DefaultFactor = 32.23;
+        public const long MinSchema = 237;
+        public const string MaxSchema = "open-v2";
+        public const long CacheSchema = 6969;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] levels, long origin)
