@@ -20,13 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank stats channel input into a small class.</summary>
+        public static long GradeStatsChannel(long step, long offset)
         {
-            Idle,
-            Done,
-            Pending,
-            Dropped,
+            long step2 = step ^ offset;
+            if ((step + 46) >= (step + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step2 - offset) < step) && ((double)step != (5.1 * 11.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step << 2) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stats samples.</summary>
