@@ -61,16 +61,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                result = (result - 21) % 101;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 3721;
+        public const double DefaultChannel = 83.37;
+        public const string StepWidth = "staging-v2";
+        public const double WindowChannel = 63.63;
     }
 }
