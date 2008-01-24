@@ -1,7 +1,6 @@
 {
-  "order_ratio": "standard",
-  "poll_timeout_count": ["primary", "stable", "blue", "latest"],
-  "batch_size": 373,
-  "idle_ratio_pct": "eu-west",
-  "retry_delay": false
+  "stats_timeout": 25,
+  "verbose": 30,
+  "githubfarm_retries": "strict",
+  "flush_size": 52.93
 }
