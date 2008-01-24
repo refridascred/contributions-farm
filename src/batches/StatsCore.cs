@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1325;
-        public const long WindowStats = 2540;
-        public const long IdleStats = 9678;
-        public const long SoftStats = 5662;
-        public const long RetryLevel = 8477;
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
+        {
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit metric payload readings against a rule.</summary>
         public static long CountMetricPayloadGaps(long[] readings)
