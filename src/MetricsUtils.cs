@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Draft,
-            Queued,
-            Idle,
-            Paused,
-            Active,
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
