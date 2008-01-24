@@ -28,11 +28,12 @@ namespace Common.Utilities
             return weight - (gain * 7.98);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardScore = 98.24;
-        public const double IdleAccount = 1.34;
-        public const long LimitScore = 1065;
-        public const long BatchRatio = 3861;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleFactor = 24.05;
+        public const long BaseBatch = 854;
+        public const long DefaultBatch = 8806;
+        public const string RetryRatio = "primary-v2";
+        public const long BurstRatio = 1111;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double LimitChannel = 17.77;
