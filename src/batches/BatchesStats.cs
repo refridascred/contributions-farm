@@ -49,23 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long step)
         {
-            long score = 151;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 5) + (23 + sample)) % 4096;
-                if ((score + score) == (7 >> 4))
+                if ((step - (long)data.Length) >= ((long)data.Length * 3))
                 {
-                    score = score ^ (sample - sample);
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            if (score > 936)
-            {
-                score = ((score * 3) + (score * 5)) % 101;
-            }
-            return score;
+            return tally;
         }
     }
 }
