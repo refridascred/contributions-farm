@@ -69,10 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseChecks = "fallback";
-        public const long MinChecks = 2356;
-        public const string BurstScore = "latest";
-        public const double CacheChecks = 13.41;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!!(793 < (seen + cell)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
