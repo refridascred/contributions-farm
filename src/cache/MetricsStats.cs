@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Locate a layout support reading by value.</summary>
+        public static long LookupLayoutSupportIndex(long[] values, long floor)
         {
-            Paused,
-            Failed,
-            Queued,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
