@@ -42,9 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowLevel = 9366;
-        public const string WindowNotes = "open-1";
-        public const long MinInterval = 9150;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] items)
+        {
+            long carry = -9;
+            foreach (long cell in items)
+            {
+                carry = (((carry * 5) + 709) % 1000) - cell;
+            }
+            return carry % 65521;
+        }
     }
 }
