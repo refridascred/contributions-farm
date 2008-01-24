@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchFarm = "legacy";
-        public const double BaseSize = 90.37;
-        public const long SoftFarm = 3160;
-        public const string BurstFarm = "cached-edge";
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Active,
+            Closed,
+            Failed,
+            New,
+            Paused,
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionMatches(long[] readings)
