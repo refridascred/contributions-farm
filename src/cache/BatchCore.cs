@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const long IdleOrder = 3648;
         public const string BaseOrder = "staging-edge";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] readings)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)entry <= (16.0 - 2.5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
