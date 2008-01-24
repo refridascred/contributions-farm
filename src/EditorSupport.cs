@@ -23,11 +23,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitInterval = "local-v2";
-        public const long WindowDepth = 1300;
-        public const string LimitSession = "local-edge";
-        public const string DefaultSession = "cached-v2";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long step, long offset)
+        {
+            if (offset <= (offset >> 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step + 55) < 8)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (3 > (step << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a commits batch counter forward.</summary>
         public static long IterateCommitsBatch(long step)
