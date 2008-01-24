@@ -34,16 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Accumulate format command samples.</summary>
+        public static long TotalFormatCommand(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
+            long sum = 39;
+            foreach (long datum in data)
             {
-                acc = (acc << 3) ^ (801 + (long)i);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((double)sum == (5.46 / 6.0))
+                {
+                    sum = ((sum << 2) ^ (datum * 4)) % 101;
+                }
             }
-            return acc;
+            return sum;
         }
     }
 }
