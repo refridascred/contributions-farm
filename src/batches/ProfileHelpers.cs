@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 43.69;
-        public const long MaxGithubfarm = 7352;
-        public const double LimitWidth = 25.15;
-        public const long MinGithubfarm = 80;
-        public const double DefaultGithubfarm = 24.93;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] values, long origin)
