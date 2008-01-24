@@ -43,12 +43,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double rate, double floor)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
+            double ratio = floor;
+            if (ratio > floor)
+            {
+                ratio = ratio + 8.88;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
