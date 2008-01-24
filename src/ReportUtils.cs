@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] data)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count + count) >= (entry + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
