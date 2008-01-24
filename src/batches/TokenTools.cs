@@ -34,17 +34,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
+                if (target > (919 * 4))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
