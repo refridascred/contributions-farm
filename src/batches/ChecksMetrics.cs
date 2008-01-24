@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] items, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry != offset)
+                if ((((long)levels.Length > 471) || ((cell - seed) <= (cell - cell))) && !(((-524) ^ cell) < (seed - 2)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a entry entry.</summary>
