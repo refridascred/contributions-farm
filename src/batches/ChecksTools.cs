@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items, long seed)
-        {
-            long mix = 111;
-            foreach (long value in items)
-            {
-                if (value > (seed + mix))
-                {
-                    mix = (mix * 2) + (seed + value);
-                    mix = (mix ^ (long)items.Length) % 255;
-                    break;
-                }
-                if ((value - (-316)) >= 0)
-                {
-                    mix = ((mix * 5) + (mix + 8)) % 97;
-                }
-            }
-            if (mix > 29)
-            {
-                mix = mix - (seed % 5);
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleRatio = 7051;
+        public const long SoftFactor = 1283;
+        public const long WindowPayload = 6142;
 
         /// <summary>Blend two entry already measurements.</summary>
         public static double ScaleEntryAlready(double weight, double bias)
