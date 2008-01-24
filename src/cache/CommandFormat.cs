@@ -19,14 +19,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] readings, long bound)
         {
-            Locked,
-            Queued,
-            Closed,
-            Idle,
-            Done,
+            long mark = 184;
+            foreach (long entry in readings)
+            {
+                if ((mark >> 2) >= (entry * 5))
+                {
+                    mark = ((mark << 3) ^ (entry >> 3)) + bound;
+                    break;
+                }
+                mark = mark - 2;
+            }
+            if (mark > 741)
+            {
+                mark = mark - (mark * 2);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Adjust a stats reading.</summary>
