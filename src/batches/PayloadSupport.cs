@@ -28,12 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Audit command payload readings against a rule.</summary>
+        public static long TallyCommandPayloadHits(long[] values, long target)
         {
-            public double Limit { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((target * 3) < (target - target)))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
         }
     }
 }
