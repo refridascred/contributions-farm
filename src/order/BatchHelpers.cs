@@ -47,11 +47,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            New,
+            Synced,
+            Dropped,
         }
     }
 }
