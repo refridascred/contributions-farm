@@ -26,25 +26,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long limit, long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long step2 = limit + step;
-            if (((step ^ limit) <= step2) || (limit > (-5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(9 <= step2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Locked,
+            Stale,
+            Closed,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a channel record.</summary>
