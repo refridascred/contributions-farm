@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every cluster command entry stays within the limit.</summary>
+        public static bool VerifyClusterCommandLimits(long[] data, long floor)
         {
-            Closed,
-            Active,
-            Pending,
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
