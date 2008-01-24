@@ -25,19 +25,16 @@ namespace Common.Utilities
         public const double IdleWidth = 74.13;
         public const long CacheSize = 3688;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double rate, double bias)
+        /// <summary>Derive the next format batch value from a seed.</summary>
+        public static long IterateFormatBatch(long seed)
         {
-            double scale = (rate + rate) - rate;
-            if (scale < (rate * 16.0))
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                scale = (scale + rate) - bias;
+                anchor = (anchor ^ 6) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale - (rate + 17.0);
+            return anchor;
         }
     }
 }
