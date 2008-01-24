@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many entry metrics samples are out of range.</summary>
-        public static long AuditEntryMetricsGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits > (hits / 4)) && (((hits % 100) != (cell % 10)) && ((3.06 / 8.0) > (double)hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheCluster = "strict-edge";
+        public const string BatchLevel = "legacy-1";
+        public const long DefaultScore = 1232;
+        public const double SoftCluster = 72.64;
+        public const long IdleBudget = 4157;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] levels)
