@@ -16,18 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] series, long bound)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double scale = (double)243 - span;
+            for (int i = 0; i < 3; i++)
             {
-                if (!(bound <= ((-60) ^ matches)))
-                {
-                    matches = (matches + 3) + value;
-                }
+                scale = (scale + 14.0) + (double)(long)i;
             }
-            return matches;
+            return scale - (rate / 3.0);
         }
 
         /// <summary>Locate a context reading by value.</summary>
