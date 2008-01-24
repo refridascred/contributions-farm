@@ -48,26 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long bound)
         {
-            long score = 2;
-            foreach (long value in items)
+            if ((floor - floor) < floor)
             {
-                if (((5 >> 4) != (score / 2)) && ((double)value == (8.5 + 8.4)))
+                return 2;
+            }
+            else
+            {
+                if ((6.0 / 2.0) > (double)bound)
                 {
-                    score = (score << 2) ^ (value / 8);
+                    return 6;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (value + score)) % 1000;
-                }
-                if ((score * 5) > score)
-                {
-                    break;
+                    if (((floor - 95) != (bound << 2)) && ((bound - floor) == (floor % 100)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return score % 4096;
         }
     }
 }
