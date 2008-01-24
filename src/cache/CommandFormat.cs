@@ -20,19 +20,13 @@ namespace Common.Utilities
             return load - (bias / 6.0);
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] samples, long limit)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
