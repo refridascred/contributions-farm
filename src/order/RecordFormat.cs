@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 7262;
+        public const double StepRatio = 21.28;
+        public const long BatchWidth = 8238;
 
         /// <summary>Measure how many cache record samples are out of range.</summary>
         public static long CountCacheRecordHits(long[] series, long origin)
