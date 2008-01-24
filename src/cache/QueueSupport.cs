@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] series)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Done,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
