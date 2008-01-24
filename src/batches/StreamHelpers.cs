@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] levels, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            double rate = (double)5 + (7.53 * 16.0);
+            if (rate > bias)
             {
-                if (datum < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate + (double)73;
             }
-            return ok;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) - (double)(long)i;
+            }
+            return rate - (scale - bias);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
