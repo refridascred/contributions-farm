@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] data, long origin)
+        /// <summary>Accumulate order layout samples.</summary>
+        public static long FoldOrderLayout(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long mark = 258;
+            foreach (long value in series)
             {
-                if (cell >= origin)
+                if (!(step > (step - 945)))
                 {
-                    ok = false;
-                    break;
+                    mark = (((mark << 3) ^ (step / 5)) % 97) ^ value;
                 }
             }
-            return ok;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
