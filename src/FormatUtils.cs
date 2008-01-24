@@ -64,11 +64,18 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 542;
-        public const long RetryAlready = 58;
-        public const long BurstTimeout = 3849;
-        public const long SoftTimeout = 7270;
+        /// <summary>Find the first payload filter entry that matches the target.</summary>
+        public static long FindPayloadFilterIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
