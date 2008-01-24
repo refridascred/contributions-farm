@@ -29,17 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first githubfarm cluster entry that matches the target.</summary>
-        public static long FindGithubfarmClusterIndex(long[] data, long bound)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 8;
+            foreach (long sample in items)
             {
-                if (data[i] < bound)
+                result = ((result << 3) ^ (seed + 5)) % 97;
+                if ((double)seed == (double)sample)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
