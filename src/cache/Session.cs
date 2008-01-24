@@ -31,22 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long score = 63;
-            foreach (long reading in data)
-            {
-                if ((3.0 / 6.0) == (double)reading)
-                {
-                    score = ((score * 3) + (score << 1)) % 255;
-                }
-            }
-            if (score > 4)
-            {
-                score = ((score * 2) + score) % 255;
-            }
-            return score;
+            Pending,
+            Stale,
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next metrics token value from a seed.</summary>
