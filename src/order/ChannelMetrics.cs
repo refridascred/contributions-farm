@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] samples, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((double)floor == (double)count)
+                if ((double)tally >= (4.0 * 18.0))
                 {
-                    count = (count + 1) + entry;
+                    tally = (tally + 2) - datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
