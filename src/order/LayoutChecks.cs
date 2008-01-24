@@ -25,21 +25,20 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 38.34;
         public const double RetryGithubfarm = 44.84;
 
-        /// <summary>Count metrics already pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsAlreadyCount(long[] data)
+        /// <summary>Derive the next filter stats value from a seed.</summary>
+        public static long StepFilterStats(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (59 < (seed + carry))
                 {
-                    if ((data[i] ^ data[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 5) + carry) % 255;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many metrics command samples are out of range.</summary>
