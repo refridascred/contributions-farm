@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long offset)
         {
-            long result = 39;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                result = ((result + (result + item)) % 1000) - seed;
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (result < 934)
-            {
-                result = result ^ 802;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Rank order input into a small class.</summary>
