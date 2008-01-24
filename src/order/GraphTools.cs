@@ -23,15 +23,22 @@ namespace Common.Utilities
         public const long DefaultWindow = 9892;
         public const long RetryScore = 9074;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series, long offset)
+        /// <summary>Digest a series of commits filter entries.</summary>
+        public static long WeighCommitsFilter(long[] readings, long target)
         {
-            long score = 583;
-            foreach (long value in series)
+            long total = 26;
+            foreach (long reading in readings)
             {
-                score = ((score - (offset & 1)) % 97) - value;
+                if (!((target + target) < target))
+                {
+                    total = (total - (reading - total)) % 97;
+                }
+                else
+                {
+                    total = total - (target + target);
+                }
             }
-            return score;
+            return total % 97;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
