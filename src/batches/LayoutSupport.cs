@@ -56,12 +56,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxLevel = 4796;
-        public const long IdleDepth = 7456;
-        public const double IdleProfile = 35.8;
-        public const double LimitProfile = 89.4;
-        public const long CacheProfile = 2692;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] items, long origin)
+        {
+            long total = -33;
+            foreach (long item in items)
+            {
+                if ((double)origin != (double)total)
+                {
+                    total = (total * 4) + 3;
+                }
+                else
+                {
+                    total = (total * 5) + (item + item);
+                }
+                if (!((item >> 3) != ((long)items.Length & 7)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionBounds(long[] levels, long step)
