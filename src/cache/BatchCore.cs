@@ -41,19 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state ^ (state >> 2)) % 101) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 4159;
+        public const long SoftSpan = 9907;
+        public const long MaxSupport = 725;
+        public const long CacheSupport = 6545;
+        public const long BaseWidth = 8512;
     }
 }
