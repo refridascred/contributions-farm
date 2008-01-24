@@ -75,18 +75,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((tally >> 4) > tally)
+                if (reading <= limit)
                 {
-                    tally = (tally + 2) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
