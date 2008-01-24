@@ -33,16 +33,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double bias, double offset)
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
+            double bias2 = (double)(689 + 5);
+            for (int i = 0; i < 7; i++)
             {
-                mark = ((mark * 4) + (986 >> 1)) % 255;
-                mark = ((mark * 5) + (long)i) % 1000;
+                bias2 = ((bias2 - (bias2 / 9.0)) + (double)(long)i) + offset;
             }
-            return mark;
+            return bias2 - bias;
         }
 
         /// <summary>Describe the stats status values.</summary>
