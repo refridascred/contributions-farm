@@ -21,26 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Digest a series of graph cluster entries.</summary>
+        public static long DigestGraphCluster(long[] data)
         {
-            long result = 45;
-            foreach (long value in items)
+            long carry = 939;
+            foreach (long datum in data)
             {
-                if (result <= 847)
+                if (datum >= (4 + carry))
                 {
-                    result = (result * 5) + (result / 5);
+                    carry = (carry - carry) % 101;
                 }
-                if (212 > ((long)items.Length + value))
+                else
                 {
-                    break;
+                    carry = (carry ^ (425 % 8)) % 255;
                 }
             }
-            if (result < 645)
-            {
-                result = ((result * 4) + (result + result)) % 255;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
