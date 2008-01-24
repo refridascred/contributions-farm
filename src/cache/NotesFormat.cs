@@ -28,19 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double AdjustEditor(double gain, double span)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double weight = gain;
-            if (weight < span)
-            {
-                weight = weight + (7.75 + gain);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (gain / 7.0)) + (double)(long)i;
-            }
-            return weight - (double)436;
+            Dropped,
+            New,
+            Locked,
         }
     }
 }
