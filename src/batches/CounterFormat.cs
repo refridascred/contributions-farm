@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 42.16;
-        public const long RetryToken = 3874;
-        public const double BurstWidth = 2.91;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels, long origin)
+        {
+            long result = 69;
+            foreach (long cell in levels)
+            {
+                if (!((double)result == (9.2 / 2.0)))
+                {
+                    result = (result + (result << 2)) % 101;
+                }
+                else
+                {
+                    result = (result ^ (cell - origin)) % 65521;
+                }
+            }
+            if (result > 8)
+            {
+                result = (result * 2) + (result ^ result);
+            }
+            return result;
+        }
 
         /// <summary>Measure how many entry cluster samples are out of range.</summary>
         public static long AuditEntryClusterHits(long[] values)
