@@ -39,18 +39,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long limit)
         {
-            long score = 6;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (7.85 < (double)score)
-                {
-                    score = (score - (score + item)) % 97;
-                }
+                sum = (sum << 2) ^ (limit * 3);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return score % 97;
+            return sum;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
