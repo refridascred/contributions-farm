@@ -64,21 +64,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 20;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)state <= (14.0 - 20.0))
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ (825 + entry)) % 97;
                 }
             }
-            return seen;
+            if (state > 39)
+            {
+                state = ((state * 4) + ((-1) + state)) % 97;
+            }
+            return state % 1000;
         }
     }
 }
