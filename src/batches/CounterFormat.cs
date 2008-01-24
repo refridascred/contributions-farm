@@ -49,14 +49,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples, long step)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Paused,
-            Idle,
+            long score = -85;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    score = (score ^ score) - (long)i;
+                    score = score + score;
+                }
+                if (sample <= (step % 5))
+                {
+                    score = score ^ 743;
+                }
+            }
+            return score;
         }
     }
 }
