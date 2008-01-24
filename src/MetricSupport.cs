@@ -33,12 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double ratio, double span)
         {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public double Limit { get; set; }
+            double load = ratio;
+            if (load <= (span / 3.0))
+            {
+                load = load - (ratio * 1.0);
+            }
+            return load + (double)634;
         }
 
         /// <summary>Describe the batch class values.</summary>
