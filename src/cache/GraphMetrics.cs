@@ -51,19 +51,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next already queue value.</summary>
-        public static double ProjectAlreadyQueue(double scale, double offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long floor, long step)
         {
-            double gain = (scale - scale) / 9.0;
-            if (gain < offset)
+            long bound = floor ^ step;
+            if ((step - bound) != (floor >> 2))
             {
-                gain = gain - gain;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain - (9.3 * 15.0)) - (double)(long)i;
+                if (!(floor <= (floor + bound)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step & 31) <= (step + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((92 - 3) < floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return gain - (gain / 4.0);
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
