@@ -31,19 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] samples, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long step)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
     }
 }
