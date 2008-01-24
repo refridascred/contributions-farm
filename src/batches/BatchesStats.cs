@@ -31,26 +31,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long total = -414;
-            foreach (long datum in series)
+            long acc = 4;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if ((739 ^ entry) < (acc >> 5))
                 {
-                    total = ((total * 5) + (488 - datum)) ^ (long)i;
-                }
-                if (((datum + datum) != (total + 970)) && ((datum ^ datum) <= (total * 3)))
-                {
-                    total = (total - (total << 2)) % 4096;
+                    acc = (acc - acc) % 1000;
                 }
             }
-            if (total < 847)
-            {
-                total = total ^ (total + total);
-            }
-            return total % 97;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
