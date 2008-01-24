@@ -50,11 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double ratio, double offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double load = ratio;
-            return (load - load) + offset;
+            Dropped,
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a report entry.</summary>
