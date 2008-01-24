@@ -1,7 +1,8 @@
 {
-  "idle_size": 250,
-  "min_size_pct": 12.81,
-  "flush_ttl_count": "strict",
-  "min_window_s": "edge",
-  "batch_interval": 9627
+  "cluster_retries": 13,
+  "cache_threshold_s": false,
+  "format_timeout": 1994,
+  "poll_retries": 44.3,
+  "batch_threshold_s": 250,
+  "sync_threshold_pct": 30
 }
