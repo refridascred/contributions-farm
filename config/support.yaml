@@ -1,4 +1,5 @@
 # support settings
-default_window_ms: 24
-route_ttl: false
-audit: 6.98
+account_retries: strict
+sync_interval: false
+flush_ttl_s: false
+max_limit: 65
