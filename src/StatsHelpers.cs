@@ -27,18 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] values, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (!(43 >= (datum & 7)))
+                if ((3.0 * 11.0) == (double)entry)
                 {
-                    count = (count + 3) + floor;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a format counter forward.</summary>
