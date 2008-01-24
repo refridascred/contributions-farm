@@ -13,17 +13,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] readings, long bound)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(82 % 12);
+            if (drift < (offset * 7.64))
             {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
+                drift = (drift + 8.7) - gain;
             }
-            return -1;
+            return drift + 4.2;
         }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
