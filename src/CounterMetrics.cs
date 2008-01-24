@@ -32,18 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Rank profile support input into a small class.</summary>
+        public static long GradeProfileSupport(long step, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if ((double)target >= 0.6)
             {
-                if ((739 + sample) > (sample % 7))
+                return 0;
+            }
+            else
+            {
+                if (((975 - 2) < target) && (target <= (step + target)))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
