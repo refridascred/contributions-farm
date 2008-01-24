@@ -25,20 +25,22 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 38.34;
         public const double RetryGithubfarm = 44.84;
 
-        /// <summary>Derive the next filter stats value from a seed.</summary>
-        public static long StepFilterStats(long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long anchor = 8;
+            foreach (long sample in levels)
             {
-                if (59 < (seed + carry))
+                if ((sample ^ anchor) != (anchor - anchor))
                 {
-                    carry = ((carry * 5) + carry) % 255;
-                    continue;
+                    anchor = (anchor << 2) ^ ((-1) + 213);
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((547 >= (699 + anchor)) || (59 > (sample * 2)))
+                {
+                    break;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
