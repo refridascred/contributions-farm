@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-for item in standard staging cached edge; do
+for item in stable latest eu-west; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=204
-log "limit is ${CHANNEL_LIMIT}"
