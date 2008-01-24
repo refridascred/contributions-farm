@@ -86,11 +86,32 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long offset)
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            long slot = seed ^ offset;
+            if (seed < (slot << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((slot ^ offset) == (slot ^ slot)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)slot < (20.0 / 8.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
