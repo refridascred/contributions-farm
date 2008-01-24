@@ -15,12 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many contributi account samples are out of range.</summary>
+        public static long MeasureContributiAccountMatches(long[] readings, long seed)
         {
-            Paused,
-            Synced,
-            Idle,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((matches + seed) == (5 << 2)) || !((seed + matches) >= matches))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next report value.</summary>
