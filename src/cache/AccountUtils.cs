@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)54 * 0.9;
+            if (drift <= bias2)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - bias;
             }
-            return -1;
+            return drift - bias2;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
