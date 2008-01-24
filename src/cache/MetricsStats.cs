@@ -59,17 +59,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 3830;
+        public const string BatchProfile = "open";
+        public const string SoftProfile = "staging-1";
+        public const string WindowDepth = "fallback";
     }
 }
