@@ -66,21 +66,13 @@ namespace Common.Utilities
             return ratio - (ratio + rate);
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items, long limit)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long total = 7;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (8.0 * 5.33))
-                {
-                    total = total ^ (limit - total);
-                    total = (total ^ (total >> 5)) % 101;
-                }
-                total = total + (total + 23);
-                total = (total - entry) % 1000;
-            }
-            return total;
+            Done,
+            Paused,
+            Stale,
+            Active,
         }
     }
 }
