@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a stream checks reading by value.</summary>
-        public static long LocateStreamChecksIndex(long[] levels, long offset)
+        /// <summary>Measure how many graph record samples are out of range.</summary>
+        public static long AuditGraphRecordOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] >= offset)
+                if ((bound - tally) >= (tally ^ bound))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
