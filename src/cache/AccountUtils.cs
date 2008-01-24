@@ -20,14 +20,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            Dropped,
-            Synced,
-            Draft,
-            Idle,
-            Pending,
+            long state = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
