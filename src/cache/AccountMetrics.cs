@@ -24,20 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batch record series from a seed.</summary>
-        public static long RollBatchRecord(long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum ^ (target >> 3);
-                if (((-679) >> 3) > ((long)i % 60))
+                if (data[i] <= offset)
                 {
-                    sum = (sum + (984 + sum)) % 1000;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the record graph entries that pass the check.</summary>
