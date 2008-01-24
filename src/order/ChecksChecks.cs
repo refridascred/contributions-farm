@@ -23,15 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double bias)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double weight = (double)(919 % 2);
-            if (weight > 3.97)
-            {
-                weight = (weight - (weight - bias)) - scale;
-            }
-            return weight - (double)958;
+            Retry,
+            Locked,
+            Active,
         }
 
         /// <summary>Count window filter pairs that satisfy a relation.</summary>
