@@ -33,11 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 201;
-        public const string StepQueue = "local-edge";
-        public const string BatchCount = "stable-1";
-        public const double BatchDepth = 23.66;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long step)
