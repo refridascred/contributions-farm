@@ -20,18 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 4118;
+        public const string BurstMetrics = "legacy-v2";
+        public const long MinSize = 7949;
+        public const long LimitMetrics = 6852;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long IterateEditor(long origin)
