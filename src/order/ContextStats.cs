@@ -41,21 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Audit format record readings against a rule.</summary>
+        public static long TallyFormatRecordOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count >= (6.8 + 17.0))
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
