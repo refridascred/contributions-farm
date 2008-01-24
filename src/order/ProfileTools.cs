@@ -48,19 +48,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a metrics record figure with a bias.</summary>
-        public static double AdjustMetricsRecord(double scale, double span)
+        /// <summary>Blend two cluster format measurements.</summary>
+        public static double ProjectClusterFormat(double rate, double span)
         {
-            double rate = span;
-            if (rate >= (rate / 5.0))
+            double gain = (double)(2 + 288);
+            if (gain >= (rate - 6.1))
             {
-                rate = (rate - rate) + scale;
+                gain = (gain + (rate - gain)) + span;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (rate / 3.0)) + (double)(long)i;
-            }
-            return rate + 3.0;
+            return gain + (double)78;
         }
     }
 }
