@@ -43,13 +43,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public double Token { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardSession = 27.35;
+        public const long CacheWidth = 4239;
+        public const long BurstTimeout = 6618;
+        public const long BatchBudget = 9067;
+        public const long StepSession = 7152;
     }
 }
