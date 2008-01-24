@@ -41,22 +41,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order filter entries that pass the check.</summary>
-        public static long TallyOrderFilterMatches(long[] series)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen * 2) <= (seen + sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up checks samples.</summary>
