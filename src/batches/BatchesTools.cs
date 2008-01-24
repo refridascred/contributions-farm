@@ -25,16 +25,11 @@ namespace Common.Utilities
         public const double IdleWidth = 74.13;
         public const long CacheSize = 3688;
 
-        /// <summary>Derive the next format batch value from a seed.</summary>
-        public static long IterateFormatBatch(long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double span)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor ^ 6) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            double weight = scale - scale;
+            return (weight - (scale * 10.0)) + span;
         }
     }
 }
