@@ -20,18 +20,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long AuditRouteTokenMatches(long[] levels, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry << 3) != (count - count))
+                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
                 {
-                    count = (count + 1) + limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
