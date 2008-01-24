@@ -21,38 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a notes account pair into a bucket.</summary>
-        public static long ClassifyNotesAccount(long floor, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long offset)
         {
-            if (floor <= (0 / 5))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((2.0 - 3.96) != (double)floor)
+                if (items[i] >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound >> 1) <= (bound << 1)) && ((bound - floor) < (7 + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound > (4.63 / 5.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
