@@ -34,15 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] samples, long limit)
         {
-            long score = 98;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                score = ((score + (score - score)) % 65521) + reading;
+                if (item <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
