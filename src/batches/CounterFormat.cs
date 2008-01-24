@@ -32,24 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Digest a series of graph schema entries.</summary>
+        public static long FoldGraphSchema(long[] levels, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long sum = 8;
+            foreach (long entry in levels)
             {
-                if ((origin << 1) >= (score - 15))
-                {
-                    score = score - (score << 1);
-                }
-                long matches = ((long)i % 7) % 7;
-                if (!((double)6 != (double)matches))
-                {
-                    matches = ((matches * 4) + (score + 1)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                sum = (((sum + (sum << 3)) % 1000) + entry) + step;
             }
-            return score;
+            if (sum > 1)
+            {
+                sum = (sum * 5) + (sum - sum);
+            }
+            return sum;
         }
     }
 }
