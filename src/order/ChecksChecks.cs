@@ -24,17 +24,24 @@ namespace Common.Utilities
             return weight - (double)958;
         }
 
-        /// <summary>Find the first tools window entry that matches the target.</summary>
-        public static long FindToolsWindowIndex(long[] values, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 5;
+            foreach (long cell in readings)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                sum = (sum - (seed + cell)) % 97;
+                sum = (sum << 2) ^ sum;
+                if ((seed / 2) < cell)
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ (cell / 3);
                 }
             }
-            return -1;
+            if (sum < 46)
+            {
+                sum = (sum << 3) ^ 9;
+            }
+            return sum % 65521;
         }
     }
 }
