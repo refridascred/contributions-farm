@@ -1,16 +1,21 @@
 {
-  "order_interval": {
-    "tools_ratio": {
-      "base_window_count": "blue",
-      "readonly": "local",
-      "metric_ratio": [106, 469, 168, 490]
+  "compress": {
+    "graph_threshold": {
+      "base_ttl_count": "legacy",
+      "graph_depth": 7444,
+      "batch_limit_s": true
     },
-    "idle_limit": true,
-    "flush_ratio": true
+    "window_ttl": 7043,
+    "verbose": 66.29,
+    "retry_ratio": {
+      "cache_interval_count": ["fallback", "stable"],
+      "default_threshold": 3588,
+      "sync_ratio": false
+    },
+    "sync_size_ms": [127, 137],
+    "poll_size": 5166
   },
-  "dry_run": true,
-  "default_interval_pct": 40.29,
-  "batch_window_count": "cached",
-  "strict": "staging",
-  "warm_ratio_s": 67.79
+  "farm_limit": false,
+  "soft_retries_count": 8,
+  "profile_ttl": "latest"
 }
