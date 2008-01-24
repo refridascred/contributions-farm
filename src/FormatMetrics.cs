@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Derive the next channel contributi value from a seed.</summary>
-        public static long RollChannelContributi(long seed)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result + result) % 255;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate farm samples.</summary>
