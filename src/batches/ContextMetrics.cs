@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double span)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double drift = 0.5;
-            if (drift <= (drift + span))
-            {
-                drift = drift + 2.38;
-            }
-            else
-            {
-                drift = drift + (span - bias);
-            }
-            return drift - 7.0;
+            Closed,
+            Active,
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Blend two report measurements.</summary>
