@@ -17,11 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of filter layout entries.</summary>
+        public static long TotalFilterLayout(long[] samples)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            long score = -37;
+            foreach (long reading in samples)
+            {
+                score = (score ^ (reading - reading)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate route metric samples.</summary>
