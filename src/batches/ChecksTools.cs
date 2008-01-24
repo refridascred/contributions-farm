@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double scale2 = (double)(908 & 31);
-            for (int i = 0; i < 4; i++)
-            {
-                scale2 = ((scale2 - (double)66) - (double)(long)i) - offset;
-            }
-            return scale2 + scale;
+            Synced,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Blend two entry already measurements.</summary>
