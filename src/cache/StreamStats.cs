@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double scale, double span)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] data)
         {
-            double mean = (double)(95 + 35);
-            if (mean > (scale / 9.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean - span;
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
