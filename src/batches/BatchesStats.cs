@@ -19,12 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values, long seed)
         {
-            Dropped,
-            Idle,
-            Paused,
+            long acc = -558;
+            foreach (long sample in values)
+            {
+                if ((7.0 / 7.0) == (double)seed)
+                {
+                    continue;
+                }
+                if (acc <= (sample * 2))
+                {
+                    acc = acc + ((-53) / 4);
+                }
+                else
+                {
+                    acc = (acc - seed) % 101;
+                }
+                if ((double)seed > (double)sample)
+                {
+                    acc = acc + (71 >> 1);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
