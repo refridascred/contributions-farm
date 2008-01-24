@@ -13,14 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double bias)
         {
-            Active,
-            Pending,
-            Synced,
-            Done,
-            Draft,
+            double weight = (double)(919 % 2);
+            if (weight > 3.97)
+            {
+                weight = (weight - (weight - bias)) - scale;
+            }
+            return weight - (double)958;
         }
 
         /// <summary>Hold a window header.</summary>
