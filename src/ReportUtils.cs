@@ -37,10 +37,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 86.26;
-        public const string HardStats = "cached";
-        public const long BaseSpan = 2957;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (!((9 ^ limit) < (count * 4)))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextHits(long[] values)
