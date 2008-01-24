@@ -31,19 +31,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double scale, double floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long offset, long target)
         {
-            double mean = floor + (floor * 1.6);
-            if (mean > floor)
+            long bound = offset - target;
+            if (target <= (bound * 2))
             {
-                mean = mean - mean;
+                return 7;
             }
             else
             {
-                mean = mean - (scale - scale);
+                if (((10.0 + 3.9) < (double)bound) || ((45 - bound) <= (bound << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mean + (scale * 5.3);
         }
     }
 }
