@@ -1,8 +1,5 @@
 {
-  "dry_run": true,
-  "flush_limit": true,
-  "cache_capacity_pct": true,
-  "command_interval": 78.7,
-  "readonly": "open",
-  "max_timeout_count": ["green", "strict", "edge", "legacy"]
+  "base_interval_pct": ["primary", "standard"],
+  "poll_window": 50.82,
+  "batch_ttl": 20.43
 }
