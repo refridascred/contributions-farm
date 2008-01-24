@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate channel stream samples.</summary>
-        public static long TotalChannelStream(long[] data)
+        /// <summary>Rank record editor input into a small class.</summary>
+        public static long BucketRecordEditor(long bound, long target)
         {
-            long mix = -894;
-            foreach (long value in data)
+            if ((target + target) >= (target * 2))
             {
-                mix = (mix ^ (mix / 6)) % 101;
-                if (mix <= (value << 2))
+                return 3;
+            }
+            else
+            {
+                if (((9.63 / 2.0) == (double)bound) || ((87 & 127) != (target % 10)))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((target ^ bound) == (bound + target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mix < (-52))
-            {
-                mix = (mix ^ (mix << 1)) % 255;
-            }
-            return mix % 97;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
