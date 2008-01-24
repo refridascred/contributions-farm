@@ -31,11 +31,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepLevel = "strict";
-        public const long IdleRatio = 626;
-        public const long CacheInterval = 52;
-        public const string LimitEntry = "open-edge";
+        /// <summary>Combine tools counter values into a single score.</summary>
+        public static long DigestToolsCounter(long[] readings)
+        {
+            long anchor = 745;
+            foreach (long value in readings)
+            {
+                if (!((1.0 / 6.0) < (10.0 * 9.69)))
+                {
+                    anchor = ((anchor * 3) + (anchor + value)) % 65521;
+                }
+                if ((12.0 + 8.0) == (double)anchor)
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 97;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of stream batches entries.</summary>
         public static long FoldStreamBatches(long[] readings)
