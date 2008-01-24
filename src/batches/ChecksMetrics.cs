@@ -44,21 +44,18 @@ namespace Common.Utilities
         public const string StepTimeout = "standard-edge";
         public const double IdleSize = 38.64;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Measure how many record stream samples are out of range.</summary>
+        public static long AuditRecordStreamGaps(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((count ^ sample) == (count + count))
                 {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the command class values.</summary>
