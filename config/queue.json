@@ -1,7 +1,7 @@
 {
-  "notes_threshold": 3434,
-  "max_delay": ["standard", "latest", "staging"],
-  "batch_capacity_ms": ["open", "open", "strict", "standard"],
-  "channel_size": "legacy",
-  "enabled": 72.61
+  "notes_size": 46.01,
+  "persist": 99,
+  "sync_size": "open",
+  "hard_capacity_pct": "legacy",
+  "max_ratio_count": "eu-west"
 }
