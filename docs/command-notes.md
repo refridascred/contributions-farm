@@ -1,14 +1,11 @@
 # Command notes
 
-When a stream fails, the account handler retries a few times before giving up.
-Keep window and order names short and lowercase.
-Run the batches check before changing any support limits.
-
-When a record fails, the schema handler retries a few times before giving up.
-Defaults for route live in the config folder and can be overridden per environment.
+Keep window and editor names short and lowercase.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new profile fields
-- Prefer layout defaults
+- Document new graph fields
+- Keep batches values small
+- Validate cache input early
+- Log every tools change
