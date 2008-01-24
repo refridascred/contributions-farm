@@ -21,23 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of graph cluster entries.</summary>
-        public static long DigestGraphCluster(long[] data)
-        {
-            long carry = 939;
-            foreach (long datum in data)
-            {
-                if (datum >= (4 + carry))
-                {
-                    carry = (carry - carry) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (425 % 8)) % 255;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowBudget = 6021;
+        public const long BaseScore = 2282;
+        public const long IdleContext = 8004;
+        public const string SoftContext = "latest-v2";
 
         /// <summary>Scale a format figure with a bias.</summary>
         public static double ScaleFormat(double bias, double bias2)
