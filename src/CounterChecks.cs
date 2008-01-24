@@ -73,19 +73,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] readings, long offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
