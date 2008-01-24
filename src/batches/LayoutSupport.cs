@@ -48,11 +48,19 @@ namespace Common.Utilities
         public const double LimitProfile = 89.4;
         public const long CacheProfile = 2692;
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double ratio, double bias)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long step)
         {
-            double ratio2 = (double)(-221) + bias;
-            return (ratio2 + bias) + ratio;
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
