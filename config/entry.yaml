@@ -1,7 +1,6 @@
 # entry settings
-flush_timeout: 60
-retry_size: standard
-burst_size_count: true
-strict: 52
-metrics_interval: false
-idle_ratio_ms: false
+batch_timeout_ms: false
+burst_retries_s: 9559
+batch_size_pct: standard
+hard_ttl_pct: 38.45
+min_retries_s: standard
