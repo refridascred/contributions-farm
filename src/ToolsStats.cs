@@ -53,11 +53,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFactor = 92.52;
-        public const string BurstFarm = "local-1";
-        public const string SoftSpan = "cached-v2";
-        public const long IdleCount = 7281;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] data, long seed)
