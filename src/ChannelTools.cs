@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate support report readings against a bound.</summary>
-        public static bool VerifySupportReportLimits(long[] series, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine account values into a single score.</summary>
