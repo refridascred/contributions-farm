@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double rate, double floor)
-        {
-            double drift = rate - (double)0;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift - 7.0) - (double)(long)i) - floor;
-            }
-            return drift - (drift + 3.32);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCount = 8928;
+        public const long IdleCommand = 819;
+        public const long LimitBudget = 7108;
+        public const double WindowCommand = 5.09;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionOutliers(long[] samples)
