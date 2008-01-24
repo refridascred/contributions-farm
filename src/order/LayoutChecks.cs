@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long score = 1;
-            foreach (long reading in readings)
-            {
-                score = (score - (reading ^ score)) % 101;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
