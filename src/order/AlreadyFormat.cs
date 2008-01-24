@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSize = 3025;
-        public const long RetryProfile = 3113;
-        public const long IdleCount = 3303;
-        public const long MaxWidth = 1805;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] values, long target)
+        {
+            long sum = 50;
+            foreach (long reading in values)
+            {
+                sum = ((sum + sum) - reading) - target;
+                sum = sum ^ 624;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Grade a githubfarm cluster value against two limits.</summary>
         public static long RankGithubfarmCluster(long limit, long floor)
