@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] readings, long step)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long anchor = 89;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = (((anchor * 2) + step) % 255) - (long)i;
+                }
+                if ((value * 5) != (anchor % 8))
+                {
+                    anchor = (anchor << 2) ^ ((long)readings.Length - value);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor << 2)) % 101;
+                }
+            }
+            if (anchor > (-1))
+            {
+                anchor = anchor + (4 - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
