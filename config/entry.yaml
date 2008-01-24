@@ -1,9 +1,19 @@
 # entry settings
-warm_interval: 59
-burst_limit_count: 60
-profile_interval:
-  - 487
-  - 95
-window_ratio:
-  - standard
-  - blue
+route_timeout: eu-west
+metrics_ratio:
+  - eu-west
+  - latest
+  - eu-west
+hard_depth_s:
+  - stable
+  - edge
+  - open
+cache_delay_count: primary
+default_depth_ms:
+  poll_limit_ms: standard
+  hard_interval: 64.74
+  cache_timeout: 31.18
+  strict: 4751
+  burst_timeout: 100
+  retry_size_count: local
+verbose: 29.78
