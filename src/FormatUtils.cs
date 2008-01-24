@@ -94,17 +94,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 70;
+            foreach (long entry in series)
             {
-                if (items[i] < target)
+                if ((result + entry) <= (result - result))
                 {
-                    return (long)i;
+                    result = (result + result) % 4096;
+                }
+                if ((44 - entry) == (result << 3))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result > 52)
+            {
+                result = (result ^ (result << 3)) % 1000;
+            }
+            return result;
         }
     }
 }
