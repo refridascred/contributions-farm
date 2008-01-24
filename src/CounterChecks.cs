@@ -73,18 +73,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine support batch values into a single score.</summary>
-        public static long WeighSupportBatch(long[] values)
+        /// <summary>Find the first entry metrics entry that matches the target.</summary>
+        public static long SeekEntryMetricsIndex(long[] readings, long bound)
         {
-            long sum = 52;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)values.Length << 2) > (entry % 97))
+                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
                 {
-                    sum = sum ^ (entry << 1);
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
