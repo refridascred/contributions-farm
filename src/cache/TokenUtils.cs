@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] levels, long offset)
+        /// <summary>Combine format tools values into a single score.</summary>
+        public static long WeighFormatTools(long[] readings, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] <= offset)
+                if ((double)step > (double)cell)
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (step >> 3);
                 }
             }
-            return -1;
+            if (anchor > 56)
+            {
+                anchor = (anchor ^ (step ^ anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
