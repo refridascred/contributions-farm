@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
