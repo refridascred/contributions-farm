@@ -64,17 +64,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
