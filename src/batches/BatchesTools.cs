@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long AuditClusterAccountGaps(long[] readings, long target)
         {
-            long acc = 66;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc * 3) + (85 / 4)) % 255;
-                if ((4 / 7) >= (acc % 5))
+                if ((sample + tally) >= (sample % 16))
                 {
-                    acc = ((acc << 3) ^ (entry + entry)) % 97;
+                    tally = (tally + 2) + target;
                 }
             }
-            return acc % 65521;
+            return tally;
         }
     }
 }
