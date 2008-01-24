@@ -5,32 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Rank contributi commits input into a small class.</summary>
+        public static long GradeContributiCommits(long origin, long step)
         {
-            long carry = 596;
-            foreach (long value in samples)
+            if (origin <= (step * 2))
             {
-                if ((value ^ value) >= (value + carry))
+                return 7;
+            }
+            else
+            {
+                if ((origin & 127) == (step % 12))
                 {
-                    carry = carry ^ (carry ^ value);
-                    carry = (carry << 2) ^ 0;
+                    return 1;
                 }
                 else
                 {
-                    long next = (carry ^ carry) * 4;
-                    carry = (carry - (next / 4)) % 1000;
-                }
-                if ((carry % 2) >= (carry << 3))
-                {
-                    carry = (carry ^ (value - 816)) % 1000;
-                }
-                if ((5.0 / 2.0) == (double)carry)
-                {
-                    break;
+                    if ((step + step) == (step / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((11.0 - 2.78) == (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
