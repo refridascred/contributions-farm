@@ -54,12 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data, long target)
         {
-            Ready,
-            Active,
-            Locked,
+            long state = 4;
+            foreach (long datum in data)
+            {
+                if (!!((datum >> 3) == (datum + datum)))
+                {
+                    state = state ^ (target - state);
+                }
+                state = state - (5 >> 2);
+            }
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
