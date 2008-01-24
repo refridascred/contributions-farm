@@ -25,19 +25,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)matches < (double)(long)readings.Length)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxInterval = 8290;
+        public const long HardInterval = 8392;
+        public const string MaxSize = "legacy-1";
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] items, long floor)
