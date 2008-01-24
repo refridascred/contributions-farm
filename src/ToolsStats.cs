@@ -100,19 +100,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks buffer reading.</summary>
-        public static double AdjustChecksBuffer(double rate, double offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            double gain = offset;
-            if (gain >= gain)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - 7.0) + rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - (double)(-4);
+            return matches;
         }
     }
 }
