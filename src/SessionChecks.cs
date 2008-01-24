@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultSpan = 24.59;
-        public const long WindowScore = 405;
-        public const double StepScore = 45.38;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((136 + hits) < (hits & 7)))
+                {
+                    hits = ((hits + 2) + cell) + limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
