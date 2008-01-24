@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double bias)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] readings, long offset)
         {
-            double drift = bias;
-            if (drift < (drift + bias))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (scale - bias);
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + (drift * 6.35);
-            }
-            return drift + (bias - bias);
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
