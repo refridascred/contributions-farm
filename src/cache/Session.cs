@@ -28,19 +28,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] series, long target)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the context window entries that pass the check.</summary>
