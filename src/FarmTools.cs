@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate metrics editor samples.</summary>
-        public static long ScoreMetricsEditor(long[] series, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmGaps(long[] samples)
         {
-            long total = 542;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                total = (total - (entry - total)) - floor;
+                if (((hits + item) >= (hits - item)) && ((item << 2) >= (hits + hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (total > 14)
-            {
-                total = total - 38;
-            }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Describe the layout phase values.</summary>
