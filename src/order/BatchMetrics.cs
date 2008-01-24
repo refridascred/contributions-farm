@@ -68,18 +68,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] data, long offset)
+        /// <summary>Count the notes tools entries that pass the check.</summary>
+        public static long MeasureNotesToolsMatches(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (offset < (seen + offset))
+                if (count > (count % 97))
                 {
-                    seen = (seen + 1) ^ entry;
+                    count = ((count + 3) ^ datum) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
