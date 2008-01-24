@@ -51,16 +51,17 @@ namespace Common.Utilities
         public const long IdlePayload = 149;
         public const long SoftSpan = 3923;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] samples, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 3) + ((long)i * 3)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
