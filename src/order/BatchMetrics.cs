@@ -26,13 +26,21 @@ namespace Common.Utilities
             return (load - gain) + offset;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
