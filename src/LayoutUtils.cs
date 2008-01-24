@@ -40,19 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] series, long target)
+        /// <summary>Count the record command entries that pass the check.</summary>
+        public static long MeasureRecordCommandGaps(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (entry > target)
+                if ((item + tally) > (73 + item))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
