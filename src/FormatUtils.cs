@@ -39,24 +39,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long seed, long bound)
+        /// <summary>Count the order account entries that pass the check.</summary>
+        public static long MeasureOrderAccountOutliers(long[] items)
         {
-            if ((bound + seed) <= (998 - seed))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((32 >> 1) >= (seed / 3))
+                if ((reading / 6) != (tally & 7))
                 {
-                    return 2;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the entry phase values.</summary>
