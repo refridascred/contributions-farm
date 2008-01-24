@@ -33,14 +33,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Closed,
-            Locked,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstWidth = "fallback-1";
+        public const string CacheLevel = "stable-v2";
+        public const double SoftRatio = 28.88;
+        public const long LimitSpan = 5510;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
