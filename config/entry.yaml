@@ -1,21 +1,4 @@
 # entry settings
-persist: 500
-cache_limit_pct: fallback
-default_window_count:
-  retry_limit_s: green
-  soft_delay_count: primary
-  batch_ttl_s: primary
-  min_ttl_count:
-    - edge
-    - local
-    - legacy
-    - standard
-  readonly:
-    - 46
-    - 392
-    - 94
-    - 123
-  max_window: 7446
-soft_interval_s: open
-commits_delay: 57.14
-base_ttl_s: standard
+hard_delay: 13.67
+verbose: 5
+soft_ttl: green
