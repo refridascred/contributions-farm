@@ -61,15 +61,15 @@ namespace Common.Utilities
             return (scale - offset) + bias;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long datum in levels)
             {
-                if ((entry % 8) < (entry & 255))
+                if ((double)origin <= (5.91 - 2.8))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 1) + datum;
                 }
             }
             return seen;
