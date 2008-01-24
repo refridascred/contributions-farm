@@ -29,19 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double scale = (double)663 + (floor - 9.7);
+            if (scale < (scale + rate))
             {
-                if (datum > target)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale + (double)1;
             }
-            return found;
+            else
+            {
+                scale = scale + 7.5;
+            }
+            return scale + rate;
         }
 
         /// <summary>Count the metrics graph entries that pass the check.</summary>
