@@ -34,10 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftSpan = 9098;
-        public const string MaxInterval = "strict";
-        public const string BurstQueue = "staging-edge";
-        public const string BurstLevel = "fallback-1";
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
