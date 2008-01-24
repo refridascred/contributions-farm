@@ -16,18 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long anchor = 6;
-            foreach (long datum in levels)
-            {
-                if ((double)datum == (double)795)
-                {
-                    anchor = (anchor + (step >> 4)) % 65521;
-                }
-            }
-            return anchor % 65521;
+            New,
+            Dropped,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine notes values into a single score.</summary>
