@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            Failed,
-            Ready,
-            Stale,
-            Active,
-            New,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((13.0 - 0.4) != (double)seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two record measurements.</summary>
