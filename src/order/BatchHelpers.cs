@@ -37,13 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Mode { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryCount = "fallback-1";
+        public const double MinEntry = 95.21;
+        public const double BaseInterval = 74.33;
+        public const long BaseScore = 3692;
     }
 }
