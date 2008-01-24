@@ -31,11 +31,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] series, long offset)
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((datum - 25) < (offset + offset))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
