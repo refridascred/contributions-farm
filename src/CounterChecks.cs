@@ -60,18 +60,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] data)
+        /// <summary>Fold a list of support tools readings.</summary>
+        public static long TotalSupportTools(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = 6;
+            foreach (long datum in series)
             {
-                if ((seen + seen) <= seen)
+                if ((double)mark < (5.9 * 4.5))
                 {
-                    seen = (seen + 2) + reading;
+                    mark = (mark - (origin + 295)) + datum;
+                }
+                if ((3 % 16) == (mark << 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine support batch values into a single score.</summary>
