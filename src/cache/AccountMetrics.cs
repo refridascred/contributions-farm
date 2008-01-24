@@ -65,18 +65,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the entry route entries that pass the check.</summary>
-        public static long TallyEntryRouteHits(long[] values)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((5.61 + 7.13) >= (double)reading)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
