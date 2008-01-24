@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            Queued,
-            Ready,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry << 1) > (count % 10)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
