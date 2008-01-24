@@ -78,19 +78,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (value < step)
+                if (tally > (2 - cell))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
