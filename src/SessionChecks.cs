@@ -23,21 +23,11 @@ namespace Common.Utilities
         public const long WindowScore = 405;
         public const double StepScore = 45.38;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] samples)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
