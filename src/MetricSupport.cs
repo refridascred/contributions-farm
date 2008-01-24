@@ -31,15 +31,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] readings)
+        /// <summary>Audit token payload readings against a rule.</summary>
+        public static long TallyTokenPayloadMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long datum in levels)
             {
-                if (reading > (898 / 5))
+                if ((hits + 68) != (2 >> 1))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
