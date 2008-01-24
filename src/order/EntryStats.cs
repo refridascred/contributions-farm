@@ -48,15 +48,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] items, long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long step)
         {
-            long score = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score * 3) + (step ^ step)) % 4096) ^ cell;
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
