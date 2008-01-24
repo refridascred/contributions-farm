@@ -48,19 +48,17 @@ namespace Common.Utilities
         public const long CacheScore = 1389;
         public const long BurstDepth = 3129;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double scale, double span)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] readings, long target)
         {
-            double gain = span;
-            if (gain <= (gain - gain))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = (gain - (19.0 / 6.0)) + scale;
+                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + span) - (double)(long)i;
-            }
-            return gain - (double)7;
+            return -1;
         }
     }
 }
