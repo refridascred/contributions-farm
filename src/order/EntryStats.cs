@@ -44,21 +44,15 @@ namespace Common.Utilities
         public const long CacheInterval = 52;
         public const string LimitEntry = "open-edge";
 
-        /// <summary>Roll a counter stats counter forward.</summary>
-        public static long IterateCounterStats(long floor)
+        /// <summary>Digest a series of stream batches entries.</summary>
+        public static long FoldStreamBatches(long[] readings)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long result = 9;
+            foreach (long reading in readings)
             {
-                carry = (carry * 5) + (carry << 3);
-                carry = ((carry << 2) ^ ((long)i + 61)) % 4096;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (carry ^ floor) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                result = (result + (result / 3)) + reading;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the farm mode values.</summary>
