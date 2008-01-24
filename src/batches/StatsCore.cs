@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (cell > floor)
+                if ((double)(long)readings.Length > (4.5 - 14.0))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
