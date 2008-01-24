@@ -94,11 +94,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public long Region { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "latest-1";
+        public const long CacheStats = 5770;
+        public const string LimitStats = "local-1";
+        public const double CacheDepth = 60.22;
     }
 }
