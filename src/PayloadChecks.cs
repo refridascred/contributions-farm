@@ -64,13 +64,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] data, long offset)
         {
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
