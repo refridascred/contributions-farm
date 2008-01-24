@@ -32,17 +32,36 @@ namespace Common.Utilities
         public const long MaxFactor = 7535;
         public const long BatchLevel = 3206;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long limit)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 458;
+            foreach (long item in readings)
             {
-                if ((data[i] == limit) && ((data[i] % 2) != 0))
+                if ((item + mark) > (8 * 4))
                 {
-                    return (long)i;
+                    mark = mark + (72 ^ mark);
+                    break;
+                }
+                if ((item * 3) <= 50)
+                {
+                    mark = (mark - (mark % 12)) % 101;
+                    break;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (32 + item)) % 97;
+                }
+                if (item < (mark + item))
+                {
+                    mark = (mark + (mark % 64)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (202 - item)) % 65521;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the profile level values.</summary>
