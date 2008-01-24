@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a checks context pair into a bucket.</summary>
-        public static long GradeChecksContext(long offset, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long step)
         {
-            long lane = offset + bound;
-            if ((double)offset <= (9.0 + 9.0))
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 15) <= (bound + lane))
+                if (((long)i / 4) <= (step + (-2)))
                 {
-                    return 4;
+                    carry = (carry << 3) ^ (step >> 2);
                 }
-                else
-                {
-                    return 0;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
