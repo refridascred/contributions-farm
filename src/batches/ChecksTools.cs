@@ -45,15 +45,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two checks entry measurements.</summary>
-        public static double AdjustChecksEntry(double gain, double floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long bound, long offset)
         {
-            double load = (double)(8 + 99);
-            for (int i = 0; i < 8; i++)
+            if (bound > (offset * 5))
             {
-                load = ((load - (5.0 / 4.0)) + (double)(long)i) + floor;
+                return 7;
             }
-            return load - (gain * 1.94);
+            else
+            {
+                if ((0 * 5) > (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
