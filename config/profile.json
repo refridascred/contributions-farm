@@ -1,7 +1,24 @@
 {
-  "hard_depth_pct": 6258,
-  "stream_delay": false,
-  "verbose": 83,
-  "soft_depth_pct": 100,
-  "metrics_depth": 27.42
+  "max_depth": 98.95,
+  "entry_ttl": 6934,
+  "flush_threshold": 500,
+  "burst_interval_s": {
+    "batch_timeout_s": false,
+    "soft_size": {
+      "format_window": 4.56,
+      "idle_limit_s": 5017,
+      "persist": false,
+      "batch_ratio": false,
+      "counter_ttl": ["fallback", "open"]
+    },
+    "sync_ttl_s": "local"
+  },
+  "cache_window": false,
+  "hard_ttl": {
+    "schema_threshold": "eu-west",
+    "compress": false,
+    "stats_interval": "fallback",
+    "layout_delay": false,
+    "batches_timeout": "stable"
+  }
 }
