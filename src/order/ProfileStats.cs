@@ -24,19 +24,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double gain, double floor)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            double rate = (double)(660 + 2);
-            if (rate <= rate)
-            {
-                rate = ((rate + (5.0 * 10.0)) + gain) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (8.0 + rate)) + (double)(long)i;
-            }
-            return rate - (double)70;
+            Ready,
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
