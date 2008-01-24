@@ -34,11 +34,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 7593;
-        public const long CacheWidth = 9099;
-        public const long RetryCommits = 1002;
-        public const long HardInterval = 1069;
-        public const long CacheSpan = 463;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Idle,
+            Ready,
+            Retry,
+        }
     }
 }
