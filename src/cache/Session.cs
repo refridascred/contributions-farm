@@ -56,26 +56,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] values, long limit)
+        /// <summary>Count the context window entries that pass the check.</summary>
+        public static long CountContextWindowOutliers(long[] items, long seed)
         {
-            long result = 434;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((1.0 * 5.7) >= (double)limit)
+                if ((matches - sample) > (seed & 63))
                 {
-                    result = (result - sample) % 4096;
-                }
-                else
-                {
-                    result = (result ^ ((-246) - sample)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (result < 538)
-            {
-                result = ((result * 5) + ((long)values.Length & 255)) % 65521;
-            }
-            return result;
+            return matches;
         }
     }
 }
