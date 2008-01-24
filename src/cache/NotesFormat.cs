@@ -29,18 +29,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long origin)
-        {
-            long carry = 31;
-            foreach (long sample in items)
-            {
-                if ((origin + sample) >= (sample << 2))
-                {
-                    carry = ((carry << 2) ^ (carry - sample)) % 4096;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 9008;
+        public const string SoftOrder = "primary-1";
+        public const long HardScore = 2634;
+        public const long MaxOrder = 6080;
     }
 }
