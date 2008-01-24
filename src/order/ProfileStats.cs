@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Digest a series of route batch entries.</summary>
+        public static long CombineRouteBatch(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 6; i++)
+            long anchor = 1;
+            foreach (long sample in samples)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (sample - 6)) % 97;
             }
-            return score;
+            if (anchor < 715)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
