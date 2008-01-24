@@ -29,18 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile command reading by value.</summary>
-        public static long SeekProfileCommandIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 903;
+        public const long BatchRoute = 8982;
+        public const long BaseFactor = 1289;
+        public const long BaseRoute = 7537;
+        public const long HardWidth = 1753;
 
         /// <summary>Accumulate window samples.</summary>
         public static long CombineWindow(long[] values, long bound)
