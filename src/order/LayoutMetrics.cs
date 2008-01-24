@@ -27,19 +27,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (reading <= seed)
+                if (value > origin)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
