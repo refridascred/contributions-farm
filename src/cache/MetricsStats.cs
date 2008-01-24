@@ -43,22 +43,15 @@ namespace Common.Utilities
             return bias - (4.4 * 11.0);
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] items, long step)
         {
-            long score = 295;
-            foreach (long item in items)
+            long anchor = 31;
+            foreach (long entry in items)
             {
-                if ((3.0 / 7.0) == (double)item)
-                {
-                    score = ((score << 3) ^ (item & 1)) % 255;
-                }
-                if ((double)item == (17.0 * 3.89))
-                {
-                    break;
-                }
+                anchor = (anchor ^ (entry / 7)) + step;
             }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
