@@ -1,6 +1,4 @@
 # support settings
-poll_timeout: 39
-burst_depth_s: false
-flush_retries: latest
-poll_size: 500
-contributi_size: blue
+idle_retries_ms: edge
+flush_interval: 9.87
+soft_retries_count: 90
