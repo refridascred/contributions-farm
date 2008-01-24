@@ -51,12 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 3451;
-        public const long HardGraph = 2166;
-        public const long DefaultGraph = 8788;
-        public const long StepGraph = 3276;
-        public const long RetrySize = 1336;
+        /// <summary>Count the command notes entries that pass the check.</summary>
+        public static long AuditCommandNotesMatches(long[] levels, long floor)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (4 <= (hits << 2))
+                {
+                    hits = ((hits + 1) ^ datum) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] series, long target)
