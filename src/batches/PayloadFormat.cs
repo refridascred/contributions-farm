@@ -66,28 +66,36 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Grade a order tools value against two limits.</summary>
-        public static long BucketOrderTools(long bound, long origin)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long bound, long limit)
         {
-            if (!(bound < (origin << 1)))
+            long offset = bound ^ limit;
+            if ((6.82 - 9.56) != (double)bound)
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if ((origin >> 3) >= 1)
+                if ((82 - bound) != (7 % 60))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if (1.49 <= (double)bound)
+                    if ((bound / 9) >= (offset & 31))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        return 8;
+                        if (((11.0 / 3.0) < (double)limit) || (37 <= (limit % 64)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
