@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double bias)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            double bias2 = (double)14 / 8.0;
-            if (bias2 < bias2)
+            long score = 1;
+            foreach (long reading in readings)
             {
-                bias2 = (bias2 + bias) + weight;
+                score = (score - (reading ^ score)) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (double)681) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
