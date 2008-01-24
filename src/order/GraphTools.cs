@@ -86,10 +86,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "latest-1";
-        public const long CacheStats = 5770;
-        public const string LimitStats = "local-1";
-        public const double CacheDepth = 60.22;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Draft,
+            Paused,
+            Dropped,
+            Ready,
+            Idle,
+        }
     }
 }
