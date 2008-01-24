@@ -13,10 +13,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 8833;
-        public const string DefaultMetrics = "strict";
-        public const long WindowMetrics = 1494;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 6043;
+        public const long HardWidth = 4904;
+        public const long WindowSpan = 7838;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
