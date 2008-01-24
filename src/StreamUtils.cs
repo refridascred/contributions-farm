@@ -27,21 +27,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((340 / 9) > (bound << 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((3.0 / 7.0) < (double)floor)
                 {
-                    if ((data[i] - data[j]) > 15)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor >= (bound + 45)) && ((bound % 24) != (bound / 3)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
