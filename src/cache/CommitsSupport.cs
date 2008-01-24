@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 4.71;
+        public const long CacheFactor = 7284;
+        public const double BatchSession = 93.51;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchTimeout = 9692;
