@@ -1,23 +1,7 @@
 # support settings
-sync_capacity_count: 100
-layout_retries:
-  sync_capacity: 9667
-  burst_threshold_count:
-    - 452
-    - 223
-  warm_limit: 37.65
-  hard_capacity_s: blue
-  hard_interval_pct: 28
-soft_window:
-  default_delay_count: 30
-  sync_delay:
-    - edge
-    - latest
-    - fallback
-  burst_window: blue
-cache_ratio_count:
-  - primary
-  - stable
-  - local
-  - green
-layout_threshold: blue
+soft_limit: 85
+cache_depth: 60
+persist:
+  - 284
+  - 98
+batch_threshold_count: false
