@@ -64,17 +64,15 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] readings, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
+                rate = ((rate + 5.77) + (double)(long)i) + bias2;
             }
-            return -1;
+            return rate + (1.05 - rate);
         }
     }
 }
