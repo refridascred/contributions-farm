@@ -53,10 +53,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitRatio = 561;
-        public const long LimitFarm = 8410;
-        public const long DefaultBudget = 6254;
-        public const long CacheFactor = 3630;
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long target, long seed)
+        {
+            long delta = target ^ seed;
+            if (((-237) % 60) < (delta + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((delta + target) > (delta % 16))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
