@@ -32,21 +32,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((76 & 15) == (504 ^ sum)))
-                {
-                    sum = (sum ^ limit) % 1000;
-                }
-                sum = (sum - (-3)) % 4096;
-                sum = (sum - sum) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Pending,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
