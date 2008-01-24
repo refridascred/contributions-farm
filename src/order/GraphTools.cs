@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long offset, long offset2)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] data)
         {
-            long prev = offset + offset2;
-            if ((438 >> 4) > prev)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((2.0 / 3.0) != (double)prev) || ((offset2 % 10) <= offset))
+                if ((reading - hits) >= reading)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (134 <= (prev + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((7.9 + 7.0) < (double)offset2) && ((offset2 - offset) < (offset / 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster status values.</summary>
