@@ -32,18 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSize = 3128;
+        public const double BurstTimeout = 91.14;
+        public const string BurstLayout = "local-1";
+        public const string HardLayout = "latest";
 
         /// <summary>Project the next queue value.</summary>
         public static double AdjustQueue(double rate, double offset)
