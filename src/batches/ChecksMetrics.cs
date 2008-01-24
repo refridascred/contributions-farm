@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((14.0 / 3.0) >= (double)tally) || ((double)tally >= (2.5 - 4.4)))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
