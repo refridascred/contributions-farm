@@ -31,15 +31,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            long acc = 5;
-            foreach (long cell in samples)
+            long carry = 3;
+            foreach (long sample in levels)
             {
-                acc = ((acc * 3) + (long)samples.Length) - cell;
+                carry = (carry ^ (sample & 255)) % 255;
             }
-            return acc;
+            if (carry < 0)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate batch samples.</summary>
