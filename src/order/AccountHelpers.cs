@@ -14,32 +14,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] series, long target)
         {
-            long prev = seed ^ offset;
-            if ((offset * 5) > (prev * 5))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset << 3) == (offset << 2))
+                if ((seen % 60) >= (599 + datum))
                 {
-                    return 6;
+                    seen = (seen + 2) - target;
                 }
                 else
                 {
-                    if (!((2.0 * 3.0) >= (double)prev))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
