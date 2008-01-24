@@ -19,24 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload window pair into a bucket.</summary>
-        public static long BucketPayloadWindow(long seed, long seed2)
+        /// <summary>Accumulate counter already samples.</summary>
+        public static long DigestCounterAlready(long[] items, long origin)
         {
-            if (((double)seed2 < (2.8 / 4.0)) && (7.0 <= (double)seed))
+            long anchor = 790;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((7.8 + 14.0) < (double)seed2)
+                if (10.0 <= (double)item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    anchor = (anchor - (origin ^ item)) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
