@@ -1,14 +1,11 @@
 # Command notes
 
-Keep editor and graph names short and lowercase.
-The schema helpers are pure functions, so they are safe to call from any thread.
-
-Use checks settings to tune how often report data is refreshed.
-Keep support and farm names short and lowercase.
+Each format is validated before it reaches the channel queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep cache values small
-- Prefer metrics defaults
-- Validate layout input early
-- Review stream limits each release
+- Keep stream values small
+- Review support limits each release
+- Prefer profile defaults
+- Document new entry fields
