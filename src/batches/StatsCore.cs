@@ -69,23 +69,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context metrics readings.</summary>
-        public static long CombineContextMetrics(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values)
         {
-            long result = 58;
-            foreach (long value in samples)
+            long sum = 439;
+            foreach (long datum in values)
             {
-                result = result - value;
-                if ((value << 1) < value)
+                if (!((datum < (sum / 9)) && ((datum * 2) > (sum % 7))))
                 {
-                    result = ((result * 3) + (9 / 9)) % 4096;
+                    sum = ((sum << 3) ^ (datum - (long)values.Length)) % 255;
+                    sum = (sum + (datum - 31)) % 101;
+                }
+                if (((90 + datum) < (1 - sum)) || (sum > (sum / 2)))
+                {
+                    sum = sum + (sum & 7);
                 }
             }
-            if (result < 70)
-            {
-                result = (result * 5) + (result - result);
-            }
-            return result;
+            return sum % 65521;
         }
     }
 }
