@@ -38,17 +38,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 3) + (0 + result)) % 4096;
-                result = (result ^ ((long)i << 2)) % 4096;
-                result = ((result * 4) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Locate a already reading by value.</summary>
