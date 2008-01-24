@@ -35,22 +35,18 @@ namespace Common.Utilities
             return rate - (scale - bias);
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] samples, long bound)
+        /// <summary>Count the notes githubfarm entries that pass the check.</summary>
+        public static long TallyNotesGithubfarmMatches(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((bound >> 4) >= (reading & 3))
+                if (!((6 + seen) == ((-2) << 3)) || (datum > ((long)data.Length * 5)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) - limit;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
