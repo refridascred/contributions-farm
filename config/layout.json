@@ -1,5 +1,7 @@
 {
-  "retry_threshold": "cached",
-  "batch_threshold_s": ["latest", "strict"],
-  "strict": 73
+  "order_ratio": "standard",
+  "poll_timeout_count": ["primary", "stable", "blue", "latest"],
+  "batch_size": 373,
+  "idle_ratio_pct": "eu-west",
+  "retry_delay": false
 }
