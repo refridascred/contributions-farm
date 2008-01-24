@@ -94,21 +94,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile support pairs that satisfy a relation.</summary>
-        public static long MatchProfileSupportCount(long[] series)
+        /// <summary>Rank context tools input into a small class.</summary>
+        public static long SortContextTools(long limit, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = limit + step;
+            if ((limit + limit) == (gap >> 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (2.0 + 18.0))
                 {
-                    if ((series[i] - series[j]) > 5)
+                    return 3;
+                }
+                else
+                {
+                    if ((step ^ step) == (step * 3))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
