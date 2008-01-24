@@ -44,14 +44,18 @@ namespace Common.Utilities
         public const long CacheInterval = 52;
         public const string LimitEntry = "open-edge";
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit githubfarm commits readings against a rule.</summary>
+        public static long CountGithubfarmCommitsGaps(long[] values)
         {
-            Ready,
-            Dropped,
-            New,
-            Retry,
-            Done,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((5.67 - 6.6) >= (double)seen)
+                {
+                    seen = (seen + 1) - item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
