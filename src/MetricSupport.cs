@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double gain, double span)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double gain2 = (double)(0 + 581);
-            return ((gain2 + (double)117) + gain) + span;
+            Dropped,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a route options.</summary>
