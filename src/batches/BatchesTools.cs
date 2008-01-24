@@ -13,11 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 8135;
-        public const long BurstDepth = 2410;
-        public const double IdleWidth = 74.13;
-        public const long CacheSize = 3688;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double weight, double offset)
+        {
+            double scale = (offset * 5.3) + (10.0 + offset);
+            if (scale <= offset)
+            {
+                scale = (scale - (offset - scale)) - weight;
+            }
+            else
+            {
+                scale = scale + (scale / 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (scale - scale)) + (double)(long)i;
+            }
+            return scale + (6.1 / 9.0);
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long DigestCommand(long[] levels, long limit)
