@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 19.0;
-        public const string CacheLevel = "legacy";
-        public const long StepContributi = 8296;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long step, long step2)
+        {
+            if (!((step + step2) != (step2 / 7)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((312 / 4) > (4 - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step - step) < (15 ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] items, long limit)
