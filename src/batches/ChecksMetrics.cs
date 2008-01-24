@@ -67,18 +67,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record stream samples are out of range.</summary>
-        public static long AuditRecordStreamGaps(long[] values)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count ^ sample) == (count + count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] - levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Blend two filter measurements.</summary>
