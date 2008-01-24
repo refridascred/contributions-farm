@@ -16,12 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 1749;
-        public const string DefaultNotes = "open";
-        public const long BatchSize = 3993;
-        public const long BatchInterval = 4017;
-        public const long SoftLevel = 3351;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double AdjustRecord(double ratio, double floor)
