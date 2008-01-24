@@ -39,17 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first session counter entry that matches the target.</summary>
-        public static long LocateSessionCounterIndex(long[] values, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] > target)
+                if ((datum % 60) > (datum + 0))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
