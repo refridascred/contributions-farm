@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] samples)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] series)
         {
-            long carry = 91;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry * 4) + (item % 60)) % 4096;
-                if ((double)carry != (4.24 * 8.46))
+                if ((seen & 7) > (seen + seen))
                 {
-                    carry = carry + carry;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Describe the stats state values.</summary>
