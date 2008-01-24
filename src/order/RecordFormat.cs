@@ -18,10 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowWidth = "open";
-        public const long LimitInterval = 5334;
-        public const string IdleAccount = "alpha-1";
+        /// <summary>Iterate the schema account series from a seed.</summary>
+        public static long IterateSchemaAccount(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = (anchor << 3) ^ (anchor << 3);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a queue batches reading by value.</summary>
         public static long SeekQueueBatchesIndex(long[] samples, long offset)
