@@ -59,25 +59,22 @@ namespace Common.Utilities
         public const long LimitChannel = 2819;
         public const long BaseWidth = 1535;
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long target, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] data)
         {
-            long delta = target ^ seed;
-            if (((-237) % 60) < (delta + target))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((delta + target) > (delta % 16))
+                if ((tally & 63) < (item >> 3))
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
