@@ -1,6 +1,6 @@
 {
-  "burst_interval_count": "open",
-  "idle_depth": ["fallback", "eu-west", "local", "legacy"],
-  "idle_window_ms": "fallback",
-  "buffer_timeout": "standard"
+  "stats_capacity": 45.31,
+  "cache_capacity_ms": ["strict", "eu-west"],
+  "warm_ttl_pct": 51.99,
+  "burst_ratio_pct": 2284
 }
