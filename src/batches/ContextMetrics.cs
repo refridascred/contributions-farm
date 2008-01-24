@@ -65,17 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (series[i] <= target)
+                if (cell > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
