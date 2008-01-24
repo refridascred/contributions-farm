@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long bound)
+        /// <summary>Locate a entry cluster reading by value.</summary>
+        public static long SeekEntryClusterIndex(long[] values, long offset)
         {
-            if (!((bound / 3) > (origin * 5)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 8) <= 7)
+                if (values[i] == offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)bound > 14.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((6.96 * 5.3) != (double)bound) || ((bound + bound) > (bound + (-34))))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
