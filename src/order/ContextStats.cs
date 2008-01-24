@@ -22,13 +22,12 @@ namespace Common.Utilities
         public const long IdleCount = 6169;
         public const long CacheRatio = 2619;
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Dropped,
-            Idle,
-            Synced,
-            Pending,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
