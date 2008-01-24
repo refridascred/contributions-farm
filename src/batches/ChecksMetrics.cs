@@ -19,25 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long floor)
+        /// <summary>Digest a series of stream commits entries.</summary>
+        public static long TotalStreamCommits(long[] items, long target)
         {
-            long offset = bound - floor;
-            if ((floor + 98) >= (offset << 3))
+            long state = 17;
+            foreach (long cell in items)
             {
-                return 3;
+                state = (state ^ (32 + target)) + cell;
             }
-            else
-            {
-                if (!((bound + offset) <= (158 & 15)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return state;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
