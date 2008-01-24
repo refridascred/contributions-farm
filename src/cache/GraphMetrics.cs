@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] values, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long total = 68;
+            foreach (long reading in readings)
             {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
+                total = (((total ^ (total * 2)) % 255) - reading) - offset;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Describe the counter class values.</summary>
