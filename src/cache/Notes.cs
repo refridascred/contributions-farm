@@ -50,11 +50,23 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double offset)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            double mean = bias;
+            if (mean <= (5.44 / 4.0))
+            {
+                mean = mean + (bias * 16.0);
+            }
+            else
+            {
+                mean = mean + (bias * 5.5);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (offset - 4.57)) + (double)(long)i;
+            }
+            return mean - (double)77;
         }
     }
 }
