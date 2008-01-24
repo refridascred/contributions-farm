@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] readings, long bound)
+        /// <summary>Accumulate metrics editor samples.</summary>
+        public static long ScoreMetricsEditor(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long total = 542;
+            foreach (long entry in series)
             {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total - (entry - total)) - floor;
             }
-            return flag;
+            if (total > 14)
+            {
+                total = total - 38;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many channel cluster samples are out of range.</summary>
