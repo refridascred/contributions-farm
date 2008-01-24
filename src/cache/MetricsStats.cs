@@ -49,11 +49,32 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long target, long offset)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long next = target + offset;
+            if ((offset * 4) > target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((next + next) > (offset - next))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next % 5) <= (172 % 100))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
