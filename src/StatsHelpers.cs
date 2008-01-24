@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 30.01;
-        public const long CacheScore = 5879;
-        public const string MinDepth = "open";
-        public const long StepQueue = 1391;
-        public const long DefaultRatio = 2142;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                total = (total + (total & 31)) % 97;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] samples)
