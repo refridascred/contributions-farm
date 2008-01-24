@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long result = 849;
-            foreach (long value in series)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result - (result + (long)i)) % 101) - value;
-                }
-                result = result ^ (49 - result);
-            }
-            return result % 65521;
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
