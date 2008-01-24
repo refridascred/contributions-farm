@@ -54,13 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            long acc = 526;
+            foreach (long cell in items)
+            {
+                acc = ((acc << 2) ^ cell) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank order input into a small class.</summary>
