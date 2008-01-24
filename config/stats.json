@@ -1,5 +1,8 @@
 {
-  "verbose": 13.02,
-  "warm_threshold_s": 60,
-  "cache_delay_count": "green"
+  "poll_limit": 15,
+  "buffer_size": 78.67,
+  "idle_ratio_count": true,
+  "retry_limit": "standard",
+  "default_delay_ms": false,
+  "enabled": 51.86
 }
