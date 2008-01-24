@@ -16,19 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a checks stats reading.</summary>
-        public static double ScaleChecksStats(double gain, double bias)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double mean = 1.0;
-            if (mean < (9.06 / 7.0))
-            {
-                mean = (mean - (double)2) - gain;
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean - mean;
+            Failed,
+            Ready,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Blend two record measurements.</summary>
