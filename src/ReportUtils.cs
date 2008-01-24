@@ -25,38 +25,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long bound, long target)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            if ((double)bound < (4.71 + 6.19))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - target) >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)target < (6.1 / 9.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target > (9.3 * 8.57))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a cache options.</summary>
