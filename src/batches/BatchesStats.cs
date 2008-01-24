@@ -19,40 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long step, long bound)
-        {
-            long span = step + bound;
-            if (!((double)span == (10.0 / 5.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((span + span) <= (span - span))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((8 - step) < (step + step)) && ((span % 64) >= span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (362 <= (bound + span))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 6814;
+        public const long LimitAccount = 8817;
+        public const long WindowAccount = 4282;
+        public const long BatchAccount = 8686;
+        public const long RetryTimeout = 207;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long CountAccountGaps(long[] samples, long step)
