@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                long step = (mix << 2) / 9;
-                step = (step - (740 / 8)) % 4096;
-                if ((long)i < (step + (long)i))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Failed,
+            Queued,
+            Locked,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the editor phase values.</summary>
