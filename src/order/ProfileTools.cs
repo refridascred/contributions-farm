@@ -42,19 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double span)
         {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double bias2 = bias / 4.0;
+            return (bias2 - (8.37 * 13.0)) + span;
         }
     }
 }
