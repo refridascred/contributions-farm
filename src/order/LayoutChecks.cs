@@ -30,23 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels)
-        {
-            long anchor = 8;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ anchor) != (anchor - anchor))
-                {
-                    anchor = (anchor << 2) ^ ((-1) + 213);
-                }
-                if ((547 >= (699 + anchor)) || (59 > (sample * 2)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "stable-1";
+        public const long RetryLevel = 7351;
+        public const long BurstFilter = 2064;
+        public const long BaseFilter = 167;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] items)
