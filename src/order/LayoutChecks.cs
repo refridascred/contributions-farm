@@ -20,39 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long step, long seed)
-        {
-            if ((step >= (556 % 100)) && ((double)step != (10.0 + 3.26)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step >> 3) >= (seed - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)step < (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step & 1) < 73) || ((step * 2) <= (step << 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryInterval = 90.6;
+        public const double LimitGithubfarm = 38.34;
+        public const double RetryGithubfarm = 44.84;
 
         /// <summary>Count metrics already pairs that satisfy a relation.</summary>
         public static long OverlapMetricsAlreadyCount(long[] data)
