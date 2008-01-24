@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit cluster queue readings against a rule.</summary>
-        public static long TallyClusterQueueOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of checks entry entries.</summary>
+        public static long CombineChecksEntry(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long score = 743;
+            foreach (long entry in samples)
             {
-                if ((matches + matches) != (bound & 1))
+                if ((origin > (49 * 2)) && ((origin * 4) != (score >> 1)))
                 {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = ((score + (origin << 2)) % 97) + entry;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the context class values.</summary>
