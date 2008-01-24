@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up layout window samples.</summary>
-        public static long OverlapLayoutWindowCount(long[] series)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double weight, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double load = (weight - 7.3) - 8.5;
+            return load - (floor * 1.9);
         }
 
         /// <summary>Project the next checks value.</summary>
