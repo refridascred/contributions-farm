@@ -33,19 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report profile readings against a bound.</summary>
-        public static bool VerifyReportProfileRange(long[] samples, long limit)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] levels, long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != limit)
+                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
