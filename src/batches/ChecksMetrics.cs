@@ -43,20 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowRatio = 2898;
+        public const long BurstBatch = 7697;
+        public const long DefaultBatch = 5566;
+        public const long BaseBatch = 5735;
+        public const double IdleSpan = 90.11;
 
         /// <summary>Count the entry batches entries that pass the check.</summary>
         public static long AuditEntryBatchesGaps(long[] values, long offset)
