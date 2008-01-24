@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const long LimitBudget = 7108;
         public const double WindowCommand = 5.09;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] samples)
+        /// <summary>Grade a graph window value against two limits.</summary>
+        public static long ClassifyGraphWindow(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long step = bound - floor;
+            if (floor > (floor ^ floor))
             {
-                if (!((hits << 2) >= (hits - hits)))
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) <= (step + bound))
                 {
-                    hits = (hits + 1) ^ item;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + (-3)) < step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a window reading.</summary>
