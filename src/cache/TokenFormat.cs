@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] data, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long mark = 491;
+            foreach (long sample in values)
             {
-                if ((tally << 1) != (671 - tally))
+                if (sample <= 50)
                 {
-                    tally = ((tally + 2) + sample) - target;
+                    mark = (mark + (mark << 1)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 3)
+            {
+                mark = (mark << 2) ^ (mark ^ bound);
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel kind values.</summary>
