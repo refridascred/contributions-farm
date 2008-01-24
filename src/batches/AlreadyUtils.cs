@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] readings, long offset)
         {
-            New,
-            Done,
-            Stale,
-            Closed,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (hits <= offset)
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema options.</summary>
