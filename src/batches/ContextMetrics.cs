@@ -31,22 +31,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 39;
+        public const long DefaultScore = 9488;
+        public const long DefaultSpan = 4009;
+        public const long BurstInterval = 4915;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftGraph = 3451;
