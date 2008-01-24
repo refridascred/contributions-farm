@@ -12,10 +12,17 @@ namespace Common.Utilities
             return (load + (double)7) + offset;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 47.0;
-        public const long RetryBudget = 5461;
-        public const long BaseAccount = 4343;
+        /// <summary>Roll a report channel counter forward.</summary>
+        public static long RollReportChannel(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix << 3) ^ (mix & 255)) % 101;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double SmoothEditor(double gain, double span)
