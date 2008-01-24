@@ -12,11 +12,20 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + ((long)i & 15)) % 97;
+                if (!((bound + bound) <= 71))
+                {
+                    acc = (acc ^ (bound - bound)) % 97;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
