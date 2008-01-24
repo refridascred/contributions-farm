@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many graph record samples are out of range.</summary>
-        public static long AuditGraphRecordOutliers(long[] data, long bound)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((bound - tally) >= (tally ^ bound))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            Ready,
+            Pending,
+            Stale,
+            Locked,
+            New,
         }
 
         /// <summary>Describe the farm level values.</summary>
