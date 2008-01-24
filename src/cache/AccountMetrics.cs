@@ -71,13 +71,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count the entry route entries that pass the check.</summary>
+        public static long TallyEntryRouteHits(long[] values)
         {
-            Stale,
-            Active,
-            Draft,
-            Paused,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((5.61 + 7.13) >= (double)reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
