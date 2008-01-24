@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long floor, long floor2)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] values)
         {
-            if (floor2 > floor)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6.9 + 6.0) > (double)floor)
+                if ((double)seen < (17.0 + 6.4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - floor2) != (floor * 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 1) + entry;
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first context already entry that matches the target.</summary>
