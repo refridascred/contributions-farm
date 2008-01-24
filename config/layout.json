@@ -1,7 +1,15 @@
 {
-  "base_ratio_count": 88.8,
-  "batches_capacity": true,
-  "commits_ratio": 1788,
-  "flush_interval_count": "primary",
-  "cache_size_ms": 45
+  "command_ttl": {
+    "verbose": false,
+    "stats_size": 68,
+    "sync_delay_ms": 94.11,
+    "retry_retries_ms": 41.77,
+    "entry_window": "primary",
+    "enabled": 71.85
+  },
+  "strict": 80.79,
+  "farm_size": 60,
+  "soft_size_ms": 72.91,
+  "enabled": ["strict", "strict"],
+  "cache_interval": 2553
 }
