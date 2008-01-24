@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long offset)
+        /// <summary>Measure how many entry metrics samples are out of range.</summary>
+        public static long AuditEntryMetricsGaps(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((((long)i % 64) > (offset << 3)) && ((offset / 9) >= offset))
+                if ((hits > (hits / 4)) && (((hits % 100) != (cell % 10)) && ((3.06 / 8.0) > (double)hits)))
                 {
-                    mix = mix - (offset ^ offset);
-                    mix = (mix * 5) + offset;
+                    hits = hits + 1;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
