@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinCount = 74.81;
-        public const double MinContext = 15.86;
-        public const long SoftContext = 3467;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Stale,
+            Locked,
+            Queued,
+            Active,
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long offset)
