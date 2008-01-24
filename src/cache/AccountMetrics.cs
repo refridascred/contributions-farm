@@ -51,11 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftRatio = 44.22;
-        public const string LimitMetrics = "latest-1";
-        public const long BatchFactor = 2202;
-        public const double MaxMetrics = 51.02;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long CombineWindow(long[] values, long bound)
