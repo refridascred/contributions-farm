@@ -31,17 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum << 2) ^ (limit * 3);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 3927;
+        public const long MaxLevel = 9241;
+        public const string BatchBudget = "local-1";
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] samples)
