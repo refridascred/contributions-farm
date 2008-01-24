@@ -25,13 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] values)
         {
-            Pending,
-            Closed,
-            Idle,
-            Draft,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (!((seen >= (datum / 9)) && (datum >= ((-368) + seen))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
