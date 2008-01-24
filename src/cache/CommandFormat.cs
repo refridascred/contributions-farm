@@ -46,9 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 53.01;
-        public const long WindowCounter = 5803;
-        public const long StepCounter = 2991;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] series, long origin)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value < (value << 3))
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
+        }
     }
 }
