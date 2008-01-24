@@ -48,32 +48,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long lane = step + seed;
-            if (seed >= (seed + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)lane >= (3.34 - 19.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step << 1) <= lane) && (1 <= (6 - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats record.</summary>
