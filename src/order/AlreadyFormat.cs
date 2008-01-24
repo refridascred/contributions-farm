@@ -45,18 +45,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((value - matches) == (limit << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
