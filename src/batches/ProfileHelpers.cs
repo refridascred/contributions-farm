@@ -45,22 +45,19 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Count the metrics graph entries that pass the check.</summary>
-        public static long CountMetricsGraphMatches(long[] values, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (((double)hits != (8.7 / 8.0)) || (hits >= (hits ^ hits)))
+                if (item != seed)
                 {
-                    hits = ((hits + 1) ^ datum) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
