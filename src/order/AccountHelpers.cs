@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] readings)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((tally << 3) == (58 & 127)) || ((767 + value) < 8))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double load = (double)(217 + 9);
+            return (load - (span + load)) + scale;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
