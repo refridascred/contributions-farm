@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Idle,
-            Done,
-            Synced,
+            Failed,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Adjust a commits reading.</summary>
