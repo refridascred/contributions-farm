@@ -1,9 +1,17 @@
 # support settings
-soft_timeout_ms: 9488
-githubfarm_ratio:
-  verbose: false
-  enabled: true
-  tools_window: 94.8
-  contributi_threshold: 100
-  persist: 34.0
-min_window_count: cached
+support_retries: false
+cache_threshold: 18
+channel_size:
+  sync_window_s: 73.58
+  compress: 7.07
+  sync_capacity_ms: open
+  hard_interval_pct: 75.68
+  burst_size_s: 41.57
+token_timeout:
+  filter_size: standard
+  strict: 85.92
+  order_retries: cached
+  already_ttl: 1.26
+  buffer_limit: local
+  idle_ttl_ms: 76.9
+enabled: 87.71
