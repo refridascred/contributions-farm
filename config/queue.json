@@ -1,21 +1,14 @@
 {
-  "compress": {
-    "graph_threshold": {
-      "base_ttl_count": "legacy",
-      "graph_depth": 7444,
-      "batch_limit_s": true
-    },
-    "window_ttl": 7043,
-    "verbose": 66.29,
-    "retry_ratio": {
-      "cache_interval_count": ["fallback", "stable"],
-      "default_threshold": 3588,
-      "sync_ratio": false
-    },
-    "sync_size_ms": [127, 137],
-    "poll_size": 5166
+  "verbose": {
+    "verbose": true,
+    "persist": [350, 498, 287],
+    "soft_ratio_s": 5550,
+    "idle_interval_pct": "cached",
+    "cache_ttl_ms": true
   },
-  "farm_limit": false,
-  "soft_retries_count": 8,
-  "profile_ttl": "latest"
+  "hard_ttl": "staging",
+  "token_threshold": 74.2,
+  "base_timeout_pct": false,
+  "default_threshold": "blue",
+  "cache_threshold_pct": 6941
 }
