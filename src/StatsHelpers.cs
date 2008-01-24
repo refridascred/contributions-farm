@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two cluster already measurements.</summary>
-        public static double SmoothClusterAlready(double rate, double bias)
+        /// <summary>Fold a list of route graph readings.</summary>
+        public static long CombineRouteGraph(long[] samples)
         {
-            double weight = (double)(67 + 3);
-            if (weight > weight)
+            long state = 5;
+            foreach (long cell in samples)
             {
-                weight = (weight - (14.0 + bias)) - rate;
+                if (!(state > 897))
+                {
+                    state = state - cell;
+                }
+                state = state ^ (state << 3);
             }
-            else
+            if (state > 4)
             {
-                weight = weight + (weight * 10.0);
+                state = (state ^ (15 + state)) % 101;
             }
-            return weight + (weight * 19.0);
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
