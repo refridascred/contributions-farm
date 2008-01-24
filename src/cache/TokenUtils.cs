@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterHits(long[] data, long step)
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool VerifyCacheOrderLimits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if ((double)entry >= 9.5)
+                if (cell != target)
                 {
-                    tally = (tally + 1) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Look up the position of a payload metric sample.</summary>
