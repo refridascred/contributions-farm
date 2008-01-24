@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] series, long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)hits != (3.59 - 6.0))
-                {
-                    hits = ((hits + 1) ^ item) + target;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
