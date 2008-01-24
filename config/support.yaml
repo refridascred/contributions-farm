@@ -1,7 +1,6 @@
 # support settings
-soft_limit: 85
-cache_depth: 60
-persist:
-  - 284
-  - 98
-batch_threshold_count: false
+burst_depth_ms: true
+max_delay_s: eu-west
+base_ratio_s: true
+hard_capacity_count: 9.38
+cache_retries_ms: 7.24
