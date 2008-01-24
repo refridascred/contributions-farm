@@ -81,17 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] readings, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span;
+            if (gain <= (gain - gain))
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (19.0 / 6.0)) + scale;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + span) - (double)(long)i;
+            }
+            return gain - (double)7;
         }
     }
 }
