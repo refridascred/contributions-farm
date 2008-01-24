@@ -36,18 +36,10 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardLevel = 6214;
+        public const double BurstRoute = 60.95;
+        public const long StepRoute = 2454;
 
         /// <summary>Scale a queue channel figure with a bias.</summary>
         public static double BlendQueueChannel(double gain, double offset)
