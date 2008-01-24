@@ -1,17 +1,26 @@
 # githubfarm settings
-record_delay: 1937
-burst_retries_s: cached
-enabled: green
-cluster_ratio: false
-retry_timeout_ms: false
-queue_delay:
-  session_window:
-    - 147
-    - 202
-    - 107
-    - 188
-  persist: strict
-  burst_threshold_s: 47
-  cache_ttl_pct:
-    - stable
-    - open
+default_window: edge
+flush_delay:
+  enabled: 9216
+  idle_ttl_pct:
+    - 149
+    - 193
+    - 400
+    - 343
+  stats_timeout:
+    burst_timeout_pct: 75
+    sync_retries:
+      - blue
+      - edge
+      - legacy
+      - edge
+    base_retries_pct: 81.84
+    sync_size: false
+  max_window: strict
+  flush_delay_ms: legacy
+graph_retries:
+  - 486
+  - 366
+  - 294
+sync_interval: 18.2
+soft_size_count: green
