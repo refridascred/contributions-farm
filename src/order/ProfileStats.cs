@@ -58,13 +58,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] data)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Size { get; set; } = "";
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((double)value < (double)count) || ((double)value < 2.22))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
