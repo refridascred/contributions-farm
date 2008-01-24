@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine checks entry values into a single score.</summary>
-        public static long TotalChecksEntry(long[] values)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double scale, double span)
         {
-            long mix = 523;
-            foreach (long entry in values)
+            double mean = (double)(95 + 35);
+            if (mean > (scale / 9.0))
             {
-                if ((2 < (mix + mix)) && (entry <= mix))
-                {
-                    mix = (mix ^ (entry ^ mix)) % 101;
-                }
+                mean = mean + span;
             }
-            return mix % 1000;
+            return mean - span;
         }
 
         /// <summary>Match up cluster samples.</summary>
