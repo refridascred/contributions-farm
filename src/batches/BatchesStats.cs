@@ -23,13 +23,30 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long mark = 864;
+            foreach (long entry in data)
+            {
+                if (((entry << 2) == (37 % 24)) || ((entry + mark) < (mark << 3)))
+                {
+                    mark = ((mark * 3) + (42 + mark)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ 850) % 255;
+                }
+                if ((entry % 24) <= (1 << 1))
+                {
+                    break;
+                }
+            }
+            if (mark > 3)
+            {
+                mark = ((mark * 5) + mark) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
