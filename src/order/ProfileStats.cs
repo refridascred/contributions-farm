@@ -64,22 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support cache readings.</summary>
-        public static long CombineSupportCache(long[] data)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long anchor = -4;
-            foreach (long entry in data)
-            {
-                if (anchor > (anchor / 2))
-                {
-                    anchor = ((anchor * 4) + entry) % 4096;
-                }
-                if (92 < (entry * 2))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
