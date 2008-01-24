@@ -59,20 +59,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Project the next window cache value.</summary>
+        public static double SmoothWindowCache(double weight, double offset)
         {
-            long mark = 32;
-            foreach (long value in items)
+            double rate = offset;
+            if (rate > (rate * 11.0))
             {
-                mark = (mark + (value >> 3)) % 255;
-                mark = (mark - (mark + mark)) % 97;
+                rate = rate - weight;
             }
-            if (mark < 1)
+            else
             {
-                mark = (mark ^ (mark >> 1)) % 255;
+                rate = rate - (offset - 6.0);
             }
-            return mark % 1000;
+            return rate + (double)16;
         }
     }
 }
