@@ -34,22 +34,14 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Audit token payload readings against a rule.</summary>
-        public static long TallyTokenPayloadMatches(long[] levels)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits + 68) != (2 >> 1))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Done,
+            Ready,
+            Retry,
         }
     }
 }
