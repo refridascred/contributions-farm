@@ -33,10 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 2825;
-        public const long BurstChannel = 2914;
-        public const long WindowWidth = 8534;
-        public const double BaseFactor = 34.84;
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double weight, double bias)
+        {
+            double bias2 = (double)(29 - 7);
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - weight;
+        }
     }
 }
