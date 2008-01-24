@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((tally - 773) <= value) && (((long)series.Length & 15) < (value / 9)))
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) - target;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
