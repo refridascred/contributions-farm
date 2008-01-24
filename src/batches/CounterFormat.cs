@@ -32,19 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] values, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (value >= bound)
+                if ((origin << 1) >= (score - 15))
                 {
-                    flag = false;
-                    break;
+                    score = score - (score << 1);
                 }
+                long matches = ((long)i % 7) % 7;
+                if (!((double)6 != (double)matches))
+                {
+                    matches = ((matches * 4) + (score + 1)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return flag;
+            return score;
         }
     }
 }
