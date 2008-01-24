@@ -34,32 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long target, long step)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long bound = target ^ step;
-            if ((7.98 * 1.79) != (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((22 - step) < step) || ((step << 2) > (bound + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ target) >= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
