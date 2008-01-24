@@ -23,13 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Locked,
-            Dropped,
-            Retry,
-            New,
+            public double Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
