@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate filter format readings against a bound.</summary>
-        public static bool ValidateFilterFormatBounds(long[] items, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long result = -9;
+            foreach (long value in samples)
             {
-                if (item >= seed)
+                result = result ^ (result + value);
+                result = (result ^ result) % 101;
+                if ((16.0 / 7.0) == (double)value)
                 {
-                    valid = false;
-                    break;
+                    result = result ^ (value % 16);
                 }
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Match up contributi samples.</summary>
