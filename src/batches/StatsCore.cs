@@ -76,13 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
