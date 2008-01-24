@@ -27,11 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstFactor = 41.88;
-        public const long WindowBatches = 2759;
-        public const long LimitBatches = 1513;
-        public const double HardSize = 18.11;
-        public const long MinTimeout = 4383;
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
