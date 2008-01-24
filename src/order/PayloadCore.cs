@@ -15,19 +15,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - count) < (reading & 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "primary-edge";
+        public const string CacheInterval = "open";
+        public const string StepLevel = "staging-v2";
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long bound, long bound2)
