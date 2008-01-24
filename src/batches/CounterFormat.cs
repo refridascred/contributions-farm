@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double span)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long target, long bound)
         {
-            double ratio = (double)(625 + 538);
-            for (int i = 0; i < 8; i++)
+            long prev = target - bound;
+            if (((target - 2) > (prev << 3)) || ((target + bound) < prev))
             {
-                ratio = (ratio - (double)(long)i) - scale;
+                return 7;
             }
-            return ratio - span;
+            else
+            {
+                if ((3.92 * 6.89) == (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((13 << 3) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
