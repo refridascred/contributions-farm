@@ -20,21 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the route buffer series from a seed.</summary>
-        public static long StepRouteBuffer(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score + (floor + 94);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (score - (226 + score)) + (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "standard-v2";
+        public const long WindowStats = 3906;
+        public const double HardTimeout = 85.29;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionMatches(long[] readings)
