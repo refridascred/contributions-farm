@@ -1,7 +1,10 @@
 # githubfarm settings
-default_delay_s: 66.38
-persist:
+min_limit_count:
   - green
   - eu-west
-  - legacy
-hard_delay_pct: stable
+  - eu-west
+  - stable
+retry_window_count: true
+batch_ttl_s: green
+payload_delay: stable
+contributi_depth: 40.62
