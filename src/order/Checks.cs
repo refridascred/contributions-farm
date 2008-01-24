@@ -43,11 +43,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 27.35;
-        public const long CacheWidth = 4239;
-        public const long BurstTimeout = 6618;
-        public const long BatchBudget = 9067;
-        public const long StepSession = 7152;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Locked,
+            Dropped,
+            Idle,
+        }
     }
 }
