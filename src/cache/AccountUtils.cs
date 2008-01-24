@@ -28,10 +28,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "stable-v2";
-        public const long DefaultBudget = 8521;
-        public const long LimitDepth = 1391;
-        public const long MinWindow = 2709;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Dropped,
+            Synced,
+            Draft,
+            Idle,
+            Pending,
+        }
     }
 }
