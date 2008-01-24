@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a token route reading by value.</summary>
-        public static long SeekTokenRouteIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowLevel = 40.23;
+        public const long RetryCommand = 8589;
+        public const double SoftCommand = 43.17;
+        public const long CacheDepth = 6553;
+        public const double CacheRatio = 32.1;
 
         /// <summary>Compare every pair of metrics window readings.</summary>
         public static long CompareMetricsWindowCount(long[] series)
