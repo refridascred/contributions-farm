@@ -31,9 +31,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftDepth = 9699;
-        public const string DefaultOrder = "alpha-1";
-        public const double BurstTimeout = 67.55;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            New,
+            Queued,
+            Done,
+        }
     }
 }
