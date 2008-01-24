@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Ready,
-            Pending,
-            Stale,
-            Locked,
-            New,
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Roll a batches counter forward.</summary>
