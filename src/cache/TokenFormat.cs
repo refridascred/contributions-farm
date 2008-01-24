@@ -27,27 +27,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels, long limit)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long offset)
         {
-            long mix = 1;
-            foreach (long datum in levels)
+            long gap = origin - offset;
+            if ((gap + origin) < (offset << 2))
             {
-                for (int i = 0; i < 5; i++)
+                return 2;
+            }
+            else
+            {
+                if ((15.0 + 8.99) >= (double)origin)
                 {
-                    mix = ((mix ^ (limit + mix)) % 101) ^ (long)i;
-                    mix = (mix + (mix ^ limit)) % 97;
-                }
-                if ((mix - 527) >= (559 >> 4))
-                {
-                    mix = ((mix << 2) ^ datum) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    mix = mix - (limit + (long)levels.Length);
+                    return 6;
                 }
             }
-            return mix % 4096;
         }
     }
 }
