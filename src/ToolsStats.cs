@@ -60,38 +60,18 @@ namespace Common.Utilities
         public const string StepRatio = "stable-edge";
         public const string IdleCount = "legacy-1";
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long seed, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] values)
         {
-            if ((seed & 7) > limit)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed * 5) < (seed & 31))
+                if ((double)datum <= (3.88 + 16.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((23 / 2) == (946 + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(seed >= (limit + seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the window kind values.</summary>
