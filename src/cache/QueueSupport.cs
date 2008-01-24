@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many order command samples are out of range.</summary>
+        public static long TallyOrderCommandGaps(long[] samples)
         {
-            Ready,
-            Queued,
-            Closed,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((tally & 255) != (0 ^ tally))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
