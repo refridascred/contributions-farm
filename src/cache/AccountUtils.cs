@@ -41,19 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double rate, double floor)
         {
-            long state = 0;
-            foreach (long value in readings)
+            double scale = (double)681;
+            if (scale <= (rate / 6.0))
             {
-                state = state + (value << 2);
+                scale = scale - floor;
             }
-            if (state < 83)
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 2) + (state ^ state)) % 97;
+                scale = (scale + rate) - (double)(long)i;
             }
-            return state;
+            return scale + rate;
         }
     }
 }
