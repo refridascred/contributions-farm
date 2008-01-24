@@ -18,21 +18,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count window filter pairs that satisfy a relation.</summary>
-        public static long OverlapWindowFilterCount(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = offset ^ offset2;
+            if ((offset2 >> 1) <= (offset + offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((offset ^ slot) >= (offset2 * 3))
                 {
-                    if ((values[i] + values[j]) > 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((slot + 8) > (slot * 3))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((3.7 / 6.0) > (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
