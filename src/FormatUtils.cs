@@ -94,26 +94,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] series)
+        /// <summary>Count profile support pairs that satisfy a relation.</summary>
+        public static long MatchProfileSupportCount(long[] series)
         {
-            long result = 70;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result + entry) <= (result - result))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result + result) % 4096;
-                }
-                if ((44 - entry) == (result << 3))
-                {
-                    break;
+                    if ((series[i] - series[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 52)
-            {
-                result = (result ^ (result << 3)) % 1000;
-            }
-            return result;
+            return count;
         }
     }
 }
