@@ -23,28 +23,36 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long step, long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long floor, long limit)
         {
-            if (offset <= (offset >> 2))
+            long gap = floor + limit;
+            if (((limit * 2) < (limit + floor)) || ((floor ^ gap) >= (gap << 2)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((step + 55) < 8)
+                if ((double)limit != (11.0 * 4.72))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (3 > (step << 2))
+                    if ((double)floor <= (12.0 / 2.0))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        if (((gap / 9) <= gap) && ((floor ^ limit) == (floor - (-699))))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
