@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of window commits readings.</summary>
-        public static long OverlapWindowCommitsCount(long[] series)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((tally + bound) <= ((long)data.Length & 255)) && !(6.3 > (double)bound))
                 {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate order profile samples.</summary>
