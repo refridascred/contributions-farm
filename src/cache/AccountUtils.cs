@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many route channel samples are out of range.</summary>
-        public static long MeasureRouteChannelMatches(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterHits(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((cell * 2) <= (1 % 3))
+                if ((floor / 9) <= (floor - floor))
                 {
-                    tally = tally + 2;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
