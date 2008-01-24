@@ -15,15 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            if ((136 >> 5) >= (origin << 1))
             {
-                state = ((state * 5) + (long)i) % 1000;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((double)offset < (6.56 / 7.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a account options.</summary>
