@@ -71,17 +71,26 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first entry metrics entry that matches the target.</summary>
-        public static long SeekEntryMetricsIndex(long[] readings, long bound)
+        /// <summary>Fold a list of commits graph readings.</summary>
+        public static long DigestCommitsGraph(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 97;
+            foreach (long sample in samples)
             {
-                if ((readings[i] > bound) && ((readings[i] % 3) == 0))
+                if ((8.1 + 8.7) > (double)seed)
                 {
-                    return (long)i;
+                    acc = ((acc + 942) % 4096) + sample;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (seed ^ seed)) % 101;
                 }
             }
-            return -1;
+            if (acc > 77)
+            {
+                acc = acc + (71 << 3);
+            }
+            return acc;
         }
     }
 }
