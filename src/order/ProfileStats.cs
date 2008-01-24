@@ -58,14 +58,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Synced,
-            New,
-            Stale,
-            Ready,
-            Queued,
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
