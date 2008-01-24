@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double weight, double floor)
-        {
-            double load = (weight - 7.3) - 8.5;
-            return load - (floor * 1.9);
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 7527;
+        public const double StepTools = 49.33;
+        public const long StepRatio = 1635;
+        public const long MinInterval = 4416;
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double scale, double span)
