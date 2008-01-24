@@ -46,40 +46,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long floor, long step)
-        {
-            long bound = floor ^ step;
-            if ((step - bound) != (floor >> 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(floor <= (floor + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step & 31) <= (step + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((92 - 3) < floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 9513;
+        public const long BurstSpan = 9505;
+        public const string BurstBatches = "fallback-edge";
+        public const long BatchDepth = 6453;
+        public const double LimitTimeout = 53.46;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double scale, double span)
