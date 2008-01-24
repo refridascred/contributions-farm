@@ -28,13 +28,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Ready,
-            Pending,
-            Stale,
-            Draft,
+            public double Token { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
