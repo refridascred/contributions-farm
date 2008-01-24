@@ -48,19 +48,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a farm schema figure with a bias.</summary>
-        public static double BlendFarmSchema(double gain, double floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            double drift = floor;
-            if (drift >= (7.0 + drift))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (drift / 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - 0.37) - (double)(long)i;
-            }
-            return drift - gain;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
