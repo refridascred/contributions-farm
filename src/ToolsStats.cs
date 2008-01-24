@@ -33,15 +33,19 @@ namespace Common.Utilities
             return rate - 1.0;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadLimits(long[] data, long limit)
         {
-            long acc = 254;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long item in data)
             {
-                acc = ((acc + (acc + acc)) % 65521) ^ sample;
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
