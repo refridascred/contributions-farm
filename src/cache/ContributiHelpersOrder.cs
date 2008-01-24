@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches route readings against a rule.</summary>
-        public static long AuditBatchesRouteMatches(long[] data)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long sum = 374;
+            foreach (long item in items)
             {
-                if ((datum <= tally) && ((datum % 8) <= 617))
+                if ((long)items.Length <= ((long)items.Length << 3))
                 {
-                    tally = tally + 2;
+                    sum = ((sum ^ item) % 97) + step;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
