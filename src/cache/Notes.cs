@@ -31,10 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 3927;
-        public const long MaxLevel = 9241;
-        public const string BatchBudget = "local-1";
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] samples)
