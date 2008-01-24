@@ -55,18 +55,39 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the payload route entries that pass the check.</summary>
-        public static long TallyPayloadRouteOutliers(long[] data, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long step = bound - offset;
+            if (bound >= (step >> 3))
             {
-                if ((target + hits) < (hits >> 5))
+                return 6;
+            }
+            else
+            {
+                if (((7.0 + 5.0) < (double)step) || (8.86 >= (double)offset))
                 {
-                    hits = (hits + 2) ^ item;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + bound) >= (step - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (1.21 < (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
