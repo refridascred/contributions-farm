@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
+            long acc = -60;
+            foreach (long item in samples)
+            {
+                if ((acc - 721) < (674 ^ (-1)))
+                {
+                    acc = (acc ^ (item + item)) % 255;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Match up order samples.</summary>
