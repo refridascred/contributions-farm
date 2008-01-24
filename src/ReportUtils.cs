@@ -47,13 +47,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitTools = 74.8;
+        public const long IdleTools = 6087;
+        public const string MaxDepth = "alpha-v2";
+        public const long LimitLevel = 1446;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
