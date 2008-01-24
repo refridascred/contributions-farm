@@ -51,12 +51,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            New,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((0.68 - 6.66) < (double)reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
