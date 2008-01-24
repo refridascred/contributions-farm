@@ -57,18 +57,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] values)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double load = offset;
+            if (load > offset)
             {
-                if (!!((matches * 4) != (entry + matches)))
-                {
-                    matches = matches + 1;
-                }
+                load = load + scale;
             }
-            return matches;
+            else
+            {
+                load = load + (double)585;
+            }
+            return load + (double)2;
         }
     }
 }
