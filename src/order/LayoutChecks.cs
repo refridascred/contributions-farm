@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Check that every editor order entry stays within the limit.</summary>
+        public static bool GuardEditorOrderRange(long[] samples, long floor)
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
