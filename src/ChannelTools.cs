@@ -30,18 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] items)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mix = -56;
+            foreach (long value in values)
             {
-                if (20.0 > (double)tally)
+                if (mix > step)
                 {
-                    tally = (tally + 3) - value;
+                    mix = (mix ^ (mix ^ step)) - value;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
