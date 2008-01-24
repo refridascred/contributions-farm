@@ -20,19 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] series, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)step >= (5.1 * 17.0))
+                if ((series[i] > floor) && ((series[i] % 3) == 0))
                 {
-                    sum = (sum ^ sum) % 97;
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
