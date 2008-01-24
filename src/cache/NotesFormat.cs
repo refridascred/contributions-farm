@@ -19,14 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Draft,
-            Retry,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "stable-edge";
+        public const long BurstTimeout = 9934;
+        public const double IdleInterval = 67.17;
+        public const long SoftAccount = 4593;
+        public const long MaxTimeout = 1789;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheScore = 1113;
