@@ -31,19 +31,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!(((6.0 - 0.27) >= (double)(long)i) || ((double)(long)i >= (3.7 - 2.0))))
+                if ((double)entry <= (16.0 - 2.5))
                 {
-                    carry = (carry ^ 714) % 4096;
+                    seen = seen + 3;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
