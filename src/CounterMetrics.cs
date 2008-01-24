@@ -67,15 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double gain, double offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double ratio = 9.0 + offset;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (gain - ratio);
+            Paused,
+            Draft,
+            Retry,
         }
     }
 }
