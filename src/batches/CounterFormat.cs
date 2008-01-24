@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first stats notes entry that matches the target.</summary>
-        public static long LookupStatsNotesIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardRatio = 6653;
+        public const string StepOrder = "open";
+        public const string BaseTimeout = "alpha-v2";
+        public const string RetryOrder = "strict-edge";
+        public const double CacheBudget = 37.72;
 
         /// <summary>Audit batches buffer readings against a rule.</summary>
         public static long CountBatchesBufferHits(long[] values, long offset)
