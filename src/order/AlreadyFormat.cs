@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Paused,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSize = 3025;
+        public const long RetryProfile = 3113;
+        public const long IdleCount = 3303;
+        public const long MaxWidth = 1805;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long CombineStream(long[] data, long offset)
