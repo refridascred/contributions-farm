@@ -20,16 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] items, long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                state = (state + (long)i) % 255;
-                state = ((state * 4) + (long)i) % 97;
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a entry entry.</summary>
