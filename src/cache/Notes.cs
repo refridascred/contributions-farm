@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] readings)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count << 1) >= (count >> 4))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every order stats entry stays within the limit.</summary>
