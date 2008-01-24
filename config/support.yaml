@@ -1,8 +1,5 @@
 # support settings
-tools_delay: 70.4
-dry_run: 250
-metrics_ttl:
-  - stable
-  - legacy
-  - legacy
-  - cached
+soft_retries_ms: 6444
+warm_interval_pct: 7146
+retry_retries: 250
+base_window_count: legacy
