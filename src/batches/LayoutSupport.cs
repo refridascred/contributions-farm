@@ -33,10 +33,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepTimeout = 3745;
-        public const long BurstScore = 9496;
-        public const string CacheRoute = "open";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Dropped,
+            Retry,
+            Done,
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long CompareCommandCount(long[] values)
