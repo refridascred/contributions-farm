@@ -44,21 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] > seed)
                 {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
