@@ -50,13 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            Ready,
+            Active,
+            Locked,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
