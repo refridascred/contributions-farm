@@ -1,8 +1,20 @@
 {
-  "sync_ttl": 9256,
-  "poll_window_pct": 30.22,
-  "warm_depth_pct": 18.91,
-  "dry_run": [457, 15, 341, 213],
-  "commits_interval": "local",
-  "farm_depth": "latest"
+  "sync_depth_count": {
+    "min_size_s": {
+      "command_threshold": "edge",
+      "commits_threshold": "green",
+      "compress": "stable",
+      "format_depth": "latest"
+    },
+    "audit": "open",
+    "base_threshold_s": {
+      "already_threshold": "stable",
+      "hard_ratio_count": 32.71,
+      "hard_limit_s": 100,
+      "default_retries_s": 89.75,
+      "hard_size_count": 41
+    }
+  },
+  "flush_timeout_count": 15.76,
+  "metric_depth": 5311
 }
