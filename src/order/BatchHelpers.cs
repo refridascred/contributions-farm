@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 28;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((total - total) == (reading >> 5)) || ((reading + total) >= reading))
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total << 3) ^ 82;
+                    total = total ^ (reading % 12);
+                }
+                if ((double)total > 9.0)
+                {
+                    total = (total * 3) + (65 + reading);
+                }
+                if ((reading + total) > (8 ^ (-81)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate route samples.</summary>
