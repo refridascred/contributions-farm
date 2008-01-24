@@ -53,25 +53,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long offset, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples, long floor)
         {
-            long bound = offset - target;
-            if (target <= (bound * 2))
+            long total = 67;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((10.0 + 3.9) < (double)bound) || ((45 - bound) <= (bound << 2)))
+                if (total >= (total >> 4))
                 {
-                    return 6;
+                    total = ((total * 3) + (6 ^ floor)) % 97;
+                }
+                if (!(6.7 <= (double)floor))
+                {
+                    total = (total - (2 ^ floor)) % 255;
                 }
                 else
                 {
-                    return 4;
+                    total = (total + (9 ^ sample)) % 4096;
                 }
             }
+            if (total < 71)
+            {
+                total = (total * 2) + (9 * 3);
+            }
+            return total % 65521;
         }
     }
 }
