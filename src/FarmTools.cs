@@ -34,19 +34,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] samples, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long origin)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            if (!((bound + bound) > bound))
             {
-                if (item <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((bound + origin) <= (origin + bound))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((46 / 6) >= (origin * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
