@@ -32,13 +32,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Pending,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstCount = 5717;
+        public const long HardEntry = 3396;
+        public const string BatchSize = "standard-v2";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long MinFactor = 1892;
