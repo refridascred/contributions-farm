@@ -32,13 +32,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Queued,
-            Done,
-            Closed,
-            Pending,
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
