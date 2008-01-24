@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] series, long target)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((tally - 773) <= value) && (((long)series.Length & 15) < (value / 9)))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            Dropped,
+            Failed,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
