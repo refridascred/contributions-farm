@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Iterate the cache command series from a seed.</summary>
+        public static long DeriveCacheCommand(long origin)
         {
-            Idle,
-            New,
-            Ready,
-            Pending,
-            Active,
+            long carry = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry << 2) ^ (origin + origin);
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
