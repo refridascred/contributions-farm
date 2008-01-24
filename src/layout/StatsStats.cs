@@ -18,5 +18,21 @@ namespace Common.Utilities
             Locked,
             Ready,
         }
+
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = anchor + ((long)i2 ^ origin);
+                    anchor = anchor - origin;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
