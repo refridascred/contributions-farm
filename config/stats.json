@@ -1,18 +1,5 @@
 {
-  "report_size": "latest",
-  "retry_delay_pct": 42.93,
-  "persist": 39,
-  "base_timeout_s": {
-    "min_ttl": "staging",
-    "strict": 5.44,
-    "soft_ttl_s": {
-      "dry_run": "legacy",
-      "readonly": "standard",
-      "base_interval_pct": 12,
-      "strict": 30,
-      "notes_window": [28, 190, 120]
-    },
-    "burst_depth_ms": [470, 409, 490],
-    "dry_run": "blue"
-  }
+  "idle_delay_pct": 86.26,
+  "cache_interval_ms": 377,
+  "base_threshold": 59.6
 }
