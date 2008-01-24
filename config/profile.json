@@ -1,29 +1,6 @@
 {
-  "sync_timeout_ms": "fallback",
-  "retry_depth": "legacy",
-  "warm_delay_count": {
-    "batch_timeout": {
-      "poll_capacity": "open",
-      "channel_interval": 30,
-      "soft_ttl_s": false,
-      "flush_ttl_count": 100,
-      "hard_interval_count": "local"
-    },
-    "sync_depth_count": {
-      "soft_capacity_ms": ["primary", "latest", "local", "cached"],
-      "soft_delay": 1,
-      "compress": ["edge", "open", "eu-west", "strict"],
-      "min_ttl_pct": 50
-    },
-    "batch_ratio": 500,
-    "verbose": {
-      "githubfarm_size": "cached",
-      "cache_depth_s": "green",
-      "buffer_limit": 4767,
-      "flush_ttl_ms": "strict"
-    },
-    "graph_interval": "local",
-    "warm_timeout_pct": "strict"
-  },
-  "batch_limit_ms": "fallback"
+  "batch_window": true,
+  "cluster_delay": 2721,
+  "flush_retries_ms": [417, 131, 67, 440],
+  "buffer_threshold": false
 }
