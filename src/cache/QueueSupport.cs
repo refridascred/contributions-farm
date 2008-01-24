@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryRatio = 2470;
-        public const double IdleOrder = 81.43;
-        public const long DefaultInterval = 5187;
+        /// <summary>Validate filter format readings against a bound.</summary>
+        public static bool ValidateFilterFormatBounds(long[] items, long seed)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] data)
