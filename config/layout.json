@@ -1,6 +1,5 @@
 {
-  "base_retries": "standard",
-  "audit": 14,
-  "verbose": 28.14,
-  "commits_ttl": ["legacy", "edge"]
+  "readonly": "cached",
+  "context_timeout": 19.65,
+  "burst_capacity_count": 80.41
 }
