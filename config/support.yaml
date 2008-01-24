@@ -1,4 +1,12 @@
 # support settings
-idle_retries_ms: edge
-flush_interval: 9.87
-soft_retries_count: 90
+verbose: staging
+retry_delay: true
+retry_ratio_s:
+  dry_run: strict
+  warm_threshold_s: 17
+  order_ratio:
+    - 207
+    - 487
+    - 58
+dry_run: cached
+max_depth_ms: 31
