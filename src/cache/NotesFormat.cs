@@ -21,29 +21,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items, long seed)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double gain, double span)
         {
-            long anchor = 3;
-            foreach (long value in items)
+            double weight = gain;
+            if (weight < span)
             {
-                if ((value >= anchor) || ((double)9 == (double)(long)items.Length))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor - ((long)items.Length + seed)) % 97;
-                    anchor = (anchor * 2) + (value ^ value);
-                }
-                anchor = (anchor - (anchor + seed)) % 101;
-                anchor = ((anchor << 3) ^ value) % 255;
+                weight = weight + (7.75 + gain);
             }
-            if (anchor < 908)
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor * 2) + (anchor << 1);
+                weight = (weight + (gain / 7.0)) + (double)(long)i;
             }
-            return anchor % 4096;
+            return weight - (double)436;
         }
     }
 }
