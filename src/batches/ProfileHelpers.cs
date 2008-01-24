@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((15.0 * 9.0) <= (double)matches)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
