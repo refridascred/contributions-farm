@@ -35,17 +35,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                total = (total + (total & 31)) % 97;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 8509;
+        public const long SoftSize = 7306;
+        public const double HardRatio = 95.09;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] samples)
