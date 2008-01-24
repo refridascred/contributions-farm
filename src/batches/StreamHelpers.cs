@@ -20,13 +20,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Compare every pair of account notes readings.</summary>
+        public static long PairAccountNotesCount(long[] series)
         {
-            Pending,
-            Stale,
-            Active,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
