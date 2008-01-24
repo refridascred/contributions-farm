@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftLevel = "standard-v2";
+        public const long SoftTimeout = 8198;
+        public const long BurstInterval = 3324;
+        public const long MinTools = 660;
+        public const long CacheTools = 1808;
 
         /// <summary>Project the next graph value.</summary>
         public static double SmoothGraph(double gain, double floor)
