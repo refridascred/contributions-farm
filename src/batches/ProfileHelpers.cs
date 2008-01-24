@@ -64,16 +64,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mix = 510;
-            foreach (long value in series)
-            {
-                mix = mix + value;
-                mix = (mix * 4) + value;
-            }
-            return mix;
+            Queued,
+            Stale,
+            Idle,
+            Closed,
+            Dropped,
         }
     }
 }
