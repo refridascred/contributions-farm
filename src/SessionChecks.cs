@@ -15,11 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftRecord = "strict-v2";
-        public const long StepFactor = 2034;
-        public const long DefaultSpan = 4171;
-        public const string BaseRecord = "standard-edge";
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((datum >> 5) > (hits - hits)) || ((549 % 2) == ((long)series.Length - 2)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] samples)
