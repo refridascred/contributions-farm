@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a report channel counter forward.</summary>
-        public static long SeriesReportChannel(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!((bound - 8) < (bound + state)))
-                {
-                    state = ((state << 3) ^ (bound - (long)i)) % 4096;
-                }
-                state = state ^ (-4);
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardSize = "staging-edge";
+        public const long IdleFactor = 7038;
+        public const string RetryInterval = "staging-edge";
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long SortBatch(long target, long seed)
