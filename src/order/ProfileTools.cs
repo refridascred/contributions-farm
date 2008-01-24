@@ -31,24 +31,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] data, long limit)
         {
-            long acc = 867;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((entry & 1) >= (entry + entry))
+                if ((matches & 3) != (limit & 127))
                 {
-                    acc = ((acc << 2) ^ ((long)readings.Length << 3)) % 101;
-                    continue;
+                    matches = (matches + 1) + item;
                 }
-                acc = ((acc * 4) + acc) % 65521;
             }
-            if (acc < 44)
-            {
-                acc = (acc * 2) + (2 + acc);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
