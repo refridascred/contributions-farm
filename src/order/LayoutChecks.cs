@@ -50,14 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] readings, long seed)
         {
-            Paused,
-            Queued,
-            Idle,
-            Failed,
-            Pending,
+            long state = 8;
+            foreach (long item in readings)
+            {
+                state = (((state - (state * 4)) % 97) + item) + seed;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
