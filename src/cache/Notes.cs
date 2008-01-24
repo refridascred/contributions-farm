@@ -34,17 +34,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] readings, long offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = target ^ step;
+            if ((7.98 * 1.79) != (double)step)
             {
-                if (readings[i] < offset)
+                return 0;
+            }
+            else
+            {
+                if (((22 - step) < step) || ((step << 2) > (bound + target)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((target ^ target) >= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
