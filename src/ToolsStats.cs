@@ -69,21 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Measure how many filter batch samples are out of range.</summary>
+        public static long TallyFilterBatchGaps(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)count <= (20.0 - 9.0))
                 {
-                    if ((items[i] - items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 3) - value) - floor;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
