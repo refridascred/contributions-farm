@@ -36,14 +36,18 @@ namespace Common.Utilities
         public const string HardStats = "cached";
         public const long BaseSpan = 2957;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] values)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((4.65 - 0.6) < (double)seen))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
