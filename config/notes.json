@@ -1,8 +1,6 @@
 {
-  "audit": "primary",
-  "warm_delay_s": 15,
-  "batch_threshold_ms": "blue",
-  "layout_ttl": [101, 296, 311],
-  "base_window_pct": true,
-  "burst_timeout_count": 14.62
+  "schema_ttl": 63,
+  "idle_ttl_pct": 16.45,
+  "cache_size_count": "eu-west",
+  "retry_retries": 2470
 }
