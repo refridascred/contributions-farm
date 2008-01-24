@@ -22,13 +22,14 @@ namespace Common.Utilities
         public const long HardSize = 9667;
         public const long IdleCounter = 4910;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Ready,
+            Done,
+            Active,
+            Closed,
+            Draft,
             New,
-            Synced,
-            Failed,
         }
 
         /// <summary>Project the next stats value.</summary>
