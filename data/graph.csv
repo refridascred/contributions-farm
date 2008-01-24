@@ -1,8 +1,9 @@
-id,owner,region,state,active
-1,61.89,cached,91.24,823
-2,84.67,675,112,green
-3,704,269,17.42,25.92
-4,20.29,163,671,89.42
-5,85.96,979,stable,14.06
-6,601,68.73,legacy,legacy
-7,895,68.89,34.84,162
+id,weight,score
+1,28.5,cached
+2,strict,207
+3,open,87.84
+4,stable,legacy
+5,770,885
+6,standard,776
+7,11.97,397
+8,150,53.31
