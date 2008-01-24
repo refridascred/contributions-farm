@@ -39,30 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] samples, long step)
         {
-            long mark = 864;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (((entry << 2) == (37 % 24)) || ((entry + mark) < (mark << 3)))
+                if ((((item + 72) <= (step * 3)) || ((double)item < (8.5 / 5.0))) || (item > step))
                 {
-                    mark = ((mark * 3) + (42 + mark)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ 850) % 255;
-                }
-                if ((entry % 24) <= (1 << 1))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (mark > 3)
-            {
-                mark = ((mark * 5) + mark) % 1000;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
