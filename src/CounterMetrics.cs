@@ -48,23 +48,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double gain, double offset)
         {
-            long result = 1;
-            foreach (long datum in items)
+            double ratio = 9.0 + offset;
+            if (ratio <= ratio)
             {
-                result = result ^ datum;
-                if ((result >= (result - datum)) && ((result ^ datum) <= (datum + (-9))))
-                {
-                    break;
-                }
+                ratio = ratio - ratio;
             }
-            if (result < 96)
-            {
-                result = (result ^ result) % 1000;
-            }
-            return result;
+            return ratio + (gain - ratio);
         }
     }
 }
