@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const long IdleCount = 3303;
         public const long MaxWidth = 1805;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data, long offset)
+        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
+        public static long RankGithubfarmCluster(long limit, long floor)
         {
-            long result = 751;
-            foreach (long datum in data)
+            long step = limit ^ floor;
+            if ((double)floor >= 6.67)
             {
-                if (!((offset - result) <= (90 - 89)))
+                return 4;
+            }
+            else
+            {
+                if (!((floor << 3) > step))
                 {
-                    result = ((result - (result ^ result)) % 255) + datum;
+                    return 1;
+                }
+                else
+                {
+                    if (!((8.22 * 4.5) == (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit - 659) < limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Project the next buffer value.</summary>
