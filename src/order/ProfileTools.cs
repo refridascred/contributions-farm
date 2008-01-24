@@ -22,13 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long offset, long step)
         {
-            Dropped,
-            Ready,
-            New,
-            Locked,
+            if ((offset ^ 10) >= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)step <= (double)99) && ((offset + step) >= (step >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
