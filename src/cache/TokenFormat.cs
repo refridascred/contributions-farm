@@ -23,14 +23,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the filter schema series from a seed.</summary>
+        public static long SeriesFilterSchema(long origin)
         {
-            Closed,
-            Dropped,
-            Synced,
-            Queued,
-            Ready,
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a support options.</summary>
