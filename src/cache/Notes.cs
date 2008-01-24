@@ -49,11 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next commits graph value.</summary>
-        public static double SmoothCommitsGraph(double bias, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            double scale = offset;
-            return (scale - offset) + bias;
+            long score = 6;
+            foreach (long item in samples)
+            {
+                if (7.85 < (double)score)
+                {
+                    score = (score - (score + item)) % 97;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
