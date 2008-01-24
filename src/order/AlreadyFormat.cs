@@ -45,13 +45,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] items, long limit)
         {
-            Active,
-            Pending,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value - matches) == (limit << 1))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
