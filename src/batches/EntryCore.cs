@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] items, long limit)
         {
-            long anchor = 96;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((long)samples.Length >= datum)
+                if (!((double)reading < (0.9 / 7.0)))
                 {
-                    anchor = anchor ^ ((-9) >> 4);
+                    tally = (tally + 1) - limit;
                 }
                 else
                 {
-                    anchor = (anchor ^ 4) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Locate a window reading by value.</summary>
