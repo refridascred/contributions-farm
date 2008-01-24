@@ -23,12 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double rate, double bias)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            double bias2 = 5.57;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 + bias2) + (double)(long)i) - rate;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Audit token payload readings against a rule.</summary>
