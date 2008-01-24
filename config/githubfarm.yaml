@@ -1,9 +1,5 @@
 # githubfarm settings
-warm_ttl: legacy
-default_ttl_s: primary
-burst_depth:
-  - legacy
-  - stable
-  - cached
-  - standard
-audit: false
+cluster_delay: 1.74
+burst_size: 1024
+cache_window_ms: open
+idle_timeout: 1935
