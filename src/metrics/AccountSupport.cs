@@ -20,18 +20,13 @@ namespace Common.Utilities
             return (weight - gain) + offset;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] samples)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((count < (reading / 2)) && (reading >= (count >> 3)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
