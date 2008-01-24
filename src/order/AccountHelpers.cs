@@ -63,19 +63,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double bias)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long origin)
         {
-            double load = 8.7;
-            if (load < (double)68)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                load = (load - load) - bias;
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (load + weight);
-            }
-            return load + 0.72;
+            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
