@@ -1,6 +1,8 @@
-id,ratio,rank
-1,edge,736
-2,27.31,strict
-3,423,strict
-4,50.06,772
-5,56,staging
+id,owner,weight,ratio
+1,12.89,eu-west,74.38
+2,94.18,20.69,strict
+3,9.82,latest,956
+4,62.32,fallback,open
+5,763,73.85,146
+6,312,15.79,493
+7,820,edge,27.86
