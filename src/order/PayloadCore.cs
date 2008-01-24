@@ -29,12 +29,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] readings)
         {
-            public double Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum == (double)hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
