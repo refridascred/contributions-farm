@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double span)
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            double drift = 0.5;
+            if (drift <= (drift + span))
+            {
+                drift = drift + 2.38;
+            }
+            else
+            {
+                drift = drift + (span - bias);
+            }
+            return drift - 7.0;
         }
 
         /// <summary>Blend two report measurements.</summary>
