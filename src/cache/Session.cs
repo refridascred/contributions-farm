@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long IdleDepth = 6994;
         public const string WindowTimeout = "cached-edge";
 
-        /// <summary>Count the layout payload entries that pass the check.</summary>
-        public static long CountLayoutPayloadOutliers(long[] series, long offset)
+        /// <summary>Look up the position of a report channel sample.</summary>
+        public static long LocateReportChannelIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((hits << 3) == (offset + 2)) || (hits > (datum - hits)))
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
