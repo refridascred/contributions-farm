@@ -20,17 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] data, long origin)
+        /// <summary>Validate channel contributi readings against a bound.</summary>
+        public static bool CheckChannelContributiRange(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) != 0))
+                if (cell >= limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
