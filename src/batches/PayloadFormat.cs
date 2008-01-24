@@ -39,31 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long sum = 1;
-            foreach (long item in items)
-            {
-                if (item < (sum + 540))
-                {
-                    sum = sum + offset;
-                }
-                if (!((sum ^ offset) > sum))
-                {
-                    sum = sum + (1 ^ sum);
-                    continue;
-                }
-                if ((14.0 * 8.5) > (double)sum)
-                {
-                    sum = (sum ^ 62) % 97;
-                }
-            }
-            if (sum > 73)
-            {
-                sum = (sum ^ (offset * 5)) % 97;
-            }
-            return sum % 1000;
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
