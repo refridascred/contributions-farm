@@ -35,21 +35,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score * 3) + ((long)i % 100);
-                if (((score - 613) != (origin - score)) && (score <= (742 + score)))
-                {
-                    score = (score - (score << 3)) % 1000;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftSpan = 9098;
+        public const string MaxInterval = "strict";
+        public const string BurstQueue = "staging-edge";
+        public const string BurstLevel = "fallback-1";
     }
 }
