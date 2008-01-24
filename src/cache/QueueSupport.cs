@@ -14,19 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] items, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Accumulate format command samples.</summary>
