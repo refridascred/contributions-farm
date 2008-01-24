@@ -26,17 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + ((long)i ^ (long)i)) % 97;
-                acc = (acc * 2) + (57 % 97);
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
