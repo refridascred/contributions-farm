@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long step, long target)
         {
-            Queued,
-            Active,
-            Locked,
-            Dropped,
+            long cur = step - target;
+            if (((4.3 / 7.0) <= (double)step) || ((3.2 + 4.54) > (double)step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((cur - step) == (target / 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
