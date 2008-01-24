@@ -16,12 +16,20 @@ namespace Common.Utilities
             return drift - bias2;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 37.83;
-        public const double DefaultFactor = 32.23;
-        public const long MinSchema = 237;
-        public const string MaxSchema = "open-v2";
-        public const long CacheSchema = 6969;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long CombineContributi(long[] levels, long origin)
