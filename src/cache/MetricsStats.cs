@@ -48,15 +48,19 @@ namespace Common.Utilities
         public const long MinMetric = 8156;
         public const long BatchSpan = 3046;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] items, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] items, long bound)
         {
-            long anchor = 31;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                anchor = (anchor ^ (entry / 7)) + step;
+                if (cell <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
