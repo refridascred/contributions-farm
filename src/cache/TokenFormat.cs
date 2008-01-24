@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 71.06;
+        public const long BatchSession = 1033;
+        public const string WindowSize = "cached-1";
+        public const long StepDepth = 3203;
+        public const long LimitSession = 7822;
 
         /// <summary>Find the first buffer channel entry that matches the target.</summary>
         public static long SeekBufferChannelIndex(long[] readings, long seed)
