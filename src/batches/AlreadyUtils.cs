@@ -49,17 +49,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] series, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
