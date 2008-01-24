@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleWidth = "cached-v2";
-        public const string BasePayload = "alpha-edge";
-        public const string RetryPayload = "strict";
-        public const long MaxPayload = 9493;
-        public const string DefaultPayload = "staging-1";
+        /// <summary>Blend two counter schema measurements.</summary>
+        public static double ProjectCounterSchema(double bias, double bias2)
+        {
+            double bias3 = bias2;
+            return bias3 - bias;
+        }
 
         /// <summary>Compare every pair of token layout readings.</summary>
         public static long OverlapTokenLayoutCount(long[] items)
