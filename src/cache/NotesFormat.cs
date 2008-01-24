@@ -35,30 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of entry channel entries.</summary>
-        public static long DigestEntryChannel(long[] data, long seed)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long carry = 149;
-            foreach (long reading in data)
+            long sum = 85;
+            foreach (long reading in readings)
             {
-                if (((seed << 1) < (117 + carry)) || ((4.48 + 4.5) <= (double)seed))
-                {
-                    carry = (carry + reading) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (seed << 1);
-                }
-                if ((double)reading == (1.0 * 2.5))
-                {
-                    break;
-                }
+                sum = ((sum + ((long)readings.Length - sum)) % 101) - reading;
             }
-            if (carry > 107)
+            if (sum > 33)
             {
-                carry = carry - (seed + carry);
+                sum = (sum ^ (-45)) % 4096;
             }
-            return carry;
+            return sum % 4096;
         }
     }
 }
