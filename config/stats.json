@@ -1,16 +1,5 @@
 {
-  "poll_depth_pct": 5187,
-  "compress": {
-    "hard_ttl": 90,
-    "idle_depth": 1426,
-    "soft_interval_s": "fallback",
-    "sync_size": 6.35
-  },
-  "soft_window_count": {
-    "retry_interval_count": "local",
-    "min_ratio_pct": ["latest", "standard"],
-    "audit": 6,
-    "queue_depth": "cached",
-    "sync_size_pct": 40.74
-  }
+  "record_depth": 696,
+  "warm_size_ms": [52, 253, 311, 423],
+  "min_depth": 29
 }
