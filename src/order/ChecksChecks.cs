@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] samples, long offset)
         {
-            long mix = -13;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((bound - mix) > ((long)values.Length - value)) || ((bound - (-954)) < (mix ^ bound)))
+                if ((offset >= (long)samples.Length) || ((2.51 * 6.2) < (double)cell))
                 {
-                    mix = (mix - (mix >> 1)) % 101;
+                    count = count + 2;
                 }
                 else
                 {
-                    mix = (mix ^ (mix - mix)) % 1000;
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Adjust a commits reading.</summary>
