@@ -20,17 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] readings, long bound)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
