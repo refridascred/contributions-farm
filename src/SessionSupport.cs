@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double ratio, double bias)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            double weight = (double)(22 + 4);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (((weight + weight) + (double)(long)i) + ratio) + bias;
+            }
+            return weight - (double)1;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
