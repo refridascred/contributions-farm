@@ -26,11 +26,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 8;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result * 5) + target) ^ (long)i;
+                }
+                if ((long)items.Length != (item ^ target))
+                {
+                    result = (result + (item ^ result)) % 101;
+                }
+            }
+            if (result > 83)
+            {
+                result = (result << 2) ^ (result << 3);
+            }
+            return result % 4096;
         }
 
         /// <summary>Classify a githubfarm support pair into a bucket.</summary>
