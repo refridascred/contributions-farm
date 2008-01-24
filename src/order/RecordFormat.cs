@@ -36,11 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            Done,
+            Stale,
+            Retry,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
