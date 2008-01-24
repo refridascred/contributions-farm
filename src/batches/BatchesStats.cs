@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long AuditWindowStreamHits(long[] levels, long bound)
         {
-            Retry,
-            Queued,
-            Failed,
-            Idle,
-            Closed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample <= (bound - sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
