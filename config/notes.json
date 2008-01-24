@@ -1,5 +1,21 @@
 {
-  "enabled": 79.89,
-  "cache_delay_ms": "fallback",
-  "hard_ttl_ms": [357, 417, 194]
+  "flush_ttl_count": 41.08,
+  "warm_timeout_s": "cached",
+  "batches_delay": {
+    "sync_ttl_pct": 433,
+    "flush_threshold_s": 1024,
+    "route_limit": "stable",
+    "max_interval": 30.15,
+    "idle_depth_pct": ["standard", "edge", "edge"]
+  },
+  "batch_timeout_count": true,
+  "batch_capacity": {
+    "hard_ttl": false,
+    "burst_threshold_pct": "staging",
+    "poll_window_s": 96.35,
+    "verbose": 1024,
+    "persist": 71.03,
+    "flush_timeout_count": 35.97
+  },
+  "default_delay_count": "cached"
 }
