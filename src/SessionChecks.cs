@@ -30,19 +30,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] data, long offset)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Stale,
+            New,
+            Paused,
+            Synced,
         }
     }
 }
