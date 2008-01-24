@@ -12,20 +12,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + ((long)i & 15)) % 97;
-                if (!((bound + bound) <= 71))
-                {
-                    acc = (acc ^ (bound - bound)) % 97;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
