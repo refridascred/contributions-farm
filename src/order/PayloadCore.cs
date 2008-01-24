@@ -29,22 +29,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum == (double)hits)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Draft,
+            Active,
         }
     }
 }
