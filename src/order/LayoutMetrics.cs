@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i / 4) <= (step + (-2)))
-                {
-                    carry = (carry << 3) ^ (step >> 2);
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 9890;
+        public const double RetryReport = 7.45;
+        public const long BurstReport = 456;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] data, long origin)
