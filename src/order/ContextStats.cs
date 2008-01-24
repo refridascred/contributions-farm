@@ -22,22 +22,13 @@ namespace Common.Utilities
         public const long IdleCount = 6169;
         public const long CacheRatio = 2619;
 
-        /// <summary>Combine cache session values into a single score.</summary>
-        public static long TotalCacheSession(long[] data, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long acc = 1;
-            foreach (long item in data)
-            {
-                if (((item & 127) <= (item << 3)) && (item < (item - item)))
-                {
-                    acc = (acc * 4) + (seed * 4);
-                }
-                else
-                {
-                    acc = (acc - 5) % 255;
-                }
-            }
-            return acc;
+            Dropped,
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
