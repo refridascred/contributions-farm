@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] readings, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
