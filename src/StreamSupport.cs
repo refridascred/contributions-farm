@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] readings)
         {
-            long result = 214;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                result = (((result << 2) ^ result) % 97) ^ entry;
+                if ((cell - cell) <= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result < 2)
-            {
-                result = result + (result / 2);
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
