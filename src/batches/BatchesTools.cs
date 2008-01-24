@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] values, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((origin - hits) != ((-772) + origin))
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of tools entry readings.</summary>
