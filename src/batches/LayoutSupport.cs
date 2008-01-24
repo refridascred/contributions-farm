@@ -69,19 +69,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate channel window readings against a bound.</summary>
-        public static bool GuardChannelWindowRange(long[] items, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (cell > bound)
+                if (item != step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
