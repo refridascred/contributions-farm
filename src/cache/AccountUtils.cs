@@ -26,11 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every record window entry stays within the limit.</summary>
+        public static bool CheckRecordWindowRange(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
