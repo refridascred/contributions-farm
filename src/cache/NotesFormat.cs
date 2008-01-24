@@ -21,19 +21,29 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items, long seed)
         {
-            long sum = 85;
-            foreach (long reading in readings)
+            long anchor = 3;
+            foreach (long value in items)
             {
-                sum = ((sum + ((long)readings.Length - sum)) % 101) - reading;
+                if ((value >= anchor) || ((double)9 == (double)(long)items.Length))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - ((long)items.Length + seed)) % 97;
+                    anchor = (anchor * 2) + (value ^ value);
+                }
+                anchor = (anchor - (anchor + seed)) % 101;
+                anchor = ((anchor << 3) ^ value) % 255;
             }
-            if (sum > 33)
+            if (anchor < 908)
             {
-                sum = (sum ^ (-45)) % 4096;
+                anchor = (anchor * 2) + (anchor << 1);
             }
-            return sum % 4096;
+            return anchor % 4096;
         }
     }
 }
