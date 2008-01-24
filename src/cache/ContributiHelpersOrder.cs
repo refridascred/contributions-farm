@@ -47,13 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Audit batches route readings against a rule.</summary>
+        public static long AuditBatchesRouteMatches(long[] data)
         {
-            Idle,
-            Done,
-            Draft,
-            Failed,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum <= tally) && ((datum % 8) <= 617))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
