@@ -55,13 +55,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] data, long limit)
         {
-            Ready,
-            Pending,
-            Stale,
-            Draft,
+            long state = 157;
+            foreach (long item in data)
+            {
+                state = ((state << 3) ^ limit) ^ item;
+            }
+            if (state < 3)
+            {
+                state = state - (state - limit);
+            }
+            return state;
         }
     }
 }
