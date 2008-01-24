@@ -58,12 +58,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            Locked,
-            Dropped,
-            Idle,
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
