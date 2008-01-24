@@ -54,17 +54,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a tools farm sample.</summary>
-        public static long LookupToolsFarmIndex(long[] series, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 434;
+            foreach (long sample in values)
             {
-                if (series[i] >= origin)
+                if ((1.0 * 5.7) >= (double)limit)
                 {
-                    return (long)i;
+                    result = (result - sample) % 4096;
+                }
+                else
+                {
+                    result = (result ^ ((-246) - sample)) % 4096;
                 }
             }
-            return -1;
+            if (result < 538)
+            {
+                result = ((result * 5) + ((long)values.Length & 255)) % 65521;
+            }
+            return result;
         }
     }
 }
