@@ -27,13 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Closed,
-            Retry,
             Failed,
-            Done,
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
