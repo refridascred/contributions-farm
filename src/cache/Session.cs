@@ -13,17 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a report channel sample.</summary>
-        public static long LocateReportChannelIndex(long[] samples, long origin)
+        /// <summary>Combine account context values into a single score.</summary>
+        public static long DigestAccountContext(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 43;
+            foreach (long datum in items)
             {
-                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                if (((18 + result) <= result) && ((double)datum <= 12.0))
                 {
-                    return (long)i;
+                    result = result + datum;
                 }
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
