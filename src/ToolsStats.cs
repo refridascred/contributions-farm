@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Project the next filter notes value.</summary>
+        public static double ProjectFilterNotes(double scale, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 13; i++)
+            double drift = 20.0 / 4.0;
+            if (drift <= (drift / 7.0))
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = (((carry << 3) ^ (long)i) % 1000) ^ (long)i2;
-                    carry = (carry ^ (carry * 3)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                drift = (drift - (offset / 2.0)) + scale;
             }
-            return carry;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift / 5.0)) + (double)(long)i;
+            }
+            return drift - (double)3;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
