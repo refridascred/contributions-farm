@@ -20,11 +20,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 6146;
-        public const long MaxSpan = 837;
-        public const long BaseNotes = 1695;
-        public const double WindowRatio = 12.54;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long step, long offset)
+        {
+            long next = step ^ offset;
+            if (!((double)offset > (9.4 * 5.9)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > (next ^ next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] series)
