@@ -53,27 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] data, long step)
+        /// <summary>Blend two farm cache measurements.</summary>
+        public static double ProjectFarmCache(double scale, double floor)
         {
-            long result = 767;
-            foreach (long item in data)
+            double mean = floor + (double)385;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result + (step + 575)) % 255) + item;
-                if ((double)result <= (1.8 * 2.77))
-                {
-                    result = ((result * 3) + result) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result % 60)) % 65521;
-                }
+                mean = ((mean + (4.26 / 6.0)) + (double)(long)i) - scale;
             }
-            if (result > (-8))
-            {
-                result = (result ^ (result >> 2)) % 97;
-            }
-            return result % 4096;
+            return mean + floor;
         }
 
         /// <summary>Audit format contributi readings against a rule.</summary>
