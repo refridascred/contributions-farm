@@ -27,22 +27,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] items, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mix = 89;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (3.4 * 1.6))
-                {
-                    mix = ((mix ^ (mix / 5)) % 1000) - offset;
-                }
-                else
-                {
-                    mix = (mix - reading) % 101;
-                }
-            }
-            return mix;
+            New,
+            Draft,
+            Stale,
+            Synced,
+            Dropped,
         }
     }
 }
