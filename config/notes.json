@@ -1,12 +1,6 @@
 {
-  "already_capacity": {
-    "compress": 70,
-    "poll_threshold": 1755,
-    "batch_ttl": true,
-    "editor_retries": true,
-    "filter_retries": 78
-  },
-  "batch_retries_s": 2,
-  "flush_interval_count": false,
-  "compress": 5.32
+  "max_window_ms": false,
+  "cache_retries_ms": "edge",
+  "poll_ttl_ms": 57,
+  "warm_window": ["strict", "stable"]
 }
