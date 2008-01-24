@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] values, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Blend two format measurements.</summary>
