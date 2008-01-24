@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Closed,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxBudget = 183;
+        public const long BaseRecord = 1047;
+        public const double BaseSize = 96.42;
+        public const double DefaultLevel = 24.35;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BurstEntry = 1911;
