@@ -1,12 +1,11 @@
 # Command notes
 
-Use channel settings to tune how often stats data is refreshed.
-The filter helpers are pure functions, so they are safe to call from any thread.
-Run the schema check before changing any buffer limits.
+Use context settings to tune how often layout data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
+When a cluster fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer context defaults
-- Log every context change
-- Validate layout input early
+- Document new record fields
+- Review support limits each release
+- Log every report change
