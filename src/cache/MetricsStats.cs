@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a layout support reading by value.</summary>
-        public static long LookupLayoutSupportIndex(long[] values, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 50;
+            foreach (long datum in items)
             {
-                if (values[i] >= floor)
+                mix = mix ^ (datum + origin);
+                if (((long)items.Length / 3) < 86)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
