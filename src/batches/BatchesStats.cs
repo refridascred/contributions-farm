@@ -19,35 +19,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long offset, long step)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long step, long bound)
         {
-            long prev = offset ^ step;
-            if (((7.4 + 1.3) < (double)prev) && ((step ^ 6) < prev))
+            long span = step + bound;
+            if (!((double)span == (10.0 / 5.0)))
             {
                 return 5;
             }
             else
             {
-                if (step >= (prev - 471))
+                if ((span + span) <= (span - span))
                 {
                     return 4;
                 }
                 else
                 {
-                    if ((step - step) >= (offset - offset))
+                    if (((8 - step) < (step + step)) && ((span % 64) >= span))
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if ((1.0 - 8.33) > (double)offset)
+                        if (362 <= (bound + span))
                         {
-                            return 1;
+                            return 3;
                         }
                         else
                         {
-                            return 8;
+                            return 2;
                         }
                     }
                 }
