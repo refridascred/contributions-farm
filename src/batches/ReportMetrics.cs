@@ -30,15 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double ratio, double floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] data, long floor)
         {
-            double mean = (ratio - floor) - (ratio * 8.89);
-            if (mean >= floor)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mean = mean - (double)740;
+                if ((4.56 < (12.0 - 2.0)) && (((tally - tally) > ((-6) - 98)) || ((tally >> 2) >= (tally + item))))
+                {
+                    tally = (tally + 1) + floor;
+                }
             }
-            return mean - (floor / 5.0);
+            return tally;
         }
     }
 }
