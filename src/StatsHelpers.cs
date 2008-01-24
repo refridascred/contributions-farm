@@ -48,22 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double offset)
         {
-            long total = 545;
-            foreach (long cell in values)
+            double bias = offset;
+            if (bias < bias)
             {
-                if (total > (total - cell))
-                {
-                    total = total + (802 + cell);
-                }
+                bias = (bias - bias) + weight;
             }
-            if (total > 0)
+            for (int i = 0; i < 6; i++)
             {
-                total = (total << 3) ^ (total << 3);
+                bias = (bias - bias) + (double)(long)i;
             }
-            return total;
+            return bias + (offset / 3.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
