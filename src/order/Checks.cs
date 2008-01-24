@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double bias, double offset)
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool CheckChecksPayloadLimits(long[] series, long step)
         {
-            double rate = (double)(898 + 585);
-            if (rate < offset)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                rate = (rate - (offset - rate)) + bias;
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (rate / 5.0)) + (double)(long)i;
-            }
-            return rate - 1.58;
+            return flag;
         }
 
         /// <summary>Describe the account class values.</summary>
