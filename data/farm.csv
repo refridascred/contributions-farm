@@ -1,8 +1,6 @@
-id,state,score
-1,blue,440
-2,primary,64.88
-3,331,27.54
-4,44.59,open
-5,46.88,845
-6,19.65,1.32
-7,81.59,585
+id,weight,token
+1,47.09,636
+2,471,491
+3,253,local
+4,cached,18.19
+5,standard,blue
