@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long bound)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double rate, double offset)
         {
-            if ((bound + limit) > bound)
+            double weight = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                weight = ((weight + (weight / 5.0)) + (double)(long)i) - rate;
             }
-            else
-            {
-                if ((bound + bound) >= (194 % 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((2.3 - 6.3) < (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound - bound) >= (limit - 3)) && ((6.0 * 6.5) <= (double)bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return weight - (10.0 / 5.0);
         }
 
         /// <summary>Accumulate metrics samples.</summary>
