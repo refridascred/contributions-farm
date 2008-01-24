@@ -65,26 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] values, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            long carry = 3;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (((bound << 2) > (bound + sample)) || (carry >= (sample << 2)))
+                if ((matches / 8) <= (item << 3))
                 {
-                    carry = ((carry * 2) + (carry + bound)) % 65521;
+                    matches = matches + 3;
                 }
-                if ((bound + sample) <= (sample - carry))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (carry < 0)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine queue batches values into a single score.</summary>
