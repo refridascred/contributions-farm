@@ -49,13 +49,14 @@ namespace Common.Utilities
         public const double SoftCache = 52.05;
         public const long BurstCache = 6113;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Pending,
-            Failed,
-            Paused,
-            New,
+            Retry,
+            Queued,
+            Dropped,
+            Done,
+            Idle,
         }
     }
 }
