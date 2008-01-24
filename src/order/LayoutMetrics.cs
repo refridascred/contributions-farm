@@ -32,24 +32,23 @@ namespace Common.Utilities
         public const string DefaultAlready = "local-1";
         public const string LimitFactor = "open-1";
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long floor2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] values)
         {
-            if ((double)floor2 >= (1.0 * 13.0))
+            long anchor = 1;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor - 57) < floor2)
+                anchor = anchor ^ (datum - datum);
+                if ((double)(-387) == (double)datum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            if (anchor > 33)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
+            }
+            return anchor;
         }
     }
 }
