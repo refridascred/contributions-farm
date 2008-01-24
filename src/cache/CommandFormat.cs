@@ -44,18 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsGaps(long[] series, long origin)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = 4;
+            foreach (long datum in readings)
             {
-                if (value < (value << 3))
+                if ((double)sum < (double)origin)
                 {
-                    count = (count + 3) + origin;
+                    sum = ((sum - (sum + 8)) % 1000) + datum;
                 }
             }
-            return count;
+            if (sum > 279)
+            {
+                sum = sum + (origin + origin);
+            }
+            return sum % 1000;
         }
     }
 }
