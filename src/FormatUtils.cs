@@ -64,19 +64,11 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((datum % 24) <= bound) || (433 < (datum >> 1))) || !((datum >> 3) < (datum * 3)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 542;
+        public const long RetryAlready = 58;
+        public const long BurstTimeout = 3849;
+        public const long SoftTimeout = 7270;
 
         /// <summary>Rank context tools input into a small class.</summary>
         public static long SortContextTools(long limit, long step)
