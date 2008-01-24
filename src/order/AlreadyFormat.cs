@@ -19,39 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a githubfarm cluster value against two limits.</summary>
-        public static long RankGithubfarmCluster(long limit, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] samples, long offset)
         {
-            long step = limit ^ floor;
-            if ((double)floor >= 6.67)
+            long result = 276;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor << 3) > step))
+                if ((808 % 97) > (offset ^ result))
                 {
-                    return 1;
+                    result = (result - (value * 5)) % 4096;
                 }
-                else
-                {
-                    if (!((8.22 * 4.5) == (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit - 659) < limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                result = (result ^ value) % 97;
             }
+            return result % 97;
         }
 
         /// <summary>Project the next buffer value.</summary>
