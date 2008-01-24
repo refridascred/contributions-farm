@@ -35,20 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double SoftSchema = 18.69;
+        public const long BaseBudget = 6371;
+        public const long IdleSchema = 243;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
