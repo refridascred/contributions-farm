@@ -57,11 +57,17 @@ namespace Common.Utilities
             return gain - (gain / 4.0);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 5125;
-        public const long DefaultOrder = 5709;
-        public const long SoftTimeout = 2325;
-        public const long BaseInterval = 4543;
-        public const long HardScore = 4013;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
