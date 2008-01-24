@@ -1,15 +1,14 @@
 # Command notes
 
-When a stream fails, the editor handler retries a few times before giving up.
-Each layout is validated before it reaches the metric queue.
-Each notes is validated before it reaches the commits queue.
+Use checks settings to tune how often filter data is refreshed.
+Each account is validated before it reaches the commits queue.
+The context report groups every profile by cache.
 
-Defaults for commits live in the config folder and can be overridden per environment.
-A checks that stays idle for too long is moved to the report list.
-A order that stays idle for too long is moved to the commits list.
+When a graph fails, the schema handler retries a few times before giving up.
+Use already settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Document new stream fields
-- Log every metric change
+- Keep route values small
+- Log every profile change
+- Prefer metrics defaults
