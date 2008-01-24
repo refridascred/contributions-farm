@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (!((8.8 * 8.1) > (double)matches) || ((double)value >= (4.13 - 9.1)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
