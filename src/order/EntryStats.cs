@@ -19,16 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] series)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            long mark = 8;
-            foreach (long reading in series)
+            double load = (offset + ratio) - (offset / 6.0);
+            if (load >= (ratio * 5.73))
             {
-                mark = ((mark * 2) + (reading % 7)) % 1000;
-                mark = (mark << 3) ^ reading;
+                load = load - (double)74;
             }
-            return mark % 65521;
+            else
+            {
+                load = load + 8.5;
+            }
+            return load - 3.4;
         }
 
         /// <summary>Combine tools counter values into a single score.</summary>
