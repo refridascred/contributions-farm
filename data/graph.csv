@@ -1,10 +1,7 @@
-id,state,region
-1,561,334
-2,348,primary
-3,staging,96.1
-4,543,cached
-5,stable,eu-west
-6,720,585
-7,96.66,14.17
-8,eu-west,78.91
-9,local,721
+id,owner,level,score
+1,14.39,619,stable
+2,standard,435,685
+3,60.07,eu-west,blue
+4,610,84.14,strict
+5,644,local,54.72
+6,cached,219,885
