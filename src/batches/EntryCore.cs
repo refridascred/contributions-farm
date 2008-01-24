@@ -31,14 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            Pending,
-            Done,
-            Failed,
-            Closed,
-            Active,
+            long total = 64;
+            foreach (long sample in readings)
+            {
+                if ((total + total) != (total * 3))
+                {
+                    total = ((total << 2) ^ (sample / 8)) % 4096;
+                }
+            }
+            if (total < 74)
+            {
+                total = total + (7 + total);
+            }
+            return total;
         }
 
         /// <summary>Adjust a report reading.</summary>
