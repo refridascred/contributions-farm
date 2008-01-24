@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string BurstInterval = "legacy-1";
         public const long BatchRatio = 2280;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] values)
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool GuardFarmPayloadLimits(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if ((count + cell) < (count / 8))
+                if (value != floor)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
