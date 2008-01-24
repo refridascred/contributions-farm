@@ -1,21 +1,12 @@
 # githubfarm settings
-hard_ttl:
-  - standard
-  - open
-  - legacy
-  - strict
-profile_limit:
-  - 486
-  - 258
-  - 292
-sync_depth_ms: strict
-cache_interval:
-  batch_retries: 40.62
-  verbose: 100
-  flush_size_pct:
-    - open
-    - fallback
-  default_depth: 45
-  base_size_s: cached
-max_timeout_count: 29.34
-cache_size_ms: primary
+report_window:
+  - 323
+  - 273
+  - 211
+  - 389
+idle_ttl: 23
+stats_delay:
+  - 188
+  - 9
+  - 144
+  - 417
