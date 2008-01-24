@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double bias, double offset)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            double load = offset;
-            if (load > load)
-            {
-                load = load + (double)361;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - (bias / 6.0);
+            Failed,
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a commits info.</summary>
