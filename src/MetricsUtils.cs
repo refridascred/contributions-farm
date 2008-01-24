@@ -23,18 +23,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesHits(long[] items)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + 364) == (entry + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Idle,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
