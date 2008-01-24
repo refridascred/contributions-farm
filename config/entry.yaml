@@ -1,34 +1,4 @@
 # entry settings
-batches_depth: eu-west
-retry_capacity: 7400
-hard_window_s:
-  verbose:
-    order_ttl: 250
-    buffer_limit: primary
-    profile_ttl:
-      - eu-west
-      - stable
-      - strict
-      - staging
-    entry_timeout: true
-    retry_capacity_count: false
-    persist: 7
-  compress: edge
-  flush_delay_pct: blue
-  base_interval:
-    - 327
-    - 495
-    - 34
-  max_ratio: false
-  channel_capacity: fallback
-min_depth:
-  sync_window: latest
-  channel_window: 2
-  report_size: open
-  flush_limit_s: 9445
-  readonly: blue
-strict:
-  notes_limit: primary
-  buffer_ttl: latest
-  enabled: latest
-  account_timeout: strict
+flush_capacity: fallback
+queue_capacity: standard
+max_depth_ms: 98
