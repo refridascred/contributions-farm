@@ -59,28 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm metrics entries.</summary>
-        public static long WeighFarmMetrics(long[] levels)
+        /// <summary>Count the buffer report entries that pass the check.</summary>
+        public static long AuditBufferReportMatches(long[] levels)
         {
-            long mix = 96;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                mix = (mix ^ (cell ^ mix)) % 255;
-                mix = ((mix * 4) + 6) % 65521;
-                if ((mix << 3) >= 19)
+                if (tally >= (item & 7))
                 {
-                    mix = (mix ^ mix) % 4096;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    mix = mix ^ (mix << 1);
+                    tally = tally - 1;
                 }
             }
-            if (mix < 127)
-            {
-                mix = (mix - (mix + mix)) % 1000;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
