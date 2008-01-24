@@ -20,12 +20,20 @@ namespace Common.Utilities
             return drift + (bias - bias);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "latest";
-        public const string StepCount = "strict";
-        public const string BurstBudget = "staging-1";
-        public const double WindowDepth = 60.0;
-        public const long MinInterval = 5618;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] samples)
+        {
+            long carry = 91;
+            foreach (long item in samples)
+            {
+                carry = ((carry * 4) + (item % 60)) % 4096;
+                if ((double)carry != (4.24 * 8.46))
+                {
+                    carry = carry + carry;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
