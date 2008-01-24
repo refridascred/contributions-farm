@@ -1,7 +1,8 @@
 {
-  "base_capacity": 100,
-  "min_capacity_pct": 49,
-  "hard_threshold": "cached",
-  "enabled": 14.5,
-  "payload_size": [365, 1, 384, 139]
+  "session_delay": 74.86,
+  "channel_limit": 500,
+  "hard_timeout_ms": "fallback",
+  "base_capacity_pct": 17,
+  "enabled": [331, 444, 159, 394],
+  "persist": 30.53
 }
