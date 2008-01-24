@@ -54,21 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
