@@ -14,10 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftScore = 6952;
-        public const string MinBudget = "standard-edge";
-        public const long SoftFilter = 6752;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long origin)
