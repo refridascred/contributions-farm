@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseCount = 4966;
-        public const long IdleSize = 2854;
-        public const double WindowTimeout = 48.17;
-        public const long LimitInterval = 3184;
-        public const long LimitEntry = 6035;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 19.0;
+        public const string CacheLevel = "legacy";
+        public const long StepContributi = 8296;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long WeighChecks(long[] levels)
