@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] levels)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double load = offset;
+            if (load > load)
             {
-                if (((double)tally >= (6.71 + 1.5)) && ((6.0 / 3.0) == (double)item))
-                {
-                    tally = tally + 3;
-                }
+                load = load + (double)361;
             }
-            return tally;
+            else
+            {
+                load = load + load;
+            }
+            return load - (bias / 6.0);
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
