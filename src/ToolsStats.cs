@@ -34,20 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = ((state * 3) + offset) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseTimeout = 1783;
+        public const long CacheFilter = 3119;
+        public const long LimitTimeout = 6362;
+        public const long DefaultCount = 9702;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long WindowScore = 498;
