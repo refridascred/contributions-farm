@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long total = 305;
-            foreach (long value in readings)
-            {
-                if (((double)value <= (double)24) || ((double)total < 20.0))
-                {
-                    total = total - (seed % 100);
-                }
-            }
-            return total % 4096;
+            Closed,
+            Queued,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a order stats.</summary>
