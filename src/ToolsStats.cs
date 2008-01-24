@@ -22,13 +22,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] levels, long seed)
         {
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cache phase values.</summary>
