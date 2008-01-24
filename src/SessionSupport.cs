@@ -28,9 +28,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 2726;
-        public const string BatchScore = "primary-1";
-        public const long RetryFilter = 9808;
+        /// <summary>Grade a account editor value against two limits.</summary>
+        public static long ClassifyAccountEditor(long limit, long origin)
+        {
+            long delta = limit ^ origin;
+            if ((double)limit < (double)origin)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit - 0) > (delta + delta)) && ((origin + limit) >= (3 + origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
