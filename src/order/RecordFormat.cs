@@ -60,31 +60,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long origin, long floor)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            if (((origin + origin) < (floor ^ origin)) || (floor < (origin << 2)))
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 5;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((79 / 9) >= (floor + floor)) || ((floor << 2) > (origin + 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin < (floor + floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
