@@ -20,18 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] values)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count <= (9.7 - 12.0))
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
