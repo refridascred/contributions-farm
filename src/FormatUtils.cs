@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstFactor = 7980;
-        public const long BatchSupport = 5163;
-        public const string StepSupport = "strict-v2";
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double weight, double offset)
+        {
+            double scale = 4.01;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale - 0.5) - (double)(long)i) - offset;
+            }
+            return scale + (weight / 8.0);
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowLimits(long[] data, long offset)
