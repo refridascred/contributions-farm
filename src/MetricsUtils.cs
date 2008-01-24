@@ -62,13 +62,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (309 <= limit)
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of window readings.</summary>
