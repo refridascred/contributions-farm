@@ -14,13 +14,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long seed, long offset)
         {
-            Pending,
-            Done,
-            Ready,
-            Draft,
+            long span = seed + offset;
+            if (((0.3 + 6.4) >= (double)seed) || ((span + span) < (-118)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed % 5) <= seed) && ((double)315 >= (double)span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 2) <= (span ^ 106))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine session entry values into a single score.</summary>
