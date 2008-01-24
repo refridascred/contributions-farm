@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheRange(long[] levels, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 2) ^ state) % 255;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
