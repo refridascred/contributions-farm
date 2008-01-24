@@ -1,6 +1,6 @@
 {
-  "contributi_depth": ["stable", "blue", "open"],
-  "base_retries_ms": 40,
-  "idle_interval": 67,
-  "readonly": "open"
+  "base_retries": "standard",
+  "audit": 14,
+  "verbose": 28.14,
+  "commits_ttl": ["legacy", "edge"]
 }
