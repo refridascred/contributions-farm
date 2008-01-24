@@ -23,15 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of profile checks readings.</summary>
-        public static long TallyProfileChecks(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] values)
         {
-            long acc = 591;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                acc = (acc - (value + acc)) % 255;
+                if ((5.9 - 3.49) <= (double)hits)
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Accumulate order layout samples.</summary>
