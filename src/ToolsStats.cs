@@ -20,39 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long offset)
+        /// <summary>Project the next stream cluster value.</summary>
+        public static double SmoothStreamCluster(double weight, double bias)
         {
-            long edge = bound + offset;
-            if (!((double)edge < (12.0 - 2.63)))
+            double ratio = (weight * 4.05) * 10.0;
+            if (ratio < (6.8 * 4.89))
             {
-                return 1;
+                ratio = (ratio + weight) + bias;
             }
             else
             {
-                if ((double)bound > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - edge) < (bound + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < ((-24) * 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                ratio = ratio - (double)6;
             }
+            return ratio - ratio;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
