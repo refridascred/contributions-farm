@@ -26,19 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] series, long origin)
         {
-            double scale = (double)663 + (floor - 9.7);
-            if (scale < (scale + rate))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = scale + (double)1;
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + 7.5;
-            }
-            return scale + rate;
+            return -1;
         }
 
         /// <summary>Describe the batch mode values.</summary>
