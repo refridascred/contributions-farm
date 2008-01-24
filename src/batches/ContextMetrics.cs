@@ -53,9 +53,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "open-1";
-        public const long MaxFilter = 6406;
-        public const double MinFilter = 22.5;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long target, long origin)
+        {
+            long prev = target - origin;
+            if (((1 >> 4) >= prev) || (1 <= (target >> 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target > (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)prev <= 13.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((prev + 0) >= (prev + prev))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
