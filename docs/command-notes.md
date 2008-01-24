@@ -1,14 +1,11 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-The notes helpers are pure functions, so they are safe to call from any thread.
-
-Use order settings to tune how often support data is refreshed.
-Use buffer settings to tune how often format data is refreshed.
+Use stats settings to tune how often command data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Validate format input early
-- Review commits limits each release
-- Log every queue change
+- Validate batch input early
+- Keep graph values small
+- Log every stats change
+- Review farm limits each release
