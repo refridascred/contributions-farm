@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Check that every format route entry stays within the limit.</summary>
+        public static bool VerifyFormatRouteLimits(long[] samples, long floor)
         {
-            long mark = 74;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                mark = ((mark << 2) ^ (38 ^ reading)) % 97;
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mark > 3)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Rank token input into a small class.</summary>
