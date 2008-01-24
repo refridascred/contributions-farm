@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryInterval = 90.6;
-        public const double LimitGithubfarm = 38.34;
-        public const double RetryGithubfarm = 44.84;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) < (datum - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long ScoreAccount(long[] levels)
