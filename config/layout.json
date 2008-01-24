@@ -1,6 +1,8 @@
 {
-  "max_limit_s": 8542,
-  "min_size": ["standard", "open", "primary", "green"],
-  "profile_threshold": [191, 66, 458],
-  "default_timeout_ms": false
+  "base_capacity_pct": 30,
+  "hard_depth": "cached",
+  "editor_ratio": false,
+  "already_ttl": [498, 363, 364, 180],
+  "flush_window": false,
+  "min_delay_s": 76
 }
