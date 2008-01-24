@@ -23,17 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a payload notes reading by value.</summary>
-        public static long FindPayloadNotesIndex(long[] data, long target)
+        /// <summary>Fold a list of profile checks readings.</summary>
+        public static long TallyProfileChecks(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 591;
+            foreach (long value in levels)
             {
-                if ((data[i] == target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc - (value + acc)) % 255;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Accumulate order layout samples.</summary>
