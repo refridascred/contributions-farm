@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] series, long target)
         {
-            public double Token { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((target - target) > (seen ^ target)) && ((cell ^ seen) == (8 - cell)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
