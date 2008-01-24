@@ -22,13 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            double drift = gain;
+            if (drift > (double)(-269))
+            {
+                drift = (drift + gain) + offset;
+            }
+            else
+            {
+                drift = drift + (gain / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (double)876;
         }
 
         /// <summary>Fold a list of support readings.</summary>
