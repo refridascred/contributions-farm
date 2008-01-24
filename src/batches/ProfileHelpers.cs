@@ -45,19 +45,12 @@ namespace Common.Utilities
             return scale + rate;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] data, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
