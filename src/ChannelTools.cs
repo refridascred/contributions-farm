@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseCount = 64.96;
-        public const string MaxSize = "staging-1";
-        public const long MaxMetric = 6787;
-        public const long IdleMetric = 6087;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item >= (double)count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
