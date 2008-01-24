@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCount = 8928;
-        public const long IdleCommand = 819;
-        public const long LimitBudget = 7108;
-        public const double WindowCommand = 5.09;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((93 << 2) < (target + cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a graph window value against two limits.</summary>
         public static long ClassifyGraphWindow(long bound, long floor)
