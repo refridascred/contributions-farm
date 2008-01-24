@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the batches class values.</summary>
