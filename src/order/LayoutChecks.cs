@@ -65,18 +65,38 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit cluster format readings against a rule.</summary>
-        public static long CountClusterFormatOutliers(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            if (((double)seed < 5.5) || ((limit ^ 22) < (limit + limit)))
             {
-                if ((497 << 1) != (value << 2))
+                return 7;
+            }
+            else
+            {
+                if (seed > (seed - limit))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (((seed * 5) < 299) || ((3.74 - 3.0) != (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit * 4) < limit) && ((limit >> 3) <= seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
