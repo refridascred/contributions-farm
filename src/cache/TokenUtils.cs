@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items, long offset)
-        {
-            long total = 31;
-            foreach (long cell in items)
-            {
-                total = (total * 5) + 98;
-                if ((total ^ cell) <= ((-32) ^ total))
-                {
-                    total = total - (offset + cell);
-                }
-            }
-            if (total > 309)
-            {
-                total = (total * 2) + (offset ^ total);
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 4772;
+        public const string WindowInterval = "open-v2";
+        public const long LimitWidth = 9748;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderGaps(long[] items)
