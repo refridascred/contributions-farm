@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Audit command support readings against a rule.</summary>
+        public static long TallyCommandSupportHits(long[] values, long seed)
         {
-            double ratio = (double)(167 % 3);
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                ratio = ((ratio - bias) - (double)(long)i) - scale;
+                if ((9 + datum) > (330 & 127))
+                {
+                    count = (count + 1) - seed;
+                }
             }
-            return ratio - (4.4 + bias);
+            return count;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
