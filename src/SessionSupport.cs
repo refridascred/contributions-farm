@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] readings, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long mark = 98;
+            foreach (long entry in readings)
             {
-                if (item < floor)
+                mark = (mark + (-472)) % 255;
+                mark = ((mark * 3) + (7 / 8)) % 255;
+                mark = ((mark << 2) ^ (entry * 4)) % 101;
+                if ((entry >= (entry + mark)) || (2.69 > (double)entry))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (mark > 471)
+            {
+                mark = ((mark << 2) ^ mark) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a checks info.</summary>
