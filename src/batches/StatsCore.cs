@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric payload readings against a rule.</summary>
-        public static long CountMetricPayloadGaps(long[] readings)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((double)cell <= (4.9 + 5.0))
+                if (datum < bound)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the queue mode values.</summary>
