@@ -22,22 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long step, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long gap = step ^ target;
+            if ((step % 100) != (174 ^ target))
             {
-                if ((double)cell != (1.0 - 1.7))
+                return 1;
+            }
+            else
+            {
+                if (((step - gap) > (step + gap)) || (gap <= (target >> 1)))
                 {
-                    seen = seen + 3;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
