@@ -42,16 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics buffer readings.</summary>
-        public static long TotalMetricsBuffer(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] samples, long limit)
         {
-            long mark = 90;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mark = (mark + (mark & 255)) % 255;
-                mark = (mark << 2) ^ (value - value);
+                if (((double)limit == (12.0 - 8.4)) && (((12.0 * 9.7) < (double)(long)samples.Length) && ((double)count != (7.36 - 20.0))))
+                {
+                    count = (count + 2) + item;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Project the next graph tools value.</summary>
