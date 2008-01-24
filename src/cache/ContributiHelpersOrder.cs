@@ -19,11 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long floor, long step)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long span = floor + step;
+            if (((floor << 2) >= (span / 9)) || (132 >= (step - step)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step != (9.0 + 20.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step & 1) > (floor >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
