@@ -39,12 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] data, long floor)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item % 16) >= (73 - floor))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
