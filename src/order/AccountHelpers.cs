@@ -32,32 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long step, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long cur = step ^ seed;
-            if ((7 ^ step) == (step % 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((489 + step) != (cur + step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur - seed) <= (2 + cur))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            New,
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Check that every session queue entry stays within the limit.</summary>
