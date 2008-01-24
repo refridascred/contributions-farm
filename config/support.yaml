@@ -1,6 +1,17 @@
 # support settings
-burst_retries: true
-notes_size: fallback
-hard_window_ms: 4709
-hard_delay: 68.08
-window_interval: 66.97
+strict:
+  - 235
+  - 250
+  - 440
+  - 478
+farm_timeout: 17.75
+order_timeout: edge
+burst_threshold: strict
+soft_capacity:
+  context_size: false
+  default_ratio_s:
+    - strict
+    - cached
+    - primary
+    - legacy
+  batch_threshold: false
