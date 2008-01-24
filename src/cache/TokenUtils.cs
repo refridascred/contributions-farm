@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long RetryDepth = 8596;
         public const long SoftScore = 706;
 
-        /// <summary>Match up payload farm samples.</summary>
-        public static long PairPayloadFarmCount(long[] readings)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry + seen) == (entry + entry))
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
