@@ -36,15 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count contributi checks pairs that satisfy a relation.</summary>
-        public static long CompareContributiChecksCount(long[] samples)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] ^ samples[j]) == 9)
+                    if ((data[i] - data[j]) < 15)
                     {
                         seen = seen + 1;
                     }
