@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double bias)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            double drift = bias;
+            if (drift < (drift + bias))
             {
-                total = (total - (10 + origin)) % 4096;
-                if ((origin / 4) != (long)i)
-                {
-                    total = (total - origin) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                drift = drift - (scale - bias);
             }
-            return total;
+            else
+            {
+                drift = drift + (drift * 6.35);
+            }
+            return drift + (bias - bias);
         }
 
         /// <summary>Define route limits and defaults.</summary>
