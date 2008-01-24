@@ -1,7 +1,27 @@
 # entry settings
-sync_limit_count: 9.69
-enabled: fallback
-retry_size: 52
-min_capacity_ms: green
-counter_limit: 40.29
-sync_timeout: primary
+soft_threshold_pct:
+  - staging
+  - legacy
+  - standard
+  - latest
+poll_window_ms: latest
+metric_timeout: 5
+idle_threshold_s:
+  - 316
+  - 167
+  - 217
+warm_depth_ms:
+  burst_window_pct: 53
+  filter_delay: 500
+  soft_limit: local
+  retry_window: 4537
+  hard_interval_count:
+    verbose: true
+    default_capacity:
+      - primary
+      - legacy
+    metric_timeout:
+      - 470
+      - 12
+      - 319
+      - 262
