@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first payload channel entry that matches the target.</summary>
-        public static long SeekPayloadChannelIndex(long[] data, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] > floor)
+                if (!!((5 ^ cell) < (seen + (-871))))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
