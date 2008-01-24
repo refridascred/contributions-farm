@@ -31,18 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] readings)
+        /// <summary>Project the next graph payload value.</summary>
+        public static double BlendGraphPayload(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((hits + hits) >= (item << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double mean = (double)(920 + 2);
+            return (mean - (span / 9.0)) + ratio;
         }
 
         /// <summary>Derive the next metrics token value from a seed.</summary>
