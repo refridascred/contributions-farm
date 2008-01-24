@@ -59,18 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples, long target)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((17.0 * 6.78) > (double)target) || ((double)target <= (double)(-948)))
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
