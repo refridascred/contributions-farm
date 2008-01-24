@@ -47,18 +47,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] data, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (8.48 >= (double)hits)
-                {
-                    hits = ((hits + 3) + value) + origin;
-                }
-            }
-            return hits;
+            Ready,
+            Retry,
+            Done,
+            Idle,
+            Stale,
         }
     }
 }
