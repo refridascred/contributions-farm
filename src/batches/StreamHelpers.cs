@@ -43,38 +43,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long GradeChannel(long floor, long step)
+        /// <summary>Fold a list of metrics buffer readings.</summary>
+        public static long TotalMetricsBuffer(long[] series)
         {
-            if ((floor ^ floor) != (step / 8))
+            long mark = 90;
+            foreach (long value in series)
             {
-                return 7;
+                mark = (mark + (mark & 255)) % 255;
+                mark = (mark << 2) ^ (value - value);
             }
-            else
-            {
-                if ((step ^ step) < (step + 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step <= ((-160) - floor)) || ((step & 63) >= (step + 40)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)floor == (double)74))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
