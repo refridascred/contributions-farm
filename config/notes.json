@@ -1,5 +1,5 @@
 {
-  "flush_threshold_pct": 37.96,
-  "sync_threshold": 500,
-  "batch_ratio": 60
+  "audit": [124, 446],
+  "hard_ratio": 92.23,
+  "tools_ttl": 16.93
 }
