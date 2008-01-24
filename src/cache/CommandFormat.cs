@@ -33,15 +33,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double scale, double floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long seed)
         {
-            double rate = floor;
-            if (rate >= rate)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate - 6.0) - scale;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return rate + rate;
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
