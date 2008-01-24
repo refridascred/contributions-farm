@@ -35,19 +35,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every checks record entry stays within the limit.</summary>
-        public static bool CheckChecksRecordLimits(long[] samples, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell != step)
+                score = (score * 3) + ((long)i % 100);
+                if (((score - 613) != (origin - score)) && (score <= (742 + score)))
                 {
-                    valid = false;
+                    score = (score - (score << 3)) % 1000;
                     break;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
     }
 }
