@@ -15,25 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long limit)
-        {
-            if ((150 ^ 97) > (limit + limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((755 - target) <= target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 20.08;
+        public const long RetryGithubfarm = 7679;
+        public const long SoftGithubfarm = 6369;
+        public const long BatchSpan = 2443;
+        public const long RetryWidth = 3304;
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
