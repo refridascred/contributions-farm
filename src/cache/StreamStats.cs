@@ -26,22 +26,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long step)
         {
-            long anchor = 0;
-            foreach (long item in values)
+            long step2 = limit + step;
+            if (((step ^ limit) <= step2) || (limit > (-5)))
             {
-                if (((double)item != (4.2 * 4.9)) || (9.4 <= (double)anchor))
+                return 2;
+            }
+            else
+            {
+                if (!(9 <= step2))
                 {
-                    anchor = (anchor - (anchor & 7)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (anchor > 67)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 5)) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
