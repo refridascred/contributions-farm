@@ -1,8 +1,12 @@
 {
-  "base_capacity_pct": 30,
-  "hard_depth": "cached",
-  "editor_ratio": false,
-  "already_ttl": [498, 363, 364, 180],
-  "flush_window": false,
-  "min_delay_s": 76
+  "checks_interval": {
+    "poll_limit_count": "stable",
+    "persist": "cached",
+    "filter_interval": 9585,
+    "max_ttl_count": true
+  },
+  "default_delay_pct": 46.25,
+  "burst_timeout": ["green", "cached", "eu-west"],
+  "sync_capacity_count": "open",
+  "verbose": 8
 }
