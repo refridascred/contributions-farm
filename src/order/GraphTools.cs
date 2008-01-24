@@ -50,29 +50,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the cache record series from a seed.</summary>
-        public static long SeriesCacheRecord(long origin)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((origin >> 2) < 2) && ((13.0 / 6.0) == (double)origin))
-                {
-                    acc = ((acc << 2) ^ (acc ^ acc)) % 101;
-                    continue;
-                }
-                if (((double)acc < (4.63 + 0.5)) || (origin > acc))
-                {
-                    acc = acc + (acc + acc);
-                    acc = (acc - (acc >> 3)) % 255;
-                }
-                if (!((-58) > (long)i))
-                {
-                    acc = ((acc * 5) + (acc + origin)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
