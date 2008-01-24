@@ -41,15 +41,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
