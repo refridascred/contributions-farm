@@ -51,12 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 903;
-        public const long BatchRoute = 8982;
-        public const long BaseFactor = 1289;
-        public const long BaseRoute = 7537;
-        public const long HardWidth = 1753;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Dropped,
+            Stale,
+            New,
+            Draft,
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long CombineWindow(long[] values, long bound)
