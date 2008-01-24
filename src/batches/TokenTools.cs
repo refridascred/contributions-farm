@@ -20,18 +20,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] data, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((target ^ cell) < (cell ^ target))
+                if (sample < target)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
