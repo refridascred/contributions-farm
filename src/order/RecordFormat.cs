@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long floor, long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] data, long step)
         {
-            if (!((bound + bound) < (3 * 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (bound ^ floor))
+                if (data[i] >= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the schema account series from a seed.</summary>
