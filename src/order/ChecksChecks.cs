@@ -13,11 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            Active,
+            Pending,
+            Synced,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a window header.</summary>
