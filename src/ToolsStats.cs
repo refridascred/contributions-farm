@@ -100,22 +100,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadMatches(long[] data, long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= 912)
+                if (data[i] >= limit)
                 {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
