@@ -37,18 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] readings, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((double)floor <= (3.21 - 6.0))
+                if (!(6 >= target) && ((matches - matches) > (matches * 5)))
                 {
-                    tally = (tally + 1) + item;
+                    matches = (matches + 1) - datum;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
