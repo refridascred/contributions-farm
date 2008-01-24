@@ -1,5 +1,16 @@
 # githubfarm settings
-cluster_delay: 1.74
-burst_size: 1024
-cache_window_ms: open
-idle_timeout: 1935
+flush_timeout_pct: edge
+dry_run: 18.15
+soft_ttl:
+  min_ttl: 8258
+  readonly: 13.07
+  default_ttl: cached
+  burst_timeout_ms:
+    - legacy
+    - eu-west
+    - legacy
+  order_retries: 48.92
+  session_ttl: open
+persist: false
+warm_limit_count: 77
+burst_retries_ms: green
