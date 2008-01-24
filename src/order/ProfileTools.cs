@@ -20,14 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] samples)
         {
-            Idle,
-            Queued,
-            Done,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally - (-3)) <= (3 << 2))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
