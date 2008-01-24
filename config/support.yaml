@@ -1,21 +1,4 @@
 # support settings
-batch_limit_pct: 90
-sync_interval: 46
-hard_depth: local
-channel_retries:
-  - cached
-  - stable
-  - latest
-idle_ratio_count:
-  cache_ratio_s:
-    - open
-    - blue
-    - local
-    - edge
-  readonly: open
-  min_threshold:
-    - strict
-    - staging
-  hard_size_pct: green
-  retry_size_s: 7581
-  poll_threshold_count: 46
+hard_retries_s: 23.1
+base_interval_s: strict
+stats_threshold: green
