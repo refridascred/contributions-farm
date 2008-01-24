@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] series, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (((target - target) > (seen ^ target)) && ((cell ^ seen) == (8 - cell)))
+                if ((item % 64) <= (item & 31))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
