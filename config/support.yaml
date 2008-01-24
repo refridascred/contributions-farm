@@ -1,10 +1,9 @@
 # support settings
-cache_interval_pct: false
-idle_capacity_ms:
-  queue_ratio: true
-  hard_timeout_ms:
-    - 382
-    - 388
-  readonly: 6
-base_capacity: 3191
-warm_limit_count: 78.61
+default_timeout:
+  - legacy
+  - strict
+  - local
+  - strict
+cache_interval_pct: staging
+hard_retries_s: cached
+batch_depth: false
