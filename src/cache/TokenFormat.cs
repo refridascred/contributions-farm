@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first buffer channel entry that matches the target.</summary>
-        public static long SeekBufferChannelIndex(long[] readings, long seed)
+        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
+        public static long LookupTokenGithubfarmIndex(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > seed)
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
