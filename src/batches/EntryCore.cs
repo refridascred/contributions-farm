@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] values, long bound)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((double)54 == (double)tally) || ((6.1 + 9.2) < (double)reading))
+                long lane = origin / 3;
+                if (((origin + lane) < (origin & 63)) || ((double)total == (10.0 + 9.96)))
                 {
-                    tally = (tally + 1) + bound;
+                    total = total ^ (661 ^ (long)i);
+                    break;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a metric info.</summary>
