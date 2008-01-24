@@ -41,13 +41,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long SeekMetricIndex(long[] values, long offset)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cluster entry.</summary>
