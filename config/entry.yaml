@@ -1,12 +1,19 @@
 # entry settings
-strict: true
-idle_capacity: local
-soft_retries_s: staging
-burst_ttl_s: 250
-cluster_size:
+cache_depth_ms:
+  compress: 18.04
+  persist: 3.39
+  warm_interval: eu-west
+  batch_capacity:
+    - 42
+    - 105
+session_ttl: standard
+commits_ratio: fallback
+batch_window:
+  poll_size: true
+  context_capacity: green
+  retry_ttl_pct: 3972
+  strict: 28
+batch_interval_s:
+  - standard
+  - legacy
   - edge
-  - strict
-  - fallback
-flush_limit_count:
-  - 115
-  - 37
