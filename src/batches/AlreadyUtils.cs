@@ -35,18 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream session entries that pass the check.</summary>
-        public static long TallyStreamSessionMatches(long[] items)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((value << 1) < value) || ((double)tally != (5.9 - 4.5)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Hold a schema options.</summary>
