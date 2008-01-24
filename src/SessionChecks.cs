@@ -35,13 +35,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate layout batches samples.</summary>
+        public static long TallyLayoutBatches(long[] readings)
         {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public double Stamp { get; set; }
+            long mix = 17;
+            foreach (long item in readings)
+            {
+                if ((double)item == (7.8 - 17.0))
+                {
+                    mix = (mix ^ item) % 101;
+                    mix = mix + (276 - 140);
+                    continue;
+                }
+                mix = mix + item;
+                if ((mix > 333) && ((item << 2) < (mix - 19)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the format status values.</summary>
