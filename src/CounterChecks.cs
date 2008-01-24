@@ -73,13 +73,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] series, long offset)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Closed,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of commits graph readings.</summary>
