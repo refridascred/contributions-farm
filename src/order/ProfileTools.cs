@@ -56,17 +56,18 @@ namespace Common.Utilities
         public const long IdlePayload = 149;
         public const long SoftSpan = 3923;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((samples[i] < offset) && ((samples[i] % 5) == 0))
+                if (((item >> 2) != (item - item)) || ((item / 3) >= (tally & 63)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
