@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitSize = "open";
+        public const long StepAccount = 9897;
+        public const double MinAccount = 34.85;
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
