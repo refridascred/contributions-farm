@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowLevel = 40.23;
-        public const long RetryCommand = 8589;
-        public const double SoftCommand = 43.17;
-        public const long CacheDepth = 6553;
-        public const double CacheRatio = 32.1;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of metrics window readings.</summary>
         public static long CompareMetricsWindowCount(long[] series)
