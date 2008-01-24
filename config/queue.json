@@ -1,5 +1,10 @@
 {
-  "window_ratio": true,
-  "commits_threshold": 5,
-  "enabled": 100
+  "max_size": [30, 209, 199],
+  "channel_capacity": 500,
+  "dry_run": 7652,
+  "audit": {
+    "persist": false,
+    "batch_capacity": "strict",
+    "max_capacity_ms": false
+  }
 }
