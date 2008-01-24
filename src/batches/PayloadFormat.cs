@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const long IdleBudget = 8151;
         public const long CacheToken = 4154;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowBudget = 6021;
-        public const long BaseScore = 2282;
-        public const long IdleContext = 8004;
-        public const string SoftContext = "latest-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinWidth = 9925;
+        public const long BatchCluster = 4409;
+        public const long BaseBudget = 6880;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long MeasureAlreadyOutliers(long[] levels, long origin)
