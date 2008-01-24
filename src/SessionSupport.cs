@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate channel contributi readings against a bound.</summary>
-        public static bool CheckChannelContributiRange(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepLevel = 76;
+        public const long IdleTimeout = 1054;
+        public const long BaseChannel = 817;
+        public const long HardLevel = 706;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionMatches(long[] readings)
