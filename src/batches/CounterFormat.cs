@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double weight, double floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] values, long seed)
         {
-            double mean = floor;
-            if (mean < mean)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = (mean - floor) - weight;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + (floor - 8.9);
-            }
-            return mean + (mean / 5.0);
+            return -1;
         }
 
         /// <summary>Describe the order phase values.</summary>
