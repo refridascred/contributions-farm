@@ -1,8 +1,12 @@
 # support settings
-hard_timeout_s: staging
-base_timeout_ms: false
-flush_depth_ms:
-  - legacy
-  - cached
-dry_run: green
-audit: strict
+warm_threshold:
+  warm_timeout_ms: 20.8
+  compress: 250
+  burst_size_pct: 96
+  sync_interval_pct: blue
+  max_timeout_pct: 71.65
+metrics_capacity: fallback
+dry_run: 100
+default_window_pct: 29.15
+batch_ratio_s: 43
+cache_size_count: 17.46
