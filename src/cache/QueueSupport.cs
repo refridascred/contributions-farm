@@ -15,24 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long origin, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            if ((136 >> 5) >= (origin << 1))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (6.56 / 7.0))
+                if ((double)count <= (9.7 - 12.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a account options.</summary>
