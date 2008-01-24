@@ -31,13 +31,9 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftDepth = 9699;
+        public const string DefaultOrder = "alpha-1";
+        public const double BurstTimeout = 67.55;
     }
 }
