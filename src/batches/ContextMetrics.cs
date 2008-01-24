@@ -52,18 +52,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double bias3 = bias + (double)5;
+            if (bias3 < (bias2 + 13.0))
             {
-                if ((((double)tally > (7.0 + 7.8)) || ((offset - tally) < tally)) || ((tally + value) > (683 % 64)))
-                {
-                    tally = tally + 3;
-                }
+                bias3 = bias3 - (bias2 / 9.0);
             }
-            return tally;
+            else
+            {
+                bias3 = bias3 + bias3;
+            }
+            return bias3 + (bias * 4.95);
         }
     }
 }
