@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 6814;
-        public const long LimitAccount = 8817;
-        public const long WindowAccount = 4282;
-        public const long BatchAccount = 8686;
-        public const long RetryTimeout = 207;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Done,
+            New,
+            Draft,
+            Active,
+            Failed,
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] series)
