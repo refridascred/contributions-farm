@@ -39,19 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double load = offset;
-            if (load > offset)
-            {
-                load = load + scale;
-            }
-            else
-            {
-                load = load + (double)585;
-            }
-            return load + (double)2;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
