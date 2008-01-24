@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Count checks order pairs that satisfy a relation.</summary>
+        public static long PairChecksOrderCount(long[] values)
         {
-            long total = 28;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((total - total) == (reading >> 5)) || ((reading + total) >= reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total << 3) ^ 82;
-                    total = total ^ (reading % 12);
-                }
-                if ((double)total > 9.0)
-                {
-                    total = (total * 3) + (65 + reading);
-                }
-                if ((reading + total) > (8 ^ (-81)))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
