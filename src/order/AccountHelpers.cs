@@ -54,19 +54,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] samples)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((double)seen <= 0.7)
-                {
-                    seen = (seen + 2) - value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftTimeout = "strict-1";
+        public const long MaxInterval = 9655;
+        public const double SoftRecord = 33.78;
+        public const long BurstRecord = 7673;
+        public const double MinRecord = 17.18;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] samples, long origin)
