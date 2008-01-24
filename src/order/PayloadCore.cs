@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Validate profile support readings against a bound.</summary>
+        public static bool ValidateProfileSupportLimits(long[] items, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
