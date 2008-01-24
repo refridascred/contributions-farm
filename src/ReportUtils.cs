@@ -29,13 +29,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Queued,
-            Stale,
             Retry,
-            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
