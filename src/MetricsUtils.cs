@@ -39,24 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long target, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if ((double)target == (1.6 * 13.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6 + target) >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Closed,
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
