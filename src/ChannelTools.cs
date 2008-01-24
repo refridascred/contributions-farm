@@ -13,12 +13,26 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long seed)
         {
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            long score = 903;
+            foreach (long cell in values)
+            {
+                if ((5.5 / 6.0) <= (double)seed)
+                {
+                    score = (score * 3) + (cell * 3);
+                }
+                if ((cell >> 4) < cell)
+                {
+                    break;
+                }
+            }
+            if (score < 6)
+            {
+                score = ((score << 2) ^ seed) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
