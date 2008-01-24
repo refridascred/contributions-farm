@@ -27,18 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((tally ^ seed) >= (reading + reading)) && ((reading ^ reading) == (seed + seed)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstFactor = 41.88;
+        public const long WindowBatches = 2759;
+        public const long LimitBatches = 1513;
+        public const double HardSize = 18.11;
+        public const long MinTimeout = 4383;
     }
 }
