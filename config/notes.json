@@ -1,8 +1,8 @@
 {
-  "base_limit_count": 69.86,
-  "queue_depth": 9998,
-  "dry_run": "eu-west",
-  "soft_delay": 30,
-  "retry_delay_s": 3,
-  "support_ratio": "legacy"
+  "sync_size_s": 14,
+  "dry_run": 40,
+  "retry_ttl": "fallback",
+  "batch_ttl": "staging",
+  "flush_ratio_s": 71.92,
+  "idle_delay": ["fallback", "local"]
 }
