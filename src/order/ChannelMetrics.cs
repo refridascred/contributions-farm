@@ -37,26 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine counter order values into a single score.</summary>
-        public static long ScoreCounterOrder(long[] values, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            long mix = 169;
-            foreach (long value in values)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((bound + 38) >= (bound % 2))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    break;
+                    anchor = (((anchor << 3) ^ (anchor >> 4)) % 4096) ^ (long)i2;
                 }
-                if ((3 + 29) > value)
-                {
-                    mix = (mix << 2) ^ value;
-                }
+                anchor = (anchor << 2) ^ ((long)i << 3);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (mix > 43)
-            {
-                mix = (mix + ((long)values.Length << 3)) % 97;
-            }
-            return mix % 97;
+            return anchor;
         }
     }
 }
