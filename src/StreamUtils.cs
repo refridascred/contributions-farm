@@ -55,12 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryRatio = 75.15;
+        public const long WindowEditor = 776;
+        public const long MaxEditor = 7803;
+        public const long MaxRatio = 4222;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] readings, long floor)
