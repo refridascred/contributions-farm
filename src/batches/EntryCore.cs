@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long anchor = 96;
+            foreach (long datum in samples)
             {
-                if ((origin % 16) > acc)
+                if ((long)samples.Length >= datum)
                 {
-                    long next = acc;
-                    acc = acc + (next * 5);
+                    anchor = anchor ^ ((-9) >> 4);
                 }
-                acc = ((acc * 5) + (long)i) % 101;
+                else
+                {
+                    anchor = (anchor ^ 4) % 1000;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Locate a window reading by value.</summary>
