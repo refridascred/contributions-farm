@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseRatio = 6585;
-        public const string SoftQueue = "latest-edge";
-        public const long WindowQueue = 1343;
-        public const string WindowLevel = "strict-v2";
+        /// <summary>Validate checks account readings against a bound.</summary>
+        public static bool VerifyChecksAccountLimits(long[] items, long seed)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every counter batch entry stays within the limit.</summary>
         public static bool CheckCounterBatchBounds(long[] items, long limit)
