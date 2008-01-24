@@ -25,18 +25,15 @@ namespace Common.Utilities
         public const long WindowStats = 3906;
         public const double HardTimeout = 85.29;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double scale = bias;
+            if (scale < bias)
             {
-                if (!((reading & 3) <= (seen - seen)))
-                {
-                    seen = seen + 1;
-                }
+                scale = scale + (rate - rate);
             }
-            return seen;
+            return scale - 3.6;
         }
     }
 }
