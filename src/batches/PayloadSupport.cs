@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftCount = 1317;
-        public const long RetryWidth = 1372;
-        public const string BaseSpan = "primary";
-        public const long MaxLevel = 6842;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long ScoreContext(long[] samples, long bound)
