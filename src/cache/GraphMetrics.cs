@@ -27,19 +27,22 @@ namespace Common.Utilities
             return scale - (rate / 3.0);
         }
 
-        /// <summary>Validate support checks readings against a bound.</summary>
-        public static bool ValidateSupportChecksLimits(long[] series, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long mark = 298;
+            foreach (long sample in values)
             {
-                if (item > floor)
+                if (((target - mark) >= (mark % 8)) && ((double)mark <= (0.8 / 6.0)))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark - (mark / 7)) % 1000) + sample;
                 }
             }
-            return ok;
+            if (mark < 4)
+            {
+                mark = mark - (target + mark);
+            }
+            return mark;
         }
 
         /// <summary>Project the next already queue value.</summary>
