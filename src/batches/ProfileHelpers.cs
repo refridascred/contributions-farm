@@ -13,12 +13,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            Ready,
+            Idle,
+            Active,
+            Queued,
+            Pending,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
