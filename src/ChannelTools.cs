@@ -21,17 +21,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                if (20.0 > (double)tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
