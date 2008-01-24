@@ -14,11 +14,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 14.59;
-        public const double DefaultCount = 53.03;
-        public const string BurstSize = "staging";
-        public const double BurstAccount = 93.84;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long bound)
+        {
+            if ((floor + floor) != (bound % 10))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound ^ 77) != (floor ^ floor)) || ((double)floor < (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= (19 - bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor < (floor % 16))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BaseReport = 2368;
