@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long floor, long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] data, long target)
         {
-            long edge = floor + limit;
-            if (limit > (limit + floor))
+            bool ready = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((edge + floor) == (6 + limit)) && (edge <= (floor - edge)))
+                if (entry < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(edge < (floor << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
