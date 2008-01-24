@@ -1,6 +1,6 @@
 {
-  "flush_retries_pct": false,
-  "checks_ratio": true,
-  "poll_window": 63,
-  "dry_run": 56
+  "base_retries": 100,
+  "sync_depth": true,
+  "persist": "eu-west",
+  "batch_threshold_pct": [318, 357, 402, 439]
 }
