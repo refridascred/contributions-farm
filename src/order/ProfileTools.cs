@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long LimitLevel = 6547;
         public const string LimitDepth = "cached-1";
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)step >= 5.18)
-                {
-                    acc = (acc + (acc + step)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
