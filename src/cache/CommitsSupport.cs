@@ -59,21 +59,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = bias;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = ((scale - scale) + (double)(long)i) + rate;
             }
-            return tally;
+            return scale - scale;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
