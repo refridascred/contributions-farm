@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the cache command series from a seed.</summary>
-        public static long DeriveCacheCommand(long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 6; i++)
+            long score = -815;
+            foreach (long datum in items)
             {
-                carry = (carry << 2) ^ (origin + origin);
-                carry = ((carry * 3) + (long)i) % 101;
+                score = score + datum;
             }
-            return carry;
+            if (score < 216)
+            {
+                score = (score - (floor / 3)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Accumulate checks command samples.</summary>
