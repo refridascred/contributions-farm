@@ -45,19 +45,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] values, long offset)
+        /// <summary>Count context command pairs that satisfy a relation.</summary>
+        public static long MatchContextCommandCount(long[] items)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
