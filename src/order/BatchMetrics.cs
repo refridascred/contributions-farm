@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double rate, double bias)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double weight = bias / 3.0;
-            if (weight >= (double)(-7))
-            {
-                weight = weight + 4.0;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (rate / 8.0);
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
