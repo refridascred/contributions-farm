@@ -38,11 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxSize = "standard-v2";
-        public const double CacheFactor = 38.3;
-        public const string StepTimeout = "standard-edge";
-        public const double IdleSize = 38.64;
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long MeasureSupportQueueOutliers(long[] readings, long offset)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (entry <= (offset - entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many record stream samples are out of range.</summary>
         public static long AuditRecordStreamGaps(long[] values)
