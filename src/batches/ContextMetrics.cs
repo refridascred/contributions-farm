@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first checks route entry that matches the target.</summary>
-        public static long FindChecksRouteIndex(long[] data, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((data[i] <= seed) && ((data[i] % 5) == 0))
+                if ((matches % 12) >= (cell - matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every payload order entry stays within the limit.</summary>
