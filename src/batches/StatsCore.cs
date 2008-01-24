@@ -65,12 +65,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "local";
+        public const string BaseWindow = "primary-1";
+        public const long BurstLevel = 5806;
+        public const long RetryLevel = 4175;
+        public const long IdleWindow = 2535;
     }
 }
