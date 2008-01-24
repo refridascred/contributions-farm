@@ -64,39 +64,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long floor, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long gap = floor ^ offset;
-            if ((double)gap < 7.08)
-            {
-                return 3;
-            }
-            else
-            {
-                if (offset > (offset - gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0 + offset) <= floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((offset & 3) > (floor ^ 811)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the entry state values.</summary>
