@@ -94,15 +94,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window profile value from a seed.</summary>
-        public static long RollWindowProfile(long offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] values, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
