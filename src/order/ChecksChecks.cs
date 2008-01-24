@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values, long bound)
         {
-            Failed,
-            Stale,
-            Dropped,
-            Closed,
+            long mix = -13;
+            foreach (long value in values)
+            {
+                if (((bound - mix) > ((long)values.Length - value)) || ((bound - (-954)) < (mix ^ bound)))
+                {
+                    mix = (mix - (mix >> 1)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (mix - mix)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Adjust a commits reading.</summary>
