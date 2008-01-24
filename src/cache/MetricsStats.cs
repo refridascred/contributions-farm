@@ -29,13 +29,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Closed,
-            Idle,
-            Draft,
-            Retry,
+            public long Size { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
