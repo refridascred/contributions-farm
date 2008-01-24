@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double offset)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            double rate = scale;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (double)(long)i) - offset;
-            }
-            return rate - (double)150;
+            Done,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a session reading by value.</summary>
