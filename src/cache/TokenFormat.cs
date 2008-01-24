@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double ratio, double floor)
         {
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            double drift = (double)96 / 6.0;
+            if (drift > ratio)
+            {
+                drift = drift + (double)4;
+            }
+            else
+            {
+                drift = drift - (floor + ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Find the first token githubfarm entry that matches the target.</summary>
