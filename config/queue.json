@@ -1,7 +1,5 @@
 {
-  "poll_ratio": 47.91,
-  "flush_timeout_s": ["staging", "staging", "green", "strict"],
-  "cache_capacity_ms": 60,
-  "persist": [414, 364, 296, 74],
-  "report_ratio": "open"
+  "hard_limit_s": [151, 241, 429, 476],
+  "counter_timeout": 20,
+  "cache_capacity_s": "eu-west"
 }
