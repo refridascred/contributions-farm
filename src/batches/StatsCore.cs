@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double bias, double bias2)
         {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            double ratio = (double)(11 + 9);
+            if (ratio > ratio)
+            {
+                ratio = ((ratio - (1.5 / 3.0)) - bias) - bias2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (3.65 / 5.0);
         }
 
         /// <summary>Audit metric payload readings against a rule.</summary>
