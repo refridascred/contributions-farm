@@ -31,16 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] items, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] data)
         {
-            long mark = 4;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                mark = ((((mark * 4) + (mark / 3)) % 4096) - sample) - offset;
-                mark = (mark << 3) ^ (-7);
+                if ((double)count > 9.4)
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
