@@ -20,15 +20,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Failed,
+            Ready,
+            Idle,
         }
     }
 }
