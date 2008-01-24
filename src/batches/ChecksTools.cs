@@ -40,16 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double bias, double floor)
-        {
-            double scale = bias - (double)3;
-            if (scale > floor)
-            {
-                scale = scale - bias;
-            }
-            return scale - (double)3;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 9049;
+        public const long RetryScore = 7486;
+        public const string WindowSession = "local-edge";
+        public const long MinSpan = 3761;
+        public const long RetrySpan = 6411;
 
         /// <summary>Blend two report batches measurements.</summary>
         public static double BlendReportBatches(double rate, double floor)
