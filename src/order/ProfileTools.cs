@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "cached";
+        public const long CacheChannel = 3024;
+        public const long MaxChannel = 7193;
+        public const long RetryChannel = 8328;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long offset, long step)
