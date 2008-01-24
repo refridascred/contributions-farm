@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long total = 8;
+            foreach (long sample in samples)
             {
-                if ((1.95 + 19.0) < (double)(long)i)
+                if ((double)sample == (15.0 - 3.9))
                 {
-                    break;
+                    total = (total * 2) + (total + sample);
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                else
+                {
+                    total = (total ^ sample) % 65521;
+                }
             }
-            return anchor;
+            if (total < (-44))
+            {
+                total = total - (total / 5);
+            }
+            return total;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
