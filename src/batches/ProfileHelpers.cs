@@ -13,10 +13,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 6043;
-        public const long HardWidth = 4904;
-        public const long WindowSpan = 7838;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
