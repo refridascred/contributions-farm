@@ -1,8 +1,30 @@
 {
-  "channel_threshold": "staging",
-  "schema_size": [147, 126, 495],
-  "base_retries_pct": 27,
-  "retry_threshold": 79.41,
-  "poll_limit_pct": [293, 381],
-  "cache_threshold_pct": 1304
+  "batch_interval": {
+    "base_depth_pct": {
+      "poll_ttl_s": 6237,
+      "session_threshold": "open",
+      "batch_delay_count": "strict",
+      "batch_depth_ms": "open",
+      "stream_capacity": ["primary", "stable"]
+    },
+    "queue_threshold": [320, 180, 236],
+    "report_ratio": "stable"
+  },
+  "soft_interval_ms": {
+    "hard_size_pct": 1024,
+    "hard_delay": "strict",
+    "soft_threshold_pct": {
+      "flush_retries_count": "edge",
+      "metric_timeout": [139, 108, 52],
+      "batch_depth_pct": "standard",
+      "compress": "stable",
+      "base_size_s": 7337,
+      "soft_capacity": 250
+    },
+    "verbose": 30,
+    "default_timeout_s": 60.79,
+    "max_window": "local"
+  },
+  "idle_size": 74.79,
+  "sync_limit_s": 68.74
 }
