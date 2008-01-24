@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public bool Limit { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleChannel = 22.14;
+        public const double MaxChannel = 69.82;
+        public const long WindowInterval = 9283;
+        public const long WindowChannel = 8056;
 
         /// <summary>Check that every order stats entry stays within the limit.</summary>
         public static bool GuardOrderStatsBounds(long[] items, long offset)
