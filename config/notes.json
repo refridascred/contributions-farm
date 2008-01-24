@@ -1,14 +1,7 @@
 {
-  "audit": {
-    "retry_depth_count": {
-      "warm_limit": 60,
-      "burst_limit_s": 15.1,
-      "warm_delay_s": "primary"
-    },
-    "enabled": [185, 347],
-    "cache_capacity_count": 30,
-    "filter_ratio": 76.12
-  },
-  "idle_retries_ms": "open",
-  "dry_run": "blue"
+  "stream_interval": "staging",
+  "soft_ttl_s": "stable",
+  "sync_ratio_s": "primary",
+  "warm_capacity_pct": 250,
+  "min_threshold": "green"
 }
