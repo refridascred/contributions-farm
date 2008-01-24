@@ -22,17 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token githubfarm entry that matches the target.</summary>
-        public static long LookupTokenGithubfarmIndex(long[] series, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] samples, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 289;
+            foreach (long sample in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
+                if (((origin / 6) == (acc * 2)) && ((sample - 827) <= origin))
                 {
-                    return (long)i;
+                    acc = (acc * 2) + (origin * 4);
+                }
+                if (!(4.72 < (double)acc))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a metric entry.</summary>
