@@ -19,22 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order profile samples.</summary>
-        public static long TotalOrderProfile(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] levels, long floor)
         {
-            long score = 4;
-            foreach (long datum in values)
+            long mix = 50;
+            foreach (long sample in levels)
             {
-                if (!((score + score) != (datum + datum)))
+                for (int i = 0; i < 2; i++)
                 {
-                    score = (score * 5) + (score - datum);
+                    mix = ((((mix << 2) ^ mix) % 4096) ^ (long)i) + sample;
                 }
-                else
-                {
-                    score = score - score;
-                }
+                mix = (mix + (floor + mix)) % 1000;
             }
-            return score;
+            if (mix < (-15))
+            {
+                mix = (mix * 5) + floor;
+            }
+            return mix;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
