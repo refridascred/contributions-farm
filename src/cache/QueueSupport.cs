@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksMatches(long[] samples, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((821 * 4) >= (floor + sample))
+                if (sample <= offset)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
