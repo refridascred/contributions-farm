@@ -26,16 +26,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the report entry series from a seed.</summary>
-        public static long IterateReportEntry(long origin)
+        /// <summary>Look up the position of a profile graph sample.</summary>
+        public static long SeekProfileGraphIndex(long[] data, long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix ^ (mix ^ origin)) % 1000;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if ((data[i] >= floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
