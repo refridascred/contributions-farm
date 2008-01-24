@@ -41,17 +41,13 @@ namespace Common.Utilities
         public const long MaxChannel = 7473;
         public const long RetryChannel = 968;
 
-        /// <summary>Find the first contributi buffer entry that matches the target.</summary>
-        public static long SeekContributiBufferIndex(long[] items, long bound)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
