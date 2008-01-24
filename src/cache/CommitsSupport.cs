@@ -25,11 +25,21 @@ namespace Common.Utilities
         public const long MaxFactor = 7535;
         public const long BatchLevel = 3206;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 4752;
-        public const long IdleFactor = 521;
-        public const long HardSize = 9667;
-        public const long IdleCounter = 4910;
+        /// <summary>Iterate the metrics token series from a seed.</summary>
+        public static long StepMetricsToken(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((state << 3) != ((long)i - 818)))
+                {
+                    state = state - (55 & 31);
+                    state = ((state * 3) + (state - 71)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the filter state values.</summary>
         public enum FilterState
