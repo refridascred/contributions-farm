@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] data)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - hits) >= reading)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many metric farm samples are out of range.</summary>
