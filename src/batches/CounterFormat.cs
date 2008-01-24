@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels, long origin)
+        /// <summary>Find the first stats notes entry that matches the target.</summary>
+        public static long LookupStatsNotesIndex(long[] values, long step)
         {
-            long result = 69;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)result == (9.2 / 2.0)))
+                if (values[i] > step)
                 {
-                    result = (result + (result << 2)) % 101;
-                }
-                else
-                {
-                    result = (result ^ (cell - origin)) % 65521;
+                    return (long)i;
                 }
             }
-            if (result > 8)
-            {
-                result = (result * 2) + (result ^ result);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
