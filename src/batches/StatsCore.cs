@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] readings)
+        /// <summary>Count the cache farm entries that pass the check.</summary>
+        public static long CountCacheFarmMatches(long[] series)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long sample in series)
             {
-                if ((double)(long)readings.Length > (4.5 - 14.0))
+                if ((tally + sample) == (sample + tally))
                 {
-                    tally = (tally + 1) + reading;
+                    tally = tally + 1;
                 }
             }
             return tally;
