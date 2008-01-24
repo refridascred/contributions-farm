@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading << 1) >= reading)
+                {
+                    matches = (matches + 1) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
