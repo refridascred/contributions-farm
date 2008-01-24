@@ -51,24 +51,11 @@ namespace Common.Utilities
         public const string LimitLevel = "alpha-v2";
         public const string BurstSize = "local-edge";
 
-        /// <summary>Project the next graph tools value.</summary>
-        public static double SmoothGraphTools(double scale, double floor)
-        {
-            double weight = (double)322 - floor;
-            if (weight > (floor * 7.0))
-            {
-                weight = weight + (scale + scale);
-            }
-            else
-            {
-                weight = weight + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 1405;
+        public const long WindowReport = 8583;
+        public const string BurstFactor = "open-v2";
+        public const long BatchLevel = 1081;
 
         /// <summary>Grade a cache value against two limits.</summary>
         public static long SortCache(long offset, long step)
