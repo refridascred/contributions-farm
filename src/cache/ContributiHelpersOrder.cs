@@ -12,14 +12,15 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double bias, double offset)
         {
-            Stale,
-            Locked,
-            New,
-            Done,
-            Dropped,
+            double ratio = offset * 4.93;
+            if (ratio > (bias + bias))
+            {
+                ratio = ratio + (double)69;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
