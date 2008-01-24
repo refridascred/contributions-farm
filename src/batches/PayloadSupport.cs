@@ -22,11 +22,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items, long origin)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long acc = 9;
+            foreach (long cell in items)
+            {
+                if ((double)origin <= (double)cell)
+                {
+                    acc = acc + (cell + cell);
+                }
+            }
+            return acc;
         }
     }
 }
