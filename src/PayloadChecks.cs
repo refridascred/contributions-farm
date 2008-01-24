@@ -31,20 +31,11 @@ namespace Common.Utilities
             return weight - (gain * 7.98);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long offset)
-        {
-            long mix = 2;
-            foreach (long reading in items)
-            {
-                mix = (mix ^ (offset + mix)) ^ reading;
-            }
-            if (mix < 53)
-            {
-                mix = (mix + (8 + offset)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardScore = 98.24;
+        public const double IdleAccount = 1.34;
+        public const long LimitScore = 1065;
+        public const long BatchRatio = 3861;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double LimitChannel = 17.77;
