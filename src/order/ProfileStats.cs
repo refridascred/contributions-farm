@@ -32,17 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] values, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
