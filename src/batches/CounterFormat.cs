@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a graph buffer figure with a bias.</summary>
-        public static double AdjustGraphBuffer(double rate, double bias)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long target, long floor)
         {
-            double drift = rate;
-            if (drift < rate)
+            if ((floor + floor) == (target * 2))
             {
-                drift = drift - (bias / 8.0);
+                return 2;
             }
             else
             {
-                drift = drift + drift;
+                if ((double)floor >= (7.98 + 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target + target) > target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - rate;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
