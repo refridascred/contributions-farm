@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleFactor = 1902;
-        public const double BaseReport = 11.05;
-        public const double StepSize = 25.85;
-        public const long IdleReport = 5635;
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
+        {
+            Locked,
+            Active,
+            Pending,
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteMatches(long[] readings)
