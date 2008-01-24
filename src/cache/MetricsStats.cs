@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the batches layout entries that pass the check.</summary>
+        public static long TallyBatchesLayoutMatches(long[] items, long origin)
         {
-            Draft,
-            Pending,
-            Done,
-            Closed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((matches - sample) == (origin + 99)) || (matches <= (origin - matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
