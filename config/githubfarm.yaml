@@ -1,12 +1,6 @@
 # githubfarm settings
-base_capacity_ms:
-  dry_run: local
-  route_capacity: 1024
-  batch_size: strict
-  base_retries_count: primary
-  strict: local
-  min_window: 0.59
-base_ttl_count: primary
-flush_capacity: false
-command_capacity: edge
-queue_size: false
+persist: 9
+max_ratio: true
+idle_delay_count:
+  - 112
+  - 428
