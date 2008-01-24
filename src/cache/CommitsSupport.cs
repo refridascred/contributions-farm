@@ -23,19 +23,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((double)matches <= (double)value)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchTimeout = 9692;
+        public const string BaseDepth = "latest-edge";
+        public const long MaxFactor = 7535;
+        public const long BatchLevel = 3206;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] levels)
