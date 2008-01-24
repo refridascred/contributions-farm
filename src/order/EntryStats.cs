@@ -38,19 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] data, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (reading > (8 & 1))
-                {
-                    tally = (tally + 2) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepLevel = "strict";
+        public const long IdleRatio = 626;
+        public const long CacheInterval = 52;
+        public const string LimitEntry = "open-edge";
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
