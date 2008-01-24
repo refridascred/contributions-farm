@@ -1,5 +1,5 @@
 {
-  "max_interval": "fallback",
-  "default_timeout": 9767,
-  "enabled": false
+  "base_delay_count": [253, 62, 220],
+  "idle_limit": ["standard", "stable"],
+  "default_size_s": 1024
 }
