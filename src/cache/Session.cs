@@ -18,14 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long step, long limit)
         {
-            Pending,
-            Stale,
-            Idle,
-            Synced,
-            Active,
+            if ((limit / 7) <= 5)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step - limit) <= step) || ((double)(-723) == (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step - step) > (limit << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics options.</summary>
