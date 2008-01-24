@@ -31,16 +31,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric cache counter forward.</summary>
-        public static long StepMetricCache(long bound)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total + (3 % 60);
-                total = ((total * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
