@@ -1,8 +1,7 @@
 {
-  "cache_ratio_pct": "eu-west",
-  "verbose": 91.19,
-  "default_ratio": "blue",
-  "persist": false,
-  "burst_capacity": 46.61,
-  "default_retries_ms": 250
+  "compress": 8694,
+  "readonly": "open",
+  "sync_window_s": [174, 445, 116, 346],
+  "metric_depth": 44.25,
+  "sync_size": "primary"
 }
