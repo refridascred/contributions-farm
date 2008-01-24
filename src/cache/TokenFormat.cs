@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double ratio, double floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            double drift = (double)96 / 6.0;
-            if (drift > ratio)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift + (double)4;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (floor + ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - drift;
+            return tally;
         }
 
         /// <summary>Find the first token githubfarm entry that matches the target.</summary>
