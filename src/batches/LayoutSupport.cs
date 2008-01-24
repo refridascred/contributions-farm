@@ -41,22 +41,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 4796;
+        public const long IdleDepth = 7456;
+        public const double IdleProfile = 35.8;
+        public const double LimitProfile = 89.4;
+        public const long CacheProfile = 2692;
 
         /// <summary>Adjust a githubfarm reading.</summary>
         public static double ProjectGithubfarm(double ratio, double bias)
