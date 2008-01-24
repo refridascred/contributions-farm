@@ -51,27 +51,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values)
-        {
-            long result = 5;
-            foreach (long value in values)
-            {
-                if (((-2) - value) >= (value << 2))
-                {
-                    result = ((result * 4) + (3 << 2)) % 65521;
-                }
-                else
-                {
-                    result = (result + value) % 97;
-                }
-                if ((result >= (value << 3)) || ((value % 10) >= (8 >> 5)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 6563;
+        public const long BaseAccount = 808;
+        public const long RetryAccount = 4197;
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
