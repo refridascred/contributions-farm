@@ -15,14 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Pending,
-            Dropped,
-            Active,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstLevel = 45.88;
+        public const long MaxBudget = 698;
+        public const long IdleContributi = 8022;
+        public const long LimitContributi = 4225;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphMatches(long[] readings)
