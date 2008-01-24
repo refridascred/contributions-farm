@@ -73,11 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Combine support batch values into a single score.</summary>
+        public static long WeighSupportBatch(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long sum = 52;
+            foreach (long entry in values)
+            {
+                if (((long)values.Length << 2) > (entry % 97))
+                {
+                    sum = sum ^ (entry << 1);
+                }
+            }
+            return sum % 65521;
         }
     }
 }
