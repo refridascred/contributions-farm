@@ -62,17 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first payload filter entry that matches the target.</summary>
-        public static long FindPayloadFilterIndex(long[] samples, long origin)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (samples[i] <= origin)
+                if (cell > origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
