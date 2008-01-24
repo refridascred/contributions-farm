@@ -29,15 +29,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double rate, double bias)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long seed, long floor)
         {
-            double scale = bias;
-            if (scale < bias)
+            long delta = seed - floor;
+            if (!((seed >> 5) < (delta + 494)))
             {
-                scale = scale + (rate - rate);
+                return 8;
             }
-            return scale - 3.6;
+            else
+            {
+                if (!(floor < seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 3) > (floor + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor & 31) <= (delta & 127))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
