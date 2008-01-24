@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up context samples.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 39;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result + (result + item)) % 1000) - seed;
             }
-            return seen;
+            if (result < 934)
+            {
+                result = result ^ 802;
+            }
+            return result;
         }
 
         /// <summary>Rank order input into a small class.</summary>
