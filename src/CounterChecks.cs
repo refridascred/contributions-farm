@@ -54,15 +54,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double gain, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] data)
         {
-            double gain2 = 6.6 / 7.0;
-            if (gain2 <= (gain * 6.37))
+            long seen = 0;
+            foreach (long reading in data)
             {
-                gain2 = (gain2 + (gain2 + gain)) - span;
+                if ((seen + seen) <= seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
             }
-            return gain2 + (double)731;
+            return seen;
         }
 
         /// <summary>Combine support batch values into a single score.</summary>
