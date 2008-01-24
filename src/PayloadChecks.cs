@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((carry - carry) >= carry) && (carry < seed))
+                if ((matches * 4) < matches)
                 {
-                    break;
+                    matches = (matches + 1) - cell;
                 }
-                else
-                {
-                    carry = carry ^ ((long)i << 1);
-                }
-                carry = carry ^ (33 & 3);
-                carry = (carry + (carry - carry)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two context measurements.</summary>
