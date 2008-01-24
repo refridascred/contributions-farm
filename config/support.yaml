@@ -1,17 +1,23 @@
 # support settings
-strict:
-  - 235
-  - 250
-  - 440
-  - 478
-farm_timeout: 17.75
-order_timeout: edge
-burst_threshold: strict
-soft_capacity:
-  context_size: false
-  default_ratio_s:
-    - strict
-    - cached
-    - primary
-    - legacy
-  batch_threshold: false
+sync_capacity_count: 100
+layout_retries:
+  sync_capacity: 9667
+  burst_threshold_count:
+    - 452
+    - 223
+  warm_limit: 37.65
+  hard_capacity_s: blue
+  hard_interval_pct: 28
+soft_window:
+  default_delay_count: 30
+  sync_delay:
+    - edge
+    - latest
+    - fallback
+  burst_window: blue
+cache_ratio_count:
+  - primary
+  - stable
+  - local
+  - green
+layout_threshold: blue
