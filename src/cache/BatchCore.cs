@@ -41,11 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 4159;
-        public const long SoftSpan = 9907;
-        public const long MaxSupport = 725;
-        public const long CacheSupport = 6545;
-        public const long BaseWidth = 8512;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels, long step)
+        {
+            long state = -237;
+            foreach (long datum in levels)
+            {
+                if ((step <= (datum * 2)) && ((state % 10) <= state))
+                {
+                    state = ((state << 3) ^ (41 & 3)) % 65521;
+                }
+            }
+            if (state > 31)
+            {
+                state = (state * 4) + (956 - state);
+            }
+            return state;
+        }
     }
 }
