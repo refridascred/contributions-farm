@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
+            double gain = (double)(4 << 1);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain + (double)(long)i) - weight) - span;
+            }
+            return gain + (double)399;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
