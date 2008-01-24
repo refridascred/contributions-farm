@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long score = -509;
+            foreach (long cell in values)
             {
-                if ((reading + reading) >= (reading / 2))
+                if (!((double)score >= (double)seed))
                 {
-                    tally = tally + 1;
+                    score = score - (seed & 63);
+                    score = (score ^ (2 % 2)) % 101;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score + (cell % 12)) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
