@@ -51,10 +51,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 6563;
-        public const long BaseAccount = 808;
-        public const long RetryAccount = 4197;
+        /// <summary>Count the entry batches entries that pass the check.</summary>
+        public static long AuditEntryBatchesGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((matches - matches) < offset)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long PairChecksCount(long[] levels)
