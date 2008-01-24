@@ -80,11 +80,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Audit record batches readings against a rule.</summary>
+        public static long CountRecordBatchesHits(long[] samples, long bound)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading % 12) < (bound + 0))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
