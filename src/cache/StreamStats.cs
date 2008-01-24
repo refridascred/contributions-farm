@@ -36,11 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "primary-v2";
-        public const long StepScore = 7950;
-        public const long BaseFactor = 3555;
-        public const long BurstBatches = 7116;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values)
+        {
+            long anchor = 0;
+            foreach (long item in values)
+            {
+                if (((double)item != (4.2 * 4.9)) || (9.4 <= (double)anchor))
+                {
+                    anchor = (anchor - (anchor & 7)) % 255;
+                }
+            }
+            if (anchor > 67)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 5)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextMatches(long[] readings, long floor)
