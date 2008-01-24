@@ -20,32 +20,15 @@ namespace Common.Utilities
             return drift - (double)3;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long step, long limit)
+        /// <summary>Roll a stream editor counter forward.</summary>
+        public static long SeriesStreamEditor(long floor)
         {
-            long lane = step ^ limit;
-            if (lane < step)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)limit <= (9.13 * 16.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit * 3) <= limit) || ((lane + limit) < (lane << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Count the farm order entries that pass the check.</summary>
