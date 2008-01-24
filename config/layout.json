@@ -1,17 +1,5 @@
 {
-  "max_interval_pct": {
-    "soft_delay_s": 1024,
-    "idle_timeout_s": {
-      "flush_ttl": true,
-      "hard_capacity_pct": "cached",
-      "warm_limit": 2.26,
-      "already_window": "local",
-      "cluster_retries": 98.49
-    },
-    "enabled": 34.31,
-    "hard_retries": "blue",
-    "format_ratio": [119, 39, 3, 383]
-  },
-  "enabled": 62,
-  "soft_threshold_ms": ["standard", "staging", "green"]
+  "retry_threshold": "cached",
+  "batch_threshold_s": ["latest", "strict"],
+  "strict": 73
 }
