@@ -22,18 +22,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items, long origin)
+        /// <summary>Compare every pair of cache notes readings.</summary>
+        public static long CompareCacheNotesCount(long[] data)
         {
-            long acc = 9;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)origin <= (double)cell)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc + (cell + cell);
+                    if ((data[i] - data[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
