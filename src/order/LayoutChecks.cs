@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                total = total - (738 + seed);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
