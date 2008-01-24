@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string LimitToken = "legacy-1";
-        public const double DefaultToken = 78.48;
-        public const long MinToken = 8712;
-        public const double IdleTimeout = 25.94;
+        /// <summary>Measure how many metric farm samples are out of range.</summary>
+        public static long AuditMetricFarmMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= (double)hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two notes stats measurements.</summary>
         public static double SmoothNotesStats(double ratio, double span)
