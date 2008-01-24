@@ -58,11 +58,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
+            long score = target;
+            for (int i = 0; i < 8; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
