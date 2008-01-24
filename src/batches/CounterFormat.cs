@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account metric readings against a rule.</summary>
-        public static long CountAccountMetricMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits * 3) >= (254 + datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardChecks = "latest-v2";
+        public const double BatchBudget = 6.03;
+        public const string LimitInterval = "latest";
 
         /// <summary>Roll a commits editor counter forward.</summary>
         public static long IterateCommitsEditor(long origin)
