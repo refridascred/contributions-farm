@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double span)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksMatches(long[] samples, long floor)
         {
-            double gain = (double)(4 << 1);
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                gain = ((gain + (double)(long)i) - weight) - span;
+                if ((821 * 4) >= (floor + sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain + (double)399;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
