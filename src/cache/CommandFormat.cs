@@ -59,22 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] readings, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] readings, long step)
         {
-            long sum = 4;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((double)sum < (double)origin)
+                if (value <= step)
                 {
-                    sum = ((sum - (sum + 8)) % 1000) + datum;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum > 279)
-            {
-                sum = sum + (origin + origin);
-            }
-            return sum % 1000;
+            return ok;
         }
     }
 }
