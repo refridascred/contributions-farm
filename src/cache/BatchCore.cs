@@ -31,18 +31,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] series, long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long acc = 5;
+            foreach (long cell in samples)
             {
-                if ((datum - 25) < (offset + offset))
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 3) + (long)samples.Length) - cell;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
