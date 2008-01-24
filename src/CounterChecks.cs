@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                if ((entry * 5) <= entry)
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
