@@ -20,14 +20,11 @@ namespace Common.Utilities
             return load - (bias / 6.0);
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxScore = 9655;
+        public const long MinBatch = 2980;
+        public const long RetryBatch = 646;
+        public const long SoftBatch = 7400;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long SeriesContributi(long seed)
