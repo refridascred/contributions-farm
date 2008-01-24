@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels, long seed)
         {
-            long sum = 4;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((double)cell != (5.81 * 2.0)) && ((double)bound < (double)cell))
+                if ((value >= (value << 3)) || ((value * 5) < seed))
                 {
-                    continue;
-                }
-                if ((sum + cell) <= cell)
-                {
-                    sum = ((sum * 2) + (bound - cell)) % 4096;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    sum = sum ^ (sum + sum);
+                    seen = seen - 1;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
