@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Grade a session channel value against two limits.</summary>
+        public static long BucketSessionChannel(long floor, long offset)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
+            if (floor >= (offset * 5))
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset >= (offset + 50))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((7.63 * 3.0) <= (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
