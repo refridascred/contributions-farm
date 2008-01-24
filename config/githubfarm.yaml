@@ -1,12 +1,17 @@
 # githubfarm settings
-report_window:
-  - 323
-  - 273
-  - 211
-  - 389
-idle_ttl: 23
-stats_delay:
-  - 188
-  - 9
-  - 144
-  - 417
+record_delay: 1937
+burst_retries_s: cached
+enabled: green
+cluster_ratio: false
+retry_timeout_ms: false
+queue_delay:
+  session_window:
+    - 147
+    - 202
+    - 107
+    - 188
+  persist: strict
+  burst_threshold_s: 47
+  cache_ttl_pct:
+    - stable
+    - open
