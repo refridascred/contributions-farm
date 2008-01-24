@@ -1,18 +1,7 @@
 # entry settings
-account_timeout: cached
-contributi_ratio: 3402
-idle_capacity_ms:
-  token_capacity: 93.21
-  soft_ttl:
-    cache_retries: local
-    poll_ttl_pct: 54.68
-    dry_run: false
-    poll_limit_count: 62.93
-  burst_interval_ms: latest
-  layout_depth: 90
-  flush_interval: legacy
-default_capacity: 11
-flush_depth_pct:
-  - 267
-  - 328
-batch_capacity: strict
+flush_timeout: 60
+retry_size: standard
+burst_size_count: true
+strict: 52
+metrics_interval: false
+idle_ratio_ms: false
