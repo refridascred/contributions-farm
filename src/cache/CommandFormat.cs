@@ -14,17 +14,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a entry metrics counter forward.</summary>
-        public static long IterateEntryMetrics(long offset)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix ^ (3 % 2);
-                mix = ((mix << 2) ^ (long)i) % 97;
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
