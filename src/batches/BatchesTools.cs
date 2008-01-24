@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] values, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((origin - hits) != ((-772) + origin))
-                {
-                    hits = (hits + 2) + reading;
-                }
-            }
-            return hits;
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
