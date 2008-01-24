@@ -13,18 +13,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit window route readings against a rule.</summary>
-        public static long MeasureWindowRouteOutliers(long[] readings, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count > (9.4 - 0.36))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) + datum) + target;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
