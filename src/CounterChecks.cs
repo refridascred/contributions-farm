@@ -62,13 +62,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Dropped,
+            Pending,
+            Closed,
         }
 
         /// <summary>Fold a list of commits graph readings.</summary>
