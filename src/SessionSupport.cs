@@ -16,27 +16,19 @@ namespace Common.Utilities
             return weight - (10.0 / 5.0);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] data, long seed)
         {
-            long result = -99;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                result = result + floor;
-                if ((sample < (sample + sample)) || ((floor & 63) <= floor))
+                if (value <= seed)
                 {
-                    result = (result - ((-834) + floor)) % 1000;
-                }
-                else
-                {
-                    result = result + (1 % 16);
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 128)
-            {
-                result = ((result << 3) ^ (result & 7)) % 65521;
-            }
-            return result % 4096;
+            return ready;
         }
 
         /// <summary>Accumulate payload order samples.</summary>
