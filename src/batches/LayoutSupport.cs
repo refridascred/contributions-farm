@@ -69,19 +69,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] samples, long target)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
