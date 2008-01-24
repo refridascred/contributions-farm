@@ -15,18 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] readings)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long state = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((9.0 - 5.0) > (double)value)
-                {
-                    count = count + 2;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
