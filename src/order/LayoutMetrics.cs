@@ -27,10 +27,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 2735;
-        public const string DefaultAlready = "local-1";
-        public const string LimitFactor = "open-1";
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long DigestTools(long[] values)
