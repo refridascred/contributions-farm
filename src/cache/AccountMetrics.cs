@@ -80,22 +80,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record batches readings against a rule.</summary>
-        public static long CountRecordBatchesHits(long[] samples, long bound)
+        /// <summary>Combine queue batches values into a single score.</summary>
+        public static long TallyQueueBatches(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = 832;
+            foreach (long reading in levels)
             {
-                if ((reading % 12) < (bound + 0))
+                if (!((reading + reading) != (acc << 2)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = acc + (floor + floor);
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Hold a report snapshot.</summary>
