@@ -35,25 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout batches samples.</summary>
-        public static long TallyLayoutBatches(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] levels, long seed)
         {
-            long mix = 17;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((double)item == (7.8 - 17.0))
+                if (sample < seed)
                 {
-                    mix = (mix ^ item) % 101;
-                    mix = mix + (276 - 140);
-                    continue;
-                }
-                mix = mix + item;
-                if ((mix > 333) && ((item << 2) < (mix - 19)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the format status values.</summary>
