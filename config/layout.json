@@ -1,6 +1,11 @@
 {
-  "max_limit_ms": 80,
-  "retry_ratio_ms": 60,
-  "enabled": 8532,
-  "poll_threshold_pct": "green"
+  "burst_size_pct": {
+    "batch_interval_ms": "standard",
+    "max_ratio_count": 60,
+    "max_threshold": "latest"
+  },
+  "strict": 1024,
+  "enabled": [331, 273],
+  "payload_ratio": "latest",
+  "batch_size": ["open", "open"]
 }
