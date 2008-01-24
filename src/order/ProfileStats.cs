@@ -24,13 +24,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] values, long seed)
         {
-            Ready,
-            Closed,
-            Draft,
-            New,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
