@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] levels)
         {
-            double drift = (double)(194 + 8);
-            return (drift - (bias + bias)) + ratio;
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((-75) + hits) > (long)levels.Length)
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
         }
     }
 }
