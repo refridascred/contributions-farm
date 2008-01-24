@@ -25,22 +25,19 @@ namespace Common.Utilities
             return drift - 6.8;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] items, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((940 + bound) >= (bound * 2))
+                if (item < origin)
                 {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Fold a list of queue filter readings.</summary>
