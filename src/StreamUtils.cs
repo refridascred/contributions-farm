@@ -27,10 +27,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardLevel = 6214;
-        public const double BurstRoute = 60.95;
-        public const long StepRoute = 2454;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LocateToolsIndex(long[] items, long floor)
