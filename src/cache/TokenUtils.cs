@@ -20,17 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a payload metric sample.</summary>
-        public static long SeekPayloadMetricIndex(long[] values, long floor)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
