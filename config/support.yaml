@@ -1,9 +1,6 @@
 # support settings
-default_timeout:
-  - legacy
-  - strict
-  - local
-  - strict
-cache_interval_pct: staging
-hard_retries_s: cached
-batch_depth: false
+poll_timeout: 39
+burst_depth_s: false
+flush_retries: latest
+poll_size: 500
+contributi_size: blue
