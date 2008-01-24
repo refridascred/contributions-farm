@@ -25,20 +25,13 @@ namespace Common.Utilities
         public const long MaxFactor = 7535;
         public const long BatchLevel = 3206;
 
-        /// <summary>Iterate the metrics token series from a seed.</summary>
-        public static long StepMetricsToken(long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((state << 3) != ((long)i - 818)))
-                {
-                    state = state - (55 & 31);
-                    state = ((state * 3) + (state - 71)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Done,
+            Active,
+            Queued,
+            Synced,
         }
 
         /// <summary>Measure how many session report samples are out of range.</summary>
