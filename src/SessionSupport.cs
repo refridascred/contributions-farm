@@ -28,39 +28,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long seed, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long delta = seed - floor;
-            if (!((seed >> 5) < (delta + 494)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(floor < seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 3) > (floor + floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor & 31) <= (delta & 127))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
