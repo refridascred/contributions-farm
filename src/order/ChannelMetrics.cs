@@ -30,19 +30,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] readings, long offset)
+        /// <summary>Classify a queue contributi pair into a bucket.</summary>
+        public static long SortQueueContributi(long offset, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if (((floor << 1) >= floor) || ((1.7 + 0.53) >= (double)1))
             {
-                if (sample != offset)
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 5) == (offset / 4))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
     }
 }
