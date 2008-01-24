@@ -1,5 +1,5 @@
 {
-  "verbose": false,
-  "base_interval_s": "standard",
-  "notes_timeout": "staging"
+  "flush_threshold_s": ["eu-west", "eu-west", "eu-west", "local"],
+  "hard_ratio": [351, 393, 48, 405],
+  "poll_ratio_pct": 71.87
 }
