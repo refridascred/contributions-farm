@@ -49,11 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryDepth = "local";
-        public const long BatchInterval = 1772;
-        public const long SoftTimeout = 5018;
-        public const long StepWindow = 1929;
-        public const long WindowDepth = 1682;
+        /// <summary>Combine counter profile values into a single score.</summary>
+        public static long TotalCounterProfile(long[] samples, long origin)
+        {
+            long sum = 783;
+            foreach (long value in samples)
+            {
+                sum = (((sum << 2) ^ value) % 101) - origin;
+                sum = (sum ^ (sum % 3)) % 65521;
+            }
+            return sum % 65521;
+        }
     }
 }
