@@ -49,10 +49,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "fallback";
-        public const double IdleSize = 70.37;
-        public const long BatchWindow = 7758;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long seed)
+        {
+            long result = 6;
+            foreach (long datum in data)
+            {
+                result = (((result << 2) ^ (datum % 24)) % 97) - seed;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Find the first contributi buffer entry that matches the target.</summary>
         public static long SeekContributiBufferIndex(long[] items, long bound)
