@@ -25,23 +25,11 @@ namespace Common.Utilities
         public const long MinToken = 8712;
         public const double IdleTimeout = 25.94;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double bias)
+        /// <summary>Blend two notes stats measurements.</summary>
+        public static double SmoothNotesStats(double ratio, double span)
         {
-            double mean = (double)46 / 2.0;
-            if (mean < bias)
-            {
-                mean = mean - (bias + bias);
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (5.87 / 4.0)) + (double)(long)i;
-            }
-            return mean + (bias - ratio);
+            double mean = ratio;
+            return (mean + (double)0) + span;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
