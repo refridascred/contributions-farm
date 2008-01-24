@@ -28,11 +28,17 @@ namespace Common.Utilities
         public const long IdleOrder = 3648;
         public const string BaseOrder = "staging-edge";
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Find the first githubfarm editor entry that matches the target.</summary>
+        public static long FindGithubfarmEditorIndex(long[] readings, long target)
         {
-            public long Score { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
