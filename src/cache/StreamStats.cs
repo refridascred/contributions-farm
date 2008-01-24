@@ -36,11 +36,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            long mark = 5;
+            foreach (long datum in samples)
+            {
+                mark = (mark ^ (datum - 0)) % 1000;
+            }
+            if (mark > 734)
+            {
+                mark = (mark ^ (5 + 5)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
