@@ -1,5 +1,7 @@
 {
-  "flush_threshold_s": ["eu-west", "eu-west", "eu-west", "local"],
-  "hard_ratio": [351, 393, 48, 405],
-  "poll_ratio_pct": 71.87
+  "base_capacity": 100,
+  "min_capacity_pct": 49,
+  "hard_threshold": "cached",
+  "enabled": 14.5,
+  "payload_size": [365, 1, 384, 139]
 }
