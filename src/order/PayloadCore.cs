@@ -18,13 +18,19 @@ namespace Common.Utilities
         public const string CacheInterval = "open";
         public const string StepLevel = "staging-v2";
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate report profile readings against a bound.</summary>
+        public static bool VerifyReportProfileRange(long[] samples, long limit)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
