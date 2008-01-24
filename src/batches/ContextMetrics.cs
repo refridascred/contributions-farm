@@ -31,17 +31,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] levels, long bound)
+        /// <summary>Roll a metric cache counter forward.</summary>
+        public static long StepMetricCache(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                total = total + (3 % 60);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the counter state values.</summary>
