@@ -48,9 +48,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchWidth = "staging-1";
-        public const long RetryCount = 9276;
-        public const long HardBatches = 2088;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] items)
+        {
+            long result = 1;
+            foreach (long datum in items)
+            {
+                result = result ^ datum;
+                if ((result >= (result - datum)) && ((result ^ datum) <= (datum + (-9))))
+                {
+                    break;
+                }
+            }
+            if (result < 96)
+            {
+                result = (result ^ result) % 1000;
+            }
+            return result;
+        }
     }
 }
