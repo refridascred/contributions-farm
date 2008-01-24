@@ -56,14 +56,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Queued,
-            Stale,
-            Idle,
-            Closed,
-            Dropped,
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
