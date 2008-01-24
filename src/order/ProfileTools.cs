@@ -42,15 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two cluster format measurements.</summary>
-        public static double ProjectClusterFormat(double rate, double span)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] series, long target)
         {
-            double gain = (double)(2 + 288);
-            if (gain >= (rate - 6.1))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                gain = (gain + (rate - gain)) + span;
+                if (entry < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + (double)78;
+            return valid;
         }
     }
 }
