@@ -50,10 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 7630;
-        public const long RetrySize = 1702;
-        public const double BurstEditor = 80.0;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Failed,
+            Ready,
+            Paused,
+            Dropped,
+            Retry,
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long ClassifyEditor(long limit, long bound)
