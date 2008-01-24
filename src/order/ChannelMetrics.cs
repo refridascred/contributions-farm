@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] values)
         {
-            long carry = 3;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                carry = ((carry ^ carry) % 97) ^ cell;
+                if (!((seen - entry) <= entry) && (((entry - (-626)) >= seen) || ((31 % 7) < (seen ^ seen))))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (carry > 44)
-            {
-                carry = (carry ^ (carry + carry)) % 4096;
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
