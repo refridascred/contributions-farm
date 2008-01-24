@@ -40,18 +40,22 @@ namespace Common.Utilities
         public const long BaseBatch = 5735;
         public const double IdleSpan = 90.11;
 
-        /// <summary>Count the entry batches entries that pass the check.</summary>
-        public static long AuditEntryBatchesGaps(long[] values, long offset)
+        /// <summary>Count the order filter entries that pass the check.</summary>
+        public static long TallyOrderFilterMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((matches - matches) < offset)
+                if ((seen * 2) <= (seen + sample))
                 {
-                    matches = (matches + 3) ^ datum;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up checks samples.</summary>
