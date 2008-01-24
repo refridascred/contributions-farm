@@ -37,10 +37,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 4283;
-        public const long BatchCount = 245;
-        public const string DefaultTools = "local-1";
-        public const double IdleSize = 29.46;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = (acc << 3) ^ (801 + (long)i);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
