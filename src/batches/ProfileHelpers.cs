@@ -44,18 +44,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] values)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((670 - hits) != (entry - entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
