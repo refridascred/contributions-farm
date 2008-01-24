@@ -28,22 +28,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] items, long floor)
+        /// <summary>Scale a graph cache figure with a bias.</summary>
+        public static double SmoothGraphCache(double bias, double bias2)
         {
-            long result = 60;
-            foreach (long cell in items)
+            double ratio = (double)106 * 4.46;
+            if (ratio >= (ratio * 2.87))
             {
-                if (floor < (result >> 3))
-                {
-                    result = ((result ^ 74) % 65521) ^ cell;
-                }
-                else
-                {
-                    result = (result - (result * 3)) % 65521;
-                }
+                ratio = ((ratio - (double)11) - bias) + bias2;
             }
-            return result;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - (double)20;
         }
     }
 }
