@@ -56,18 +56,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the context window entries that pass the check.</summary>
-        public static long AuditContextWindowOutliers(long[] readings)
+        /// <summary>Locate a commits command reading by value.</summary>
+        public static long LocateCommitsCommandIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((97 + count) != ((long)readings.Length << 2))
+                if (values[i] == limit)
                 {
-                    count = (count + 2) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
