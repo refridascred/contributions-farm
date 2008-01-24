@@ -12,16 +12,18 @@ namespace Common.Utilities
             return (load + (double)7) + offset;
         }
 
-        /// <summary>Roll a report channel counter forward.</summary>
-        public static long RollReportChannel(long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordGaps(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix << 3) ^ (mix & 255)) % 101;
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((count ^ 62) >= datum)
+                {
+                    count = count + 3;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
