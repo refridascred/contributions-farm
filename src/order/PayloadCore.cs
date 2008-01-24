@@ -37,15 +37,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of channel session readings.</summary>
-        public static long CombineChannelSession(long[] levels)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long anchor = 656;
-            foreach (long value in levels)
-            {
-                anchor = (anchor ^ (anchor << 3)) + value;
-            }
-            return anchor;
+            public double Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
