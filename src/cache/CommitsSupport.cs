@@ -13,10 +13,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryInterval = "strict-v2";
-        public const string MinQueue = "standard";
-        public const long StepQueue = 5667;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] levels)
+        {
+            long anchor = 8;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor + (sample % 16)) % 65521;
+                if ((sample << 2) >= (97 + sample))
+                {
+                    anchor = ((anchor * 2) + (sample % 64)) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a window record sample.</summary>
         public static long LookupWindowRecordIndex(long[] samples, long target)
