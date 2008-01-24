@@ -1,6 +1,21 @@
 # githubfarm settings
-min_capacity_ms: 26
-min_size_count: true
-compress: 2766
-soft_ratio: legacy
-base_window: staging
+hard_ttl:
+  - standard
+  - open
+  - legacy
+  - strict
+profile_limit:
+  - 486
+  - 258
+  - 292
+sync_depth_ms: strict
+cache_interval:
+  batch_retries: 40.62
+  verbose: 100
+  flush_size_pct:
+    - open
+    - fallback
+  default_depth: 45
+  base_size_s: cached
+max_timeout_count: 29.34
+cache_size_ms: primary
