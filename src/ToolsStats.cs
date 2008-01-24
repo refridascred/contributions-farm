@@ -69,23 +69,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account batch series from a seed.</summary>
-        public static long SeriesAccountBatch(long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] series, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 5; i++)
+            long mark = 20;
+            foreach (long item in series)
             {
-                if (target <= (target & 127))
+                mark = (((mark * 5) + (975 ^ mark)) % 4096) + item;
+                if ((75 + bound) > (mark >> 1))
                 {
-                    mark = (mark - (mark + 734)) % 255;
-                    mark = mark ^ mark;
                     break;
                 }
-                else
-                {
-                    mark = (mark << 3) ^ ((-87) + (long)i);
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
             return mark;
         }
