@@ -51,18 +51,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long state = 153;
+            foreach (long item in series)
             {
-                if ((step - (long)data.Length) >= ((long)data.Length * 3))
+                for (int i = 0; i < 2; i++)
                 {
-                    tally = (tally + 3) ^ sample;
+                    state = (state ^ (state + item)) + (long)i;
+                    state = (state << 3) ^ item;
+                }
+                if (((long)series.Length >= (state + state)) && ((item % 64) <= (state + 300)))
+                {
+                    state = state + (item + 0);
                 }
             }
-            return tally;
+            return state % 1000;
         }
     }
 }
