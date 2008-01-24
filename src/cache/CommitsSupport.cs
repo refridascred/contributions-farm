@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Count the profile cluster entries that pass the check.</summary>
+        public static long AuditProfileClusterOutliers(long[] series, long floor)
         {
-            long result = 46;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (datum > (long)series.Length)
+                if (matches >= reading)
                 {
-                    result = (result * 2) + (result % 100);
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (result < 0)
-            {
-                result = ((result * 3) + result) % 65521;
-            }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
