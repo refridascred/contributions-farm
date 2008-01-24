@@ -1,12 +1,10 @@
 # support settings
-verbose: staging
-retry_delay: true
-retry_ratio_s:
-  dry_run: strict
-  warm_threshold_s: 17
-  order_ratio:
-    - 207
-    - 487
-    - 58
-dry_run: cached
-max_depth_ms: 31
+retry_capacity: false
+default_ttl_count:
+  - 440
+  - 264
+  - 371
+batch_capacity: 43.27
+verbose: local
+cache_ratio_s: 475
+burst_timeout_count: 7301
