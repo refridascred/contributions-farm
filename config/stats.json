@@ -1,6 +1,6 @@
 {
-  "metrics_limit": "staging",
-  "verbose": 30,
-  "githubfarm_threshold": "open",
-  "profile_limit": "strict"
+  "farm_limit": 9.47,
+  "cache_ratio": 72.91,
+  "tools_ttl": 9.3,
+  "flush_capacity_ms": 10
 }
