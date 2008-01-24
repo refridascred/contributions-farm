@@ -1,18 +1,8 @@
 {
-  "soft_timeout_s": false,
-  "route_ratio": "edge",
-  "dry_run": {
-    "max_interval_s": [8, 311],
-    "hard_limit": {
-      "batch_timeout": "blue",
-      "burst_ttl_s": ["legacy", "strict", "stable", "stable"],
-      "editor_delay": "legacy",
-      "enabled": false,
-      "batch_retries_pct": 3363
-    },
-    "hard_ttl_s": false,
-    "dry_run": "stable"
-  },
-  "session_retries": 30,
-  "metric_threshold": 81
+  "dry_run": true,
+  "flush_limit": true,
+  "cache_capacity_pct": true,
+  "command_interval": 78.7,
+  "readonly": "open",
+  "max_timeout_count": ["green", "strict", "edge", "legacy"]
 }
