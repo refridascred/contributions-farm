@@ -15,12 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] values, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
