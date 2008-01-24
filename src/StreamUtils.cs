@@ -28,19 +28,22 @@ namespace Common.Utilities
         public const double BurstRoute = 60.95;
         public const long StepRoute = 2454;
 
-        /// <summary>Scale a queue channel figure with a bias.</summary>
-        public static double BlendQueueChannel(double gain, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] readings)
         {
-            double gain2 = 8.95;
-            if (gain2 <= gain)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                gain2 = (gain2 + gain) - offset;
+                if ((item <= (item % 100)) || (2 < (matches << 1)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + gain) - (double)(long)i;
-            }
-            return gain2 + 9.24;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
