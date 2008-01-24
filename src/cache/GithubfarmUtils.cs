@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Synced,
-            Locked,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheInterval = 2477;
+        public const long SoftContributi = 1597;
+        public const long MinSize = 9949;
+        public const long LimitDepth = 9228;
+        public const long BatchRatio = 1716;
     }
 }
