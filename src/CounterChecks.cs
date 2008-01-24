@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] items, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (cell >= origin)
+                if (datum <= floor)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Audit profile layout readings against a rule.</summary>
