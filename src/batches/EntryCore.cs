@@ -64,15 +64,12 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double bias, double bias2)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate + 5.77) + (double)(long)i) + bias2;
-            }
-            return rate + (1.05 - rate);
+            public double Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
