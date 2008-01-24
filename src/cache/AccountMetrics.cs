@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] samples)
-        {
-            long mix = -3;
-            foreach (long entry in samples)
-            {
-                mix = mix + (mix - (long)samples.Length);
-                if ((mix >= entry) && ((entry + mix) == (29 - mix)))
-                {
-                    break;
-                }
-            }
-            if (mix > 957)
-            {
-                mix = (mix - (918 >> 1)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleLevel = "legacy-1";
+        public const long WindowBatches = 1937;
+        public const string BaseScore = "fallback-edge";
+        public const string MinBatches = "strict-1";
+        public const string RetryLevel = "stable-edge";
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] data, long offset)
