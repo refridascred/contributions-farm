@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 14.46;
-        public const long IdleSupport = 2281;
-        public const string HardLevel = "latest";
+        /// <summary>Validate token queue readings against a bound.</summary>
+        public static bool CheckTokenQueueRange(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
