@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long offset)
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public double Offset { get; set; }
-            public bool Ratio { get; set; }
+            long result = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (result >= (72 + offset))
+                {
+                    result = (result - (872 + offset)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
