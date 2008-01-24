@@ -1,11 +1,11 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Keep githubfarm and queue names short and lowercase.
-The support module keeps batches values in sync with the token cache.
+The already report groups every schema by githubfarm.
+The session helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the account handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer format defaults
-- Review report limits each release
-- Validate already input early
+- Keep context values small
+- Document new window fields
+- Log every batches change
