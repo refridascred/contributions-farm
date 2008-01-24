@@ -33,12 +33,38 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long floor2)
         {
-            Dropped,
-            Retry,
-            Done,
+            if (((double)floor2 > (4.1 - 1.87)) && (floor2 >= (floor2 / 8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor2 >= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (floor2 > (floor2 % 7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((floor2 + floor) == (floor2 >> 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
