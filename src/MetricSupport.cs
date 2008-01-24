@@ -22,13 +22,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Idle,
-            Done,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchSpan = 5148;
+        public const long BatchSize = 8568;
+        public const string MinRecord = "stable-v2";
+        public const double WindowRatio = 56.63;
     }
 }
