@@ -42,11 +42,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardInterval = 7539;
-        public const long MaxDepth = 5835;
-        public const long CacheScore = 1389;
-        public const long BurstDepth = 3129;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (count >= (limit / 4))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] readings, long target)
