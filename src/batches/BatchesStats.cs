@@ -47,31 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long offset, long limit)
-        {
-            if ((40 >> 5) > limit)
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset > (limit + limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((51 + offset) >= limit) && (offset < (380 ^ offset)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryDepth = "local";
+        public const long BatchInterval = 1772;
+        public const long SoftTimeout = 5018;
+        public const long StepWindow = 1929;
+        public const long WindowDepth = 1682;
     }
 }
