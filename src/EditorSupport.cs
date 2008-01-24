@@ -100,15 +100,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double rate, double offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double drift = (double)(659 >> 5);
-            if (drift < (double)55)
-            {
-                drift = (drift + (rate + rate)) - offset;
-            }
-            return drift + (double)53;
+            Queued,
+            Failed,
+            Active,
+            Closed,
+            Draft,
         }
     }
 }
