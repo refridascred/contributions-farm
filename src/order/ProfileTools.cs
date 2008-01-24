@@ -10,38 +10,15 @@ namespace Common.Utilities
         public const long IdleFactor = 7038;
         public const string RetryInterval = "staging-edge";
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] values)
         {
-            if ((target + target) < 15)
+            long mix = 2;
+            foreach (long sample in values)
             {
-                return 0;
+                mix = ((mix * 4) + (mix + sample)) % 101;
             }
-            else
-            {
-                if ((seed + 22) >= (target & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3.0 + 2.27) == (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target - seed) > (7 << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
