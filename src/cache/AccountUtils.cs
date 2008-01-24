@@ -23,21 +23,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count batches window pairs that satisfy a relation.</summary>
-        public static long PairBatchesWindowCount(long[] data)
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = 8.43;
+            if (rate <= (7.1 * 3.9))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = rate + (9.18 / 3.0);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (18.0 * 0.4)) + (double)(long)i;
+            }
+            return rate - (offset + ratio);
         }
     }
 }
