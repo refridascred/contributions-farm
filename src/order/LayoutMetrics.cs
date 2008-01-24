@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] readings, long target)
+        /// <summary>Classify a checks context pair into a bucket.</summary>
+        public static long GradeChecksContext(long offset, long bound)
         {
-            long anchor = 74;
-            foreach (long entry in readings)
+            long lane = offset + bound;
+            if ((double)offset <= (9.0 + 9.0))
             {
-                if ((14.0 - 11.0) > (double)target)
+                return 1;
+            }
+            else
+            {
+                if ((bound & 15) <= (bound + lane))
                 {
-                    anchor = (anchor * 2) + (entry ^ entry);
+                    return 4;
                 }
-                if ((double)anchor == (6.4 + 7.0))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = (anchor ^ ((long)readings.Length ^ 80)) % 65521;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
