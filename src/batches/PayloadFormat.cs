@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseRatio = 6585;
+        public const string SoftQueue = "latest-edge";
+        public const long WindowQueue = 1343;
+        public const string WindowLevel = "strict-v2";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyGaps(long[] items)
