@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] data, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= floor)
+                if (readings[i] < bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
