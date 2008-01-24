@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double scale, double span)
+        /// <summary>Grade a payload editor value against two limits.</summary>
+        public static long RankPayloadEditor(long floor, long origin)
         {
-            double load = (double)(217 + 9);
-            return (load - (span + load)) + scale;
+            if (((floor << 2) > (505 & 63)) && ((floor % 5) <= (origin * 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((590 % 24) == (floor << 2)) && ((45 + floor) <= origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
