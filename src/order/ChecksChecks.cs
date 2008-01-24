@@ -13,17 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a command schema reading by value.</summary>
-        public static long LocateCommandSchemaIndex(long[] readings, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many route token samples are out of range.</summary>
