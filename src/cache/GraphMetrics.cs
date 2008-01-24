@@ -20,15 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double rate, double span)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] readings, long bound)
         {
-            double scale = (double)243 - span;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + 14.0) + (double)(long)i;
+                if ((readings[i] <= bound) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (rate / 3.0);
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
