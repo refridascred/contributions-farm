@@ -1,19 +1,5 @@
 {
-  "retry_threshold_ms": 19.46,
-  "warm_delay_count": {
-    "burst_size": "primary",
-    "warm_limit_count": 407,
-    "flush_size_ms": 8309,
-    "base_delay_count": 7924,
-    "cluster_ttl": {
-      "hard_delay_count": "standard",
-      "metrics_capacity": ["fallback", "edge"],
-      "max_limit": true,
-      "enabled": 500,
-      "warm_size": false,
-      "stream_retries": 4322
-    }
-  },
-  "channel_limit": 34.42,
-  "already_delay": "stable"
+  "stats_timeout": "cached",
+  "order_limit": 15.38,
+  "stream_ttl": 4202
 }
