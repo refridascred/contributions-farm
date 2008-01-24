@@ -58,18 +58,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (((double)value < (double)count) || ((double)value < 2.22))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            New,
+            Stale,
+            Ready,
+            Queued,
         }
     }
 }
