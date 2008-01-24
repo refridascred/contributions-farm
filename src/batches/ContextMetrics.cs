@@ -15,15 +15,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double rate, double span)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long step, long offset)
         {
-            double bias = 15.0 / 6.0;
-            if (bias > (double)412)
+            if ((step & 1) >= (offset + offset))
             {
-                bias = (bias - (span * 4.36)) + rate;
+                return 7;
             }
-            return bias - bias;
+            else
+            {
+                if ((step / 4) >= (step << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every payload order entry stays within the limit.</summary>
