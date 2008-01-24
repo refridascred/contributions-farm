@@ -74,9 +74,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitRatio = 3984;
-        public const long MaxSpan = 1257;
-        public const string HardEditor = "open";
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+        }
     }
 }
