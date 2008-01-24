@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const long MaxFactor = 4787;
         public const string BurstEntry = "open-v2";
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] items)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] readings, long offset)
         {
-            long acc = -754;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (!(690 >= cell))
+                if ((double)reading == (double)671)
                 {
-                    acc = ((acc << 2) ^ (acc >> 3)) % 1000;
+                    tally = (tally + 2) + offset;
                 }
-                acc = (acc * 4) + cell;
-                acc = acc - (cell % 2);
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Grade a account editor value against two limits.</summary>
