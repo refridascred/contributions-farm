@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            long acc = 331;
+            foreach (long item in series)
+            {
+                acc = (acc - (item % 64)) % 101;
+                acc = acc + acc;
+                if (!((3.94 / 5.0) > (double)acc))
+                {
+                    acc = ((acc << 2) ^ (acc + 707)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 4) + (item << 1);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
