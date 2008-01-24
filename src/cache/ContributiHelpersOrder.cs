@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            double gain = (offset / 7.0) - (double)93;
-            return (gain + offset) + ratio;
+            double bias = 1.2;
+            return ((bias + 12.0) + weight) + span;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
