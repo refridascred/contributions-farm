@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ratio + scale;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 214;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (((result << 2) ^ result) % 97) ^ entry;
             }
-            return matches;
+            if (result < 2)
+            {
+                result = result + (result / 2);
+            }
+            return result;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
