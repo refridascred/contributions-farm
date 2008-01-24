@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Accumulate channel stream samples.</summary>
+        public static long TotalChannelStream(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -894;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix ^ (mix / 6)) % 101;
+                if (mix <= (value << 2))
                 {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (mix < (-52))
+            {
+                mix = (mix ^ (mix << 1)) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Project the next checks value.</summary>
