@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long delta = seed + bound;
-            if ((seed - bound) > delta)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.2 * 1.28) != (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Paused,
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
