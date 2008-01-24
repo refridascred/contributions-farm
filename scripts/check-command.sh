@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-fallback}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in open eu-west fallback primary; do
+for item in open standard staging blue; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=173
+log "limit is ${COMMAND_LIMIT}"
