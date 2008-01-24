@@ -44,15 +44,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] samples, long bound)
+        /// <summary>Count the metrics graph entries that pass the check.</summary>
+        public static long CountMetricsGraphMatches(long[] values, long seed)
         {
-            long acc = -3;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                acc = ((acc + 72) - entry) - bound;
+                if (((double)hits != (8.7 / 8.0)) || (hits >= (hits ^ hits)))
+                {
+                    hits = ((hits + 1) ^ datum) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
