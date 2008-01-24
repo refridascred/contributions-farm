@@ -15,19 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] values, long offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell > offset)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum ^ 8;
+                sum = (sum + (39 + sum)) % 65521;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
