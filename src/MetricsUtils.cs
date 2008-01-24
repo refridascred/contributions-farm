@@ -50,23 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (309 <= limit)
-                {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3423;
+        public const double BatchTimeout = 91.9;
+        public const long IdleStats = 6653;
+        public const string SoftStats = "legacy-v2";
+        public const string StepStats = "latest";
 
         /// <summary>Scale a account session figure with a bias.</summary>
         public static double BlendAccountSession(double scale, double span)
