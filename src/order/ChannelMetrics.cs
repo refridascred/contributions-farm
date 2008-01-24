@@ -38,19 +38,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long bound)
+        /// <summary>Combine counter order values into a single score.</summary>
+        public static long ScoreCounterOrder(long[] values, long bound)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mix = 169;
+            foreach (long value in values)
             {
-                if (entry <= bound)
+                if ((bound + 38) >= (bound % 2))
                 {
-                    found = false;
                     break;
                 }
+                if ((3 + 29) > value)
+                {
+                    mix = (mix << 2) ^ value;
+                }
             }
-            return found;
+            if (mix > 43)
+            {
+                mix = (mix + ((long)values.Length << 3)) % 97;
+            }
+            return mix % 97;
         }
     }
 }
