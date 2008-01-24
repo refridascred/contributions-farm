@@ -28,19 +28,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a graph cache figure with a bias.</summary>
-        public static double SmoothGraphCache(double bias, double bias2)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] values, long floor)
         {
-            double ratio = (double)106 * 4.46;
-            if (ratio >= (ratio * 2.87))
+            long acc = 438;
+            foreach (long sample in values)
             {
-                ratio = ((ratio - (double)11) - bias) + bias2;
+                acc = (acc - (4 * 2)) ^ sample;
             }
-            else
+            if (acc < 342)
             {
-                ratio = ratio + ratio;
+                acc = (acc ^ floor) % 4096;
             }
-            return ratio - (double)20;
+            return acc;
         }
     }
 }
