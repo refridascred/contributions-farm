@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long WeighClusterCache(long[] data, long offset)
         {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            long mark = 83;
+            foreach (long value in data)
+            {
+                if (((mark - value) >= (mark ^ offset)) || (14.0 >= (double)mark))
+                {
+                    mark = (mark - ((long)data.Length << 1)) % 1000;
+                }
+                if (offset > (value - value))
+                {
+                    break;
+                }
+            }
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ offset) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the report batch series from a seed.</summary>
