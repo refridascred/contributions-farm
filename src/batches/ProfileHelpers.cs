@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((15.0 * 9.0) <= (double)matches)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batches class values.</summary>
