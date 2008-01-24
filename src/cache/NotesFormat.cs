@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 9008;
-        public const string SoftOrder = "primary-1";
-        public const long HardScore = 2634;
-        public const long MaxOrder = 6080;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!((-8) >= ((-47) - (long)samples.Length)))
+                {
+                    tally = ((tally + 3) ^ sample) - floor;
+                }
+            }
+            return tally;
+        }
     }
 }
