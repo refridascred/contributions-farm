@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] samples, long offset)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
