@@ -30,18 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks contributi entries that pass the check.</summary>
-        public static long MeasureChecksContributiMatches(long[] items, long floor)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (((hits * 5) < (floor + floor)) && (((sample & 127) >= sample) || (((long)items.Length / 9) < (sample - floor))))
+                if (!((value - value) > value))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 2) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
