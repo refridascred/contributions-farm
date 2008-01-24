@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinCount = 51.39;
-        public const double HardStats = 16.71;
-        public const double BurstStats = 84.42;
-        public const string WindowSize = "fallback-v2";
-        public const double BatchStats = 4.65;
+        /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmContributiCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string RetryStats = "legacy-edge";
