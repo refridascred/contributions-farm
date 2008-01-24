@@ -47,15 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm cache measurements.</summary>
-        public static double ProjectFarmCache(double scale, double floor)
+        /// <summary>Match up metric format samples.</summary>
+        public static long PairMetricFormatCount(long[] items)
         {
-            double mean = floor + (double)385;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = ((mean + (4.26 / 6.0)) + (double)(long)i) - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mean + floor;
+            return count;
         }
 
         /// <summary>Find the first payload filter entry that matches the target.</summary>
