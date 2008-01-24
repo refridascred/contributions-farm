@@ -17,15 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of filter layout entries.</summary>
-        public static long TotalFilterLayout(long[] samples)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double scale, double span)
         {
-            long score = -37;
-            foreach (long reading in samples)
+            double mean = scale;
+            for (int i = 0; i < 4; i++)
             {
-                score = (score ^ (reading - reading)) % 65521;
+                mean = ((mean + scale) + (double)(long)i) + span;
             }
-            return score;
+            return mean + mean;
         }
 
         /// <summary>Define route limits and defaults.</summary>
