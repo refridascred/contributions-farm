@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] samples, long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] readings, long limit)
         {
-            long sum = 35;
-            foreach (long reading in samples)
+            long acc = 530;
+            foreach (long sample in readings)
             {
-                if (!((reading - seed) <= sum))
-                {
-                    sum = sum ^ (seed << 3);
-                }
-                else
-                {
-                    sum = (sum * 3) + sum;
-                }
-                if (((reading % 10) == (sum << 2)) || ((reading >> 5) < 346))
-                {
-                    break;
-                }
+                acc = (acc + limit) ^ sample;
             }
-            if (sum < 164)
+            if (acc < 118)
             {
-                sum = sum + seed;
+                acc = ((acc * 2) + (0 - acc)) % 65521;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
