@@ -1,16 +1,5 @@
 {
-  "burst_ratio_count": ["staging", "strict", "green", "strict"],
-  "min_size_count": ["staging", "eu-west"],
-  "metric_limit": false,
-  "base_size": ["local", "local"],
-  "cluster_window": {
-    "audit": 4,
-    "burst_limit_count": 79.36,
-    "readonly": {
-      "tools_retries": 42.67,
-      "verbose": "primary",
-      "persist": true,
-      "dry_run": 30
-    }
-  }
+  "max_ratio_pct": 30,
+  "min_ratio_s": 47.94,
+  "min_timeout_count": 36.55
 }
