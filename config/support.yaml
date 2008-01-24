@@ -1,6 +1,12 @@
 # support settings
-burst_depth_ms: true
-max_delay_s: eu-west
-base_ratio_s: true
-hard_capacity_count: 9.38
-cache_retries_ms: 7.24
+poll_ttl_ms: primary
+checks_ratio:
+  enabled: latest
+  min_delay_ms: 31.72
+  route_size:
+    - 203
+    - 173
+sync_capacity: 2025
+soft_ratio_count: open
+base_threshold_s: true
+enabled: local
