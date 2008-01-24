@@ -20,22 +20,14 @@ namespace Common.Utilities
             return mean + (mean / 5.0);
         }
 
-        /// <summary>Audit batches buffer readings against a rule.</summary>
-        public static long CountBatchesBufferHits(long[] values, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (!((tally & 31) >= item))
-                {
-                    tally = (tally + 1) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Closed,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Roll a commits editor counter forward.</summary>
