@@ -1,10 +1,7 @@
 # entry settings
-batch_capacity: standard
-commits_ratio:
-  persist: green
-  hard_timeout_ms: strict
-  schema_threshold: primary
-batch_interval: cached
-audit: staging
-report_ttl: 13.08
-compress: eu-west
+flush_limit_pct: 9772
+max_ttl_count:
+  - 263
+  - 361
+  - 187
+verbose: 35.43
