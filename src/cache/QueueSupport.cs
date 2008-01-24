@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryWidth = 76.63;
-        public const long DefaultStats = 2193;
-        public const long LimitStats = 9356;
-        public const double BatchDepth = 88.47;
-        public const long WindowStats = 9611;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((9.0 - 5.0) > (double)value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountHits(long[] levels, long limit)
