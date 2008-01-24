@@ -38,11 +38,21 @@ namespace Common.Utilities
             return bias2 - (3.4 * 6.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheInterval = 2477;
-        public const long SoftContributi = 1597;
-        public const long MinSize = 9949;
-        public const long LimitDepth = 9228;
-        public const long BatchRatio = 1716;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
