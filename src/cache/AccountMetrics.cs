@@ -37,10 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheInterval = 56.62;
-        public const long MinProfile = 4577;
-        public const long BatchProfile = 1611;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
