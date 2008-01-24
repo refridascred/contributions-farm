@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard blue green eu-west; do
+for item in fallback cached standard; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=77
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
