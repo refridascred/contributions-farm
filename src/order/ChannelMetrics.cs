@@ -37,20 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] data, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((data[i] < offset) && ((data[i] % 5) != 0))
                 {
-                    anchor = (((anchor << 3) ^ (anchor >> 4)) % 4096) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = (anchor << 2) ^ ((long)i << 3);
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
     }
 }
