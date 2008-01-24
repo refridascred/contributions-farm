@@ -15,21 +15,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((150 ^ 97) > (limit + limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((755 - target) <= target)
                 {
-                    if ((data[i] - data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the editor mode values.</summary>
