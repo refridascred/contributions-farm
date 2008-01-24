@@ -38,13 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
