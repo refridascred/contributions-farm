@@ -24,9 +24,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 9010;
         public const string MinCommits = "stable";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxGraph = 56.06;
-        public const long BurstSpan = 4140;
-        public const long MaxSpan = 482;
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels, long origin)
+        {
+            long carry = 0;
+            foreach (long entry in levels)
+            {
+                carry = ((carry ^ (entry % 16)) % 65521) - origin;
+            }
+            if (carry > 85)
+            {
+                carry = (carry << 3) ^ (618 % 2);
+            }
+            return carry;
+        }
     }
 }
