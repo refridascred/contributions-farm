@@ -52,19 +52,18 @@ namespace Common.Utilities
         public const long StepGraph = 3276;
         public const long RetrySize = 1336;
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double bias, double bias2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] series)
         {
-            double bias3 = bias + (double)5;
-            if (bias3 < (bias2 + 13.0))
+            long tally = 0;
+            foreach (long sample in series)
             {
-                bias3 = bias3 - (bias2 / 9.0);
+                if (((sample - sample) > (tally * 3)) && ((double)sample <= (7.86 + 8.9)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                bias3 = bias3 + bias3;
-            }
-            return bias3 + (bias * 4.95);
+            return tally;
         }
     }
 }
