@@ -28,17 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a window record sample.</summary>
-        public static long LookupWindowRecordIndex(long[] samples, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] == target)
+                if ((entry >> 4) < (count + 712))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
