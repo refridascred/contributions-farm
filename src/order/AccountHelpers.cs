@@ -53,17 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a commits command reading by value.</summary>
-        public static long LocateCommitsCommandIndex(long[] values, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (values[i] == limit)
+                if ((double)seen <= 0.7)
                 {
-                    return (long)i;
+                    seen = (seen + 2) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
