@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmGaps(long[] samples)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits + item) >= (hits - item)) && ((item << 2) >= (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the layout phase values.</summary>
