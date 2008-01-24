@@ -29,18 +29,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((4.56 < (12.0 - 2.0)) && (((tally - tally) > ((-6) - 98)) || ((tally >> 2) >= (tally + item))))
-                {
-                    tally = (tally + 1) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleFactor = "strict-edge";
+        public const long WindowBatch = 6481;
+        public const double SoftScore = 0.67;
+        public const long SoftSpan = 2079;
     }
 }
