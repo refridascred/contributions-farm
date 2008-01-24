@@ -105,14 +105,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            Queued,
-            Failed,
-            Active,
-            Closed,
-            Draft,
+            long result = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                result = result - (origin + result);
+                result = (result << 2) ^ (result + origin);
+                result = result + 95;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
