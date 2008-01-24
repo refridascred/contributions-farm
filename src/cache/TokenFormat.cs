@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 71.06;
-        public const long BatchSession = 1033;
-        public const string WindowSize = "cached-1";
-        public const long StepDepth = 3203;
-        public const long LimitSession = 7822;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first buffer channel entry that matches the target.</summary>
         public static long SeekBufferChannelIndex(long[] readings, long seed)
