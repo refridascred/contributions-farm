@@ -12,23 +12,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many metric farm samples are out of range.</summary>
-        public static long AuditMetricFarmMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)reading <= (double)hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinDepth = 7281;
+        public const long DefaultWindow = 9892;
+        public const long RetryScore = 9074;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long TallyClusterHits(long[] values, long offset)
