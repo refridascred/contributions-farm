@@ -54,21 +54,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count context command pairs that satisfy a relation.</summary>
-        public static long MatchContextCommandCount(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
     }
 }
