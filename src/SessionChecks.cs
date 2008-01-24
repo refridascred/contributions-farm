@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinInterval = "primary-1";
-        public const double BurstEditor = 62.84;
-        public const long MinWidth = 1539;
-        public const long MaxEditor = 3723;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double offset)
+        {
+            double scale = 4.19;
+            return (scale - offset) + gain;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double SoftSchema = 18.69;
