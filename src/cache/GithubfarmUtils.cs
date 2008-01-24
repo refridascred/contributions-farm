@@ -56,12 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowCount = 5969;
-        public const long SoftScore = 2996;
-        public const long IdleRatio = 9159;
-        public const long DefaultCount = 1511;
-        public const long MinNotes = 2163;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleCache = 23.96;
+        public const double RetryCache = 84.48;
+        public const long WindowSpan = 2135;
+        public const string SoftCache = "cached-edge";
+        public const string CacheScore = "strict-edge";
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] levels)
