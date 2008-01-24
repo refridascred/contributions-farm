@@ -65,10 +65,11 @@ namespace Common.Utilities
             return gain - (gain / 4.0);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxFactor = 8267;
-        public const string RetryDepth = "staging-edge";
-        public const long CacheInterval = 7300;
-        public const string WindowRecord = "staging-v2";
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 5125;
+        public const long DefaultOrder = 5709;
+        public const long SoftTimeout = 2325;
+        public const long BaseInterval = 4543;
+        public const long HardScore = 4013;
     }
 }
