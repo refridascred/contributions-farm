@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine graph contributi values into a single score.</summary>
-        public static long CombineGraphContributi(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 20;
-            foreach (long entry in samples)
-            {
-                mark = (mark ^ (mark / 2)) - entry;
-            }
-            if (mark > 770)
-            {
-                mark = ((mark << 2) ^ ((-9) + 700)) % 255;
-            }
-            return mark;
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
