@@ -68,12 +68,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the context window entries that pass the check.</summary>
+        public static long AuditContextWindowOutliers(long[] readings)
         {
-            Draft,
-            Paused,
-            Active,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((97 + count) != ((long)readings.Length << 2))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
