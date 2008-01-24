@@ -33,24 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] items, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((acc + (long)i) < (bound + bound))
+                if (datum > origin)
                 {
-                    acc = (acc - acc) % 97;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    acc = (acc ^ (long)i) % 97;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
     }
 }
