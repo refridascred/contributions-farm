@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor + anchor) % 255;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Retry,
+            Closed,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a tools record.</summary>
