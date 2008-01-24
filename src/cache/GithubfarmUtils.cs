@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const long LimitInterval = 3184;
         public const long LimitEntry = 6035;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] readings)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
