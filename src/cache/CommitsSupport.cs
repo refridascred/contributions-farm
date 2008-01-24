@@ -55,17 +55,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] levels, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long step, long step2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step + step) < step2)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((515 ^ 31) <= step2)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!(step2 <= step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((725 % 12) <= (step - step)) || ((85 - step) >= step2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
