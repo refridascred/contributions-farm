@@ -20,12 +20,12 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Weight { get; set; }
+            Active,
+            Ready,
+            Synced,
         }
 
         /// <summary>Compare every pair of window metric readings.</summary>
