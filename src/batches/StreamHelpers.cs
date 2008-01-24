@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] values, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long total = 7;
+            foreach (long item in items)
             {
-                if (entry != seed)
+                if ((item + item) < (long)items.Length)
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 3) ^ (item + total)) % 65521;
                 }
             }
-            return ok;
+            if (total < 8)
+            {
+                total = total + ((-4) ^ total);
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
