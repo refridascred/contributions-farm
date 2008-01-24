@@ -1,5 +1,12 @@
 {
-  "readonly": "cached",
-  "context_timeout": 19.65,
-  "burst_capacity_count": 80.41
+  "cache_ttl": "legacy",
+  "warm_limit_ms": [222, 350],
+  "flush_retries": {
+    "min_ttl_ms": "primary",
+    "hard_retries": "local",
+    "context_depth": "blue",
+    "poll_timeout_pct": 88,
+    "default_capacity_s": 9,
+    "burst_limit_count": 1024
+  }
 }
