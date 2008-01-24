@@ -87,10 +87,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinSize = 6010;
-        public const long BatchInterval = 3460;
-        public const long IdleFormat = 6822;
-        public const long StepDepth = 7451;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                total = (total ^ 82) % 65521;
+                if (!(10.0 <= (double)total))
+                {
+                    total = (total - (seed + (long)i)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
