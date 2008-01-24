@@ -60,17 +60,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] samples, long limit)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = (result - 21) % 101;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
