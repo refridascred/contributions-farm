@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit support stats readings against a rule.</summary>
-        public static long TallySupportStatsOutliers(long[] data, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((811 & 3) >= target)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
