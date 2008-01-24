@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] values, long bound)
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
