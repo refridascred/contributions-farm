@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long floor, long step)
+        /// <summary>Digest a series of farm githubfarm entries.</summary>
+        public static long TallyFarmGithubfarm(long[] items)
         {
-            if ((double)step < (2.71 + 5.7))
+            long sum = 665;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((230 ^ floor) > (step - 601))
+                if (((4.1 * 10.0) < (double)value) || ((value - value) != (sum + 642)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + (-8)) < (step % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1 ^ floor) >= 104)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = sum + (sum ^ 779);
                 }
             }
+            return sum;
         }
 
         /// <summary>Describe the route mode values.</summary>
