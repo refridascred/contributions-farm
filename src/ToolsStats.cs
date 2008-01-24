@@ -55,10 +55,16 @@ namespace Common.Utilities
         public const long LimitTimeout = 6362;
         public const long DefaultCount = 9702;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowScore = 498;
-        public const string StepRatio = "stable-edge";
-        public const string IdleCount = "legacy-1";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels, long floor)
+        {
+            long sum = 0;
+            foreach (long item in levels)
+            {
+                sum = sum ^ (item + floor);
+            }
+            return sum;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphOutliers(long[] values)
