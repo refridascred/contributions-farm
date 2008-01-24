@@ -80,24 +80,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a format cache value against two limits.</summary>
-        public static long GradeFormatCache(long floor, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            if ((double)bound > (6.5 / 5.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor < (double)380) && ((bound + floor) != (floor % 64)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
