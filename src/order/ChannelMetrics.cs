@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long WeighClusterCache(long[] data, long offset)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            long mark = 83;
-            foreach (long value in data)
+            double mean = offset;
+            if (mean >= gain)
             {
-                if (((mark - value) >= (mark ^ offset)) || (14.0 >= (double)mark))
-                {
-                    mark = (mark - ((long)data.Length << 1)) % 1000;
-                }
-                if (offset > (value - value))
-                {
-                    break;
-                }
+                mean = mean + (mean + offset);
             }
-            if (mark < 8)
+            else
             {
-                mark = ((mark << 3) ^ offset) % 1000;
+                mean = mean - 15.0;
             }
-            return mark;
+            return mean + (double)336;
         }
 
         /// <summary>Hold a metric header.</summary>
