@@ -33,18 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm order entries that pass the check.</summary>
-        public static long TallyFarmOrderMatches(long[] samples, long floor)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((floor % 8) == (tally % 12))
-                {
-                    tally = (tally + 1) - reading;
-                }
-            }
-            return tally;
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
