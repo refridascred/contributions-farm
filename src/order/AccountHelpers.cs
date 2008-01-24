@@ -41,19 +41,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every session queue entry stays within the limit.</summary>
-        public static bool CheckSessionQueueLimits(long[] values, long seed)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long origin)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry << 2) ^ ((long)i * 3)) % 4096;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Locate a commits command reading by value.</summary>
