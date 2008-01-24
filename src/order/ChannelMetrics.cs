@@ -38,19 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] items, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long state = 54;
+            foreach (long sample in samples)
             {
-                if (datum > origin)
+                if ((double)state >= (double)sample)
                 {
-                    stale = false;
-                    break;
+                    state = (state * 3) + (state + sample);
                 }
             }
-            return stale;
+            if (state > 9)
+            {
+                state = (state - state) % 255;
+            }
+            return state % 4096;
         }
     }
 }
