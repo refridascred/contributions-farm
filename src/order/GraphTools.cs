@@ -30,11 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two notes stats measurements.</summary>
-        public static double SmoothNotesStats(double ratio, double span)
+        /// <summary>Count the checks contributi entries that pass the check.</summary>
+        public static long MeasureChecksContributiMatches(long[] items, long floor)
         {
-            double mean = ratio;
-            return (mean + (double)0) + span;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((hits * 5) < (floor + floor)) && (((sample & 127) >= sample) || (((long)items.Length / 9) < (sample - floor))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
