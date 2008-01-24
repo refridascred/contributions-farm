@@ -1,19 +1,7 @@
 {
-  "cache_window": {
-    "poll_depth_ms": [44, 45, 293, 284],
-    "max_depth_pct": {
-      "idle_threshold_count": [405, 295],
-      "hard_delay_ms": 10.1,
-      "batches_depth": 54
-    },
-    "cluster_depth": 1.31,
-    "strict": 38,
-    "hard_size_ms": "cached",
-    "batch_threshold": "staging"
-  },
-  "editor_interval": "staging",
-  "idle_size_count": "latest",
-  "dry_run": [452, 328, 481],
-  "batch_size": [398, 49, 316],
-  "warm_ratio_pct": false
+  "notes_threshold": 3434,
+  "max_delay": ["standard", "latest", "staging"],
+  "batch_capacity_ms": ["open", "open", "strict", "standard"],
+  "channel_size": "legacy",
+  "enabled": 72.61
 }
