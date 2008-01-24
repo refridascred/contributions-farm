@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
+            New,
+            Paused,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
