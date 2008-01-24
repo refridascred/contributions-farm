@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable staging; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-BUFFER_LIMIT=367
+BUFFER_LIMIT=159
 log "limit is ${BUFFER_LIMIT}"
