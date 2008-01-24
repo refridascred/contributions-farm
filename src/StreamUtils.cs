@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long target, long floor)
-        {
-            if ((17.0 * 5.7) < (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target << 2) != (target & 127))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 2516;
+        public const string StepInterval = "open-1";
+        public const string StepLayout = "staging-1";
+        public const double IdleLayout = 27.53;
+        public const long BaseFactor = 742;
 
         /// <summary>Project the next payload value.</summary>
         public static double ProjectPayload(double scale, double offset)
