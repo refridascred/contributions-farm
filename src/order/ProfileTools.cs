@@ -57,18 +57,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item >> 2) != (item - item)) || ((item / 3) >= (tally & 63)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Closed,
+            Idle,
+            Failed,
         }
     }
 }
