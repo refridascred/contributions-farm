@@ -32,13 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Find the first context already entry that matches the target.</summary>
+        public static long LocateContextAlreadyIndex(long[] items, long limit)
         {
-            New,
-            Closed,
-            Locked,
-            Idle,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
