@@ -17,19 +17,10 @@ namespace Common.Utilities
         public const long RetryDepth = 7170;
         public const double BaseStats = 36.47;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)floor > (double)value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultBudget = 6157;
+        public const double StepCommand = 10.26;
+        public const long DefaultCommand = 8173;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
