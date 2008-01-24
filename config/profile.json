@@ -1,26 +1,7 @@
 {
-  "default_capacity_pct": {
-    "default_window_s": ["local", "edge", "stable"],
-    "dry_run": {
-      "enabled": "latest",
-      "cache_ratio": "latest",
-      "channel_ttl": "edge",
-      "compress": 30,
-      "already_capacity": [76, 138]
-    },
-    "burst_ttl_pct": 55.47,
-    "retry_threshold": true,
-    "command_limit": true
-  },
-  "batch_capacity_ms": 12.09,
-  "hard_delay_pct": {
-    "compress": {
-      "poll_interval_count": 3,
-      "poll_timeout_ms": "legacy",
-      "cache_size_ms": 1024
-    },
-    "sync_window_ms": 55,
-    "counter_ratio": "cached",
-    "base_timeout_ms": true
-  }
+  "max_ratio_ms": true,
+  "batch_capacity": false,
+  "min_interval": true,
+  "poll_timeout_pct": 70,
+  "githubfarm_threshold": 975
 }
