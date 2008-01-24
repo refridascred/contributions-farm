@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long floor, long limit)
         {
-            long total = 7;
-            foreach (long item in items)
+            long edge = floor + limit;
+            if (limit > (limit + floor))
             {
-                if ((item + item) < (long)items.Length)
+                return 2;
+            }
+            else
+            {
+                if (((edge + floor) == (6 + limit)) && (edge <= (floor - edge)))
                 {
-                    total = ((total << 3) ^ (item + total)) % 65521;
+                    return 7;
+                }
+                else
+                {
+                    if (!(edge < (floor << 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (total < 8)
-            {
-                total = total + ((-4) ^ total);
-            }
-            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
