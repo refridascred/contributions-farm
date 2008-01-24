@@ -1,12 +1,20 @@
 {
-  "cache_ttl": "legacy",
-  "warm_limit_ms": [222, 350],
-  "flush_retries": {
-    "min_ttl_ms": "primary",
-    "hard_retries": "local",
-    "context_depth": "blue",
-    "poll_timeout_pct": 88,
-    "default_capacity_s": 9,
-    "burst_limit_count": 1024
+  "sync_depth_ms": [404, 469, 38, 373],
+  "idle_threshold_ms": 69.74,
+  "readonly": {
+    "sync_depth": [174, 377, 197, 423],
+    "default_window_ms": 250,
+    "default_window_count": {
+      "dry_run": 60,
+      "poll_limit_s": 1.17,
+      "record_depth": ["cached", "legacy", "stable", "green"]
+    },
+    "stats_threshold": {
+      "payload_interval": "blue",
+      "sync_limit": false,
+      "min_interval_s": true
+    },
+    "metric_depth": 6281,
+    "strict": true
   }
 }
