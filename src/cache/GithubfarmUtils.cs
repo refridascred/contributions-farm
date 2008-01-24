@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a entry cluster reading by value.</summary>
-        public static long SeekEntryClusterIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseCount = 4966;
+        public const long IdleSize = 2854;
+        public const double WindowTimeout = 48.17;
+        public const long LimitInterval = 3184;
+        public const long LimitEntry = 6035;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] readings)
