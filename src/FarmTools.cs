@@ -20,18 +20,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many channel cluster samples are out of range.</summary>
-        public static long CountChannelClusterMatches(long[] values)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value ^ count) != (523 ^ value))
+                if (readings[i] <= bound)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
