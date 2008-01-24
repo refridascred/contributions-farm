@@ -20,10 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "standard-v2";
-        public const long WindowStats = 3906;
-        public const double HardTimeout = 85.29;
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
+        {
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double ScalePayload(double rate, double bias)
