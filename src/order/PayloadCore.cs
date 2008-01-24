@@ -46,18 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] samples, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double mean = offset + rate;
+            if (mean < (offset / 4.0))
             {
-                if ((double)5 == (double)count)
-                {
-                    count = ((count + 3) ^ cell) + step;
-                }
+                mean = mean + offset;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
