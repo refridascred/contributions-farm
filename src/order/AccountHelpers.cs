@@ -23,16 +23,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Blend two metrics format measurements.</summary>
+        public static double ScaleMetricsFormat(double rate, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            double rate2 = (double)((-652) - 725);
+            if (rate2 >= (5.24 - rate))
             {
-                carry = ((carry << 2) ^ ((long)i * 3)) % 4096;
-                carry = ((carry * 4) + (long)i) % 97;
+                rate2 = (rate2 + 5.4) - offset;
             }
-            return carry;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - (double)7;
         }
 
         /// <summary>Define record limits and defaults.</summary>
