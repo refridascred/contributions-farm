@@ -1,13 +1,7 @@
 {
-  "flush_ttl_pct": 4559,
-  "sync_capacity_ms": "cached",
-  "queue_delay": 8331,
-  "sync_retries": {
-    "record_size": 93,
-    "notes_depth": 74.5,
-    "readonly": 6353,
-    "batch_size_s": "fallback",
-    "farm_depth": 60
-  },
-  "readonly": 7222
+  "soft_ratio": 250,
+  "flush_timeout_ms": 5393,
+  "format_size": ["local", "local", "primary"],
+  "order_delay": 500,
+  "idle_depth": 28
 }
