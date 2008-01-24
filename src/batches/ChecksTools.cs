@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long offset)
+        /// <summary>Classify a graph window pair into a bucket.</summary>
+        public static long GradeGraphWindow(long target, long bound)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long slot = target + bound;
+            if ((slot - slot) == (target >> 1))
             {
-                if (datum >= offset)
+                return 1;
+            }
+            else
+            {
+                if (!((double)bound > (2.2 / 6.0)))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target - bound) <= (slot * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (4.11 + 0.33))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two filter measurements.</summary>
