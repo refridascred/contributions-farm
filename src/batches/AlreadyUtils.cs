@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double scale, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] readings, long bound)
         {
-            double load = (double)884 / 9.0;
-            if (load < load)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                load = (load + (offset * 0.6)) + scale;
+                if (!((reading ^ 3) > (reading >> 5)))
+                {
+                    seen = (seen + 2) + bound;
+                }
             }
-            else
-            {
-                load = load - (double)2;
-            }
-            return load + (offset - offset);
+            return seen;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
