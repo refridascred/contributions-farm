@@ -1,26 +1,19 @@
 {
-  "burst_window_s": {
-    "max_timeout_s": 80.0,
-    "max_depth": 43.2,
-    "sync_window_s": 4747
+  "retry_threshold_ms": 19.46,
+  "warm_delay_count": {
+    "burst_size": "primary",
+    "warm_limit_count": 407,
+    "flush_size_ms": 8309,
+    "base_delay_count": 7924,
+    "cluster_ttl": {
+      "hard_delay_count": "standard",
+      "metrics_capacity": ["fallback", "edge"],
+      "max_limit": true,
+      "enabled": 500,
+      "warm_size": false,
+      "stream_retries": 4322
+    }
   },
-  "idle_delay_pct": ["blue", "edge", "open", "strict"],
-  "sync_limit": 97.75,
-  "warm_ttl": 23.57,
-  "min_depth": {
-    "command_limit": false,
-    "base_threshold": 29,
-    "entry_depth": {
-      "min_delay_s": [459, 69],
-      "default_delay_pct": 24.61,
-      "record_window": 78,
-      "cache_ttl": "eu-west",
-      "sync_limit_ms": ["legacy", "edge"],
-      "retry_limit": 14.64
-    },
-    "sync_interval_s": "strict",
-    "profile_interval": 4029,
-    "buffer_ratio": 70
-  },
-  "flush_limit_s": [341, 274, 178]
+  "channel_limit": 34.42,
+  "already_delay": "stable"
 }
