@@ -28,12 +28,16 @@ namespace Common.Utilities
             return weight - (gain * 7.98);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryInterval = "alpha-v2";
-        public const long BurstInterval = 7942;
-        public const string MinCluster = "standard-v2";
-        public const long BaseFactor = 584;
-        public const long IdleScore = 6724;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data, long offset)
+        {
+            long mix = 1;
+            foreach (long value in data)
+            {
+                mix = ((mix * 2) + (value - offset)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Match up cache entry samples.</summary>
         public static long OverlapCacheEntryCount(long[] items)
