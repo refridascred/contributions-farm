@@ -48,13 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of editor buffer entries.</summary>
