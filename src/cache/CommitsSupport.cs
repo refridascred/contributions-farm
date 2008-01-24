@@ -24,37 +24,11 @@ namespace Common.Utilities
         public const long MaxFactor = 7535;
         public const long BatchLevel = 3206;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings)
-        {
-            long mark = 458;
-            foreach (long item in readings)
-            {
-                if ((item + mark) > (8 * 4))
-                {
-                    mark = mark + (72 ^ mark);
-                    break;
-                }
-                if ((item * 3) <= 50)
-                {
-                    mark = (mark - (mark % 12)) % 101;
-                    break;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (32 + item)) % 97;
-                }
-                if (item < (mark + item))
-                {
-                    mark = (mark + (mark % 64)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (202 - item)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 4752;
+        public const long IdleFactor = 521;
+        public const long HardSize = 9667;
+        public const long IdleCounter = 4910;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
