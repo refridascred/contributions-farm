@@ -1,8 +1,6 @@
 {
-  "base_window": "open",
-  "notes_capacity": "local",
-  "cache_capacity": 30,
-  "idle_retries_count": 466,
-  "support_size": 54.28,
-  "audit": [151, 38]
+  "poll_interval_s": 21.76,
+  "batch_interval_pct": true,
+  "hard_window_ms": 2,
+  "persist": true
 }
