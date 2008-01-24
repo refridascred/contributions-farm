@@ -79,16 +79,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
-            {
-                acc = (acc + ((long)i << 1)) % 1000;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Stale,
+            Active,
+            Draft,
+            Paused,
         }
     }
 }
