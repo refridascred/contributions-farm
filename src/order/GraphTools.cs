@@ -86,14 +86,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            Done,
-            Retry,
+            Draft,
             Locked,
-            Active,
-            Queued,
+            Dropped,
+            Ready,
         }
     }
 }
