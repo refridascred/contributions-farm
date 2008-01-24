@@ -40,12 +40,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] samples, long limit)
         {
-            Done,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (((matches & 1) < (limit * 3)) || ((matches << 3) < (matches >> 3)))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
