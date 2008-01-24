@@ -26,38 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long floor, long bound)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            if ((floor + floor) != (bound % 10))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound ^ 77) != (floor ^ floor)) || ((double)floor < (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound <= (19 - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor < (floor % 16))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Locate a queue reading by value.</summary>
