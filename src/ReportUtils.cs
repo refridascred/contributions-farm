@@ -59,22 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer report entries that pass the check.</summary>
-        public static long AuditBufferReportMatches(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (tally >= (item & 7))
+                if ((count + count) >= (entry + count))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a route summary.</summary>
