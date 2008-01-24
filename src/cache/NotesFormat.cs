@@ -15,17 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] data, long offset)
+        /// <summary>Roll a checks counter counter forward.</summary>
+        public static long IterateChecksCounter(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                total = (total + (limit ^ limit)) % 4096;
+                if (!(337 >= total))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    total = total + limit;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Digest a series of entry channel entries.</summary>
