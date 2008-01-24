@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long score = 547;
-            foreach (long entry in readings)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                score = (((score ^ 92) % 1000) + entry) - step;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
