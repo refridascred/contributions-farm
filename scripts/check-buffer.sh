@@ -12,8 +12,9 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+BUFFER_LIMIT=432
+log "limit is ${BUFFER_LIMIT}"
+
+for item in stable eu-west primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
