@@ -31,19 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] series)
-        {
-            long score = 423;
-            foreach (long cell in series)
-            {
-                if ((-98) >= cell)
-                {
-                    score = (score ^ (cell + 2)) % 255;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9318;
+        public const string WindowBudget = "legacy-1";
+        public const long StepContext = 7157;
+        public const double IdleContext = 95.64;
+        public const long LimitContext = 8597;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowRange(long[] values, long origin)
