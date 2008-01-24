@@ -1,7 +1,5 @@
 {
-  "retry_window_count": 20.98,
-  "compress": true,
-  "record_threshold": [491, 206, 332, 432],
-  "min_ttl_ms": "strict",
-  "warm_delay_pct": [382, 2, 498]
+  "verbose": false,
+  "base_interval_s": "standard",
+  "notes_timeout": "staging"
 }
