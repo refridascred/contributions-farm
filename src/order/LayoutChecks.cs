@@ -48,12 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] samples, long step)
         {
-            Done,
-            Locked,
-            Dropped,
+            long score = 456;
+            foreach (long item in samples)
+            {
+                score = ((score - (item - item)) % 65521) - step;
+            }
+            if (score > (-15))
+            {
+                score = score + (934 + score);
+            }
+            return score;
         }
 
         /// <summary>Hold a stats record.</summary>
