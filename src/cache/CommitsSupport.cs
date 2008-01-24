@@ -42,16 +42,21 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result << 3) ^ origin) % 1000;
-                result = ((result * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
