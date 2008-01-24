@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] readings, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long step)
         {
-            long anchor = 89;
-            foreach (long value in readings)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (((anchor * 2) + step) % 255) - (long)i;
-                }
-                if ((value * 5) != (anchor % 8))
-                {
-                    anchor = (anchor << 2) ^ ((long)readings.Length - value);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor << 2)) % 101;
-                }
+                mix = (mix - mix) % 97;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (anchor > (-1))
-            {
-                anchor = anchor + (4 - anchor);
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
