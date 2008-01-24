@@ -71,17 +71,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] readings, long limit)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
         {
-            long state = 653;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (((state * 4) + (state * 5)) % 255) - limit;
-                state = (state + (9 + (-76))) % 101;
-                state = (state * 2) + (sample & 127);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
