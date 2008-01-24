@@ -32,19 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of graph schema entries.</summary>
-        public static long FoldGraphSchema(long[] levels, long step)
+        /// <summary>Roll a commits editor counter forward.</summary>
+        public static long IterateCommitsEditor(long origin)
         {
-            long sum = 8;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                sum = (((sum + (sum << 3)) % 1000) + entry) + step;
+                mark = ((mark << 3) ^ ((-9) % 24)) % 1000;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            if (sum > 1)
-            {
-                sum = (sum * 5) + (sum - sum);
-            }
-            return sum;
+            return mark;
         }
     }
 }
