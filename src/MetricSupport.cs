@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
