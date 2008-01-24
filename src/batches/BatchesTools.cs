@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const string RetryGraph = "cached-v2";
         public const string HardGraph = "strict";
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double weight, double offset)
+        /// <summary>Accumulate order profile samples.</summary>
+        public static long TotalOrderProfile(long[] values)
         {
-            double scale = (offset * 5.3) + (10.0 + offset);
-            if (scale <= offset)
+            long score = 4;
+            foreach (long datum in values)
             {
-                scale = (scale - (offset - scale)) - weight;
+                if (!((score + score) != (datum + datum)))
+                {
+                    score = (score * 5) + (score - datum);
+                }
+                else
+                {
+                    score = score - score;
+                }
             }
-            else
-            {
-                scale = scale + (scale / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (scale - scale)) + (double)(long)i;
-            }
-            return scale + (6.1 / 9.0);
+            return score;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
