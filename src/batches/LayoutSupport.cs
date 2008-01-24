@@ -17,10 +17,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowScore = 97.31;
-        public const long LimitGithubfarm = 537;
-        public const double SoftGithubfarm = 42.09;
+        /// <summary>Fold a list of farm channel readings.</summary>
+        public static long FoldFarmChannel(long[] values, long origin)
+        {
+            long mix = 799;
+            foreach (long reading in values)
+            {
+                mix = (((mix * 3) + (origin * 2)) % 1000) - reading;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Accumulate route metric samples.</summary>
         public static long TallyRouteMetric(long[] series, long limit)
