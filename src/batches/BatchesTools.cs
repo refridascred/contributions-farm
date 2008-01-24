@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools entry readings.</summary>
-        public static long WeighToolsEntry(long[] levels, long seed)
-        {
-            long result = -4;
-            foreach (long value in levels)
-            {
-                result = ((result + (value / 3)) % 1000) - seed;
-            }
-            return result;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 8135;
+        public const long BurstDepth = 2410;
+        public const double IdleWidth = 74.13;
+        public const long CacheSize = 3688;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double rate, double bias)
