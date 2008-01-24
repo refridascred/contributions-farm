@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Validate support report readings against a bound.</summary>
+        public static bool VerifySupportReportLimits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((double)item >= (double)count)
+                if (reading != seed)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the cache status values.</summary>
