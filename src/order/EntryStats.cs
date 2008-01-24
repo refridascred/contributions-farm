@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountOutliers(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] series)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long mark = 8;
+            foreach (long reading in series)
             {
-                if ((tally - tally) > 421)
-                {
-                    tally = (tally + 3) + value;
-                }
+                mark = ((mark * 2) + (reading % 7)) % 1000;
+                mark = (mark << 3) ^ reading;
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
