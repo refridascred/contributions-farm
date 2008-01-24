@@ -44,11 +44,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
