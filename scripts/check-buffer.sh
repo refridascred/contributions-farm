@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=332
-log "limit is ${BUFFER_LIMIT}"
-
-for item in fallback primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 7 ]; do
