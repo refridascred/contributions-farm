@@ -22,14 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleRatio = "latest-1";
+        public const double DefaultOrder = 88.91;
+        public const long IdleOrder = 3648;
+        public const string BaseOrder = "staging-edge";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsOutliers(long[] readings)
