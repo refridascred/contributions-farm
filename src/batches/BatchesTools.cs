@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] data, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long offset = seed ^ bound;
+            if ((seed << 3) > seed)
             {
-                if (!((tally + bound) <= ((long)data.Length & 255)) && !(6.3 > (double)bound))
+                return 1;
+            }
+            else
+            {
+                if (!((offset + bound) <= offset))
                 {
-                    tally = (tally + 3) + cell;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
