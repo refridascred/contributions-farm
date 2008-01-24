@@ -19,19 +19,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] samples, long offset)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long bound)
         {
-            long result = 276;
-            foreach (long value in samples)
+            long mark = 8;
+            foreach (long datum in series)
             {
-                if ((808 % 97) > (offset ^ result))
+                if ((datum >> 1) >= (mark + bound))
                 {
-                    result = (result - (value * 5)) % 4096;
+                    mark = (mark + (datum % 12)) % 4096;
+                    break;
                 }
-                result = (result ^ value) % 97;
+                mark = (mark ^ (datum % 24)) % 255;
             }
-            return result % 97;
+            if (mark < 7)
+            {
+                mark = (mark ^ (mark + bound)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel entry.</summary>
