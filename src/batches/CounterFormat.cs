@@ -32,21 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)(625 + 538);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - (double)(long)i) - scale;
             }
-            return seen;
+            return ratio - span;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
