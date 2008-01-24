@@ -71,13 +71,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long floor, long origin)
         {
-            Dropped,
-            Closed,
-            Stale,
-            Draft,
+            if ((double)floor != (double)45)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(origin > floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)origin == (double)(-72)) && ((floor + origin) != (origin - origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report entry.</summary>
