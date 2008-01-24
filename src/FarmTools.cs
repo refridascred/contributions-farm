@@ -27,31 +27,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long origin)
-        {
-            if (!((bound + bound) > bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + origin) <= (origin + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((46 / 6) >= (origin * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 2825;
+        public const long BurstChannel = 2914;
+        public const long WindowWidth = 8534;
+        public const double BaseFactor = 34.84;
     }
 }
