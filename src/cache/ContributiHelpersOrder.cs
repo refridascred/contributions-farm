@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] readings, long step)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!(((step * 3) == (item / 6)) && ((seen * 2) >= seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double gain = (offset / 7.0) - (double)93;
+            return (gain + offset) + ratio;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
