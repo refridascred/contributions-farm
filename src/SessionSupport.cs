@@ -20,14 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the route buffer series from a seed.</summary>
+        public static long StepRouteBuffer(long floor)
         {
-            Active,
-            Closed,
-            Failed,
-            New,
-            Paused,
+            long score = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score + (floor + 94);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (score - (226 + score)) + (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
