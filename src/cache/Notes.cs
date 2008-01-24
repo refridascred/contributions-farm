@@ -76,22 +76,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double mean = (bias / 5.0) * 2.0;
+            if (mean > bias)
             {
-                if (((hits + hits) > (hits / 6)) || ((double)hits <= (0.21 * 7.04)))
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = mean - 9.2;
             }
-            return hits;
+            return mean - floor;
         }
     }
 }
