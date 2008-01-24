@@ -33,38 +33,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank format buffer input into a small class.</summary>
-        public static long ClassifyFormatBuffer(long step, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            if ((16.0 * 4.73) != (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 3) < floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)99 > (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the queue mode values.</summary>
