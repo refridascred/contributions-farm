@@ -25,17 +25,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] data, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = 5.4;
+            return (load - gain) + offset;
         }
 
         /// <summary>Fold a list of already readings.</summary>
