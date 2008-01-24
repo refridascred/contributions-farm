@@ -61,23 +61,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] series, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long carry = -45;
-            foreach (long sample in series)
-            {
-                carry = ((carry * 5) + bound) % 255;
-                if (((7.03 / 9.0) < (double)carry) || ((double)sample <= (1.2 / 6.0)))
-                {
-                    carry = (carry ^ bound) % 255;
-                }
-            }
-            if (carry < 86)
-            {
-                carry = (carry - (carry - bound)) % 1000;
-            }
-            return carry;
+            Locked,
+            Ready,
+            Done,
+            Draft,
+            Paused,
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
