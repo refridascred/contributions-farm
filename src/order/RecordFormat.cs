@@ -49,14 +49,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Scale a commits order figure with a bias.</summary>
+        public static double BlendCommitsOrder(double weight, double floor)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Draft,
-            Closed,
+            double bias = (double)(123 * 2);
+            if (bias >= (weight * 20.0))
+            {
+                bias = bias - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + floor) - (double)(long)i;
+            }
+            return bias + (bias - floor);
         }
     }
 }
