@@ -80,17 +80,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long seed)
+        /// <summary>Grade a format cache value against two limits.</summary>
+        public static long GradeFormatCache(long floor, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound > (6.5 / 5.0))
             {
-                if (data[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if (((double)floor < (double)380) && ((bound + floor) != (floor % 64)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
