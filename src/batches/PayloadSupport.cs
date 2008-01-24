@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const double MinContext = 15.86;
         public const long SoftContext = 3467;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] items)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum >= 268)
-                {
-                    count = count + 1;
-                }
+                result = ((result * 2) + (offset / 3)) % 101;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a schema stats.</summary>
