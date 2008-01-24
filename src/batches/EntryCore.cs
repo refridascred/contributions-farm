@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long result = 14;
-            foreach (long reading in values)
+            long score = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((result + 6) > reading)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    result = (result ^ (reading - floor)) % 97;
+                    score = ((score ^ (score * 2)) % 65521) ^ (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Locate a window reading by value.</summary>
