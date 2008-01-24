@@ -20,29 +20,22 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long step, long limit)
+        /// <summary>Grade a entry context value against two limits.</summary>
+        public static long GradeEntryContext(long seed, long bound)
         {
-            if ((limit / 7) <= 5)
+            if (((1.0 * 9.0) != (double)seed) && ((seed & 31) != (seed & 255)))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((step - limit) <= step) || ((double)(-723) == (double)step))
+                if ((double)735 < (16.0 * 4.0))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((step - step) > (limit << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 8;
                 }
             }
         }
