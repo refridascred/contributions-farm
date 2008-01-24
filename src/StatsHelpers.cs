@@ -33,10 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 8509;
-        public const long SoftSize = 7306;
-        public const double HardRatio = 95.09;
+        /// <summary>Iterate the stats route series from a seed.</summary>
+        public static long StepStatsRoute(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix << 2) ^ (mix >> 4)) % 255;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long CombineReport(long[] samples)
