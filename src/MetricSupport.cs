@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank contributi commits input into a small class.</summary>
-        public static long GradeContributiCommits(long origin, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double gain, double span)
         {
-            if (origin <= (step * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin & 127) == (step % 12))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) == (step / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((11.0 - 2.78) == (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double gain2 = (double)(0 + 581);
+            return ((gain2 + (double)117) + gain) + span;
         }
 
         /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
