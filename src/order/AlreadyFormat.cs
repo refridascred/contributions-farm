@@ -13,16 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long result = 751;
+            foreach (long datum in data)
             {
-                state = state - step;
-                state = ((state * 3) + (long)i) % 1000;
+                if (!((offset - result) <= (90 - 89)))
+                {
+                    result = ((result - (result ^ result)) % 255) + datum;
+                }
             }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Project the next buffer value.</summary>
