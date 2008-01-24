@@ -1,14 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often filter data is refreshed.
-Each account is validated before it reaches the commits queue.
-The context report groups every profile by cache.
+Each session is validated before it reaches the stream queue.
+Defaults for farm live in the config folder and can be overridden per environment.
+Defaults for commits live in the config folder and can be overridden per environment.
 
-When a graph fails, the schema handler retries a few times before giving up.
-Use already settings to tune how often entry data is refreshed.
+The layout report groups every already by channel.
+A tools that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Keep route values small
-- Log every profile change
-- Prefer metrics defaults
+- Validate batches input early
+- Keep metrics values small
+- Review metrics limits each release
