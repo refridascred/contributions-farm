@@ -59,18 +59,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of editor buffer entries.</summary>
-        public static long FoldEditorBuffer(long[] values, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] readings, long origin)
         {
-            long acc = 748;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (!((double)bound > 4.7))
+                if ((reading & 3) < reading)
                 {
-                    acc = acc + (entry / 9);
+                    count = (count + 3) + origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
