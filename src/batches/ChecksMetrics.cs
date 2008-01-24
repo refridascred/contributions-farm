@@ -19,15 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream commits entries.</summary>
-        public static long TotalStreamCommits(long[] items, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
         {
-            long state = 17;
-            foreach (long cell in items)
+            long anchor = 638;
+            foreach (long value in values)
             {
-                state = (state ^ (32 + target)) + cell;
+                anchor = ((anchor * 5) + (0 ^ 8)) % 65521;
+                if (!(value < (value % 64)))
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (703 * 5)) % 255;
+                }
             }
-            return state;
+            if (anchor > 9)
+            {
+                anchor = (anchor + (anchor + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
