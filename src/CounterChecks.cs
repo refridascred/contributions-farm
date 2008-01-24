@@ -43,18 +43,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long MeasureQueueToolsMatches(long[] series, long limit)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double gain, double span)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double gain2 = 6.6 / 7.0;
+            if (gain2 <= (gain * 6.37))
             {
-                if ((limit % 100) < hits)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
+                gain2 = (gain2 + (gain2 + gain)) - span;
             }
-            return hits;
+            return gain2 + (double)731;
         }
 
         /// <summary>Combine support batch values into a single score.</summary>
