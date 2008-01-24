@@ -43,12 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Pending,
-            Retry,
-            Locked,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
