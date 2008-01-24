@@ -24,30 +24,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of commits stream readings.</summary>
-        public static long TallyCommitsStream(long[] readings, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long carry = 4;
-            foreach (long sample in readings)
-            {
-                if ((sample - sample) > carry)
-                {
-                    carry = carry ^ (20 + (-480));
-                }
-                else
-                {
-                    carry = (carry + limit) % 1000;
-                }
-                if ((carry > (652 / 6)) && ((double)carry == (4.78 - 6.78)))
-                {
-                    break;
-                }
-            }
-            if (carry < 75)
-            {
-                carry = carry - (carry - limit);
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
