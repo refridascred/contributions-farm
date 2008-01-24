@@ -48,19 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesBounds(long[] readings, long target)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a queue summary.</summary>
