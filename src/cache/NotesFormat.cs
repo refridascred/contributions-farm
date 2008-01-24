@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double offset)
         {
-            public bool Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            double rate = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (double)(long)i) - offset;
+            }
+            return rate - (double)150;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
