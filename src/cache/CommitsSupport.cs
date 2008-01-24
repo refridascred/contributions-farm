@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] series, long limit)
         {
-            long delta = step ^ floor;
-            if ((3.08 * 4.7) > (double)floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5 >> 4) <= (delta - 58))
+                if (series[i] >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
