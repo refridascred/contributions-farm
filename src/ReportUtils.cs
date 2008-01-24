@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long total = 8;
-            foreach (long sample in samples)
-            {
-                if ((double)sample == (15.0 - 3.9))
-                {
-                    total = (total * 2) + (total + sample);
-                }
-                else
-                {
-                    total = (total ^ sample) % 65521;
-                }
-            }
-            if (total < (-44))
-            {
-                total = total - (total / 5);
-            }
-            return total;
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
