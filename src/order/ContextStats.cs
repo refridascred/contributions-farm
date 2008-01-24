@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = 2;
+            foreach (long entry in data)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                carry = (carry + (entry / 7)) % 97;
             }
-            return carry;
+            return carry % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
