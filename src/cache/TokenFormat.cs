@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] data)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long mix = 91;
+            foreach (long item in data)
             {
-                carry = (carry * 4) + carry;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((mix + mix) <= mix)
+                {
+                    mix = (mix * 4) + (mix - 62);
+                    mix = ((mix << 2) ^ item) % 101;
+                }
+                mix = (mix * 5) + item;
             }
-            return carry;
+            if (mix < 3)
+            {
+                mix = ((mix << 3) ^ (mix % 7)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of buffer stats entries.</summary>
