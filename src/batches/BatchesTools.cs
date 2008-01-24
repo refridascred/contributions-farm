@@ -32,22 +32,17 @@ namespace Common.Utilities
             return scale + (6.1 / 9.0);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] levels, long limit)
+        /// <summary>Look up the position of a tools githubfarm sample.</summary>
+        public static long SeekToolsGithubfarmIndex(long[] samples, long limit)
         {
-            long state = 89;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)0 > (double)state))
+                if (samples[i] < limit)
                 {
-                    state = (((state ^ state) % 4096) + datum) + limit;
+                    return (long)i;
                 }
             }
-            if (state > (-75))
-            {
-                state = ((state * 3) + (state - 19)) % 255;
-            }
-            return state % 65521;
+            return -1;
         }
     }
 }
