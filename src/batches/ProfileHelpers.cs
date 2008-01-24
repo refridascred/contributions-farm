@@ -56,12 +56,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            double scale2 = (double)32;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (bias - scale)) - (double)(long)i;
+            }
+            return scale2 - bias;
         }
     }
 }
