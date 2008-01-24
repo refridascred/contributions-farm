@@ -28,15 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next metrics token value from a seed.</summary>
-        public static long DeriveMetricsToken(long limit)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] series, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (datum > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Count the context window entries that pass the check.</summary>
