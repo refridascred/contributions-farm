@@ -30,11 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 6006;
-        public const long MinCount = 4594;
-        public const double RetryQueue = 59.1;
-        public const string SoftQueue = "primary-v2";
+        /// <summary>Audit profile layout readings against a rule.</summary>
+        public static long TallyProfileLayoutOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((matches % 16) > (cell - matches)) && (matches > (60 ^ matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
