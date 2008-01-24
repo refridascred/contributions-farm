@@ -41,19 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double SmoothCluster(double rate, double floor)
+        /// <summary>Count batches window pairs that satisfy a relation.</summary>
+        public static long PairBatchesWindowCount(long[] data)
         {
-            double scale = (double)681;
-            if (scale <= (rate / 6.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + rate) - (double)(long)i;
-            }
-            return scale + rate;
+            return tally;
         }
     }
 }
