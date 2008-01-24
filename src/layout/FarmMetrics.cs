@@ -36,14 +36,9 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Ready,
-            Paused,
-            Closed,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinFactor = "latest-v2";
+        public const string HardTools = "open-v2";
+        public const string MaxTools = "standard";
     }
 }
