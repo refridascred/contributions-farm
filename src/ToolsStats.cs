@@ -60,21 +60,38 @@ namespace Common.Utilities
         public const string StepRatio = "stable-edge";
         public const string IdleCount = "legacy-1";
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long seed, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed & 7) > limit)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((seed * 5) < (seed & 31))
                 {
-                    if ((values[i] - values[j]) != 20)
+                    return 0;
+                }
+                else
+                {
+                    if ((23 / 2) == (946 + seed))
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(seed >= (limit + seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the window kind values.</summary>
