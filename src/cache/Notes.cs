@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long WindowInterval = 9283;
         public const long WindowChannel = 8056;
 
-        /// <summary>Check that every order stats entry stays within the limit.</summary>
-        public static bool GuardOrderStatsBounds(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 5138;
+        public const long CacheSpan = 4027;
+        public const long CacheProfile = 6336;
+        public const long SoftCount = 268;
+        public const double BatchProfile = 78.42;
 
         /// <summary>Look up the position of a profile graph sample.</summary>
         public static long SeekProfileGraphIndex(long[] data, long floor)
