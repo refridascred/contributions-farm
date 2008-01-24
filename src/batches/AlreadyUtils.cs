@@ -35,17 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first metric batch entry that matches the target.</summary>
-        public static long LocateMetricBatchIndex(long[] values, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                state = ((state * 5) + (5 + state)) % 255;
+                if ((3.0 + 1.29) >= (double)state)
                 {
-                    return (long)i;
+                    state = state ^ (state >> 1);
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a schema options.</summary>
