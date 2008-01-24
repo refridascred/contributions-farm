@@ -32,18 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample * 5) <= (2 >> 4))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
