@@ -48,15 +48,16 @@ namespace Common.Utilities
         public const string BatchCount = "stable-1";
         public const double BatchDepth = 23.66;
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double bias, double bias2)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            double scale = (double)553 / 8.0;
-            if (scale >= (double)52)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                scale = ((scale - 1.9) - bias) + bias2;
+                carry = (carry - ((long)i - carry)) % 255;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return scale + (double)(-7);
+            return carry;
         }
     }
 }
