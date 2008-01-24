@@ -55,18 +55,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many schema session samples are out of range.</summary>
-        public static long AuditSchemaSessionOutliers(long[] levels, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seen & 1) >= (seen >> 3))
-                {
-                    seen = ((seen + 3) - item) + step;
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
