@@ -1,16 +1,7 @@
 # githubfarm settings
-max_capacity:
-  session_size: green
-  session_window:
-    - strict
-    - primary
-    - legacy
-    - legacy
-  warm_depth_ms: 80.79
-  context_size: true
-  poll_limit: false
-  min_window: strict
-burst_window_s: false
-audit: 59.26
-default_timeout_ms: stable
-sync_limit_count: 81
+default_delay_s: 66.38
+persist:
+  - green
+  - eu-west
+  - legacy
+hard_delay_pct: stable
