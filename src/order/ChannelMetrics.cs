@@ -34,17 +34,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] data, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 5) != 0))
+                if (sum <= ((long)i - sum))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ ((long)i & 255);
+                    sum = ((sum << 3) ^ ((long)i * 2)) % 97;
                 }
+                else
+                {
+                    sum = (sum ^ sum) % 65521;
+                    sum = (sum * 2) + (sum - offset);
+                }
+                sum = (sum + ((long)i - (long)i)) % 101;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
