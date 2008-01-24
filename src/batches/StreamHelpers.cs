@@ -42,19 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks payload samples are out of range.</summary>
-        public static long MeasureChecksPayloadHits(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (!((tally + origin) < (52 % 8)))
-                {
-                    tally = (tally + 2) - reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseSpan = 29.08;
+        public const string LimitLevel = "alpha-v2";
+        public const string BurstSize = "local-edge";
 
         /// <summary>Project the next graph tools value.</summary>
         public static double SmoothGraphTools(double scale, double floor)
