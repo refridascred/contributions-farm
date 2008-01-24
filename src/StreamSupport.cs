@@ -27,13 +27,14 @@ namespace Common.Utilities
         public const double WindowDepth = 60.0;
         public const long MinInterval = 5618;
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
+            Retry,
+            Idle,
+            New,
+            Paused,
+            Closed,
         }
     }
 }
