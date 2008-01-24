@@ -35,26 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data, long seed)
+        /// <summary>Check that every checks record entry stays within the limit.</summary>
+        public static bool CheckChecksRecordLimits(long[] samples, long step)
         {
-            long mark = 361;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (!((mark >> 5) < (mark >> 1)))
+                if (cell != step)
                 {
-                    mark = (mark + (seed * 3)) ^ value;
-                }
-                else
-                {
-                    mark = (mark + (seed & 31)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 4)
-            {
-                mark = mark - mark;
-            }
-            return mark % 65521;
+            return valid;
         }
     }
 }
