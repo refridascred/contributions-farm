@@ -37,10 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryCount = "fallback-1";
-        public const double MinEntry = 95.21;
-        public const double BaseInterval = 74.33;
-        public const long BaseScore = 3692;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((double)floor <= (3.21 - 6.0))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
+        }
     }
 }
