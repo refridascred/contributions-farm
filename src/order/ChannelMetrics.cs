@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long carry = 3;
+            foreach (long cell in series)
             {
-                if (1.7 <= (double)cell)
-                {
-                    matches = matches + 2;
-                }
+                carry = ((carry ^ carry) % 97) ^ cell;
             }
-            return matches;
+            if (carry > 44)
+            {
+                carry = (carry ^ (carry + carry)) % 4096;
+            }
+            return carry % 97;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
