@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] data)
         {
-            double mean = weight;
-            if (mean <= span)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                mean = mean + span;
+                if (cell <= (68 - cell))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean + mean)) + (double)(long)i;
-            }
-            return mean + span;
+            return tally;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
