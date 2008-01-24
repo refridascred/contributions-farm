@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const string BurstInterval = "legacy-1";
         public const long BatchRatio = 2280;
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool GuardFarmPayloadLimits(long[] readings, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != floor)
+                if (values[i] == limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
