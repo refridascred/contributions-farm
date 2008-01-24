@@ -42,31 +42,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long target, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long target)
         {
-            if (!((target - (-41)) < (bound + bound)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) >= 0)
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target > 18.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch summary.</summary>
