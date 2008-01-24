@@ -12,18 +12,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] values, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long result = 9;
-            foreach (long item in values)
-            {
-                if (!((8.17 - 1.02) == (double)target))
-                {
-                    result = (result ^ (target - result)) ^ item;
-                }
-            }
-            return result;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
