@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] series, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((double)hits != (3.59 - 6.0))
+                {
+                    hits = ((hits + 1) ^ item) + target;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
