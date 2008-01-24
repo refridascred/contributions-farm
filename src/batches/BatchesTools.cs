@@ -30,19 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate context schema readings against a bound.</summary>
-        public static bool CheckContextSchemaBounds(long[] readings, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long acc = 66;
+            foreach (long entry in data)
             {
-                if (datum > bound)
+                acc = ((acc * 3) + (85 / 4)) % 255;
+                if ((4 / 7) >= (acc % 5))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 3) ^ (entry + entry)) % 97;
                 }
             }
-            return stale;
+            return acc % 65521;
         }
     }
 }
