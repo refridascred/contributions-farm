@@ -1,12 +1,14 @@
 # githubfarm settings
-min_depth_count: blue
-max_ratio_s: legacy
-warm_retries:
-  batch_limit:
-    - 24
-    - 77
-  enabled: strict
-  batch_window: 95
-  cache_delay: 92
-  max_size_pct: 5019
-  min_limit_pct: 99
+flush_delay_count:
+  - cached
+  - local
+  - stable
+  - fallback
+batch_ttl: 500
+batch_retries_count: 88
+compress:
+  hard_delay_count: false
+  soft_window_count: 550
+  order_timeout: primary
+  report_size: 49.16
+  sync_threshold_ms: true
