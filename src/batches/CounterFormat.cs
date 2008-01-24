@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] levels, long origin)
+        /// <summary>Audit account metric readings against a rule.</summary>
+        public static long CountAccountMetricMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (levels[i] > origin)
+                if ((hits * 3) >= (254 + datum))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
