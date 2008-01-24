@@ -45,20 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm support value.</summary>
-        public static double ProjectGithubfarmSupport(double rate, double bias)
-        {
-            double bias2 = rate;
-            if (bias2 <= 6.9)
-            {
-                bias2 = bias2 + (double)35;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 - (3.4 * 6.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstWidth = 2711;
+        public const long WindowProfile = 2601;
+        public const long IdleProfile = 8102;
+        public const long BaseProfile = 2993;
+        public const long StepProfile = 7654;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] series)
