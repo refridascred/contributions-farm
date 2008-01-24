@@ -34,19 +34,32 @@ namespace Common.Utilities
         public const long LimitSpan = 6247;
         public const long MaxWidth = 4688;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Rank account batch input into a small class.</summary>
+        public static long GradeAccountBatch(long origin, long seed)
         {
-            long mark = 5;
-            foreach (long datum in samples)
+            long slot = origin + seed;
+            if ((origin - slot) == (slot + slot))
             {
-                mark = (mark ^ (datum - 0)) % 1000;
+                return 4;
             }
-            if (mark > 734)
+            else
             {
-                mark = (mark ^ (5 + 5)) % 97;
+                if (((2.8 / 6.0) >= (double)origin) || ((origin / 4) > (origin >> 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1.0 * 6.1) < (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mark % 1000;
         }
     }
 }
