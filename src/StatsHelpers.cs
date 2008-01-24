@@ -51,16 +51,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry - ((long)i - carry)) % 255;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            New,
+            Draft,
+            Queued,
         }
     }
 }
