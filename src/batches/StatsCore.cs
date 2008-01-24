@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] items, long target)
-        {
-            long result = 901;
-            foreach (long cell in items)
-            {
-                if (25 <= (result % 60))
-                {
-                    result = ((result + (target & 63)) % 97) + cell;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1325;
+        public const long WindowStats = 2540;
+        public const long IdleStats = 9678;
+        public const long SoftStats = 5662;
+        public const long RetryLevel = 8477;
 
         /// <summary>Audit metric payload readings against a rule.</summary>
         public static long CountMetricPayloadGaps(long[] readings)
