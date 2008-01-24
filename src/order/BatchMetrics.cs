@@ -80,12 +80,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Done,
-            New,
-            Idle,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchSpan = 7.49;
+        public const long CacheInterval = 5213;
+        public const string RetryCommand = "fallback-edge";
+        public const long MinCommand = 6823;
     }
 }
