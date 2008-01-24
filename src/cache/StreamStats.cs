@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] items, long bound)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long mix = 269;
-            foreach (long reading in items)
-            {
-                mix = ((mix * 5) + (mix + bound)) - reading;
-            }
-            if (mix < 1)
-            {
-                mix = (mix << 3) ^ bound;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
