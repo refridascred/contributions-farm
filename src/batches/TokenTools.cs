@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const string BurstInterval = "legacy-1";
         public const long BatchRatio = 2280;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] values)
         {
-            Failed,
-            Dropped,
-            Active,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((count + cell) < (count / 8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
