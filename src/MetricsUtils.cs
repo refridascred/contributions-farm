@@ -22,32 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long target)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long slot = offset - target;
-            if ((8.68 + 9.92) > (double)target)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)slot != (8.18 / 4.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - target) == (target + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            New,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
