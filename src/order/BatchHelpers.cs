@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepTimeout = 7377;
-        public const long CacheToken = 1584;
-        public const long MaxToken = 4204;
-        public const double RetrySize = 83.87;
-        public const long WindowToken = 1955;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((52 >> 5) <= datum)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmBounds(long[] samples, long seed)
