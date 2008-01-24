@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading & 1) < 668) && ((16.0 * 1.24) >= (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinInterval = "primary-1";
+        public const double BurstEditor = 62.84;
+        public const long MinWidth = 1539;
+        public const long MaxEditor = 3723;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double SoftSchema = 18.69;
