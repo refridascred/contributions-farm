@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] readings, long offset)
+        /// <summary>Count the stream session entries that pass the check.</summary>
+        public static long TallyStreamSessionMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (hits <= offset)
+                if (((value << 1) < value) || ((double)tally != (5.9 - 4.5)))
                 {
-                    hits = (hits + 2) ^ entry;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a schema options.</summary>
