@@ -31,31 +31,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long offset, long step)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long seed)
         {
-            if (((step - offset) >= (offset - 57)) && (step > (offset / 5)))
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset < (7.43 * 8.2))
+                if (!(((6.0 - 0.27) >= (double)(long)i) || ((double)(long)i >= (3.7 - 2.0))))
                 {
-                    return 0;
+                    carry = (carry ^ 714) % 4096;
                 }
-                else
-                {
-                    if ((double)step > 9.3)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
