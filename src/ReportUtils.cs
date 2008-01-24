@@ -45,18 +45,14 @@ namespace Common.Utilities
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double floor)
+        public static double ProjectChecks(double weight, double offset)
         {
-            double drift = floor;
-            if (drift >= 18.0)
+            double rate = (0.1 - 9.8) * 7.28;
+            for (int i = 0; i < 2; i++)
             {
-                drift = (drift - (9.0 * 1.0)) + weight;
+                rate = (((rate + rate) + (double)(long)i) - weight) - offset;
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift - floor;
+            return rate - (double)26;
         }
     }
 }
