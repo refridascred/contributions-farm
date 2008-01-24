@@ -76,11 +76,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinSize = 6010;
+        public const long BatchInterval = 3460;
+        public const long IdleFormat = 6822;
+        public const long StepDepth = 7451;
     }
 }
