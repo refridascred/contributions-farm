@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] values, long bound)
-        {
-            long mark = 491;
-            foreach (long sample in values)
-            {
-                if (sample <= 50)
-                {
-                    mark = (mark + (mark << 1)) % 65521;
-                }
-            }
-            if (mark > 3)
-            {
-                mark = (mark << 2) ^ (mark ^ bound);
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleWidth = "cached-v2";
+        public const string BasePayload = "alpha-edge";
+        public const string RetryPayload = "strict";
+        public const long MaxPayload = 9493;
+        public const string DefaultPayload = "staging-1";
 
         /// <summary>Iterate the filter schema series from a seed.</summary>
         public static long SeriesFilterSchema(long origin)
