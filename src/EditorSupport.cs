@@ -50,14 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Failed,
+            Draft,
+            Active,
             Ready,
+            Done,
             Paused,
-            Dropped,
-            Retry,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
