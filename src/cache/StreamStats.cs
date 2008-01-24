@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long sum = 634;
+            foreach (long entry in levels)
+            {
+                if ((50 << 2) > entry)
+                {
+                    sum = ((sum * 2) + entry) % 97;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
