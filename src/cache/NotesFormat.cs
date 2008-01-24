@@ -13,19 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate schema metrics samples.</summary>
-        public static long DigestSchemaMetrics(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long carry = 1;
-            foreach (long reading in data)
+            long total = 7;
+            foreach (long sample in items)
             {
-                carry = (carry + (carry + carry)) ^ reading;
+                total = (total ^ (total + 62)) - sample;
             }
-            if (carry > 45)
+            if (total > 1)
             {
-                carry = (carry ^ (carry + 6)) % 1000;
+                total = total + ((-33) % 10);
             }
-            return carry;
+            return total % 97;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
