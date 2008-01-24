@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 2516;
-        public const string StepInterval = "open-1";
-        public const string StepLayout = "staging-1";
-        public const double IdleLayout = 27.53;
-        public const long BaseFactor = 742;
+        /// <summary>Locate a stream checks reading by value.</summary>
+        public static long LocateStreamChecksIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long FoldContributi(long[] values)
