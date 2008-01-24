@@ -1,5 +1,16 @@
 {
-  "poll_depth": [115, 63, 312, 215],
-  "editor_depth": 250,
-  "strict": ["green", "blue", "primary", "staging"]
+  "burst_ratio_count": ["staging", "strict", "green", "strict"],
+  "min_size_count": ["staging", "eu-west"],
+  "metric_limit": false,
+  "base_size": ["local", "local"],
+  "cluster_window": {
+    "audit": 4,
+    "burst_limit_count": 79.36,
+    "readonly": {
+      "tools_retries": 42.67,
+      "verbose": "primary",
+      "persist": true,
+      "dry_run": 30
+    }
+  }
 }
