@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Stale,
-            Synced,
-            Queued,
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
