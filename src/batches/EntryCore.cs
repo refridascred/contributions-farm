@@ -31,11 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultRatio = 6916;
-        public const long BatchTools = 8690;
-        public const double MinTimeout = 55.16;
-        public const long LimitTools = 3164;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Pending,
+            Done,
+            Failed,
+            Closed,
+            Active,
+        }
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
