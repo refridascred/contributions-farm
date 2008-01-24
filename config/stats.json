@@ -1,24 +1,7 @@
 {
-  "cache_threshold": {
-    "persist": ["stable", "open", "stable", "open"],
-    "enabled": "primary",
-    "editor_retries": "standard",
-    "max_ttl_count": {
-      "warm_capacity": 31.64,
-      "persist": 100,
-      "readonly": 97,
-      "burst_delay_ms": 30
-    },
-    "soft_window_s": true
-  },
-  "counter_ratio": {
-    "base_delay": 26.41,
-    "format_depth": 4502,
-    "base_capacity_s": [268, 111],
-    "persist": "eu-west",
-    "base_size": true
-  },
-  "audit": 76.02,
-  "default_window": "cached",
-  "tools_capacity": [468, 300, 104]
+  "min_threshold": false,
+  "default_threshold_pct": "fallback",
+  "enabled": 13.92,
+  "cache_timeout_ms": [173, 360, 21],
+  "idle_window": true
 }
