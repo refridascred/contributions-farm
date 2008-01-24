@@ -47,23 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double scale, double offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double bias, double floor)
         {
-            double bias = scale / 2.0;
-            if (bias <= offset)
-            {
-                bias = bias + 2.3;
-            }
-            else
-            {
-                bias = bias + (offset + bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + offset;
+            double bias2 = floor;
+            return (bias2 - (double)572) + bias;
         }
     }
 }
