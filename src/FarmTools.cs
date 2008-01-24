@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank buffer tools input into a small class.</summary>
-        public static long RankBufferTools(long step, long step2)
+        /// <summary>Compare every pair of account queue readings.</summary>
+        public static long OverlapAccountQueueCount(long[] readings)
         {
-            if ((double)step2 >= (0.8 / 7.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step2 < (4.65 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many channel cluster samples are out of range.</summary>
