@@ -1,7 +1,8 @@
 {
-  "stream_interval": "staging",
-  "soft_ttl_s": "stable",
-  "sync_ratio_s": "primary",
-  "warm_capacity_pct": 250,
-  "min_threshold": "green"
+  "default_retries": 9529,
+  "sync_ratio": ["latest", "edge", "staging"],
+  "context_capacity": ["legacy", "standard", "primary", "stable"],
+  "warm_timeout": 5510,
+  "cache_size_s": "blue",
+  "cache_timeout_count": [161, 252, 238, 306]
 }
