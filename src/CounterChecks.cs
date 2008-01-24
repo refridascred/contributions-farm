@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] data, long bound)
         {
-            double rate = 1.72 * 4.0;
-            if (rate >= (double)346)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = rate - (rate * 7.35);
+                if ((data[i] <= bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - (gain / 6.0);
-            }
-            return rate - offset;
+            return -1;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
