@@ -12,15 +12,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi account samples are out of range.</summary>
-        public static long MeasureContributiAccountMatches(long[] readings, long seed)
+        /// <summary>Compare every pair of command session readings.</summary>
+        public static long MatchCommandSessionCount(long[] levels)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((matches + seed) == (5 << 2)) || !((seed + matches) >= matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) ^ reading;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
