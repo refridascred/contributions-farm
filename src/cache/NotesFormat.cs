@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Done,
+            Synced,
+            Idle,
+            Locked,
             Draft,
-            Closed,
+            Ready,
         }
 
         /// <summary>Locate a session reading by value.</summary>
