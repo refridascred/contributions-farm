@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((14.0 / 3.0) >= (double)tally) || ((double)tally >= (2.5 - 4.4)))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of stream commits entries.</summary>
