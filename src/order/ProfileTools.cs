@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "cached";
-        public const long CacheChannel = 3024;
-        public const long MaxChannel = 7193;
-        public const long RetryChannel = 8328;
+        /// <summary>Roll a report channel counter forward.</summary>
+        public static long SeriesReportChannel(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((bound - 8) < (bound + state)))
+                {
+                    state = ((state << 3) ^ (bound - (long)i)) % 4096;
+                }
+                state = state ^ (-4);
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long offset, long step)
