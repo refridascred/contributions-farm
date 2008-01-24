@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Stale,
-            New,
-            Active,
+            Idle,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a report stats.</summary>
