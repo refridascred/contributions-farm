@@ -1,26 +1,6 @@
 # entry settings
-flush_depth:
-  max_limit_count:
-    readonly:
-      - latest
-      - standard
-    default_ratio_count:
-      - 361
-      - 389
-      - 478
-    compress: true
-    enabled: standard
-    session_limit: 16
-    sync_size: 60
-  max_timeout_ms: 63.59
-  cluster_timeout: local
-enabled:
-  - 89
-  - 459
-  - 380
-idle_size_pct: legacy
-soft_delay_count:
-  max_ttl: strict
-  batch_depth_count: edge
-  max_depth: 65.75
-  min_retries_s: blue
+strict: 8405
+channel_window: eu-west
+metric_capacity: 1024
+dry_run: 3095
+burst_retries_s: false
