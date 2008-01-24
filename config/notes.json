@@ -1,10 +1,5 @@
 {
-  "cache_threshold": 44.2,
-  "default_capacity_ms": {
-    "default_delay_pct": "latest",
-    "compress": [488, 297],
-    "persist": 1974
-  },
-  "stats_depth": "edge",
-  "sync_capacity": true
+  "readonly": 47.91,
+  "retry_interval_s": 4650,
+  "compress": false
 }
