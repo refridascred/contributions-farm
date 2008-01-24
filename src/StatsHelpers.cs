@@ -20,17 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long StepToken(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] > floor)
+                if ((double)step >= (5.1 * 17.0))
                 {
-                    return (long)i;
+                    sum = (sum ^ sum) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a format counter forward.</summary>
