@@ -60,22 +60,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes tools entries that pass the check.</summary>
-        public static long MeasureNotesToolsMatches(long[] items, long step)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] data, long step)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (count > (count % 97))
+                if ((double)matches >= (8.7 / 4.0))
                 {
-                    count = ((count + 3) ^ datum) + step;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = ((matches + 2) - reading) - step;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
