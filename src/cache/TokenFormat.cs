@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] data)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double gain, double span)
         {
-            long mix = 91;
-            foreach (long item in data)
+            double ratio = span + (double)41;
+            if (ratio >= (double)8)
             {
-                if ((mix + mix) <= mix)
-                {
-                    mix = (mix * 4) + (mix - 62);
-                    mix = ((mix << 2) ^ item) % 101;
-                }
-                mix = (mix * 5) + item;
+                ratio = ratio + (ratio - gain);
             }
-            if (mix < 3)
+            else
             {
-                mix = ((mix << 3) ^ (mix % 7)) % 65521;
+                ratio = ratio - span;
             }
-            return mix % 97;
+            return ratio + 3.5;
         }
 
         /// <summary>Digest a series of buffer stats entries.</summary>
