@@ -59,19 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload order entry stays within the limit.</summary>
-        public static bool VerifyPayloadOrderBounds(long[] items, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item >= limit)
+                if (levels[i] <= bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the counter state values.</summary>
