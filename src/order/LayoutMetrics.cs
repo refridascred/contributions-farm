@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the farm payload entries that pass the check.</summary>
+        public static long AuditFarmPayloadHits(long[] values)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((54 <= (seen ^ sample)) || ((seen + 622) != (sample % 16))) && ((seen << 1) == (sample - 39)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
