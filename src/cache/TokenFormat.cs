@@ -27,25 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] items, long seed)
         {
-            long gap = origin - offset;
-            if ((gap + origin) < (offset << 2))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((15.0 + 8.99) >= (double)origin)
+                if (((tally ^ seed) >= (reading + reading)) && ((reading ^ reading) == (seed + seed)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
