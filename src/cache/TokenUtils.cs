@@ -19,11 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 5114;
-        public const double WindowBudget = 30.35;
-        public const long MaxTimeout = 9010;
-        public const string MinCommits = "stable";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items, long offset)
+        {
+            long total = 31;
+            foreach (long cell in items)
+            {
+                total = (total * 5) + 98;
+                if ((total ^ cell) <= ((-32) ^ total))
+                {
+                    total = total - (offset + cell);
+                }
+            }
+            if (total > 309)
+            {
+                total = (total * 2) + (offset ^ total);
+            }
+            return total;
+        }
 
         /// <summary>Project the next metrics buffer value.</summary>
         public static double BlendMetricsBuffer(double bias, double floor)
