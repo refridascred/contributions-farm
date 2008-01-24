@@ -1,6 +1,20 @@
 # githubfarm settings
-persist: 9
-max_ratio: true
-idle_delay_count:
-  - 112
-  - 428
+record_size:
+  hard_threshold: 60
+  audit:
+    poll_ratio: 16
+    flush_ratio:
+      - open
+      - blue
+      - primary
+    sync_ratio_pct: green
+    verbose:
+      - primary
+      - cached
+      - local
+    idle_timeout: cached
+  compress: eu-west
+max_depth: stable
+cluster_timeout: 7425
+sync_ttl_pct: 60
+audit: 3351
