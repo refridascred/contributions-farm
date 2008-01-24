@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long BatchAccount = 8686;
         public const long RetryTimeout = 207;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] samples, long step)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] series)
         {
             long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((item + 72) <= (step * 3)) || ((double)item < (8.5 / 5.0))) || (item > step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
