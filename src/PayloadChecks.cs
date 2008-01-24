@@ -39,22 +39,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cache entry samples.</summary>
-        public static long OverlapCacheEntryCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 1578;
+        public const long RetryRatio = 1652;
+        public const long LimitOrder = 5796;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteRange(long[] readings, long seed)
