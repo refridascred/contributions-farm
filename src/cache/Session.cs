@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "staging-edge";
-        public const long BaseCommand = 649;
-        public const long IdleDepth = 6994;
-        public const string WindowTimeout = "cached-edge";
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
+        {
+            Done,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Look up the position of a report channel sample.</summary>
         public static long LocateReportChannelIndex(long[] samples, long origin)
