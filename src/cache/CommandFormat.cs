@@ -33,17 +33,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
