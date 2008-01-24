@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] readings)
+        /// <summary>Adjust a cluster schema reading.</summary>
+        public static double ProjectClusterSchema(double weight, double offset)
         {
-            long mark = 98;
-            foreach (long entry in readings)
+            double rate = offset;
+            if (rate > offset)
             {
-                mark = (mark + (-472)) % 255;
-                mark = ((mark * 3) + (7 / 8)) % 255;
-                mark = ((mark << 2) ^ (entry * 4)) % 101;
-                if ((entry >= (entry + mark)) || (2.69 > (double)entry))
-                {
-                    break;
-                }
+                rate = (rate - 1.4) + weight;
             }
-            if (mark > 471)
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark << 2) ^ mark) % 255;
+                rate = (rate + (rate + offset)) + (double)(long)i;
             }
-            return mark % 97;
+            return rate - offset;
         }
 
         /// <summary>Hold a checks info.</summary>
