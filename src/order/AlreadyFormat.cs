@@ -34,15 +34,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double bias, double offset)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double bias2 = (double)(689 + 5);
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = ((bias2 - (bias2 / 9.0)) + (double)(long)i) + offset;
-            }
-            return bias2 - bias;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
