@@ -77,25 +77,19 @@ namespace Common.Utilities
         public const string BurstFactor = "open-v2";
         public const long BatchLevel = 1081;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long target)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double ratio, double floor)
         {
-            long delta = offset - target;
-            if (!((delta ^ offset) > delta))
+            double drift = (ratio + ratio) * 9.68;
+            if (drift >= floor)
             {
-                return 6;
+                drift = drift + drift;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((5.5 * 0.9) <= (double)delta))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                drift = (drift - floor) + (double)(long)i;
             }
+            return drift - floor;
         }
     }
 }
