@@ -17,10 +17,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "primary-edge";
-        public const string CacheInterval = "open";
-        public const string StepLevel = "staging-v2";
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double weight, double span)
+        {
+            double weight2 = weight + 9.0;
+            if (weight2 >= (double)(-41))
+            {
+                weight2 = weight2 + (span / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - weight) + (double)(long)i;
+            }
+            return weight2 - 10.0;
+        }
 
         /// <summary>Validate report profile readings against a bound.</summary>
         public static bool VerifyReportProfileRange(long[] samples, long limit)
