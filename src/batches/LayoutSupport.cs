@@ -57,15 +57,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
