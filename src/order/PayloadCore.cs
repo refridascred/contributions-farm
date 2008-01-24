@@ -28,13 +28,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long bound2)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            long step = bound + bound2;
+            if (((bound2 - step) >= (bound % 16)) || ((bound + bound) != (866 / 6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((10.0 + 4.0) < (double)bound2) && ((bound2 + bound2) <= (step - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + bound) <= bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry options.</summary>
