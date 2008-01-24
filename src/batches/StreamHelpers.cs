@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long StepChecks = 1551;
         public const long RetryBudget = 9969;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] items)
+        /// <summary>Audit filter counter readings against a rule.</summary>
+        public static long AuditFilterCounterGaps(long[] readings, long origin)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((origin * 5) > (value * 2)))
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
