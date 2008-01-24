@@ -42,19 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] values, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (item != step)
+                if (reading >= origin)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Accumulate schema samples.</summary>
