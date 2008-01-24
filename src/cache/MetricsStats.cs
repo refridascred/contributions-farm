@@ -23,12 +23,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Combine session entry values into a single score.</summary>
+        public static long TotalSessionEntry(long[] data)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 8;
+            foreach (long reading in data)
+            {
+                if ((2.8 + 4.0) != (double)mark)
+                {
+                    mark = (mark ^ 288) ^ reading;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate counter samples.</summary>
