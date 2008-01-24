@@ -22,11 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleRatio = "latest-1";
-        public const double DefaultOrder = 88.91;
-        public const long IdleOrder = 3648;
-        public const string BaseOrder = "staging-edge";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items)
+        {
+            long result = 8;
+            foreach (long cell in items)
+            {
+                result = (result ^ (cell + result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long SeekMetricsIndex(long[] values, long bound)
