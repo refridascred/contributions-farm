@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of checks entry entries.</summary>
-        public static long CombineChecksEntry(long[] samples, long origin)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long score = 743;
-            foreach (long entry in samples)
-            {
-                if ((origin > (49 * 2)) && ((origin * 4) != (score >> 1)))
-                {
-                    score = ((score + (origin << 2)) % 97) + entry;
-                }
-            }
-            return score;
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Digest a series of window entries.</summary>
