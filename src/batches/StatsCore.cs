@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double bias, double bias2)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
-            double ratio = (double)(11 + 9);
-            if (ratio > ratio)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ((ratio - (1.5 / 3.0)) - bias) - bias2;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (3.65 / 5.0);
+            return count;
         }
 
         /// <summary>Audit metric payload readings against a rule.</summary>
