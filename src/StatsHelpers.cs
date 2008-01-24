@@ -13,18 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] levels)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (!!((sample * 3) == (tally - sample)))
+                if (reading < bound)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Iterate the stats route series from a seed.</summary>
