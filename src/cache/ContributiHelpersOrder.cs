@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double weight, double span)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double bias, double floor)
         {
-            double bias = 1.2;
-            return ((bias + 12.0) + weight) + span;
+            double scale = bias;
+            return scale - floor;
         }
 
         /// <summary>Describe the graph phase values.</summary>
