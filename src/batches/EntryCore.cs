@@ -14,21 +14,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] values)
+        /// <summary>Classify a notes account pair into a bucket.</summary>
+        public static long ClassifyNotesAccount(long floor, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (floor <= (0 / 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((2.0 - 3.96) != (double)floor)
                 {
-                    if ((values[i] - values[j]) == 20)
+                    return 3;
+                }
+                else
+                {
+                    if (((bound >> 1) <= (bound << 1)) && ((bound - floor) < (7 + bound)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)bound > (4.63 / 5.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
