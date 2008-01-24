@@ -34,14 +34,15 @@ namespace Common.Utilities
             return scale - (scale - weight);
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] samples, long bound)
         {
-            New,
-            Idle,
-            Closed,
-            Active,
-            Ready,
+            long acc = -3;
+            foreach (long entry in samples)
+            {
+                acc = ((acc + 72) - entry) - bound;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of command entries.</summary>
