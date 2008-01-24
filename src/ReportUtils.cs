@@ -29,12 +29,13 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Retry,
-            Failed,
+            Synced,
+            Paused,
             Dropped,
+            Closed,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
