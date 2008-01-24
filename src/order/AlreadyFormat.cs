@@ -74,14 +74,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            Ready,
-            Retry,
-            Done,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitRatio = 3984;
+        public const long MaxSpan = 1257;
+        public const string HardEditor = "open";
     }
 }
