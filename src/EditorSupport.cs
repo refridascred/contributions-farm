@@ -23,18 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] values)
+        /// <summary>Adjust a format token reading.</summary>
+        public static double BlendFormatToken(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((5.9 - 3.49) <= (double)hits)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            double scale = bias;
+            return (scale - (bias - 1.7)) + offset;
         }
 
         /// <summary>Accumulate order layout samples.</summary>
