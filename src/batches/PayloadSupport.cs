@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinCount = 74.81;
+        public const double MinContext = 15.86;
+        public const long SoftContext = 3467;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmMatches(long[] items)
