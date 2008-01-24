@@ -56,13 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long seed)
         {
-            Draft,
-            Synced,
-            Locked,
-            Paused,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of already entries.</summary>
