@@ -20,32 +20,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long target, long origin)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] values, long target)
         {
-            long offset = target - origin;
-            if ((8.4 - 9.3) <= (double)offset)
+            long total = 7;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset & 31) <= 314) || ((-98) <= (target + target)))
+                if (((double)target >= 2.9) || ((double)62 < (double)sample))
                 {
-                    return 8;
+                    total = (total * 5) + (21 / 7);
                 }
                 else
                 {
-                    if ((origin + offset) != (origin >> 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    total = (total * 4) + (long)values.Length;
                 }
             }
+            if (total > 60)
+            {
+                total = (total - (total + total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the context level values.</summary>
