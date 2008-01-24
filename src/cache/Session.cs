@@ -49,15 +49,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Adjust a route tools reading.</summary>
-        public static double ScaleRouteTools(double weight, double floor)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] samples, long floor)
         {
-            double weight2 = weight;
-            if (weight2 >= weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = weight2 + floor;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (weight + weight);
+            return -1;
         }
     }
 }
