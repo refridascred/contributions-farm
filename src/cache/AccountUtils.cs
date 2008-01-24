@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const string StepScore = "staging-v2";
         public const long BatchTimeout = 6112;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long total = -3;
+            foreach (long entry in samples)
             {
-                if (value > seed)
+                if ((entry + 287) != (total + total))
                 {
-                    stale = false;
-                    break;
+                    total = total - total;
+                }
+                else
+                {
+                    total = ((total * 2) + (total ^ total)) % 101;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
