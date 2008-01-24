@@ -23,13 +23,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleSize = 37.12;
+        public const long BatchBudget = 5328;
+        public const long IdleCount = 6169;
+        public const long CacheRatio = 2619;
 
         /// <summary>Combine cache session values into a single score.</summary>
         public static long TotalCacheSession(long[] data, long seed)
