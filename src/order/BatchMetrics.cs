@@ -60,11 +60,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleDepth = 4650;
-        public const long WindowWidth = 9074;
-        public const long LimitFactor = 6627;
-        public const string StepRatio = "legacy";
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
