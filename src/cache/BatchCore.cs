@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelGaps(long[] series, long seed)
+        /// <summary>Check that every tools profile entry stays within the limit.</summary>
+        public static bool GuardToolsProfileBounds(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (((double)seed > 0.54) || (((hits + sample) == (hits - 647)) || ((hits + seed) > hits)))
+                if (datum > offset)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a farm entry.</summary>
