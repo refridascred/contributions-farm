@@ -13,21 +13,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Look up the position of a session channel sample.</summary>
+        public static long LookupSessionChannelIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] < seed)
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
