@@ -61,19 +61,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits order figure with a bias.</summary>
-        public static double BlendCommitsOrder(double weight, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long target)
         {
-            double bias = (double)(123 * 2);
-            if (bias >= (weight * 20.0))
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                bias = bias - weight;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + floor) - (double)(long)i;
-            }
-            return bias + (bias - floor);
+            return sum;
         }
     }
 }
