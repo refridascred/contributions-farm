@@ -48,19 +48,32 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long lane = step + seed;
+            if (seed >= (seed + step))
             {
-                if (((long)i ^ offset) > 567)
-                {
-                    total = ((total * 3) + (total ^ total)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                return 4;
             }
-            return total;
+            else
+            {
+                if ((double)lane >= (3.34 - 19.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step << 1) <= lane) && (1 <= (6 - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes info.</summary>
