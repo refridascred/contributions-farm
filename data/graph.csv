@@ -1,9 +1,6 @@
-id,score,owner
-1,blue,primary
-2,latest,468
-3,stable,stable
-4,621,80.03
-5,staging,888
-6,602,494
-7,802,strict
-8,staging,67.8
+id,region,count,level
+1,541,28,latest
+2,cached,551,stable
+3,332,strict,latest
+4,cached,695,open
+5,443,stable,eu-west
