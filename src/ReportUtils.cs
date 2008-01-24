@@ -63,18 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] values)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double drift = floor;
+            if (drift >= 18.0)
             {
-                if (!((4.65 - 0.6) < (double)seen))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                drift = (drift - (9.0 * 1.0)) + weight;
             }
-            return seen;
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift - floor;
         }
     }
 }
