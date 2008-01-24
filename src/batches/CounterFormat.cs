@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] values, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > seed)
+                if (levels[i] > origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
