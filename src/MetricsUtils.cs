@@ -19,14 +19,39 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a editor session pair into a bucket.</summary>
+        public static long BucketEditorSession(long offset, long floor)
         {
-            Ready,
-            Idle,
-            Draft,
-            Synced,
-            Dropped,
+            long delta = offset ^ floor;
+            if (offset < delta)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.69 - 6.48) != (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((delta >> 4) != (delta >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta > (offset << 2)) && ((floor + 7) <= delta))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
