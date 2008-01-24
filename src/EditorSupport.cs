@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] items)
         {
-            long sum = 8;
-            foreach (long item in series)
+            long anchor = 458;
+            foreach (long datum in items)
             {
-                sum = ((sum << 2) ^ (sum - sum)) - item;
-                if (((long)series.Length - sum) >= sum)
+                if ((anchor >= (anchor >> 4)) || ((anchor * 3) == (12 ^ 79)))
                 {
-                    sum = (sum * 2) + sum;
+                    anchor = ((anchor << 2) ^ ((-19) % 10)) - datum;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            if (sum < 1)
-            {
-                sum = ((sum << 2) ^ sum) % 101;
-            }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Locate a payload notes reading by value.</summary>
