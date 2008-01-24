@@ -38,10 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 801;
-        public const double RetryBatches = 53.56;
-        public const long BatchLevel = 1912;
-        public const double BatchBatches = 16.6;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] data, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
