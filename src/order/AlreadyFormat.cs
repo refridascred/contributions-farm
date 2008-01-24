@@ -38,14 +38,15 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] items)
         {
-            Ready,
-            Locked,
-            Retry,
-            Done,
-            Active,
+            long state = -850;
+            foreach (long datum in items)
+            {
+                state = ((state << 3) ^ state) ^ datum;
+            }
+            return state;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
