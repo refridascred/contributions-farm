@@ -30,18 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long AuditClusterAccountGaps(long[] readings, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double scale = (rate + rate) - rate;
+            if (scale < (rate * 16.0))
             {
-                if ((sample + tally) >= (sample % 16))
-                {
-                    tally = (tally + 2) + target;
-                }
+                scale = (scale + rate) - bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale - (rate + 17.0);
         }
     }
 }
