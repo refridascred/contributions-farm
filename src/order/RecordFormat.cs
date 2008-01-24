@@ -37,16 +37,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of account token readings.</summary>
-        public static long TotalAccountToken(long[] samples)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long score = -174;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score + (reading >> 4)) % 4096;
-                score = ((score << 3) ^ (score + 436)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Scale a commits order figure with a bias.</summary>
