@@ -19,24 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long step, long offset)
+        /// <summary>Check that every route session entry stays within the limit.</summary>
+        public static bool ValidateRouteSessionLimits(long[] data, long origin)
         {
-            if ((step & 1) >= (offset + offset))
+            bool found = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step / 4) >= (step << 2))
+                if (cell < origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
