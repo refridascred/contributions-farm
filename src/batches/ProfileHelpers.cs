@@ -51,26 +51,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long origin)
         {
-            long mark = -4;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < (mark + 7))
+                if (values[i] >= origin)
                 {
-                    mark = mark + (sample ^ sample);
-                }
-                if ((double)mark <= (2.4 + 3.2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark << 3) ^ ((long)data.Length >> 1);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
