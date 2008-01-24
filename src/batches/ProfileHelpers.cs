@@ -73,11 +73,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] levels, long origin)
         {
-            double rate = gain + (floor / 7.0);
-            return rate + 3.4;
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
