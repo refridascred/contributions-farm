@@ -1,5 +1,7 @@
 {
-  "base_interval_pct": ["primary", "standard"],
-  "poll_window": 50.82,
-  "batch_ttl": 20.43
+  "poll_ratio": 47.91,
+  "flush_timeout_s": ["staging", "staging", "green", "strict"],
+  "cache_capacity_ms": 60,
+  "persist": [414, 364, 296, 74],
+  "report_ratio": "open"
 }
