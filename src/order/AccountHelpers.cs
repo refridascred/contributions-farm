@@ -104,18 +104,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading + reading) != (matches % 10))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Idle,
+            Draft,
+            Dropped,
+            Synced,
         }
     }
 }
