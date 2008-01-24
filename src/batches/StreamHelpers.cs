@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 2663;
-        public const long StepChecks = 1551;
-        public const long RetryBudget = 9969;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit filter counter readings against a rule.</summary>
         public static long AuditFilterCounterGaps(long[] readings, long origin)
