@@ -20,14 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Draft,
+            Idle,
+            Done,
             Pending,
-            Stale,
-            Closed,
-            New,
+            Dropped,
         }
 
         /// <summary>Accumulate stats samples.</summary>
