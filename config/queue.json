@@ -1,14 +1,8 @@
 {
-  "verbose": {
-    "verbose": true,
-    "persist": [350, 498, 287],
-    "soft_ratio_s": 5550,
-    "idle_interval_pct": "cached",
-    "cache_ttl_ms": true
-  },
-  "hard_ttl": "staging",
-  "token_threshold": 74.2,
-  "base_timeout_pct": false,
-  "default_threshold": "blue",
-  "cache_threshold_pct": 6941
+  "soft_capacity_ms": true,
+  "verbose": 48,
+  "idle_delay": [332, 174],
+  "format_ttl": 92.57,
+  "idle_delay_pct": "eu-west",
+  "retry_depth_s": true
 }
