@@ -1,29 +1,22 @@
 # support settings
-contributi_delay: legacy
-already_size: open
-cache_timeout: 500
-flush_ratio:
-  verbose: legacy
-  strict: 30
-  soft_window: false
-  cache_window_pct:
-    - 115
-    - 242
-    - 469
-    - 303
-  max_capacity:
-    buffer_size: 42.57
-    farm_delay: blue
-    flush_depth: staging
-    persist: true
-retry_interval_pct:
-  warm_window:
-    min_retries: 500
-    sync_timeout: false
-    max_ratio_pct: 8466
-    buffer_retries: blue
-    batch_size_s: 250
-  contributi_interval: false
-  persist:
-    - 441
-    - 157
+poll_size:
+  hard_interval: 78.48
+  soft_window_ms: latest
+  min_threshold: 88.13
+  batches_depth:
+    - local
+    - fallback
+    - green
+    - local
+  dry_run: 97.72
+  batch_size_s: open
+batch_window: true
+retry_delay_s:
+  - 154
+  - 92
+  - 75
+base_ttl:
+  - 38
+  - 481
+  - 257
+  - 72
