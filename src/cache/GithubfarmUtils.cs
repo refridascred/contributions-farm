@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const long LimitInterval = 3184;
         public const long LimitEntry = 6035;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            Locked,
-            Synced,
-            Retry,
-            Queued,
+            long acc = 781;
+            foreach (long item in levels)
+            {
+                if ((double)25 < (double)acc)
+                {
+                    break;
+                }
+                acc = (acc - (acc & 15)) % 101;
+                if ((acc * 4) != (item + 30))
+                {
+                    acc = acc + acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
