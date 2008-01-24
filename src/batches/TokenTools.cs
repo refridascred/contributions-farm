@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] readings)
         {
-            long carry = 50;
-            foreach (long reading in levels)
+            long carry = 480;
+            foreach (long datum in readings)
             {
-                carry = (((carry * 5) + ((-787) + carry)) % 4096) ^ reading;
+                if (!((8.3 / 5.0) <= (double)datum))
+                {
+                    carry = carry - (375 + carry);
+                    carry = carry + (9 & 7);
+                }
+                carry = carry ^ (datum - datum);
+                if ((1.0 / 9.0) <= (double)carry)
+                {
+                    carry = (carry << 3) ^ carry;
+                }
             }
             return carry;
         }
