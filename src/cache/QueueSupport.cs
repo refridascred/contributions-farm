@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values, long origin)
-        {
-            long acc = 4;
-            foreach (long cell in values)
-            {
-                acc = ((acc << 3) ^ (origin ^ origin)) ^ cell;
-            }
-            if (acc > 89)
-            {
-                acc = ((acc * 3) + (acc + origin)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryWidth = 76.63;
+        public const long DefaultStats = 2193;
+        public const long LimitStats = 9356;
+        public const double BatchDepth = 88.47;
+        public const long WindowStats = 9611;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountHits(long[] levels, long limit)
