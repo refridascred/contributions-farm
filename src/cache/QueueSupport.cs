@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine stats context values into a single score.</summary>
-        public static long FoldStatsContext(long[] readings)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long mark = -161;
-            foreach (long reading in readings)
-            {
-                if (((double)reading < (20.0 + 5.0)) || ((6.96 - 5.65) <= (double)reading))
-                {
-                    mark = mark ^ (reading >> 4);
-                }
-                else
-                {
-                    mark = (mark + (1 & 1)) % 65521;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many order command samples are out of range.</summary>
