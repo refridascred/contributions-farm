@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] readings)
+        /// <summary>Look up the position of a payload metric sample.</summary>
+        public static long SeekPayloadMetricIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry + seen) == (entry + entry))
+                if (values[i] < floor)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
