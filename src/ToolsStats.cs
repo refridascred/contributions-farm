@@ -47,11 +47,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinDepth = "fallback-v2";
-        public const string LimitLevel = "fallback-v2";
-        public const string CacheTimeout = "alpha-1";
-        public const long BaseNotes = 7284;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowScore = 498;
+        public const string StepRatio = "stable-edge";
+        public const string IdleCount = "legacy-1";
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] values)
