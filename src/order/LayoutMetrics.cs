@@ -61,11 +61,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "staging";
-        public const string BatchFactor = "local";
-        public const long StepSchema = 8981;
-        public const long IdleSchema = 8814;
-        public const double BurstFactor = 9.36;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long floor2)
+        {
+            if ((double)floor2 >= (1.0 * 13.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor - 57) < floor2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
