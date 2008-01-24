@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 7535;
-        public const string SoftFactor = "legacy-v2";
-        public const long IdleBudget = 8151;
-        public const long CacheToken = 4154;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] series)
+        {
+            long result = 849;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result - (result + (long)i)) % 101) - value;
+                }
+                result = result ^ (49 - result);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinWidth = 9925;
