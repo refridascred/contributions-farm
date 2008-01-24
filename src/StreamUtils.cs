@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const double IdleLayout = 27.53;
         public const long BaseFactor = 742;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values)
         {
-            Synced,
-            Draft,
-            Failed,
-            New,
-            Done,
+            long mark = 74;
+            foreach (long reading in values)
+            {
+                mark = ((mark << 2) ^ (38 ^ reading)) % 97;
+            }
+            if (mark > 3)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
