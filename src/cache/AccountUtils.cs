@@ -31,18 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsMatches(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long total = 7;
+            foreach (long entry in levels)
             {
-                if ((double)item < 11.0)
-                {
-                    matches = matches + 1;
-                }
+                total = ((total ^ (entry ^ entry)) % 1000) - origin;
+                total = (total ^ total) % 1000;
+                total = ((total << 3) ^ (7 + entry)) % 4096;
             }
-            return matches;
+            if (total < 253)
+            {
+                total = ((total * 4) + total) % 101;
+            }
+            return total;
         }
     }
 }
