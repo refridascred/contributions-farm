@@ -20,20 +20,10 @@ namespace Common.Utilities
             return weight + (weight * 19.0);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] items, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstGithubfarm = "strict-v2";
+        public const double BatchGithubfarm = 21.52;
+        public const double StepGithubfarm = 2.23;
 
         /// <summary>Iterate the stats route series from a seed.</summary>
         public static long StepStatsRoute(long floor)
