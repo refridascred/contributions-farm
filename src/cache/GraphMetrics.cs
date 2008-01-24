@@ -46,12 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 9513;
-        public const long BurstSpan = 9505;
-        public const string BurstBatches = "fallback-edge";
-        public const long BatchDepth = 6453;
-        public const double LimitTimeout = 53.46;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardInterval = 7539;
+        public const long MaxDepth = 5835;
+        public const long CacheScore = 1389;
+        public const long BurstDepth = 3129;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double scale, double span)
