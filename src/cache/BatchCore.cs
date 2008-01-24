@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] readings, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 3610;
+        public const long HardSpan = 5333;
+        public const long IdleSize = 3420;
+        public const long MaxMetrics = 6372;
+        public const long HardMetrics = 5067;
     }
 }
