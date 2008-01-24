@@ -13,18 +13,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)sample >= (double)tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
