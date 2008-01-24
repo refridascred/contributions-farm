@@ -29,15 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double ratio, double floor)
         {
-            double bias = span;
-            for (int i = 0; i < 9; i++)
+            double mean = (ratio - floor) - (ratio * 8.89);
+            if (mean >= floor)
             {
-                bias = (bias - 2.5) + (double)(long)i;
+                mean = mean - (double)740;
             }
-            return bias + (gain / 5.0);
+            return mean - (floor / 5.0);
         }
     }
 }
