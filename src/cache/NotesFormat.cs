@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of farm githubfarm entries.</summary>
-        public static long TallyFarmGithubfarm(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long target)
         {
-            long sum = 665;
-            foreach (long value in items)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (((4.1 * 10.0) < (double)value) || ((value - value) != (sum + 642)))
-                {
-                    sum = sum + (sum ^ 779);
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
