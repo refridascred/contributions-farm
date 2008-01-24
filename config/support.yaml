@@ -1,5 +1,8 @@
 # support settings
-min_size_pct: blue
-cache_ttl: edge
-dry_run: 30
-account_ratio: false
+entry_limit:
+  - 329
+  - 364
+  - 441
+cluster_limit: false
+idle_interval: eu-west
+token_size: 82
