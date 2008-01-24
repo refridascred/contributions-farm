@@ -1,19 +1,21 @@
 # entry settings
-cache_depth_ms:
-  compress: 18.04
-  persist: 3.39
-  warm_interval: eu-west
-  batch_capacity:
-    - 42
-    - 105
-session_ttl: standard
-commits_ratio: fallback
-batch_window:
-  poll_size: true
-  context_capacity: green
-  retry_ttl_pct: 3972
-  strict: 28
-batch_interval_s:
-  - standard
-  - legacy
-  - edge
+persist: 500
+cache_limit_pct: fallback
+default_window_count:
+  retry_limit_s: green
+  soft_delay_count: primary
+  batch_ttl_s: primary
+  min_ttl_count:
+    - edge
+    - local
+    - legacy
+    - standard
+  readonly:
+    - 46
+    - 392
+    - 94
+    - 123
+  max_window: 7446
+soft_interval_s: open
+commits_delay: 57.14
+base_ttl_s: standard
