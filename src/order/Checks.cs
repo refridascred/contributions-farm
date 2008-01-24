@@ -22,10 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryStats = "legacy-edge";
-        public const long RetryDepth = 7170;
-        public const double BaseStats = 36.47;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Retry,
+            Failed,
+            Synced,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long DefaultBudget = 6157;
