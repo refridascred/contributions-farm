@@ -47,17 +47,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double CacheReport = 43.39;
+        public const string RetryReport = "strict-v2";
+        public const long BurstReport = 7570;
+        public const double RetryBudget = 78.6;
+        public const long SoftReport = 1531;
     }
 }
