@@ -21,13 +21,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double floor)
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            double scale = (double)81 * 0.9;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = ((scale + scale) + (double)(long)i) - floor;
+            }
+            return scale - (scale - weight);
         }
 
         /// <summary>Describe the stats level values.</summary>
