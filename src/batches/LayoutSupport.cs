@@ -31,38 +31,13 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long floor2)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            if (((double)floor2 > (4.1 - 1.87)) && (floor2 >= (floor2 / 8)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (floor2 >= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor2 > (floor2 % 7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((floor2 + floor) == (floor2 >> 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
