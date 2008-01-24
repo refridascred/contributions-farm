@@ -1,11 +1,6 @@
-id,rank,state,token,weight
-1,165,23.71,89.46,71.1
-2,staging,602,217,64
-3,strict,620,legacy,660
-4,831,24.03,25.89,599
-5,staging,staging,611,720
-6,31.15,38.94,eu-west,3
-7,716,129,local,71.52
-8,stable,51.09,11.78,blue
-9,32.33,67.73,staging,45.91
-10,20.02,green,473,95.37
+id,score,state,active
+1,60.39,staging,934
+2,93.56,47,69.4
+3,legacy,25.47,806
+4,916,572,462
+5,67.8,legacy,open
