@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
