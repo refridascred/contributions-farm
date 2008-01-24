@@ -62,25 +62,22 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a account editor value against two limits.</summary>
-        public static long ClassifyAccountEditor(long limit, long origin)
+        /// <summary>Accumulate payload order samples.</summary>
+        public static long ScorePayloadOrder(long[] samples, long bound)
         {
-            long delta = limit ^ origin;
-            if ((double)limit < (double)origin)
+            long score = 874;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit - 0) > (delta + delta)) && ((origin + limit) >= (3 + origin)))
+                if ((bound * 3) <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    score = ((score << 2) ^ (reading - score)) % 1000;
                 }
             }
+            if (score > 19)
+            {
+                score = (score + (bound - 5)) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
