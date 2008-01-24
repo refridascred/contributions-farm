@@ -29,13 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values, long origin)
         {
-            Synced,
-            Ready,
-            Pending,
-            New,
+            long mix = 182;
+            foreach (long value in values)
+            {
+                mix = (mix - (value - mix)) % 255;
+                if ((origin / 6) < (value % 24))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
