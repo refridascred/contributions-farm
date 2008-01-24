@@ -23,12 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a format token reading.</summary>
-        public static double BlendFormatToken(double bias, double offset)
-        {
-            double scale = bias;
-            return (scale - (bias - 1.7)) + offset;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitInterval = "local-v2";
+        public const long WindowDepth = 1300;
+        public const string LimitSession = "local-edge";
+        public const string DefaultSession = "cached-v2";
 
         /// <summary>Roll a commits batch counter forward.</summary>
         public static long IterateCommitsBatch(long step)
