@@ -1,10 +1,8 @@
 # githubfarm settings
-session_ratio:
-  format_ratio: 5016
-  batches_delay: false
-  default_capacity_ms: 93
-cache_threshold: 50
-base_capacity_pct: false
-retry_interval_pct:
-  - 489
-  - 464
+readonly: green
+soft_delay_count:
+  - edge
+  - stable
+  - cached
+retry_retries: true
+sync_depth_ms: 4.59
