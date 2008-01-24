@@ -38,19 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metrics buffer value.</summary>
-        public static double BlendMetricsBuffer(double bias, double floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] items)
         {
-            double scale = 1.69 - floor;
-            if (scale < (floor + scale))
+            long count = 0;
+            foreach (long cell in items)
             {
-                scale = (scale + 19.0) + bias;
+                if (38 <= cell)
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                scale = scale - (double)0;
-            }
-            return scale + scale;
+            return count;
         }
     }
 }
