@@ -19,19 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] samples, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Combine format values into a single score.</summary>
