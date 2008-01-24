@@ -73,12 +73,25 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long offset, long step)
         {
-            public bool Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            long gap = offset - step;
+            if ((gap >= step) || ((double)step <= (double)gap))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step ^ gap) > offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
