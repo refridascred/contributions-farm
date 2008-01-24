@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
