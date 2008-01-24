@@ -33,22 +33,30 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank counter token input into a small class.</summary>
-        public static long GradeCounterToken(long origin, long target)
+        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
+        public static long BucketGithubfarmSupport(long seed, long step)
         {
-            if (target > (origin ^ origin))
+            long edge = seed - step;
+            if ((step - seed) != (27 - seed))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((origin * 2) >= origin)
+                if ((step + seed) > (edge << 1))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)step < (double)39)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
