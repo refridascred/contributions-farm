@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardFactor = 1098;
-        public const long RetryOrder = 610;
-        public const long BaseInterval = 9430;
-        public const double CacheFactor = 39.08;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] items)
+        {
+            long mix = 70;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (((mix << 2) ^ (mix >> 3)) % 1000) + (long)i;
+                }
+                mix = ((mix << 2) ^ cell) % 97;
+                if (((765 & 127) != ((-5) + mix)) && ((cell + cell) <= (cell >> 3)))
+                {
+                    mix = ((mix << 2) ^ cell) % 101;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] levels)
