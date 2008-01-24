@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] series, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading - reading) < reading)
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
