@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] values, long step)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long target)
         {
-            long acc = 8;
-            foreach (long item in values)
+            long slot = offset - target;
+            if ((8.68 + 9.92) > (double)target)
             {
-                acc = (((acc << 2) ^ (0 >> 1)) - item) - step;
+                return 8;
             }
-            return acc % 65521;
+            else
+            {
+                if ((double)slot != (8.18 / 4.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target - target) == (target + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
