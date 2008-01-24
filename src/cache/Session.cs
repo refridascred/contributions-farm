@@ -45,13 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next metrics token value from a seed.</summary>
+        public static long DeriveMetricsToken(long limit)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate stream samples.</summary>
