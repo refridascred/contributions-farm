@@ -59,10 +59,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 3830;
-        public const string BatchProfile = "open";
-        public const string SoftProfile = "staging-1";
-        public const string WindowDepth = "fallback";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
