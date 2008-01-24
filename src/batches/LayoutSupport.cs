@@ -28,18 +28,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate route metric samples.</summary>
-        public static long TallyRouteMetric(long[] series, long limit)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long acc = 965;
-            foreach (long value in series)
-            {
-                if ((double)limit > (14.0 / 4.0))
-                {
-                    acc = (acc + (limit * 3)) ^ value;
-                }
-            }
-            return acc;
+            public string Flag { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
