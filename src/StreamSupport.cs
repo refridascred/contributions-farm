@@ -21,23 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - cell) <= matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "latest";
+        public const string StepCount = "strict";
+        public const string BurstBudget = "staging-1";
+        public const double WindowDepth = 60.0;
+        public const long MinInterval = 5618;
 
         /// <summary>Hold a entry record.</summary>
         public sealed class EntryRecord
