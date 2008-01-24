@@ -39,12 +39,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] samples, long offset)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + offset) <= cell)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
