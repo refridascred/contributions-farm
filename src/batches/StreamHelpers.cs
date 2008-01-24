@@ -38,22 +38,35 @@ namespace Common.Utilities
         }
 
         /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long origin)
+        public static long GradeChannel(long floor, long step)
         {
-            long edge = target + origin;
-            if ((origin << 1) != (origin - target))
+            if ((floor ^ floor) != (step / 8))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((((-4) + target) <= (target & 255)) && ((double)edge != (9.36 / 4.0)))
+                if ((step ^ step) < (step + 9))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    if ((step <= ((-160) - floor)) || ((step & 63) >= (step + 40)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)floor == (double)74))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
