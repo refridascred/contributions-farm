@@ -1,10 +1,7 @@
-id,count,active,score,weight
-1,74,52.69,922,897
-2,419,652,64.65,local
-3,438,316,248,15.0
-4,fallback,152,77,primary
-5,primary,latest,65.65,fallback
-6,351,179,447,47.58
-7,559,23.88,387,433
-8,323,open,stable,752
-9,stable,53.36,49.38,152
+id,region,owner
+1,latest,887
+2,87.37,49
+3,green,1
+4,958,legacy
+5,76.32,strict
+6,823,722
