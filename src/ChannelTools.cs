@@ -20,33 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank stats channel input into a small class.</summary>
-        public static long GradeStatsChannel(long step, long offset)
-        {
-            long step2 = step ^ offset;
-            if ((step + 46) >= (step + step))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step2 - offset) < step) && ((double)step != (5.1 * 11.0)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step << 2) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinLevel = "primary";
+        public const long MinCount = 9974;
+        public const long WindowBatches = 7696;
+        public const long MinInterval = 5747;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long RankFormat(long floor, long bound)
