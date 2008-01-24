@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two format schema measurements.</summary>
-        public static double AdjustFormatSchema(double scale, double bias)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            double ratio = bias;
-            if (ratio > bias)
-            {
-                ratio = ratio + scale;
-            }
-            return ratio + (double)851;
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first checks route entry that matches the target.</summary>
