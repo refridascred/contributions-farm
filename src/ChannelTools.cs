@@ -48,18 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values, long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long floor, long floor2)
         {
-            long mix = -56;
-            foreach (long value in values)
+            long span = floor ^ floor2;
+            if ((floor2 + floor) >= (span * 4))
             {
-                if (mix > step)
+                return 7;
+            }
+            else
+            {
+                if ((span - span) >= (floor2 / 5))
                 {
-                    mix = (mix ^ (mix ^ step)) - value;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return mix;
         }
     }
 }
