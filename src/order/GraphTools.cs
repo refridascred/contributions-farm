@@ -86,14 +86,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] values, long floor)
         {
-            Draft,
-            Paused,
-            Dropped,
-            Ready,
-            Idle,
+            long carry = 8;
+            foreach (long reading in values)
+            {
+                if ((1 ^ reading) <= carry)
+                {
+                    carry = (((carry << 2) ^ (carry - reading)) % 97) - floor;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = carry ^ carry;
+            }
+            return carry;
         }
     }
 }
