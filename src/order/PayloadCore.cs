@@ -19,18 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples)
+        /// <summary>Locate a commits support reading by value.</summary>
+        public static long LookupCommitsSupportIndex(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((matches >> 3) < (matches + datum)) && ((59 ^ datum) <= (matches + datum))) || (((6.1 + 3.0) <= (double)matches) && (datum <= (datum - 84))))
+                if (data[i] == bound)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
