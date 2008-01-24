@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long target, long offset)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            long edge = target + offset;
-            if ((3.1 - 0.24) > (double)target)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.0 - 17.0) >= (double)edge)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge % 16) >= 863)
+                    if ((samples[i] ^ samples[j]) != 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((target * 2) >= edge))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many cache record samples are out of range.</summary>
