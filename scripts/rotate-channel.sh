@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-CHANNEL_LIMIT=154
-log "limit is ${CHANNEL_LIMIT}"
+for item in edge standard eu-west local; do
+    log "checking ${item}"
+done
