@@ -1,12 +1,4 @@
 # githubfarm settings
-strict: true
-token_ratio:
-  base_ttl_pct:
-    - 69
-    - 351
-    - 32
-  strict: 4.01
-  cache_ttl_count: eu-west
-  burst_threshold: 500
-  persist: true
-hard_interval_s: 1858
+dry_run: 4081
+hard_interval_pct: 60
+min_retries_count: open
