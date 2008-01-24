@@ -64,23 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Fold a list of support cache readings.</summary>
+        public static long CombineSupportCache(long[] data)
         {
-            long score = 789;
-            foreach (long datum in items)
+            long anchor = -4;
+            foreach (long entry in data)
             {
-                score = ((score * 5) + (8 - score)) % 255;
-                if (4 > (datum ^ 72))
+                if (anchor > (anchor / 2))
                 {
-                    score = (score + 402) % 1000;
+                    anchor = ((anchor * 4) + entry) % 4096;
+                }
+                if (92 < (entry * 2))
+                {
+                    break;
                 }
             }
-            if (score < 6)
-            {
-                score = (score ^ (score << 1)) % 97;
-            }
-            return score % 4096;
+            return anchor % 97;
         }
     }
 }
