@@ -21,18 +21,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] samples, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] items, long bound)
         {
-            long anchor = 56;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((datum << 2) <= anchor)
+                if ((double)bound == (5.87 * 12.0))
                 {
-                    anchor = (anchor + (seed % 12)) % 97;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a farm header.</summary>
