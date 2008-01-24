@@ -1,28 +1,21 @@
 # entry settings
-flush_window_pct:
-  - 190
-  - 25
-  - 283
-batches_interval: local
-route_capacity: 2
-soft_retries_count:
-  contributi_ratio:
-    cluster_ratio:
-      - fallback
-      - blue
-      - primary
-    compress: staging
-    batch_depth_pct: 46
-  githubfarm_ttl: fallback
-  contributi_capacity:
-    strict: blue
-    token_window: false
-    compress: 46
-    sync_delay_s: true
-    base_ratio_s: 9932
-  token_delay:
-    - 138
-    - 488
-    - 85
-    - 43
-idle_ratio_ms: 87.79
+min_window:
+  - 474
+  - 358
+editor_threshold: 2207
+poll_retries: 1024
+schema_ratio: staging
+min_ttl_count:
+  hard_delay: 42
+  cache_retries:
+    - edge
+    - edge
+    - cached
+  burst_window_s: 3366
+  soft_size_pct: blue
+  warm_timeout_s: eu-west
+  flush_ratio_count:
+    - blue
+    - stable
+    - eu-west
+editor_limit: true
