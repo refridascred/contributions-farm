@@ -47,13 +47,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long seed, long offset)
         {
-            Idle,
-            Done,
-            Retry,
-            New,
+            if (5 >= (offset - offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset - seed) < (seed - 637)) && ((seed >> 2) != (offset + 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((624 + offset) >= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset >= 0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
