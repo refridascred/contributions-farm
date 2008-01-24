@@ -23,18 +23,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstQueue = 1440;
+        public const long BatchCount = 9953;
+        public const long BatchRatio = 7577;
+        public const string BaseQueue = "primary-1";
 
         /// <summary>Combine cache session values into a single score.</summary>
         public static long TotalCacheSession(long[] data, long seed)
