@@ -12,21 +12,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Locked,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
