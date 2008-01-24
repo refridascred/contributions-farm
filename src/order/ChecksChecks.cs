@@ -20,17 +20,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] levels, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
