@@ -14,18 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordGaps(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordGaps(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((count ^ 62) >= datum)
+                if ((2.1 - 4.8) == (double)hits)
                 {
-                    count = count + 3;
+                    hits = ((hits + 1) ^ entry) - floor;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
