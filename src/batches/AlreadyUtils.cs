@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] readings, long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long anchor = 21;
+            foreach (long entry in series)
             {
-                if (!((reading ^ 3) > (reading >> 5)))
+                if ((entry & 7) < 532)
                 {
-                    seen = (seen + 2) + bound;
+                    anchor = anchor + (entry - anchor);
+                }
+                if (entry < step)
+                {
+                    break;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
