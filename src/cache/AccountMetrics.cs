@@ -24,31 +24,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long floor, long seed)
+        /// <summary>Iterate the batch record series from a seed.</summary>
+        public static long RollBatchRecord(long target)
         {
-            if ((floor + floor) > (seed << 3))
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < floor)
+                sum = sum ^ (target >> 3);
+                if (((-679) >> 3) > ((long)i % 60))
                 {
-                    return 7;
+                    sum = (sum + (984 + sum)) % 1000;
                 }
-                else
-                {
-                    if ((seed ^ 69) > floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Count the record graph entries that pass the check.</summary>
