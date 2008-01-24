@@ -38,14 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] values)
         {
-            Active,
-            Stale,
-            Closed,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (matches < (datum % 12))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up graph samples.</summary>
