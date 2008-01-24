@@ -49,10 +49,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 1193;
-        public const string RetryWindow = "local-1";
-        public const string DefaultWindow = "primary";
-        public const double LimitSize = 84.63;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheTimeout = 4677;
+        public const long DefaultTimeout = 2396;
+        public const long DefaultChecks = 3209;
+        public const long WindowChecks = 5449;
     }
 }
