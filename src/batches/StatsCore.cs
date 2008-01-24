@@ -65,15 +65,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] values, long step)
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
+            long sum = 6;
+            foreach (long cell in values)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if ((cell - cell) < (step * 2))
+                {
+                    sum = sum + (111 - sum);
+                }
             }
-            return score;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate filter samples.</summary>
