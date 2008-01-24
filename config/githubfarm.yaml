@@ -1,9 +1,10 @@
 # githubfarm settings
-sync_timeout_pct:
-  - 416
-  - 53
-hard_threshold: true
-commits_retries: 9680
-soft_threshold_count: 60
-default_capacity: 24.23
-readonly: false
+poll_delay: 22.53
+profile_ratio: eu-west
+readonly:
+  idle_limit_s: false
+  editor_retries: false
+  filter_retries: 60
+  compress: true
+  batch_threshold_count: stable
+cache_ttl: eu-west
