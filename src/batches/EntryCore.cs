@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry <= seed)
                 {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
