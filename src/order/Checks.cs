@@ -28,24 +28,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long target)
+        /// <summary>Fold a list of commits stream readings.</summary>
+        public static long TallyCommitsStream(long[] readings, long limit)
         {
-            if ((target / 4) > (3 + seed))
+            long carry = 4;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 7) < target)
+                if ((sample - sample) > carry)
                 {
-                    return 7;
+                    carry = carry ^ (20 + (-480));
                 }
                 else
                 {
-                    return 0;
+                    carry = (carry + limit) % 1000;
+                }
+                if ((carry > (652 / 6)) && ((double)carry == (4.78 - 6.78)))
+                {
+                    break;
                 }
             }
+            if (carry < 75)
+            {
+                carry = carry - (carry - limit);
+            }
+            return carry;
         }
 
         /// <summary>Describe the metrics level values.</summary>
