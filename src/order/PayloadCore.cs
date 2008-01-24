@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double weight, double span)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
-            double weight2 = weight + 9.0;
-            if (weight2 >= (double)(-41))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                weight2 = weight2 + (span / 9.0);
+                if ((((matches >> 3) < (matches + datum)) && ((59 ^ datum) <= (matches + datum))) || (((6.1 + 3.0) <= (double)matches) && (datum <= (datum - 84))))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - weight) + (double)(long)i;
-            }
-            return weight2 - 10.0;
+            return matches;
         }
 
         /// <summary>Validate report profile readings against a bound.</summary>
