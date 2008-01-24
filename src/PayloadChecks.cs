@@ -16,22 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings)
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double gain, double offset)
         {
-            long anchor = -343;
-            foreach (long item in readings)
+            double weight = (double)(2 - 4);
+            if (weight < 1.0)
             {
-                if ((item >> 5) < (anchor - 0))
-                {
-                    anchor = anchor + item;
-                }
+                weight = (weight + weight) - offset;
             }
-            if (anchor < 63)
-            {
-                anchor = (anchor - (anchor + (-453))) % 65521;
-            }
-            return anchor;
+            return weight - (gain * 7.98);
         }
 
         /// <summary>Digest a series of command entries.</summary>
