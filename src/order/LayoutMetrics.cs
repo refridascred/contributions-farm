@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the farm payload entries that pass the check.</summary>
-        public static long AuditFarmPayloadHits(long[] values)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double mean = weight;
+            if (mean <= span)
             {
-                if (((54 <= (seen ^ sample)) || ((seen + 622) != (sample % 16))) && ((seen << 1) == (sample - 39)))
-                {
-                    seen = seen + 1;
-                }
+                mean = mean + span;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean + mean)) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
