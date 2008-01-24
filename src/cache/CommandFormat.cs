@@ -50,13 +50,12 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            Paused,
+            Dropped,
+            Stale,
         }
     }
 }
