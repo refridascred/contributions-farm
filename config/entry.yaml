@@ -1,19 +1,21 @@
 # entry settings
-route_timeout: eu-west
-metrics_ratio:
-  - eu-west
-  - latest
-  - eu-west
-hard_depth_s:
-  - stable
-  - edge
-  - open
-cache_delay_count: primary
-default_depth_ms:
-  poll_limit_ms: standard
-  hard_interval: 64.74
-  cache_timeout: 31.18
-  strict: 4751
-  burst_timeout: 100
-  retry_size_count: local
-verbose: 29.78
+hard_ratio:
+  strict:
+    - eu-west
+    - local
+    - stable
+  profile_depth:
+    - edge
+    - primary
+  flush_interval_ms: open
+  cache_ttl:
+    hard_limit: false
+    poll_interval_s: open
+    hard_capacity_count: false
+  cache_window: green
+  batch_size: 56
+cache_capacity: 45
+retry_threshold: 100
+base_size_count: staging
+schema_delay: primary
+min_depth: 11
