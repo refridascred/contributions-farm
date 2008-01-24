@@ -69,11 +69,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "local";
-        public const string BaseWindow = "primary-1";
-        public const long BurstLevel = 5806;
-        public const long RetryLevel = 4175;
-        public const long IdleWindow = 2535;
+        /// <summary>Fold a list of context metrics readings.</summary>
+        public static long CombineContextMetrics(long[] samples)
+        {
+            long result = 58;
+            foreach (long value in samples)
+            {
+                result = result - value;
+                if ((value << 1) < value)
+                {
+                    result = ((result * 3) + (9 / 9)) % 4096;
+                }
+            }
+            if (result < 70)
+            {
+                result = (result * 5) + (result - result);
+            }
+            return result;
+        }
     }
 }
