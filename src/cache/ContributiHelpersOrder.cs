@@ -47,22 +47,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long offset)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long bound)
         {
-            if (((origin % 97) >= (origin + offset)) && ((offset >> 5) > origin))
+            long slot = seed ^ bound;
+            if ((bound * 5) != ((-89) ^ seed))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((offset - origin) != (9 + origin))
+                if (((694 ^ bound) <= bound) && ((double)slot < (2.07 + 0.68)))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    return 5;
                 }
             }
         }
