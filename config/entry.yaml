@@ -1,4 +1,10 @@
 # entry settings
-compress: 40
-batch_timeout_count: legacy
-session_depth: 32.82
+batch_capacity: standard
+commits_ratio:
+  persist: green
+  hard_timeout_ms: strict
+  schema_threshold: primary
+batch_interval: cached
+audit: staging
+report_ttl: 13.08
+compress: eu-west
