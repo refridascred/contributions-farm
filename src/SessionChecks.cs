@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double offset)
+        /// <summary>Validate route tools readings against a bound.</summary>
+        public static bool CheckRouteToolsRange(long[] levels, long floor)
         {
-            double scale = 4.19;
-            return (scale - offset) + gain;
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
