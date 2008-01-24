@@ -39,18 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((-75) + hits) > (long)levels.Length)
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
