@@ -1,8 +1,5 @@
 {
-  "layout_retries": 5448,
-  "burst_threshold": true,
-  "persist": false,
-  "warm_size_count": ["primary", "blue"],
-  "graph_capacity": false,
-  "base_retries_count": "legacy"
+  "audit": true,
+  "sync_capacity_count": 5.46,
+  "flush_interval": false
 }
