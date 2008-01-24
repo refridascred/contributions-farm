@@ -28,22 +28,17 @@ namespace Common.Utilities
         public const double BurstRoute = 60.95;
         public const long StepRoute = 2454;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterHits(long[] readings)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item <= (item % 100)) || (2 < (matches << 1)))
+                if (items[i] == floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
