@@ -49,11 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseTimeout = 1783;
-        public const long CacheFilter = 3119;
-        public const long LimitTimeout = 6362;
-        public const long DefaultCount = 9702;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((double)item > (9.23 / 4.0)) && (((offset + seen) >= seen) && ((4 / 2) < (item - 768))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] levels, long floor)
