@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long WindowInterval = 9283;
         public const long WindowChannel = 8056;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 5138;
-        public const long CacheSpan = 4027;
-        public const long CacheProfile = 6336;
-        public const long SoftCount = 268;
-        public const double BatchProfile = 78.42;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] series, long origin)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally << 2) == (479 + origin))
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a profile graph sample.</summary>
         public static long SeekProfileGraphIndex(long[] data, long floor)
