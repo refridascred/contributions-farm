@@ -1,16 +1,12 @@
 # githubfarm settings
-compress:
-  poll_ttl_s: true
-  schema_timeout: 250
-  buffer_limit: 100
-  burst_retries:
-    - 480
-    - 468
-    - 344
-  flush_window_s: 22.66
-tools_size: true
-dry_run:
-  - edge
-  - edge
-persist: open
-verbose: 4606
+min_depth_count: blue
+max_ratio_s: legacy
+warm_retries:
+  batch_limit:
+    - 24
+    - 77
+  enabled: strict
+  batch_window: 95
+  cache_delay: 92
+  max_size_pct: 5019
+  min_limit_pct: 99
