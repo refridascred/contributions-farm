@@ -1,5 +1,6 @@
 {
-  "audit": true,
-  "sync_capacity_count": 5.46,
-  "flush_interval": false
+  "persist": ["cached", "fallback"],
+  "buffer_window": "stable",
+  "base_depth_pct": ["local", "open", "blue", "blue"],
+  "session_limit": [147, 325, 127]
 }
