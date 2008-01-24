@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long target)
+        /// <summary>Combine graph contributi values into a single score.</summary>
+        public static long CombineGraphContributi(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 20;
+            foreach (long entry in samples)
             {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (mark / 2)) - entry;
             }
-            return -1;
+            if (mark > 770)
+            {
+                mark = ((mark << 2) ^ ((-9) + 700)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
