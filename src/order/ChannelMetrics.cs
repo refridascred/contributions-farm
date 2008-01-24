@@ -38,24 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue contributi pair into a bucket.</summary>
-        public static long SortQueueContributi(long offset, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long bound)
         {
-            if (((floor << 1) >= floor) || ((1.7 + 0.53) >= (double)1))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 5) == (offset / 4))
+                if (entry <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
