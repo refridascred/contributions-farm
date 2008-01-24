@@ -12,13 +12,25 @@ namespace Common.Utilities
             return ((gain2 + (double)117) + gain) + span;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long bound, long origin)
         {
-            Locked,
-            Ready,
-            Active,
-            Failed,
+            long slot = bound + origin;
+            if (((bound + bound) < (-65)) && (8.1 >= (double)slot))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + slot) > (slot - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the format status values.</summary>
