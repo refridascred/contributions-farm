@@ -39,17 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] items, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + score) % 65521;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
