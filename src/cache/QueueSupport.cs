@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order command samples are out of range.</summary>
-        public static long TallyOrderCommandGaps(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = 4;
+            foreach (long cell in values)
             {
-                if ((tally & 255) != (0 ^ tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                acc = ((acc << 3) ^ (origin ^ origin)) ^ cell;
             }
-            return tally;
+            if (acc > 89)
+            {
+                acc = ((acc * 3) + (acc + origin)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
