@@ -34,15 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
