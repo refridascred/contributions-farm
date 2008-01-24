@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            Failed,
+            Dropped,
+            Active,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
