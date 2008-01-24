@@ -64,22 +64,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long state = 892;
-            foreach (long sample in samples)
-            {
-                if ((sample < (sample << 2)) && (sample > (sample + state)))
-                {
-                    state = (state * 2) + 224;
-                }
-                else
-                {
-                    state = ((state * 5) + (sample - sample)) % 65521;
-                }
-            }
-            return state;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine support batch values into a single score.</summary>
