@@ -21,19 +21,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double gain, double floor)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long seed)
         {
-            double mean = gain;
-            if (mean < (mean + floor))
+            if ((target + target) < 15)
             {
-                mean = mean - (mean * 6.11);
+                return 0;
             }
             else
             {
-                mean = mean + (6.0 / 4.0);
+                if ((seed + 22) >= (target & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3.0 + 2.27) == (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target - seed) > (7 << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mean - gain;
         }
 
         /// <summary>Match up cache samples.</summary>
