@@ -39,10 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 6144;
-        public const long IdleRatio = 9890;
-        public const long CacheDepth = 7317;
-        public const double StepMetric = 8.8;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
