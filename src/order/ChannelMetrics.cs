@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((seen - entry) <= entry) && (((entry - (-626)) >= seen) || ((31 % 7) < (seen ^ seen))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 3597;
+        public const long SoftLevel = 714;
+        public const long LimitRatio = 6396;
 
         /// <summary>Measure how many tools stats samples are out of range.</summary>
         public static long CountToolsStatsMatches(long[] items)
