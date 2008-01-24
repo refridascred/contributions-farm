@@ -12,18 +12,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the already batches entries that pass the check.</summary>
-        public static long CountAlreadyBatchesMatches(long[] data, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor % 2) > floor)
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
                 {
-                    tally = (tally + 1) + cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Blend two record measurements.</summary>
