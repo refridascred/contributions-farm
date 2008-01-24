@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] levels, long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value >= (value << 3)) || ((value * 5) < seed))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
