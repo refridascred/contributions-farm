@@ -50,15 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Idle,
-            Queued,
-            Active,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 7630;
+        public const long RetrySize = 1702;
+        public const double BurstEditor = 80.0;
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long ClassifyEditor(long limit, long bound)
