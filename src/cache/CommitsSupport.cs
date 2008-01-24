@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] data, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (seen >= (seen - item))
-                {
-                    seen = (seen + 1) + step;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Retry,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
