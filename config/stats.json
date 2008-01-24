@@ -1,10 +1,8 @@
 {
-  "max_ttl_pct": [327, 483, 207, 495],
-  "enabled": {
-    "verbose": 60,
-    "window_ratio": 2.88,
-    "order_depth": false,
-    "batch_interval_s": "edge"
-  },
-  "sync_window_s": 250
+  "cache_ratio_pct": "eu-west",
+  "verbose": 91.19,
+  "default_ratio": "blue",
+  "persist": false,
+  "burst_capacity": 46.61,
+  "default_retries_ms": 250
 }
