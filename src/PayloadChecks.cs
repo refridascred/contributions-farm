@@ -28,12 +28,12 @@ namespace Common.Utilities
             return weight - (gain * 7.98);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleFactor = 24.05;
-        public const long BaseBatch = 854;
-        public const long DefaultBatch = 8806;
-        public const string RetryRatio = "primary-v2";
-        public const long BurstRatio = 1111;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryInterval = "alpha-v2";
+        public const long BurstInterval = 7942;
+        public const string MinCluster = "standard-v2";
+        public const long BaseFactor = 584;
+        public const long IdleScore = 6724;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double LimitChannel = 17.77;
