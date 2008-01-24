@@ -31,21 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Iterate the graph commits series from a seed.</summary>
+        public static long DeriveGraphCommits(long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((floor << 1) <= floor)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    acc = acc - 68;
-                    acc = (acc - (floor >> 2)) % 4096;
-                    continue;
+                    result = (result ^ seed) ^ (long)i2;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a command summary.</summary>
