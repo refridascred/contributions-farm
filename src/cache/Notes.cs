@@ -29,22 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order entry samples are out of range.</summary>
-        public static long CountOrderEntryOutliers(long[] readings)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally + value) < (tally << 2))
+                if (readings[i] < offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Project the next commits graph value.</summary>
