@@ -73,19 +73,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] levels, long origin)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long origin)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (value > origin)
+                acc = ((acc << 3) ^ (long)i) % 97;
+                if ((495 < ((long)i >> 4)) && ((double)origin < (15.0 - 0.83)))
                 {
-                    stale = false;
-                    break;
+                    acc = acc - (origin % 100);
+                    acc = (acc - (66 & 7)) % 101;
                 }
+                acc = acc + origin;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return stale;
+            return acc;
         }
     }
 }
