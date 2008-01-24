@@ -1,10 +1,10 @@
 # githubfarm settings
-metrics_window: 89.29
-sync_timeout_ms: 7301
-soft_delay: fallback
-window_timeout:
-  readonly: open
-  audit: 90
-  contributi_capacity: local
-  flush_delay_s: true
-max_limit: local
+session_ratio:
+  format_ratio: 5016
+  batches_delay: false
+  default_capacity_ms: 93
+cache_threshold: 50
+base_capacity_pct: false
+retry_interval_pct:
+  - 489
+  - 464
