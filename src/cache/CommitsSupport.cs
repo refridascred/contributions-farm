@@ -29,26 +29,17 @@ namespace Common.Utilities
         public const long MaxFactor = 7535;
         public const long BatchLevel = 3206;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] values)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long limit)
         {
-            long sum = 812;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum >> 4) != (sum << 2))
+                if ((data[i] == limit) && ((data[i] % 2) != 0))
                 {
-                    sum = (sum - (357 + value)) % 1000;
-                }
-                if ((value % 64) < (value - 367))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > (-803))
-            {
-                sum = sum + (sum * 5);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
