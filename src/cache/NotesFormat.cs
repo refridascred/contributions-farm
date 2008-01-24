@@ -22,11 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
