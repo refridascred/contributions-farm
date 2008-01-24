@@ -18,25 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long floor, long step)
-        {
-            if ((step ^ 45) >= (step ^ step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor < (9.6 - 6.7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5114;
+        public const double WindowBudget = 30.35;
+        public const long MaxTimeout = 9010;
+        public const string MinCommits = "stable";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MaxGraph = 56.06;
