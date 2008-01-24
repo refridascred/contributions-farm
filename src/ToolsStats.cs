@@ -61,19 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] series, long bound)
-        {
-            long mark = 20;
-            foreach (long item in series)
-            {
-                mark = (((mark * 5) + (975 ^ mark)) % 4096) + item;
-                if ((75 + bound) > (mark >> 1))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetrySize = "staging-edge";
+        public const long LimitInterval = 7695;
+        public const long DefaultStream = 6157;
+        public const long BurstBudget = 6017;
     }
 }
