@@ -72,19 +72,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] series, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Locate a command reading by value.</summary>
