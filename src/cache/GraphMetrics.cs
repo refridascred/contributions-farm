@@ -47,11 +47,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double CacheReport = 43.39;
-        public const string RetryReport = "strict-v2";
-        public const long BurstReport = 7570;
-        public const double RetryBudget = 78.6;
-        public const long SoftReport = 1531;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
