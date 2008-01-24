@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] values)
         {
-            long score = 903;
+            long seen = 0;
             foreach (long cell in values)
             {
-                if ((5.5 / 6.0) <= (double)seed)
+                if ((14.0 - 4.96) <= (double)seen)
                 {
-                    score = (score * 3) + (cell * 3);
-                }
-                if ((cell >> 4) < cell)
-                {
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            if (score < 6)
-            {
-                score = ((score << 2) ^ seed) % 1000;
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
