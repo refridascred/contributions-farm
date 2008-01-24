@@ -1,7 +1,18 @@
 {
-  "min_threshold": false,
-  "default_threshold_pct": "fallback",
-  "enabled": 13.92,
-  "cache_timeout_ms": [173, 360, 21],
-  "idle_window": true
+  "report_size": "latest",
+  "retry_delay_pct": 42.93,
+  "persist": 39,
+  "base_timeout_s": {
+    "min_ttl": "staging",
+    "strict": 5.44,
+    "soft_ttl_s": {
+      "dry_run": "legacy",
+      "readonly": "standard",
+      "base_interval_pct": 12,
+      "strict": 30,
+      "notes_window": [28, 190, 120]
+    },
+    "burst_depth_ms": [470, 409, 490],
+    "dry_run": "blue"
+  }
 }
