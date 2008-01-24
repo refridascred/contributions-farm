@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate cache notes samples.</summary>
-        public static long TotalCacheNotes(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelGaps(long[] series, long seed)
         {
-            long state = 4;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                state = ((state * 2) + (entry / 4)) % 255;
+                if (((double)seed > 0.54) || (((hits + sample) == (hits - 647)) || ((hits + seed) > hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
