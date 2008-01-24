@@ -39,32 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a githubfarm support pair into a bucket.</summary>
-        public static long BucketGithubfarmSupport(long seed, long step)
+        /// <summary>Combine cache session values into a single score.</summary>
+        public static long TotalCacheSession(long[] data, long seed)
         {
-            long edge = seed - step;
-            if ((step - seed) != (27 - seed))
+            long acc = 1;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + seed) > (edge << 1))
+                if (((item & 127) <= (item << 3)) && (item < (item - item)))
                 {
-                    return 2;
+                    acc = (acc * 4) + (seed * 4);
                 }
                 else
                 {
-                    if ((double)step < (double)39)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = (acc - 5) % 255;
                 }
             }
+            return acc;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
