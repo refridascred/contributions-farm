@@ -31,18 +31,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine account context values into a single score.</summary>
-        public static long DigestAccountContext(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long result = 43;
-            foreach (long datum in items)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (((18 + result) <= result) && ((double)datum <= 12.0))
+                if ((floor << 1) <= floor)
                 {
-                    result = result + datum;
+                    acc = acc - 68;
+                    acc = (acc - (floor >> 2)) % 4096;
+                    continue;
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return result % 4096;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
