@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 9890;
-        public const double RetryReport = 7.45;
-        public const long BurstReport = 456;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool CheckSessionBounds(long[] data, long origin)
