@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict open legacy; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=66
+CHANNEL_LIMIT=175
 log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
