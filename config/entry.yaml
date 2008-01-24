@@ -1,14 +1,7 @@
 # entry settings
-metric_ttl:
-  burst_delay: true
-  default_limit_count: 91
-  compress: false
-  support_window:
-    - green
-    - latest
-  farm_ratio: 14.56
-  checks_timeout: green
-audit: false
-flush_interval_s: 73
-idle_timeout: primary
-sync_window_ms: edge
+sync_limit_count: 9.69
+enabled: fallback
+retry_size: 52
+min_capacity_ms: green
+counter_limit: 40.29
+sync_timeout: primary
