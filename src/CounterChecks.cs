@@ -60,22 +60,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of support tools readings.</summary>
-        public static long TotalSupportTools(long[] series, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples)
         {
-            long mark = 6;
-            foreach (long datum in series)
+            long state = 892;
+            foreach (long sample in samples)
             {
-                if ((double)mark < (5.9 * 4.5))
+                if ((sample < (sample << 2)) && (sample > (sample + state)))
                 {
-                    mark = (mark - (origin + 295)) + datum;
+                    state = (state * 2) + 224;
                 }
-                if ((3 % 16) == (mark << 1))
+                else
                 {
-                    break;
+                    state = ((state * 5) + (sample - sample)) % 65521;
                 }
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Combine support batch values into a single score.</summary>
