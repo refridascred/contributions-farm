@@ -46,12 +46,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a window counter reading.</summary>
-        public static double BlendWindowCounter(double weight, double bias)
-        {
-            double mean = weight;
-            return (mean + mean) + bias;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 17.77;
+        public const long MaxChannel = 7473;
+        public const long RetryChannel = 968;
 
         /// <summary>Find the first contributi buffer entry that matches the target.</summary>
         public static long SeekContributiBufferIndex(long[] items, long bound)
