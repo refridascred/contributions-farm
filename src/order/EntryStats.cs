@@ -30,28 +30,18 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] data, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((((long)i % 16) != ((long)i % 64)) && ((long)i < (637 + mix)))
+                if (reading > (8 & 1))
                 {
-                    mix = (mix + (origin / 6)) % 4096;
+                    tally = (tally + 2) + offset;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix * 3) + mix) - (long)i2;
-                    mix = ((mix * 5) + (origin % 10)) % 97;
-                }
-                if (mix >= (94 - origin))
-                {
-                    mix = (mix * 5) + mix;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the entry level values.</summary>
