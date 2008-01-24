@@ -49,18 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the account commits entries that pass the check.</summary>
-        public static long TallyAccountCommitsGaps(long[] samples)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long mix = 269;
+            foreach (long reading in items)
             {
-                if (hits < (value + 68))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix * 5) + (mix + bound)) - reading;
             }
-            return hits;
+            if (mix < 1)
+            {
+                mix = (mix << 3) ^ bound;
+            }
+            return mix;
         }
     }
 }
