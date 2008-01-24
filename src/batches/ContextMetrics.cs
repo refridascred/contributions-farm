@@ -43,13 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Failed,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 3451;
+        public const long HardGraph = 2166;
+        public const long DefaultGraph = 8788;
+        public const long StepGraph = 3276;
+        public const long RetrySize = 1336;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double ProjectGraph(double bias, double bias2)
