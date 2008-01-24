@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] data, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= floor)
+                if (((carry - carry) >= carry) && (carry < seed))
                 {
-                    stale = false;
                     break;
                 }
+                else
+                {
+                    carry = carry ^ ((long)i << 1);
+                }
+                carry = carry ^ (33 & 3);
+                carry = (carry + (carry - carry)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Blend two context measurements.</summary>
