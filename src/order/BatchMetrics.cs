@@ -30,12 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] data, long bound)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of already readings.</summary>
