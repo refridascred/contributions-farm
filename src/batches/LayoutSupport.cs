@@ -17,24 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] readings, long seed)
         {
-            long carry = 409;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry + 141) < carry)
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
                 {
-                    carry = (((carry * 3) + origin) % 65521) + value;
-                    continue;
+                    return (long)i;
                 }
-                carry = carry ^ (carry - origin);
             }
-            if (carry > 267)
-            {
-                carry = ((carry << 3) ^ (carry + origin)) % 4096;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate route metric samples.</summary>
