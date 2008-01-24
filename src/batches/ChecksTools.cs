@@ -25,18 +25,22 @@ namespace Common.Utilities
             return drift - 6.8;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!((8.7 - 1.8) != (double)entry))
+                if ((940 + bound) >= (bound * 2))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of queue filter readings.</summary>
