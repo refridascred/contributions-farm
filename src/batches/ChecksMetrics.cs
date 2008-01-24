@@ -38,18 +38,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long MeasureSupportQueueOutliers(long[] readings, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 5;
+            foreach (long value in values)
             {
-                if (entry <= (offset - entry))
+                if (((-2) - value) >= (value << 2))
                 {
-                    count = count + 2;
+                    result = ((result * 4) + (3 << 2)) % 65521;
+                }
+                else
+                {
+                    result = (result + value) % 97;
+                }
+                if ((result >= (value << 3)) || ((value % 10) >= (8 >> 5)))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Measure how many record stream samples are out of range.</summary>
