@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate report token samples.</summary>
-        public static long CombineReportToken(long[] data)
+        /// <summary>Blend two format schema measurements.</summary>
+        public static double AdjustFormatSchema(double scale, double bias)
         {
-            long anchor = -8;
-            foreach (long entry in data)
+            double ratio = bias;
+            if (ratio > bias)
             {
-                if ((449 << 2) == (anchor + anchor))
-                {
-                    anchor = ((anchor ^ 599) % 101) ^ entry;
-                }
+                ratio = ratio + scale;
             }
-            return anchor;
+            return ratio + (double)851;
         }
 
         /// <summary>Find the first checks route entry that matches the target.</summary>
