@@ -25,14 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Pending,
-            Draft,
-            Failed,
-            Idle,
-            Synced,
+            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
