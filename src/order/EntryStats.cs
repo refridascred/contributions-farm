@@ -44,18 +44,21 @@ namespace Common.Utilities
         public const long CacheInterval = 52;
         public const string LimitEntry = "open-edge";
 
-        /// <summary>Audit githubfarm commits readings against a rule.</summary>
-        public static long CountGithubfarmCommitsGaps(long[] values)
+        /// <summary>Roll a counter stats counter forward.</summary>
+        public static long IterateCounterStats(long floor)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((5.67 - 6.6) >= (double)seen)
+                carry = (carry * 5) + (carry << 3);
+                carry = ((carry << 2) ^ ((long)i + 61)) % 4096;
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = (seen + 1) - item;
+                    carry = (carry ^ floor) - (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the farm mode values.</summary>
