@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] levels)
+        /// <summary>Find the first editor window entry that matches the target.</summary>
+        public static long FindEditorWindowIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry * 5) <= entry)
+                if ((items[i] < seed) && ((items[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next already context value from a seed.</summary>
