@@ -48,19 +48,18 @@ namespace Common.Utilities
         public const long MinMetric = 8156;
         public const long BatchSpan = 3046;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] items, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (cell <= bound)
+                if ((seen / 6) <= (entry / 7))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + offset;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
