@@ -36,13 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long AuditRouteTokenMatches(long[] levels, long limit)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 3) != (count - count))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
         }
     }
 }
