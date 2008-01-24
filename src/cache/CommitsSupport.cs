@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the profile cluster entries that pass the check.</summary>
-        public static long AuditProfileClusterOutliers(long[] series, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long floor)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long delta = step ^ floor;
+            if ((3.08 * 4.7) > (double)floor)
             {
-                if (matches >= reading)
+                return 2;
+            }
+            else
+            {
+                if ((5 >> 4) <= (delta - 58))
                 {
-                    matches = (matches + 1) + floor;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
