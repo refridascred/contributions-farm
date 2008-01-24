@@ -39,13 +39,10 @@ namespace Common.Utilities
         public const long BaseBudget = 6371;
         public const long IdleSchema = 243;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            New,
-            Idle,
-            Active,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 801;
+        public const double RetryBatches = 53.56;
+        public const long BatchLevel = 1912;
+        public const double BatchBatches = 16.6;
     }
 }
