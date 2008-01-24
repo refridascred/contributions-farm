@@ -1,8 +1,7 @@
 # support settings
-batch_timeout_ms: false
-default_depth_count: staging
-graph_interval:
-  - open
-  - cached
-  - cached
-strict: 1024
+soft_ttl_ms:
+  - 74
+  - 175
+poll_limit_s: cached
+hard_retries_s: primary
+strict: 250
