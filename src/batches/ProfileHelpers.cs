@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
