@@ -30,19 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] series, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (sample != origin)
+                if (entry < offset)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
