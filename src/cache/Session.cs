@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "legacy";
-        public const double HardFilter = 11.17;
-        public const double BurstScore = 62.83;
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double offset)
+        {
+            double load = (double)((-881) / 5);
+            if (load > (2.0 + offset))
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + bias;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long step, long limit)
