@@ -80,14 +80,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] data, long bound)
         {
-            Ready,
-            Active,
-            Closed,
-            Idle,
-            Failed,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
