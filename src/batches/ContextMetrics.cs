@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowInterval = 9738;
-        public const long HardSession = 6904;
-        public const double RetrySession = 80.12;
-        public const long WindowSession = 1619;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (!((hits & 255) == (5 / 2)) && (reading > (hits + reading)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long step, long offset)
