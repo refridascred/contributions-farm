@@ -34,18 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit context entry readings against a rule.</summary>
-        public static long TallyContextEntryHits(long[] series, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((cell % 60) != (matches - target))
+                if (((datum >= 11) && ((tally % 64) > (tally / 7))) || ((double)datum <= (3.8 - 7.78)))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 2) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
