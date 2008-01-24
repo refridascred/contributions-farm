@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] data, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((data[i] > origin) && ((data[i] % 3) != 0))
+                if ((double)(long)series.Length > (double)offset)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of metrics window readings.</summary>
