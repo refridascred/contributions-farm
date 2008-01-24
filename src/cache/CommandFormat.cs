@@ -46,22 +46,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] items, long limit)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)count < (double)85)
-                {
-                    count = ((count + 3) - datum) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 53.01;
+        public const long WindowCounter = 5803;
+        public const long StepCounter = 2991;
     }
 }
