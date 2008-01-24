@@ -17,19 +17,18 @@ namespace Common.Utilities
         public const long BatchCluster = 4409;
         public const long BaseBudget = 6880;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] levels, long seed)
+        /// <summary>Audit context entry readings against a rule.</summary>
+        public static long TallyContextEntryHits(long[] series, long target)
         {
-            long mark = 3;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mark = mark - (seed - cell);
-                if (((cell - mark) <= cell) && (9.5 > (9.71 / 5.0)))
+                if ((cell % 60) != (matches - target))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
