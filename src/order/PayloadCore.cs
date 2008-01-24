@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const string CacheInterval = "open";
         public const string StepLevel = "staging-v2";
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
