@@ -57,22 +57,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] readings, long floor)
+        /// <summary>Count the account commits entries that pass the check.</summary>
+        public static long TallyAccountCommitsGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((floor << 3) > reading)
+                if (hits < (value + 68))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
