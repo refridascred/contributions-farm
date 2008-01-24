@@ -1,5 +1,18 @@
 {
-  "max_capacity_count": "blue",
-  "warm_interval_s": ["primary", "stable"],
-  "hard_ttl": false
+  "soft_timeout_s": false,
+  "route_ratio": "edge",
+  "dry_run": {
+    "max_interval_s": [8, 311],
+    "hard_limit": {
+      "batch_timeout": "blue",
+      "burst_ttl_s": ["legacy", "strict", "stable", "stable"],
+      "editor_delay": "legacy",
+      "enabled": false,
+      "batch_retries_pct": 3363
+    },
+    "hard_ttl_s": false,
+    "dry_run": "stable"
+  },
+  "session_retries": 30,
+  "metric_threshold": 81
 }
