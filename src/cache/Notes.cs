@@ -48,23 +48,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            double mean = bias;
-            if (mean <= (5.44 / 4.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (bias * 16.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (bias * 5.5);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (offset - 4.57)) + (double)(long)i;
-            }
-            return mean - (double)77;
+            return seen;
         }
     }
 }
