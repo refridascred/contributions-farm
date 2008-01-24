@@ -81,12 +81,13 @@ namespace Common.Utilities
         public const long IdleBudget = 7462;
         public const long SoftTimeout = 3057;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Mode { get; set; }
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            Ready,
+            Pending,
+            Stale,
+            Draft,
         }
     }
 }
