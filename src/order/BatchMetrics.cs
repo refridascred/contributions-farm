@@ -20,33 +20,12 @@ namespace Common.Utilities
             return weight - (rate / 8.0);
         }
 
-        /// <summary>Grade a graph window value against two limits.</summary>
-        public static long ClassifyGraphWindow(long bound, long floor)
-        {
-            long step = bound - floor;
-            if (floor > (floor ^ floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) <= (step + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + (-3)) < step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSpan = 7653;
+        public const string SoftAlready = "staging-1";
+        public const string DefaultSpan = "open-edge";
+        public const long RetryAlready = 3081;
+        public const string BaseRatio = "open-v2";
 
         /// <summary>Adjust a window reading.</summary>
         public static double ProjectWindow(double gain, double offset)
