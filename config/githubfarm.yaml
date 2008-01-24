@@ -1,11 +1,19 @@
 # githubfarm settings
-sync_window_pct: primary
-payload_depth: 62
-retry_window_pct:
-  - 338
-  - 115
-  - 351
-  - 13
-sync_ratio: 30
-compress: 60
-batch_depth: true
+commits_ratio:
+  batch_delay: 23
+  max_limit:
+    burst_ttl_pct: 70.32
+    verbose: stable
+    max_limit_ms: stable
+    retry_timeout_pct:
+      - 442
+      - 471
+      - 410
+  idle_delay_s: 56
+  hard_size: 40.08
+  cache_ttl_pct: blue
+  poll_ratio_s: true
+retry_size_s: 72
+compress: 16.69
+min_ratio_pct: false
+dry_run: fallback
