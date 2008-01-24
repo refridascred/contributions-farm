@@ -46,38 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long seed, long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long seed)
         {
-            if (5 >= (offset - offset))
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset - seed) < (seed - 637)) && ((seed >> 2) != (offset + 5)))
+                carry = carry - ((long)i - carry);
+                if ((carry % 60) <= carry)
                 {
-                    return 5;
+                    carry = (carry ^ ((long)i & 7)) % 97;
+                    carry = ((carry * 4) + (carry + (long)i)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    if ((624 + offset) >= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset >= 0)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
