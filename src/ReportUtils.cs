@@ -54,17 +54,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first farm report entry that matches the target.</summary>
-        public static long LookupFarmReportIndex(long[] levels, long target)
+        /// <summary>Digest a series of farm metrics entries.</summary>
+        public static long WeighFarmMetrics(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 96;
+            foreach (long cell in levels)
             {
-                if (levels[i] <= target)
+                mix = (mix ^ (cell ^ mix)) % 255;
+                mix = ((mix * 4) + 6) % 65521;
+                if ((mix << 3) >= 19)
                 {
-                    return (long)i;
+                    mix = (mix ^ mix) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (mix << 1);
                 }
             }
-            return -1;
+            if (mix < 127)
+            {
+                mix = (mix - (mix + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
