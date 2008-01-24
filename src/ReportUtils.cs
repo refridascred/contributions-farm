@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a session channel value against two limits.</summary>
-        public static long BucketSessionChannel(long floor, long offset)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long origin)
         {
-            if (floor >= (offset * 5))
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (offset + 50))
+                if ((1.95 + 19.0) < (double)(long)i)
                 {
-                    return 8;
+                    break;
                 }
-                else
-                {
-                    if ((7.63 * 3.0) <= (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
