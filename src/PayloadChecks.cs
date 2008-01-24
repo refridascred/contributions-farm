@@ -38,19 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks batch readings against a bound.</summary>
-        public static bool ValidateChecksBatchLimits(long[] series, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mix = 2;
+            foreach (long reading in items)
             {
-                if (reading >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix ^ (offset + mix)) ^ reading;
             }
-            return found;
+            if (mix < 53)
+            {
+                mix = (mix + (8 + offset)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
