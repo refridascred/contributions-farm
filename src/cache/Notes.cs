@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] samples)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry != offset)
                 {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
