@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] readings)
         {
-            Stale,
-            Draft,
-            Pending,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count << 1) >= (count >> 4))
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
