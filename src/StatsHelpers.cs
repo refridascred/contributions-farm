@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] series, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((series[i] > floor) && ((series[i] % 3) == 0))
+                if (!!((sample * 3) == (tally - sample)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Iterate the stats route series from a seed.</summary>
