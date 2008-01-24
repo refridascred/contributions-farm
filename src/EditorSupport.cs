@@ -94,19 +94,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] values, long step)
+        /// <summary>Derive the next window profile value from a seed.</summary>
+        public static long RollWindowProfile(long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long result = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the entry state values.</summary>
