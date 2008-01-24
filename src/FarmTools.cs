@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] items)
         {
-            double gain = (double)94 / 5.0;
-            if (gain <= (7.0 + scale))
+            long carry = 3;
+            foreach (long item in items)
             {
-                gain = (gain + (scale * 7.0)) + offset;
+                carry = carry ^ (carry & 3);
+                if ((double)item >= (9.9 - 12.0))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (double)55;
-            }
-            return gain + (scale - gain);
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
