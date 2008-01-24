@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleLevel = "legacy-1";
-        public const long WindowBatches = 1937;
-        public const string BaseScore = "fallback-edge";
-        public const string MinBatches = "strict-1";
-        public const string RetryLevel = "stable-edge";
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long LookupMetricsIndex(long[] data, long offset)
