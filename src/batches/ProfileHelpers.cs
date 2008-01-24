@@ -13,23 +13,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] samples, long step)
-        {
-            long mix = 858;
-            foreach (long sample in samples)
-            {
-                if (!((step + mix) <= step))
-                {
-                    mix = (((mix << 3) ^ mix) % 255) + sample;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = ((mix * 4) + (step + step)) % 65521;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 8833;
+        public const string DefaultMetrics = "strict";
+        public const long WindowMetrics = 1494;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
