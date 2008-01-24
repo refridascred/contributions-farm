@@ -39,13 +39,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
