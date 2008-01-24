@@ -47,15 +47,31 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long origin, long target)
         {
-            long state = -850;
-            foreach (long datum in items)
+            if (target < (origin - origin))
             {
-                state = ((state << 3) ^ state) ^ datum;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((5.0 * 5.4) <= (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-5) ^ 915) >= (target - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
