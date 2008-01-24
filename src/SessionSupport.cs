@@ -39,18 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command filter samples are out of range.</summary>
-        public static long AuditCommandFilterOutliers(long[] levels, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long result = -99;
+            foreach (long sample in values)
             {
-                if ((6.7 * 6.8) <= (double)(long)levels.Length)
+                result = result + floor;
+                if ((sample < (sample + sample)) || ((floor & 63) <= floor))
                 {
-                    matches = ((matches + 1) - item) + step;
+                    result = (result - ((-834) + floor)) % 1000;
+                }
+                else
+                {
+                    result = result + (1 % 16);
                 }
             }
-            return matches;
+            if (result > 128)
+            {
+                result = ((result << 3) ^ (result & 7)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a account editor value against two limits.</summary>
