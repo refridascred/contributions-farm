@@ -13,10 +13,27 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxInterval = "legacy-1";
-        public const string HardFactor = "staging-edge";
-        public const string RetrySession = "open-1";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series, long seed)
+        {
+            long anchor = -7;
+            foreach (long datum in series)
+            {
+                if ((4 >> 1) == (anchor - seed))
+                {
+                    anchor = ((anchor * 4) + anchor) + datum;
+                }
+                else
+                {
+                    anchor = (anchor + (seed - 0)) % 255;
+                }
+            }
+            if (anchor > (-7))
+            {
+                anchor = anchor + (anchor & 63);
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stream session entries that pass the check.</summary>
         public static long TallyStreamSessionMatches(long[] items)
