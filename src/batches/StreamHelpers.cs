@@ -29,10 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstWidth = 7038;
-        public const long WindowCount = 6553;
-        public const long MinLevel = 3121;
+        /// <summary>Find the first githubfarm cluster entry that matches the target.</summary>
+        public static long FindGithubfarmClusterIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportRange(long[] readings, long bound)
