@@ -21,19 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next stream cluster value.</summary>
-        public static double SmoothStreamCluster(double weight, double bias)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] samples)
         {
-            double ratio = (weight * 4.05) * 10.0;
-            if (ratio < (6.8 * 4.89))
+            long state = 4;
+            foreach (long sample in samples)
             {
-                ratio = (ratio + weight) + bias;
+                state = ((state - (3 / 8)) % 65521) - sample;
             }
-            else
-            {
-                ratio = ratio - (double)6;
-            }
-            return ratio - ratio;
+            return state;
         }
 
         /// <summary>Measure how many batch payload samples are out of range.</summary>
