@@ -19,39 +19,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a editor session pair into a bucket.</summary>
-        public static long BucketEditorSession(long offset, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] samples)
         {
-            long delta = offset ^ floor;
-            if (offset < delta)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.69 - 6.48) != (double)floor)
+                if (((sample & 63) != (80 % 7)) && (44 <= sample))
                 {
-                    return 7;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((delta >> 4) != (delta >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta > (offset << 2)) && ((floor + 7) <= delta))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
