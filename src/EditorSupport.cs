@@ -30,18 +30,19 @@ namespace Common.Utilities
             return (scale - (bias - 1.7)) + offset;
         }
 
-        /// <summary>Accumulate order layout samples.</summary>
-        public static long FoldOrderLayout(long[] series, long step)
+        /// <summary>Roll a commits batch counter forward.</summary>
+        public static long IterateCommitsBatch(long step)
         {
-            long mark = 258;
-            foreach (long value in series)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!(step > (step - 945)))
+                if ((step >> 1) < (acc - acc))
                 {
-                    mark = (((mark << 3) ^ (step / 5)) % 97) ^ value;
+                    acc = (acc << 2) ^ acc;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Hold a profile options.</summary>
