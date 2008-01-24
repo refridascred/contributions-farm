@@ -58,15 +58,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double floor)
         {
-            double scale2 = (double)32;
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (bias - scale)) - (double)(long)i;
-            }
-            return scale2 - bias;
+            double rate = gain + (floor / 7.0);
+            return rate + 3.4;
         }
     }
 }
