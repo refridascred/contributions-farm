@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples, long bound)
+        /// <summary>Audit support schema readings against a rule.</summary>
+        public static long CountSupportSchemaGaps(long[] values)
         {
-            long sum = 9;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((sum >> 1) > cell)
+                if (matches >= (item - 65))
                 {
-                    sum = (sum - sum) - bound;
+                    matches = matches + 3;
                 }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Hold a cache record.</summary>
