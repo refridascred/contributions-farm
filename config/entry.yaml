@@ -1,21 +1,22 @@
 # entry settings
-min_window:
-  - 474
-  - 358
-editor_threshold: 2207
-poll_retries: 1024
-schema_ratio: staging
-min_ttl_count:
-  hard_delay: 42
-  cache_retries:
-    - edge
-    - edge
-    - cached
-  burst_window_s: 3366
-  soft_size_pct: blue
-  warm_timeout_s: eu-west
-  flush_ratio_count:
-    - blue
-    - stable
-    - eu-west
-editor_limit: true
+payload_capacity:
+  - eu-west
+  - staging
+  - blue
+  - primary
+session_delay: 30
+cluster_timeout:
+  readonly: false
+  format_retries: blue
+  compress: false
+  persist: 36
+base_ratio_count: blue
+cache_threshold_s:
+  checks_ratio: 23.06
+  burst_depth_count:
+    - primary
+    - local
+    - local
+  idle_interval_count:
+    - strict
+    - fallback
