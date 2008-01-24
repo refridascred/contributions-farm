@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long target)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Dropped,
+            Queued,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
