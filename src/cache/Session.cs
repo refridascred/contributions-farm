@@ -48,10 +48,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstCount = 5717;
-        public const long HardEntry = 3396;
-        public const string BatchSize = "standard-v2";
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Look up the position of a tools farm sample.</summary>
         public static long LookupToolsFarmIndex(long[] series, long origin)
