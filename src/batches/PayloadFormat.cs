@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] samples, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((5 / 5) < (value << 2)))
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
                 {
-                    matches = (matches + 1) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every counter batch entry stays within the limit.</summary>
