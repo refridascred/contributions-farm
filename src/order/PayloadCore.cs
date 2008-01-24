@@ -28,13 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
