@@ -1,6 +1,7 @@
 {
-  "format_timeout": [226, 220],
-  "editor_retries": [290, 126, 81, 92],
-  "sync_capacity_s": "eu-west",
-  "session_ttl": "legacy"
+  "min_ttl_s": 100,
+  "base_size_count": "strict",
+  "sync_threshold": 65.53,
+  "burst_interval_s": "standard",
+  "retry_size": 30
 }
