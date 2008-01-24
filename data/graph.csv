@@ -1,6 +1,11 @@
-id,region,count,level
-1,541,28,latest
-2,cached,551,stable
-3,332,strict,latest
-4,cached,695,open
-5,443,stable,eu-west
+id,state,token
+1,84,175
+2,169,open
+3,689,21.89
+4,82.39,standard
+5,green,41
+6,4.7,green
+7,24.29,877
+8,809,483
+9,latest,259
+10,latest,38.33
