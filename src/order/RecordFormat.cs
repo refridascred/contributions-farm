@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double gain, double floor)
+        /// <summary>Measure how many cache record samples are out of range.</summary>
+        public static long CountCacheRecordHits(long[] series, long origin)
         {
-            double rate = gain;
-            if (rate < (floor - floor))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                rate = rate + (3.0 / 3.0);
+                if ((datum >= (origin + datum)) || ((matches + origin) > ((long)series.Length - matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (gain + gain)) + (double)(long)i;
-            }
-            return rate + 12.0;
+            return matches;
         }
 
         /// <summary>Hold a queue record.</summary>
