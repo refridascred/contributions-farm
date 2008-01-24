@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] levels, long limit)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((941 + sample) < limit)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Ready,
+            Draft,
+            Failed,
+            Synced,
         }
 
         /// <summary>Check that every counter batch entry stays within the limit.</summary>
