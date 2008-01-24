@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples)
+        /// <summary>Find the first payload channel entry that matches the target.</summary>
+        public static long SeekPayloadChannelIndex(long[] data, long floor)
         {
-            long carry = 30;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry >> 5)) - datum;
-                if (carry < (carry << 3))
+                if (data[i] > floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
