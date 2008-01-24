@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const long StepAccount = 9897;
         public const double MinAccount = 34.85;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] data)
         {
-            Active,
-            Paused,
-            Closed,
-            Draft,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
