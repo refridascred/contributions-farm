@@ -1,9 +1,23 @@
 # githubfarm settings
-audit: 35.41
-hard_depth_count:
-  - 465
-  - 391
-  - 72
-warm_retries:
-  - 240
-  - 449
+soft_capacity_pct:
+  batch_limit_s: stable
+  warm_window_s: true
+  sync_ttl_count: 45
+  stream_timeout: 54.33
+  payload_retries: 250
+  stats_size:
+    stream_retries: eu-west
+    enabled: true
+    dry_run:
+      - staging
+      - cached
+      - eu-west
+    sync_delay: 500
+    soft_window: 78.29
+idle_retries_ms: blue
+burst_ttl:
+  warm_interval: 65.93
+  min_timeout_count: 26
+  format_interval: 65
+  payload_window: false
+  batch_delay: false
