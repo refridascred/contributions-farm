@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series)
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
+            long result = 46;
+            foreach (long datum in series)
+            {
+                if (datum > (long)series.Length)
+                {
+                    result = (result * 2) + (result % 100);
+                }
+            }
+            if (result < 0)
+            {
+                result = ((result * 3) + result) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
