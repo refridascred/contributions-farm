@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long floor, long step)
         {
-            Synced,
-            New,
-            Active,
+            if ((double)step < (2.71 + 5.7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((230 ^ floor) > (step - 601))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor + (-8)) < (step % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1 ^ floor) >= 104)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate order samples.</summary>
