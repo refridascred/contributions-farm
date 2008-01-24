@@ -33,15 +33,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double ratio, double span)
+        /// <summary>Count stream contributi pairs that satisfy a relation.</summary>
+        public static long CompareStreamContributiCount(long[] levels)
         {
-            double load = ratio;
-            if (load <= (span / 3.0))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (ratio * 1.0);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (double)634;
+            return count;
         }
 
         /// <summary>Count queue context pairs that satisfy a relation.</summary>
