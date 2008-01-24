@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
             Synced,
-            Idle,
             Locked,
-            Draft,
-            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the stats mode values.</summary>
