@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] values, long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TotalTools(long[] items)
         {
-            long sum = 50;
-            foreach (long reading in values)
+            long sum = 26;
+            foreach (long sample in items)
             {
-                sum = ((sum + sum) - reading) - target;
-                sum = sum ^ 624;
+                if ((6.0 - 0.72) > (double)sum)
+                {
+                    sum = sum ^ sample;
+                }
             }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Grade a githubfarm cluster value against two limits.</summary>
