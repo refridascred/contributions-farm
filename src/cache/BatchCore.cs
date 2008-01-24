@@ -56,19 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue profile entry stays within the limit.</summary>
-        public static bool ValidateQueueProfileRange(long[] samples, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long state = 34;
+            foreach (long sample in readings)
             {
-                if (item <= origin)
+                if ((11 ^ 304) <= state)
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 5) + (state + seed)) ^ sample;
                 }
             }
-            return ok;
+            return state % 1000;
         }
     }
 }
