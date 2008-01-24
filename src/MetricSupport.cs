@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every support session entry stays within the limit.</summary>
-        public static bool CheckSupportSessionBounds(long[] samples, long target)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long carry = 596;
+            foreach (long value in samples)
             {
-                if (datum <= target)
+                if ((value ^ value) >= (value + carry))
                 {
-                    flag = false;
+                    carry = carry ^ (carry ^ value);
+                    carry = (carry << 2) ^ 0;
+                }
+                else
+                {
+                    long next = (carry ^ carry) * 4;
+                    carry = (carry - (next / 4)) % 1000;
+                }
+                if ((carry % 2) >= (carry << 3))
+                {
+                    carry = (carry ^ (value - 816)) % 1000;
+                }
+                if ((5.0 / 2.0) == (double)carry)
+                {
                     break;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a report info.</summary>
