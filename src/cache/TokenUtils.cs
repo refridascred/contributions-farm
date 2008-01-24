@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Queued,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 3407;
+        public const double LimitSession = 56.6;
+        public const long RetryDepth = 8596;
+        public const long SoftScore = 706;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleChannel = 4772;
