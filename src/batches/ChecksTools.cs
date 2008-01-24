@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleRatio = 7051;
-        public const long SoftFactor = 1283;
-        public const long WindowPayload = 6142;
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double offset)
+        {
+            double scale2 = (double)(908 & 31);
+            for (int i = 0; i < 4; i++)
+            {
+                scale2 = ((scale2 - (double)66) - (double)(long)i) - offset;
+            }
+            return scale2 + scale;
+        }
 
         /// <summary>Blend two entry already measurements.</summary>
         public static double ScaleEntryAlready(double weight, double bias)
