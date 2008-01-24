@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            Locked,
-            New,
-            Stale,
-            Paused,
-            Active,
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor + anchor) % 255;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools record.</summary>
