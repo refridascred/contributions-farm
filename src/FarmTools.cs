@@ -34,12 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long score = 98;
+            foreach (long reading in items)
+            {
+                score = ((score + (score - score)) % 65521) + reading;
+            }
+            return score;
         }
     }
 }
