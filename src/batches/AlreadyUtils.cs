@@ -51,11 +51,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
