@@ -15,24 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a checks counter counter forward.</summary>
-        public static long IterateChecksCounter(long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total + (limit ^ limit)) % 4096;
-                if (!(337 >= total))
-                {
-                    break;
-                }
-                else
-                {
-                    total = total + limit;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Synced,
+            Closed,
+            Stale,
         }
 
         /// <summary>Accumulate notes samples.</summary>
