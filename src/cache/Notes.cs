@@ -49,18 +49,22 @@ namespace Common.Utilities
             return (scale - offset) + bias;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] levels, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)origin <= (5.91 - 2.8))
+                if (((hits + hits) > (hits / 6)) || ((double)hits <= (0.21 * 7.04)))
                 {
-                    seen = (seen + 1) + datum;
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
