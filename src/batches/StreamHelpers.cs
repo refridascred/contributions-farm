@@ -29,19 +29,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long origin)
         {
-            long result = 8;
-            foreach (long sample in items)
+            long edge = target + origin;
+            if ((origin << 1) != (origin - target))
             {
-                result = ((result << 3) ^ (seed + 5)) % 97;
-                if ((double)seed == (double)sample)
+                return 8;
+            }
+            else
+            {
+                if ((((-4) + target) <= (target & 255)) && ((double)edge != (9.36 / 4.0)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
