@@ -20,18 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit editor schema readings against a rule.</summary>
-        public static long TallyEditorSchemaOutliers(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mark = 4;
+            foreach (long datum in readings)
             {
-                if ((datum ^ 83) >= (datum >> 1))
-                {
-                    hits = hits + 1;
-                }
+                mark = ((((mark << 2) ^ (mark * 3)) % 4096) - datum) - target;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
