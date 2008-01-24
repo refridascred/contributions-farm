@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            Locked,
+            New,
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a tools record.</summary>
