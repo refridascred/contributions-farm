@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] samples, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] values)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((offset >= (long)samples.Length) || ((2.51 * 6.2) < (double)cell))
+                if ((double)sample != (6.0 - 16.0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the checks status values.</summary>
