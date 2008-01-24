@@ -23,13 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long score = 9;
+            foreach (long item in items)
+            {
+                if ((item & 63) <= item)
+                {
+                    score = (score - item) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit account support readings against a rule.</summary>
