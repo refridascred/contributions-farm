@@ -54,13 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] items, long floor)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Synced,
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
