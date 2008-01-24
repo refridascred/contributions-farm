@@ -37,18 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long mix = 87;
-            foreach (long entry in values)
-            {
-                if ((mix << 1) == (entry & 1))
-                {
-                    mix = (mix ^ (entry / 3)) % 65521;
-                }
-            }
-            return mix;
+            public long Mode { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
