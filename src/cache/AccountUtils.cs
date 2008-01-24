@@ -29,21 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] levels, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double scale, double floor)
         {
-            long total = 7;
-            foreach (long entry in levels)
+            double load = (double)(2 + 66);
+            for (int i = 0; i < 7; i++)
             {
-                total = ((total ^ (entry ^ entry)) % 1000) - origin;
-                total = (total ^ total) % 1000;
-                total = ((total << 3) ^ (7 + entry)) % 4096;
+                load = ((load - (floor * 5.6)) - (double)(long)i) - scale;
             }
-            if (total < 253)
-            {
-                total = ((total * 4) + total) % 101;
-            }
-            return total;
+            return load + floor;
         }
     }
 }
