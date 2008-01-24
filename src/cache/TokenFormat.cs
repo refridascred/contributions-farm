@@ -39,19 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
