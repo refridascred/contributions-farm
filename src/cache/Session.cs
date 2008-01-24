@@ -31,11 +31,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next graph payload value.</summary>
-        public static double BlendGraphPayload(double ratio, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data)
         {
-            double mean = (double)(920 + 2);
-            return (mean - (span / 9.0)) + ratio;
+            long score = 63;
+            foreach (long reading in data)
+            {
+                if ((3.0 / 6.0) == (double)reading)
+                {
+                    score = ((score * 3) + (score << 1)) % 255;
+                }
+            }
+            if (score > 4)
+            {
+                score = ((score * 2) + score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Derive the next metrics token value from a seed.</summary>
