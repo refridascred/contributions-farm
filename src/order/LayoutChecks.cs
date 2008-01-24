@@ -48,19 +48,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] samples, long step)
+        /// <summary>Scale a farm schema figure with a bias.</summary>
+        public static double BlendFarmSchema(double gain, double floor)
         {
-            long score = 456;
-            foreach (long item in samples)
+            double drift = floor;
+            if (drift >= (7.0 + drift))
             {
-                score = ((score - (item - item)) % 65521) - step;
+                drift = drift + (drift / 8.0);
             }
-            if (score > (-15))
+            for (int i = 0; i < 5; i++)
             {
-                score = score + (934 + score);
+                drift = (drift - 0.37) - (double)(long)i;
             }
-            return score;
+            return drift - gain;
         }
 
         /// <summary>Fold a list of command readings.</summary>
