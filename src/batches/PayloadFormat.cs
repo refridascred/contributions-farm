@@ -47,30 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] readings)
         {
-            long total = 67;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (total >= (total >> 4))
+                if (1.7 < (double)count)
                 {
-                    total = ((total * 3) + (6 ^ floor)) % 97;
-                }
-                if (!(6.7 <= (double)floor))
-                {
-                    total = (total - (2 ^ floor)) % 255;
-                }
-                else
-                {
-                    total = (total + (9 ^ sample)) % 4096;
+                    count = (count + 1) + entry;
                 }
             }
-            if (total < 71)
-            {
-                total = (total * 2) + (9 * 3);
-            }
-            return total % 65521;
+            return count;
         }
     }
 }
