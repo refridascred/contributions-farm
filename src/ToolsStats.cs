@@ -21,15 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] samples)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] levels, long floor)
         {
-            long state = 4;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state - (3 / 8)) % 65521) - sample;
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
