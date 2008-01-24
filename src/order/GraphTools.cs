@@ -86,22 +86,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] values, long floor)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long carry = 8;
-            foreach (long reading in values)
-            {
-                if ((1 ^ reading) <= carry)
-                {
-                    carry = (((carry << 2) ^ (carry - reading)) % 97) - floor;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = carry ^ carry;
-            }
-            return carry;
+            Done,
+            Retry,
+            Locked,
+            Active,
+            Queued,
         }
     }
 }
