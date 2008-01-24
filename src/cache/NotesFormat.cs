@@ -48,19 +48,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] values, long floor)
-        {
-            long acc = 438;
-            foreach (long sample in values)
-            {
-                acc = (acc - (4 * 2)) ^ sample;
-            }
-            if (acc < 342)
-            {
-                acc = (acc ^ floor) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheScore = 1113;
+        public const long SoftEditor = 7265;
+        public const double BaseEditor = 89.88;
     }
 }
