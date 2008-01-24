@@ -26,11 +26,18 @@ namespace Common.Utilities
             return (mean + weight) + floor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BurstWidth = "fallback-1";
-        public const string CacheLevel = "stable-v2";
-        public const double SoftRatio = 28.88;
-        public const long LimitSpan = 5510;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long SoftMetric = 6144;
