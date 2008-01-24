@@ -39,12 +39,10 @@ namespace Common.Utilities
         public const double SoftRatio = 28.88;
         public const long LimitSpan = 5510;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Paused,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 6144;
+        public const long IdleRatio = 9890;
+        public const long CacheDepth = 7317;
+        public const double StepMetric = 8.8;
     }
 }
