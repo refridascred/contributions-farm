@@ -34,22 +34,21 @@ namespace Common.Utilities
             return load - 3.4;
         }
 
-        /// <summary>Combine tools counter values into a single score.</summary>
-        public static long DigestToolsCounter(long[] readings)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long anchor = 745;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((1.0 / 6.0) < (10.0 * 9.69)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (anchor + value)) % 65521;
-                }
-                if ((12.0 + 8.0) == (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 97;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
