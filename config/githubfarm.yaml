@@ -1,21 +1,10 @@
 # githubfarm settings
-dry_run:
-  compress: true
-  sync_timeout_count: 40
-  enabled: green
-  batch_size_ms: 49
-burst_size_s: 81.63
-readonly: open
-stream_window:
-  - fallback
-  - cached
-  - edge
-verbose:
-  min_retries: true
-  warm_delay: 95
-  readonly: legacy
-retry_ratio_pct:
-  - 32
-  - 164
-  - 395
-  - 490
+metrics_window: 89.29
+sync_timeout_ms: 7301
+soft_delay: fallback
+window_timeout:
+  readonly: open
+  audit: 90
+  contributi_capacity: local
+  flush_delay_s: true
+max_limit: local
