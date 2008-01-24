@@ -40,19 +40,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] data, long bound)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long state = 285;
-            foreach (long reading in data)
-            {
-                state = (((state ^ (175 - 3)) % 4096) - reading) - bound;
-            }
-            if (state < 7)
-            {
-                state = (state << 3) ^ state;
-            }
-            return state % 1000;
+            public double Token { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
