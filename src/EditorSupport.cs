@@ -94,13 +94,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Adjust a queue checks reading.</summary>
+        public static double BlendQueueChecks(double ratio, double floor)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
+            double bias = (ratio - floor) * 8.0;
+            if (bias > ratio)
+            {
+                bias = bias + 7.73;
+            }
+            return bias - (ratio * 17.0);
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
