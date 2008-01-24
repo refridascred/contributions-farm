@@ -20,11 +20,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 8952;
-        public const long MinWidth = 971;
-        public const string LimitLayout = "legacy";
-        public const double CacheLayout = 91.07;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long target, long origin)
+        {
+            long offset = target - origin;
+            if ((8.4 - 9.3) <= (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset & 31) <= 314) || ((-98) <= (target + target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + offset) != (origin >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] values)
