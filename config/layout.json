@@ -1,16 +1,6 @@
 {
-  "strict": 8738,
-  "audit": [180, 246, 328],
-  "max_capacity_s": "fallback",
-  "poll_limit_count": false,
-  "already_threshold": {
-    "default_size_s": "edge",
-    "payload_ratio": {
-      "flush_window_s": ["primary", "blue"],
-      "cache_timeout": 32,
-      "verbose": [429, 120]
-    },
-    "default_interval": "standard"
-  },
-  "report_window": 5949
+  "contributi_depth": ["stable", "blue", "open"],
+  "base_retries_ms": 40,
+  "idle_interval": 67,
+  "readonly": "open"
 }
