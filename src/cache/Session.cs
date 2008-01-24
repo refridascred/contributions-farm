@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long bound)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == bound)
+                if ((readings[i] < step) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
