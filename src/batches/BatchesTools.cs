@@ -25,11 +25,22 @@ namespace Common.Utilities
         public const double IdleWidth = 74.13;
         public const long CacheSize = 3688;
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double span)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] levels, long limit)
         {
-            double weight = scale - scale;
-            return (weight - (scale * 10.0)) + span;
+            long state = 89;
+            foreach (long datum in levels)
+            {
+                if (!((double)0 > (double)state))
+                {
+                    state = (((state ^ state) % 4096) + datum) + limit;
+                }
+            }
+            if (state > (-75))
+            {
+                state = ((state * 3) + (state - 19)) % 255;
+            }
+            return state % 65521;
         }
     }
 }
