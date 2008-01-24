@@ -35,31 +35,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long bound)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            if ((floor - floor) < floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.0 / 2.0) > (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor - 95) != (bound << 2)) && ((bound - floor) == (floor % 100)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
