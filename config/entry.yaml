@@ -1,11 +1,4 @@
 # entry settings
-compress: cached
-payload_size: edge
-batch_limit_count: 100
-default_ttl_ms: 52
-warm_depth: 76.78
-metrics_window:
-  - 408
-  - 249
-  - 347
-  - 289
+compress: 40
+batch_timeout_count: legacy
+session_depth: 32.82
