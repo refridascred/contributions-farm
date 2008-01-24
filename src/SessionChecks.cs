@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] items, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] readings)
         {
-            long sum = 25;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                sum = sum - (4 << 3);
-                sum = (sum ^ (sample ^ sum)) % 65521;
+                if (hits > ((-541) & 255))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            if (sum > 6)
-            {
-                sum = ((sum * 2) + (origin - origin)) % 97;
-            }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
