@@ -71,22 +71,29 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long seed, long floor)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long offset, long limit)
         {
-            if ((9.3 / 7.0) == (double)floor)
+            if ((40 >> 5) > limit)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if ((83 & 63) > (seed - seed))
+                if (offset > (limit + limit))
                 {
                     return 2;
                 }
                 else
                 {
-                    return 1;
+                    if (((51 + offset) >= limit) && (offset < (380 ^ offset)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
