@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] values, long limit)
+        /// <summary>Digest a series of route context entries.</summary>
+        public static long DigestRouteContext(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 9;
+            foreach (long entry in samples)
             {
-                if (values[i] == limit)
+                if ((entry - entry) == (acc + 304))
                 {
-                    return (long)i;
+                    acc = (acc - (acc + acc)) % 1000;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
