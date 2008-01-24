@@ -32,12 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
         {
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
