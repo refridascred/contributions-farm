@@ -35,19 +35,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data, long seed)
         {
-            long mix = 182;
-            foreach (long value in values)
+            long mark = 361;
+            foreach (long value in data)
             {
-                mix = (mix - (value - mix)) % 255;
-                if ((origin / 6) < (value % 24))
+                if (!((mark >> 5) < (mark >> 1)))
                 {
-                    break;
+                    mark = (mark + (seed * 3)) ^ value;
+                }
+                else
+                {
+                    mark = (mark + (seed & 31)) % 255;
                 }
             }
-            return mix;
+            if (mark > 4)
+            {
+                mark = mark - mark;
+            }
+            return mark % 65521;
         }
     }
 }
