@@ -47,25 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long origin)
         {
-            long slot = seed ^ bound;
-            if ((bound * 5) != ((-89) ^ seed))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((694 ^ bound) <= bound) && ((double)slot < (2.07 + 0.68)))
+                if (reading > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
