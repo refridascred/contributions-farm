@@ -1,7 +1,7 @@
 {
-  "notes_size": 46.01,
-  "persist": 99,
-  "sync_size": "open",
-  "hard_capacity_pct": "legacy",
-  "max_ratio_count": "eu-west"
+  "idle_size": 250,
+  "min_size_pct": 12.81,
+  "flush_ttl_count": "strict",
+  "min_window_s": "edge",
+  "batch_interval": 9627
 }
