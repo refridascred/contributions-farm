@@ -22,15 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double ratio, double floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long offset)
         {
-            double rate = floor * 5.0;
-            for (int i = 0; i < 8; i++)
+            long edge = bound + offset;
+            if (!((double)edge < (12.0 - 2.63)))
             {
-                rate = ((rate - floor) - (double)(long)i) - ratio;
+                return 1;
             }
-            return rate - 1.0;
+            else
+            {
+                if ((double)bound > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - edge) < (bound + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < ((-24) * 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
