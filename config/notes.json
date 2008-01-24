@@ -1,18 +1,17 @@
 {
-  "cache_size": "open",
-  "base_ttl_pct": 11,
-  "cache_timeout_count": {
-    "enabled": {
-      "batch_size_count": 500,
-      "cluster_size": "staging",
-      "retry_ratio_ms": "stable",
-      "retry_retries_s": true
+  "readonly": {
+    "hard_interval_s": "green",
+    "max_capacity_pct": {
+      "soft_limit": 38.96,
+      "metrics_window": "primary",
+      "channel_threshold": 59.0,
+      "persist": false,
+      "batch_limit_ms": "stable"
     },
-    "max_window": 52.61,
-    "persist": 45.41,
-    "sync_threshold_s": 98.9,
-    "commits_ttl": 7232,
-    "profile_retries": false
+    "compress": "latest"
   },
-  "metrics_ttl": 500
+  "sync_threshold": 58.36,
+  "counter_interval": 1024,
+  "poll_ttl_ms": [258, 144, 495],
+  "soft_limit": 100
 }
