@@ -37,19 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record graph entries that pass the check.</summary>
-        public static long MeasureRecordGraphMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((-5) + sample) >= (tally << 1))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheInterval = 56.62;
+        public const long MinProfile = 4577;
+        public const long BatchProfile = 1611;
 
         /// <summary>Hold a queue options.</summary>
         public sealed class QueueOptions
