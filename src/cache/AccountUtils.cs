@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxBudget = 183;
-        public const long BaseRecord = 1047;
-        public const double BaseSize = 96.42;
-        public const double DefaultLevel = 24.35;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items, long origin)
+        {
+            long score = -85;
+            foreach (long value in items)
+            {
+                if (!((value - origin) == (value - value)))
+                {
+                    score = (score - (score << 3)) % 1000;
+                }
+                else
+                {
+                    score = ((score * 2) + (origin % 97)) % 101;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileMatches(long[] samples)
