@@ -14,14 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxSpan = 3049;
+        public const double CacheFilter = 58.58;
+        public const string BaseInterval = "cached";
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double ratio, double offset)
