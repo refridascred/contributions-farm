@@ -10,13 +10,14 @@ namespace Common.Utilities
         public const long StepAccount = 9897;
         public const double MinAccount = 34.85;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            Active,
+            Paused,
+            Closed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
