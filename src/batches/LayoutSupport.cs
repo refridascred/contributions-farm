@@ -78,18 +78,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (tally > (2 - cell))
+                if (item != target)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
