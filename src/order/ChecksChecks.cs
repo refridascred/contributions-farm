@@ -24,13 +24,17 @@ namespace Common.Utilities
             return weight - (double)958;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Find the first tools window entry that matches the target.</summary>
+        public static long FindToolsWindowIndex(long[] values, long origin)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
