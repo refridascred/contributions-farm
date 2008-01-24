@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] items, long floor)
         {
-            Closed,
-            Stale,
-            Active,
-            Retry,
+            long state = 657;
+            foreach (long item in items)
+            {
+                if (((double)353 <= (double)floor) && (floor <= (4 * 2)))
+                {
+                    state = (((state << 3) ^ (104 + state)) % 65521) ^ item;
+                }
+                else
+                {
+                    state = (state * 5) + state;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
