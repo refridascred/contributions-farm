@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels)
-        {
-            long carry = 266;
-            foreach (long value in levels)
-            {
-                carry = carry ^ (value ^ value);
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 4025;
+        public const long StepContext = 7619;
+        public const long HardContext = 5926;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
