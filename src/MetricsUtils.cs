@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up commits schema samples.</summary>
-        public static long PairCommitsSchemaCount(long[] levels)
+        /// <summary>Fold a list of already editor readings.</summary>
+        public static long CombineAlreadyEditor(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 4;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((result << 1) <= (entry ^ entry)) && ((305 - result) != (entry + entry)))
                 {
-                    if ((levels[i] - levels[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 5) + (result << 2)) % 1000;
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
