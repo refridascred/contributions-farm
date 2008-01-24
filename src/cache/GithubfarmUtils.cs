@@ -45,12 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstWidth = 2711;
-        public const long WindowProfile = 2601;
-        public const long IdleProfile = 8102;
-        public const long BaseProfile = 2993;
-        public const long StepProfile = 7654;
+        /// <summary>Fold a list of support route readings.</summary>
+        public static long CombineSupportRoute(long[] samples, long target)
+        {
+            long mark = 72;
+            foreach (long reading in samples)
+            {
+                mark = (mark - (target >> 2)) + reading;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] series)
