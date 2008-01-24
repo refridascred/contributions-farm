@@ -23,9 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheTimeout = 14.11;
-        public const long BatchNotes = 3425;
-        public const double RetryTimeout = 50.03;
+        /// <summary>Validate context schema readings against a bound.</summary>
+        public static bool CheckContextSchemaBounds(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
