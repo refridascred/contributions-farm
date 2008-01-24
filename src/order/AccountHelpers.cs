@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a payload editor value against two limits.</summary>
-        public static long RankPayloadEditor(long floor, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long floor, long floor2)
         {
-            if (((floor << 2) > (505 & 63)) && ((floor % 5) <= (origin * 2)))
+            if (floor2 > floor)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (((590 % 24) == (floor << 2)) && ((45 + floor) <= origin))
+                if ((6.9 + 6.0) > (double)floor)
                 {
                     return 4;
                 }
                 else
                 {
-                    return 3;
+                    if ((floor - floor2) != (floor * 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
