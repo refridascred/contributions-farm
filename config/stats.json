@@ -1,7 +1,10 @@
 {
-  "counter_retries": "fallback",
-  "burst_retries": "latest",
-  "contributi_retries": false,
-  "schema_ratio": 100,
-  "notes_threshold": 30
+  "max_ttl_pct": [327, 483, 207, 495],
+  "enabled": {
+    "verbose": 60,
+    "window_ratio": 2.88,
+    "order_depth": false,
+    "batch_interval_s": "edge"
+  },
+  "sync_window_s": 250
 }
