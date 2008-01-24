@@ -59,12 +59,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            Locked,
-            Retry,
-            Queued,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((item + 57) >= (item * 5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
