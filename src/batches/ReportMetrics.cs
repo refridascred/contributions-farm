@@ -23,14 +23,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            New,
-            Draft,
-            Stale,
-            Synced,
-            Dropped,
+            double bias = span;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - 2.5) + (double)(long)i;
+            }
+            return bias + (gain / 5.0);
         }
     }
 }
