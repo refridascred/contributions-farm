@@ -62,18 +62,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] values, long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((value + origin) <= 42)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
