@@ -16,18 +16,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long TallyMetricsFormatOutliers(long[] readings)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long delta = seed ^ floor;
+            if (seed >= delta)
             {
-                if ((4.69 / 2.0) >= (double)hits)
+                return 7;
+            }
+            else
+            {
+                if ((7.24 - 4.6) == (double)delta)
                 {
-                    hits = (hits + 2) - value;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)delta == (5.1 + 9.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the payload support series from a seed.</summary>
