@@ -35,22 +35,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit filter counter readings against a rule.</summary>
-        public static long AuditFilterCounterGaps(long[] readings, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (!((origin * 5) > (value * 2)))
+                if ((bound >> 4) >= (reading & 3))
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
