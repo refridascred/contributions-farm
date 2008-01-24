@@ -81,15 +81,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double weight, double offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double rate = (0.1 - 9.8) * 7.28;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (((rate + rate) + (double)(long)i) - weight) - offset;
-            }
-            return rate - (double)26;
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
