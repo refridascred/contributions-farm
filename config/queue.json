@@ -1,5 +1,8 @@
 {
-  "stats_timeout": "cached",
-  "order_limit": 15.38,
-  "stream_ttl": 4202
+  "dry_run": "standard",
+  "warm_retries_count": 6007,
+  "verbose": "stable",
+  "flush_interval_s": "green",
+  "persist": 72,
+  "soft_limit_count": false
 }
