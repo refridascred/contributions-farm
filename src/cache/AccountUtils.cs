@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const double BaseSize = 96.42;
         public const double DefaultLevel = 24.35;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 1911;
-        public const long BaseInterval = 1527;
-        public const long SoftEntry = 2163;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample != (3.5 - 19.0))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] readings)
