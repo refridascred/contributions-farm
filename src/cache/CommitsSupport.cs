@@ -41,15 +41,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double rate, double bias)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] levels, long bound)
         {
-            double scale = bias;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = ((scale - scale) + (double)(long)i) + rate;
+                if ((levels[i] < bound) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
