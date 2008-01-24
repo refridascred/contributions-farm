@@ -46,15 +46,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long seed)
+        /// <summary>Adjust a window counter reading.</summary>
+        public static double BlendWindowCounter(double weight, double bias)
         {
-            long result = 6;
-            foreach (long datum in data)
-            {
-                result = (((result << 2) ^ (datum % 24)) % 97) - seed;
-            }
-            return result % 1000;
+            double mean = weight;
+            return (mean + mean) + bias;
         }
 
         /// <summary>Find the first contributi buffer entry that matches the target.</summary>
