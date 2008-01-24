@@ -1,20 +1,5 @@
 # entry settings
-batch_retries: 91.89
-flush_timeout_pct:
-  - 201
-  - 265
-  - 276
-metric_retries: blue
-farm_threshold:
-  idle_timeout: 80
-  hard_depth: 28.31
-  warm_delay_pct: open
-  max_size_pct:
-    payload_timeout:
-      - 298
-      - 18
-      - 329
-    poll_delay_pct: eu-west
-    strict: primary
-  hard_ratio: primary
-batch_window_count: staging
+cache_limit_s: strict
+buffer_ttl: 21
+hard_ratio_count: local
+soft_threshold_count: 8947
