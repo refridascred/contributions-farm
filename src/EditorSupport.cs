@@ -52,18 +52,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] data)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell + cell) == (hits << 2))
+                if ((levels[i] >= offset) && ((levels[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
