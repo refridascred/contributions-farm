@@ -40,15 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if ((cell / 8) == (cell / 5))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
