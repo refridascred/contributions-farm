@@ -26,12 +26,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 7500;
-        public const long MaxChecks = 7455;
-        public const long SoftBudget = 1474;
-        public const string IdleCount = "stable-v2";
-        public const long WindowLevel = 884;
+        /// <summary>Iterate the report entry series from a seed.</summary>
+        public static long IterateReportEntry(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix ^ (mix ^ origin)) % 1000;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long ScoreChecks(long[] samples)
