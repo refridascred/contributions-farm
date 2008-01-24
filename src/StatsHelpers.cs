@@ -29,16 +29,21 @@ namespace Common.Utilities
         public const double BatchGithubfarm = 21.52;
         public const double StepGithubfarm = 2.23;
 
-        /// <summary>Iterate the stats route series from a seed.</summary>
-        public static long StepStatsRoute(long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix << 2) ^ (mix >> 4)) % 255;
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
