@@ -55,11 +55,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheSpan = "stable";
-        public const long DefaultCount = 5182;
-        public const long WindowInterval = 1929;
-        public const long RetryInterval = 8247;
-        public const long MinFactor = 4653;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Closed,
+            Dropped,
+            Stale,
+            Draft,
+            Queued,
+        }
     }
 }
