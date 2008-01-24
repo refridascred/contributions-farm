@@ -30,22 +30,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 565;
         public const string IdleSize = "cached-1";
 
-        /// <summary>Fold a list of queue filter readings.</summary>
-        public static long TallyQueueFilter(long[] samples, long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long state = 57;
-            foreach (long cell in samples)
-            {
-                if ((cell >= (cell ^ seed)) || ((3.8 + 9.7) <= (double)seed))
-                {
-                    state = (state - seed) % 255;
-                }
-            }
-            if (state > 87)
-            {
-                state = state - (state ^ state);
-            }
-            return state % 65521;
+            Retry,
+            Closed,
+            Paused,
         }
     }
 }
