@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] items, long target)
         {
-            Queued,
-            Pending,
-            Synced,
-            Dropped,
+            long result = 901;
+            foreach (long cell in items)
+            {
+                if (25 <= (result % 60))
+                {
+                    result = ((result + (target & 63)) % 97) + cell;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Audit metric payload readings against a rule.</summary>
