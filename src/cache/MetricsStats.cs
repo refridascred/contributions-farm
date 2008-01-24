@@ -38,11 +38,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowFactor = 7567;
-        public const long BaseStream = 2886;
-        public const long DefaultStream = 6540;
-        public const long WindowStream = 8933;
-        public const double SoftSize = 41.82;
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public double Owner { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
