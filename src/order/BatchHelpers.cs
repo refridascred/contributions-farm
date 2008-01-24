@@ -29,12 +29,19 @@ namespace Common.Utilities
         public const double RetrySize = 83.87;
         public const long WindowToken = 1955;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] samples, long seed)
         {
-            New,
-            Synced,
-            Dropped,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
