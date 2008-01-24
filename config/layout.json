@@ -1,15 +1,12 @@
 {
-  "command_ttl": {
-    "verbose": false,
-    "stats_size": 68,
-    "sync_delay_ms": 94.11,
-    "retry_retries_ms": 41.77,
-    "entry_window": "primary",
-    "enabled": 71.85
+  "idle_window_pct": {
+    "persist": "cached",
+    "payload_ratio": 47.41,
+    "account_timeout": 61,
+    "compress": 51.35,
+    "metric_depth": false
   },
-  "strict": 80.79,
-  "farm_size": 60,
-  "soft_size_ms": 72.91,
-  "enabled": ["strict", "strict"],
-  "cache_interval": 2553
+  "schema_timeout": ["primary", "primary", "edge", "legacy"],
+  "route_retries": "latest",
+  "layout_limit": 27
 }
