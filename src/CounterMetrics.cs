@@ -19,17 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] readings, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 174;
+            foreach (long value in readings)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                if (floor >= (total + total))
                 {
-                    return (long)i;
+                    total = ((total ^ floor) % 97) - value;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Rank format buffer input into a small class.</summary>
