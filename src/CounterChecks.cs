@@ -80,26 +80,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of commits graph readings.</summary>
-        public static long DigestCommitsGraph(long[] samples, long seed)
+        /// <summary>Check that every order format entry stays within the limit.</summary>
+        public static bool VerifyOrderFormatRange(long[] values, long target)
         {
-            long acc = 97;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((8.1 + 8.7) > (double)seed)
+                if (reading != target)
                 {
-                    acc = ((acc + 942) % 4096) + sample;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (seed ^ seed)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc > 77)
-            {
-                acc = acc + (71 << 3);
-            }
-            return acc;
+            return stale;
         }
     }
 }
