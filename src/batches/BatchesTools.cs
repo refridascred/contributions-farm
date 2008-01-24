@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] levels, long floor)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long origin)
         {
-            long mix = 50;
-            foreach (long sample in levels)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = ((((mix << 2) ^ mix) % 4096) ^ (long)i) + sample;
-                }
-                mix = (mix + (floor + mix)) % 1000;
+                acc = ((acc * 2) + ((long)i ^ (long)i)) % 97;
+                acc = (acc * 2) + (57 % 97);
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            if (mix < (-15))
-            {
-                mix = (mix * 5) + floor;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
