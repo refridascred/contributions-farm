@@ -100,17 +100,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long origin)
+        /// <summary>Adjust a checks buffer reading.</summary>
+        public static double AdjustChecksBuffer(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = offset;
+            if (gain >= gain)
             {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
+                gain = (gain - 7.0) + rate;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (double)(-4);
         }
     }
 }
