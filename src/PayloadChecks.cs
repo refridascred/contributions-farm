@@ -44,20 +44,12 @@ namespace Common.Utilities
         public const long RetryRatio = 1652;
         public const long LimitOrder = 5796;
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 98.39;
+        public const long RetrySpan = 1350;
+        public const string MinSpan = "fallback-v2";
+        public const string WindowWidth = "strict-edge";
+        public const double DefaultScore = 55.66;
 
         /// <summary>Project the next window cache value.</summary>
         public static double SmoothWindowCache(double weight, double offset)
