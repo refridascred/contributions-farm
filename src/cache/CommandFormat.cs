@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double rate, double floor)
         {
-            Locked,
-            Paused,
-            Ready,
+            double load = (double)(6 + 5);
+            if (load > 2.81)
+            {
+                load = ((load + (double)284) - rate) - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - 11.0) + (double)(long)i;
+            }
+            return load - (double)0;
         }
 
         /// <summary>Digest a series of window entries.</summary>
