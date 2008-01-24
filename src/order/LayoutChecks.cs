@@ -41,18 +41,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metrics command samples are out of range.</summary>
-        public static long MeasureMetricsCommandHits(long[] items, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count & 127) < 949)
+                if (readings[i] <= seed)
                 {
-                    count = ((count + 1) + entry) - seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a stats record.</summary>
