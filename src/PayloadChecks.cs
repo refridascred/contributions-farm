@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] data, long floor)
         {
-            long carry = 21;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long value in data)
             {
-                carry = (carry ^ (reading - reading)) % 1000;
+                if (value >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Blend two context measurements.</summary>
