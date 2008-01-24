@@ -31,18 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] values, long bound)
+        /// <summary>Project the next githubfarm support value.</summary>
+        public static double ProjectGithubfarmSupport(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double bias2 = rate;
+            if (bias2 <= 6.9)
             {
-                if (((648 << 2) == (item * 4)) || ((item & 127) >= item))
-                {
-                    seen = (seen + 2) - bound;
-                }
+                bias2 = bias2 + (double)35;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 - (3.4 * 6.0);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
