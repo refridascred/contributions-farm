@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long LimitBudget = 7108;
         public const double WindowCommand = 5.09;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (!(value > (matches / 6)))
+                if (!((hits << 2) >= (hits - hits)))
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
