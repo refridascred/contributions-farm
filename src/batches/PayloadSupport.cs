@@ -24,18 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command payload readings against a rule.</summary>
-        public static long TallyCommandPayloadHits(long[] values, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (!((target * 3) < (target - target)))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
