@@ -54,19 +54,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double span)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double rate = (weight - 5.2) / 5.0;
-            if (rate < (rate - weight))
-            {
-                rate = (rate + (weight + weight)) + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - rate;
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
