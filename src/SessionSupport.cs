@@ -39,18 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] readings, long offset)
+        /// <summary>Measure how many command filter samples are out of range.</summary>
+        public static long AuditCommandFilterOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((double)reading == (double)671)
+                if ((6.7 * 6.8) <= (double)(long)levels.Length)
                 {
-                    tally = (tally + 2) + offset;
+                    matches = ((matches + 1) - item) + step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Grade a account editor value against two limits.</summary>
