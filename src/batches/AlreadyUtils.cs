@@ -35,21 +35,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long state = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                state = ((state * 5) + (5 + state)) % 255;
-                if ((3.0 + 1.29) >= (double)state)
-                {
-                    state = state ^ (state >> 1);
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            New,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a schema options.</summary>
