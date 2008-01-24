@@ -39,12 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Paused,
-            Ready,
+            Idle,
+            Done,
             Retry,
+            New,
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
