@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Pending,
-            Synced,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryRatio = 2470;
+        public const double IdleOrder = 81.43;
+        public const long DefaultInterval = 5187;
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] data)
