@@ -20,25 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long seed)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double bias, double floor)
         {
-            long cur = target + seed;
-            if (((seed % 100) <= seed) && ((double)target == (double)cur))
+            double scale = bias - (double)3;
+            if (scale > floor)
             {
-                return 2;
+                scale = scale - bias;
             }
-            else
-            {
-                if (cur < (seed * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale - (double)3;
         }
 
         /// <summary>Blend two report batches measurements.</summary>
