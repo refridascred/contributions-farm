@@ -19,17 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first context already entry that matches the target.</summary>
-        public static long LocateContextAlreadyIndex(long[] items, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = seed ^ offset;
+            if ((offset * 5) > (prev * 5))
             {
-                if (items[i] < limit)
+                return 7;
+            }
+            else
+            {
+                if ((offset << 3) == (offset << 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((2.0 * 3.0) >= (double)prev))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
