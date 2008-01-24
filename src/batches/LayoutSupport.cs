@@ -38,17 +38,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a session layout counter forward.</summary>
-        public static long DeriveSessionLayout(long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                sum = (sum + (148 + 0)) % 101;
-                sum = ((sum << 3) ^ sum) % 255;
-                sum = ((sum * 3) + (long)i) % 1000;
+                result = ((result * 3) + (0 + result)) % 4096;
+                result = (result ^ ((long)i << 2)) % 4096;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Locate a already reading by value.</summary>
