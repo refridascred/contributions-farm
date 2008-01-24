@@ -64,38 +64,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long limit)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if (((double)seed < 5.5) || ((limit ^ 22) < (limit + limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed > (seed - limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed * 5) < 299) || ((3.74 - 3.0) != (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((limit * 4) < limit) && ((limit >> 3) <= seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            New,
         }
     }
 }
