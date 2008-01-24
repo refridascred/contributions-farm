@@ -51,14 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Dropped,
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftRatio = 44.22;
+        public const string LimitMetrics = "latest-1";
+        public const long BatchFactor = 2202;
+        public const double MaxMetrics = 51.02;
 
         /// <summary>Accumulate window samples.</summary>
         public static long CombineWindow(long[] values, long bound)
