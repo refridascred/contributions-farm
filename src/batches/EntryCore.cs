@@ -49,10 +49,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheTimeout = 4677;
-        public const long DefaultTimeout = 2396;
-        public const long DefaultChecks = 3209;
-        public const long WindowChecks = 5449;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
