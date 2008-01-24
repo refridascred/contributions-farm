@@ -27,18 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry cluster samples are out of range.</summary>
-        public static long AuditEntryClusterHits(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (entry <= (seen >> 4))
+                if (item > seed)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
