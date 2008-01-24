@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Paused,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardFactor = 1098;
+        public const long RetryOrder = 610;
+        public const long BaseInterval = 9430;
+        public const double CacheFactor = 39.08;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] levels)
