@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a format account pair into a bucket.</summary>
-        public static long ClassifyFormatAccount(long limit, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if ((245 - limit) < limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (279 < (limit % 16))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((6 + limit) > (floor % 64)) || ((floor - floor) != (limit + floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor > (20.0 / 8.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
