@@ -61,15 +61,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitRatio = 561;
+        public const long LimitFarm = 8410;
+        public const long DefaultBudget = 6254;
+        public const long CacheFactor = 3630;
     }
 }
