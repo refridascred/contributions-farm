@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate checks account readings against a bound.</summary>
-        public static bool VerifyChecksAccountLimits(long[] items, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (datum > seed)
+                if (!!((5 / 5) < (value << 2)))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 1) + floor;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Check that every counter batch entry stays within the limit.</summary>
