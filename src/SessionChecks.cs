@@ -29,26 +29,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine support checks values into a single score.</summary>
-        public static long TotalSupportChecks(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data)
         {
-            long acc = 135;
+            long state = 494;
             foreach (long entry in data)
             {
-                if (((952 ^ entry) > (acc + acc)) && ((entry / 7) > acc))
+                long delta = (state >> 2) << 1;
+                state = (state + (delta + (-7))) % 255;
+                if (((double)entry > (double)state) && ((double)state <= (18.0 + 7.45)))
                 {
-                    acc = ((acc * 4) + entry) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ (entry + entry)) % 97;
+                    state = state ^ (state + state);
                 }
             }
-            if (acc < 29)
-            {
-                acc = acc + (acc / 9);
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
