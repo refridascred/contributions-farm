@@ -34,22 +34,31 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] readings, long target)
+        /// <summary>Classify a entry report pair into a bucket.</summary>
+        public static long ClassifyEntryReport(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if (!((double)origin >= (17.0 - 6.4)))
             {
-                if (target > (919 * 4))
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < (2.56 * 9.65))
                 {
-                    seen = (seen + 2) + cell;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((origin ^ origin) < floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
