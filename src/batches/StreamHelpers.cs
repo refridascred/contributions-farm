@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate token queue readings against a bound.</summary>
-        public static bool CheckTokenQueueRange(long[] data, long step)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Describe the record state values.</summary>
