@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 7296;
-        public const string StepScore = "standard-edge";
-        public const double WindowCounter = 39.6;
-        public const string HardCounter = "open-edge";
-        public const long MaxCounter = 6057;
+        /// <summary>Grade a order buffer value against two limits.</summary>
+        public static long ClassifyOrderBuffer(long step, long origin)
+        {
+            if ((step <= (6 / 5)) || (step <= (48 - 272)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((7.9 + 3.34) > (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step + origin) >= (origin + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((7.26 + 7.7) == (double)origin) && ((step ^ origin) == (step & 15)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long CombineRoute(long[] data)
