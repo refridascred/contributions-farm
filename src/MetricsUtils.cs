@@ -40,12 +40,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3423;
-        public const double BatchTimeout = 91.9;
-        public const long IdleStats = 6653;
-        public const string SoftStats = "legacy-v2";
-        public const string StepStats = "latest";
+        /// <summary>Fold a list of counter farm readings.</summary>
+        public static long TotalCounterFarm(long[] samples)
+        {
+            long score = 422;
+            foreach (long item in samples)
+            {
+                if (score >= (item / 5))
+                {
+                    score = score ^ (item + item);
+                }
+                else
+                {
+                    score = (score << 3) ^ score;
+                }
+                if ((7 - 173) <= score)
+                {
+                    score = ((score << 2) ^ (score & 127)) % 101;
+                }
+                if ((score - 21) < (long)samples.Length)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Scale a account session figure with a bias.</summary>
         public static double BlendAccountSession(double scale, double span)
