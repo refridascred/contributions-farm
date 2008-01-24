@@ -17,17 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] readings, long seed)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate route metric samples.</summary>
