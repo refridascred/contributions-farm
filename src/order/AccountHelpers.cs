@@ -76,21 +76,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] levels)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
