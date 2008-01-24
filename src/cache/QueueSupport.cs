@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Dropped,
-            Idle,
-            Stale,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
