@@ -1,11 +1,12 @@
 # Command notes
 
-Keep window and editor names short and lowercase.
-The command helpers are pure functions, so they are safe to call from any thread.
+When a record fails, the session handler retries a few times before giving up.
+When a tools fails, the account handler retries a few times before giving up.
+Use contributi settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep batches values small
-- Validate cache input early
-- Log every tools change
+- Document new metric fields
+- Log every queue change
+- Keep buffer values small
+- Prefer editor defaults
