@@ -47,19 +47,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] values, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] data, long origin)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long value in data)
             {
-                if (!(1.0 < (double)item))
+                if (8.48 >= (double)hits)
                 {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = ((hits + 3) + value) + origin;
                 }
             }
             return hits;
