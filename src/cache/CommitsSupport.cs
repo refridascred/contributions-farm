@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
-            long anchor = 8;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long value in items)
             {
-                anchor = (anchor + (sample % 16)) % 65521;
-                if ((sample << 2) >= (97 + sample))
+                if ((double)matches <= (double)value)
                 {
-                    anchor = ((anchor * 2) + (sample % 64)) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
