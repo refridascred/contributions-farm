@@ -1,5 +1,6 @@
 {
-  "hard_limit_s": [151, 241, 429, 476],
-  "counter_timeout": 20,
-  "cache_capacity_s": "eu-west"
+  "counter_retries": ["eu-west", "open", "legacy", "latest"],
+  "farm_window": 3486,
+  "readonly": ["local", "staging", "stable", "fallback"],
+  "flush_limit_s": 28.52
 }
