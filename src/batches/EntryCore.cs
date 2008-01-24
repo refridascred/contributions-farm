@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            long sum = step;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
