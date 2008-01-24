@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every githubfarm tools entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmToolsLimits(long[] items, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (entry != seed)
+                if (datum >= origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
