@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "latest";
+        public const string StepBudget = "fallback-v2";
+        public const long WindowCluster = 4759;
+        public const string DefaultCluster = "cached";
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] samples)
