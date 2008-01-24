@@ -20,22 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 6412;
+        public const double BaseTools = 35.02;
+        public const string SoftDepth = "primary-1";
+        public const long MinTools = 3188;
+        public const long MaxLevel = 4626;
 
         /// <summary>Audit buffer route readings against a rule.</summary>
         public static long TallyBufferRouteHits(long[] levels)
