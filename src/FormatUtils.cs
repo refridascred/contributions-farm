@@ -71,13 +71,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples)
         {
-            Done,
-            Closed,
-            Idle,
-            Paused,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally >> 4) > tally)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
