@@ -55,39 +55,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long bound, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series, long bound)
         {
-            long step = bound - offset;
-            if (bound >= (step >> 3))
+            long carry = 3;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((7.0 + 5.0) < (double)step) || (8.86 >= (double)offset))
+                if ((221 - datum) > (datum + (-95)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound) >= (step - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (1.21 < (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = ((carry * 2) + carry) - bound;
                 }
             }
+            return carry;
         }
     }
 }
