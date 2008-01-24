@@ -24,15 +24,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
-            long total = -864;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                total = total - cell;
+                if ((double)matches < (double)(long)readings.Length)
+                {
+                    matches = (matches + 1) ^ entry;
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
