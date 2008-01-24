@@ -34,31 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long floor, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] readings)
         {
-            if ((340 / 9) > (bound << 3))
+            long total = -864;
+            foreach (long cell in readings)
             {
-                return 7;
+                total = total - cell;
             }
-            else
-            {
-                if ((3.0 / 7.0) < (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor >= (bound + 45)) && ((bound % 24) != (bound / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total % 97;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
