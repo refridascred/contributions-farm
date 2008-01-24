@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = 7;
-            foreach (long sample in items)
-            {
-                total = (total ^ (total + 62)) - sample;
-            }
-            if (total > 1)
-            {
-                total = total + ((-33) % 10);
-            }
-            return total % 97;
+            Draft,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Combine context values into a single score.</summary>
