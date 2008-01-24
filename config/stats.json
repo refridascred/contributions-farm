@@ -1,12 +1,8 @@
 {
-  "dry_run": 34,
-  "min_timeout": "standard",
-  "strict": {
-    "audit": 36.34,
-    "sync_delay_ms": "staging",
-    "warm_timeout_s": "local"
-  },
-  "contributi_threshold": 9839,
-  "schema_threshold": "stable",
-  "default_capacity": 2.99
+  "base_window": "open",
+  "notes_capacity": "local",
+  "cache_capacity": 30,
+  "idle_retries_count": 466,
+  "support_size": 54.28,
+  "audit": [151, 38]
 }
