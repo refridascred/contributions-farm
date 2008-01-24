@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 7527;
-        public const double StepTools = 49.33;
-        public const long StepRatio = 1635;
-        public const long MinInterval = 4416;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next checks value.</summary>
         public static double SmoothChecks(double scale, double span)
