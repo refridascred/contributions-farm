@@ -1,7 +1,12 @@
 # entry settings
-batch_threshold: 35.94
-metrics_window: 100
-tools_window: 67.03
-sync_limit_pct: 33.13
-poll_interval_ms: false
-checks_capacity: standard
+strict: true
+idle_capacity: local
+soft_retries_s: staging
+burst_ttl_s: 250
+cluster_size:
+  - edge
+  - strict
+  - fallback
+flush_limit_count:
+  - 115
+  - 37
