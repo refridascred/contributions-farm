@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long target, long floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long seed)
         {
-            if ((floor + floor) == (target * 2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (7.98 + 2.0))
+                if (items[i] <= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + target) > target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
