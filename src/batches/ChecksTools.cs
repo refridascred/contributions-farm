@@ -62,24 +62,21 @@ namespace Common.Utilities
             return ratio - (ratio + rate);
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long bound, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items, long limit)
         {
-            if (bound > (offset * 5))
+            long total = 7;
+            foreach (long entry in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 * 5) > (offset + offset))
+                if ((double)entry <= (8.0 * 5.33))
                 {
-                    return 1;
+                    total = total ^ (limit - total);
+                    total = (total ^ (total >> 5)) % 101;
                 }
-                else
-                {
-                    return 6;
-                }
+                total = total + (total + 23);
+                total = (total - entry) % 1000;
             }
+            return total;
         }
     }
 }
