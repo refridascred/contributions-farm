@@ -73,18 +73,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already metrics samples are out of range.</summary>
-        public static long CountAlreadyMetricsHits(long[] values, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((floor + item) == (item ^ 4))
+                if (reading > offset)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
