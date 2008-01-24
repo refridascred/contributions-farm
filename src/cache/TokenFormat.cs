@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long MaxPayload = 9493;
         public const string DefaultPayload = "staging-1";
 
-        /// <summary>Iterate the filter schema series from a seed.</summary>
-        public static long SeriesFilterSchema(long origin)
+        /// <summary>Compare every pair of token layout readings.</summary>
+        public static long OverlapTokenLayoutCount(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
