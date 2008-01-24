@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] data, long step)
         {
-            Done,
-            New,
-            Draft,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((count << 1) != (count ^ 974))
+                {
+                    count = ((count + 3) + reading) + step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
