@@ -1,10 +1,6 @@
 # githubfarm settings
-min_limit_count:
-  - green
-  - eu-west
-  - eu-west
-  - stable
-retry_window_count: true
-batch_ttl_s: green
-payload_delay: stable
-contributi_depth: 40.62
+min_capacity_ms: 26
+min_size_count: true
+compress: 2766
+soft_ratio: legacy
+base_window: staging
