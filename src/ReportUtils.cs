@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
             public double Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the buffer status values.</summary>
