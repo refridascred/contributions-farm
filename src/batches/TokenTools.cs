@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] levels, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - mark) % 4096;
-                if ((mark ^ (long)i) == (mark & 1))
+                if (levels[i] >= limit)
                 {
-                    mark = ((mark << 2) ^ (mark + 211)) % 65521;
-                    break;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
