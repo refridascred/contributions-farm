@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterHits(long[] readings, long floor)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((floor / 9) <= (floor - floor))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
