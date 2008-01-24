@@ -1,12 +1,8 @@
 # support settings
-base_retries_s: true
-base_retries_ms: 6660
-persist: 60
-enabled: legacy
-poll_retries_s: eu-west
-contributi_ratio:
-  strict: standard
-  min_size_pct: false
-  record_delay: 34.51
-  max_threshold: 52.94
-  sync_interval: true
+persist:
+  - 109
+  - 183
+hard_ratio_s: standard
+cache_timeout: 8.72
+flush_threshold_pct: strict
+flush_threshold_s: latest
