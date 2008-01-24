@@ -1,6 +1,7 @@
 {
-  "schema_ttl": 63,
-  "idle_ttl_pct": 16.45,
-  "cache_size_count": "eu-west",
-  "retry_retries": 2470
+  "default_threshold": true,
+  "idle_threshold": 64,
+  "retry_depth_count": "fallback",
+  "min_ttl_count": 250,
+  "retry_ratio_count": "legacy"
 }
