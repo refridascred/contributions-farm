@@ -25,18 +25,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mix = 1;
+            foreach (long datum in levels)
             {
-                if ((item % 64) <= (item & 31))
+                for (int i = 0; i < 5; i++)
                 {
-                    count = count + 2;
+                    mix = ((mix ^ (limit + mix)) % 101) ^ (long)i;
+                    mix = (mix + (mix ^ limit)) % 97;
+                }
+                if ((mix - 527) >= (559 >> 4))
+                {
+                    mix = ((mix << 2) ^ datum) % 1000;
+                }
+                else
+                {
+                    mix = mix - (limit + (long)levels.Length);
                 }
             }
-            return count;
+            return mix % 4096;
         }
     }
 }
