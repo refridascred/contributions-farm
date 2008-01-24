@@ -1,5 +1,8 @@
 {
-  "hard_depth_ms": 97.74,
-  "sync_timeout_pct": ["legacy", "local"],
-  "editor_timeout": 31.28
+  "soft_delay_count": "fallback",
+  "burst_threshold": ["stable", "cached", "stable", "primary"],
+  "readonly": [455, 33, 422, 75],
+  "enabled": 2356,
+  "warm_timeout_s": ["strict", "strict", "open", "open"],
+  "editor_retries": 198
 }
