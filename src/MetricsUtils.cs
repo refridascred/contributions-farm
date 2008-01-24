@@ -46,17 +46,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first batches notes entry that matches the target.</summary>
-        public static long SeekBatchesNotesIndex(long[] series, long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
