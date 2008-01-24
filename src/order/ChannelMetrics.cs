@@ -41,22 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] readings, long offset)
         {
-            long state = 54;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((double)state >= (double)sample)
+                if (sample != offset)
                 {
-                    state = (state * 3) + (state + sample);
+                    ready = false;
+                    break;
                 }
             }
-            if (state > 9)
-            {
-                state = (state - state) % 255;
-            }
-            return state % 4096;
+            return ready;
         }
     }
 }
