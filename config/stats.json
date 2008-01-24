@@ -1,6 +1,6 @@
 {
-  "burst_ttl": "local",
-  "audit": 15,
-  "sync_delay_s": 99,
-  "base_ratio": ["legacy", "cached", "staging", "legacy"]
+  "metrics_limit": "staging",
+  "verbose": 30,
+  "githubfarm_threshold": "open",
+  "profile_limit": "strict"
 }
