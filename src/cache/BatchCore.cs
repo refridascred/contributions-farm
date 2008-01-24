@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long result = 8;
-            foreach (long cell in items)
-            {
-                result = (result ^ (cell + result)) % 65521;
-            }
-            return result;
+            public double Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
