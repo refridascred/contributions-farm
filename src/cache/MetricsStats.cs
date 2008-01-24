@@ -33,12 +33,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] items)
         {
-            public long Size { get; set; }
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
+            long score = 295;
+            foreach (long item in items)
+            {
+                if ((3.0 / 7.0) == (double)item)
+                {
+                    score = ((score << 3) ^ (item & 1)) % 255;
+                }
+                if ((double)item == (17.0 * 3.89))
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a batches info.</summary>
