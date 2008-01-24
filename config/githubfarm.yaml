@@ -1,23 +1,21 @@
 # githubfarm settings
-soft_capacity_pct:
-  batch_limit_s: stable
-  warm_window_s: true
-  sync_ttl_count: 45
-  stream_timeout: 54.33
-  payload_retries: 250
-  stats_size:
-    stream_retries: eu-west
-    enabled: true
-    dry_run:
-      - staging
-      - cached
-      - eu-west
-    sync_delay: 500
-    soft_window: 78.29
-idle_retries_ms: blue
-burst_ttl:
-  warm_interval: 65.93
-  min_timeout_count: 26
-  format_interval: 65
-  payload_window: false
-  batch_delay: false
+dry_run:
+  compress: true
+  sync_timeout_count: 40
+  enabled: green
+  batch_size_ms: 49
+burst_size_s: 81.63
+readonly: open
+stream_window:
+  - fallback
+  - cached
+  - edge
+verbose:
+  min_retries: true
+  warm_delay: 95
+  readonly: legacy
+retry_ratio_pct:
+  - 32
+  - 164
+  - 395
+  - 490
