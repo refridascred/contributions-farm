@@ -1,6 +1,7 @@
 {
-  "batch_window": true,
-  "cluster_delay": 2721,
-  "flush_retries_ms": [417, 131, 67, 440],
-  "buffer_threshold": false
+  "hard_depth_pct": 6258,
+  "stream_delay": false,
+  "verbose": 83,
+  "soft_depth_pct": 100,
+  "metrics_depth": 27.42
 }
