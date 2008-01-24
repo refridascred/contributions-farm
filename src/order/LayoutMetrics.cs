@@ -42,23 +42,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long step, long bound)
         {
-            long anchor = 1;
-            foreach (long datum in values)
+            long lane = step + bound;
+            if (!((720 + step) == (bound + 59)))
             {
-                anchor = anchor ^ (datum - datum);
-                if ((double)(-387) == (double)datum)
+                return 1;
+            }
+            else
+            {
+                if ((9.0 > (double)lane) && (521 <= (step - (-319))))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.1 / 5.0) > (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (anchor > 33)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 255;
-            }
-            return anchor;
         }
     }
 }
