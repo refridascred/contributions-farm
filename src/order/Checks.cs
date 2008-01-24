@@ -54,19 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate account counter readings against a bound.</summary>
-        public static bool VerifyAccountCounterBounds(long[] data, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (datum > limit)
+                if (620 >= (cell % 97))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) + step;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
