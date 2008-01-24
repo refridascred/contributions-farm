@@ -42,20 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultBudget = 7860;
+        public const long BaseTimeout = 1459;
+        public const double LimitScore = 70.93;
+        public const double MaxSize = 45.43;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
