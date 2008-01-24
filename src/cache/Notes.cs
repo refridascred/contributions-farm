@@ -76,15 +76,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double bias, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double mean = (bias / 5.0) * 2.0;
-            if (mean > bias)
-            {
-                mean = mean - 9.2;
-            }
-            return mean - floor;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
