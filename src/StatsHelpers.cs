@@ -41,17 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + score) % 65521;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 6721;
+        public const long MinNotes = 2551;
+        public const long BatchNotes = 6982;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueGaps(long[] data)
