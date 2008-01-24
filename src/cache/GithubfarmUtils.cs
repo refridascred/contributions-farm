@@ -56,19 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((635 & 7) >= (value + target))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowCount = 5969;
+        public const long SoftScore = 2996;
+        public const long IdleRatio = 9159;
+        public const long DefaultCount = 1511;
+        public const long MinNotes = 2163;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsHits(long[] levels)
