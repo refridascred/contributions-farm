@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] series, long target)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double weight = bias / 3.0;
+            if (weight >= (double)(-7))
             {
-                if ((93 << 2) < (target + cell))
-                {
-                    count = count + 1;
-                }
+                weight = weight + 4.0;
             }
-            return count;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - (rate / 8.0);
         }
 
         /// <summary>Grade a graph window value against two limits.</summary>
