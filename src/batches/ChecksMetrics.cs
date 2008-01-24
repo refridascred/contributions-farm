@@ -66,9 +66,10 @@ namespace Common.Utilities
         public const long RetrySize = 7776;
         public const long BurstToken = 8287;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 52.89;
-        public const long IdleFactor = 1082;
-        public const string BurstInterval = "fallback-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "fallback";
+        public const long MinChecks = 2356;
+        public const string BurstScore = "latest";
+        public const double CacheChecks = 13.41;
     }
 }
