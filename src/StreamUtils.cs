@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double IdleLayout = 27.53;
         public const long BaseFactor = 742;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "local";
-        public const long DefaultOrder = 2626;
-        public const long HardOrder = 5023;
-        public const string WindowWidth = "latest-1";
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Synced,
+            Draft,
+            Failed,
+            New,
+            Done,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long HardLevel = 6214;
