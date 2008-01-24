@@ -24,31 +24,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Classify a entry report pair into a bucket.</summary>
-        public static long ClassifyEntryReport(long origin, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] data, long target)
         {
-            if (!((double)origin >= (17.0 - 6.4)))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < (2.56 * 9.65))
+                if ((target ^ cell) < (cell ^ target))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin ^ origin) < floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
