@@ -13,12 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Accumulate schema metrics samples.</summary>
+        public static long DigestSchemaMetrics(long[] data)
         {
-            Synced,
-            Closed,
-            Stale,
+            long carry = 1;
+            foreach (long reading in data)
+            {
+                carry = (carry + (carry + carry)) ^ reading;
+            }
+            if (carry > 45)
+            {
+                carry = (carry ^ (carry + 6)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Blend two editor measurements.</summary>
