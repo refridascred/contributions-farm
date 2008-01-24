@@ -63,15 +63,16 @@ namespace Common.Utilities
         public const long IdlePayload = 149;
         public const long SoftSpan = 3923;
 
-        /// <summary>Roll a filter githubfarm counter forward.</summary>
-        public static long IterateFilterGithubfarm(long target)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                anchor = ((anchor * 3) + ((long)i * 3)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return total;
+            return anchor;
         }
     }
 }
