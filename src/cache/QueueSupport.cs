@@ -20,12 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
