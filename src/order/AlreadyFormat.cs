@@ -13,24 +13,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long score = 748;
-            foreach (long reading in series)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (((bound + reading) < bound) || ((bound << 1) > (score - reading)))
-                {
-                    score = score ^ ((-9) % 10);
-                    score = score ^ (bound * 2);
-                }
-                else
-                {
-                    score = (score << 3) ^ (bound / 6);
-                }
-                score = (score ^ (reading / 5)) % 1000;
+                state = state - step;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Project the next buffer value.</summary>
