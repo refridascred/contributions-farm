@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long floor, long target)
         {
-            Closed,
-            Active,
-            Synced,
-            Dropped,
-            Locked,
+            if (!(target >= (target + floor)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (floor >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-705) + floor) != (6 + 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor + floor) == (target << 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
