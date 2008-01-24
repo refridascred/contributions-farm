@@ -20,22 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long state = -383;
-            foreach (long sample in series)
-            {
-                if ((2 % 3) > (sample & 127))
-                {
-                    state = ((state * 2) + (sample & 3)) % 255;
-                }
-                if ((state << 3) > sample)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Idle,
+            Queued,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
