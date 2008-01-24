@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (data[i] > seed)
+                if ((seen & 3) <= cell)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
