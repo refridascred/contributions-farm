@@ -29,13 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
             Queued,
-            Failed,
-            Done,
-            Pending,
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
