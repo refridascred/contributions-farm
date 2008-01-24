@@ -44,19 +44,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long bound)
+        /// <summary>Scale a metrics record figure with a bias.</summary>
+        public static double AdjustMetricsRecord(double scale, double span)
         {
-            bool ok = true;
-            foreach (long value in data)
+            double rate = span;
+            if (rate >= (rate / 5.0))
             {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - rate) + scale;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (rate / 3.0)) + (double)(long)i;
+            }
+            return rate + 3.0;
         }
     }
 }
