@@ -75,19 +75,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] samples, long limit)
+        /// <summary>Combine graph session values into a single score.</summary>
+        public static long FoldGraphSession(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long mix = 5;
+            foreach (long reading in values)
             {
-                if (reading <= limit)
+                if (reading < (reading - mix))
                 {
-                    ready = false;
-                    break;
+                    mix = (((mix << 3) ^ 42) % 255) - offset;
                 }
             }
-            return ready;
+            if (mix > 3)
+            {
+                mix = ((mix << 3) ^ (mix & 3)) % 65521;
+            }
+            return mix;
         }
     }
 }
