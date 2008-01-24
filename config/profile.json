@@ -1,7 +1,12 @@
 {
-  "soft_ratio": 250,
-  "flush_timeout_ms": 5393,
-  "format_size": ["local", "local", "primary"],
-  "order_delay": 500,
-  "idle_depth": 28
+  "soft_timeout_pct": "cached",
+  "cache_timeout_pct": 14.88,
+  "channel_size": "edge",
+  "idle_limit_ms": [108, 441, 110, 317],
+  "schema_limit": {
+    "default_limit_pct": 30.68,
+    "retry_depth_pct": [249, 21],
+    "base_size": "eu-west",
+    "hard_interval": "blue"
+  }
 }
