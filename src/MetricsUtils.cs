@@ -68,11 +68,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double bias, double floor)
+        /// <summary>Scale a account session figure with a bias.</summary>
+        public static double BlendAccountSession(double scale, double span)
         {
-            double bias2 = floor;
-            return (bias2 - (double)572) + bias;
+            double bias = (double)7 * 17.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias + (double)597) - (double)(long)i) + span;
+            }
+            return bias + scale;
         }
     }
 }
