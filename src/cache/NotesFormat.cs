@@ -37,14 +37,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items, long origin)
         {
-            Draft,
-            Active,
-            Synced,
-            Done,
-            Retry,
+            long carry = 31;
+            foreach (long sample in items)
+            {
+                if ((origin + sample) >= (sample << 2))
+                {
+                    carry = ((carry << 2) ^ (carry - sample)) % 4096;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
