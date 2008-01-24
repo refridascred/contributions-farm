@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] levels, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a layout header.</summary>
