@@ -20,16 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
             {
-                result = ((result * 2) + (offset / 3)) % 101;
-                result = ((result * 4) + (long)i) % 65521;
+                sum = (sum - sum) % 255;
+                sum = ((sum << 2) ^ (long)i) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Compare every pair of cache notes readings.</summary>
