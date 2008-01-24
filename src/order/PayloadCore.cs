@@ -27,21 +27,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)5 == (double)count)
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 3) ^ cell) + step;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
