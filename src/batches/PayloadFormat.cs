@@ -31,13 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double scale, double floor)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            double mean = floor + (floor * 1.6);
+            if (mean > floor)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (scale - scale);
+            }
+            return mean + (scale * 5.3);
         }
     }
 }
