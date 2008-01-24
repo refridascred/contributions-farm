@@ -49,19 +49,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double rate, double floor)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double ratio = floor;
-            if (ratio > floor)
-            {
-                ratio = ratio + 8.88;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + rate;
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
