@@ -62,18 +62,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter batch samples are out of range.</summary>
-        public static long TallyFilterBatchGaps(long[] data, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)count <= (20.0 - 9.0))
-                {
-                    count = ((count + 3) - value) - floor;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Paused,
+            New,
+            Pending,
         }
     }
 }
