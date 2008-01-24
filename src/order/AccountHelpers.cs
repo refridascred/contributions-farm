@@ -14,23 +14,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen % 60) >= (599 + datum))
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftScore = 6952;
+        public const string MinBudget = "standard-edge";
+        public const long SoftFilter = 6752;
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long StepTools(long origin)
