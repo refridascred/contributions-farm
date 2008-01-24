@@ -51,32 +51,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long seed)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long span = limit - seed;
-            if (((8 + 621) > seed) && ((6.0 / 4.0) < (double)seed))
+            long state = 664;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.72 - 8.5) >= (double)span)
+                if (!((state + sample) <= 909))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed - limit) < seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = state + (long)samples.Length;
                 }
             }
+            return state;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
