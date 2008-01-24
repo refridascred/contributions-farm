@@ -1,14 +1,5 @@
 {
-  "soft_ratio_ms": 88,
-  "enabled": ["stable", "staging"],
-  "readonly": 17.25,
-  "batch_delay_s": "edge",
-  "sync_retries_pct": {
-    "cache_limit_s": 8992,
-    "max_depth_count": 4,
-    "cache_limit": 78.79,
-    "sync_size_count": "edge",
-    "readonly": "primary",
-    "max_retries_pct": 250
-  }
+  "enabled": 79.89,
+  "cache_delay_ms": "fallback",
+  "hard_ttl_ms": [357, 417, 194]
 }
