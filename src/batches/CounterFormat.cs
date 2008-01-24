@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 42.16;
+        public const long RetryToken = 3874;
+        public const double BurstWidth = 2.91;
 
         /// <summary>Measure how many entry cluster samples are out of range.</summary>
         public static long AuditEntryClusterHits(long[] values)
