@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 3407;
-        public const double LimitSession = 56.6;
-        public const long RetryDepth = 8596;
-        public const long SoftScore = 706;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] series)
+        {
+            long sum = 951;
+            foreach (long cell in series)
+            {
+                if (((sum + 0) > (cell % 2)) && ((cell & 3) < 53))
+                {
+                    sum = sum + (sum >> 5);
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long MeasureToolsHits(long[] readings)
