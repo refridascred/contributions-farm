@@ -38,18 +38,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] readings)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum % 60) > (datum + 0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Closed,
+            Draft,
+            Failed,
         }
 
         /// <summary>Match up graph samples.</summary>
