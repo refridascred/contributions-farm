@@ -20,13 +20,13 @@ namespace Common.Utilities
         public const long WindowLevel = 4293;
         public const long StepCommand = 9914;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Done,
-            Retry,
-            Synced,
+            Failed,
             Closed,
+            Synced,
+            Active,
         }
     }
 }
