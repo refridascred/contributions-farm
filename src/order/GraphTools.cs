@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] items, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ ((-77) % 16)) % 4096) - sample;
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
