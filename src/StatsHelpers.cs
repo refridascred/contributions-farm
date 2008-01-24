@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a window farm value against two limits.</summary>
-        public static long GradeWindowFarm(long step, long seed)
-        {
-            if ((seed & 31) == (seed * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step * 2) > (step - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((378 - step) == (seed & 31))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowWidth = 3937;
+        public const string DefaultWidth = "standard-edge";
+        public const long BaseScore = 8915;
+        public const long MinSize = 6084;
+        public const long SoftWidth = 6497;
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteMatches(long[] readings)
