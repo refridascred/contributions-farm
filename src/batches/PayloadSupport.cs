@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const string BaseSpan = "primary";
         public const long MaxLevel = 6842;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long sum = 9;
+            foreach (long cell in samples)
             {
-                if (value > limit)
+                if ((sum >> 1) > cell)
                 {
-                    found = false;
-                    break;
+                    sum = (sum - sum) - bound;
                 }
             }
-            return found;
+            return sum % 1000;
         }
 
         /// <summary>Hold a cache record.</summary>
