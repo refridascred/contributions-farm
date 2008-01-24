@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "staging";
+        public const string WindowSize = "open-edge";
+        public const string BurstFactor = "open-edge";
+        public const long MaxFactor = 4787;
+        public const string BurstEntry = "open-v2";
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] items)
