@@ -26,26 +26,13 @@ namespace Common.Utilities
             return (load - gain) + offset;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long total = 649;
-            foreach (long datum in values)
-            {
-                if (!((datum + 397) == (total << 2)))
-                {
-                    total = total + (total + total);
-                }
-                else
-                {
-                    total = (total * 5) + 90;
-                }
-                if (((4.1 * 0.3) >= (double)total) || ((896 % 5) > datum))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
