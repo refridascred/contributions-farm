@@ -40,31 +40,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long target, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data, long bound)
         {
-            if (((floor & 63) < (floor ^ floor)) || ((floor % 10) >= (floor + target)))
+            long state = 285;
+            foreach (long reading in data)
             {
-                return 3;
+                state = (((state ^ (175 - 3)) % 4096) - reading) - bound;
             }
-            else
+            if (state < 7)
             {
-                if ((target + floor) != (27 ^ floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((5.3 + 7.7) < (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                state = (state << 3) ^ state;
             }
+            return state % 1000;
         }
     }
 }
