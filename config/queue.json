@@ -1,6 +1,16 @@
 {
-  "counter_retries": ["eu-west", "open", "legacy", "latest"],
-  "farm_window": 3486,
-  "readonly": ["local", "staging", "stable", "fallback"],
-  "flush_limit_s": 28.52
+  "idle_limit_pct": 9954,
+  "contributi_window": {
+    "sync_retries_s": {
+      "retry_ttl": 27,
+      "min_window": 30,
+      "cache_ratio_pct": 1797,
+      "readonly": 13,
+      "buffer_limit": "local"
+    },
+    "batch_interval_pct": "latest",
+    "account_limit": false,
+    "max_ratio_s": 60
+  },
+  "account_interval": false
 }
