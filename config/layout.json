@@ -1,11 +1,6 @@
 {
-  "burst_size_pct": {
-    "batch_interval_ms": "standard",
-    "max_ratio_count": 60,
-    "max_threshold": "latest"
-  },
-  "strict": 1024,
-  "enabled": [331, 273],
-  "payload_ratio": "latest",
-  "batch_size": ["open", "open"]
+  "flush_retries_pct": false,
+  "checks_ratio": true,
+  "poll_window": 63,
+  "dry_run": 56
 }
