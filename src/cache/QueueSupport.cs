@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
+            Pending,
+            Synced,
             Dropped,
-            Failed,
-            Paused,
-            New,
-            Retry,
+            Queued,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
