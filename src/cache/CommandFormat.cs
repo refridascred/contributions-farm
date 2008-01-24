@@ -25,15 +25,38 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            if ((target + target) >= (offset + target))
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((offset >> 4) != (offset & 127))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (398 < (offset - 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset / 5) <= (offset % 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
