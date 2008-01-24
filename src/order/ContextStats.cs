@@ -23,11 +23,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 1440;
-        public const long BatchCount = 9953;
-        public const long BatchRatio = 7577;
-        public const string BaseQueue = "primary-1";
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
+        {
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Combine cache session values into a single score.</summary>
         public static long TotalCacheSession(long[] data, long seed)
