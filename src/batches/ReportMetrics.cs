@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Failed,
-            Queued,
-            Locked,
-            Stale,
-            Ready,
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many contributi account samples are out of range.</summary>
