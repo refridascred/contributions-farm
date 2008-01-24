@@ -12,13 +12,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Dropped,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 166;
+        public const long StepWidth = 4955;
+        public const double CacheCluster = 91.29;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinChannel = 2825;
