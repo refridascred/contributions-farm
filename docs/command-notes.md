@@ -1,14 +1,11 @@
 # Command notes
 
-Keep already and filter names short and lowercase.
-The cluster report groups every report by support.
-
-Run the batch check before changing any report limits.
-Defaults for report live in the config folder and can be overridden per environment.
-Run the token check before changing any account limits.
+The account module keeps entry values in sync with the entry cache.
+Run the contributi check before changing any payload limits.
 
 ## Guidelines
 
-- Keep account values small
-- Document new counter fields
-- Validate buffer input early
+- Keep support values small
+- Document new filter fields
+- Prefer stream defaults
+- Review stats limits each release
