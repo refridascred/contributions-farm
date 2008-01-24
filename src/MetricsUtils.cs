@@ -80,21 +80,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = scale / 2.0;
+            if (bias <= offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + 2.3;
             }
-            return hits;
+            else
+            {
+                bias = bias + (offset + bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + offset;
         }
     }
 }
