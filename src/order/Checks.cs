@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count githubfarm contributi pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmContributiCount(long[] samples)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)(898 + 585);
+            if (rate < offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate - (offset - rate)) + bias;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (rate / 5.0)) + (double)(long)i;
+            }
+            return rate - 1.58;
         }
 
         /// <summary>Describe the account class values.</summary>
