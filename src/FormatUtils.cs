@@ -70,32 +70,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 3849;
         public const long SoftTimeout = 7270;
 
-        /// <summary>Rank context tools input into a small class.</summary>
-        public static long SortContextTools(long limit, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long gap = limit + step;
-            if ((limit + limit) == (gap >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (2.0 + 18.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step ^ step) == (step * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Closed,
+            Idle,
+            Paused,
         }
     }
 }
