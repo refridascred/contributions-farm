@@ -41,18 +41,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit format record readings against a rule.</summary>
-        public static long TallyFormatRecordOutliers(long[] data)
+        /// <summary>Rank counter token input into a small class.</summary>
+        public static long GradeCounterToken(long origin, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if (target > (origin ^ origin))
             {
-                if ((double)count >= (6.8 + 17.0))
+                return 7;
+            }
+            else
+            {
+                if ((origin * 2) >= origin)
                 {
-                    count = (count + 2) ^ cell;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
