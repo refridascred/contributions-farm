@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] readings, long target)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
