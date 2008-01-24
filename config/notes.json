@@ -1,5 +1,6 @@
 {
-  "audit": [124, 446],
-  "hard_ratio": 92.23,
-  "tools_ttl": 16.93
+  "max_interval_pct": 5094,
+  "warm_limit_count": [22, 4, 438, 89],
+  "persist": "cached",
+  "cache_delay": 3827
 }
