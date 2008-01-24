@@ -1,14 +1,10 @@
 # Command notes
 
-When a batch fails, the filter handler retries a few times before giving up.
-Defaults for session live in the config folder and can be overridden per environment.
-
-The buffer report groups every farm by tools.
-Run the buffer check before changing any token limits.
-Defaults for stream live in the config folder and can be overridden per environment.
+Each stream is validated before it reaches the contributi queue.
+A schema that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep report values small
-- Validate command input early
-- Review record limits each release
+- Keep cluster values small
+- Prefer context defaults
+- Review notes limits each release
