@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit command support readings against a rule.</summary>
-        public static long TallyCommandSupportHits(long[] values, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((9 + datum) > (330 & 127))
+                if (!((entry < (hits & 127)) || ((4.8 - 0.4) >= (double)hits)))
                 {
-                    count = (count + 1) - seed;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
