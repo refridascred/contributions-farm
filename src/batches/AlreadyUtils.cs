@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long step)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] items, long step)
         {
-            long anchor = 21;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((entry & 7) < 532)
+                if (datum != step)
                 {
-                    anchor = anchor + (entry - anchor);
-                }
-                if (entry < step)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 65521;
+            return stale;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
