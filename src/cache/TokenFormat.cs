@@ -19,23 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of buffer stats entries.</summary>
-        public static long TallyBufferStats(long[] data)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long anchor = 173;
-            foreach (long datum in data)
-            {
-                anchor = (anchor - 26) % 4096;
-                if (datum < (anchor - datum))
-                {
-                    break;
-                }
-            }
-            if (anchor > 65)
-            {
-                anchor = (anchor - anchor) % 65521;
-            }
-            return anchor;
+            Closed,
+            Dropped,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Hold a support options.</summary>
