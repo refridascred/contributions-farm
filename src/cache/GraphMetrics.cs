@@ -16,13 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Queued,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitLevel = "cached-v2";
+        public const long MinBudget = 5977;
+        public const double MaxRatio = 34.01;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] items, long limit)
