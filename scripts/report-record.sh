@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    primary)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=334
+log "limit is ${RECORD_LIMIT}"
