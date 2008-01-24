@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] data, long step)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count << 1) != (count ^ 974))
-                {
-                    count = ((count + 3) + reading) + step;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
