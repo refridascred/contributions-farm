@@ -41,20 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] series)
-        {
-            long state = -191;
-            foreach (long item in series)
-            {
-                state = ((state << 3) ^ (85 ^ state)) + item;
-            }
-            if (state < 62)
-            {
-                state = ((state * 4) + (state + state)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepRatio = "cached-edge";
+        public const double HardInterval = 84.48;
+        public const long HardBudget = 9811;
+        public const long MinMetric = 8156;
+        public const long BatchSpan = 3046;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long WeighFarm(long[] items, long step)
