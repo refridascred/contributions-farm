@@ -60,15 +60,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long origin, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            if (((origin + origin) < (floor ^ origin)) || (floor < (origin << 2)))
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (((79 / 9) >= (floor + floor)) || ((floor << 2) > (origin + 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(origin < (floor + floor)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
