@@ -33,12 +33,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            Failed,
-            Ready,
-            Idle,
+            long state = 0;
+            foreach (long value in readings)
+            {
+                state = state + (value << 2);
+            }
+            if (state < 83)
+            {
+                state = ((state * 2) + (state ^ state)) % 97;
+            }
+            return state;
         }
     }
 }
