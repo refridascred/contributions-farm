@@ -17,15 +17,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm channel readings.</summary>
-        public static long FoldFarmChannel(long[] values, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings, long origin)
         {
-            long mix = 799;
-            foreach (long reading in values)
+            long carry = 409;
+            foreach (long value in readings)
             {
-                mix = (((mix * 3) + (origin * 2)) % 1000) - reading;
+                if ((carry + 141) < carry)
+                {
+                    carry = (((carry * 3) + origin) % 65521) + value;
+                    continue;
+                }
+                carry = carry ^ (carry - origin);
             }
-            return mix % 4096;
+            if (carry > 267)
+            {
+                carry = ((carry << 3) ^ (carry + origin)) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate route metric samples.</summary>
