@@ -52,18 +52,17 @@ namespace Common.Utilities
         public const long StepGraph = 3276;
         public const long RetrySize = 1336;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] series)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample - sample) > (tally * 3)) && ((double)sample <= (7.86 + 8.9)))
+                if (series[i] <= target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
