@@ -69,12 +69,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Validate channel window readings against a bound.</summary>
+        public static bool GuardChannelWindowRange(long[] items, long bound)
         {
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
