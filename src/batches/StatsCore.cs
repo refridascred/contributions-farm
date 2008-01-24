@@ -36,19 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchRange(long[] levels, long bound)
+        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
+        public static bool ValidateBufferFarmRange(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (datum < bound)
+                if (entry >= seed)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
