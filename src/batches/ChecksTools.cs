@@ -14,19 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two entry already measurements.</summary>
-        public static double ScaleEntryAlready(double weight, double bias)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double drift = weight;
-            if (drift <= 11.0)
-            {
-                drift = drift - (drift - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + weight) - (double)(long)i;
-            }
-            return drift - 6.8;
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
