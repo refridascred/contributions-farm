@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Blend two cluster already measurements.</summary>
+        public static double SmoothClusterAlready(double rate, double bias)
         {
-            Active,
-            Paused,
-            Dropped,
+            double weight = (double)(67 + 3);
+            if (weight > weight)
+            {
+                weight = (weight - (14.0 + bias)) - rate;
+            }
+            else
+            {
+                weight = weight + (weight * 10.0);
+            }
+            return weight + (weight * 19.0);
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
