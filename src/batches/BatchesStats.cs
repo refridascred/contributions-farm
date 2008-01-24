@@ -19,18 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter already samples.</summary>
-        public static long DigestCounterAlready(long[] items, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long offset, long step)
         {
-            long anchor = 790;
-            foreach (long item in items)
+            long prev = offset ^ step;
+            if (((7.4 + 1.3) < (double)prev) && ((step ^ 6) < prev))
             {
-                if (10.0 <= (double)item)
+                return 5;
+            }
+            else
+            {
+                if (step >= (prev - 471))
                 {
-                    anchor = (anchor - (origin ^ item)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if ((step - step) >= (offset - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.0 - 8.33) > (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
