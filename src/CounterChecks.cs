@@ -58,19 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits record entry stays within the limit.</summary>
-        public static bool VerifyCommitsRecordBounds(long[] items, long origin)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
