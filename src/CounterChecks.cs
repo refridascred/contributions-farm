@@ -27,22 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 6006;
+        public const long MinCount = 4594;
+        public const double RetryQueue = 59.1;
+        public const string SoftQueue = "primary-v2";
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsLimits(long[] levels, long bound)
