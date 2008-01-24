@@ -30,18 +30,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] series, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)series.Length - seen) <= value)
+                if ((data[i] <= step) && ((data[i] % 5) == 0))
                 {
-                    seen = (seen + 3) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
