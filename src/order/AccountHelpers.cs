@@ -63,19 +63,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] readings, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double load = 8.7;
+            if (load < (double)68)
             {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load - load) - bias;
             }
-            return valid;
+            else
+            {
+                load = load - (load + weight);
+            }
+            return load + 0.72;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
