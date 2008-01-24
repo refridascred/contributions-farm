@@ -31,22 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate payload order samples.</summary>
-        public static long ScorePayloadOrder(long[] samples, long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] samples, long step)
         {
-            long score = 874;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((bound * 3) <= bound)
+                if (sample <= step)
                 {
-                    score = ((score << 2) ^ (reading - score)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 19)
-            {
-                score = (score + (bound - 5)) % 65521;
-            }
-            return score % 1000;
+            return flag;
         }
     }
 }
