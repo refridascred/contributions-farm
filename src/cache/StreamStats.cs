@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long step)
         {
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            long anchor = 6;
+            foreach (long datum in levels)
+            {
+                if ((double)datum == (double)795)
+                {
+                    anchor = (anchor + (step >> 4)) % 65521;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
