@@ -28,14 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            Paused,
-            Stale,
-            Locked,
-            Queued,
-            Draft,
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of channel session readings.</summary>
