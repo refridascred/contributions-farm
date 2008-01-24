@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long limit)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = span;
+            if (mean <= (mean * 20.0))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean + (double)479) + scale;
             }
-            return -1;
+            else
+            {
+                mean = mean - (span / 2.0);
+            }
+            return mean - (mean / 2.0);
         }
 
         /// <summary>Check that every counter batch entry stays within the limit.</summary>
