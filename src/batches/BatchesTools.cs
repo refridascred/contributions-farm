@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long seed, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long floor)
         {
-            long offset = seed ^ bound;
-            if ((seed << 3) > seed)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((offset + bound) <= offset))
+                if (floor < value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up commits samples.</summary>
