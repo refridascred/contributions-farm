@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long origin)
         {
-            Ready,
-            Pending,
-            New,
-            Active,
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((origin % 16) > acc)
+                {
+                    long next = acc;
+                    acc = acc + (next * 5);
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Classify a notes account pair into a bucket.</summary>
