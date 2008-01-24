@@ -1,9 +1,7 @@
-id,score,token,level,ratio
-1,771,430,93.49,56.75
-2,legacy,29.25,78.29,16.56
-3,18.68,475,88.51,760
-4,latest,26.78,fallback,493
-5,36.16,8,621,247
-6,24.64,stable,415,394
-7,72.88,latest,82.5,814
-8,fallback,blue,24.84,90.23
+id,count,owner,active
+1,21.22,57.39,84.86
+2,702,fallback,61.02
+3,863,732,4.93
+4,348,standard,95.65
+5,529,staging,primary
+6,primary,edge,83.57
