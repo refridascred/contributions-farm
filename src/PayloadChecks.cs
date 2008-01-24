@@ -35,10 +35,22 @@ namespace Common.Utilities
         public const long BaseFactor = 584;
         public const long IdleScore = 6724;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 17.77;
-        public const long MaxChannel = 7473;
-        public const long RetryChannel = 968;
+        /// <summary>Match up cache entry samples.</summary>
+        public static long OverlapCacheEntryCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
