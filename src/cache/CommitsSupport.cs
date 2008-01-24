@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const string DefaultLevel = "alpha-v2";
         public const long HardToken = 9812;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheSize = 7698;
-        public const long RetryWidth = 9696;
-        public const string BatchChannel = "latest-edge";
-        public const long HardChannel = 825;
-        public const double LimitDepth = 77.07;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] items, long offset)
+        {
+            long mark = 4;
+            foreach (long sample in items)
+            {
+                mark = ((((mark * 4) + (mark / 3)) % 4096) - sample) - offset;
+                mark = (mark << 3) ^ (-7);
+            }
+            return mark;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long FoldBatch(long[] samples)
