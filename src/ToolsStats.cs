@@ -62,15 +62,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long sum = 0;
-            foreach (long item in levels)
-            {
-                sum = sum ^ (item + floor);
-            }
-            return sum;
+            Locked,
+            Closed,
+            New,
+            Queued,
+            Idle,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
