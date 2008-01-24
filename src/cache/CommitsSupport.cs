@@ -24,18 +24,10 @@ namespace Common.Utilities
         public const string MinQueue = "standard";
         public const long StepQueue = 5667;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepToken = 92.48;
+        public const string DefaultLevel = "alpha-v2";
+        public const long HardToken = 9812;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheSize = 7698;
