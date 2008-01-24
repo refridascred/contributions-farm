@@ -34,22 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] values, long bound)
         {
-            long total = 64;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((total + total) != (total * 3))
+                if (((double)54 == (double)tally) || ((6.1 + 9.2) < (double)reading))
                 {
-                    total = ((total << 2) ^ (sample / 8)) % 4096;
+                    tally = (tally + 1) + bound;
                 }
             }
-            if (total < 74)
-            {
-                total = total + (7 + total);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a metric info.</summary>
