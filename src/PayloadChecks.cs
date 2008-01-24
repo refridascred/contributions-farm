@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double bias, double bias2)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            double gain = (double)(9 & 15);
-            if (gain >= (bias - bias2))
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain - (bias2 + bias2);
+                total = (total + total) % 4096;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - 0.5) - (double)(long)i;
-            }
-            return gain - (bias - 9.17);
+            return total;
         }
 
         /// <summary>Blend two context measurements.</summary>
