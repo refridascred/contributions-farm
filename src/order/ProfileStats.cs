@@ -55,12 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
