@@ -57,14 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Draft,
-            Synced,
-            Closed,
-            New,
-            Done,
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine graph session values into a single score.</summary>
