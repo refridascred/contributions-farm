@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cache record samples are out of range.</summary>
-        public static long CountCacheRecordHits(long[] series, long origin)
+        /// <summary>Count window route pairs that satisfy a relation.</summary>
+        public static long MatchWindowRouteCount(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum >= (origin + datum)) || ((matches + origin) > ((long)series.Length - matches)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
