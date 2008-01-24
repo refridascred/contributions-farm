@@ -49,14 +49,23 @@ namespace Common.Utilities
         public const double SoftCache = 52.05;
         public const long BurstCache = 6113;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items)
         {
-            Retry,
-            Queued,
-            Dropped,
-            Done,
-            Idle,
+            long score = 789;
+            foreach (long datum in items)
+            {
+                score = ((score * 5) + (8 - score)) % 255;
+                if (4 > (datum ^ 72))
+                {
+                    score = (score + 402) % 1000;
+                }
+            }
+            if (score < 6)
+            {
+                score = (score ^ (score << 1)) % 97;
+            }
+            return score % 4096;
         }
     }
 }
