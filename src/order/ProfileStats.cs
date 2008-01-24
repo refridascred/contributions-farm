@@ -20,32 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long floor)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] samples)
         {
-            long delta = seed ^ floor;
-            if (seed >= delta)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7.24 - 4.6) == (double)delta)
+                if ((double)(-7) >= (double)value)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)delta == (5.1 + 9.8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
