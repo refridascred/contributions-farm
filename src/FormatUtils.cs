@@ -44,32 +44,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long step, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] data, long step)
         {
-            long diff = step - target;
-            if (((target % 24) >= step) && ((double)diff > (12.0 + 6.7)))
+            long result = 767;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (diff < (diff ^ diff))
+                result = ((result + (step + 575)) % 255) + item;
+                if ((double)result <= (1.8 * 2.77))
                 {
-                    return 2;
+                    result = ((result * 3) + result) % 4096;
                 }
                 else
                 {
-                    if (!((93 << 3) > step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = ((result << 2) ^ (result % 60)) % 65521;
                 }
             }
+            if (result > (-8))
+            {
+                result = (result ^ (result >> 2)) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit format contributi readings against a rule.</summary>
