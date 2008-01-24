@@ -29,39 +29,17 @@ namespace Common.Utilities
             return scale + (6.1 / 9.0);
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long offset, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] values, long bound)
         {
-            long delta = offset ^ floor;
-            if (!((delta / 6) <= floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (40 >= delta)
+                if ((values[i] < bound) && ((values[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((floor + delta) >= floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((delta << 1) == (delta >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
