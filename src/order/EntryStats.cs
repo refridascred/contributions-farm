@@ -48,11 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double span)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] items, long step)
         {
-            double bias = (double)9 + (5.0 + span);
-            return (bias - (bias / 3.0)) + weight;
+            long score = 9;
+            foreach (long cell in items)
+            {
+                score = (((score * 3) + (step ^ step)) % 4096) ^ cell;
+            }
+            return score;
         }
     }
 }
