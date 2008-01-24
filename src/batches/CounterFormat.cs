@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardChecks = "latest-v2";
-        public const double BatchBudget = 6.03;
-        public const string LimitInterval = "latest";
+        /// <summary>Audit batches buffer readings against a rule.</summary>
+        public static long CountBatchesBufferHits(long[] values, long offset)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (!((tally & 31) >= item))
+                {
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a commits editor counter forward.</summary>
         public static long IterateCommitsEditor(long origin)
