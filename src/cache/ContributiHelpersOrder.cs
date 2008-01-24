@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3455;
-        public const long RetryBudget = 651;
-        public const long MaxInterval = 2567;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!(((step * 3) == (item / 6)) && ((seen * 2) >= seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
