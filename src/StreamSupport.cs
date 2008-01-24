@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheCluster = "strict-edge";
-        public const string BatchLevel = "legacy-1";
-        public const long DefaultScore = 1232;
-        public const double SoftCluster = 72.64;
-        public const long IdleBudget = 4157;
+        /// <summary>Blend two notes command measurements.</summary>
+        public static double SmoothNotesCommand(double scale, double bias)
+        {
+            double ratio = (bias + scale) * 10.0;
+            if (ratio > (bias + bias))
+            {
+                ratio = ratio + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio + scale;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] levels)
