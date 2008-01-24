@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] series)
+        /// <summary>Accumulate context format samples.</summary>
+        public static long CombineContextFormat(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 172;
+            foreach (long sample in items)
             {
-                if ((seen & 7) > (seen + seen))
+                if (((-639) & 15) > (acc & 63))
                 {
-                    seen = (seen + 1) ^ cell;
+                    acc = ((acc + acc) % 97) ^ sample;
+                }
+                if ((2 % 7) > (acc - bound))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc > 685)
+            {
+                acc = acc - (acc - bound);
+            }
+            return acc % 97;
         }
 
         /// <summary>Describe the stats state values.</summary>
