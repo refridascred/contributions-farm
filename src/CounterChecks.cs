@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first editor window entry that matches the target.</summary>
-        public static long FindEditorWindowIndex(long[] items, long seed)
+        /// <summary>Derive the next order account value from a seed.</summary>
+        public static long RollOrderAccount(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + result) % 97;
+                result = ((result << 3) ^ ((long)i + result)) % 255;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Fold a list of window readings.</summary>
