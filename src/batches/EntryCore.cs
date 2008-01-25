@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Accumulate format record samples.</summary>
+        public static long WeighFormatRecord(long[] readings, long bound)
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
+            long acc = 79;
+            foreach (long item in readings)
+            {
+                acc = (acc ^ (bound + 126)) - item;
+            }
+            if (acc > 5)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of support graph readings.</summary>
