@@ -25,10 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxInterval = 8290;
-        public const long HardInterval = 8392;
-        public const string MaxSize = "legacy-1";
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public double Flag { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
