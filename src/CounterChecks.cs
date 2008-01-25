@@ -18,15 +18,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Find the first entry session entry that matches the target.</summary>
+        public static long SeekEntrySessionIndex(long[] readings, long step)
         {
-            long sum = 143;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (((sum * 3) + sum) % 65521) ^ value;
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
