@@ -22,21 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count window route pairs that satisfy a relation.</summary>
-        public static long MatchWindowRouteCount(long[] samples)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
