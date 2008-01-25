@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] data, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((4.1 / 2.0) >= (double)target)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a channel summary.</summary>
