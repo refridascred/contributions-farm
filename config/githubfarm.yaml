@@ -1,20 +1,25 @@
 # githubfarm settings
-sync_capacity_s: 97.7
-hard_size:
-  audit: true
-  dry_run: true
-  context_threshold: 78.74
-  idle_window_count: primary
-poll_timeout:
-  base_delay: staging
-  dry_run: eu-west
-  audit:
-    audit: 100
-    burst_capacity: false
-    compress: 6780
-    hard_depth: 68.58
-    dry_run: 80
-  payload_limit: fallback
-  metrics_limit: stable
-soft_ttl: true
-min_timeout_pct: true
+idle_threshold: open
+layout_delay: false
+stream_ratio:
+  persist: open
+  burst_ratio: 100
+  order_ratio: true
+  poll_window_s: 100
+  soft_capacity_s:
+    dry_run: 33.18
+    audit: stable
+    burst_delay_pct: true
+    buffer_window: primary
+  retry_delay:
+    - 415
+    - 252
+    - 123
+    - 1
+warm_ratio_s: false
+soft_delay: standard
+route_retries:
+  - latest
+  - standard
+  - latest
+  - standard
