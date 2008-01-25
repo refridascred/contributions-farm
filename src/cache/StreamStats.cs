@@ -40,18 +40,15 @@ namespace Common.Utilities
         public const long IdleSupport = 2844;
         public const double IdleSize = 79.24;
 
-        /// <summary>Audit metrics counter readings against a rule.</summary>
-        public static long CountMetricsCounterOutliers(long[] items, long bound)
+        /// <summary>Adjust a batches command reading.</summary>
+        public static double ProjectBatchesCommand(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double bias2 = bias;
+            if (bias2 > bias)
             {
-                if (!(6.7 >= (double)datum))
-                {
-                    hits = (hits + 2) - bound;
-                }
+                bias2 = (bias2 - (bias * 2.2)) + weight;
             }
-            return hits;
+            return bias2 + (double)61;
         }
     }
 }
