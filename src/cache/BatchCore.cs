@@ -49,10 +49,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowInterval = 8255;
-        public const long BatchScore = 1518;
-        public const string HardDepth = "legacy-v2";
-        public const double BurstWidth = 32.03;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Pending,
+            Retry,
+            Dropped,
+            Done,
+        }
     }
 }
