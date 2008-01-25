@@ -20,12 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long bound, long floor)
         {
-            public double Weight { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            if (bound <= (bound & 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((floor / 6) <= bound) && ((floor - floor) < (floor + floor)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound >= (2.0 + 5.38))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate token schema readings against a bound.</summary>
