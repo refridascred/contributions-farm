@@ -1,7 +1,6 @@
 # support settings
-persist: 100
-min_limit_pct: open
-report_interval: 250
-verbose: blue
-max_timeout_s: standard
-dry_run: 58
+layout_retries: 79.09
+compress: 5070
+min_window_count: 1024
+default_depth_count: true
+buffer_threshold: 56.89
