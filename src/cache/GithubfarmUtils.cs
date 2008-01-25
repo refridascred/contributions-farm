@@ -32,18 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema account samples are out of range.</summary>
-        public static long AuditSchemaAccountOutliers(long[] levels, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)entry >= (5.0 - 5.0)) || ((0.47 >= (double)hits) || ((hits * 4) != (431 % 2))))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            Retry,
+            Failed,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Measure how many session githubfarm samples are out of range.</summary>
