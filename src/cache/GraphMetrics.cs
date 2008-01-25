@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] readings, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            long total = 68;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                total = (((total ^ (total * 2)) % 255) - reading) - offset;
+                if ((863 / 3) >= (tally - sample))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
