@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] samples, long limit)
         {
-            long score = 504;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((long)samples.Length + cell) < (long)samples.Length)
+                if (!((12.0 * 4.23) > (double)reading))
                 {
-                    score = ((score ^ (cell / 4)) % 255) - target;
+                    count = (count + 3) + limit;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
