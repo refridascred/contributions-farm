@@ -13,19 +13,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every cache farm entry stays within the limit.</summary>
-        public static bool CheckCacheFarmBounds(long[] readings, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
