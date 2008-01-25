@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public double Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 8571;
+        public const string DefaultFactor = "primary-edge";
+        public const long LimitBudget = 4400;
+        public const long HardProfile = 5120;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long bound)
