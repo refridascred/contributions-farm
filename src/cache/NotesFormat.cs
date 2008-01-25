@@ -21,12 +21,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
