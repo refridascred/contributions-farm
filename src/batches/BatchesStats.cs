@@ -19,19 +19,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)bound != (0.2 * 9.3)))
-                {
-                    total = (total + (bound & 127)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
