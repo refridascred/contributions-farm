@@ -1,5 +1,18 @@
 {
-  "soft_retries": "fallback",
-  "max_depth": "primary",
-  "soft_size_pct": "latest"
+  "contributi_ratio": "eu-west",
+  "hard_ratio_s": 72,
+  "counter_retries": "primary",
+  "metric_timeout": 4554,
+  "compress": {
+    "buffer_size": 30,
+    "schema_threshold": 250,
+    "flush_size_s": {
+      "farm_window": [395, 93],
+      "channel_interval": 12.66,
+      "flush_ratio_pct": "staging",
+      "idle_ttl_pct": 55.78
+    },
+    "min_depth_s": 1024
+  },
+  "default_delay_count": false
 }
