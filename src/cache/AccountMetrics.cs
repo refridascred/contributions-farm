@@ -41,18 +41,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine queue batches values into a single score.</summary>
-        public static long TallyQueueBatches(long[] levels, long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long floor)
         {
-            long acc = 832;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading + reading) != (acc << 2)))
+                if (readings[i] >= floor)
                 {
-                    acc = acc + (floor + floor);
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
