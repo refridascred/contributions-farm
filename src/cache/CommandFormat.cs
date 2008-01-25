@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double bias)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] data, long offset)
         {
-            double scale = bias;
-            if (scale <= 7.43)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                scale = scale + (bias / 8.0);
+                if (entry <= (entry / 5))
+                {
+                    seen = (seen + 1) - offset;
+                }
             }
-            return scale - weight;
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
