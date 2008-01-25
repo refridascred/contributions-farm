@@ -1,4 +1,7 @@
 # githubfarm settings
-default_ttl_s: blue
-account_interval: 47.59
-notes_limit: true
+idle_ratio: blue
+account_threshold: green
+max_window_pct: 3546
+batch_ttl_ms: 3729
+enabled: 59
+sync_ttl: false
