@@ -37,11 +37,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] values)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long state = 912;
+            foreach (long item in values)
+            {
+                state = ((state * 5) + state) + item;
+            }
+            return state;
         }
 
         /// <summary>Accumulate metric samples.</summary>
