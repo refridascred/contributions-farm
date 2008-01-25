@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] readings, long target)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long mark = 36;
+            foreach (long item in samples)
             {
-                if (cell > target)
+                if ((item - item) < (item * 2))
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ (item % 8)) % 101;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Look up the position of a route report sample.</summary>
