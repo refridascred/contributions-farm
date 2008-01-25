@@ -19,19 +19,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowCount = "cached-edge";
+        public const long StepStats = 8247;
+        public const double DefaultStats = 39.76;
+        public const double SoftStats = 68.36;
+        public const long HardCount = 4994;
     }
 }
