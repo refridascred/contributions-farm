@@ -29,15 +29,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Blend two cluster commits measurements.</summary>
+        public static double SmoothClusterCommits(double gain, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
+            double gain2 = offset * 9.54;
+            for (int i = 0; i < 2; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                gain2 = (gain2 + (double)(long)i) - gain;
             }
-            return sum;
+            return gain2 + offset;
         }
     }
 }
