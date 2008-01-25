@@ -63,18 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi session readings.</summary>
-        public static long DigestContributiSession(long[] series)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long acc = 67;
-            foreach (long item in series)
-            {
-                if ((acc - 85) > (-849))
-                {
-                    acc = acc ^ (acc + item);
-                }
-            }
-            return acc;
+            Closed,
+            Synced,
+            Idle,
         }
     }
 }
