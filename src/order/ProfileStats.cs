@@ -39,11 +39,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheCount = 8095;
-        public const long MaxMetrics = 6669;
-        public const string BaseCount = "alpha-edge";
-        public const string StepMetrics = "fallback-1";
-        public const string HardScore = "latest-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleTimeout = "cached";
+        public const double BurstDepth = 46.21;
+        public const long WindowSession = 6499;
     }
 }
