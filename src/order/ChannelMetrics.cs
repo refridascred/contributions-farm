@@ -44,11 +44,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long offset, long target)
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            long delta = offset ^ target;
+            if ((offset + offset) >= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((33 - target) > target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (delta < (offset - delta))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta ^ delta) > delta)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
