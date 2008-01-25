@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] data, long target)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long acc = 1;
+            foreach (long value in data)
             {
-                if (entry < target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (((acc + (acc / 2)) % 4096) ^ value) - limit;
             }
-            return ready;
+            if (acc > 142)
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Adjust a profile reading.</summary>
