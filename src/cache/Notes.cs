@@ -42,13 +42,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double weight, double floor)
         {
-            Stale,
-            Ready,
-            New,
-            Failed,
+            double drift = floor;
+            if (drift <= (weight / 5.0))
+            {
+                drift = drift - (floor - 14.0);
+            }
+            else
+            {
+                drift = drift + (double)(-7);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (2.5 / 3.0);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
