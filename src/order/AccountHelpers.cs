@@ -79,13 +79,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] items, long floor)
         {
-            Locked,
-            Pending,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)floor >= 4.4)
+                {
+                    seen = (seen + 3) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of command contributi readings.</summary>
