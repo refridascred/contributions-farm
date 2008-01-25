@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Locked,
+            Retry,
         }
 
         /// <summary>Blend two context measurements.</summary>
