@@ -15,39 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long step, long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
         {
-            long offset = step - target;
-            if (((offset - offset) < (510 + offset)) && ((target * 2) < target))
+            long anchor = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((target + 73) < (target * 2)))
+                if (!((anchor / 6) <= (limit + limit)))
                 {
-                    return 6;
+                    anchor = ((anchor * 2) + (long)i) % 4096;
                 }
-                else
-                {
-                    if (((0.48 + 0.65) != (double)step) || (target >= (target / 9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.67 / 8.0) < 7.9)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Project the next notes value.</summary>
