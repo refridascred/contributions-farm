@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a githubfarm order value against two limits.</summary>
-        public static long ClassifyGithubfarmOrder(long seed, long offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            if (((seed - offset) != (seed + 368)) && (seed > (offset / 7)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) < (seed + seed)) && (((-427) & 7) >= (offset % 100)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset & 63) >= (offset - (-5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset > (offset + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit tools cluster readings against a rule.</summary>
