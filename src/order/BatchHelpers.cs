@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 16;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((reading % 7) != (reading / 2)))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 2) ^ (result & 255);
+                    break;
                 }
+                result = (result ^ (reading ^ (long)items.Length)) % 97;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Validate stream channel readings against a bound.</summary>
