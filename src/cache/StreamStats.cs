@@ -28,10 +28,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitFactor = 2951;
-        public const long LimitSpan = 6247;
-        public const long MaxWidth = 4688;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long step, long floor)
+        {
+            if ((step + floor) != (floor - floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((12.0 + 0.3) != (double)step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiLimits(long[] series, long step)
