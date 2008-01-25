@@ -52,19 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double bias = ratio + ratio;
-            if (bias < (bias - bias))
-            {
-                bias = bias + (bias + offset);
-            }
-            else
-            {
-                bias = bias + (16.0 + 0.2);
-            }
-            return bias + bias;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
