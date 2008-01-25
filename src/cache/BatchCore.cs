@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a window tools value against two limits.</summary>
-        public static long BucketWindowTools(long bound, long offset)
+        /// <summary>Digest a series of account order entries.</summary>
+        public static long CombineAccountOrder(long[] values, long bound)
         {
-            if ((offset - offset) != (bound % 10))
+            long state = 132;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 60) < (offset - offset))
+                state = (state ^ cell) - bound;
+                if ((cell < ((-69) * 5)) && ((state >> 2) > (state << 2)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset & 63) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    state = state + (cell - cell);
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a context info.</summary>
