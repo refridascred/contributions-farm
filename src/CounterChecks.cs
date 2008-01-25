@@ -47,14 +47,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Classify a metrics queue pair into a bucket.</summary>
+        public static long GradeMetricsQueue(long limit, long offset)
         {
-            Active,
-            Locked,
-            Queued,
-            Draft,
-            Failed,
+            if ((offset >> 1) != (offset >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - limit) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit ^ offset) <= 44)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
