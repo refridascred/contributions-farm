@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const long MinNotes = 2551;
         public const long BatchNotes = 6982;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (!((0.68 - 6.66) < (double)reading))
+                if (datum <= offset)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
