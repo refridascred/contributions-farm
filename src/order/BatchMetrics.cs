@@ -34,20 +34,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i + total) >= (bound / 6))
-                {
-                    total = (total * 5) + (total + (long)i);
-                    break;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public double Level { get; set; }
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
