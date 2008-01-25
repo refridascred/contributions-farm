@@ -13,21 +13,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Scale a batches session figure with a bias.</summary>
