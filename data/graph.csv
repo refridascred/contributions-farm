@@ -1,8 +1,8 @@
-id,token,ratio
-1,32.3,809
-2,strict,37.65
-3,48.96,staging
-4,22,blue
-5,516,cached
-6,37.18,cached
-7,67.83,open
+id,region,label,token
+1,2.37,200,cached
+2,13.08,61,168
+3,edge,open,64.47
+4,30.37,blue,629
+5,84.42,378,28.86
+6,edge,87.02,87.34
+7,82.03,legacy,open
