@@ -1,7 +1,28 @@
 {
-  "queue_ratio": "local",
-  "cluster_depth": "stable",
-  "support_limit": "latest",
-  "cluster_timeout": "legacy",
-  "idle_ratio": "open"
+  "retry_size_count": 9913,
+  "max_timeout": 12,
+  "base_threshold_pct": {
+    "warm_interval_s": {
+      "poll_ttl_pct": 58,
+      "hard_retries_ms": "green",
+      "min_ttl": 44.57,
+      "enabled": "standard",
+      "verbose": false
+    },
+    "retry_depth_count": "edge",
+    "batch_size_s": 500,
+    "warm_depth": 1024,
+    "persist": {
+      "max_limit_s": 65.73,
+      "soft_ttl": 81.71,
+      "retry_delay_pct": true,
+      "support_capacity": 72.93,
+      "max_retries_pct": 36.8,
+      "compress": 5975
+    },
+    "queue_ttl": ["strict", "stable", "fallback"]
+  },
+  "enabled": 12,
+  "default_limit_count": 30,
+  "strict": 59.42
 }
