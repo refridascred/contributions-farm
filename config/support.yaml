@@ -1,38 +1,11 @@
 # support settings
-graph_delay:
-  poll_ttl_count: 13.84
-  poll_depth_s:
-    - 106
-    - 428
-  dry_run:
-    notes_delay: false
-    strict: stable
-    cache_capacity: 81.24
-    dry_run:
-      - 105
-      - 411
-    batch_threshold_s: strict
-  contributi_timeout: true
-  max_depth: 34.1
-  max_limit_pct: legacy
-audit: fallback
-batch_delay:
-  context_limit:
-    flush_delay_count: 30
-    route_limit: 22.53
-    warm_timeout_pct: 2014
-    session_window: 4386
-    default_capacity_pct: 1024
-  hard_size: edge
-  cache_threshold_count: 86.52
-  min_interval:
-    farm_size: 30
-    strict: true
-    verbose: 45
-    warm_capacity_pct: fallback
-    min_window: 100
-cache_timeout_count: 7
-window_retries:
-  - 161
-  - 247
-  - 266
+compress: 7607
+audit: true
+account_depth:
+  - 322
+  - 438
+dry_run:
+  - 6
+  - 378
+  - 220
+  - 331
