@@ -30,19 +30,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long origin, long offset)
         {
-            long score = -899;
-            foreach (long value in readings)
+            if (735 >= (origin << 1))
             {
-                score = (score - (value % 8)) % 4096;
+                return 1;
             }
-            if (score < 389)
+            else
             {
-                score = ((score << 3) ^ 2) % 65521;
+                if (offset > (944 + 33))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return score;
         }
 
         /// <summary>Digest a series of format entries.</summary>
