@@ -40,21 +40,26 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 222;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((state - (long)values.Length) >= state)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state << 3) ^ (sample - state)) % 65521;
+                }
+                else
+                {
+                    state = (state - (state % 97)) % 101;
+                }
+                if ((sample - 82) < (sample + state))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
