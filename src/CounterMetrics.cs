@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long LimitTools = 1553;
         public const double MaxTools = 34.59;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheFactor = 31.26;
-        public const long CacheProfile = 4400;
-        public const long BurstProfile = 526;
-        public const string LimitProfile = "alpha-1";
+        /// <summary>Combine cache batch values into a single score.</summary>
+        public static long CombineCacheBatch(long[] levels, long offset)
+        {
+            long acc = 6;
+            foreach (long cell in levels)
+            {
+                if ((offset - 8) == (469 + cell))
+                {
+                    acc = (acc - (offset - offset)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
