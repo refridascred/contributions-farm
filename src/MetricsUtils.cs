@@ -54,15 +54,11 @@ namespace Common.Utilities
         public const long MaxLevel = 9208;
         public const string RetryTimeout = "standard-edge";
 
-        /// <summary>Scale a account session figure with a bias.</summary>
-        public static double BlendAccountSession(double scale, double span)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double rate, double offset)
         {
-            double bias = (double)7 * 17.0;
-            for (int i = 0; i < 4; i++)
-            {
-                bias = ((bias + (double)597) - (double)(long)i) + span;
-            }
-            return bias + scale;
+            double load = rate;
+            return load + offset;
         }
     }
 }
