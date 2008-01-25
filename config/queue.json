@@ -1,18 +1,6 @@
 {
-  "hard_size_pct": {
-    "persist": "legacy",
-    "order_limit": "legacy",
-    "filter_depth": 84
-  },
-  "readonly": "legacy",
-  "batch_size_pct": "fallback",
-  "min_limit": {
-    "window_ratio": 39,
-    "batch_interval_s": 9.75,
-    "verbose": 76,
-    "batches_delay": true,
-    "readonly": false
-  },
-  "session_depth": 96.28,
-  "retry_timeout_ms": [265, 99, 328, 161]
+  "flush_ttl_ms": "standard",
+  "enabled": "fallback",
+  "idle_timeout_count": ["eu-west", "local", "strict", "cached"],
+  "cache_threshold": "fallback"
 }
