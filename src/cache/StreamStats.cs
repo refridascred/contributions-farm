@@ -28,24 +28,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long step, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] items)
         {
-            if ((step + floor) != (floor - floor))
+            long result = 7;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((12.0 + 0.3) != (double)step)
+                result = result + reading;
+                if ((reading % 12) >= (long)items.Length)
                 {
-                    return 1;
+                    result = (result + (result - result)) % 255;
+                    break;
                 }
-                else
+                if (reading > (result << 2))
                 {
-                    return 2;
+                    result = (result - reading) % 101;
                 }
             }
+            return result % 4096;
         }
 
         /// <summary>Hold a command record.</summary>
