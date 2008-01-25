@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] values, long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double ratio = (bias + 1.64) + (double)84;
+            if (ratio >= (20.0 + bias))
             {
-                if ((hits ^ cell) > 39)
-                {
-                    hits = (hits + 1) - offset;
-                }
+                ratio = (ratio - (ratio * 9.22)) + floor;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + 7.2;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
