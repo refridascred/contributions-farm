@@ -24,19 +24,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] samples, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long carry = 310;
-            foreach (long value in samples)
-            {
-                carry = ((carry + (seed >> 3)) % 4096) ^ value;
-            }
-            if (carry > (-2))
-            {
-                carry = (carry * 5) + (carry - carry);
-            }
-            return carry;
+            Locked,
+            Done,
+            Stale,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
