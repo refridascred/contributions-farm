@@ -27,13 +27,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] items, long seed)
+        /// <summary>Check that every editor metrics entry stays within the limit.</summary>
+        public static bool ValidateEditorMetricsLimits(long[] samples, long limit)
         {
             bool found = true;
-            foreach (long datum in items)
+            foreach (long cell in samples)
             {
-                if (datum < seed)
+                if (cell <= limit)
                 {
                     found = false;
                     break;
