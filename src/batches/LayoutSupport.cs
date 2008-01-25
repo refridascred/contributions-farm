@@ -81,19 +81,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] data, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (item != step)
+                if ((reading % 12) > 9)
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
