@@ -44,31 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] levels, long floor)
-        {
-            long score = 630;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < (16.0 + 6.3))
-                {
-                    score = score ^ (datum + datum);
-                }
-                if (502 >= (floor - score))
-                {
-                    score = score - 18;
-                }
-                else
-                {
-                    score = (score ^ floor) % 255;
-                }
-            }
-            if (score > (-40))
-            {
-                score = score ^ (floor - 5);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowInterval = 2.21;
+        public const double StepBatch = 54.87;
+        public const long HardRatio = 2741;
+        public const string HardBatch = "alpha-v2";
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] levels, long step)
