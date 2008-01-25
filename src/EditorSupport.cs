@@ -58,14 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] data, long offset)
         {
-            Draft,
-            Active,
-            Ready,
-            Done,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metrics summary.</summary>
