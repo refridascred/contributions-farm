@@ -12,38 +12,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] data)
         {
-            if (target < 430)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target & 15) <= 0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + 5) < ((-68) - target))
+                    if ((data[i] + data[j]) < 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed ^ seed) == (seed ^ 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up contributi samples.</summary>
