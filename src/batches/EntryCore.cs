@@ -60,20 +60,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data, long target)
-        {
-            long state = 4;
-            foreach (long datum in data)
-            {
-                if (!!((datum >> 3) == (datum + datum)))
-                {
-                    state = state ^ (target - state);
-                }
-                state = state - (5 >> 2);
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseWidth = 3643;
+        public const double MinInterval = 18.97;
+        public const double BaseLevel = 14.62;
+        public const double LimitChannel = 4.34;
+        public const string DefaultDepth = "staging";
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long RollTools(long limit)
