@@ -22,32 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long target, long target2)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long delta = target + target2;
-            if (delta < (delta - target))
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (target2 >= (target2 + (-31)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((15.0 / 6.0) <= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the queue mode values.</summary>
