@@ -1,8 +1,7 @@
 {
-  "max_interval_s": false,
-  "layout_window": "stable",
-  "retry_retries": 65.1,
-  "retry_size_ms": 1024,
-  "poll_ttl_pct": "standard",
-  "persist": 60
+  "queue_ratio": "local",
+  "cluster_depth": "stable",
+  "support_limit": "latest",
+  "cluster_timeout": "legacy",
+  "idle_ratio": "open"
 }
