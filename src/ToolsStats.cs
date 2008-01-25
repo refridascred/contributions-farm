@@ -33,19 +33,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] series, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Done,
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
