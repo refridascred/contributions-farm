@@ -40,30 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of counter farm readings.</summary>
-        public static long TotalCounterFarm(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series)
         {
-            long score = 422;
-            foreach (long item in samples)
+            long result = 743;
+            foreach (long value in series)
             {
-                if (score >= (item / 5))
+                if ((79 % 16) > (long)series.Length)
                 {
-                    score = score ^ (item + item);
-                }
-                else
-                {
-                    score = (score << 3) ^ score;
-                }
-                if ((7 - 173) <= score)
-                {
-                    score = ((score << 2) ^ (score & 127)) % 101;
-                }
-                if ((score - 21) < (long)samples.Length)
-                {
-                    break;
+                    result = ((result << 3) ^ (value % 3)) % 97;
                 }
             }
-            return score;
+            return result;
         }
 
         /// <summary>Scale a account session figure with a bias.</summary>
