@@ -24,13 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Scale a context metrics figure with a bias.</summary>
+        public static double ScaleContextMetrics(double weight, double offset)
         {
-            Retry,
-            Queued,
-            Idle,
-            New,
+            double ratio = (weight - weight) * 4.38;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - offset) - (double)(long)i;
+            }
+            return ratio - (weight / 3.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
