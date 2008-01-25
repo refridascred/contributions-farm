@@ -35,18 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (tally <= (cell + cell))
                 {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
