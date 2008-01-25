@@ -60,12 +60,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every filter graph entry stays within the limit.</summary>
+        public static bool GuardFilterGraphLimits(long[] items, long target)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
