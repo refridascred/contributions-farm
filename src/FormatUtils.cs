@@ -64,13 +64,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] series, long step)
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
