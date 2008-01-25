@@ -66,11 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            Done,
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Blend two batch measurements.</summary>
