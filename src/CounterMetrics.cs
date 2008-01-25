@@ -51,13 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Digest a series of metrics already entries.</summary>
+        public static long DigestMetricsAlready(long[] levels)
         {
-            Stale,
-            Active,
-            Dropped,
-            Idle,
+            long state = 38;
+            foreach (long entry in levels)
+            {
+                if (!((entry << 3) > state))
+                {
+                    state = (state + 94) % 1000;
+                }
+                else
+                {
+                    state = (state << 2) ^ state;
+                }
+            }
+            return state;
         }
     }
 }
