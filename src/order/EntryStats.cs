@@ -23,14 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            Retry,
-            Paused,
-            Failed,
-            Queued,
-            New,
+            double load = 7.5 / 3.0;
+            if (load >= 1.22)
+            {
+                load = ((load + (load / 7.0)) - gain) + floor;
+            }
+            else
+            {
+                load = load + (double)(-11);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (double)61) - (double)(long)i;
+            }
+            return load + 16.0;
         }
 
         /// <summary>Describe the schema phase values.</summary>
