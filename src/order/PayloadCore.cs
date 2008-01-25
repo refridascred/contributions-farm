@@ -29,19 +29,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of session report entries.</summary>
-        public static long FoldSessionReport(long[] readings)
+        /// <summary>Iterate the session command series from a seed.</summary>
+        public static long DeriveSessionCommand(long step)
         {
-            long state = 25;
-            foreach (long datum in readings)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                state = (state ^ (state + state)) % 4096;
-                if ((double)datum <= 5.3)
-                {
-                    break;
-                }
+                score = (score + ((-144) % 8)) % 1000;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
     }
 }
