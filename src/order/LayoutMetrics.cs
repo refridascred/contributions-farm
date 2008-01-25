@@ -23,10 +23,16 @@ namespace Common.Utilities
         public const string IdleSchema = "strict-edge";
         public const long LimitSchema = 4724;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowScore = 9914;
-        public const long MaxStats = 6893;
-        public const string DefaultStats = "latest-v2";
-        public const long BatchSize = 1093;
+        /// <summary>Roll a metrics graph counter forward.</summary>
+        public static long StepMetricsGraph(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = (mark << 3) ^ (mark + step);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
