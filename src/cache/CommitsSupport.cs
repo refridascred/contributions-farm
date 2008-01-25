@@ -19,15 +19,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double rate, double span)
+        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
+        public static bool GuardQueueGithubfarmRange(long[] values, long seed)
         {
-            double drift = (double)47 / 8.0;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                drift = ((drift - (span * 2.77)) + (double)(long)i) - rate;
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + 8.71;
+            return valid;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
