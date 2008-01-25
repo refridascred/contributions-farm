@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double scale = (gain / 9.0) - (bias + gain);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (scale * 8.9)) - (double)(long)i;
-            }
-            return scale - 9.67;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
