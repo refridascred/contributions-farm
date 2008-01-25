@@ -38,17 +38,13 @@ namespace Common.Utilities
             return ratio + 7.2;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] samples, long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
