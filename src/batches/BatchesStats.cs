@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string DefaultNotes = "local-edge";
         public const double IdleFactor = 93.16;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Locked,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
