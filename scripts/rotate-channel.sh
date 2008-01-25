@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-edge}"
 case "${mode}" in
-    edge)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in latest open; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=422
+log "limit is ${CHANNEL_LIMIT}"
