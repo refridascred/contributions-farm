@@ -12,21 +12,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of commits farm readings.</summary>
-        public static long CompareCommitsFarmCount(long[] readings)
+        /// <summary>Match up command cluster samples.</summary>
+        public static long PairCommandClusterCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 6)
+                    if ((data[i] + data[j]) != 1)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
