@@ -31,19 +31,39 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] samples, long limit)
+        /// <summary>Rank window graph input into a small class.</summary>
+        public static long RankWindowGraph(long origin, long step)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long delta = origin - step;
+            if ((origin - step) >= (step - origin))
             {
-                if (reading > limit)
+                return 2;
+            }
+            else
+            {
+                if ((origin * 4) <= (delta ^ origin))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((4 > step) || ((step / 7) >= (delta - delta)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((delta ^ origin) >= (origin * 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
