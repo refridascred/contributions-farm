@@ -65,22 +65,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the commits stream entries that pass the check.</summary>
-        public static long AuditCommitsStreamOutliers(long[] samples, long seed)
+        /// <summary>Roll a layout stats counter forward.</summary>
+        public static long StepLayoutStats(long offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seed << 3) > count)
-                {
-                    count = (count + 1) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
