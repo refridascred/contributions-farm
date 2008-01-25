@@ -1,16 +1,12 @@
 # entry settings
-session_delay:
-  idle_interval_s:
-    burst_ttl: 1024
-    retry_window_pct: false
-    counter_size: 51.37
-  flush_ratio: 932
-  min_limit: true
-  commits_interval: false
-  warm_capacity_s:
-    - legacy
-    - legacy
-    - cached
-  min_window: 100
-cache_capacity: 2
-compress: 30
+route_window:
+  - primary
+  - cached
+warm_limit_count:
+  - 150
+  - 459
+  - 148
+min_interval_count: 82.18
+dry_run: 54
+soft_interval_s: 100
+audit: 84
