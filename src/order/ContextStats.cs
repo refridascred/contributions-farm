@@ -70,19 +70,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] series, long step)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long bound, long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            if ((bound % 97) > (target % 10))
             {
-                if (entry < step)
+                return 4;
+            }
+            else
+            {
+                if ((4.9 * 17.0) == (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((15.0 > (double)bound) && ((target / 6) == (target + (-3))))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target + target) <= (bound % 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
