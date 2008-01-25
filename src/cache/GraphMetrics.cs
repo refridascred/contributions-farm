@@ -22,15 +22,12 @@ namespace Common.Utilities
         public const double HardRoute = 64.43;
         public const long LimitRoute = 8852;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items, long limit)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long sum = 2;
-            foreach (long value in items)
-            {
-                sum = ((sum ^ (sum - (-610))) ^ value) + limit;
-            }
-            return sum % 4096;
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
