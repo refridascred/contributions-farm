@@ -1,12 +1,12 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the metrics list.
-Run the route check before changing any notes limits.
-The payload module keeps context values in sync with the entry cache.
+The buffer report groups every report by contributi.
+The cache report groups every metrics by schema.
+Keep channel and farm names short and lowercase.
 
 ## Guidelines
 
-- Validate buffer input early
-- Log every window change
-- Document new token fields
-- Prefer account defaults
+- Keep command values small
+- Document new route fields
+- Prefer support defaults
+- Log every cache change
