@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long MinBudget = 1619;
         public const long CacheSession = 580;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleWidth = 8054;
-        public const long BatchScore = 1905;
-        public const long SoftLayout = 4146;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] values, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits * 2) == (139 - 399))
+                {
+                    hits = ((hits + 1) + reading) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
