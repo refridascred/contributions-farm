@@ -52,39 +52,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long step, long step2)
-        {
-            if ((step + step) < step2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((515 ^ 31) <= step2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(step2 <= step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((725 % 12) <= (step - step)) || ((85 - step) >= step2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 5697;
+        public const long BaseScore = 5664;
+        public const long WindowMetric = 8829;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] samples)
