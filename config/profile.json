@@ -1,15 +1,8 @@
 {
-  "editor_ratio": 79.38,
-  "hard_timeout_pct": 1024,
-  "cache_capacity": ["edge", "blue", "edge", "legacy"],
-  "token_depth": 30,
-  "dry_run": {
-    "enabled": true,
-    "default_delay_ms": 93.04,
-    "metric_depth": "cached",
-    "min_ttl": false,
-    "contributi_capacity": "latest",
-    "default_ratio": 9854
-  },
-  "idle_size_ms": true
+  "max_interval_s": false,
+  "layout_window": "stable",
+  "retry_retries": 65.1,
+  "retry_size_ms": 1024,
+  "poll_ttl_pct": "standard",
+  "persist": 60
 }
