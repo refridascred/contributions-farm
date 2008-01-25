@@ -35,17 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = (sum - (sum & 1)) % 97;
-                sum = (sum ^ sum) % 255;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
