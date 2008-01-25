@@ -1,10 +1,28 @@
 # support settings
-retry_ttl_pct: 30
-soft_threshold_count: 1607
-warm_delay_s: standard
-audit: 239
-enabled: 55
-default_ttl_count:
-  batches_capacity: 97
-  batches_limit: 40
-  verbose: 47
+commits_interval: 75
+burst_depth:
+  soft_timeout_ms:
+    - primary
+    - eu-west
+    - fallback
+    - edge
+  min_window: standard
+  idle_capacity_s: 4477
+  stream_retries: 76
+persist:
+  max_capacity_s: 19.76
+  soft_interval_s:
+    - 25
+    - 269
+    - 303
+    - 193
+  flush_window_pct: 58
+  readonly: stable
+  stream_threshold: 12
+  verbose: cached
+checks_ttl: 1024
+audit: 68
+batch_limit:
+  max_interval: latest
+  compress: 4.99
+  session_delay: false
