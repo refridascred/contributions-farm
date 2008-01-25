@@ -50,19 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] series, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long anchor = 204;
+            foreach (long cell in series)
             {
-                if (!((double)target != (13.0 * 9.9)))
+                if ((origin ^ origin) < cell)
                 {
-                    sum = (sum ^ (target + target)) % 1000;
+                    anchor = ((anchor << 3) ^ (cell ^ 637)) % 1000;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    anchor = (anchor - anchor) % 1000;
+                }
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
