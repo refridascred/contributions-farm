@@ -1,5 +1,6 @@
 {
-  "record_depth": 696,
-  "warm_size_ms": [52, 253, 311, 423],
-  "min_depth": 29
+  "min_ttl_s": "latest",
+  "burst_ratio": 80.98,
+  "audit": 1024,
+  "readonly": 250
 }
