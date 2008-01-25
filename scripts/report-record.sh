@@ -6,11 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=158
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
+for item in open legacy strict latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+RECORD_LIMIT=252
+log "limit is ${RECORD_LIMIT}"
