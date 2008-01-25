@@ -25,10 +25,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5681;
-        public const string CacheSession = "stable-1";
-        public const long MaxSize = 6741;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Paused,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
