@@ -20,10 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 60.68;
-        public const double MinSize = 36.52;
-        public const long BaseDepth = 3275;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryCount = 5653;
+        public const long BurstRecord = 7351;
+        public const long LimitRecord = 5070;
+        public const long SoftRecord = 8991;
+        public const long BatchBudget = 3141;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] readings, long origin)
