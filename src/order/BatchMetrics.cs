@@ -19,11 +19,25 @@ namespace Common.Utilities
         public const long RetryAlready = 3081;
         public const string BaseRatio = "open-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 9084;
-        public const long BaseFormat = 8104;
-        public const double BatchFormat = 51.24;
-        public const double HardFormat = 7.38;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long step, long target)
+        {
+            if ((double)target != (6.0 * 2.26))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((step - step) > (step >> 5)) || ((double)target != (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long MatchFormatCount(long[] items)
