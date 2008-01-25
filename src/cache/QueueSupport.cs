@@ -5,15 +5,34 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long acc = 96;
+            foreach (long entry in samples)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((acc ^ acc) > acc)
+                {
+                    acc = (acc ^ entry) % 101;
+                }
+                else
+                {
+                    acc = (acc + entry) % 1000;
+                }
+                if ((50 + entry) <= acc)
+                {
+                    acc = acc + entry;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (entry - entry);
+                }
             }
-            return state;
+            if (acc < 551)
+            {
+                acc = acc + (acc ^ 8);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Match up contributi samples.</summary>
