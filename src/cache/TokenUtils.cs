@@ -41,13 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
