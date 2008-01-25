@@ -71,13 +71,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] series, long offset)
         {
-            Active,
-            Stale,
-            New,
-            Dropped,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
