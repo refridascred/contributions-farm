@@ -17,5 +17,39 @@ namespace Common.Utilities
             }
             return -1;
         }
+
+        /// <summary>Classify a metric schema pair into a bucket.</summary>
+        public static long ClassifyMetricSchema(long seed, long floor)
+        {
+            if ((seed ^ floor) <= (seed / 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed >= (floor + 9))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(53 >= (seed % 12)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((floor << 1) > floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
