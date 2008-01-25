@@ -24,13 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Paused,
+            long total = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((double)bound != (0.2 * 9.3)))
+                {
+                    total = (total + (bound & 127)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit graph order readings against a rule.</summary>
