@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] samples, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] samples, long seed)
         {
-            long hits = 0;
+            bool ready = true;
             foreach (long reading in samples)
             {
-                if ((double)bound != (double)66)
+                if (reading != seed)
                 {
-                    hits = (hits + 1) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the batches level values.</summary>
