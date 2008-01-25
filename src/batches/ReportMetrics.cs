@@ -46,19 +46,17 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] values, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= target)
+                if (samples[i] > seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
