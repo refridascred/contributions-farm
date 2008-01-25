@@ -47,20 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] series, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if ((double)offset == (2.0 / 7.0))
+                if (value <= step)
                 {
-                    score = (score - (score + (long)i)) % 65521;
+                    flag = false;
+                    break;
                 }
-                score = score - offset;
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return flag;
         }
     }
 }
