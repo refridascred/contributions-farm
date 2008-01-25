@@ -59,22 +59,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record already samples are out of range.</summary>
-        public static long TallyRecordAlreadyMatches(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((8.37 / 6.0) == (double)sample)
+                if ((double)mix != (6.1 + 2.19))
                 {
-                    seen = seen + 1;
+                    mix = (mix ^ 570) % 65521;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
