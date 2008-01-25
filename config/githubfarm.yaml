@@ -1,8 +1,4 @@
 # githubfarm settings
-cache_ttl_s: false
-enabled:
-  - fallback
-  - stable
-farm_retries: green
-readonly: 66
-poll_timeout: green
+strict: true
+sync_threshold_s: 23
+compress: 45.9
