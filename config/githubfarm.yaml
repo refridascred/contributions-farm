@@ -1,7 +1,7 @@
 # githubfarm settings
-layout_retries: 17
-retry_ratio_count: true
-dry_run: standard
-soft_interval_count: 10
-order_ttl: false
-verbose: stable
+dry_run: primary
+strict: local
+cache_size_s: 18
+counter_size: true
+min_limit_pct: 53.13
+flush_window: 100
