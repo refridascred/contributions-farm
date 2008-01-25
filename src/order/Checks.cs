@@ -17,12 +17,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long floor, long origin)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public string Limit { get; set; } = "";
+            if ((origin % 7) > origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((floor + 229) != ((-3) ^ origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
