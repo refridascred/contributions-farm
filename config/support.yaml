@@ -1,7 +1,9 @@
 # support settings
-min_depth: 3
-cache_ratio: 500
-report_ttl: false
-enabled: 95.12
-base_size_ms: true
-cache_retries: 39
+soft_delay_count: primary
+sync_capacity:
+  - eu-west
+  - eu-west
+  - green
+default_threshold_pct: eu-west
+idle_capacity_s: 1024
+hard_limit_ms: 591
