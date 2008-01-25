@@ -12,22 +12,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] items, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] readings, long origin)
         {
-            long state = 81;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seed % 8) <= seed)
+                if ((readings[i] == origin) && ((readings[i] % 2) != 0))
                 {
-                    state = state + (item * 3);
-                }
-                if (((state + item) >= (45 % 97)) || ((item & 7) >= (seed + item)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
