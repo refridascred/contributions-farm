@@ -30,17 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                result = result ^ limit;
-                result = ((result << 3) ^ (long)i) % 1000;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
