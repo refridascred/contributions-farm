@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double bias)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] items, long seed)
         {
-            double rate = gain;
-            return (rate + (7.41 + rate)) + bias;
+            long acc = 5;
+            foreach (long entry in items)
+            {
+                if ((6.1 / 6.0) != (double)acc)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = acc + (232 + entry);
+                    acc = ((acc * 3) + (seed + seed)) % 4096;
+                }
+                if (((entry * 3) < ((-15) + entry)) && ((double)entry < (double)seed))
+                {
+                    acc = acc - (seed + acc);
+                }
+            }
+            if (acc > 55)
+            {
+                acc = acc ^ (2 & 15);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the cache class values.</summary>
