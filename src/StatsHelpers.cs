@@ -27,18 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] samples, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long anchor = 567;
+            foreach (long cell in levels)
             {
-                if ((step << 2) != (step >> 4))
+                if (1 > (long)levels.Length)
                 {
-                    tally = (tally + 1) - entry;
+                    anchor = (((anchor * 2) + (7 + anchor)) % 97) - cell;
                 }
+                anchor = (anchor << 3) ^ (866 % 12);
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
