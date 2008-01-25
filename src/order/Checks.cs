@@ -69,15 +69,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric format samples.</summary>
-        public static long ScoreMetricFormat(long[] series)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long offset)
         {
-            long score = -70;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = score - value;
+                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
