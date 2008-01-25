@@ -21,12 +21,33 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitProfile = 23.19;
-        public const string CacheCount = "fallback-edge";
-        public const long HardInterval = 7668;
-        public const long WindowProfile = 9978;
-        public const long BatchProfile = 7050;
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long offset)
+        {
+            long gap = target + offset;
+            if ((target % 64) <= (offset % 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (gap >= (gap & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((gap + target) > (gap & 31)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] samples)
