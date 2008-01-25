@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchTimeout = 9692;
-        public const string BaseDepth = "latest-edge";
-        public const long MaxFactor = 7535;
-        public const long BatchLevel = 3206;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
