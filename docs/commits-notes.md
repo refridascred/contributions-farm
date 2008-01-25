@@ -1,14 +1,15 @@
 # Commits notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Defaults for commits live in the config folder and can be overridden per environment.
+Use commits settings to tune how often counter data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
-Keep counter and githubfarm names short and lowercase.
-Each githubfarm is validated before it reaches the token queue.
+The tools module keeps command values in sync with the schema cache.
+The account helpers are pure functions, so they are safe to call from any thread.
+Use githubfarm settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Review stats limits each release
-- Keep command values small
-- Validate format input early
-- Prefer commits defaults
+- Keep token values small
+- Review account limits each release
+- Document new checks fields
+- Validate batches input early
