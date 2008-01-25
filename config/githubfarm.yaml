@@ -1,9 +1,18 @@
 # githubfarm settings
-tools_capacity: stable
-support_delay: true
-sync_threshold_count:
+burst_ttl_count: 9102
+max_depth_s:
+  - green
   - cached
-  - edge
-  - blue
-commits_interval: 100
-flush_size_pct: 85
+  - staging
+base_interval_count: 2274
+flush_size:
+  payload_delay:
+    - 460
+    - 233
+    - 388
+  sync_depth_count:
+    - 6
+    - 441
+  poll_ttl: false
+  stream_timeout: false
+cache_ratio_s: latest
