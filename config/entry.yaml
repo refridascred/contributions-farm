@@ -1,14 +1,19 @@
 # entry settings
-farm_ttl: 45
-readonly: cached
-warm_ttl_ms:
-  poll_ratio_pct:
-    batch_capacity_s: 1.64
-    dry_run: false
-    window_ttl: 60
-    audit: 60.32
-  min_interval_ms: 60
-  contributi_ratio: eu-west
-burst_threshold: 30
-verbose: 30
-record_delay: strict
+buffer_limit:
+  - 381
+  - 406
+cluster_window: 72.55
+enabled:
+  profile_window: 6.56
+  entry_depth:
+    - 178
+    - 363
+  poll_window_s: blue
+  batch_size_ms: 56.41
+  hard_limit_ms: 64
+soft_interval: cached
+strict:
+  poll_depth_ms: 19
+  default_retries: fallback
+  dry_run: stable
+  account_window: 60
