@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long step, long floor)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] samples, long origin)
         {
-            if (7 < step)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((725 * 4) == (floor + floor))
+                if (item < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a command header.</summary>
