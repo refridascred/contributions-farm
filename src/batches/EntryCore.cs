@@ -42,11 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepSize = 1207;
-        public const long CacheFarm = 3181;
-        public const long RetryFarm = 4167;
-        public const long MaxTimeout = 8040;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] data, long target)
