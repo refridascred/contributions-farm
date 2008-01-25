@@ -20,14 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 60.68;
+        public const double MinSize = 36.52;
+        public const long BaseDepth = 3275;
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
