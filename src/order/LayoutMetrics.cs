@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long target)
+        /// <summary>Fold a list of already token readings.</summary>
+        public static long FoldAlreadyToken(long[] readings, long origin)
         {
-            long diff = bound ^ target;
-            if (target <= (4 & 1))
+            long sum = 7;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound / 2) >= diff) && ((bound % 7) <= diff))
+                if ((double)sum < (double)origin)
                 {
-                    return 8;
+                    sum = ((sum << 2) ^ (cell + cell)) % 101;
+                    sum = (sum - (origin << 1)) % 97;
                 }
-                else
+                if (origin >= (sum ^ 8))
                 {
-                    if (!((diff << 1) >= target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = ((sum << 3) ^ cell) % 97;
                 }
             }
+            return sum;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
