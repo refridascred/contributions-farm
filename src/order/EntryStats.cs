@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] data, long offset)
+        /// <summary>Check that every context tools entry stays within the limit.</summary>
+        public static bool VerifyContextToolsLimits(long[] readings, long target)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (cell > offset)
+                if (value <= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
