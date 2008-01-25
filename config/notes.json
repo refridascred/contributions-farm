@@ -1,5 +1,13 @@
 {
-  "payload_delay": 0.82,
-  "idle_limit": 18,
-  "base_delay_s": 500
+  "payload_timeout": 81.06,
+  "idle_depth_s": 27.17,
+  "warm_timeout_s": {
+    "default_retries": false,
+    "filter_ratio": 78,
+    "audit": false,
+    "entry_window": ["local", "blue", "blue", "open"],
+    "enabled": 250
+  },
+  "persist": "latest",
+  "flush_depth_ms": [64, 21, 143, 335]
 }
