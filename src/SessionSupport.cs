@@ -27,15 +27,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((limit / 8) < (limit * 5))
+                {
+                    total = ((total * 5) + (total / 2)) % 101;
+                }
+                total = (total + total) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return carry;
+            return total;
         }
     }
 }
