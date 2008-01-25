@@ -20,19 +20,15 @@ namespace Common.Utilities
             return load - (7.2 * 8.31);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] levels, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long bound)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Hold a window header.</summary>
