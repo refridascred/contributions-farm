@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long seed)
+        /// <summary>Validate counter entry readings against a bound.</summary>
+        public static bool GuardCounterEntryLimits(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                if (datum <= step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the stats kind values.</summary>
