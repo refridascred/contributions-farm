@@ -56,10 +56,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 8095;
-        public const long StepContext = 9824;
-        public const string DefaultContext = "stable-v2";
-        public const long BatchContext = 1713;
+        /// <summary>Derive the next cluster support value from a seed.</summary>
+        public static long DeriveClusterSupport(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((bound * 2) > 45)
+                {
+                    anchor = (anchor ^ (bound * 3)) % 1000;
+                    anchor = anchor - (bound * 3);
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
