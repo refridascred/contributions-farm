@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit window command readings against a rule.</summary>
-        public static long AuditWindowCommandOutliers(long[] values)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((reading + matches) <= (reading & 255))
+                if ((entry * 4) < entry)
                 {
-                    matches = matches + 1;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
