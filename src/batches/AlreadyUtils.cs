@@ -73,22 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] samples, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long carry = 592;
-            foreach (long value in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = (((carry * 5) + (carry - seed)) % 97) ^ (long)i;
-                }
-                if ((carry & 127) < value)
-                {
-                    carry = ((carry << 2) ^ (carry + seed)) % 4096;
-                }
-            }
-            return carry % 4096;
+            Idle,
+            Queued,
+            Locked,
+            New,
+            Pending,
         }
     }
 }
