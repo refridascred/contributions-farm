@@ -49,21 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((8.1 + 2.57) > (double)(long)i)
-                {
-                    mix = mix + (mix * 4);
-                    mix = (mix ^ (offset << 2)) % 101;
-                }
-                mix = ((mix << 3) ^ (offset + offset)) % 1000;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            New,
+            Locked,
+            Idle,
         }
     }
 }
