@@ -65,11 +65,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double rate, double offset)
+        /// <summary>Find the first stream order entry that matches the target.</summary>
+        public static long LocateStreamOrderIndex(long[] values, long target)
         {
-            double load = rate;
-            return load + offset;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
