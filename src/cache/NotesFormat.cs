@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            New,
             Retry,
-            Idle,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Combine command record values into a single score.</summary>
