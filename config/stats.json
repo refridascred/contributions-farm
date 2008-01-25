@@ -1,14 +1,6 @@
 {
-  "payload_size": true,
-  "min_interval": {
-    "soft_interval": 1024,
-    "entry_timeout": "standard",
-    "checks_retries": {
-      "payload_timeout": 96,
-      "soft_ttl_ms": "edge",
-      "batch_threshold": 250
-    },
-    "hard_retries_s": "fallback"
-  },
-  "githubfarm_size": "open"
+  "dry_run": 1024,
+  "metric_delay": 73.8,
+  "cache_limit": "standard",
+  "cache_interval": "blue"
 }
