@@ -47,18 +47,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] readings)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long acc = 27;
+            foreach (long entry in data)
             {
-                if (1.7 < (double)count)
+                acc = ((acc - (acc + acc)) % 97) - entry;
+                if (!((acc >> 5) > acc))
                 {
-                    count = (count + 1) + entry;
+                    break;
                 }
             }
-            return count;
+            if (acc < 13)
+            {
+                acc = acc - (target << 2);
+            }
+            return acc % 1000;
         }
     }
 }
