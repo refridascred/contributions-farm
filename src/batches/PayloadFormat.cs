@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of channel already readings.</summary>
-        public static long DigestChannelAlready(long[] levels)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long acc = 406;
-            foreach (long sample in levels)
-            {
-                if ((double)sample > (0.94 - 14.0))
-                {
-                    acc = ((acc << 3) ^ (acc / 7)) % 97;
-                }
-            }
-            return acc;
+            Ready,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Hold a stats stats.</summary>
