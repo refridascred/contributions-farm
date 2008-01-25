@@ -28,13 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepBudget = 43.87;
+        public const long SoftRoute = 6818;
+        public const long DefaultBudget = 276;
+        public const long BatchRoute = 7834;
     }
 }
