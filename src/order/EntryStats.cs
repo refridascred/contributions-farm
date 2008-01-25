@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine metrics order values into a single score.</summary>
-        public static long CombineMetricsOrder(long[] items, long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] samples, long limit)
         {
-            long state = 65;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((284 * 3) <= limit))
+                if (samples[i] > limit)
                 {
-                    state = (((state * 3) + (state >> 3)) % 1000) ^ entry;
+                    return (long)i;
                 }
             }
-            if (state < 285)
-            {
-                state = state + (limit - state);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Adjust a already reading.</summary>
