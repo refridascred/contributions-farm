@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of account order entries.</summary>
-        public static long CombineAccountOrder(long[] values, long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long state = 132;
-            foreach (long cell in values)
-            {
-                state = (state ^ cell) - bound;
-                if ((cell < ((-69) * 5)) && ((state >> 2) > (state << 2)))
-                {
-                    state = state + (cell - cell);
-                }
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
