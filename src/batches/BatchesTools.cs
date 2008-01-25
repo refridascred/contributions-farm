@@ -51,11 +51,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowCount = 2257;
-        public const double LimitMetric = 65.63;
-        public const double SoftFactor = 82.11;
-        public const long MaxLevel = 8442;
-        public const long DefaultSize = 9350;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleTimeout = 5978;
+        public const double BatchLevel = 87.4;
+        public const long SoftTimeout = 1256;
     }
 }
