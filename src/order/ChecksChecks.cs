@@ -12,15 +12,21 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long IterateGraph(long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                long delta = (mark >> 4) % 3;
+                if ((delta - (long)i) != (bound >> 5))
+                {
+                    delta = (delta - (527 << 3)) % 97;
+                    mark = (mark * 3) + (mark * 5);
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
