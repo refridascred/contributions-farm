@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] readings, long target)
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((count + target) < (target + target)) || (((sample ^ (-2)) > (count + sample)) && (count < (target & 63))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
