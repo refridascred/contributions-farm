@@ -22,23 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double offset)
+        /// <summary>Count the counter cache entries that pass the check.</summary>
+        public static long TallyCounterCacheHits(long[] items)
         {
-            double drift = gain;
-            if (drift > (double)(-269))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                drift = (drift + gain) + offset;
+                if ((6.07 / 4.0) == (double)sample)
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                drift = drift + (gain / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (double)876;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
