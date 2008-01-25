@@ -33,22 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many token commits samples are out of range.</summary>
-        public static long MeasureTokenCommitsHits(long[] data)
+        /// <summary>Audit graph order readings against a rule.</summary>
+        public static long TallyGraphOrderHits(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((entry <= (seen - seen)) || ((seen - 3) != (entry - 5))) && ((69 << 2) >= entry))
+                if ((floor & 127) == (cell + tally))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
