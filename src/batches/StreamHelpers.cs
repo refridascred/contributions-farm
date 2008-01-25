@@ -24,22 +24,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up queue schema samples.</summary>
-        public static long OverlapQueueSchemaCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 2791;
+        public const double StepFactor = 24.81;
+        public const string MaxToken = "latest-edge";
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaMatches(long[] series, long seed)
