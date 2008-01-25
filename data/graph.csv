@@ -1,6 +1,10 @@
-id,ratio,score
-1,764,29.61
-2,9.42,blue
-3,838,latest
-4,779,477
-5,green,67
+id,score,count,ratio
+1,926,79.57,9.99
+2,7.57,fallback,eu-west
+3,84.13,286,52.58
+4,cached,blue,20.93
+5,545,327,0
+6,local,cached,317
+7,legacy,latest,74.23
+8,696,legacy,staging
+9,63.19,edge,blue
