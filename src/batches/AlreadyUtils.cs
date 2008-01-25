@@ -73,14 +73,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            Idle,
-            Queued,
-            Locked,
-            New,
-            Pending,
+            long score = 9;
+            foreach (long cell in values)
+            {
+                score = score + cell;
+                if ((score + cell) < (score - cell))
+                {
+                    break;
+                }
+            }
+            if (score < 131)
+            {
+                score = (score << 2) ^ 761;
+            }
+            return score;
         }
     }
 }
