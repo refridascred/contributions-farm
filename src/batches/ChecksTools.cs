@@ -54,28 +54,12 @@ namespace Common.Utilities
             return (bias - (scale - 3.43)) + span;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry + (seed % 3)) % 101;
-                if ((15.0 - 4.42) == (double)carry)
-                {
-                    carry = (carry << 2) ^ (carry & 127);
-                }
-                if ((carry - 75) < (carry ^ seed))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = carry + (carry + (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
