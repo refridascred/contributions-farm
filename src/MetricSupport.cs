@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next commits already value from a seed.</summary>
-        public static long IterateCommitsAlready(long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
