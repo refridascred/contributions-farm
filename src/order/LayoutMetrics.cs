@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Derive the next stats already value from a seed.</summary>
+        public static long DeriveStatsAlready(long origin)
         {
-            long state = 43;
-            foreach (long reading in items)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((state < (state - state)) || (state <= (state ^ state)))
-                {
-                    state = (state * 3) + state;
-                }
-                if ((state - state) <= (reading ^ reading))
-                {
-                    break;
-                }
+                state = ((state << 2) ^ (state / 6)) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
             return state;
         }
