@@ -60,19 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] items, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long anchor = 28;
+            foreach (long entry in data)
             {
-                if (cell != floor)
+                if (anchor > (entry + anchor))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor - (entry + (long)data.Length)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ floor) % 97;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
