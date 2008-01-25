@@ -67,18 +67,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] samples, long offset)
+        /// <summary>Roll a filter context counter forward.</summary>
+        public static long StepFilterContext(long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((((hits >> 5) >= (hits + hits)) || ((sample - sample) > 9)) && (((12.0 / 5.0) != (double)sample) && (sample >= (sample - (long)samples.Length))))
-                {
-                    hits = (hits + 1) + offset;
-                }
+                score = score ^ (score >> 4);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
