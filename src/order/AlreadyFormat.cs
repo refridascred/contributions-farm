@@ -43,12 +43,15 @@ namespace Common.Utilities
         public const long StepGraph = 4975;
         public const long StepInterval = 1508;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a entry info.</summary>
