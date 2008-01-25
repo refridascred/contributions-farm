@@ -56,18 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSpan = 7336;
+        public const string StepDepth = "strict";
+        public const long MinStream = 8072;
+        public const long BaseStream = 6080;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BaseStats = 9649;
