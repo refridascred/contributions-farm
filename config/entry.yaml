@@ -1,11 +1,6 @@
 # entry settings
-compress:
-  - legacy
-  - latest
-  - primary
-  - blue
-poll_depth: 68.55
-sync_depth_pct: 30
-persist: true
-enabled: true
-max_capacity_count: true
+max_window_ms:
+  - 444
+  - 294
+min_size_ms: 97.81
+soft_window_ms: 250
