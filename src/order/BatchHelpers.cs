@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
             public double Mode { get; set; }
-            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
