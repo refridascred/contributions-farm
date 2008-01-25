@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultFactor = 29.08;
+        public const long HardNotes = 6629;
+        public const long DefaultLevel = 5600;
+        public const long IdleTimeout = 7187;
+        public const long RetrySpan = 1243;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long WeighStream(long[] series, long seed)
