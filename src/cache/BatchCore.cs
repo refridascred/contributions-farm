@@ -42,20 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] data, long floor)
         {
-            long score = 175;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                score = (score << 3) ^ (score & 3);
-                score = ((score * 4) + (score - score)) % 1000;
-                if (!(score < (score + entry)))
+                if (reading != floor)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return score % 4096;
+            return valid;
         }
     }
 }
