@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Look up the position of a commits profile sample.</summary>
+        public static long FindCommitsProfileIndex(long[] items, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
