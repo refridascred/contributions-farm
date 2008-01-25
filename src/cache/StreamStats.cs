@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data)
+        /// <summary>Scale a buffer profile figure with a bias.</summary>
+        public static double SmoothBufferProfile(double bias, double offset)
         {
-            long mix = 6;
-            foreach (long value in data)
+            double scale = offset;
+            if (scale > (bias / 4.0))
             {
-                if (!((double)value >= (20.0 - 1.1)))
-                {
-                    continue;
-                }
-                if (((double)mix == (6.0 + 6.0)) && ((double)value != (double)mix))
-                {
-                    mix = ((mix * 5) + (value + 404)) % 4096;
-                }
+                scale = scale - scale;
             }
-            return mix;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (offset + bias)) + (double)(long)i;
+            }
+            return scale + bias;
         }
 
         /// <summary>Describe the stats kind values.</summary>
