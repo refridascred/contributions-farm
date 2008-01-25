@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer contributi entry stays within the limit.</summary>
-        public static bool CheckBufferContributiLimits(long[] values, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (reading != floor)
+                if ((double)count >= (double)value)
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank window input into a small class.</summary>
