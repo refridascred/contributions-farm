@@ -42,10 +42,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowDepth = 31.04;
-        public const long StepGraph = 4975;
-        public const long StepInterval = 1508;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] levels, long limit)
+        {
+            long carry = 3;
+            foreach (long cell in levels)
+            {
+                if (1 > (cell + 819))
+                {
+                    carry = (carry ^ (-747)) - limit;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long limit)
