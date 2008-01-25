@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values, long step)
-        {
-            long state = 141;
-            foreach (long value in values)
-            {
-                if (!((4 ^ state) <= (value + step)))
-                {
-                    state = ((state << 3) ^ (8 << 2)) % 255;
-                }
-                if (((long)values.Length <= (855 + step)) || ((double)state <= (4.99 + 9.8)))
-                {
-                    state = (state + value) % 4096;
-                }
-                else
-                {
-                    state = (state - (step - step)) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxDepth = 308;
+        public const string LimitSupport = "latest-1";
+        public const long BaseSupport = 6087;
+        public const string BatchBudget = "strict-1";
+        public const string SoftLevel = "cached";
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
