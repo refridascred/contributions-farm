@@ -35,19 +35,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((entry - count) >= entry) && ((988 / 4) == (entry - entry)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 6773;
+        public const long CacheRoute = 8338;
+        public const long BurstTimeout = 3245;
+        public const long LimitRoute = 1660;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
