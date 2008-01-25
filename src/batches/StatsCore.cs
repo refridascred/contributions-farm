@@ -63,12 +63,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
