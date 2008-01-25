@@ -33,39 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long target, long offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            long diff = target + offset;
-            if ((double)offset > (double)target)
+            long tally = 0;
+            foreach (long item in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff * 4) > (diff + target))
+                if ((tally + item) <= (tally - 72))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((diff + 64) == (diff - diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.0 + 9.86) == (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the buffer class values.</summary>
