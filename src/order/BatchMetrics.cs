@@ -51,11 +51,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowCount = "staging-v2";
+        public const string WindowBatches = "staging-1";
+        public const double StepLevel = 74.66;
+        public const string StepBatches = "fallback";
     }
 }
