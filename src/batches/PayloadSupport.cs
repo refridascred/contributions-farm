@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
