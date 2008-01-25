@@ -110,18 +110,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items, long seed)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] series, long target)
         {
-            long total = -5;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry > (0.77 - 1.86))
+                if (series[i] == target)
                 {
-                    total = ((total << 3) ^ (total << 3)) + seed;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
