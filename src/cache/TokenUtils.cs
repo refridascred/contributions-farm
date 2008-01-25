@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long floor, long floor2)
         {
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            long prev = floor ^ floor2;
+            if (!((10.0 - 7.4) < (double)floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((0.8 * 5.76) >= (double)floor2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)prev != (13.0 + 9.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (521 >= (floor ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch level values.</summary>
