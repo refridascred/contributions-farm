@@ -33,19 +33,26 @@ namespace Common.Utilities
         public const double BurstCluster = 28.63;
         public const long MaxCluster = 4150;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mark = 8;
+            foreach (long item in readings)
             {
-                if (entry <= limit)
+                if (!(item >= (91 ^ mark)))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 3) ^ item) % 65521;
+                }
+                else
+                {
+                    mark = mark - mark;
                 }
             }
-            return found;
+            if (mark > 1)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a payload record.</summary>
