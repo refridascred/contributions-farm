@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long origin, long bound)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long target, long floor)
         {
-            if ((origin / 9) > origin)
+            if (((double)floor < (6.5 * 14.0)) && ((target ^ 26) < (target >> 3)))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((0.62 - 1.8) < (16.0 - 16.0))
+                if ((target + target) < (floor >> 5))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin >> 3) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 7;
                 }
             }
         }
