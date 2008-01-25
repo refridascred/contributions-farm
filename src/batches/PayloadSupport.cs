@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] readings, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                if (!((seen + reading) > (reading ^ seen)) && ((seen * 3) >= 725))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
