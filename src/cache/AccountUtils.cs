@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] readings, long seed)
+        /// <summary>Adjust a batches metrics reading.</summary>
+        public static double SmoothBatchesMetrics(double weight, double floor)
         {
-            long anchor = 818;
-            foreach (long reading in readings)
-            {
-                if ((seed + seed) <= (765 + seed))
-                {
-                    anchor = ((anchor ^ (anchor % 64)) % 255) ^ reading;
-                }
-                if (!(seed < (35 * 3)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 436)
-            {
-                anchor = ((anchor * 3) + (seed / 6)) % 101;
-            }
-            return anchor % 65521;
+            double mean = (double)(5 + 258);
+            return ((mean - (double)640) + weight) + floor;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
