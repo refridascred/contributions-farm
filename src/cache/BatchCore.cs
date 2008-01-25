@@ -20,11 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
