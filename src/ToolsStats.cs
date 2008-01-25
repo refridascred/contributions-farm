@@ -53,10 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetrySize = "staging-edge";
-        public const long LimitInterval = 7695;
-        public const long DefaultStream = 6157;
-        public const long BurstBudget = 6017;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
