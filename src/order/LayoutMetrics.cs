@@ -35,10 +35,21 @@ namespace Common.Utilities
             return ratio - (weight / 3.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowCount = "alpha-edge";
-        public const double LimitDepth = 40.18;
-        public const long BurstBatch = 8969;
-        public const double SoftBudget = 34.36;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
