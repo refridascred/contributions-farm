@@ -69,10 +69,20 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 6721;
-        public const long MinNotes = 2551;
-        public const long BatchNotes = 6982;
+        /// <summary>Check that every farm graph entry stays within the limit.</summary>
+        public static bool CheckFarmGraphRange(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenBounds(long[] series, long offset)
