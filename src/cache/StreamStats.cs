@@ -37,24 +37,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long result = 7;
-            foreach (long reading in items)
-            {
-                result = result + reading;
-                if ((reading % 12) >= (long)items.Length)
-                {
-                    result = (result + (result - result)) % 255;
-                    break;
-                }
-                if (reading > (result << 2))
-                {
-                    result = (result - reading) % 101;
-                }
-            }
-            return result % 4096;
+            Done,
+            Paused,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
