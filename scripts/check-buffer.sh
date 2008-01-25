@@ -12,15 +12,5 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=470
+BUFFER_LIMIT=497
 log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
