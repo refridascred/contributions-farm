@@ -16,18 +16,12 @@ namespace Common.Utilities
             return scale2 - offset;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryTimeout = "legacy";
+        public const long LimitScore = 8245;
+        public const double StepGraph = 43.72;
+        public const double BurstCount = 85.5;
+        public const long BaseGraph = 1836;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardTimeout = 6257;
