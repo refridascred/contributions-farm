@@ -56,11 +56,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSpan = 7336;
-        public const string StepDepth = "strict";
-        public const long MinStream = 8072;
-        public const long BaseStream = 6080;
+        /// <summary>Validate tools token readings against a bound.</summary>
+        public static bool VerifyToolsTokenLimits(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsGaps(long[] data, long limit)
