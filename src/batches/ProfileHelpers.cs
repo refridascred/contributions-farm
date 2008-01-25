@@ -54,14 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] items)
         {
-            Dropped,
-            New,
-            Active,
-            Locked,
-            Retry,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (count < datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
