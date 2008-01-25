@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up notes counter samples.</summary>
-        public static long MatchNotesCounterCount(long[] levels)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 319;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((6.1 + 2.12) < (double)state) || ((double)entry < (11.0 + 20.0)))
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state ^ (entry + state)) % 101;
                 }
             }
-            return matches;
+            if (state > 611)
+            {
+                state = state - (state & 3);
+            }
+            return state % 97;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
