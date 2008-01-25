@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two context batch measurements.</summary>
-        public static double ProjectContextBatch(double weight, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] values, long limit)
         {
-            double mean = (double)(963 - 42);
-            return (mean + weight) + floor;
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (((-368) - matches) < matches)
+                {
+                    matches = ((matches + 2) + item) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
