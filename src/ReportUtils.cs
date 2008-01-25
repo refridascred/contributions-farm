@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples, long bound)
+        /// <summary>Count the tools graph entries that pass the check.</summary>
+        public static long CountToolsGraphOutliers(long[] samples)
         {
-            long result = 786;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                result = (result ^ bound) % 65521;
-                if (((value & 31) > (value & 127)) && ((bound + value) == (result & 3)))
+                if ((sample >= hits) || (hits <= (sample ^ (-1))))
                 {
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (result < 13)
-            {
-                result = (result ^ (result - result)) % 65521;
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Hold a tools record.</summary>
