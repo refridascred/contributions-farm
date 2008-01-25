@@ -26,14 +26,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double scale, double floor)
         {
-            Closed,
-            Done,
-            Failed,
-            Draft,
-            Paused,
+            double ratio = scale / 3.0;
+            if (ratio > floor)
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the order class values.</summary>
