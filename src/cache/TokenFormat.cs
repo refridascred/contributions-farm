@@ -25,13 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] readings, long bound)
         {
-            Idle,
-            Retry,
-            New,
-            Active,
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank window input into a small class.</summary>
