@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
+            Paused,
+            Retry,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Match up commits queue samples.</summary>
