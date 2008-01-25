@@ -18,21 +18,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (bias + gain) * 4.0;
+            if (ratio >= 1.2)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio + gain;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - 2.6;
+            }
+            return ratio - (gain * 20.0);
         }
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
