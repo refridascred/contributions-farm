@@ -40,13 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the tools farm entries that pass the check.</summary>
+        public static long CountToolsFarmMatches(long[] values, long step)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((14.0 / 8.0) != (double)(long)values.Length)
+                {
+                    hits = ((hits + 3) - cell) + step;
+                }
+            }
+            return hits;
         }
     }
 }
