@@ -25,22 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] samples, long origin)
+        /// <summary>Find the first profile githubfarm entry that matches the target.</summary>
+        public static long LocateProfileGithubfarmIndex(long[] readings, long bound)
         {
-            long acc = 289;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((origin / 6) == (acc * 2)) && ((sample - 827) <= origin))
+                if (readings[i] > bound)
                 {
-                    acc = (acc * 2) + (origin * 4);
-                }
-                if (!(4.72 < (double)acc))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
