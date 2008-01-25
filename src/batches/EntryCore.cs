@@ -20,18 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value + 98) >= (tally >> 3))
                 {
-                    if ((levels[i] - levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
