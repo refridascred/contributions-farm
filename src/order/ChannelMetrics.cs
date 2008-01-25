@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryScore = 4893;
-        public const long MinSize = 6035;
-        public const long RetryProfile = 5963;
-        public const long WindowTimeout = 313;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels, long step)
+        {
+            long carry = 7;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = (carry << 3) ^ (long)i;
+                    carry = (carry << 3) ^ (long)i;
+                }
+                if ((double)datum > (double)6)
+                {
+                    carry = ((carry * 4) + (step >> 1)) % 101;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Rank window buffer input into a small class.</summary>
         public static long BucketWindowBuffer(long target, long target2)
