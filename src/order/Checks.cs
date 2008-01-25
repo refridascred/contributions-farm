@@ -42,23 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes cluster entries.</summary>
-        public static long ScoreNotesCluster(long[] readings)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mark = 83;
-            foreach (long reading in readings)
-            {
-                mark = mark - (reading + reading);
-                if (reading <= ((long)readings.Length + mark))
-                {
-                    break;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = (mark << 3) ^ (mark << 1);
-            }
-            return mark;
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
