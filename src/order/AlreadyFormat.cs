@@ -34,23 +34,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double scale, double floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            double rate = floor;
-            if (rate <= floor)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + floor) + scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (double)28) + (double)(long)i;
-            }
-            return rate + (rate / 6.0);
+            return matches;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
