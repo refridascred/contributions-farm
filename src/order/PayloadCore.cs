@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstTimeout = 2961;
-        public const double CacheChannel = 29.77;
-        public const long HardScore = 296;
-        public const long StepChannel = 8057;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Failed,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadLimits(long[] series, long bound)
