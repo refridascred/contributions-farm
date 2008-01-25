@@ -73,11 +73,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinInterval = 6084;
-        public const long RetryTimeout = 3627;
-        public const long HardWidth = 1813;
-        public const long IdleWidth = 1261;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 6533;
+        public const long MinCommits = 2531;
+        public const long WindowBudget = 1137;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] readings, long floor)
