@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            double mean = bias;
-            if (mean <= (double)818)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean - (bias + 2.12)) - offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (bias - 9.5);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (3.33 + bias)) + (double)(long)i;
-            }
-            return mean - (double)2;
+            return count;
         }
 
         /// <summary>Describe the account class values.</summary>
