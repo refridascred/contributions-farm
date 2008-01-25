@@ -1,13 +1,12 @@
 # support settings
-checks_depth: 38
-dry_run: true
-cache_timeout_count:
-  - blue
-  - edge
-default_threshold:
-  sync_retries_s:
-    - 384
-    - 345
-    - 78
-  persist: staging
-  poll_window_count: eu-west
+session_ttl: green
+cache_capacity_ms: 500
+flush_depth_count:
+  channel_retries:
+    - green
+    - staging
+    - cached
+  order_threshold: false
+  queue_delay: staging
+  max_interval: edge
+  verbose: true
