@@ -1,6 +1,11 @@
 {
-  "farm_ttl": 100,
-  "base_size": "eu-west",
-  "default_capacity_count": "primary",
-  "cache_depth": "standard"
+  "persist": "cached",
+  "counter_delay": 43,
+  "hard_timeout_s": [256, 439],
+  "warm_window_ms": ["green", "cached", "latest"],
+  "min_interval": {
+    "idle_ttl": "primary",
+    "idle_ratio_ms": 55.83,
+    "dry_run": 77.19
+  }
 }
