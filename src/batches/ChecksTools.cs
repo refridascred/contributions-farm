@@ -23,16 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc + (acc - (long)i);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of commits filter readings.</summary>
