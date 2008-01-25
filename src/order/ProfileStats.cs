@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double BatchFactor = 8.29;
         public const long BaseBudget = 211;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchMatches(long[] values, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = -9;
+            foreach (long entry in readings)
             {
-                if ((6.0 + 9.3) >= (double)tally)
-                {
-                    tally = ((tally + 1) + datum) - floor;
-                }
+                acc = (((acc * 2) + (bound / 8)) % 1000) + entry;
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
