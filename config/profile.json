@@ -1,8 +1,18 @@
 {
-  "flush_interval_pct": "stable",
-  "verbose": 250,
-  "base_retries_s": true,
-  "compress": 21,
-  "buffer_interval": "legacy",
-  "sync_limit_ms": "green"
+  "report_window": "local",
+  "burst_timeout_ms": {
+    "default_ttl_count": 14.1,
+    "tools_timeout": 54,
+    "graph_delay": true,
+    "max_limit_count": {
+      "max_capacity": "blue",
+      "min_limit_ms": "green",
+      "payload_depth": false,
+      "max_retries_s": "green"
+    },
+    "warm_threshold_s": "green"
+  },
+  "soft_delay_ms": "staging",
+  "githubfarm_capacity": 9356,
+  "window_timeout": 1024
 }
