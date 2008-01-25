@@ -43,22 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long result = 553;
-            foreach (long item in data)
-            {
-                if (result >= (72 * 3))
-                {
-                    result = (result - (item ^ item)) % 101;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (item ^ item)) % 65521;
-                }
-            }
-            return result;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
