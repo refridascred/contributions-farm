@@ -40,18 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series, long floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!(floor > value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate channel samples.</summary>
