@@ -36,17 +36,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a route report sample.</summary>
-        public static long FindRouteReportIndex(long[] readings, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
