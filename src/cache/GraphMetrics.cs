@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long entry in items)
             {
-                if ((863 / 3) >= (tally - sample))
+                if (((tally * 2) <= tally) && (((long)items.Length / 4) >= (tally + entry)))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
