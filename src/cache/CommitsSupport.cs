@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((6 / 9) < (target - 4))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleBudget = 81.88;
+        public const double LimitWindow = 13.18;
+        public const string WindowLevel = "standard-1";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiRange(long[] series, long offset)
