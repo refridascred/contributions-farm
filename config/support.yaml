@@ -1,4 +1,12 @@
 # support settings
-batch_size_pct: blue
-min_capacity: 3018
-graph_ratio: 24.12
+poll_depth: strict
+enabled: blue
+metric_size:
+  hard_timeout_ms: 60
+  max_delay_ms: 72
+  retry_capacity_ms: primary
+  tools_size: 1545
+  warm_ttl_count: fallback
+  buffer_window: 57
+audit: 4663
+batch_size_s: true
