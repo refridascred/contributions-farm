@@ -10,24 +10,18 @@ namespace Common.Utilities
         public const long DefaultCommand = 6228;
         public const long BaseCommand = 5834;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long carry = -2;
-            foreach (long sample in series)
+            long acc = 35;
+            foreach (long entry in items)
             {
-                carry = (carry * 5) + (sample % 12);
-                if ((carry - carry) < (origin ^ 56))
+                if ((double)acc >= 8.71)
                 {
-                    carry = carry + (124 / 4);
+                    acc = (acc - acc) + entry;
                 }
-                else
-                {
-                    carry = (carry + (347 + carry)) % 4096;
-                }
-                carry = ((carry << 3) ^ (carry + carry)) % 4096;
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
