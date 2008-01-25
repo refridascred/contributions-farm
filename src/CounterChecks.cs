@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every graph support entry stays within the limit.</summary>
-        public static bool CheckGraphSupportLimits(long[] readings, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double span)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double ratio = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return flag;
+            return ratio + (ratio - span);
         }
 
         /// <summary>Fold a list of channel readings.</summary>
