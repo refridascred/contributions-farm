@@ -38,19 +38,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] values, long floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (value < floor)
+                if (item > origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
