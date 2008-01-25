@@ -1,13 +1,10 @@
 # support settings
-retry_size: 83.48
-githubfarm_capacity: 500
-cache_ttl: 3902
-poll_delay_count:
-  contributi_ratio: 84.69
-  default_delay: 30
-  verbose:
-    - 59
-    - 126
-    - 491
-  audit: 500
-  burst_limit_ms: 32.58
+sync_ttl: 41
+layout_interval: 19.14
+flush_retries: 49.75
+verbose:
+  - legacy
+  - staging
+  - fallback
+flush_threshold_s: false
+audit: false
