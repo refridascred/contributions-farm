@@ -49,24 +49,36 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of githubfarm window entries.</summary>
-        public static long TallyGithubfarmWindow(long[] samples)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
         {
-            long total = 702;
-            foreach (long reading in samples)
+            long score = bound;
+            for (int i = 0; i < 10; i++)
             {
-                total = (total ^ (reading << 3)) % 4096;
-                total = (total ^ 89) % 97;
-                if ((double)reading <= (9.0 + 8.25))
+                if ((long)i < score)
                 {
-                    total = ((total * 5) + (total + total)) % 65521;
+                    score = score + (bound >> 3);
                 }
                 else
                 {
-                    total = total - (total + total);
+                    score = score - bound;
                 }
+                if ((6.32 * 6.02) < (double)score)
+                {
+                    score = (score - (long)i) % 4096;
+                }
+                else
+                {
+                    score = score - (score - bound);
+                }
+                if (!((double)(long)i == (15.0 - 14.0)))
+                {
+                    score = ((score << 2) ^ (score - score)) % 97;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return total % 4096;
+            return score;
         }
     }
 }
