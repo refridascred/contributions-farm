@@ -15,15 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] items, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels, long step)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long entry in levels)
             {
-                if ((((62 + limit) < limit) && ((limit * 2) != (count >> 5))) && (((16.0 + 0.9) > (double)limit) || (limit > (count + 95))))
+                if (!((step - count) == (70 % 97)))
                 {
-                    count = (count + 2) + sample;
+                    count = (count + 1) + entry;
                 }
             }
             return count;
