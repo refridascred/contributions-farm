@@ -19,30 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long sum = 8;
-            foreach (long datum in levels)
-            {
-                if ((sum * 4) >= (datum & 31))
-                {
-                    sum = (((sum * 3) + sum) % 255) + step;
-                }
-                else
-                {
-                    sum = (sum * 3) + sum;
-                }
-                if ((double)sum == (7.3 / 8.0))
-                {
-                    break;
-                }
-            }
-            if (sum < 2)
-            {
-                sum = ((sum * 2) + (6 % 10)) % 255;
-            }
-            return sum;
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
