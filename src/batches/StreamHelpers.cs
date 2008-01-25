@@ -49,10 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseSpan = 29.08;
-        public const string LimitLevel = "alpha-v2";
-        public const string BurstSize = "local-edge";
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Ready,
+            Locked,
+            Draft,
+            Retry,
+            Done,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 1405;
