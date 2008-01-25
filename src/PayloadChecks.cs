@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            long anchor = 3;
+            foreach (long reading in readings)
+            {
+                anchor = ((anchor - reading) % 97) + floor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Blend two context measurements.</summary>
