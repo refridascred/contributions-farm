@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryLevel = 2252;
+        public const string CacheBudget = "strict-1";
+        public const long MinCommits = 7890;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string LimitTools = "strict";
