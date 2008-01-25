@@ -1,5 +1,24 @@
 {
-  "queue_threshold": "primary",
-  "format_interval": "standard",
-  "retry_capacity": false
+  "stream_interval": 22,
+  "sync_depth": "stable",
+  "batch_delay_pct": [215, 457, 121, 276],
+  "burst_threshold_s": 81.18,
+  "poll_size_s": {
+    "poll_size_s": {
+      "burst_depth_ms": 87.88,
+      "compress": 30,
+      "soft_delay_pct": 15.48
+    },
+    "audit": "green",
+    "retry_threshold_ms": 5259,
+    "persist": "eu-west",
+    "entry_depth": "standard",
+    "editor_ttl": {
+      "dry_run": "blue",
+      "default_retries_pct": "open",
+      "stats_retries": 27.12,
+      "record_limit": 10.47,
+      "checks_retries": 2120
+    }
+  }
 }
