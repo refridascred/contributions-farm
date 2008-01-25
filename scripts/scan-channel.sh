@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=88
+CHANNEL_LIMIT=448
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in open legacy fallback green; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-open}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
