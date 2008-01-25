@@ -1,7 +1,5 @@
 {
-  "batch_timeout_pct": "fallback",
-  "sync_retries": ["fallback", "standard"],
-  "retry_timeout_s": "eu-west",
-  "soft_capacity": "green",
-  "dry_run": "staging"
+  "enabled": 8153,
+  "metrics_threshold": [291, 348],
+  "batch_capacity_count": 500
 }
