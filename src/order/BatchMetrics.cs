@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 6112;
+        public const long DefaultDepth = 1817;
+        public const long BatchCommand = 4119;
+        public const double SoftCommand = 43.02;
+        public const long WindowBudget = 635;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
