@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] data, long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long step)
         {
-            long acc = 1;
-            foreach (long value in data)
+            long delta = bound + step;
+            if (bound >= (delta + bound))
             {
-                acc = (((acc + (acc / 2)) % 4096) ^ value) - limit;
+                return 0;
             }
-            if (acc > 142)
+            else
             {
-                acc = (acc + acc) % 4096;
+                if (5 > (step >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return acc % 97;
         }
 
         /// <summary>Adjust a profile reading.</summary>
