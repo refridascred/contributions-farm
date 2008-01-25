@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double rate, double offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double load = 1.1 + (offset * 1.1);
-            if (load >= (6.4 / 7.0))
-            {
-                load = load + (double)535;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load + (rate + rate);
+            Closed,
+            Active,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the cache level values.</summary>
