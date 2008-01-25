@@ -55,11 +55,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheBudget = "cached-v2";
-        public const double SoftQueue = 33.71;
-        public const long SoftLevel = 5251;
-        public const string StepCount = "stable-v2";
-        public const long SoftBudget = 4593;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
