@@ -1,5 +1,12 @@
 {
-  "cache_ttl_pct": [308, 23, 5, 461],
-  "report_size": 51,
-  "hard_limit_ms": "eu-west"
+  "commits_retries": 7285,
+  "min_ttl": 63.2,
+  "idle_limit_ms": 11.56,
+  "idle_delay_count": {
+    "notes_threshold": false,
+    "persist": "local",
+    "batch_ttl": 98,
+    "cache_ttl_ms": 3200,
+    "warm_capacity": "primary"
+  }
 }
