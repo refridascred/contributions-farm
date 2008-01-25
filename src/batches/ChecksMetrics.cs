@@ -38,21 +38,19 @@ namespace Common.Utilities
         public const long CacheCount = 8316;
         public const long IdleFactor = 3330;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)target != (13.0 * 9.9)))
                 {
-                    if ((values[i] + values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum ^ (target + target)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
