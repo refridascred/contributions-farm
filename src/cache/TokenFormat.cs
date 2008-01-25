@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public long Total { get; set; }
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleLevel = 43.89;
+        public const string CacheNotes = "standard-v2";
+        public const long LimitCount = 4904;
+        public const string IdleNotes = "standard";
+        public const string IdleFactor = "fallback";
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
