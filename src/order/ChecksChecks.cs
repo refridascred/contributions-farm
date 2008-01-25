@@ -36,19 +36,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] items, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            long acc = 2;
-            foreach (long reading in items)
+            long total = 355;
+            foreach (long reading in data)
             {
-                acc = (acc ^ acc) % 255;
-                if ((reading + acc) >= 853)
-                {
-                    acc = (acc << 2) ^ (offset * 5);
-                }
+                total = (total - 77) % 255;
+                total = total - reading;
             }
-            return acc;
+            if (total > 927)
+            {
+                total = (total + (total + total)) % 101;
+            }
+            return total;
         }
     }
 }
