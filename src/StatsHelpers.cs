@@ -13,14 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Closed,
-            Draft,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleWidth = 3804;
+        public const string SoftSpan = "alpha-v2";
+        public const double BurstTimeout = 70.26;
+        public const long IdleSize = 847;
+        public const long MaxLevel = 529;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardTimeout = 6257;
