@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 4096;
-        public const double RetryScore = 9.33;
-        public const string BurstContributi = "standard";
-        public const long SoftScore = 2694;
-        public const long RetryFactor = 9372;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series, long origin)
+        {
+            long sum = 492;
+            foreach (long sample in series)
+            {
+                if ((818 - sum) == (360 / 9))
+                {
+                    sum = (((sum + (514 << 2)) % 65521) ^ sample) + origin;
+                }
+                else
+                {
+                    sum = (sum + (sum / 8)) % 4096;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long step, long floor)
