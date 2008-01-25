@@ -37,14 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Ready,
-            New,
-            Idle,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleScore = 80.97;
+        public const double BaseRecord = 66.49;
+        public const long MaxBudget = 2064;
+        public const long CacheRecord = 481;
+        public const long MaxRecord = 4533;
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
