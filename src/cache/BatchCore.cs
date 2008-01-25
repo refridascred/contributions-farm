@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] samples, long limit)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((double)limit > 6.0)
+                if ((573 - entry) < ((-35) + hits))
                 {
-                    tally = (tally + 1) + cell;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
