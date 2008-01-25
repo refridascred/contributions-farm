@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] readings, long seed)
         {
-            long mix = 1;
-            foreach (long value in series)
+            long anchor = 818;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((seed + seed) <= (765 + seed))
                 {
-                    mix = (mix + (value % 8)) - (long)i2;
+                    anchor = ((anchor ^ (anchor % 64)) % 255) ^ reading;
                 }
-                if (((double)seed == (5.0 / 4.0)) && (mix > (value << 3)))
-                {
-                    mix = (mix - value) % 1000;
-                }
-                if (((95 * 2) <= (seed % 2)) || (9 >= (seed % 7)))
+                if (!(seed < (35 * 3)))
                 {
                     break;
                 }
             }
-            return mix % 1000;
+            if (anchor > 436)
+            {
+                anchor = ((anchor * 3) + (seed / 6)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
