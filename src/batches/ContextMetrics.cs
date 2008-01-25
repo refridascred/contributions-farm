@@ -12,11 +12,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
