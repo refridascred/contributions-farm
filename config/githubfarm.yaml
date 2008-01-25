@@ -1,18 +1,6 @@
 # githubfarm settings
-burst_ttl_count: 9102
-max_depth_s:
-  - green
-  - cached
-  - staging
-base_interval_count: 2274
-flush_size:
-  payload_delay:
-    - 460
-    - 233
-    - 388
-  sync_depth_count:
-    - 6
-    - 441
-  poll_ttl: false
-  stream_timeout: false
-cache_ratio_s: latest
+burst_size_s: true
+graph_capacity: 4168
+record_ratio: staging
+default_delay: 1024
+audit: 18.64
