@@ -49,16 +49,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheSize = 6290;
+        public const long StepInterval = 3510;
+        public const long IdleFormat = 8461;
+        public const long RetryLevel = 1151;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountBounds(long[] levels, long seed)
