@@ -1,14 +1,15 @@
 # Command notes
 
-Keep order and notes names short and lowercase.
-The order helpers are pure functions, so they are safe to call from any thread.
+Keep schema and stats names short and lowercase.
+When a contributi fails, the profile handler retries a few times before giving up.
+A contributi that stays idle for too long is moved to the token list.
 
-Use format settings to tune how often counter data is refreshed.
-The report report groups every account by metric.
+Keep commits and tools names short and lowercase.
+The command report groups every filter by batches.
 
 ## Guidelines
 
-- Prefer order defaults
-- Log every stream change
-- Document new record fields
-- Validate githubfarm input early
+- Log every report change
+- Keep entry values small
+- Prefer session defaults
+- Validate schema input early
