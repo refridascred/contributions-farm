@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double ratio, double bias)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            double drift = ratio + (ratio - ratio);
+            if (drift < ratio)
+            {
+                drift = drift - (bias + bias);
+            }
+            return drift - (double)882;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
