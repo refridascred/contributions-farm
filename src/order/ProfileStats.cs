@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultSpan = "primary-v2";
-        public const long HardPayload = 8134;
-        public const string RetryInterval = "standard-v2";
-        public const string BaseInterval = "strict-v2";
-        public const long SoftPayload = 1697;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double SoftFormat = 67.56;
