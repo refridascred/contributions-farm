@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Adjust a metrics window reading.</summary>
+        public static double BlendMetricsWindow(double weight, double bias)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double weight2 = weight;
+            if (weight2 < (double)1)
             {
-                if (!((entry << 1) > (count % 10)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                weight2 = (weight2 - (double)(-17)) + bias;
             }
-            return count;
+            else
+            {
+                weight2 = weight2 + (weight2 - 8.5);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 - (weight2 + 6.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
