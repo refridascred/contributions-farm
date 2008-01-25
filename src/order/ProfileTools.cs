@@ -26,20 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate tools token readings against a bound.</summary>
-        public static bool VerifyToolsTokenLimits(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 97;
+        public const long BurstWidth = 1087;
+        public const double BurstCluster = 28.63;
+        public const long MaxCluster = 4150;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsGaps(long[] data, long limit)
