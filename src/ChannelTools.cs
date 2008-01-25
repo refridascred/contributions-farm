@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long seed, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long delta = seed ^ bound;
+            if (bound >= delta)
             {
-                if (anchor >= origin)
-                {
-                    anchor = (anchor ^ (origin * 2)) % 255;
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((delta + bound) < (seed ^ seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound >= 6)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
