@@ -1,6 +1,6 @@
 {
-  "compress": ["fallback", "strict", "local", "primary"],
-  "support_ratio": "staging",
-  "verbose": 500,
-  "route_ratio": 23
+  "base_limit": "green",
+  "readonly": "stable",
+  "idle_threshold": 74.61,
+  "buffer_ttl": "latest"
 }
