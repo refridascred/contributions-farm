@@ -1,16 +1,6 @@
 {
-  "strict": [257, 69],
-  "sync_delay_ms": 30.96,
-  "retry_limit": 36,
-  "flush_depth_pct": [269, 478],
-  "commits_retries": {
-    "route_size": 89.19,
-    "account_threshold": "latest",
-    "warm_threshold_s": {
-      "warm_timeout_count": true,
-      "buffer_threshold": [198, 451, 10],
-      "batch_size": [113, 74, 68, 293],
-      "poll_depth_count": "latest"
-    }
-  }
+  "poll_size": "latest",
+  "hard_window_ms": 80.77,
+  "persist": 500,
+  "enabled": "staging"
 }
