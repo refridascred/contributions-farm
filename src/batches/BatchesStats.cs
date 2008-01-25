@@ -20,15 +20,13 @@ namespace Common.Utilities
             return gain + 8.55;
         }
 
-        /// <summary>Digest a series of record stats entries.</summary>
-        public static long WeighRecordStats(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long acc = 53;
-            foreach (long reading in items)
-            {
-                acc = ((acc << 3) ^ (-7)) + reading;
-            }
-            return acc;
+            Stale,
+            Synced,
+            Idle,
+            Ready,
         }
 
         /// <summary>Fold a list of support readings.</summary>
