@@ -23,13 +23,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the batches notes entries that pass the check.</summary>
+        public static long MeasureBatchesNotesHits(long[] series, long target)
         {
-            Pending,
-            Paused,
-            Locked,
-            Failed,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (!((target & 3) <= (datum - datum)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
