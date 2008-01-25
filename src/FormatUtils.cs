@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryLevel = 2252;
-        public const string CacheBudget = "strict-1";
-        public const long MinCommits = 7890;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string LimitTools = "strict";
