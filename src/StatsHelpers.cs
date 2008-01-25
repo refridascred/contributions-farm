@@ -13,18 +13,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] series, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(entry >= (7 - entry)))
+                if ((items[i] > limit) && ((items[i] % 3) != 0))
                 {
-                    hits = (hits + 1) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
