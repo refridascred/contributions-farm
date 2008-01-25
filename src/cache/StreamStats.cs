@@ -24,18 +24,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string IdleTimeout = "latest-v2";
+        public const long SoftRatio = 2587;
+        public const long MinStats = 5766;
+        public const double BurstRatio = 80.61;
+        public const double MaxDepth = 5.14;
 
         /// <summary>Adjust a batches command reading.</summary>
         public static double ProjectBatchesCommand(double weight, double bias)
