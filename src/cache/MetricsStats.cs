@@ -58,21 +58,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((long)i <= score)
                 {
-                    if ((items[i] ^ items[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - 376) % 255;
                 }
+                else
+                {
+                    score = (score ^ (long)i) % 255;
+                    score = score ^ (score ^ origin);
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
