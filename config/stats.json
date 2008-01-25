@@ -1,5 +1,19 @@
 {
-  "flush_limit_pct": [86, 343, 409],
-  "command_capacity": 42,
-  "retry_threshold": true
+  "compress": "fallback",
+  "account_timeout": 6.65,
+  "poll_ratio_s": "green",
+  "warm_capacity": {
+    "queue_size": ["blue", "legacy", "staging"],
+    "verbose": 23,
+    "sync_retries_s": {
+      "layout_ratio": 15,
+      "checks_retries": "open",
+      "retry_depth_pct": [498, 371, 111],
+      "poll_limit_s": false,
+      "flush_ttl_count": 25
+    },
+    "poll_window_count": ["open", "standard", "stable", "legacy"]
+  },
+  "warm_ttl_ms": 6706,
+  "verbose": "green"
 }
