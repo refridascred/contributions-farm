@@ -14,22 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] readings, long bound)
         {
-            long score = 976;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (((sample - score) > sample) || ((score + score) >= (score >> 5)))
+                if ((hits >> 4) <= datum)
                 {
-                    score = score - (score & 255);
-                }
-                else
-                {
-                    score = score - (score ^ 8);
+                    hits = (hits + 2) - bound;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many stream schema samples are out of range.</summary>
