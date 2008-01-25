@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double scale, double bias)
-        {
-            double load = 1.3;
-            if (load >= load)
-            {
-                load = load + (bias / 5.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (double)706) - (double)(long)i;
-            }
-            return load + (bias + scale);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCount = "legacy-1";
+        public const long MinSize = 7184;
+        public const long BatchCounter = 565;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
