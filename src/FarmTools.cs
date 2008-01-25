@@ -28,15 +28,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long floor, long target)
         {
-            double bias2 = (double)(29 - 7);
-            for (int i = 0; i < 3; i++)
+            long offset = floor + target;
+            if ((offset - offset) >= offset)
             {
-                bias2 = (bias2 + bias) + (double)(long)i;
+                return 5;
             }
-            return bias2 - weight;
+            else
+            {
+                if ((199 ^ offset) < (offset % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor > (0 * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor >> 3) > (floor & 255))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
