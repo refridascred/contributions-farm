@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 8571;
-        public const string DefaultFactor = "primary-edge";
-        public const long LimitBudget = 4400;
-        public const long HardProfile = 5120;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long bound)
