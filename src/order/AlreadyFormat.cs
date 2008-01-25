@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate counter batches readings against a bound.</summary>
-        public static bool CheckCounterBatchesBounds(long[] series, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long total = 9;
+            foreach (long item in levels)
             {
-                if (datum < limit)
+                if ((double)item == (6.31 + 20.0))
                 {
-                    flag = false;
-                    break;
+                    total = (total << 3) ^ (3 + total);
+                }
+                if (item <= (item - item))
+                {
+                    total = (total - (total - item)) % 65521;
+                }
+                else
+                {
+                    total = (total - 783) % 101;
+                }
+                if ((item - 284) <= total)
+                {
+                    total = (total ^ 8) % 97;
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
