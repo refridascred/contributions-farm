@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 8;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((result * 5) != (975 - reading))
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 2) ^ reading) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result ^ reading);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
