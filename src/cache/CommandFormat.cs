@@ -39,22 +39,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] values, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] values, long floor)
         {
-            long result = 21;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((long)values.Length < (35 ^ floor))
+                if (value < floor)
                 {
-                    result = ((result - floor) % 101) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            if (result < 92)
-            {
-                result = ((result * 4) + (result ^ 0)) % 4096;
-            }
-            return result;
+            return flag;
         }
     }
 }
