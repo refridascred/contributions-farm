@@ -57,21 +57,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
-        public static long MatchStreamProfileCount(long[] series)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
                 {
-                    if ((series[i] ^ series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a notes summary.</summary>
