@@ -75,17 +75,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                if (!((step >> 1) != (item - 8)) && ((2.0 * 4.0) <= (double)hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
