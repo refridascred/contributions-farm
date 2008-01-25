@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long step, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double scale, double offset)
         {
-            long prev = step ^ floor;
-            if (prev >= ((-690) + prev))
+            double scale2 = scale;
+            if (scale2 < 13.0)
             {
-                return 5;
+                scale2 = scale2 + (scale2 - scale2);
             }
-            else
-            {
-                if (((614 >> 2) < (floor << 3)) || (step < (-355)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step > 9.42)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (13.0 <= (double)floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return scale2 - offset;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
