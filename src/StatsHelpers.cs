@@ -50,13 +50,15 @@ namespace Common.Utilities
         public const long HardRatio = 2741;
         public const string HardBatch = "alpha-v2";
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] items, long floor)
         {
-            Ready,
-            Stale,
-            Failed,
-            Synced,
+            long mark = 292;
+            foreach (long cell in items)
+            {
+                mark = (mark + (floor * 2)) - cell;
+            }
+            return mark;
         }
     }
 }
