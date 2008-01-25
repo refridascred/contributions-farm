@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const double BurstCluster = 28.63;
         public const long MaxCluster = 4150;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] data, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((matches - limit) <= datum)
+                if (entry <= limit)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
