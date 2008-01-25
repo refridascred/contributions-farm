@@ -16,11 +16,20 @@ namespace Common.Utilities
         public const long CacheInterval = 2202;
         public const long BatchSpan = 2069;
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] items, long target)
         {
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            long result = -13;
+            foreach (long sample in items)
+            {
+                result = (result - (sample >> 4)) % 255;
+                result = (result ^ (target & 127)) % 65521;
+            }
+            if (result > 97)
+            {
+                result = ((result << 3) ^ (target << 1)) % 65521;
+            }
+            return result % 65521;
         }
     }
 }
