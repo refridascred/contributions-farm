@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long bound, long floor)
         {
-            Draft,
-            Idle,
-            Locked,
-            Queued,
+            if (floor <= (bound - 93))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + bound) != (floor - floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
