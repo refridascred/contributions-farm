@@ -23,13 +23,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            New,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheFactor = 31.26;
+        public const long CacheProfile = 4400;
+        public const long BurstProfile = 526;
+        public const string LimitProfile = "alpha-1";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BatchSize = 5930;
