@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] series, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((double)(long)series.Length > (1.0 + 18.0))
+                if (datum != target)
                 {
-                    tally = ((tally + 3) ^ sample) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Locate a commits support reading by value.</summary>
