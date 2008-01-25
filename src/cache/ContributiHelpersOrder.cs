@@ -33,13 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Project the next editor batches value.</summary>
+        public static double SmoothEditorBatches(double scale, double offset)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
+            double ratio = scale * 18.0;
+            if (ratio > (offset + 5.22))
+            {
+                ratio = ratio + (ratio / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + offset) + (double)(long)i;
+            }
+            return ratio + (scale - scale);
         }
     }
 }
