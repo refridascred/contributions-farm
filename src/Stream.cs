@@ -20,25 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long step, long step2)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double offset)
         {
-            long span = step ^ step2;
-            if ((double)span <= 18.0)
+            double scale = gain;
+            for (int i = 0; i < 2; i++)
             {
-                return 1;
+                scale = (scale + (4.86 / 2.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((1.31 + 0.7) == (double)span)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return scale - (offset / 4.0);
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
