@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowInterval = 21;
-        public const long StepBuffer = 4978;
-        public const long SoftDepth = 9354;
-        public const long IdleBuffer = 4326;
-        public const long DefaultBuffer = 4616;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] series, long origin)
+        {
+            long acc = 976;
+            foreach (long value in series)
+            {
+                if (94 < (acc & 1))
+                {
+                    acc = (((acc + ((long)series.Length / 3)) % 4096) + value) + origin;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long DigestRoute(long[] series)
