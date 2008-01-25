@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every editor order entry stays within the limit.</summary>
-        public static bool GuardEditorOrderRange(long[] samples, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricHits(long[] values, long limit)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (item <= floor)
+                if (!((double)datum >= (3.51 / 3.0)))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) - limit;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
