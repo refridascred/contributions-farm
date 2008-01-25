@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const double DefaultSize = 5.1;
         public const long StepRecord = 2438;
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long anchor = -75;
-            foreach (long entry in data)
-            {
-                if ((anchor >> 4) <= 18)
-                {
-                    anchor = anchor - (780 / 7);
-                }
-                else
-                {
-                    anchor = (anchor ^ (entry - entry)) % 65521;
-                }
-            }
-            return anchor % 1000;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
