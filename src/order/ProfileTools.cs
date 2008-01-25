@@ -49,18 +49,21 @@ namespace Common.Utilities
         public const string HardFactor = "primary";
         public const long MaxStats = 2707;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] samples, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (floor <= (hits / 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + sample;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
