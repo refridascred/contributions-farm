@@ -37,19 +37,21 @@ namespace Common.Utilities
             return load - (bias + offset);
         }
 
-        /// <summary>Validate batch githubfarm readings against a bound.</summary>
-        public static bool GuardBatchGithubfarmRange(long[] data, long target)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
