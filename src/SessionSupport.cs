@@ -38,20 +38,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long limit)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long offset, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long edge = offset ^ target;
+            if ((edge + offset) != (edge % 16))
             {
-                if ((limit / 8) < (limit * 5))
-                {
-                    total = ((total * 5) + (total / 2)) % 101;
-                }
-                total = (total + total) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (((9.4 + 6.38) > (double)edge) && ((double)7 < 10.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
