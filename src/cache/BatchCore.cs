@@ -22,13 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)limit > 6.0)
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate metric stats samples.</summary>
