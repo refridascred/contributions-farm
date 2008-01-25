@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double rate, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long floor, long bound)
         {
-            double mean = 3.95;
-            if (mean <= span)
+            if (floor >= bound)
             {
-                mean = (mean - span) - rate;
+                return 0;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = mean - (double)(long)i;
+                if (!(floor <= (floor - bound)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) <= (floor - 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound != (19.0 - 1.6))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return mean - (span * 0.9);
         }
 
         /// <summary>Rank window buffer input into a small class.</summary>
