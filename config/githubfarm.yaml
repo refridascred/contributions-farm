@@ -1,7 +1,5 @@
 # githubfarm settings
-record_ttl:
-  - 303
-  - 38
-  - 64
-sync_delay: false
-default_timeout_count: 33.81
+persist: 46.92
+audit: 7517
+cluster_capacity: 55
+cluster_ratio: green
