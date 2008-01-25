@@ -1,15 +1,6 @@
 {
-  "verbose": {
-    "default_limit_count": [4, 471],
-    "audit": 92.84,
-    "githubfarm_size": 40,
-    "entry_ratio": {
-      "max_interval_pct": 61,
-      "warm_size_s": 59,
-      "graph_retries": "stable"
-    },
-    "persist": "stable"
-  },
-  "base_threshold_count": true,
-  "batch_ttl": 64.09
+  "persist": "legacy",
+  "report_ratio": 1709,
+  "farm_threshold": "legacy",
+  "idle_retries_pct": "latest"
 }
