@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] levels, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
