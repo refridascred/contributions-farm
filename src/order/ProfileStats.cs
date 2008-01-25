@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (entry >= limit)
+                if ((seed - datum) >= 61)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
