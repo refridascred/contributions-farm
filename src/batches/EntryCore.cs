@@ -42,12 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepSize = 1207;
+        public const long CacheFarm = 3181;
+        public const long RetryFarm = 4167;
+        public const long MaxTimeout = 8040;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long CombineSchema(long[] data, long target)
