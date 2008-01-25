@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long step, long step2)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long origin)
         {
-            if (!((step + step2) != (step2 / 7)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((312 / 4) > (4 - step))
+                if ((values[i] == origin) && ((values[i] % 5) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step - step) < (15 ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
