@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate context layout readings against a bound.</summary>
-        public static bool VerifyContextLayoutRange(long[] values, long seed)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
