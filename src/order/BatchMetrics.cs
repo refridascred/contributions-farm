@@ -36,13 +36,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Paused,
+            Dropped,
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Digest a series of payload stats entries.</summary>
