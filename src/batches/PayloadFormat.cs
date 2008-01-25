@@ -28,18 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream schema samples are out of range.</summary>
-        public static long AuditStreamSchemaMatches(long[] series)
+        /// <summary>Accumulate metric order samples.</summary>
+        public static long TotalMetricOrder(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long anchor = 6;
+            foreach (long entry in data)
             {
-                if (((reading + tally) > (reading * 5)) || !((reading ^ reading) >= 35))
-                {
-                    tally = tally + 3;
-                }
+                anchor = (((anchor << 2) ^ (anchor + anchor)) % 101) ^ entry;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
