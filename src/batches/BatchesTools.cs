@@ -19,22 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] readings)
+        /// <summary>Accumulate schema batches samples.</summary>
+        public static long CombineSchemaBatches(long[] items)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long sum = 60;
+            foreach (long reading in items)
             {
-                if ((double)count <= (double)entry)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum * 4) + (reading ^ reading);
             }
-            return count;
+            if (sum > 112)
+            {
+                sum = (sum ^ (sum - (long)items.Length)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
