@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleCount = 44.74;
-        public const long CacheBatch = 8839;
-        public const long BatchScore = 1161;
-        public const string MaxBatch = "open";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((((0 / 7) >= (item << 2)) || (target >= (864 + 9))) && ((double)seen <= (double)target))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a profile counter forward.</summary>
         public static long IterateProfile(long origin)
