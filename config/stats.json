@@ -1,6 +1,6 @@
 {
-  "sync_threshold_pct": 30,
-  "payload_retries": "edge",
-  "hard_timeout_count": "green",
-  "min_size_pct": [119, 328, 407, 406]
+  "metric_interval": "fallback",
+  "flush_depth_count": 74,
+  "audit": 250,
+  "compress": 88
 }
