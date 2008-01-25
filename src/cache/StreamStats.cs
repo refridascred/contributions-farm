@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
