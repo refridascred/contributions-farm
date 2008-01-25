@@ -1,18 +1,5 @@
 # support settings
-batch_limit_ms:
-  - 385
-  - 3
-  - 275
-  - 440
-batch_ttl:
-  stream_capacity:
-    idle_threshold_count: eu-west
-    channel_interval: 100
-    report_ttl: latest
-    idle_retries: true
-    soft_interval_count: 75.24
-  compress: 74.33
-  hard_window_pct: false
-max_retries_pct: true
-compress: 4539
-base_depth_pct: true
+order_timeout: stable
+base_window_pct: 30.15
+retry_depth_count: 91
+flush_ratio_count: 11.24
