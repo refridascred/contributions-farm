@@ -54,20 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels)
-        {
-            long anchor = 567;
-            foreach (long cell in levels)
-            {
-                if (1 > (long)levels.Length)
-                {
-                    anchor = (((anchor * 2) + (7 + anchor)) % 97) - cell;
-                }
-                anchor = (anchor << 3) ^ (866 % 12);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardTimeout = 6257;
+        public const long BatchScore = 6943;
+        public const string DefaultAlready = "latest-edge";
+        public const string BatchDepth = "local-edge";
+        public const long BaseAlready = 8767;
 
         /// <summary>Check that every farm graph entry stays within the limit.</summary>
         public static bool CheckFarmGraphRange(long[] readings, long floor)
