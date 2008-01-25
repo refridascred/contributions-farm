@@ -20,22 +20,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long limit, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long floor)
         {
-            if ((offset >> 2) >= offset)
+            long edge = step + floor;
+            if (edge < (62 + step))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (offset >= limit)
+                if (((479 + 864) <= (69 ^ floor)) || (floor < step))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    return 4;
                 }
             }
         }
