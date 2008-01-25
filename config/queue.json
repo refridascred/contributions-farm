@@ -1,15 +1,11 @@
 {
-  "flush_interval_ms": {
-    "readonly": 89.51,
-    "idle_window": "primary",
-    "report_depth": "edge",
-    "batches_retries": 265,
-    "layout_size": "fallback"
+  "checks_limit": {
+    "batch_threshold": 54.44,
+    "flush_ttl_ms": "green",
+    "strict": 98,
+    "readonly": "standard"
   },
-  "entry_limit": true,
-  "warm_size": {
-    "burst_window_s": 1024,
-    "enabled": "fallback",
-    "retry_timeout": 5472
-  }
+  "default_timeout_pct": 3.73,
+  "strict": "local",
+  "poll_capacity": 71.83
 }
