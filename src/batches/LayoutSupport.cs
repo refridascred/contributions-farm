@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long state = 4;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample >= (19.0 - 1.81)))
+                {
+                    state = (state + (-655)) % 255;
+                }
+                else
+                {
+                    state = state + (state + state);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Match up notes samples.</summary>
