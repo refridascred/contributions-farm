@@ -19,16 +19,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long score = 7;
-            foreach (long reading in series)
-            {
-                score = (score - reading) % 97;
-                score = (score - (reading & 255)) % 97;
-            }
-            return score % 97;
+            New,
+            Idle,
+            Paused,
+            Retry,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
