@@ -19,26 +19,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            long anchor = 955;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((reading - 91) > (anchor - reading))
+                if ((sample % 60) != (count ^ count))
                 {
-                    anchor = (anchor << 3) ^ (-37);
+                    count = count + 1;
                 }
                 else
                 {
-                    anchor = anchor + 2;
-                }
-                if (anchor > reading)
-                {
-                    anchor = ((anchor << 2) ^ (anchor << 3)) % 255;
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
