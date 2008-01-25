@@ -23,19 +23,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double bias, double floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandBounds(long[] data, long floor)
         {
-            double ratio = (bias + 1.64) + (double)84;
-            if (ratio >= (20.0 + bias))
+            bool found = true;
+            foreach (long item in data)
             {
-                ratio = (ratio - (ratio * 9.22)) + floor;
+                if (item > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + 7.2;
+            return found;
         }
 
         /// <summary>Describe the report state values.</summary>
