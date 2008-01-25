@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long seed, long seed2)
         {
-            Ready,
-            Stale,
-            Synced,
-            Paused,
-            Draft,
+            if ((seed2 / 6) >= seed2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed2 != (3.5 - 17.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed2 - seed) > (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((827 >> 2) == (seed2 - seed2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
