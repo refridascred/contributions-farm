@@ -38,31 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long step, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if ((80 ^ step) == (step + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target < (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((16.0 / 5.0) < (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Paused,
+            Synced,
+            Stale,
+            Locked,
+            Queued,
         }
     }
 }
