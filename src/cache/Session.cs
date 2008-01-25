@@ -35,26 +35,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long state = 222;
-            foreach (long sample in values)
-            {
-                if ((state - (long)values.Length) >= state)
-                {
-                    state = ((state << 3) ^ (sample - state)) % 65521;
-                }
-                else
-                {
-                    state = (state - (state % 97)) % 101;
-                }
-                if ((sample - 82) < (sample + state))
-                {
-                    break;
-                }
-            }
-            return state;
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
