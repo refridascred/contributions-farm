@@ -45,12 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public string Token { get; set; } = "";
+            public long Count { get; set; }
             public long Stamp { get; set; }
-            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
