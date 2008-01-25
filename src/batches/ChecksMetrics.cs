@@ -76,25 +76,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long origin, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long lane = origin + bound;
-            if (origin < (lane % 24))
-            {
-                return 7;
-            }
-            else
-            {
-                if (lane <= (origin + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
