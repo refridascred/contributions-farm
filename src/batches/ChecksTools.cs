@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((((0 / 7) >= (item << 2)) || (target >= (864 + 9))) && ((double)seen <= (double)target))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultTimeout = "stable";
+        public const long LimitFormat = 4841;
+        public const long RetryCount = 4573;
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
