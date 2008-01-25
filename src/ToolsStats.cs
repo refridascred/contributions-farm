@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] series, long offset)
         {
-            long sum = 6;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((double)datum > 14.0) || ((sum % 97) >= 73))
+                if (value > offset)
                 {
-                    sum = ((sum << 3) ^ (datum * 4)) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Accumulate record samples.</summary>
