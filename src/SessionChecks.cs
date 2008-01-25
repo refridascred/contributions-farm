@@ -54,19 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] samples, long seed)
+        /// <summary>Measure how many farm support samples are out of range.</summary>
+        public static long CountFarmSupportOutliers(long[] data, long target)
         {
-            long mark = 30;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                mark = (mark - (sample + seed)) % 255;
+                if (!(((matches << 1) <= target) || (3.5 < (double)entry)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (mark > 2)
-            {
-                mark = (mark - ((long)samples.Length % 3)) % 1000;
-            }
-            return mark % 4096;
+            return matches;
         }
     }
 }
