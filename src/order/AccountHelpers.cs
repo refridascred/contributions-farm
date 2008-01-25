@@ -24,11 +24,18 @@ namespace Common.Utilities
             return weight2 - (weight2 + 6.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 49.25;
-        public const long HardRoute = 4126;
-        public const string StepBudget = "staging-v2";
-        public const long IdleTimeout = 4517;
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit account support readings against a rule.</summary>
         public static long TallyAccountSupportMatches(long[] series)
