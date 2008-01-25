@@ -32,12 +32,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 8083;
+        public const long HardSchema = 2229;
+        public const long CacheCount = 8316;
+        public const long IdleFactor = 3330;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] values)
