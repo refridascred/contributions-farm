@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long seed, long seed2)
+        /// <summary>Audit already payload readings against a rule.</summary>
+        public static long MeasureAlreadyPayloadHits(long[] levels, long bound)
         {
-            if ((seed2 - seed) == (seed2 - 6))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed <= (seed & 31)) && ((seed2 >> 2) < (2 + seed2)))
+                if (((double)entry != (1.5 + 0.6)) && ((entry - entry) < count))
                 {
-                    return 7;
+                    count = (count + 1) - bound;
                 }
                 else
                 {
-                    if ((double)seed <= 8.19)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
