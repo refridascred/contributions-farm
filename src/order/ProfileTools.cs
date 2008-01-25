@@ -48,18 +48,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit payload session readings against a rule.</summary>
-        public static long MeasurePayloadSessionOutliers(long[] readings)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)entry <= (double)count)
-                {
-                    count = count + 3;
-                }
+                mark = mark + floor;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
