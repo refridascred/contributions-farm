@@ -67,18 +67,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesMatches(long[] series, long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long score = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((origin + origin) == (hits << 1))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                score = (score + 2) % 255;
+                score = ((score * 2) + ((long)i >> 5)) % 255;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
     }
 }
