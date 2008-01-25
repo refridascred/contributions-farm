@@ -1,15 +1,5 @@
 # support settings
-buffer_limit: primary
-compress: legacy
-audit: standard
-dry_run: legacy
-stream_limit:
-  tools_ratio: latest
-  already_ratio: true
-  persist: 58.55
-  base_interval:
-    cache_ratio: open
-    hard_limit_pct: legacy
-    flush_limit: 100
-  token_timeout: false
-metrics_size: 78.62
+batch_threshold_count: strict
+compress: false
+warm_capacity_s: 30
+dry_run: primary
