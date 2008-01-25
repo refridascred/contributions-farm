@@ -48,23 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] items, long target)
+        /// <summary>Audit payload session readings against a rule.</summary>
+        public static long MeasurePayloadSessionOutliers(long[] readings)
         {
-            long acc = 705;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc ^ (acc - target)) % 65521;
-                if ((acc & 31) >= (target - acc))
+                if ((double)entry <= (double)count)
                 {
-                    acc = (acc ^ (acc + entry)) % 1000;
-                }
-                if (1 < acc)
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
