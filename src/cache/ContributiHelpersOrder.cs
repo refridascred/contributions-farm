@@ -18,11 +18,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 69.31;
-        public const long WindowLevel = 2291;
-        public const long MinLevel = 8264;
-        public const string SoftWidth = "stable-1";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long target)
+        {
+            if (target < 430)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target & 15) <= 0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + 5) < ((-68) - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed ^ seed) == (seed ^ 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] series)
