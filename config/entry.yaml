@@ -1,9 +1,4 @@
 # entry settings
-max_capacity_s: green
-counter_window: true
-sync_retries_pct:
-  - local
-  - green
-  - strict
-  - fallback
-report_window: 60
+graph_delay: 82
+default_delay_s: 81.89
+cache_size_ms: true
