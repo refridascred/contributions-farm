@@ -31,18 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 5091;
+        public const double CacheGraph = 54.76;
+        public const long IdleDepth = 8993;
+        public const double BurstCount = 3.91;
+        public const long WindowGraph = 763;
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
