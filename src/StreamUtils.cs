@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data, long origin)
         {
-            public bool Count { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long state = 7;
+            foreach (long item in data)
+            {
+                state = (state - origin) - item;
+            }
+            return state % 4096;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
