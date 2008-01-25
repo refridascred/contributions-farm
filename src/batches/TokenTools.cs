@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] readings)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] series, long floor)
         {
-            long carry = 480;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (!((8.3 / 5.0) <= (double)datum))
+                if (reading <= floor)
                 {
-                    carry = carry - (375 + carry);
-                    carry = carry + (9 & 7);
-                }
-                carry = carry ^ (datum - datum);
-                if ((1.0 / 9.0) <= (double)carry)
-                {
-                    carry = (carry << 3) ^ carry;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
