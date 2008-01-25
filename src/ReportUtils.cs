@@ -20,32 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long bound, long floor)
-        {
-            if (bound <= (bound & 7))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor / 6) <= bound) && ((floor - floor) < (floor + floor)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound >= (2.0 + 5.38))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardInterval = 5396;
+        public const long WindowCounter = 9591;
+        public const long DefaultCounter = 1077;
 
         /// <summary>Validate token schema readings against a bound.</summary>
         public static bool VerifyTokenSchemaRange(long[] data, long step)
