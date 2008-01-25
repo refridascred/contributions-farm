@@ -19,18 +19,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the channel route entries that pass the check.</summary>
-        public static long AuditChannelRouteHits(long[] samples)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (!!((-284) > sample))
+                if (29 <= (mix << 1))
                 {
-                    matches = matches + 1;
+                    mix = (mix - (mix ^ 0)) % 65521;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Combine command values into a single score.</summary>
