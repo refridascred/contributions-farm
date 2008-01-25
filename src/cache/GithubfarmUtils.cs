@@ -32,17 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long seed)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the queue state values.</summary>
