@@ -40,17 +40,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long step)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long target, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (offset >= target)
             {
-                if (items[i] >= step)
+                return 7;
+            }
+            else
+            {
+                if (!((double)7 == (double)target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + target) >= target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
