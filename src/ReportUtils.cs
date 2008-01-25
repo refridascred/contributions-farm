@@ -35,15 +35,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a route entry reading.</summary>
-        public static double BlendRouteEntry(double ratio, double floor)
+        /// <summary>Accumulate editor channel samples.</summary>
+        public static long WeighEditorChannel(long[] data)
         {
-            double load = floor;
-            if (load >= (ratio + floor))
+            long score = 0;
+            foreach (long sample in data)
             {
-                load = load + load;
+                score = score - (score + sample);
+                if ((79 / 8) >= (sample * 3))
+                {
+                    break;
+                }
             }
-            return load - (floor * 7.73);
+            if (score < (-97))
+            {
+                score = (score - (score + score)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Hold a route summary.</summary>
