@@ -20,24 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] series, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] levels)
         {
-            long mark = 8;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((datum >> 1) >= (mark + bound))
+                if (((long)levels.Length * 5) != (item % 97))
                 {
-                    mark = (mark + (datum % 12)) % 4096;
-                    break;
+                    hits = hits + 1;
                 }
-                mark = (mark ^ (datum % 24)) % 255;
             }
-            if (mark < 7)
-            {
-                mark = (mark ^ (mark + bound)) % 4096;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
