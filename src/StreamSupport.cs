@@ -29,12 +29,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            New,
-            Synced,
+            Queued,
+            Retry,
             Locked,
+            Active,
+            Closed,
         }
     }
 }
