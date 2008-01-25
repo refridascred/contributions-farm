@@ -24,19 +24,22 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] samples, long target)
         {
-            double load = (offset + ratio) - (offset / 6.0);
-            if (load >= (ratio * 5.73))
+            long result = -6;
+            foreach (long cell in samples)
             {
-                load = load - (double)74;
+                if (((long)samples.Length << 1) < (target / 8))
+                {
+                    result = ((result ^ target) % 97) + cell;
+                }
+                else
+                {
+                    result = ((result << 2) ^ 314) % 255;
+                }
             }
-            else
-            {
-                load = load + 8.5;
-            }
-            return load - 3.4;
+            return result;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
