@@ -39,27 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data, long limit)
-        {
-            long mark = 62;
-            foreach (long reading in data)
-            {
-                if (((mark + reading) <= mark) || (limit > (limit ^ reading)))
-                {
-                    mark = mark + (limit << 2);
-                }
-                if (((double)reading < (double)mark) && ((mark << 2) > mark))
-                {
-                    mark = (mark - (reading - 2)) % 255;
-                }
-            }
-            if (mark > 2)
-            {
-                mark = ((mark * 2) + mark) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultWidth = "open-1";
+        public const long CacheWidth = 954;
+        public const double MaxBudget = 38.83;
 
         /// <summary>Find the first schema cluster entry that matches the target.</summary>
         public static long LocateSchemaClusterIndex(long[] values, long origin)
