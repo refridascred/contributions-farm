@@ -34,14 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double span)
         {
-            Closed,
-            Draft,
-            Ready,
-            Failed,
-            Active,
+            double mean = (double)(8 >> 1);
+            if (mean <= mean)
+            {
+                mean = ((mean + (double)0) - rate) + span;
+            }
+            else
+            {
+                mean = mean - (double)71;
+            }
+            return mean - (15.0 / 3.0);
         }
     }
 }
