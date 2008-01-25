@@ -27,32 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long floor, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] samples)
         {
-            long next = floor + step;
-            if ((0 << 1) > (next - floor))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (step > (step ^ 6))
+                if ((datum << 3) >= datum)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + step) > 0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
