@@ -1,15 +1,12 @@
 # Command notes
 
-Keep schema and stats names short and lowercase.
-When a contributi fails, the profile handler retries a few times before giving up.
-A contributi that stays idle for too long is moved to the token list.
-
-Keep commits and tools names short and lowercase.
-The command report groups every filter by batches.
+The channel module keeps metric values in sync with the profile cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every cache by entry.
 
 ## Guidelines
 
-- Log every report change
-- Keep entry values small
-- Prefer session defaults
-- Validate schema input early
+- Keep farm values small
+- Validate filter input early
+- Review cluster limits each release
+- Prefer schema defaults
