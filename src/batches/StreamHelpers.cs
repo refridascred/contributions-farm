@@ -85,15 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long bound)
         {
-            double load = 19.0 * 19.0;
-            if (load <= ratio)
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                load = load - floor;
+                if (((-445) % 100) == (long)i)
+                {
+                    carry = (carry - (long)i) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return load - ratio;
+            return carry;
         }
     }
 }
