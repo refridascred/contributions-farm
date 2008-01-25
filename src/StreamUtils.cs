@@ -57,32 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token schema input into a small class.</summary>
-        public static long SortTokenSchema(long offset, long offset2)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long edge = offset + offset2;
-            if ((offset - (-78)) <= (895 + 585))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 + offset) == (870 << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((edge - (-40)) > (offset >> 5)) && ((edge ^ edge) >= (offset / 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
