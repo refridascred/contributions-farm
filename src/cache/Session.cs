@@ -48,39 +48,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long origin)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            long edge = target - origin;
-            if ((5.44 * 4.0) <= (double)edge)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)target < 5.34) || ((double)edge >= (double)origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.0 - 5.1) > (double)edge)
+                    if ((levels[i] + levels[j]) == 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((20.0 - 8.7) >= (double)edge)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
