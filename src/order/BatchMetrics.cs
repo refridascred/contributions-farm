@@ -19,14 +19,17 @@ namespace Common.Utilities
         public const long BaseQueue = 9765;
         public const long BatchQueue = 3214;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long limit)
         {
-            Paused,
-            Dropped,
-            Locked,
-            Ready,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
