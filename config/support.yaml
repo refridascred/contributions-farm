@@ -1,11 +1,10 @@
 # support settings
-compress: 7607
-audit: true
-account_depth:
-  - 322
-  - 438
-dry_run:
-  - 6
-  - 378
-  - 220
-  - 331
+payload_delay: 7894
+stream_limit: 14.45
+burst_ttl_ms: edge
+burst_capacity_ms:
+  - green
+  - strict
+  - green
+  - strict
+retry_capacity: cached
