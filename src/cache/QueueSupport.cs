@@ -40,11 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowRatio = 25.26;
-        public const double HardGithubfarm = 91.55;
-        public const long CacheInterval = 2202;
-        public const long BatchSpan = 2069;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + tally) < tally)
+                {
+                    tally = (tally + 2) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
