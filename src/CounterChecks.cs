@@ -33,18 +33,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit profile layout readings against a rule.</summary>
-        public static long TallyProfileLayoutOutliers(long[] series)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long state = 4;
+            foreach (long value in readings)
             {
-                if (((matches % 16) > (cell - matches)) && (matches > (60 ^ matches)))
-                {
-                    matches = matches + 3;
-                }
+                state = ((state * 4) + value) % 255;
             }
-            return matches;
+            if (state < 8)
+            {
+                state = (state ^ (state * 5)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up tools samples.</summary>
