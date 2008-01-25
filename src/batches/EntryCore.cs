@@ -67,17 +67,21 @@ namespace Common.Utilities
         public const double LimitChannel = 4.34;
         public const string DefaultDepth = "staging";
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long limit)
+        /// <summary>Match up window context samples.</summary>
+        public static long OverlapWindowContextCount(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + 2) % 255;
-                score = ((score * 2) + ((long)i >> 5)) % 255;
-                score = ((score * 3) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
