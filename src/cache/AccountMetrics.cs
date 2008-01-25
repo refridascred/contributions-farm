@@ -34,15 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double mean = (ratio + offset) * 5.1;
-            if (mean >= (double)(-13))
-            {
-                mean = mean + (double)69;
-            }
-            return mean + (offset / 9.0);
+            Stale,
+            Idle,
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Classify a githubfarm graph pair into a bucket.</summary>
