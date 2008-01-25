@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] levels, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = score ^ floor;
-                score = ((score * 4) + (long)i) % 101;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
