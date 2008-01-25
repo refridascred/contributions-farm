@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double weight, double floor)
         {
-            Paused,
-            Retry,
-            Stale,
-            Idle,
-            Ready,
+            double ratio = (double)(606 - 766);
+            if (ratio > (weight / 5.0))
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (weight / 8.0)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Match up commits queue samples.</summary>
