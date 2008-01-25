@@ -57,18 +57,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long result = 558;
+            foreach (long cell in readings)
             {
-                if (count < datum)
+                if ((double)result > (4.4 - 3.3))
                 {
-                    count = count + 3;
+                    result = (((result << 2) ^ limit) % 101) - cell;
                 }
+                result = result + (limit ^ 10);
+                result = (result << 2) ^ ((long)readings.Length << 3);
             }
-            return count;
+            return result;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
