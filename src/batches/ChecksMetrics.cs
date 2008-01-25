@@ -59,22 +59,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] samples, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((17.0 * 6.78) > (double)target) || ((double)target <= (double)(-948)))
+                mark = (mark ^ bound) % 4096;
+                if ((bound + mark) == ((long)i * 5))
                 {
-                    seen = (seen + 3) ^ value;
+                    mark = (mark << 2) ^ (90 - (long)i);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
