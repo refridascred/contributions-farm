@@ -66,17 +66,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] values, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (values[i] > origin)
+                if ((((hits + 666) == (83 >> 1)) || (sample > (hits + hits))) || !((1 ^ hits) < (sample - hits)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
