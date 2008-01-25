@@ -33,18 +33,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] readings, long floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)(long)readings.Length == (double)hits)
+                anchor = (anchor << 3) ^ ((long)i / 3);
+                if ((((long)i << 1) <= (limit + anchor)) || ((limit + 885) < (limit ^ anchor)))
                 {
-                    hits = ((hits + 3) - item) - floor;
+                    anchor = anchor ^ ((-849) - limit);
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor - anchor;
+                }
+                anchor = (anchor - (anchor * 3)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Scale a entry notes figure with a bias.</summary>
