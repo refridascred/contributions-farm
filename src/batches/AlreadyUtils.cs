@@ -52,19 +52,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] data, long step)
+        /// <summary>Digest a series of stream editor entries.</summary>
+        public static long TallyStreamEditor(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long acc = -1;
+            foreach (long entry in items)
             {
-                if (cell >= step)
+                if ((entry / 6) > 239)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc << 3) ^ entry;
+                }
+                if ((5.4 - 3.1) <= (double)acc)
+                {
+                    acc = (acc ^ (50 - 904)) % 65521;
+                }
+                else
+                {
+                    acc = acc - (acc << 1);
                 }
             }
-            return ready;
+            return acc % 1000;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
