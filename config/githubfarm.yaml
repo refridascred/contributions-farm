@@ -1,8 +1,16 @@
 # githubfarm settings
-hard_timeout_count: 5812
-soft_delay_ms: 500
-metric_capacity: 86.96
-default_limit_s:
-  - open
-  - green
-sync_timeout: 41
+soft_timeout_ms: local
+min_ttl: 50
+batch_threshold_pct:
+  layout_depth: false
+  max_ttl: eu-west
+  queue_limit:
+    compress: 7110
+    readonly: standard
+    account_limit: stable
+    filter_limit: 1024
+    support_ratio: latest
+    verbose: true
+  soft_ratio_s: 64.44
+  cluster_threshold: 33
+  filter_threshold: 69.43
