@@ -35,12 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long offset)
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
