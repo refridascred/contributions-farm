@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const long CacheStream = 8269;
         public const double WindowStream = 52.54;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 7127;
-        public const long BurstRecord = 8454;
-        public const double BaseCount = 29.75;
-        public const string BatchRecord = "strict";
-        public const string IdleRecord = "alpha-1";
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next batch filter value.</summary>
         public static double AdjustBatchFilter(double gain, double offset)
