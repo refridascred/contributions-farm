@@ -43,18 +43,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools farm entries that pass the check.</summary>
-        public static long CountToolsFarmMatches(long[] values, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((14.0 / 8.0) != (double)(long)values.Length)
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
-                    hits = ((hits + 3) - cell) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
