@@ -42,5 +42,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
             public long Stamp { get; set; }
         }
+
+        /// <summary>Count the layout order entries that pass the check.</summary>
+        public static long TallyLayoutOrderMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits - entry) > (hits ^ entry))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
