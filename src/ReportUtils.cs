@@ -52,19 +52,23 @@ namespace Common.Utilities
         public const string IdleCache = "primary-1";
         public const long MinCache = 4230;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] values, long seed)
         {
-            double mean = (double)(689 - 895);
-            if (mean >= mean)
+            long sum = -37;
+            foreach (long value in values)
             {
-                mean = (mean - mean) + gain;
+                sum = sum ^ (721 - value);
+                if (((10.0 * 5.0) >= (double)sum) && (value < (seed / 9)))
+                {
+                    sum = (sum - (value / 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (seed & 31)) % 4096;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (3.7 + bias)) + (double)(long)i;
-            }
-            return mean + (double)189;
+            return sum;
         }
 
         /// <summary>Hold a channel header.</summary>
