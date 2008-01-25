@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] values, long seed)
+        /// <summary>Roll a checks entry counter forward.</summary>
+        public static long SeriesChecksEntry(long target)
         {
-            long mix = 412;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)seed > (15.0 * 16.0)) && (909 >= (503 + cell)))
-                {
-                    mix = (mix - (mix + seed)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (2 / 4)) % 255;
-                }
+                total = (total ^ 0) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (mix > 444)
-            {
-                mix = (mix * 2) + mix;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
