@@ -12,12 +12,26 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data, long limit)
         {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long mark = 62;
+            foreach (long reading in data)
+            {
+                if (((mark + reading) <= mark) || (limit > (limit ^ reading)))
+                {
+                    mark = mark + (limit << 2);
+                }
+                if (((double)reading < (double)mark) && ((mark << 2) > mark))
+                {
+                    mark = (mark - (reading - 2)) % 255;
+                }
+            }
+            if (mark > 2)
+            {
+                mark = ((mark * 2) + mark) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Find the first schema cluster entry that matches the target.</summary>
