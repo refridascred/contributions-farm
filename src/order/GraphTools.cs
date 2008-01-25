@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultSize = 44;
-        public const string BaseWidth = "cached-v2";
-        public const long RetryRatio = 6314;
-        public const long BatchBudget = 3864;
+        /// <summary>Locate a format command reading by value.</summary>
+        public static long LocateFormatCommandIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of commits filter entries.</summary>
         public static long WeighCommitsFilter(long[] readings, long target)
