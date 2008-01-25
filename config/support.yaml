@@ -1,5 +1,4 @@
 # support settings
-order_timeout: stable
-base_window_pct: 30.15
-retry_depth_count: 91
-flush_ratio_count: 11.24
+batch_size_pct: blue
+min_capacity: 3018
+graph_ratio: 24.12
