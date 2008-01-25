@@ -22,27 +22,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Combine contributi format values into a single score.</summary>
-        public static long WeighContributiFormat(long[] levels, long target)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long TotalMetricStats(long[] values)
         {
-            long state = 6;
-            foreach (long cell in levels)
+            long mix = -8;
+            foreach (long item in values)
             {
-                if ((double)state >= (4.4 + 1.2))
+                if (((0 + 64) > (mix * 5)) || (6 < (item ^ mix)))
                 {
-                    state = (((state * 5) + (cell / 9)) % 101) - target;
+                    continue;
                 }
-                state = (state - state) % 1000;
-                if (state <= (cell + cell))
-                {
-                    state = (state * 2) + (cell + 986);
-                }
+                mix = ((mix << 2) ^ (long)values.Length) % 255;
             }
-            if (state > 999)
-            {
-                state = ((state * 3) + state) % 97;
-            }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
