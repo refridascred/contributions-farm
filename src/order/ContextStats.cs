@@ -37,18 +37,31 @@ namespace Common.Utilities
             return load - (bias + offset);
         }
 
-        /// <summary>Measure how many layout githubfarm samples are out of range.</summary>
-        public static long TallyLayoutGithubfarmGaps(long[] levels)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if (origin > (origin2 ^ origin2))
             {
-                if ((seen + (long)levels.Length) > (seen >> 4))
+                return 1;
+            }
+            else
+            {
+                if (!((origin >> 5) < origin))
                 {
-                    seen = (seen + 2) + item;
+                    return 7;
+                }
+                else
+                {
+                    if (origin2 > (origin2 / 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
