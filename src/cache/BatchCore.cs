@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] data)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((3.03 + 4.36) > (double)matches)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
