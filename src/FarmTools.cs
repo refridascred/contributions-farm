@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many counter filter samples are out of range.</summary>
-        public static long TallyCounterFilterHits(long[] readings, long limit)
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool GuardRecordCommitsLimits(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (datum > 836)
+                if (datum > target)
                 {
-                    seen = (seen + 1) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
