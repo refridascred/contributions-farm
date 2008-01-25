@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Project the next payload record value.</summary>
+        public static double BlendPayloadRecord(double bias, double floor)
         {
-            Failed,
-            Done,
-            New,
-            Queued,
+            double weight = (double)(51 * 3);
+            if (weight < (double)328)
+            {
+                weight = (weight - (bias * 6.1)) + floor;
+            }
+            return weight - 5.0;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
