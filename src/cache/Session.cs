@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Adjust a commits already reading.</summary>
+        public static double ProjectCommitsAlready(double ratio, double bias)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
+            double load = (double)(857 + 98);
+            if (load >= (ratio + load))
+            {
+                load = load + (double)433;
+            }
+            else
+            {
+                load = load - bias;
+            }
+            return load - (7.2 * 8.31);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
