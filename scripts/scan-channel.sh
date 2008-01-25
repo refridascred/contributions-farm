@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for item in edge legacy blue standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=39
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    edge)
+    eu-west)
         log "fast path"
         ;;
     *)
