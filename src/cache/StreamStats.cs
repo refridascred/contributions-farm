@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long step)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            if (!((34 * 2) >= (bound - bound)))
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 0;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((step >> 3) < bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound >> 1) < (step - step)) || ((bound + bound) != (557 % 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the stats kind values.</summary>
