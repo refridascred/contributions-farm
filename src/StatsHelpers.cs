@@ -50,17 +50,13 @@ namespace Common.Utilities
         public const long HardRatio = 2741;
         public const string HardBatch = "alpha-v2";
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] levels, long step)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Failed,
+            Synced,
         }
     }
 }
