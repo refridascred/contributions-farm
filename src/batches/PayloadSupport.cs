@@ -49,14 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Stale,
-            Paused,
-            Failed,
-            Draft,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 4965;
+        public const string WindowMetric = "standard-v2";
+        public const long StepMetric = 7252;
     }
 }
