@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values)
         {
-            public string Count { get; set; } = "";
-            public bool Token { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (!((matches ^ matches) >= ((long)values.Length << 2)))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up filter samples.</summary>
