@@ -1,6 +1,13 @@
 {
-  "persist": 30,
-  "cluster_depth": 97.15,
-  "stream_size": "edge",
-  "retry_ratio": 61
+  "base_delay": true,
+  "cluster_interval": {
+    "sync_limit_count": "stable",
+    "idle_depth": "strict",
+    "githubfarm_timeout": 60,
+    "min_interval": [433, 455, 457, 133]
+  },
+  "poll_threshold": true,
+  "soft_limit_s": "primary",
+  "profile_ttl": "legacy",
+  "contributi_limit": "standard"
 }
