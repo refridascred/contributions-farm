@@ -1,4 +1,5 @@
 # githubfarm settings
-report_limit: eu-west
-strict: 29
-max_ratio: false
+soft_timeout_ms: true
+cache_ttl_ms: 26.52
+checks_ttl: staging
+idle_capacity: true
