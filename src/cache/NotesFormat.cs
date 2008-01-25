@@ -31,11 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
