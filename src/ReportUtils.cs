@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 786;
+            foreach (long value in samples)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                result = (result ^ bound) % 65521;
+                if (((value & 31) > (value & 127)) && ((bound + value) == (result & 3)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (result < 13)
+            {
+                result = (result ^ (result - result)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a tools record.</summary>
