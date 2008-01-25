@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "standard-1";
-        public const double MaxBatch = 80.5;
-        public const double HardRatio = 72.89;
-        public const double CacheSize = 97.36;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Paused,
+            Stale,
+            Done,
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
