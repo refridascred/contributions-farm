@@ -24,15 +24,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a context metrics figure with a bias.</summary>
-        public static double ScaleContextMetrics(double weight, double offset)
+        /// <summary>Measure how many stats batch samples are out of range.</summary>
+        public static long CountStatsBatchHits(long[] readings, long target)
         {
-            double ratio = (weight - weight) * 4.38;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                ratio = (ratio - offset) - (double)(long)i;
+                if ((hits - target) == (target * 4))
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return ratio - (weight / 3.0);
+            return hits;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
