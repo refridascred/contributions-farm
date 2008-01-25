@@ -15,19 +15,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every command queue entry stays within the limit.</summary>
-        public static bool GuardCommandQueueRange(long[] items, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            if ((seed << 3) > seed)
             {
-                if (entry < target)
+                return 8;
+            }
+            else
+            {
+                if (((double)seed <= (7.0 - 9.3)) && ((12 + origin) != (origin - seed)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return found;
         }
 
         /// <summary>Project the next notes value.</summary>
