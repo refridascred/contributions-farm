@@ -49,11 +49,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseRatio = 4802;
-        public const long SoftCommits = 2007;
-        public const long WindowCommits = 2212;
-        public const long CacheCommits = 4278;
-        public const long WindowSpan = 5744;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowInterval = 8255;
+        public const long BatchScore = 1518;
+        public const string HardDepth = "legacy-v2";
+        public const double BurstWidth = 32.03;
     }
 }
