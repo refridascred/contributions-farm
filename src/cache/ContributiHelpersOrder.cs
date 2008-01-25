@@ -18,19 +18,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] samples)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long step)
         {
-            long score = 166;
-            foreach (long item in samples)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 4) + (score - score)) % 1000;
-                if ((score << 2) < (item - 43))
+                mix = ((mix * 3) + (step - mix)) % 4096;
+                if ((step - 63) != ((long)i - mix))
                 {
-                    score = (score + score) % 101;
+                    mix = mix - ((long)i << 3);
                 }
+                mix = mix - (step / 2);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Blend two session measurements.</summary>
