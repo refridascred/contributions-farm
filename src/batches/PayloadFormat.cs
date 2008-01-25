@@ -25,17 +25,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] data, long limit)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    carry = (carry + (long)i) - (long)i2;
                 }
+                carry = carry + (4 + origin);
+                carry = (carry - carry) % 101;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine metric notes values into a single score.</summary>
