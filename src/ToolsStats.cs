@@ -43,15 +43,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long mark = 38;
-            foreach (long entry in series)
-            {
-                mark = (mark << 3) ^ (entry / 5);
-            }
-            return mark % 65521;
+            Closed,
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
