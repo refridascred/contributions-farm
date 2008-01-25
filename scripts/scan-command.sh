@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge cached; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-mode="${1:-strict}"
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    legacy)
         log "fast path"
         ;;
     *)
