@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank record editor input into a small class.</summary>
-        public static long BucketRecordEditor(long bound, long target)
-        {
-            if ((target + target) >= (target * 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((9.63 / 2.0) == (double)bound) || ((87 & 127) != (target % 10)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target ^ bound) == (bound + target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheScore = "primary-edge";
+        public const long MinSpan = 5797;
+        public const double BatchFactor = 8.29;
+        public const long BaseBudget = 211;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
