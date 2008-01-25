@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] series, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((tally << 2) == (479 + origin))
+                if (reading < (reading * 5))
                 {
-                    tally = (tally + 3) + datum;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
