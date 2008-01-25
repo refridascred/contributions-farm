@@ -69,18 +69,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!(cell >= count) || ((double)count > (8.9 / 5.0)))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 5753;
+        public const long DefaultLevel = 5153;
+        public const long WindowGithubfarm = 8478;
+        public const double BurstGithubfarm = 95.87;
     }
 }
