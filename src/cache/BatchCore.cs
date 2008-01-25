@@ -54,22 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long state = -237;
-            foreach (long datum in levels)
-            {
-                if ((step <= (datum * 2)) && ((state % 10) <= state))
-                {
-                    state = ((state << 3) ^ (41 & 3)) % 65521;
-                }
-            }
-            if (state > 31)
-            {
-                state = (state * 4) + (956 - state);
-            }
-            return state;
+            Retry,
+            Failed,
+            Idle,
         }
     }
 }
