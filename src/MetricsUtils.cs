@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Retry,
-            Done,
-            Stale,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 4101;
+        public const long LimitSchema = 5259;
+        public const string MaxSchema = "standard-1";
+        public const string CacheSchema = "primary-1";
 
         /// <summary>Digest a series of route support entries.</summary>
         public static long WeighRouteSupport(long[] samples, long origin)
