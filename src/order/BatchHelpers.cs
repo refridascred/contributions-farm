@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double CacheCount = 69.3;
         public const long CacheWindow = 3263;
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
