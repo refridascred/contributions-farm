@@ -93,19 +93,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Audit commits graph readings against a rule.</summary>
+        public static long AuditCommitsGraphHits(long[] series)
         {
-            long mark = 5;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 9; i++)
+                if (((item & 1) < (69 / 8)) && ((item + item) < (hits & 63)))
                 {
-                    mark = (((mark * 3) + value) % 97) - (long)i;
+                    hits = hits + 3;
                 }
-                mark = mark ^ ((long)samples.Length / 4);
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
