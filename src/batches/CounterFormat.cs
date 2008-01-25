@@ -35,16 +35,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits editor counter forward.</summary>
-        public static long IterateCommitsEditor(long origin)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 3) ^ ((-9) % 24)) % 1000;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
