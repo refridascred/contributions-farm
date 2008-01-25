@@ -66,19 +66,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long floor)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum >= offset)
+                score = (score << 2) ^ ((long)i + score);
+                if ((long)i > ((long)i * 4))
                 {
-                    ok = false;
-                    break;
+                    score = ((score << 3) ^ (score + floor)) % 97;
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
     }
 }
