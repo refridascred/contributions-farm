@@ -1,6 +1,5 @@
 {
-  "retry_threshold_s": true,
-  "queue_depth": ["fallback", "green", "green", "standard"],
-  "min_ratio": 54,
-  "compress": "eu-west"
+  "cache_ttl_pct": [308, 23, 5, 461],
+  "report_size": 51,
+  "hard_limit_ms": "eu-west"
 }
