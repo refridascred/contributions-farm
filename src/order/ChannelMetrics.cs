@@ -39,24 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window buffer input into a small class.</summary>
-        public static long BucketWindowBuffer(long target, long target2)
+        /// <summary>Adjust a support order reading.</summary>
+        public static double AdjustSupportOrder(double weight, double span)
         {
-            if ((target2 % 10) > (target2 * 3))
+            double bias = (double)(131 >> 5);
+            if (bias <= span)
             {
-                return 3;
+                bias = bias + bias;
             }
             else
             {
-                if ((target >= (target2 + target)) || (2.0 >= (double)target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                bias = bias + (weight - span);
             }
+            return bias + (span / 4.0);
         }
 
         /// <summary>Hold a schema record.</summary>
