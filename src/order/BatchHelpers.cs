@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetrySpan = "open-v2";
+        public const string HardTools = "strict";
+        public const long StepTools = 2809;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long RollGraph(long seed)
