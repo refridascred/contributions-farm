@@ -23,12 +23,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseFarm = 48.55;
-        public const string LimitSpan = "alpha-edge";
-        public const string CacheFarm = "alpha-v2";
-        public const string MinTimeout = "primary-v2";
-        public const long RetryScore = 5133;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Done,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TallyEntry(long[] series, long offset)
