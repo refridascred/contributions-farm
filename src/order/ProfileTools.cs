@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] values, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long state = 44;
-            foreach (long value in values)
+            long state = 671;
+            foreach (long reading in values)
             {
-                state = (state - (state ^ 334)) - value;
-                if ((state / 3) > target)
+                state = (state << 3) ^ (148 - reading);
+                if ((double)state <= (10.0 / 2.0))
                 {
-                    state = (state + (target & 63)) % 255;
+                    state = ((state * 5) + (4 + reading)) % 4096;
+                }
+                if (((double)state != (4.0 * 1.2)) && ((reading << 3) >= state))
+                {
+                    break;
                 }
             }
-            return state % 4096;
+            return state % 65521;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
