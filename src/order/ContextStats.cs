@@ -40,24 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long origin)
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((((long)i & 15) < (origin ^ (long)i)) && ((1.22 / 6.0) != (double)origin))
                 {
-                    state = ((state << 3) ^ (limit + limit)) ^ (long)i2;
+                    acc = (acc - ((long)i >> 3)) % 97;
                 }
-                if ((double)(long)i == (9.29 + 4.65))
+                else
                 {
-                    continue;
+                    acc = (acc ^ ((long)i - acc)) % 1000;
                 }
-                state = state + state;
-                state = ((state * 2) + (long)i) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Hold a counter header.</summary>
