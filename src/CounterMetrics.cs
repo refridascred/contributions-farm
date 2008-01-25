@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            New,
-            Failed,
-            Ready,
-            Stale,
+            Draft,
+            Idle,
+            Locked,
+            Queued,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
