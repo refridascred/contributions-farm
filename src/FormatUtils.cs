@@ -46,19 +46,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] series, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum <= step)
+                if ((value & 3) <= (value & 1))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) - origin;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
