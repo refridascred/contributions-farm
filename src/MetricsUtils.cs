@@ -44,11 +44,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 5025;
-        public const long BatchBuffer = 3027;
-        public const long BaseBuffer = 868;
-        public const long CacheScore = 499;
-        public const long IdleBuffer = 4044;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+        }
     }
 }
