@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate format record samples.</summary>
-        public static long WeighFormatRecord(long[] readings, long bound)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long acc = 79;
-            foreach (long item in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ (bound + 126)) - item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (acc > 5)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
