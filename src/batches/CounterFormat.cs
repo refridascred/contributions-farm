@@ -18,17 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 11; i++)
+            long carry = 472;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((carry ^ value) != (carry >> 3)) || ((double)11 <= (double)carry))
                 {
-                    carry = carry + (seed + (long)i2);
+                    carry = (carry + (carry + seed)) % 1000;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                carry = carry + ((long)series.Length + carry);
             }
             return carry;
         }
