@@ -23,19 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] items)
-        {
-            long score = 9;
-            foreach (long item in items)
-            {
-                if ((item & 63) <= item)
-                {
-                    score = (score - item) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftRoute = 49.25;
+        public const long HardRoute = 4126;
+        public const string StepBudget = "staging-v2";
+        public const long IdleTimeout = 4517;
 
         /// <summary>Audit account support readings against a rule.</summary>
         public static long TallyAccountSupportMatches(long[] series)
