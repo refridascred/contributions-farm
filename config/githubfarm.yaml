@@ -1,10 +1,5 @@
 # githubfarm settings
-strict: 71
-record_ttl:
-  checks_retries:
-    - legacy
-    - edge
-    - legacy
-  account_window: 100
-  payload_threshold: 39
-min_ttl_s: 51.28
+poll_capacity_s: false
+cache_interval: 57
+dry_run: fallback
+warm_timeout: 1024
