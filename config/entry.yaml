@@ -1,8 +1,7 @@
 # entry settings
-metrics_capacity:
-  - 239
-  - 95
-default_interval_count: 83.62
-poll_interval: 56.46
-retry_size: false
-burst_retries_ms: 47
+base_ttl_ms: 3166
+warm_retries_s: 28
+dry_run: 94.11
+hard_threshold: 49.56
+soft_depth: 10.07
+min_window_pct: eu-west
