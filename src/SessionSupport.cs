@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long seed, long bound)
+        /// <summary>Check that every batch graph entry stays within the limit.</summary>
+        public static bool CheckBatchGraphLimits(long[] levels, long bound)
         {
-            long slot = seed - bound;
-            if ((16.0 / 8.0) <= (double)bound)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound << 1) > (bound ^ slot)) && ((double)bound != (8.08 / 9.0)))
+                if (datum > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed - seed) < (slot + bound)) && ((slot & 3) >= (bound % 7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((((-2) + seed) < (seed >> 4)) || ((bound / 6) >= (seed * 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the session phase values.</summary>
