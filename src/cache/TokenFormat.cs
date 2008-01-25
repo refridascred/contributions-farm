@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] levels, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (!((item / 7) <= 35))
-                {
-                    matches = (matches + 2) - offset;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Rank window input into a small class.</summary>
