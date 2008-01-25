@@ -1,18 +1,13 @@
 {
-  "report_window": "local",
-  "burst_timeout_ms": {
-    "default_ttl_count": 14.1,
-    "tools_timeout": 54,
-    "graph_delay": true,
-    "max_limit_count": {
-      "max_capacity": "blue",
-      "min_limit_ms": "green",
-      "payload_depth": false,
-      "max_retries_s": "green"
-    },
-    "warm_threshold_s": "green"
+  "cache_ttl": 60,
+  "default_depth": 30,
+  "verbose": ["standard", "edge"],
+  "enabled": ["open", "cached"],
+  "default_limit_ms": {
+    "queue_ratio": "latest",
+    "default_depth_pct": "standard",
+    "retry_capacity_ms": ["legacy", "legacy", "stable", "standard"],
+    "strict": [389, 94, 43]
   },
-  "soft_delay_ms": "staging",
-  "githubfarm_capacity": 9356,
-  "window_timeout": 1024
+  "compress": 30
 }
