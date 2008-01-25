@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the report mode values.</summary>
