@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const string BatchDepth = "local-edge";
         public const long BaseAlready = 8767;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit format tools readings against a rule.</summary>
+        public static long AuditFormatToolsOutliers(long[] levels)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (2.71 >= (double)matches)
+                {
+                    matches = (matches + 2) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
