@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            long anchor = 30;
-            foreach (long entry in series)
+            long anchor = 0;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 9; i++)
+                if ((datum <= anchor) || ((anchor * 4) >= (2 << 2)))
                 {
-                    anchor = (((anchor * 2) + entry) % 4096) - (long)i;
-                }
-                if ((682 << 3) >= anchor)
-                {
-                    anchor = (anchor ^ (entry + entry)) % 255;
+                    anchor = (anchor + (506 / 4)) % 97;
                 }
             }
             return anchor;
