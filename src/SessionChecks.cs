@@ -53,13 +53,13 @@ namespace Common.Utilities
         public const long StepBatch = 1708;
         public const string SoftFactor = "fallback-edge";
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
