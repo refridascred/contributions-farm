@@ -1,7 +1,4 @@
 # entry settings
-command_ratio: stable
-sync_timeout: true
-order_retries: 41
-poll_threshold_s: primary
-idle_capacity_ms: strict
-base_ttl: 8966
+idle_ratio_count: green
+base_window_pct: stable
+soft_ttl_s: 82.52
