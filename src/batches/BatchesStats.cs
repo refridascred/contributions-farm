@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const string DefaultNotes = "local-edge";
         public const double IdleFactor = 93.16;
 
-        /// <summary>Locate a window payload reading by value.</summary>
-        public static long LookupWindowPayloadIndex(long[] samples, long floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
