@@ -39,12 +39,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinCount = 45.6;
-        public const long StepWidth = 6384;
-        public const double MaxRatio = 8.69;
-        public const double CacheBatch = 72.15;
-        public const double WindowBatch = 25.3;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 5965;
+        public const long WindowScore = 4796;
+        public const string WindowCommand = "cached-edge";
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
