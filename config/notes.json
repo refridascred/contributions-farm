@@ -1,8 +1,8 @@
 {
-  "batch_retries": false,
-  "sync_timeout_pct": "fallback",
-  "already_depth": "local",
-  "soft_threshold": false,
-  "schema_capacity": 69.58,
-  "default_limit_ms": 48.29
+  "stream_threshold": "stable",
+  "batch_window_count": "green",
+  "audit": "edge",
+  "verbose": true,
+  "payload_depth": 11.69,
+  "warm_delay_count": ["cached", "fallback", "local"]
 }
