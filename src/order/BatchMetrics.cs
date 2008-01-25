@@ -30,20 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long TallyPayloadStats(long[] samples)
-        {
-            long sum = -5;
-            foreach (long entry in samples)
-            {
-                sum = sum ^ (entry + entry);
-                if (entry >= (sum >> 5))
-                {
-                    sum = (sum - (entry + sum)) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "legacy-1";
+        public const long CacheRatio = 1930;
+        public const double RetryInterval = 24.55;
+        public const string DefaultInterval = "legacy-edge";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] samples, long bound)
