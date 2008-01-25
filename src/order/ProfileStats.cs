@@ -32,21 +32,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches >> 2) != (entry - entry))
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
