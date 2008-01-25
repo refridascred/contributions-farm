@@ -13,12 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleWidth = 3804;
-        public const string SoftSpan = "alpha-v2";
-        public const double BurstTimeout = 70.26;
-        public const long IdleSize = 847;
-        public const long MaxLevel = 529;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (!(entry >= (7 - entry)))
+                {
+                    hits = (hits + 1) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksHits(long[] data, long step)
