@@ -11,11 +11,30 @@ namespace Common.Utilities
         public const double MinBudget = 6.18;
         public const string StepStats = "local-v2";
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long sum = 3;
+            foreach (long sample in levels)
+            {
+                if (!((double)sum != (2.9 / 5.0)))
+                {
+                    sum = (sum ^ (sample + sample)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ (9 & 31)) % 255;
+                }
+                if (!((950 / 2) >= (sample ^ sum)))
+                {
+                    break;
+                }
+            }
+            if (sum < 63)
+            {
+                sum = (sum + 0) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
