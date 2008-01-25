@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm graph reading.</summary>
-        public static double SmoothFarmGraph(double rate, double offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] samples)
         {
-            double ratio = (double)(8 >> 1);
-            if (ratio <= (offset + rate))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                ratio = ratio + rate;
+                if ((count < (sample - count)) || (sample > 2))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)52;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (rate + offset)) + (double)(long)i;
-            }
-            return ratio - offset;
+            return count;
         }
     }
 }
