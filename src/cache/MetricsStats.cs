@@ -62,19 +62,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            double rate = 12.0;
-            if (rate < (weight * 7.27))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + 3.5) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate + (weight * 8.28);
+            return matches;
         }
     }
 }
