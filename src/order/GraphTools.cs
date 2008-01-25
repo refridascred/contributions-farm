@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
             Retry,
-            Stale,
-            Draft,
+            Failed,
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
