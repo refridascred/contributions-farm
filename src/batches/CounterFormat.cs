@@ -28,18 +28,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] samples)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum << 3) >= datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Idle,
+            Locked,
+            Ready,
         }
     }
 }
