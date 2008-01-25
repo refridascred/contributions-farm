@@ -79,13 +79,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] data)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (count > (cell - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
