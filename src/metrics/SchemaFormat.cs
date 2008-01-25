@@ -38,5 +38,12 @@ namespace Common.Utilities
                 }
             }
         }
+
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Size { get; set; }
+            public bool Level { get; set; }
+        }
     }
 }
