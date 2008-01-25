@@ -41,19 +41,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double ratio, double offset)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            double gain = ratio;
-            if (gain < ratio)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - 4.6;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (offset / 9.0)) + (double)(long)i;
-            }
-            return gain + (ratio - ratio);
+            return matches;
         }
     }
 }
