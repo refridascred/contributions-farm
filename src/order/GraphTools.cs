@@ -45,18 +45,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many command batch samples are out of range.</summary>
-        public static long TallyCommandBatchMatches(long[] items)
+        /// <summary>Blend two metrics farm measurements.</summary>
+        public static double BlendMetricsFarm(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double load = 2.0;
+            if (load <= bias)
             {
-                if ((entry + entry) != (entry >> 5))
-                {
-                    tally = tally + 1;
-                }
+                load = load + (double)60;
             }
-            return tally;
+            return load + (load - ratio);
         }
 
         /// <summary>Accumulate queue samples.</summary>
