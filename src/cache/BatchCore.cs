@@ -36,19 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long TotalMetricStats(long[] values)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mix = -8;
-            foreach (long item in values)
-            {
-                if (((0 + 64) > (mix * 5)) || (6 < (item ^ mix)))
-                {
-                    continue;
-                }
-                mix = ((mix << 2) ^ (long)values.Length) % 255;
-            }
-            return mix;
+            Done,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
