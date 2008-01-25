@@ -1,21 +1,4 @@
 # entry settings
-warm_ttl_ms:
-  - 242
-  - 476
-  - 42
-  - 126
-enabled: 65.45
-idle_ttl_ms: false
-stats_threshold:
-  - legacy
-  - primary
-  - primary
-  - eu-west
-min_capacity_pct:
-  record_depth: 1024
-  max_timeout: blue
-  schema_depth:
-    - 264
-    - 341
-    - 42
-soft_depth_count: 18.78
+hard_depth_s: false
+cache_delay: 4212
+batch_depth: strict
