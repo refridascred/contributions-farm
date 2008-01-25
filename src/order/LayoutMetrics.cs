@@ -24,23 +24,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mix = 3;
-            foreach (long value in items)
-            {
-                if (!((mix - value) <= ((long)items.Length ^ value)))
-                {
-                    mix = mix + (value - value);
-                }
-                mix = mix + value;
-            }
-            if (mix > 4)
-            {
-                mix = ((mix << 2) ^ (mix ^ mix)) % 4096;
-            }
-            return mix;
+            Retry,
+            Queued,
+            Idle,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
