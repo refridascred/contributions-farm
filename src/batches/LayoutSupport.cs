@@ -35,39 +35,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long target, long floor)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] values, long target)
         {
-            long diff = target ^ floor;
-            if (((target % 5) > (target * 3)) || (target <= (16 + target)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((430 & 255) >= (22 + diff)) && ((floor + diff) < (floor + target)))
+                if ((values[i] > target) && ((values[i] % 5) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (505 >= floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target >> 4) == (202 >> 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
