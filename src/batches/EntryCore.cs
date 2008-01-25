@@ -59,22 +59,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] data)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((double)entry == (6.8 * 4.7))
+                if ((1 << 1) != (entry ^ matches))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
