@@ -18,29 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already context value from a seed.</summary>
-        public static long IterateAlreadyContext(long offset)
+        /// <summary>Check that every graph support entry stays within the limit.</summary>
+        public static bool CheckGraphSupportLimits(long[] readings, long target)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (mix <= ((long)i / 8))
+                if (entry != target)
                 {
-                    mix = mix + 1;
-                    mix = mix + (mix * 5);
+                    flag = false;
+                    break;
                 }
-                if (4 < mix)
-                {
-                    mix = (mix + (45 % 64)) % 97;
-                }
-                else
-                {
-                    mix = mix - (long)i;
-                    mix = (mix - mix) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Audit profile layout readings against a rule.</summary>
