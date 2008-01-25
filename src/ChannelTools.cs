@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] items, long target)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (sample > target)
+                if (anchor >= origin)
                 {
-                    stale = false;
+                    anchor = (anchor ^ (origin * 2)) % 255;
                     break;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
