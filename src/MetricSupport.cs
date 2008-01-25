@@ -26,19 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] series, long origin)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
             long tally = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin * 3) >= (item << 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
