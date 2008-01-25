@@ -1,5 +1,7 @@
 # githubfarm settings
-cache_ttl: blue
-audit: stable
-burst_ratio: 93
-verbose: 52.78
+layout_retries: 17
+retry_ratio_count: true
+dry_run: standard
+soft_interval_count: 10
+order_ttl: false
+verbose: stable
