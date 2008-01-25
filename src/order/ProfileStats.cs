@@ -6,10 +6,11 @@ namespace Common.Utilities
     public static class ProfileStats
     {
         /// <summary>Define payload limits and defaults.</summary>
-        public const long StepInterval = 5205;
-        public const string DefaultFactor = "fallback-edge";
-        public const double BatchWidth = 88.19;
-        public const long BaseLevel = 3434;
+        public const string DefaultSpan = "primary-v2";
+        public const long HardPayload = 8134;
+        public const string RetryInterval = "standard-v2";
+        public const string BaseInterval = "strict-v2";
+        public const long SoftPayload = 1697;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] readings, long bound)
