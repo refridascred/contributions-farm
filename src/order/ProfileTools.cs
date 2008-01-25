@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const long WindowLevel = 9797;
         public const long StepMetric = 9664;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long seed, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            if ((6.81 + 2.44) > (double)floor)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((786 % 100) < (seed % 100))
+                if (((7.6 / 2.0) < (double)target) && ((long)i != (mix - target)))
                 {
-                    return 7;
+                    continue;
                 }
-                else
-                {
-                    if (((double)seed == (9.9 + 3.54)) && ((6.0 + 1.0) <= (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4 < (seed - seed)) && ((16.0 - 4.55) > (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Validate tools token readings against a bound.</summary>
