@@ -28,19 +28,35 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items, long target)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] items)
         {
-            long sum = -78;
+            long sum = 269;
             foreach (long item in items)
             {
-                sum = sum - (item ^ item);
+                if ((sum % 2) >= item)
+                {
+                    sum = ((sum * 3) + sum) % 4096;
+                    sum = (sum << 2) ^ (sum + sum);
+                }
+                if ((8.02 * 9.0) != (double)item)
+                {
+                    sum = (sum << 2) ^ (item + sum);
+                }
+                else
+                {
+                    sum = (sum ^ (long)items.Length) % 4096;
+                }
+                if (5.41 >= (double)item)
+                {
+                    sum = sum - (long)items.Length;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (item / 8)) % 65521;
+                }
             }
-            if (sum < 5)
-            {
-                sum = (sum * 5) + (target & 31);
-            }
-            return sum;
+            return sum % 4096;
         }
     }
 }
