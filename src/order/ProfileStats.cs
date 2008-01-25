@@ -21,13 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
-        {
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 9.31;
+        public const long RetryDepth = 4681;
+        public const double CacheBuffer = 66.8;
+        public const double WindowFactor = 56.01;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long MeasureQueueMatches(long[] items)
