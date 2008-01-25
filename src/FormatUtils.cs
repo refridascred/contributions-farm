@@ -31,22 +31,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] readings, long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((long)readings.Length <= ((long)readings.Length & 3))
-                {
-                    matches = ((matches + 1) ^ datum) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
