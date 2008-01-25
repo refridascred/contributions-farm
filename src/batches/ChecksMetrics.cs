@@ -42,19 +42,15 @@ namespace Common.Utilities
         public const double BaseCache = 32.21;
         public const long MinDepth = 7280;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] series, long origin)
+        /// <summary>Fold a list of editor buffer readings.</summary>
+        public static long ScoreEditorBuffer(long[] items, long target)
         {
-            long anchor = 204;
-            foreach (long cell in series)
+            long anchor = 267;
+            foreach (long cell in items)
             {
-                if ((origin ^ origin) < cell)
+                if ((866 + (long)items.Length) <= (target ^ cell))
                 {
-                    anchor = ((anchor << 3) ^ (cell ^ 637)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 1000;
+                    anchor = ((anchor << 3) ^ 7) % 4096;
                 }
             }
             return anchor;
