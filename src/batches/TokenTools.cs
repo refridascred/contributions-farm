@@ -39,18 +39,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] data, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long seen = 0;
+            long result = 553;
             foreach (long item in data)
             {
-                if ((item % 16) >= (73 - floor))
+                if (result >= (72 * 3))
                 {
-                    seen = seen + 2;
+                    result = (result - (item ^ item)) % 101;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (item ^ item)) % 65521;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
