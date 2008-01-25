@@ -33,14 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultTimeout = 2649;
+        public const long BurstSpan = 7433;
+        public const long SoftCount = 1912;
 
         /// <summary>Combine payload report values into a single score.</summary>
         public static long FoldPayloadReport(long[] data, long limit)
