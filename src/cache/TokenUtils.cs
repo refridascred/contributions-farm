@@ -12,13 +12,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Stale,
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Blend two commits stream measurements.</summary>
