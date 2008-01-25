@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a farm layout reading by value.</summary>
-        public static long FindFarmLayoutIndex(long[] levels, long limit)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
