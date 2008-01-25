@@ -1,6 +1,6 @@
 {
-  "dry_run": 1024,
-  "metric_delay": 73.8,
-  "cache_limit": "standard",
-  "cache_interval": "blue"
+  "farm_ttl": 100,
+  "base_size": "eu-west",
+  "default_capacity_count": "primary",
+  "cache_depth": "standard"
 }
