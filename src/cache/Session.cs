@@ -35,18 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many notes report samples are out of range.</summary>
-        public static long AuditNotesReportMatches(long[] samples)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count / 5) >= sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the metrics state values.</summary>
