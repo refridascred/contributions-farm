@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] samples)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((573 - entry) < ((-35) + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Paused,
         }
 
         /// <summary>Accumulate stream samples.</summary>
