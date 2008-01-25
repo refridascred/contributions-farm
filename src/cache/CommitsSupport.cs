@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const double LimitWindow = 13.18;
         public const string WindowLevel = "standard-1";
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Draft,
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Scale a entry notes figure with a bias.</summary>
