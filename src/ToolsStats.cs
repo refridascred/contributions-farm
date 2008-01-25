@@ -22,21 +22,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Fold a list of entry metric readings.</summary>
+        public static long CombineEntryMetric(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 96;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)result <= (6.8 - 7.39)))
                 {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result - 719) % 97) - datum;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
