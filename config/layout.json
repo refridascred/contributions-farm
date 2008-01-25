@@ -1,7 +1,8 @@
 {
-  "batch_window": 30,
-  "readonly": 30,
-  "batch_limit": "latest",
-  "verbose": 8406,
-  "soft_depth_ms": 2411
+  "warm_capacity": "primary",
+  "burst_limit_count": "latest",
+  "max_ttl": "eu-west",
+  "warm_timeout": 1024,
+  "strict": "edge",
+  "hard_threshold_s": "eu-west"
 }
