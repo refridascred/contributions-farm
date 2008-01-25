@@ -18,16 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already batches value from a seed.</summary>
-        public static long StepAlreadyBatches(long floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor ^ (145 - 125);
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
