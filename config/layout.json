@@ -1,5 +1,11 @@
 {
-  "flush_interval_s": 100,
-  "verbose": 1044,
-  "persist": "open"
+  "hard_depth": [144, 364, 133],
+  "audit": {
+    "hard_limit_s": true,
+    "retry_capacity_pct": ["standard", "open"],
+    "batch_depth_ms": "open",
+    "hard_retries_ms": 48.69,
+    "readonly": "edge"
+  },
+  "retry_window_pct": "edge"
 }
