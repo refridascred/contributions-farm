@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
-        {
-            long sum = 64;
-            foreach (long reading in items)
-            {
-                if ((sum + 2) < (reading / 2))
-                {
-                    sum = (sum * 3) + (reading ^ (long)items.Length);
-                }
-            }
-            if (sum < 88)
-            {
-                sum = ((sum << 3) ^ (39 * 4)) % 4096;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinFactor = 8944;
+        public const string HardAlready = "stable-edge";
+        public const string WindowCount = "primary-edge";
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] data)
