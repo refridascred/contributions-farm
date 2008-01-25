@@ -19,24 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series, long target)
         {
-            long acc = 858;
-            foreach (long sample in readings)
+            long score = -7;
+            foreach (long sample in series)
             {
-                if (acc < 22)
+                if (!((7.2 * 6.0) > (double)score))
                 {
-                    acc = (acc << 3) ^ sample;
+                    score = ((score ^ (sample + sample)) % 4096) - target;
                 }
-                acc = (acc * 4) + (5 + acc);
-                acc = (acc + (29 % 16)) % 1000;
-                if (((8.2 - 8.0) <= (double)acc) || (((long)readings.Length % 12) >= acc))
+                if ((double)sample < (9.85 + 0.74))
                 {
                     break;
                 }
             }
-            return acc % 1000;
+            if (score > 74)
+            {
+                score = (score + (score >> 4)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Project the next commits value.</summary>
