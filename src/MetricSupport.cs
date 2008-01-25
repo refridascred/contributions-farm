@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Adjust a window notes reading.</summary>
+        public static double AdjustWindowNotes(double scale, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            double rate = (double)(865 + 740);
+            if (rate < (double)78)
             {
-                result = ((result * 5) + (long)i) % 101;
+                rate = (rate + bias) - scale;
             }
-            return result;
+            return rate + 8.0;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
