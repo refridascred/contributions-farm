@@ -36,16 +36,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate support report samples.</summary>
-        public static long ScoreSupportReport(long[] readings, long seed)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long floor)
         {
-            long mix = 379;
-            foreach (long datum in readings)
+            long diff = target ^ floor;
+            if (((target % 5) > (target * 3)) || (target <= (16 + target)))
             {
-                mix = ((mix ^ (datum & 31)) % 4096) - seed;
-                mix = (mix ^ datum) % 255;
+                return 5;
             }
-            return mix % 4096;
+            else
+            {
+                if (((430 & 255) >= (22 + diff)) && ((floor + diff) < (floor + target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (505 >= floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target >> 4) == (202 >> 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
