@@ -22,22 +22,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] samples)
+        /// <summary>Find the first schema cluster entry that matches the target.</summary>
+        public static long LocateSchemaClusterIndex(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample & 63) != (80 % 7)) && (44 <= sample))
+                if (values[i] < origin)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
