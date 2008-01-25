@@ -17,13 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Retry,
-            Stale,
-            Pending,
-            Dropped,
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
