@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 448;
+            foreach (long item in data)
             {
-                if ((values[i] == origin) && ((values[i] % 5) == 0))
+                if ((item - item) < ((-394) * 2))
                 {
-                    return (long)i;
+                    acc = acc + (8 / 3);
+                }
+                if ((double)item == (0.6 * 4.38))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 8)
+            {
+                acc = (acc - (acc + (long)data.Length)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
