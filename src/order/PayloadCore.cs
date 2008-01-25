@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] samples, long target)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    stale = false;
-                    break;
+                    score = (score - (score * 5)) + (long)i2;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the report level values.</summary>
