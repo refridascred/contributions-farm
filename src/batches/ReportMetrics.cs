@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] samples)
         {
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum * 3) >= (matches + datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
