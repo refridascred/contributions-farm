@@ -14,18 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] readings, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((hits >> 4) <= datum)
-                {
-                    hits = (hits + 2) - bound;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate metric order samples.</summary>
