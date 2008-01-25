@@ -21,24 +21,13 @@ namespace Common.Utilities
         public const long RetryAlready = 3081;
         public const string BaseRatio = "open-v2";
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long step, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            if ((double)target != (6.0 * 2.26))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step - step) > (step >> 5)) || ((double)target != (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Roll a session counter forward.</summary>
