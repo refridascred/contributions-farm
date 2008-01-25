@@ -38,19 +38,17 @@ namespace Common.Utilities
         public const string BurstLayout = "local-1";
         public const string HardLayout = "latest";
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double rate, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] readings, long step)
         {
-            double mean = offset + rate;
-            if (mean < (offset / 4.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + offset;
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean + mean;
+            return -1;
         }
     }
 }
