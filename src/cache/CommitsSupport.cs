@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const double DefaultSize = 5.1;
         public const long StepRecord = 2438;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
