@@ -14,17 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a counter command sample.</summary>
-        public static long SeekCounterCommandIndex(long[] levels, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
