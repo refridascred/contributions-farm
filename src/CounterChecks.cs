@@ -65,20 +65,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8925;
+        public const long MinEntry = 5232;
+        public const long DefaultWidth = 4920;
+        public const long BurstRatio = 4659;
+        public const double BaseEntry = 37.81;
 
         /// <summary>Check that every order format entry stays within the limit.</summary>
         public static bool VerifyOrderFormatRange(long[] values, long target)
