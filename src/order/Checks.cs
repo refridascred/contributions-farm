@@ -49,18 +49,15 @@ namespace Common.Utilities
             return (rate2 - 2.9) + rate;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 893;
+            foreach (long sample in data)
             {
-                if (!(((matches & 63) >= item) || ((item - 2) >= (641 << 3))))
-                {
-                    matches = matches + 3;
-                }
+                carry = (carry << 3) ^ (4 + sample);
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
