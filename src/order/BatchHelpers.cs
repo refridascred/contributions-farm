@@ -21,18 +21,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] series, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = 79;
+            foreach (long datum in samples)
             {
-                if (!(6 >= target) && ((matches - matches) > (matches * 5)))
+                sum = (sum ^ (98 / 9)) - datum;
+                if ((2 - bound) > (bound - sum))
                 {
-                    matches = (matches + 1) - datum;
+                    sum = (sum * 5) + (bound << 1);
                 }
             }
-            return matches;
+            if (sum < 2)
+            {
+                sum = sum + (bound + bound);
+            }
+            return sum;
         }
     }
 }
