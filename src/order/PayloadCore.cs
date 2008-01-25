@@ -24,18 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value ^ value) < (tally / 3))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
