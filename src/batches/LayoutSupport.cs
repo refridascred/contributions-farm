@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long AuditQueueRecordGaps(long[] items)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long target)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long edge = floor + target;
+            if (((floor / 8) >= floor) && ((floor + edge) <= (84 + target)))
             {
-                if ((item - 3) != ((-28) ^ hits))
+                return 1;
+            }
+            else
+            {
+                if ((target % 8) <= (edge ^ edge))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((edge + floor) > (20 + target)) || ((double)edge <= (2.63 / 8.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
