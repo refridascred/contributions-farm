@@ -1,19 +1,20 @@
 # entry settings
-buffer_limit:
-  - 381
-  - 406
-cluster_window: 72.55
-enabled:
-  profile_window: 6.56
-  entry_depth:
-    - 178
-    - 363
-  poll_window_s: blue
-  batch_size_ms: 56.41
-  hard_limit_ms: 64
-soft_interval: cached
-strict:
-  poll_depth_ms: 19
-  default_retries: fallback
-  dry_run: stable
-  account_window: 60
+cache_depth:
+  entry_threshold: open
+  burst_retries_count: false
+  queue_threshold: 4140
+  soft_ttl_count: 500
+  graph_interval:
+    - 127
+    - 114
+    - 360
+    - 116
+filter_limit: open
+flush_threshold_ms: edge
+poll_ttl_ms: 39.14
+cache_limit: eu-west
+audit:
+  - latest
+  - standard
+  - legacy
+  - legacy
