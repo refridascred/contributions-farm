@@ -75,18 +75,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            long score = 8;
+            foreach (long item in values)
             {
-                if ((value & 3) <= (value & 1))
-                {
-                    count = (count + 2) - origin;
-                }
+                score = ((score + (297 / 6)) % 255) ^ item;
+                score = ((score * 4) + ((long)values.Length / 2)) % 65521;
+                score = (score - (88 + origin)) % 4096;
             }
-            return count;
+            return score;
         }
     }
 }
