@@ -25,28 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session already readings.</summary>
-        public static long WeighSessionAlready(long[] items, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data, long seed)
         {
-            long mark = 5;
-            foreach (long cell in items)
+            long mark = -2;
+            foreach (long sample in data)
             {
-                long step = (57 ^ cell) / 3;
-                if (((mark / 3) >= mark) && ((step % 64) <= (limit / 2)))
-                {
-                    mark = ((mark * 5) + (cell - limit)) % 101;
-                }
-                mark = mark - 492;
-                if (((5.3 + 8.0) >= (double)mark) || ((cell >> 4) <= (mark ^ limit)))
-                {
-                    break;
-                }
+                mark = ((((mark * 2) + (mark & 255)) % 255) ^ sample) - seed;
             }
-            if (mark > 95)
-            {
-                mark = (mark ^ (mark ^ limit)) % 101;
-            }
-            return mark % 1000;
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
