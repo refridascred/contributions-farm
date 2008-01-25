@@ -65,15 +65,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a layout stats counter forward.</summary>
-        public static long StepLayoutStats(long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] data, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (((reading ^ reading) <= (reading + seen)) && (((double)origin > (20.0 - 0.1)) && (((long)data.Length + 34) != (origin >> 2))))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
