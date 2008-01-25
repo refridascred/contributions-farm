@@ -23,15 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a batches session figure with a bias.</summary>
-        public static double SmoothBatchesSession(double bias, double floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double scale = bias / 9.0;
-            if (scale < 8.8)
-            {
-                scale = scale - (floor / 2.0);
-            }
-            return scale - (double)(-7);
+            Pending,
+            Paused,
+            Locked,
+            Failed,
         }
     }
 }
