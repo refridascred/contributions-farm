@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] samples)
+        /// <summary>Audit tools cluster readings against a rule.</summary>
+        public static long AuditToolsClusterGaps(long[] items)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            foreach (long datum in items)
             {
-                if ((datum * 3) >= (matches + datum))
+                if (5 >= datum)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
