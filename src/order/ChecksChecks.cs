@@ -16,17 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
