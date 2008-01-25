@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] levels, long seed)
+        /// <summary>Measure how many counter filter samples are out of range.</summary>
+        public static long TallyCounterFilterHits(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (levels[i] < seed)
+                if (datum > 836)
                 {
-                    return (long)i;
+                    seen = (seen + 1) - limit;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the filter support entries that pass the check.</summary>
