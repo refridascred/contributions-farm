@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 1;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = total ^ (total + total);
+                if (!((double)total >= 9.8))
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total * 4) + (long)levels.Length;
+                }
+                else
+                {
+                    total = (total + (datum - total)) % 255;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
