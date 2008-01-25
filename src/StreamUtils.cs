@@ -31,39 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a context already pair into a bucket.</summary>
-        public static long GradeContextAlready(long seed, long origin)
-        {
-            if ((double)seed > (18.0 * 1.6))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin ^ seed) <= (seed * 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + origin) <= 36)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin >= (seed - origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSpan = 3393;
+        public const long BurstContext = 5525;
+        public const string MinContext = "alpha-v2";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] values)
