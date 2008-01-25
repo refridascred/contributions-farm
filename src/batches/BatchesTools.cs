@@ -33,12 +33,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long offset, long target)
         {
-            Paused,
-            Stale,
-            Idle,
+            if (offset > (target / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target % 7) >= (target & 127)) && ((offset - offset) < (offset << 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4 % 60) != (target * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
