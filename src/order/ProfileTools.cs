@@ -20,19 +20,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatLimits(long[] items, long step)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] series)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long result = 994;
+            foreach (long datum in series)
             {
-                if (value < step)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result - datum) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
