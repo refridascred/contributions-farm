@@ -41,11 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "cached-v2";
-        public const double IdleScore = 49.21;
-        public const long StepSchema = 9097;
-        public const double DefaultSchema = 14.38;
-        public const long BurstSchema = 2416;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((carry % 100) > carry)
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
