@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)seen >= (0.8 + 2.2))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 9856;
+        public const long StepLevel = 306;
+        public const string CacheChannel = "local-1";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsMatches(long[] series)
