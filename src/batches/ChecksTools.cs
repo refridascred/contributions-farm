@@ -25,23 +25,15 @@ namespace Common.Utilities
             return (bias - (scale - 3.43)) + span;
         }
 
-        /// <summary>Fold a list of stream report readings.</summary>
-        public static long ScoreStreamReport(long[] series, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            long score = 2;
-            foreach (long value in series)
+            double gain = bias;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score << 3) ^ (value << 2);
-                if (((double)offset == (19.0 / 8.0)) && ((double)offset <= (double)score))
-                {
-                    break;
-                }
+                gain = (gain - offset) - (double)(long)i;
             }
-            if (score > 13)
-            {
-                score = ((score * 4) + (offset >> 3)) % 255;
-            }
-            return score;
+            return gain - gain;
         }
     }
 }
