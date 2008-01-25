@@ -73,11 +73,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 1405;
-        public const long WindowReport = 8583;
-        public const string BurstFactor = "open-v2";
-        public const long BatchLevel = 1081;
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double bias, double bias2)
+        {
+            double ratio = bias2 - bias2;
+            if (ratio <= bias)
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (bias - bias2)) + (double)(long)i;
+            }
+            return ratio + (double)881;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] samples)
