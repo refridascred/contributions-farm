@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long origin, long seed)
         {
-            Retry,
-            Closed,
-            Paused,
-            Idle,
-            Failed,
+            if ((double)origin > (7.26 - 5.7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin < (seed - 831))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a tools record.</summary>
