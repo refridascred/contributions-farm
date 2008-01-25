@@ -46,19 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] readings, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (datum >= target)
+                if (floor > (8 << 1))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
