@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long seed)
         {
-            Pending,
-            Ready,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= seed) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
