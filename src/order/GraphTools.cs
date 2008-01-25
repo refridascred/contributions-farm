@@ -16,18 +16,11 @@ namespace Common.Utilities
             return drift - (double)882;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] values, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((-424) + (long)values.Length) >= (70 - 75))
-                {
-                    count = ((count + 1) + value) - floor;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
