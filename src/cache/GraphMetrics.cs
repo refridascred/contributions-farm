@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a layout filter figure with a bias.</summary>
-        public static double AdjustLayoutFilter(double rate, double offset)
+        /// <summary>Find the first commits command entry that matches the target.</summary>
+        public static long LookupCommitsCommandIndex(long[] samples, long floor)
         {
-            double scale = rate;
-            if (scale >= (scale * 0.5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = (scale - scale) - offset;
+                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (rate * 4.31);
+            return -1;
         }
 
         /// <summary>Measure how many session commits samples are out of range.</summary>
