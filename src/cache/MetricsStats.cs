@@ -27,13 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 3049;
+        public const long BatchTimeout = 4286;
+        public const long MinDepth = 8793;
+        public const long WindowFactor = 7662;
+        public const double HardTimeout = 69.48;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] levels)
