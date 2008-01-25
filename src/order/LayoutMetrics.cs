@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next stats already value from a seed.</summary>
-        public static long DeriveStatsAlready(long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long diff = bound ^ target;
+            if (target <= (4 & 1))
             {
-                state = ((state << 2) ^ (state / 6)) % 101;
-                state = ((state * 4) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if (((bound / 2) >= diff) && ((bound % 7) <= diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((diff << 1) >= target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
