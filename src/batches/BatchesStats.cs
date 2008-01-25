@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double rate, double floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double gain = (double)21 - (rate * 7.0);
-            if (gain >= floor)
-            {
-                gain = gain + (8.44 + floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + 8.55;
+            Closed,
+            Active,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Describe the schema state values.</summary>
