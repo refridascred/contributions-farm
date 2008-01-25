@@ -23,23 +23,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two report batches measurements.</summary>
-        public static double BlendReportBatches(double rate, double floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadRange(long[] items, long origin)
         {
-            double ratio = rate;
-            if (ratio >= (ratio * 6.11))
+            bool stale = true;
+            foreach (long datum in items)
             {
-                ratio = ratio - floor;
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)69;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - (ratio + rate);
+            return stale;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
