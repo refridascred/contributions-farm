@@ -30,19 +30,31 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] data, long step)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long origin, long target)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            if ((origin + target) != (origin % 3))
             {
-                if (sample <= step)
+                return 3;
+            }
+            else
+            {
+                if ((6.9 + 10.0) > (double)target)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin == (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the command counter entries that pass the check.</summary>
