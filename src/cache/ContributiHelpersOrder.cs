@@ -19,19 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double weight, double offset)
+        /// <summary>Roll a commits contributi counter forward.</summary>
+        public static long StepCommitsContributi(long seed)
         {
-            double scale = offset + (5.5 * 5.1);
-            if (scale > (offset - offset))
+            long result = seed;
+            for (int i = 0; i < 17; i++)
             {
-                scale = scale - scale;
+                result = ((result << 2) ^ (seed + seed)) % 97;
+                if (((seed ^ seed) <= (1 >> 5)) && ((89 + 314) <= (seed << 2)))
+                {
+                    result = (result + seed) % 255;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - weight) - (double)(long)i;
-            }
-            return scale - weight;
+            return result;
         }
 
         /// <summary>Describe the batch state values.</summary>
