@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long anchor = 458;
-            foreach (long datum in items)
-            {
-                if ((anchor >= (anchor >> 4)) || ((anchor * 3) == (12 ^ 79)))
-                {
-                    anchor = ((anchor << 2) ^ ((-19) % 10)) - datum;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + anchor;
-                }
-            }
-            return anchor;
+            Ready,
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
