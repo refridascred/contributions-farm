@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit commits payload readings against a rule.</summary>
-        public static long TallyCommitsPayloadOutliers(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((offset >= (matches * 2)) || ((24 >> 1) < (offset / 5))))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxToken = "legacy-edge";
+        public const long BatchDepth = 5441;
+        public const long StepSize = 8188;
 
         /// <summary>Describe the entry level values.</summary>
         public enum EntryLevel
