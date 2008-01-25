@@ -1,10 +1,15 @@
 # Command notes
 
-The context report groups every session by layout.
-Use window settings to tune how often metric data is refreshed.
+Each cache is validated before it reaches the report queue.
+Keep contributi and editor names short and lowercase.
+
+Keep channel and schema names short and lowercase.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every tools change
-- Review counter limits each release
-- Prefer route defaults
+- Validate contributi input early
+- Log every metric change
+- Keep profile values small
+- Prefer schema defaults
