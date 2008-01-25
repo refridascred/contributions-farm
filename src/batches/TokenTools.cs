@@ -49,9 +49,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "strict";
-        public const long StepTimeout = 4104;
-        public const double WindowChecks = 38.83;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Active,
+            Retry,
+            Done,
+        }
     }
 }
