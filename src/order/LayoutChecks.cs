@@ -53,15 +53,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double weight, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long floor, long offset)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 4; i++)
+            if ((floor & 63) != (offset % 60))
             {
-                weight2 = (weight2 + (bias - weight)) + (double)(long)i;
+                return 1;
             }
-            return weight2 - (bias / 7.0);
+            else
+            {
+                if (offset <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor ^ floor) > (floor + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches state values.</summary>
