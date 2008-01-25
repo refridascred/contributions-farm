@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] data)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((3.03 + 4.36) > (double)matches)
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
