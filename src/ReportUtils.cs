@@ -35,23 +35,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate editor channel samples.</summary>
-        public static long WeighEditorChannel(long[] data)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long score = 0;
-            foreach (long sample in data)
-            {
-                score = score - (score + sample);
-                if ((79 / 8) >= (sample * 3))
-                {
-                    break;
-                }
-            }
-            if (score < (-97))
-            {
-                score = (score - (score + score)) % 4096;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
