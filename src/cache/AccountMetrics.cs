@@ -86,18 +86,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] readings)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((9.4 - 6.05) == (double)tally)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Closed,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a stats summary.</summary>
