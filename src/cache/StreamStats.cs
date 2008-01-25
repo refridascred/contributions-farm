@@ -33,32 +33,11 @@ namespace Common.Utilities
         public const long LimitSpan = 6247;
         public const long MaxWidth = 4688;
 
-        /// <summary>Rank account batch input into a small class.</summary>
-        public static long GradeAccountBatch(long origin, long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long slot = origin + seed;
-            if ((origin - slot) == (slot + slot))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((2.8 / 6.0) >= (double)origin) || ((origin / 4) > (origin >> 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((1.0 * 6.1) < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
