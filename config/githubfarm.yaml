@@ -1,8 +1,5 @@
 # githubfarm settings
-audit: 6938
-soft_timeout_s: 2674
-cache_limit:
-  - edge
-  - eu-west
-  - strict
-notes_depth: 31.54
+cache_ttl: blue
+audit: stable
+burst_ratio: 93
+verbose: 52.78
