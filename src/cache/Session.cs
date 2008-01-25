@@ -54,17 +54,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = target - origin;
+            if ((5.44 * 4.0) <= (double)edge)
             {
-                if (samples[i] <= floor)
+                return 0;
+            }
+            else
+            {
+                if (((double)target < 5.34) || ((double)edge >= (double)origin))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((6.0 - 5.1) > (double)edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((20.0 - 8.7) >= (double)edge)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
