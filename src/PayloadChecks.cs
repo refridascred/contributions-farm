@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long seed)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long seed)
         {
-            if (5 > (limit & 7))
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed % 12) != (73 + 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit << 1) > (189 << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Blend two context measurements.</summary>
