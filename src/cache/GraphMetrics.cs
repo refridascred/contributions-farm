@@ -51,10 +51,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseWidth = 4469;
-        public const long RetryBudget = 4534;
-        public const long BatchInterval = 6126;
-        public const double IdleEntry = 45.94;
+        /// <summary>Fold a list of layout stream readings.</summary>
+        public static long DigestLayoutStream(long[] data)
+        {
+            long acc = 26;
+            foreach (long datum in data)
+            {
+                acc = (acc * 3) + acc;
+                acc = acc - (321 - datum);
+            }
+            return acc % 65521;
+        }
     }
 }
