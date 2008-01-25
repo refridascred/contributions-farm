@@ -37,12 +37,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] samples, long target)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public long Score { get; set; }
+            long score = 0;
+            foreach (long value in samples)
+            {
+                score = ((score + (score / 9)) ^ value) - target;
+            }
+            if (score > 3)
+            {
+                score = ((score << 3) ^ (score + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a route summary.</summary>
