@@ -49,11 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Scale a batch graph figure with a bias.</summary>
+        public static double ScaleBatchGraph(double bias, double bias2)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
+            double drift = bias2;
+            if (drift < 0.7)
+            {
+                drift = drift + (bias - bias2);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + bias) - (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
