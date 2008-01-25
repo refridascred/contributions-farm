@@ -21,21 +21,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long offset, long offset2)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!((offset / 4) < (offset / 8)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < (7.63 - 1.88))
                 {
-                    if ((readings[i] - readings[j]) != 14)
+                    return 4;
+                }
+                else
+                {
+                    if ((9.1 * 7.5) > (5.81 + 2.1))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
