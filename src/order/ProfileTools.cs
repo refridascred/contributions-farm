@@ -77,17 +77,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] values, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Queued,
+            Done,
+            Draft,
+            Retry,
         }
     }
 }
