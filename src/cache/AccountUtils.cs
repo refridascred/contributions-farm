@@ -42,18 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the batches notes entries that pass the check.</summary>
-        public static long MeasureBatchesNotesHits(long[] series, long target)
+        /// <summary>Count checks support pairs that satisfy a relation.</summary>
+        public static long OverlapChecksSupportCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((target & 3) <= (datum - datum)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
