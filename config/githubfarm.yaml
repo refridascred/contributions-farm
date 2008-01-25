@@ -1,9 +1,10 @@
 # githubfarm settings
-idle_depth_pct: 60.15
-verbose: 1647
-enabled: standard
-cache_threshold_count:
-  - 81
-  - 488
-  - 122
-  - 375
+account_timeout: 6123
+hard_timeout_pct:
+  readonly: local
+  audit: open
+  soft_retries_ms: eu-west
+  format_capacity: false
+  soft_window: fallback
+token_size: latest
+session_size: standard
