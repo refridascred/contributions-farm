@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank already notes input into a small class.</summary>
-        public static long RankAlreadyNotes(long target, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] levels, long bound)
         {
-            long gap = target ^ step;
-            if ((step + 18) <= (step * 5))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (step <= (target % 5))
+                if ((((double)hits <= (double)747) && ((57 - bound) >= hits)) && (4.46 >= (7.0 * 1.21)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 3) > (target + gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 1) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
