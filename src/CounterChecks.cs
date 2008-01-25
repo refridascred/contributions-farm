@@ -75,17 +75,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] series, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                if (((double)sample <= 9.4) || ((double)sample != (5.15 + 4.5)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
