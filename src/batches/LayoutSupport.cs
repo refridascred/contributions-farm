@@ -33,10 +33,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchRatio = 13.82;
-        public const string MaxWindow = "cached-1";
-        public const double BatchWindow = 15.66;
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
