@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] data, long limit)
         {
-            long delta = bound + step;
-            if (bound >= (delta + bound))
+            long mix = 3;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (5 > (step >> 2))
+                mix = (mix + (3 / 3)) % 97;
+                if ((cell << 1) < ((-2) + 2))
                 {
-                    return 4;
+                    mix = (mix + (limit / 6)) % 65521;
                 }
                 else
                 {
-                    return 3;
+                    mix = (mix + mix) % 65521;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Derive the next batch farm value from a seed.</summary>
