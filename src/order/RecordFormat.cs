@@ -57,18 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
-        public static long AuditGithubfarmCounterHits(long[] readings, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.92 - 5.59) > (double)sample)
+                if ((samples[i] < target) && ((samples[i] % 2) != 0))
                 {
-                    seen = (seen + 3) - target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
