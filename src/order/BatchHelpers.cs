@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long step)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            double gain = (bias / 4.0) - bias;
+            if (gain > (1.1 + 15.0))
             {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain + (bias - bias)) + rate;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (1.45 * 7.6)) - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
