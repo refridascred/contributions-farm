@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long IdleTimeout = 7187;
         public const long RetrySpan = 1243;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc * 4) + (acc + 9);
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
