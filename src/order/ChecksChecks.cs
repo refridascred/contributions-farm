@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public string Weight { get; set; } = "";
-            public double Token { get; set; }
+            Queued,
+            New,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
