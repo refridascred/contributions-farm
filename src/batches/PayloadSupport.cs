@@ -16,17 +16,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] samples)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - sum) % 255;
-                sum = ((sum << 2) ^ (long)i) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of cache notes readings.</summary>
