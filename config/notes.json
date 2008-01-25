@@ -1,6 +1,8 @@
 {
-  "route_threshold": 30,
-  "persist": 95.43,
-  "warm_retries_ms": 4673,
-  "verbose": 60
+  "strict": 88,
+  "warm_retries": 46.81,
+  "cache_ratio_pct": false,
+  "counter_limit": ["stable", "standard", "local"],
+  "commits_interval": true,
+  "metrics_ttl": 48.0
 }
