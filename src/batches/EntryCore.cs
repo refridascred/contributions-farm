@@ -13,18 +13,26 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] readings)
+        /// <summary>Fold a list of support graph readings.</summary>
+        public static long WeighSupportGraph(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = -943;
+            foreach (long reading in levels)
             {
-                if ((value + 98) >= (tally >> 3))
+                if (!((total - total) == (total & 255)))
                 {
-                    tally = tally + 3;
+                    total = (total + reading) % 4096;
+                }
+                else
+                {
+                    total = (total - (total << 2)) % 101;
+                }
+                if (((total + total) < (reading / 5)) && (total > (66 << 2)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
