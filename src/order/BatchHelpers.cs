@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double bias, double floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long limit, long floor)
         {
-            double drift = 5.5;
-            for (int i = 0; i < 8; i++)
+            if (((12 % 3) < (floor + limit)) && ((double)floor != (double)limit))
             {
-                drift = ((drift - floor) + (double)(long)i) + bias;
+                return 6;
             }
-            return drift - (1.0 * 0.7);
+            else
+            {
+                if ((double)limit <= 0.2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
