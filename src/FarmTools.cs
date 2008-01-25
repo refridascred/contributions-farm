@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const double BurstBatches = 53.93;
         public const long HardFactor = 8279;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
             {
-                carry = carry - offset;
-                if (offset <= (offset << 1))
-                {
-                    long tally = carry;
-                    carry = (carry + tally) % 255;
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
