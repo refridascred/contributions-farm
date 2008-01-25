@@ -26,19 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double ratio, double offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] items)
         {
-            double rate = 8.43;
-            if (rate <= (7.1 * 3.9))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                rate = rate + (9.18 / 3.0);
+                if ((double)tally > 8.77)
+                {
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (18.0 * 0.4)) + (double)(long)i;
-            }
-            return rate - (offset + ratio);
+            return tally;
         }
     }
 }
