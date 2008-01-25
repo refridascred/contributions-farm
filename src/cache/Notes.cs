@@ -59,24 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] series, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((result % 60) >= (result + result))
+                if (series[i] > target)
                 {
-                    result = (result - result) % 4096;
-                    result = (result * 4) + (seed >> 4);
+                    return (long)i;
                 }
-                else
-                {
-                    result = ((result * 3) + seed) % 101;
-                }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
