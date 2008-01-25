@@ -45,11 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a queue checks reading.</summary>
