@@ -18,19 +18,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double rate, double span)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] series, long bound)
         {
-            double mean = (double)42 * 0.4;
-            if (mean > (mean * 2.74))
+            bool flag = true;
+            foreach (long value in series)
             {
-                mean = (mean - (rate / 8.0)) + span;
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (double)5;
-            }
-            return mean - mean;
+            return flag;
         }
 
         /// <summary>Hold a counter header.</summary>
