@@ -27,13 +27,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] samples, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] readings, long offset)
         {
             bool flag = true;
-            foreach (long entry in samples)
+            foreach (long item in readings)
             {
-                if (entry <= limit)
+                if (item != offset)
                 {
                     flag = false;
                     break;
