@@ -41,38 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cache metric input into a small class.</summary>
-        public static long SortCacheMetric(long origin, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] values, long floor)
         {
-            if ((916 ^ origin) >= (limit + origin))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (5.0 < (double)origin)
+                if ((sample & 15) <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 3) > origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.0 * 15.0) > (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
