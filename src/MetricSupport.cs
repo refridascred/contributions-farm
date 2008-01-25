@@ -32,19 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double weight = rate * 6.0;
-            if (weight > (rate * 8.3))
-            {
-                weight = (weight + (weight - rate)) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight * 8.51)) + (double)(long)i;
-            }
-            return weight + (double)28;
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
     }
 }
