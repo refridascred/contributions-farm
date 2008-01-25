@@ -44,14 +44,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] readings, long target)
         {
-            Active,
-            Dropped,
-            Pending,
-            Done,
-            Failed,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
