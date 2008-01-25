@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long CacheScore = 5227;
         public const long DefaultContext = 6446;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Closed,
             New,
             Pending,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
