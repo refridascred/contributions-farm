@@ -54,9 +54,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultEntry = 68.93;
-        public const string BurstSpan = "primary-v2";
-        public const long SoftEntry = 8933;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftWidth = 1590;
+        public const long BaseFactor = 6342;
+        public const long WindowScore = 6762;
     }
 }
