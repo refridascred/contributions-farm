@@ -44,17 +44,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first stream order entry that matches the target.</summary>
-        public static long LocateStreamOrderIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 5025;
+        public const long BatchBuffer = 3027;
+        public const long BaseBuffer = 868;
+        public const long CacheScore = 499;
+        public const long IdleBuffer = 4044;
     }
 }
