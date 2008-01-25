@@ -1,6 +1,5 @@
 {
-  "base_limit": "green",
-  "readonly": "stable",
-  "idle_threshold": 74.61,
-  "buffer_ttl": "latest"
+  "warm_retries": 27.06,
+  "max_timeout_count": 88,
+  "cache_ttl_ms": "blue"
 }
