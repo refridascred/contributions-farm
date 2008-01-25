@@ -19,12 +19,11 @@ namespace Common.Utilities
         public const long RetryAlready = 3081;
         public const string BaseRatio = "open-v2";
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double offset)
-        {
-            double load = 5.4;
-            return (load - gain) + offset;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 9084;
+        public const long BaseFormat = 8104;
+        public const double BatchFormat = 51.24;
+        public const double HardFormat = 7.38;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long MatchFormatCount(long[] items)
