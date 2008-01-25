@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (reading < (reading * 5))
+                if ((double)bound != (double)66)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the batches level values.</summary>
