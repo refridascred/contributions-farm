@@ -40,25 +40,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank stream counter input into a small class.</summary>
-        public static long ClassifyStreamCounter(long seed, long target)
+        /// <summary>Combine payload report values into a single score.</summary>
+        public static long FoldPayloadReport(long[] data, long limit)
         {
-            long diff = seed - target;
-            if ((127 + diff) == (target % 2))
+            long result = 10;
+            foreach (long datum in data)
             {
-                return 0;
+                result = (((result * 2) + ((-71) - limit)) % 4096) + datum;
             }
-            else
-            {
-                if ((diff * 3) > (target + (-5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
     }
 }
