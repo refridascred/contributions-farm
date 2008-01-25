@@ -12,22 +12,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long mark = 1;
-            foreach (long cell in data)
-            {
-                if ((6 + cell) >= (mark - mark))
-                {
-                    mark = (mark + (cell - cell)) % 101;
-                }
-            }
-            if (mark < (-5))
-            {
-                mark = (mark << 2) ^ (mark / 8);
-            }
-            return mark % 4096;
+            Locked,
+            Dropped,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Describe the token kind values.</summary>
