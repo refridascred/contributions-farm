@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings, long limit)
         {
-            Ready,
-            Active,
-            Locked,
-            Draft,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((-5) < (limit ^ 842))
+                {
+                    hits = (hits + 3) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the filter level values.</summary>
