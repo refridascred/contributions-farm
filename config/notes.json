@@ -1,7 +1,5 @@
 {
-  "profile_capacity": false,
-  "sync_size_ms": 500,
-  "audit": "edge",
-  "min_capacity": [129, 254, 406, 95],
-  "max_interval": 87
+  "payload_delay": 0.82,
+  "idle_limit": 18,
+  "base_delay_s": 500
 }
