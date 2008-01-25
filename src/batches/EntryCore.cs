@@ -59,18 +59,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((1 << 1) != (entry ^ matches))
+                if ((origin + origin) == (hits << 1))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
