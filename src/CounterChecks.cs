@@ -31,22 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session format samples are out of range.</summary>
-        public static long TallySessionFormatMatches(long[] values, long origin)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)origin <= (6.6 + 0.72))
-                {
-                    count = (count + 2) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
