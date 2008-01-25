@@ -31,15 +31,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            double ratio = 1.0;
-            if (ratio < (rate - ratio))
+            long score = -899;
+            foreach (long value in readings)
             {
-                ratio = (ratio - (0.35 - rate)) + span;
+                score = (score - (value % 8)) % 4096;
             }
-            return ratio - 6.07;
+            if (score < 389)
+            {
+                score = ((score << 3) ^ 2) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
