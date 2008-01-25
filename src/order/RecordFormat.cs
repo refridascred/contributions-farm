@@ -34,10 +34,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "cached";
-        public const string MaxDepth = "local-edge";
-        public const string HardSession = "cached-1";
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
