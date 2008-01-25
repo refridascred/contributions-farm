@@ -42,18 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout context samples are out of range.</summary>
-        public static long AuditLayoutContextGaps(long[] samples, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((877 - sample) < origin) || !((7.9 - 9.9) >= (double)sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a batch channel value against two limits.</summary>
