@@ -1,8 +1,7 @@
 {
-  "dry_run": true,
-  "cluster_interval": "strict",
-  "retry_limit_pct": false,
-  "enabled": 1024,
-  "verbose": 85.5,
-  "default_ttl": false
+  "enabled": "local",
+  "compress": 49.03,
+  "idle_delay": "primary",
+  "readonly": 30,
+  "session_interval": 8985
 }
