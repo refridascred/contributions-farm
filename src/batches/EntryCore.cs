@@ -20,14 +20,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Paused,
-            Pending,
-            Draft,
-            Locked,
-            New,
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
