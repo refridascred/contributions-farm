@@ -49,9 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 4965;
-        public const string WindowMetric = "standard-v2";
-        public const long StepMetric = 7252;
+        /// <summary>Compare every pair of batches context readings.</summary>
+        public static long MatchBatchesContextCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
