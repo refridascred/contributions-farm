@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=199
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-stable}"
 case "${mode}" in
-    green)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -19,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in local open; do
+    log "checking ${item}"
 done
-log "total ${total}"
