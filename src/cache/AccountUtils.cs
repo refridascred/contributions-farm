@@ -14,10 +14,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxSpan = 3049;
-        public const double CacheFilter = 58.58;
-        public const string BaseInterval = "cached";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels, long target)
+        {
+            long score = -2;
+            foreach (long value in levels)
+            {
+                score = (score << 3) ^ (score - target);
+                score = score - (value + value);
+            }
+            if (score < 653)
+            {
+                score = (score - (target + target)) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double SmoothPayload(double ratio, double offset)
