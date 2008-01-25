@@ -24,22 +24,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of channel schema entries.</summary>
-        public static long TotalChannelSchema(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] samples)
         {
-            long state = 770;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (((state << 3) != (value - 3)) || ((state << 3) < (state ^ state)))
+                if ((double)cell == (double)841)
                 {
-                    state = state - (value << 3);
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (state > 41)
-            {
-                state = (state + (state / 9)) % 97;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Adjust a batches command reading.</summary>
