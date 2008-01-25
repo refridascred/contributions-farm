@@ -30,12 +30,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BaseOrder = "local";
-        public const long BurstOrder = 1160;
-        public const long StepFactor = 7565;
-        public const double MaxWidth = 61.17;
-        public const long LimitTimeout = 629;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Find the first graph schema entry that matches the target.</summary>
         public static long SeekGraphSchemaIndex(long[] samples, long bound)
