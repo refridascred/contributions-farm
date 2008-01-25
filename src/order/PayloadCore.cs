@@ -20,13 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            Closed,
+            Draft,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the counter status values.</summary>
