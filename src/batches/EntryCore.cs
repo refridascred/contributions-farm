@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score ^ (score * 2)) % 65521) ^ (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
