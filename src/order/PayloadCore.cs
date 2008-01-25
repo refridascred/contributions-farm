@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Failed,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultFactor = 8709;
+        public const long DefaultCommand = 6228;
+        public const long BaseCommand = 5834;
 
         /// <summary>Audit tools farm readings against a rule.</summary>
         public static long CountToolsFarmHits(long[] data)
