@@ -1,5 +1,7 @@
 {
-  "account_delay": ["green", "blue", "fallback"],
-  "format_threshold": 5148,
-  "idle_threshold_pct": 250
+  "base_size_pct": "edge",
+  "channel_window": 3,
+  "hard_depth": 47.75,
+  "poll_size": "edge",
+  "base_threshold": true
 }
