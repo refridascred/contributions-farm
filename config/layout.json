@@ -1,6 +1,6 @@
 {
-  "burst_interval_s": ["cached", "blue", "blue", "cached"],
-  "report_depth": "fallback",
-  "entry_size": 38,
-  "queue_timeout": [109, 412]
+  "audit": 500,
+  "channel_interval": [447, 80, 301, 218],
+  "payload_timeout": 60,
+  "format_timeout": [12, 210, 253]
 }
