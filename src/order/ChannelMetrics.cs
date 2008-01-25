@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 22.24;
+        public const long IdleLayout = 6732;
+        public const string HardLayout = "fallback";
+        public const string MaxLayout = "staging-v2";
+        public const string BurstLayout = "latest-1";
 
         /// <summary>Adjust a payload batch reading.</summary>
         public static double SmoothPayloadBatch(double weight, double bias)
