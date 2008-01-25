@@ -10,24 +10,17 @@ namespace Common.Utilities
         public const string DefaultNotes = "local-edge";
         public const double IdleFactor = 93.16;
 
-        /// <summary>Classify a tools profile pair into a bucket.</summary>
-        public static long GradeToolsProfile(long origin, long seed)
+        /// <summary>Locate a window payload reading by value.</summary>
+        public static long LookupWindowPayloadIndex(long[] samples, long floor)
         {
-            if (!((origin * 5) > (seed / 2)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed - 6) <= (seed % 100))
+                if (samples[i] == floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
