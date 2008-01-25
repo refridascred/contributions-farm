@@ -31,11 +31,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] samples, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
