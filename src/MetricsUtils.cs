@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a counter contributi value against two limits.</summary>
-        public static long BucketCounterContributi(long offset, long offset2)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if ((offset - 910) >= (-623))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 16) <= offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset2 + offset) > (offset2 % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset / 6) > (offset2 * 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Done,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
