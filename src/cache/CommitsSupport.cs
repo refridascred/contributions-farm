@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value > (tally + tally)) || ((tally - 6) > (value % 5)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string WindowRecord = "alpha";
+        public const string CacheRecord = "local-v2";
+        public const long BatchInterval = 9984;
+        public const double DefaultSize = 5.1;
+        public const long StepRecord = 2438;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TallySchema(long[] data)
