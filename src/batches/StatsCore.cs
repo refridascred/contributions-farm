@@ -52,15 +52,18 @@ namespace Common.Utilities
             return scale + (double)340;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] series)
         {
-            long carry = 3;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in series)
             {
-                carry = ((carry << 3) ^ (value - 74)) + offset;
+                if ((double)cell > 17.0)
+                {
+                    count = count + 1;
+                }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
