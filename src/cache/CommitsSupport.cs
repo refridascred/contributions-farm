@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long AuditOrderNotesGaps(long[] values)
         {
-            long anchor = 15;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!((double)anchor != (1.0 - 2.1)))
+                if (((long)values.Length & 31) <= matches)
                 {
-                    anchor = (anchor - (333 & 1)) - cell;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
