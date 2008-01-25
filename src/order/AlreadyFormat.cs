@@ -45,11 +45,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry - (carry ^ limit)) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
