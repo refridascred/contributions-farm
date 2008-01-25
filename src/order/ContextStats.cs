@@ -40,23 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Blend two batches filter measurements.</summary>
+        public static double ProjectBatchesFilter(double bias, double offset)
         {
-            long acc = origin;
+            double load = (double)(2 ^ (-6));
+            if (load >= (bias * 5.93))
+            {
+                load = load + (load / 9.0);
+            }
             for (int i = 0; i < 4; i++)
             {
-                if ((((long)i & 15) < (origin ^ (long)i)) && ((1.22 / 6.0) != (double)origin))
-                {
-                    acc = (acc - ((long)i >> 3)) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ ((long)i - acc)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
+                load = (load + (offset * 1.0)) + (double)(long)i;
             }
-            return acc;
+            return load - (bias + offset);
         }
 
         /// <summary>Validate batch githubfarm readings against a bound.</summary>
