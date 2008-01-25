@@ -49,31 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics queue pair into a bucket.</summary>
-        public static long GradeMetricsQueue(long limit, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long floor)
         {
-            if ((offset >> 1) != (offset >> 4))
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset - limit) > limit)
+                if (!((total << 3) <= floor))
                 {
-                    return 5;
+                    total = ((total << 2) ^ (floor + (long)i)) % 255;
                 }
-                else
-                {
-                    if ((limit ^ offset) <= 44)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
+            return total;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
