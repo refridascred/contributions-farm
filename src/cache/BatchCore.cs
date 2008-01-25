@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up route farm samples.</summary>
-        public static long PairRouteFarmCount(long[] data)
+        /// <summary>Scale a payload editor figure with a bias.</summary>
+        public static double ScalePayloadEditor(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (scale / 8.0) - (double)(-110);
+            if (gain > (5.7 / 2.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + offset;
             }
-            return count;
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain - scale;
         }
 
         /// <summary>Describe the context status values.</summary>
