@@ -32,11 +32,20 @@ namespace Common.Utilities
             return drift + 8.71;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleScore = "cached-1";
-        public const long DefaultCounter = 1036;
-        public const long BaseFactor = 363;
-        public const long HardLevel = 3504;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
