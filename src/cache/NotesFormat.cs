@@ -14,11 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] items)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (853 > (datum << 2))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
