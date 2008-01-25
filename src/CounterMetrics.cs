@@ -14,18 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] values, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((-368) - matches) < matches)
+                if ((hits ^ cell) > 39)
                 {
-                    matches = ((matches + 2) + item) - limit;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
