@@ -78,22 +78,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] levels, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = -977;
+            foreach (long cell in values)
             {
-                if ((351 + cell) == (7 << 3))
+                if (mix > (mix & 255))
                 {
-                    hits = (hits + 1) - step;
+                    mix = (((mix << 3) ^ (mix % 64)) % 97) + cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = (mix + (98 + mix)) % 4096;
                 }
             }
-            return hits;
+            if (mix < 77)
+            {
+                mix = (mix ^ (44 + 9)) % 101;
+            }
+            return mix;
         }
     }
 }
