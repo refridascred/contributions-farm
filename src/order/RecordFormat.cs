@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias;
+            if (weight > 2.7)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight - (double)99) - span;
             }
-            return count;
+            else
+            {
+                weight = weight - (weight + weight);
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a support snapshot.</summary>
