@@ -1,7 +1,14 @@
 {
-  "batch_depth_ms": "local",
-  "channel_retries": 60,
-  "persist": 60,
-  "record_size": 1429,
-  "soft_threshold": [8, 327, 177]
+  "audit": 6.69,
+  "readonly": 46,
+  "idle_interval_s": [440, 227, 270],
+  "report_window": 78,
+  "verbose": {
+    "record_delay": 494,
+    "poll_limit_s": [179, 236],
+    "batch_interval": ["eu-west", "latest", "cached"],
+    "poll_depth": 94.65,
+    "enabled": "strict"
+  },
+  "soft_retries": "legacy"
 }
