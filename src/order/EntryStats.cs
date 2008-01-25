@@ -32,13 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double gain, double span)
         {
-            Synced,
-            Queued,
-            Idle,
-            Retry,
+            double drift = gain - gain;
+            if (drift >= 9.5)
+            {
+                drift = (drift - (drift * 4.32)) - span;
+            }
+            else
+            {
+                drift = drift - 14.0;
+            }
+            return drift + (double)(-8);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
