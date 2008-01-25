@@ -16,13 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Closed,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Accumulate filter samples.</summary>
