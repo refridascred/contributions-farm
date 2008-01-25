@@ -36,32 +36,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long step, long step2)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] series)
         {
-            long diff = step + step2;
-            if ((step >> 2) < diff)
+            long anchor = 955;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (step >= (diff + diff))
+                if ((reading - 91) > (anchor - reading))
                 {
-                    return 4;
+                    anchor = (anchor << 3) ^ (-37);
                 }
                 else
                 {
-                    if (((step2 + diff) >= step2) && ((double)step2 > (2.1 - 6.6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = anchor + 2;
+                }
+                if (anchor > reading)
+                {
+                    anchor = ((anchor << 2) ^ (anchor << 3)) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a layout summary.</summary>
