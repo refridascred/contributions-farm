@@ -12,14 +12,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Pending,
-            Locked,
-            Done,
-            Draft,
-            Idle,
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Find the first schema cluster entry that matches the target.</summary>
