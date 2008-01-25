@@ -31,11 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 763;
-        public const string IdleDepth = "alpha-v2";
-        public const long BatchFarm = 7957;
-        public const long IdleFarm = 9433;
-        public const long StepFarm = 1093;
+        /// <summary>Validate stream farm readings against a bound.</summary>
+        public static bool GuardStreamFarmRange(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
