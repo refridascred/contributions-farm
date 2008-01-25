@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long acc = 5;
+            foreach (long reading in samples)
             {
-                anchor = (anchor * 2) + (limit ^ (long)i);
-                anchor = (anchor + (-8)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (acc < (70 + acc))
+                {
+                    acc = ((acc - (acc ^ acc)) % 101) + reading;
+                }
             }
-            return anchor;
+            if (acc < 215)
+            {
+                acc = ((acc * 3) + (acc - (long)samples.Length)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Blend two session measurements.</summary>
