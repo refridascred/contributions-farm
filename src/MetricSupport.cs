@@ -26,12 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] series, long origin)
         {
-            New,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((origin * 3) >= (item << 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
