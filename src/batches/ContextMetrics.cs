@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long carry = 82;
+            foreach (long cell in series)
             {
-                if (!((hits & 255) == (5 / 2)) && (reading > (hits + reading)))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry + cell) % 101;
+                carry = carry ^ (carry ^ carry);
+                carry = carry - (carry + cell);
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
