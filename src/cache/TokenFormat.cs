@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 61.35;
-        public const long DefaultAlready = 3164;
-        public const long LimitAlready = 4683;
-        public const string MinInterval = "open-v2";
-        public const long IdleLevel = 1265;
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
