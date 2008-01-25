@@ -22,15 +22,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long bound)
         {
-            long sum = 168;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum << 3) ^ (99 + entry)) % 255;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
