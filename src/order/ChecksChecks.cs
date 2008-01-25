@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] values)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (hits >= ((long)values.Length & 15))
                 {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
