@@ -61,13 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Compare every pair of checks githubfarm readings.</summary>
+        public static long MatchChecksGithubfarmCount(long[] data)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
