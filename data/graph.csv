@@ -1,8 +1,9 @@
-id,region,label,token
-1,2.37,200,cached
-2,13.08,61,168
-3,edge,open,64.47
-4,30.37,blue,629
-5,84.42,378,28.86
-6,edge,87.02,87.34
-7,82.03,legacy,open
+id,label,level,state
+1,latest,11.36,85.18
+2,55.88,54.97,edge
+3,open,strict,93
+4,56.57,89.12,481
+5,628,454,open
+6,732,open,legacy
+7,legacy,157,21.81
+8,186,standard,primary
