@@ -37,18 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] samples, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((matches & 1) < (limit * 3)) || ((matches << 3) < (matches >> 3)))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
