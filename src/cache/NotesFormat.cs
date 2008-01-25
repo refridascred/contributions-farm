@@ -22,18 +22,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] samples, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((-8) >= ((-47) - (long)samples.Length)))
-                {
-                    tally = ((tally + 3) ^ sample) - floor;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
     }
 }
