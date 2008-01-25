@@ -1,21 +1,10 @@
 {
-  "strict": ["blue", "fallback"],
-  "retry_window_s": {
-    "cache_delay": "blue",
-    "compress": 24,
-    "editor_ratio": 81,
-    "retry_interval_pct": "strict",
-    "warm_ratio_s": {
-      "flush_delay_pct": [382, 106],
-      "window_threshold": 1854,
-      "default_timeout": 39.34,
-      "warm_ttl_count": "fallback"
-    },
-    "default_delay_count": {
-      "persist": [117, 84, 303, 410],
-      "retry_threshold_pct": true,
-      "retry_capacity_pct": 58.94
-    }
-  },
-  "tools_capacity": 100
+  "min_threshold_ms": true,
+  "burst_interval": 28.89,
+  "notes_capacity": false,
+  "default_ratio_s": {
+    "burst_timeout": 30,
+    "retry_size_pct": "green",
+    "buffer_depth": 31
+  }
 }
