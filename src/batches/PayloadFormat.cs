@@ -25,15 +25,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate metric order samples.</summary>
-        public static long TotalMetricOrder(long[] data)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long SeekProfileIndex(long[] data, long limit)
         {
-            long anchor = 6;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (((anchor << 2) ^ (anchor + anchor)) % 101) ^ entry;
+                if ((data[i] == limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate stream farm readings against a bound.</summary>
