@@ -1,13 +1,5 @@
 {
-  "cache_ttl": 60,
-  "default_depth": 30,
-  "verbose": ["standard", "edge"],
-  "enabled": ["open", "cached"],
-  "default_limit_ms": {
-    "queue_ratio": "latest",
-    "default_depth_pct": "standard",
-    "retry_capacity_ms": ["legacy", "legacy", "stable", "standard"],
-    "strict": [389, 94, 43]
-  },
-  "compress": 30
+  "sync_interval_pct": "cached",
+  "max_delay_s": 7597,
+  "readonly": ["latest", "primary", "local", "legacy"]
 }
