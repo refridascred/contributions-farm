@@ -37,12 +37,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleScore = 80.97;
-        public const double BaseRecord = 66.49;
-        public const long MaxBudget = 2064;
-        public const long CacheRecord = 481;
-        public const long MaxRecord = 4533;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items, long seed)
+        {
+            long carry = 9;
+            foreach (long item in items)
+            {
+                if ((double)seed != (double)item)
+                {
+                    carry = carry + (item + 0);
+                }
+                else
+                {
+                    carry = (carry ^ item) % 1000;
+                }
+            }
+            if (carry > 61)
+            {
+                carry = ((carry << 3) ^ seed) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
