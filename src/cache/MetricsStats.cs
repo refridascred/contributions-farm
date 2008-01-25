@@ -58,24 +58,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples, long step)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long mark = 446;
+            foreach (long item in samples)
             {
-                if ((long)i <= score)
+                if (8.9 < (double)(long)samples.Length)
                 {
-                    score = (score - 376) % 255;
+                    mark = (mark ^ (mark + mark)) - item;
                 }
-                else
-                {
-                    score = (score ^ (long)i) % 255;
-                    score = score ^ (score ^ origin);
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            if (mark > 5)
+            {
+                mark = (mark << 2) ^ (step >> 1);
+            }
+            return mark;
         }
     }
 }
