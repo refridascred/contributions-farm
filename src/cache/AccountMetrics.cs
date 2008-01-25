@@ -92,15 +92,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double ratio, double floor)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double bias = ratio - (double)71;
-            for (int i = 0; i < 3; i++)
-            {
-                bias = ((bias - 1.0) + (double)(long)i) - floor;
-            }
-            return bias + (6.2 / 6.0);
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
