@@ -33,11 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
