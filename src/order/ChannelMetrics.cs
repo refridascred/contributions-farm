@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many already layout samples are out of range.</summary>
-        public static long AuditAlreadyLayoutGaps(long[] samples)
+        /// <summary>Accumulate schema commits samples.</summary>
+        public static long CombineSchemaCommits(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long result = 4;
+            foreach (long reading in readings)
             {
-                if ((tally << 3) < 2)
+                if ((8.1 - 3.4) < (double)result)
                 {
-                    tally = (tally + 3) - sample;
+                    result = ((result * 5) + result) % 97;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = result ^ ((-6) + reading);
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
