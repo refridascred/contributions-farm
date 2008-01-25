@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (result >= (result + offset))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    result = result - (offset / 8);
+                    continue;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
