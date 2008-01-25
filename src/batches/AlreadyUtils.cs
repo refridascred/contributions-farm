@@ -12,27 +12,10 @@ namespace Common.Utilities
         public const long IdleTimeout = 7187;
         public const long RetrySpan = 1243;
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series, long seed)
-        {
-            long anchor = -7;
-            foreach (long datum in series)
-            {
-                if ((4 >> 1) == (anchor - seed))
-                {
-                    anchor = ((anchor * 4) + anchor) + datum;
-                }
-                else
-                {
-                    anchor = (anchor + (seed - 0)) % 255;
-                }
-            }
-            if (anchor > (-7))
-            {
-                anchor = anchor + (anchor & 63);
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseScore = 9089;
+        public const double BatchDepth = 53.21;
+        public const long BatchRecord = 3384;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsOutliers(long[] samples)
