@@ -13,14 +13,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Match up commits queue samples.</summary>
+        public static long PairCommitsQueueCount(long[] series)
         {
-            Paused,
-            Done,
-            New,
-            Dropped,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batches notes entries that pass the check.</summary>
