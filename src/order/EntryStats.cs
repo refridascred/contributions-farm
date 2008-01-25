@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            double rate = scale;
+            if (rate >= (scale / 7.0))
             {
-                if ((seen & 3) <= cell)
-                {
-                    seen = seen + 1;
-                }
+                rate = rate + (scale * 8.2);
             }
-            return seen;
+            else
+            {
+                rate = rate - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (1.2 / 9.0)) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Project the next entry value.</summary>
