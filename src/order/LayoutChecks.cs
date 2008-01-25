@@ -71,15 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] readings)
+        /// <summary>Validate channel schema readings against a bound.</summary>
+        public static bool ValidateChannelSchemaBounds(long[] readings, long origin)
         {
-            long mix = 136;
+            bool ready = true;
             foreach (long entry in readings)
             {
-                mix = (mix - ((-215) + 266)) + entry;
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
