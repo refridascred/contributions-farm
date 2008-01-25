@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = mix ^ (mix & 63);
-                mix = ((mix * 2) + (mix << 3)) % 101;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
