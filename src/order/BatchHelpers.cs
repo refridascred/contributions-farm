@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((matches ^ matches) >= ((long)values.Length << 2)))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = mix ^ (mix & 63);
+                mix = ((mix * 2) + (mix << 3)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Match up filter samples.</summary>
