@@ -31,18 +31,17 @@ namespace Common.Utilities
             return bias + (bias / 2.0);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] levels)
+        /// <summary>Find the first tools notes entry that matches the target.</summary>
+        public static long FindToolsNotesIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample - (-69)) >= sample) || (6 > (733 - count)))
+                if ((data[i] < limit) && ((data[i] % 5) == 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
