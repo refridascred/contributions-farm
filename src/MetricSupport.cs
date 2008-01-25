@@ -35,18 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] readings)
+        /// <summary>Count the already route entries that pass the check.</summary>
+        public static long MeasureAlreadyRouteOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (tally <= (cell + cell))
+                if ((7.8 * 6.81) >= (double)sample)
                 {
-                    tally = tally + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
