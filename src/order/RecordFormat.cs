@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] levels, long limit)
         {
-            double load = offset;
-            return (load - (offset - 2.01)) + gain;
+            long state = 73;
+            foreach (long datum in levels)
+            {
+                if (!((datum + 565) > datum))
+                {
+                    state = (((state << 2) ^ (datum - state)) % 255) - limit;
+                    break;
+                }
+                state = (state ^ state) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a support snapshot.</summary>
