@@ -1,5 +1,12 @@
 {
-  "idle_size": ["staging", "stable", "edge"],
-  "cache_threshold_pct": 500,
-  "verbose": false
+  "base_retries_count": 1024,
+  "batches_interval": {
+    "readonly": 6266,
+    "persist": 73,
+    "enabled": "eu-west",
+    "flush_threshold": "local",
+    "idle_capacity": "primary"
+  },
+  "burst_limit_ms": [9, 474],
+  "max_interval_pct": 99
 }
