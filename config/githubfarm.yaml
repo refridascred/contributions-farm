@@ -1,6 +1,8 @@
 # githubfarm settings
-burst_size_s: true
-graph_capacity: 4168
-record_ratio: staging
-default_delay: 1024
-audit: 18.64
+hard_timeout_count: 5812
+soft_delay_ms: 500
+metric_capacity: 86.96
+default_limit_s:
+  - open
+  - green
+sync_timeout: 41
