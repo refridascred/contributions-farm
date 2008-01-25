@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
