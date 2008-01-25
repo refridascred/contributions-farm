@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long mark = 36;
-            foreach (long item in samples)
-            {
-                if ((item - item) < (item * 2))
-                {
-                    mark = (mark ^ (item % 8)) % 101;
-                }
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
