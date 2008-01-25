@@ -77,14 +77,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] items, long target)
         {
-            Idle,
-            Queued,
-            Done,
-            Draft,
-            Retry,
+            long acc = 705;
+            foreach (long entry in items)
+            {
+                acc = (acc ^ (acc - target)) % 65521;
+                if ((acc & 31) >= (target - acc))
+                {
+                    acc = (acc ^ (acc + entry)) % 1000;
+                }
+                if (1 < acc)
+                {
+                    break;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
