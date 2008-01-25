@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] levels, long bound)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] values, long offset)
         {
-            long state = 7;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                long bound2 = (bound + bound) - (bound >> 4);
-                for (int i = 0; i < 8; i++)
+                if (cell > offset)
                 {
-                    long tally = (long)i;
-                    state = (state * 4) + (tally + bound2);
-                }
-                if ((datum < (513 + bound)) && ((double)bound > (8.0 - 16.0)))
-                {
-                    state = ((state << 2) ^ datum) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
