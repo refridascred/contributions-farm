@@ -17,15 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Count notes context pairs that satisfy a relation.</summary>
+        public static long CompareNotesContextCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) != 3)
+                    if ((values[i] - values[j]) > 5)
                     {
                         matches = matches + 1;
                     }
