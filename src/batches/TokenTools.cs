@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferMatches(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!((step + 287) <= (step / 8)))
+                if (((369 < (tally - tally)) && ((cell - tally) != (cell + cell))) || (((cell - tally) <= 0) || ((19.0 + 7.49) == (double)cell)))
                 {
-                    total = (total - (total * 4)) % 255;
+                    tally = tally + 3;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
