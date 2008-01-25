@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 1608;
-        public const long DefaultWidth = 7977;
-        public const double MinLevel = 21.38;
-        public const string BatchChannel = "alpha-1";
-        public const long MinChannel = 6195;
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] values)
