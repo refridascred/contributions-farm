@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] readings, long step)
         {
-            Paused,
-            Locked,
-            Dropped,
-            Synced,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
