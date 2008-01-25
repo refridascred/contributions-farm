@@ -32,22 +32,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] samples)
+        /// <summary>Look up the position of a route report sample.</summary>
+        public static long FindRouteReportIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits << 1) == (425 % 7))
+                if (readings[i] > limit)
                 {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
