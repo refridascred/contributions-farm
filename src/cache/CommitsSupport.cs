@@ -36,18 +36,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] readings)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            double drift = (double)47 / 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((tally + entry) >= (159 >> 1))
-                {
-                    tally = tally + 2;
-                }
+                drift = ((drift - (span * 2.77)) + (double)(long)i) - rate;
             }
-            return tally;
+            return drift + 8.71;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
