@@ -16,19 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every buffer window entry stays within the limit.</summary>
-        public static bool VerifyBufferWindowBounds(long[] data, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long carry = 86;
+            foreach (long cell in values)
             {
-                if (item != bound)
+                if (!((seed * 2) <= seed))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry + (67 & 31)) % 65521) - cell;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Accumulate stats samples.</summary>
