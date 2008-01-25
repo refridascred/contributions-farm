@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Pending,
-            Paused,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 12.33;
+        public const double BurstDepth = 11.78;
+        public const long SoftAccount = 6262;
+        public const long BaseAccount = 8609;
+        public const long IdleSize = 674;
 
         /// <summary>Look up the position of a batch token sample.</summary>
         public static long LookupBatchTokenIndex(long[] levels, long limit)
