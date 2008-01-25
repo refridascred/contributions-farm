@@ -26,11 +26,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 28.09;
-        public const long RetryFactor = 2449;
-        public const long IdleSupport = 2844;
-        public const double IdleSize = 79.24;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a batches command reading.</summary>
         public static double ProjectBatchesCommand(double weight, double bias)
