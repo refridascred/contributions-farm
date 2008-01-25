@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest strict; do
+COMMAND_LIMIT=391
+log "limit is ${COMMAND_LIMIT}"
+
+for item in latest fallback standard cached; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=260
-log "limit is ${COMMAND_LIMIT}"
