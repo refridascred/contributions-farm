@@ -71,11 +71,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank stats report input into a small class.</summary>
+        public static long SortStatsReport(long step, long bound)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long slot = step + bound;
+            if ((double)728 <= (double)slot)
+            {
+                return 1;
+            }
+            else
+            {
+                if (14.0 >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((3.7 / 6.0) < (double)slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph phase values.</summary>
