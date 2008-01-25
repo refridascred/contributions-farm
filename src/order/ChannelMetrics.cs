@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count < (sample - count)) || (sample > 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
