@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every batch graph entry stays within the limit.</summary>
-        public static bool CheckBatchGraphLimits(long[] levels, long bound)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long origin)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = (mark - origin) % 97;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the session phase values.</summary>
