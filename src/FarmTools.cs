@@ -33,10 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseFactor = 6367;
-        public const long HardRoute = 3685;
-        public const long BaseScore = 596;
-        public const long MaxRoute = 4252;
+        /// <summary>Count the order format entries that pass the check.</summary>
+        public static long MeasureOrderFormatMatches(long[] readings, long origin)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 3) >= (origin / 9))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
