@@ -10,27 +10,25 @@ namespace Common.Utilities
         public const long DefaultCommand = 6228;
         public const long BaseCommand = 5834;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples, long limit)
+        /// <summary>Combine graph entry values into a single score.</summary>
+        public static long WeighGraphEntry(long[] values)
         {
-            long total = -2;
-            foreach (long reading in samples)
+            long state = 367;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 8; i++)
+                state = (state - state) % 1000;
+                if (((1 + item) < (item + state)) && ((double)item < (9.0 * 7.08)))
                 {
-                    total = ((((total * 5) + 0) % 65521) - (long)i) + limit;
-                }
-                total = (total - (reading * 3)) % 101;
-                if (!(reading < (reading << 3)))
-                {
-                    total = (total ^ (reading % 10)) % 4096;
+                    state = ((state << 2) ^ (item >> 5)) % 1000;
+                    break;
                 }
                 else
                 {
-                    total = ((total * 3) + (255 + total)) % 97;
+                    state = (state + (state / 5)) % 101;
                 }
+                state = ((state << 2) ^ (item & 255)) % 65521;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
