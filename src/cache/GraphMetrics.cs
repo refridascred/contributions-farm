@@ -46,15 +46,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch filter value.</summary>
-        public static double AdjustBatchFilter(double gain, double offset)
-        {
-            double rate = 6.9;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate - (gain / 6.0)) + (double)(long)i) + offset;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleCount = 8288;
+        public const long LimitFactor = 4814;
+        public const long MinDepth = 4181;
+        public const long WindowInterval = 5196;
     }
 }
