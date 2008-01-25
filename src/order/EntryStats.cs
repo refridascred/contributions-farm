@@ -33,20 +33,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate format metrics readings against a bound.</summary>
-        public static bool CheckFormatMetricsRange(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 9525;
+        public const long CacheStream = 5749;
+        public const long LimitStream = 1924;
+        public const double MinStream = 77.78;
 
         /// <summary>Validate token entry readings against a bound.</summary>
         public static bool CheckTokenEntryBounds(long[] samples, long bound)
