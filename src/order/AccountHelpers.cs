@@ -87,15 +87,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Done,
+            Locked,
+            Paused,
+            Closed,
+            New,
         }
     }
 }
