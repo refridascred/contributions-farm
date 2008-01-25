@@ -1,8 +1,9 @@
-id,ratio,label
-1,27.64,8.17
-2,618,stable
-3,359,799
-4,472,green
-5,eu-west,legacy
-6,green,local
-7,latest,91.47
+id,token,state
+1,56.12,518
+2,420,primary
+3,39,366
+4,175,776
+5,40.56,primary
+6,209,strict
+7,latest,244
+8,62.91,342
