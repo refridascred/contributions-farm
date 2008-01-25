@@ -23,19 +23,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] readings, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias2 = floor * 8.84;
+            return (bias2 - (floor + floor)) + bias;
         }
 
         /// <summary>Define already limits and defaults.</summary>
