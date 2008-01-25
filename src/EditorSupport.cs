@@ -30,22 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record tools samples.</summary>
-        public static long PairRecordToolsCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 4622;
+        public const long BurstAlready = 4928;
+        public const long DefaultAlready = 4681;
+        public const long WindowWidth = 9736;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmHits(long[] readings, long offset)
