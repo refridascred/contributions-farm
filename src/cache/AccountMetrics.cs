@@ -78,23 +78,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (((6.4 - 9.3) >= (double)hits) && ((462 + 665) > offset))
-                {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxFactor = "primary-1";
+        public const long BaseCommand = 6968;
+        public const string BatchCommand = "standard-1";
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
