@@ -62,20 +62,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score << 2) ^ ((long)i + score);
-                if ((long)i > ((long)i * 4))
-                {
-                    score = ((score << 3) ^ (score + floor)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
