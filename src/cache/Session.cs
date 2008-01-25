@@ -33,17 +33,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a context record sample.</summary>
-        public static long LocateContextRecordIndex(long[] levels, long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long target, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = target + offset;
+            if ((double)offset > (double)target)
             {
-                if (levels[i] > step)
+                return 3;
+            }
+            else
+            {
+                if ((diff * 4) > (diff + target))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((diff + 64) == (diff - diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.0 + 9.86) == (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the buffer class values.</summary>
