@@ -59,26 +59,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of githubfarm payload readings.</summary>
-        public static long CombineGithubfarmPayload(long[] readings)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] levels, long limit)
         {
-            long mark = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (!((95 - 991) >= sample))
+                if (reading > limit)
                 {
-                    mark = (mark ^ (mark / 5)) % 101;
-                }
-                if ((25 + mark) < (mark & 31))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mark > 27)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
