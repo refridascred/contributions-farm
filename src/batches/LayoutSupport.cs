@@ -29,20 +29,10 @@ namespace Common.Utilities
         public const long CacheRatio = 3419;
         public const long RetryBudget = 4516;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 2779;
+        public const long MaxCluster = 9075;
+        public const string HardCluster = "fallback-edge";
 
         /// <summary>Locate a token reading by value.</summary>
         public static long LocateTokenIndex(long[] data, long origin)
