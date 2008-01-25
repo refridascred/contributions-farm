@@ -40,10 +40,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 7524;
-        public const long IdleScore = 4980;
-        public const long RetryRatio = 1767;
-        public const long RetrySchema = 3934;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] data, long target)
+        {
+            long mark = 803;
+            foreach (long cell in data)
+            {
+                mark = (mark + target) + cell;
+            }
+            if (mark < 0)
+            {
+                mark = ((mark << 3) ^ (mark % 64)) % 97;
+            }
+            return mark % 65521;
+        }
     }
 }
