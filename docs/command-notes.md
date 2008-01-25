@@ -1,14 +1,11 @@
 # Command notes
 
-A report that stays idle for too long is moved to the support list.
-Run the session check before changing any checks limits.
-
-A layout that stays idle for too long is moved to the counter list.
-Defaults for profile live in the config folder and can be overridden per environment.
-Use context settings to tune how often commits data is refreshed.
+Run the token check before changing any graph limits.
+Use checks settings to tune how often entry data is refreshed.
+A report that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer filter defaults
-- Log every record change
+- Review channel limits each release
+- Document new schema fields
+- Keep batches values small
