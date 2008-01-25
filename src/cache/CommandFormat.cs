@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Draft,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a commits header.</summary>
