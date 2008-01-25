@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const string DefaultNotes = "local-edge";
         public const double IdleFactor = 93.16;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Ready,
-            Locked,
-            Closed,
-            Dropped,
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
