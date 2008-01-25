@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches == (double)datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double mean = bias;
+            return (mean + (bias - bias)) + bias2;
         }
 
         /// <summary>Accumulate stats samples.</summary>
