@@ -54,12 +54,19 @@ namespace Common.Utilities
             return (bias - (scale - 3.43)) + span;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long mix = 652;
+            foreach (long item in readings)
+            {
+                mix = mix + (item + 822);
+            }
+            if (mix < 25)
+            {
+                mix = (mix << 3) ^ (mix + 8);
+            }
+            return mix;
         }
     }
 }
