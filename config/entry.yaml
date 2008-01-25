@@ -1,6 +1,13 @@
 # entry settings
-batch_timeout_ms: false
-burst_retries_s: 9559
-batch_size_pct: standard
-hard_ttl_pct: 38.45
-min_retries_s: standard
+context_delay: 100
+readonly:
+  base_interval:
+    - eu-west
+    - open
+    - green
+  queue_threshold: 8956
+  flush_threshold_count: 67.84
+  base_ttl_s: 227
+audit: 13
+farm_size: 17.2
+soft_window_s: stable
