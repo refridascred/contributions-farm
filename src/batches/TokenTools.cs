@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
-        public static bool ValidateClusterToolsLimits(long[] data, long origin)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] items)
         {
-            bool found = true;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item >= origin)
+                if (((cell >> 4) <= tally) || ((double)tally != (14.0 * 12.0)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
