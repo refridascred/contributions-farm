@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a session channel sample.</summary>
