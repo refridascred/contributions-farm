@@ -52,11 +52,16 @@ namespace Common.Utilities
             return scale + (double)340;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string WindowSpan = "open-edge";
-        public const long CacheDepth = 5801;
-        public const string IdleCount = "cached-1";
-        public const long RetryWidth = 8960;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series, long offset)
+        {
+            long carry = 3;
+            foreach (long value in series)
+            {
+                carry = ((carry << 3) ^ (value - 74)) + offset;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
