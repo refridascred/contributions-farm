@@ -1,7 +1,23 @@
 {
-  "idle_size_s": "blue",
-  "compress": "standard",
-  "cache_depth": "strict",
-  "verbose": 9826,
-  "soft_interval_count": ["blue", "edge"]
+  "verbose": "strict",
+  "idle_delay": 81,
+  "enabled": {
+    "entry_delay": {
+      "buffer_depth": 56.89,
+      "cache_capacity": 6624,
+      "audit": 78,
+      "min_retries_pct": 1024,
+      "format_timeout": "open"
+    },
+    "sync_depth": {
+      "max_size_count": "stable",
+      "default_threshold_ms": false,
+      "base_ratio": 8006,
+      "base_size_s": false
+    },
+    "soft_interval_pct": true,
+    "base_interval_s": 4586,
+    "batch_limit_count": true,
+    "max_ttl": [415, 247, 407, 330]
+  }
 }
