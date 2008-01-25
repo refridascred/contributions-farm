@@ -1,10 +1,19 @@
 # support settings
-payload_delay: 7894
-stream_limit: 14.45
-burst_ttl_ms: edge
-burst_capacity_ms:
-  - green
-  - strict
-  - green
-  - strict
-retry_capacity: cached
+max_interval:
+  - eu-west
+  - primary
+  - cached
+  - eu-west
+persist: 3825
+hard_ttl_ms:
+  metric_window: 3662
+  retry_delay_s: true
+  context_retries: legacy
+  command_capacity: blue
+soft_ttl_count:
+  - 484
+  - 191
+  - 100
+  - 445
+format_interval: true
+idle_ttl_pct: legacy
