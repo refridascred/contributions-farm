@@ -12,24 +12,26 @@ namespace Common.Utilities
         public const long IdleBuffer = 4326;
         public const long DefaultBuffer = 4616;
 
-        /// <summary>Rank window queue input into a small class.</summary>
-        public static long SortWindowQueue(long floor, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series)
         {
-            if (((double)origin <= 7.96) || ((3.9 - 19.0) == (double)origin))
+            long total = 6;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > (double)origin)
+                if (!((total % 16) <= cell))
                 {
-                    return 3;
+                    total = total - (7 % 97);
                 }
-                else
+                if (((cell + cell) > 0) || ((71 << 2) < total))
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (total > 74)
+            {
+                total = ((total << 3) ^ (908 ^ total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a stats header.</summary>
