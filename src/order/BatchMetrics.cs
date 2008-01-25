@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftLevel = 1592;
-        public const double BatchBudget = 69.93;
-        public const string WindowQueue = "staging";
-        public const long BaseQueue = 9765;
-        public const long BatchQueue = 3214;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long FindEntryIndex(long[] items, long limit)
