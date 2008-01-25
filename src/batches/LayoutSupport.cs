@@ -33,22 +33,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchRatio = 13.82;
+        public const string MaxWindow = "cached-1";
+        public const double BatchWindow = 15.66;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
