@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Locate a metric token reading by value.</summary>
+        public static long FindMetricTokenIndex(long[] items, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (items[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Accumulate stats samples.</summary>
