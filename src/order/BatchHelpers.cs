@@ -34,22 +34,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mix = 5;
+            foreach (long sample in samples)
             {
-                if ((entry & 63) >= (entry >> 2))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = (mix + sample) % 255;
             }
-            return hits;
+            return mix % 4096;
         }
     }
 }
