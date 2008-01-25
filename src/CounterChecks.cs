@@ -47,31 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long step, long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            if ((step - step) <= (seed << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (61 <= step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - seed) == (step + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
