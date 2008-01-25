@@ -1,19 +1,9 @@
 # entry settings
-default_interval_s: 44
-min_capacity_ms:
-  audit:
-    - primary
-    - local
-  idle_ttl_pct: 95
-  stream_window: false
-  contributi_threshold:
-    - 398
-    - 377
-    - 135
-  commits_window: latest
-  cache_ratio:
-    - fallback
-    - fallback
-    - primary
-compress: false
-account_ratio: 51
+schema_retries: false
+soft_size: stable
+poll_timeout:
+  - staging
+  - fallback
+commits_capacity: 2985
+idle_capacity: 9920
+default_ratio_pct: 26.1
