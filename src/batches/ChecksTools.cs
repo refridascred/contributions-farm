@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long BatchScore = 1161;
         public const string MaxBatch = "open";
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long origin)
         {
-            double rate = floor;
-            if (rate < (floor + floor))
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                rate = rate + ratio;
+                acc = acc + (acc - (long)i);
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + rate;
+            return acc;
         }
 
         /// <summary>Compare every pair of commits filter readings.</summary>
