@@ -22,18 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] levels, long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long bound)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((6.2 < (double)step) || ((step << 1) >= bound))
             {
-                if (4.0 <= (double)sample)
+                return 6;
+            }
+            else
+            {
+                if (((double)step >= (double)bound) || (9.1 < (double)step))
                 {
-                    tally = (tally + 1) - seed;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - 936) <= (step & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound << 1) == (bound / 9)) || ((bound * 4) >= (step ^ bound)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
