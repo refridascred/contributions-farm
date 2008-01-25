@@ -51,18 +51,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
         {
-            long state = 664;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((state + sample) <= 909))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state + (long)samples.Length;
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
