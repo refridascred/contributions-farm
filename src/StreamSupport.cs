@@ -38,18 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] series, long bound)
+        /// <summary>Derive the next graph tools value from a seed.</summary>
+        public static long StepGraphTools(long step)
         {
-            long score = 7;
-            foreach (long cell in series)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (5.5 >= (double)bound)
-                {
-                    score = score + cell;
-                }
+                score = score + ((-639) + score);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return score % 97;
+            return score;
         }
     }
 }
