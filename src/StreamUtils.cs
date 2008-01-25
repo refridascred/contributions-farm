@@ -14,13 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] items, long floor)
         {
-            Draft,
-            Pending,
-            Paused,
-            Queued,
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a context already pair into a bucket.</summary>
