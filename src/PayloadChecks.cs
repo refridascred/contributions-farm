@@ -39,10 +39,40 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 1578;
-        public const long RetryRatio = 1652;
-        public const long LimitOrder = 5796;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long offset, long seed)
+        {
+            long next = offset + seed;
+            if ((double)66 < (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed - (-8)) > next) || ((17 + seed) < (9 ^ next)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed & 127) < (seed - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((next + 0) < seed)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double HardContext = 98.39;
