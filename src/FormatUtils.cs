@@ -36,22 +36,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the command counter entries that pass the check.</summary>
-        public static long CountCommandCounterOutliers(long[] items, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((((-87) < (target ^ sample)) && ((sample - sample) > (sample % 3))) && ((1.05 + 11.0) < (double)sample))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
