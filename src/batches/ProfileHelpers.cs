@@ -40,12 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricMatches(long[] series, long floor)
         {
-            Retry,
-            Idle,
-            Locked,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!(floor > value))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes level values.</summary>
