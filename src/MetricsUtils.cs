@@ -74,12 +74,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 7368;
-        public const double BaseInterval = 32.98;
-        public const long LimitScore = 657;
-        public const long MaxLevel = 9208;
-        public const string RetryTimeout = "standard-edge";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values, long limit)
+        {
+            long total = 96;
+            foreach (long item in values)
+            {
+                total = (((total + (68 + total)) % 65521) ^ item) + limit;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double rate, double offset)
