@@ -13,12 +13,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowLevel = "strict-edge";
-        public const string BatchCount = "latest";
-        public const long BurstSupport = 5449;
-        public const long IdleSupport = 3404;
-        public const long BaseDepth = 1932;
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] items)
