@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] items)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] readings, long origin)
         {
-            long result = 16;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((reading % 7) != (reading / 2)))
+                if (readings[i] < origin)
                 {
-                    result = (result << 2) ^ (result & 255);
-                    break;
+                    return (long)i;
                 }
-                result = (result ^ (reading ^ (long)items.Length)) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
