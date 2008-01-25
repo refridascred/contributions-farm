@@ -22,20 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long cell in levels)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 60.33;
+        public const long MinFactor = 8060;
+        public const long SoftCommits = 3239;
+        public const string BatchFactor = "stable-edge";
+        public const string BatchBudget = "stable";
 
         /// <summary>Describe the cache phase values.</summary>
         public enum CachePhase
