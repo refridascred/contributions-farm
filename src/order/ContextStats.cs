@@ -38,12 +38,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            New,
-            Failed,
-            Ready,
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
