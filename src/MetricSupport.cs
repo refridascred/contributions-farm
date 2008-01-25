@@ -31,15 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
+            double ratio = span;
+            if (ratio < (ratio + span))
             {
-                total = ((total * 5) + (long)i) % 4093;
+                ratio = ratio + (span / 5.0);
             }
-            return total;
+            return ratio + bias;
         }
     }
 }
