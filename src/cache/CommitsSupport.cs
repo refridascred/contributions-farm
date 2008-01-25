@@ -19,13 +19,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long step)
         {
-            Done,
-            Active,
-            Queued,
-            Synced,
+            if ((step * 4) <= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step > (6.1 + 5.6))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
