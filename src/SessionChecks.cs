@@ -19,12 +19,22 @@ namespace Common.Utilities
             return (bias - (span / 2.0)) + scale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheLevel = 6628;
-        public const string DefaultWidth = "strict-v2";
-        public const double SoftBatch = 60.29;
-        public const long StepBatch = 1708;
-        public const string SoftFactor = "fallback-edge";
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
