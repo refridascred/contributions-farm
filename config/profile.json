@@ -1,5 +1,7 @@
 {
-  "enabled": 8153,
-  "metrics_threshold": [291, 348],
-  "batch_capacity_count": 500
+  "strict": 30,
+  "already_interval": true,
+  "dry_run": 66,
+  "poll_size_pct": [212, 439, 116, 268],
+  "base_depth_count": [448, 176, 160]
 }
