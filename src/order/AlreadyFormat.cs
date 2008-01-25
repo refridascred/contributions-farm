@@ -39,18 +39,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] samples, long origin)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            double ratio = bias;
+            if (ratio <= (floor / 5.0))
             {
-                if (45 > (tally + sample))
-                {
-                    tally = (tally + 2) - origin;
-                }
+                ratio = ratio + ratio;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Roll a order counter forward.</summary>
