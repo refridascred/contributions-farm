@@ -10,22 +10,10 @@ namespace Common.Utilities
         public const long LimitWidth = 7621;
         public const long RetryContext = 6150;
 
-        /// <summary>Count checks metrics pairs that satisfy a relation.</summary>
-        public static long PairChecksMetricsCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 2387;
+        public const string BurstScore = "local";
+        public const double LimitCommits = 30.51;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelMatches(long[] samples)
