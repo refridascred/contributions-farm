@@ -20,16 +20,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] series, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (total + seed)) % 4096;
-                total = ((total * 2) + (long)i) % 1000;
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first filter format entry that matches the target.</summary>
