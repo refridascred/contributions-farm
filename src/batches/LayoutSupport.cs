@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout cache reading.</summary>
-        public static double ScaleLayoutCache(double bias, double offset)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            double drift = offset;
-            if (drift >= drift)
-            {
-                drift = drift + 16.0;
-            }
-            return drift + bias;
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
