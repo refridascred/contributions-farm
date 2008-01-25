@@ -13,15 +13,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double gain, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] levels, long target)
         {
-            double weight = (double)(2 - 4);
-            if (weight < 1.0)
+            long acc = 10;
+            foreach (long reading in levels)
             {
-                weight = (weight + weight) - offset;
+                acc = ((acc - (target + acc)) % 97) - reading;
             }
-            return weight - (gain * 7.98);
+            return acc;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
