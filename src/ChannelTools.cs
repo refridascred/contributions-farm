@@ -40,12 +40,25 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank stream counter input into a small class.</summary>
+        public static long ClassifyStreamCounter(long seed, long target)
         {
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
+            long diff = seed - target;
+            if ((127 + diff) == (target % 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((diff * 3) > (target + (-5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
