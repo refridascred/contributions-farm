@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 12.33;
-        public const double BurstDepth = 11.78;
-        public const long SoftAccount = 6262;
-        public const long BaseAccount = 8609;
-        public const long IdleSize = 674;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double floor)
+        {
+            double ratio2 = (double)9 - floor;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (ratio / 3.0)) + (double)(long)i;
+            }
+            return ratio2 - ratio;
+        }
 
         /// <summary>Derive the next githubfarm commits value from a seed.</summary>
         public static long RollGithubfarmCommits(long offset)
