@@ -1,8 +1,7 @@
 {
-  "strict": 88,
-  "warm_retries": 46.81,
-  "cache_ratio_pct": false,
-  "counter_limit": ["stable", "standard", "local"],
-  "commits_interval": true,
-  "metrics_ttl": 48.0
+  "max_ratio": "latest",
+  "burst_window_s": true,
+  "default_window_ms": 5276,
+  "flush_delay_ms": "standard",
+  "strict": 19
 }
