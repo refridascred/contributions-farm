@@ -25,12 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            Paused,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (seen < 2)
+                {
+                    seen = (seen + 2) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report level values.</summary>
