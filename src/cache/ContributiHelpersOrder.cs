@@ -33,10 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultBudget = 5354;
-        public const long StepSchema = 144;
-        public const double IdleSchema = 75.4;
-        public const long WindowBudget = 6231;
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
+        {
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
+        }
     }
 }
