@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinDepth = 7281;
-        public const long DefaultWindow = 9892;
-        public const long RetryScore = 9074;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultSize = 44;
+        public const string BaseWidth = "cached-v2";
+        public const long RetryRatio = 6314;
+        public const long BatchBudget = 3864;
 
         /// <summary>Digest a series of commits filter entries.</summary>
         public static long WeighCommitsFilter(long[] readings, long target)
