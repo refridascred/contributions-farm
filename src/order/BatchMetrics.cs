@@ -49,18 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((double)count <= (2.9 - 6.0))
+                if (datum < bound)
                 {
-                    count = (count + 3) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a payload entry.</summary>
