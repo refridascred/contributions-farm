@@ -38,19 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleFactor = 34.89;
+        public const long CacheDepth = 9482;
+        public const long SoftSchema = 8214;
+        public const string DefaultSize = "cached-edge";
+        public const long CacheSchema = 1283;
     }
 }
