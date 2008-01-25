@@ -17,18 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count notes context pairs that satisfy a relation.</summary>
-        public static long CompareNotesContextCount(long[] values)
+        /// <summary>Audit session format readings against a rule.</summary>
+        public static long TallySessionFormatHits(long[] readings)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((matches > (matches - value)) || ((matches & 7) >= (value - value))))
                 {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
