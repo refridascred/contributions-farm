@@ -43,16 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] values)
-        {
-            long total = 29;
-            foreach (long item in values)
-            {
-                total = (total ^ (851 % 24)) - item;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultCount = 4572;
+        public const long StepBatch = 4168;
+        public const long BaseBatch = 3789;
+        public const double MaxBatch = 13.95;
+        public const long DefaultBatch = 4712;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double gain, double span)
