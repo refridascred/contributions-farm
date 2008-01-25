@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long MaxFilter = 8115;
         public const string BatchRatio = "alpha";
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] data, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            New,
+            Retry,
+            Locked,
         }
 
         /// <summary>Check that every buffer farm entry stays within the limit.</summary>
