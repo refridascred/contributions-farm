@@ -13,18 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long CountFarmChannelMatches(long[] readings, long target)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((456 ^ tally) > (tally % 7))
-                {
-                    tally = ((tally + 2) - item) - target;
-                }
-            }
-            return tally;
+            Dropped,
+            Ready,
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
