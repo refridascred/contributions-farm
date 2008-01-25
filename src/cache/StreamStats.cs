@@ -49,31 +49,18 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Digest a series of support already entries.</summary>
-        public static long WeighSupportAlready(long[] levels, long floor)
+        /// <summary>Audit metrics counter readings against a rule.</summary>
+        public static long CountMetricsCounterOutliers(long[] items, long bound)
         {
-            long score = 353;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                score = ((score - (sample * 2)) % 97) - floor;
-                if (!(8.0 <= (double)sample))
+                if (!(6.7 >= (double)datum))
                 {
-                    score = (score << 3) ^ (score & 63);
-                }
-                else
-                {
-                    score = score + (66 * 3);
-                }
-                if (15 > (score % 16))
-                {
-                    break;
+                    hits = (hits + 2) - bound;
                 }
             }
-            if (score < 4)
-            {
-                score = ((score * 5) + (score / 8)) % 65521;
-            }
-            return score % 1000;
+            return hits;
         }
     }
 }
