@@ -1,5 +1,5 @@
 {
-  "dry_run": false,
-  "compress": "strict",
-  "hard_size": 46
+  "account_delay": ["green", "blue", "fallback"],
+  "format_threshold": 5148,
+  "idle_threshold_pct": 250
 }
