@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long sum = 2;
-            foreach (long reading in samples)
-            {
-                sum = (sum ^ (reading + 723)) % 97;
-                sum = (sum * 4) + 52;
-                if (((double)reading < (5.9 / 2.0)) || ((5.4 * 20.0) >= (double)reading))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of support checks entries.</summary>
