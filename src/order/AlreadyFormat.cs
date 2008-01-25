@@ -56,15 +56,15 @@ namespace Common.Utilities
         public const long StepGraph = 4975;
         public const long StepInterval = 1508;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double ratio, double bias)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            double mean = 1.1;
-            if (mean > 4.99)
+            long result = limit;
+            for (int i = 0; i < 20; i++)
             {
-                mean = (mean - (bias * 6.5)) - ratio;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Hold a entry info.</summary>
