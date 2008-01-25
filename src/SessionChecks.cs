@@ -23,18 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((136 + hits) < (hits & 7)))
-                {
-                    hits = ((hits + 2) + cell) + limit;
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Count filter session pairs that satisfy a relation.</summary>
