@@ -39,21 +39,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 36;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)entry >= 8.1))
                 {
-                    if ((readings[i] - readings[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (entry ^ 3);
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Describe the schema level values.</summary>
