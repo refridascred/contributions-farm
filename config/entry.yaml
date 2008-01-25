@@ -1,9 +1,11 @@
 # entry settings
-schema_retries: false
-soft_size: stable
-poll_timeout:
+cache_ttl: false
+readonly:
+  - eu-west
+  - eu-west
+  - blue
   - staging
-  - fallback
-commits_capacity: 2985
-idle_capacity: 9920
-default_ratio_pct: 26.1
+poll_depth_s: latest
+soft_retries_pct: legacy
+sync_capacity_count: cached
+commits_retries: open
