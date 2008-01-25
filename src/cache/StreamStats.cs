@@ -42,15 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches command reading.</summary>
-        public static double ProjectBatchesCommand(double weight, double bias)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double bias2 = bias;
-            if (bias2 > bias)
-            {
-                bias2 = (bias2 - (bias * 2.2)) + weight;
-            }
-            return bias2 + (double)61;
+            public string Offset { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
