@@ -21,26 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools buffer samples.</summary>
-        public static long WeighToolsBuffer(long[] values)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long offset)
         {
-            long carry = 2;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sample < (double)carry)
+                if (readings[i] <= offset)
                 {
-                    carry = (carry * 2) + (carry << 2);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (sample % 64)) % 101;
+                    return (long)i;
                 }
             }
-            if (carry < 0)
-            {
-                carry = carry + (2 + carry);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Hold a token summary.</summary>
