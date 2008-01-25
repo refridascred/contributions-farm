@@ -29,10 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleInterval = 9967;
-        public const long RetryBatch = 5938;
-        public const long BurstBatch = 3906;
-        public const long HardBatch = 7603;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            New,
+            Paused,
+            Pending,
+        }
     }
 }
