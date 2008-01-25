@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleMetric = "staging";
+        public const long HardWidth = 5721;
+        public const long WindowLevel = 9797;
+        public const long StepMetric = 9664;
 
         /// <summary>Grade a checks value against two limits.</summary>
         public static long SortChecks(long seed, long floor)
