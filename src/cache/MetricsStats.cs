@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Blend two checks commits measurements.</summary>
+        public static double BlendChecksCommits(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = (double)(179 - 7);
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = ((bias + 7.0) + (double)(long)i) - rate;
             }
-            return count;
+            return bias - span;
         }
 
         /// <summary>Define account limits and defaults.</summary>
