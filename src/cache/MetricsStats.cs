@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            Ready,
-            Idle,
-            Draft,
-            Failed,
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                score = score ^ floor;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
