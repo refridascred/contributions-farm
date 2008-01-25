@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] values)
         {
-            long acc = 5;
-            foreach (long reading in samples)
+            long mix = 9;
+            foreach (long reading in values)
             {
-                if (acc < (70 + acc))
+                if ((mix - reading) > mix)
                 {
-                    acc = ((acc - (acc ^ acc)) % 101) + reading;
+                    mix = ((mix << 2) ^ reading) % 65521;
+                    mix = (mix - reading) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (94 & 7)) % 255;
+                }
+                if ((reading < (reading - (long)values.Length)) || ((mix + (long)values.Length) != (reading / 8)))
+                {
+                    mix = mix ^ (reading % 12);
+                }
+                if (reading < (mix - 313))
+                {
+                    break;
                 }
             }
-            if (acc < 215)
-            {
-                acc = ((acc * 3) + (acc - (long)samples.Length)) % 4096;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Blend two session measurements.</summary>
