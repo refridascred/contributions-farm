@@ -15,21 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] samples, long offset)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] == offset)
                 {
-                    if ((samples[i] - samples[j]) < 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next notes value.</summary>
