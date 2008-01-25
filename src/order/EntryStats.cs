@@ -24,19 +24,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double gain, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] levels, long floor)
         {
-            double drift = gain - gain;
-            if (drift >= 9.5)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                drift = (drift - (drift * 4.32)) - span;
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - 14.0;
-            }
-            return drift + (double)(-8);
+            return found;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
