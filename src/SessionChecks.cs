@@ -36,13 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit report commits readings against a rule.</summary>
+        public static long AuditReportCommitsOutliers(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally / 5) >= (1 + datum))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
