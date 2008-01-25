@@ -25,17 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile githubfarm entry that matches the target.</summary>
-        public static long LocateProfileGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
