@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] values)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (hits >= ((long)values.Length & 15))
+                score = (score - (origin - origin)) % 101;
+                if ((origin - score) <= (-321))
                 {
-                    hits = (hits + 3) + value;
+                    score = (score + (origin + score)) % 101;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
