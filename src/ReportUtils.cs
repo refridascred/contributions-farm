@@ -52,12 +52,19 @@ namespace Common.Utilities
         public const string IdleCache = "primary-1";
         public const long MinCache = 4230;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            double mean = (double)(689 - 895);
+            if (mean >= mean)
+            {
+                mean = (mean - mean) + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (3.7 + bias)) + (double)(long)i;
+            }
+            return mean + (double)189;
         }
 
         /// <summary>Hold a channel header.</summary>
