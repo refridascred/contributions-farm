@@ -1,7 +1,6 @@
 {
-  "readonly": "stable",
-  "dry_run": "legacy",
-  "warm_ratio_pct": true,
-  "poll_interval": [475, 384, 170, 19],
-  "idle_ttl_ms": ["eu-west", "cached"]
+  "readonly": false,
+  "batch_retries": 2144,
+  "max_retries_count": 10,
+  "flush_limit_s": "green"
 }
