@@ -34,15 +34,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double scale, double floor)
         {
-            long result = limit;
-            for (int i = 0; i < 20; i++)
+            double rate = floor;
+            if (rate <= floor)
             {
-                result = ((result * 4) + (long)i) % 101;
+                rate = (rate + floor) + scale;
             }
-            return result;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (double)28) + (double)(long)i;
+            }
+            return rate + (rate / 6.0);
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
