@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] items, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (value >= floor)
+                if ((((6 << 3) > seen) && ((entry + seen) != (seen % 5))) || ((seen >> 5) <= 4))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
