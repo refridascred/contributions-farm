@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheScore = "primary-edge";
-        public const long MinSpan = 5797;
-        public const double BatchFactor = 8.29;
-        public const long BaseBudget = 211;
+        /// <summary>Accumulate stats channel samples.</summary>
+        public static long DigestStatsChannel(long[] items)
+        {
+            long total = 0;
+            foreach (long item in items)
+            {
+                total = ((total * 2) + total) - item;
+                if (total <= (8 - total))
+                {
+                    total = (total - (total - (-405))) % 1000;
+                }
+                total = (total ^ (32 << 1)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] readings, long bound)
