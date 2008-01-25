@@ -24,22 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] samples)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            double scale = (double)(-501) * 16.0;
+            if (scale >= (9.4 + offset))
             {
-                if (((item - 7) <= tally) && (((item + (long)samples.Length) != (405 + item)) || ((444 + item) <= (item / 5))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale - (gain * 4.12);
             }
-            return tally;
+            else
+            {
+                scale = scale + (offset + 1.0);
+            }
+            return scale - offset;
         }
 
         /// <summary>Rank context input into a small class.</summary>
