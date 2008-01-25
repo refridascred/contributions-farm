@@ -53,16 +53,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the session command series from a seed.</summary>
-        public static long DeriveSessionCommand(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score + ((-144) % 8)) % 1000;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "cached-v2";
+        public const double IdleScore = 49.21;
+        public const long StepSchema = 9097;
+        public const double DefaultSchema = 14.38;
+        public const long BurstSchema = 2416;
     }
 }
