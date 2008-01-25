@@ -17,20 +17,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] items, long step)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] readings, long step)
         {
-            long score = 346;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score << 2) ^ step) % 255;
-                score = ((score * 5) + (item + 1)) % 65521;
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score > 16)
-            {
-                score = (score ^ (score / 7)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
