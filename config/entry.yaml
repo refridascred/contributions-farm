@@ -1,13 +1,18 @@
 # entry settings
-soft_interval_ms: stable
-batch_threshold:
-  verbose: 10.17
-  hard_interval: stable
-  route_threshold: true
-  hard_window: 91.25
-  batch_limit_count: 26
-batches_threshold:
-  - 435
-  - 5
-  - 479
-  - 94
+flush_capacity_pct: 2745
+min_interval_s:
+  already_window: open
+  account_depth: stable
+  base_threshold_s: true
+  command_capacity: strict
+  idle_threshold_ms:
+    profile_ratio: stable
+    readonly: fallback
+    idle_timeout: 20.79
+    min_depth_count: edge
+entry_size:
+  - standard
+  - eu-west
+  - standard
+batch_ttl_s: true
+warm_delay: green
