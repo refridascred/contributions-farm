@@ -67,18 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] items, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = -5;
+            foreach (long entry in items)
             {
-                if (!(reading >= (610 / 3)))
+                if ((double)entry > (0.77 - 1.86))
                 {
-                    hits = (hits + 1) - seed;
+                    total = ((total << 3) ^ (total << 3)) + seed;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
