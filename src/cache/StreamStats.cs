@@ -22,21 +22,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of checks contributi readings.</summary>
-        public static long MatchChecksContributiCount(long[] data)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double load = offset * 12.0;
+            if (load <= offset)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (offset - gain);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)98) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Digest a series of support already entries.</summary>
