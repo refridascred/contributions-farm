@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long target)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (((tally * 2) <= tally) && (((long)items.Length / 4) >= (tally + entry)))
+                state = ((state * 3) + target) % 255;
+                if ((double)(long)i != (double)state)
                 {
-                    tally = tally + 3;
+                    state = ((state * 5) + ((long)i - target)) % 1000;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state - ((long)i + 27)) % 101) - (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
