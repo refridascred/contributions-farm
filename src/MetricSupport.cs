@@ -31,14 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long bound)
         {
-            Idle,
-            Failed,
-            Done,
-            Ready,
-            Retry,
+            long total = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
