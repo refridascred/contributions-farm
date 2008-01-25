@@ -22,11 +22,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 9.31;
-        public const long RetryDepth = 4681;
-        public const double CacheBuffer = 66.8;
-        public const double WindowFactor = 56.01;
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleLayout = 4051;
