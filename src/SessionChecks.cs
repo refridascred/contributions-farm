@@ -54,12 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] samples, long seed)
         {
-            Closed,
-            Synced,
-            Idle,
+            long mark = 30;
+            foreach (long sample in samples)
+            {
+                mark = (mark - (sample + seed)) % 255;
+            }
+            if (mark > 2)
+            {
+                mark = (mark - ((long)samples.Length % 3)) % 1000;
+            }
+            return mark % 4096;
         }
     }
 }
