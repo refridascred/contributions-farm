@@ -45,19 +45,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long result = 0;
+            foreach (long item in series)
             {
-                if (((step - 4) >= (mix - 9)) && ((mix << 1) <= mix))
+                result = (result + (item ^ item)) % 4096;
+                if ((57 + result) > (result >> 3))
                 {
-                    mix = (mix * 2) + 628;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Hold a window header.</summary>
