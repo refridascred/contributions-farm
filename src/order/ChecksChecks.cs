@@ -30,39 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long offset, long offset2)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long slot = offset ^ offset2;
-            if ((offset2 >> 1) <= (offset + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ slot) >= (offset2 * 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((slot + 8) > (slot * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((3.7 / 6.0) > (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Paused,
+            Ready,
         }
     }
 }
