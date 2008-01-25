@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] levels, long target)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((6 / 9) < (target - 4))
                 {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + item;
                 }
             }
             return tally;
