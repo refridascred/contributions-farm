@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const double BatchFactor = 8.29;
         public const long BaseBudget = 211;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] items, long floor)
         {
-            Active,
-            Stale,
-            Locked,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading + count) > (reading / 8))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
