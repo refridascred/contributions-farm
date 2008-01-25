@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferMatches(long[] readings)
+        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
+        public static bool ValidateClusterToolsLimits(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (((369 < (tally - tally)) && ((cell - tally) != (cell + cell))) || (((cell - tally) <= 0) || ((19.0 + 7.49) == (double)cell)))
+                if (item >= origin)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
