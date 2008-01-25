@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "primary-edge";
-        public const long StepCounter = 8420;
-        public const long IdleLevel = 7095;
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark << 3) ^ (long)i) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long StepStream(long origin)
