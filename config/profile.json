@@ -1,13 +1,13 @@
 {
-  "stats_ratio": 2855,
-  "base_depth_pct": "primary",
-  "retry_timeout_count": {
-    "warm_retries": false,
-    "soft_ttl": "staging",
-    "dry_run": "stable",
-    "compress": "primary",
-    "format_timeout": "open"
+  "cluster_depth": {
+    "session_ratio": false,
+    "stats_retries": false,
+    "base_capacity_ms": "standard",
+    "sync_ttl_count": "blue"
   },
-  "max_retries_s": 6803,
-  "max_capacity": "stable"
+  "readonly": 5731,
+  "metric_window": 9608,
+  "min_limit": 100,
+  "contributi_size": "primary",
+  "default_ratio_s": ["eu-west", "primary", "green", "standard"]
 }
