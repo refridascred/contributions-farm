@@ -19,18 +19,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 23.19;
+        public const string CacheCount = "fallback-edge";
+        public const long HardInterval = 7668;
+        public const long WindowProfile = 9978;
+        public const long BatchProfile = 7050;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long FoldOrder(long[] samples)
