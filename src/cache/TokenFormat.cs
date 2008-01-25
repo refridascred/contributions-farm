@@ -22,12 +22,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long bound)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
