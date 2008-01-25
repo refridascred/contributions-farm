@@ -38,23 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell + offset) <= cell)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowDepth = 31.04;
+        public const long StepGraph = 4975;
+        public const long StepInterval = 1508;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
