@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] items, long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = 50;
-            foreach (long datum in items)
-            {
-                mix = mix ^ (datum + origin);
-                if (((long)items.Length / 3) < 86)
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Ready,
+            Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
