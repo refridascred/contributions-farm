@@ -88,36 +88,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of buffer metric entries.</summary>
-        public static long WeighBufferMetric(long[] readings, long seed)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long anchor = 515;
-            foreach (long value in readings)
-            {
-                if ((8 & 1) != (anchor + anchor))
-                {
-                    anchor = anchor + (63 % 2);
-                    break;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ seed) % 65521;
-                    anchor = ((anchor * 5) + (seed + 41)) % 101;
-                }
-                if (!((value << 3) >= (value % 12)))
-                {
-                    anchor = ((anchor * 5) + (seed + value)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (value << 3)) % 1000;
-                }
-            }
-            if (anchor < 478)
-            {
-                anchor = (anchor ^ (seed + anchor)) % 255;
-            }
-            return anchor % 4096;
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
