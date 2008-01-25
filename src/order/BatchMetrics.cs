@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the queue filter entries that pass the check.</summary>
-        public static long CountQueueFilterOutliers(long[] items)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (matches >= (matches << 3))
-                {
-                    matches = (matches + 2) - reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
