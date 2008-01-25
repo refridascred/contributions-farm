@@ -51,5 +51,15 @@ namespace Common.Utilities
         public const double DefaultToken = 32.77;
         public const double MinToken = 69.09;
         public const string CacheToken = "open-v2";
+
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Paused,
+            Failed,
+            Queued,
+            Synced,
+            Closed,
+        }
     }
 }
