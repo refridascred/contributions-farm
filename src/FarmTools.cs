@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter support entries that pass the check.</summary>
-        public static long AuditFilterSupportOutliers(long[] values, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long origin)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (((2.52 * 5.0) >= (double)hits) || ((7.8 * 7.89) > (double)limit))
-                {
-                    hits = (hits + 2) - datum;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the order format entries that pass the check.</summary>
