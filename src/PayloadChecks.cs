@@ -56,12 +56,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 98.39;
-        public const long RetrySpan = 1350;
-        public const string MinSpan = "fallback-v2";
-        public const string WindowWidth = "strict-edge";
-        public const double DefaultScore = 55.66;
+        /// <summary>Grade a batch channel value against two limits.</summary>
+        public static long SortBatchChannel(long floor, long origin)
+        {
+            long prev = floor - origin;
+            if ((double)floor < (17.0 + 6.5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin > (prev << 3)) || (2 < (prev - floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor - prev) > (origin >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((619 * 5) != (floor >> 5)) && ((9.0 - 8.3) < (double)origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many filter profile samples are out of range.</summary>
         public static long AuditFilterProfileGaps(long[] series, long offset)
