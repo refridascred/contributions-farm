@@ -23,11 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardWidth = 317;
-        public const double LimitContext = 66.71;
-        public const string BaseSpan = "cached-v2";
-        public const long BurstContext = 2064;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public bool Token { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
         public static long SortPayload(long seed, long limit)
