@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorGaps(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((count + target) < (target + target)) || (((sample ^ (-2)) > (count + sample)) && (count < (target & 63))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepTimeout = 2750;
+        public const double MinRecord = 45.16;
+        public const long BaseRecord = 163;
+        public const long BatchRecord = 2113;
+        public const long DefaultInterval = 1851;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] readings, long offset)
