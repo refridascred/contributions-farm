@@ -31,21 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = ratio;
+            if (gain < ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - 4.6;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (offset / 9.0)) + (double)(long)i;
+            }
+            return gain + (ratio - ratio);
         }
     }
 }
