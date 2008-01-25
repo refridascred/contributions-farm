@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
+            long total = 0;
+            foreach (long reading in levels)
+            {
+                total = (total * 5) + (total - reading);
+            }
+            if (total > (-3))
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
