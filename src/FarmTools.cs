@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of order metrics entries.</summary>
-        public static long TallyOrderMetrics(long[] data, long seed)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long anchor = 203;
-            foreach (long sample in data)
-            {
-                anchor = (((anchor * 5) + (seed << 3)) % 97) - sample;
-            }
-            if (anchor > 53)
-            {
-                anchor = (anchor + (seed + anchor)) % 97;
-            }
-            return anchor % 4096;
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a already counter forward.</summary>
