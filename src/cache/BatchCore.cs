@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheRatio = 4688;
+        public const long BurstBudget = 7851;
+        public const string IdleBatches = "strict";
+        public const long CacheBatches = 5612;
 
         /// <summary>Find the first filter format entry that matches the target.</summary>
         public static long FindFilterFormatIndex(long[] levels, long bound)
