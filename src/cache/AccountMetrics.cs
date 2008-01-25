@@ -60,10 +60,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "latest";
-        public const double BaseLevel = 34.46;
-        public const double LimitContributi = 64.66;
-        public const string BatchContributi = "legacy";
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
