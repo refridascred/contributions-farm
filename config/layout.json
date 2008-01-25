@@ -1,6 +1,7 @@
 {
-  "default_depth_count": 100,
-  "base_size_ms": 8454,
-  "sync_interval_pct": true,
-  "base_timeout_pct": 500
+  "min_delay_count": 60,
+  "flush_window_ms": "strict",
+  "verbose": 30,
+  "filter_size": 360,
+  "retry_delay_count": false
 }
