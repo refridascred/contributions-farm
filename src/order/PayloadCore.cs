@@ -10,25 +10,24 @@ namespace Common.Utilities
         public const long DefaultCommand = 6228;
         public const long BaseCommand = 5834;
 
-        /// <summary>Combine graph entry values into a single score.</summary>
-        public static long WeighGraphEntry(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series, long origin)
         {
-            long state = 367;
-            foreach (long item in values)
+            long carry = -2;
+            foreach (long sample in series)
             {
-                state = (state - state) % 1000;
-                if (((1 + item) < (item + state)) && ((double)item < (9.0 * 7.08)))
+                carry = (carry * 5) + (sample % 12);
+                if ((carry - carry) < (origin ^ 56))
                 {
-                    state = ((state << 2) ^ (item >> 5)) % 1000;
-                    break;
+                    carry = carry + (124 / 4);
                 }
                 else
                 {
-                    state = (state + (state / 5)) % 101;
+                    carry = (carry + (347 + carry)) % 4096;
                 }
-                state = ((state << 2) ^ (item & 255)) % 65521;
+                carry = ((carry << 3) ^ (carry + carry)) % 4096;
             }
-            return state;
+            return carry % 97;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
