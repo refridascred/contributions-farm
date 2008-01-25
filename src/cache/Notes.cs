@@ -19,19 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session profile readings against a bound.</summary>
-        public static bool CheckSessionProfileLimits(long[] samples, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Combine route values into a single score.</summary>
