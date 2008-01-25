@@ -59,10 +59,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardBudget = "staging-1";
-        public const string LimitDepth = "strict-edge";
-        public const long MinFilter = 9359;
-        public const double CacheBudget = 30.61;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((result % 60) >= (result + result))
+                {
+                    result = (result - result) % 4096;
+                    result = (result * 4) + (seed >> 4);
+                }
+                else
+                {
+                    result = ((result * 3) + seed) % 101;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
