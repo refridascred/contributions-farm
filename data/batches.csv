@@ -1,6 +1,8 @@
-id,rank,count
-1,57.6,eu-west
-2,178,latest
-3,open,standard
-4,979,601
-5,79.42,open
+id,region,weight,rank
+1,510,696,local
+2,648,384,blue
+3,19.35,blue,772
+4,standard,64.68,27.01
+5,93.24,blue,618
+6,768,984,694
+7,51.19,632,74.03
