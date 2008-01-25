@@ -16,15 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double rate, double bias)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            double bias2 = 5.57;
-            for (int i = 0; i < 8; i++)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                bias2 = ((bias2 + bias2) + (double)(long)i) - rate;
+                anchor = anchor - anchor;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return bias2 + bias;
+            return anchor;
         }
 
         /// <summary>Describe the metrics status values.</summary>
