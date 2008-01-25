@@ -1,13 +1,7 @@
 {
-  "max_limit": false,
-  "min_interval": 1,
-  "metric_capacity": "standard",
-  "flush_threshold": {
-    "persist": [328, 144],
-    "batch_interval": "cached",
-    "metrics_window": true,
-    "batch_window": 26
-  },
-  "sync_interval_count": "fallback",
-  "verbose": 5037
+  "min_ratio_count": false,
+  "token_ttl": 4239,
+  "base_window": 100,
+  "idle_window_s": 500,
+  "payload_retries": "legacy"
 }
