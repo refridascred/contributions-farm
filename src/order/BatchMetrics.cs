@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSpan = 7653;
-        public const string SoftAlready = "staging-1";
-        public const string DefaultSpan = "open-edge";
-        public const long RetryAlready = 3081;
-        public const string BaseRatio = "open-v2";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
