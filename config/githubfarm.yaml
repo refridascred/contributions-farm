@@ -1,5 +1,22 @@
 # githubfarm settings
-soft_timeout_ms: true
-cache_ttl_ms: 26.52
-checks_ttl: staging
-idle_capacity: true
+soft_threshold_count:
+  buffer_delay:
+    batches_interval: 16
+    base_limit_pct: true
+    enabled: true
+    farm_depth:
+      - fallback
+      - cached
+      - blue
+  verbose: 76.29
+  cache_window_pct: 7237
+  payload_timeout:
+    - 168
+    - 287
+    - 345
+persist: local
+warm_retries_ms: 4969
+hard_window:
+  burst_retries_s: true
+  poll_window_s: staging
+  queue_ratio: 4396
