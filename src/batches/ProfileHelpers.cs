@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] samples, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (samples[i] < limit)
+                if (item <= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
