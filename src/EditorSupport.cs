@@ -45,15 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] readings, long offset)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((sample << 2) != (sample << 3))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Adjust a queue checks reading.</summary>
