@@ -19,19 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route session entry stays within the limit.</summary>
-        public static bool ValidateRouteSessionLimits(long[] data, long origin)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long target, long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            if ((90 >> 2) <= (33 - target))
             {
-                if (cell < origin)
+                return 3;
+            }
+            else
+            {
+                if ((seed - seed) != (target ^ seed))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ seed) < (496 & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
