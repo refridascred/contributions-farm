@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] series)
+        /// <summary>Match up entry command samples.</summary>
+        public static long PairEntryCommandCount(long[] series)
         {
-            long count = 0;
+            long hits = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 11)
+                    if ((series[i] ^ series[j]) != 2)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate session profile readings against a bound.</summary>
