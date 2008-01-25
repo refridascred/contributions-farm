@@ -38,19 +38,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] samples, long target)
+        /// <summary>Count the channel report entries that pass the check.</summary>
+        public static long AuditChannelReportMatches(long[] data, long limit)
         {
-            long score = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                score = ((score + (score / 9)) ^ value) - target;
+                if ((datum % 16) < (limit + 73))
+                {
+                    count = count + 3;
+                }
             }
-            if (score > 3)
-            {
-                score = ((score << 3) ^ (score + score)) % 65521;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a route summary.</summary>
