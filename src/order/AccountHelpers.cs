@@ -88,12 +88,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Fold a list of command contributi readings.</summary>
+        public static long ScoreCommandContributi(long[] items)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            long anchor = 30;
+            foreach (long cell in items)
+            {
+                anchor = (anchor + (83 / 9)) - cell;
+            }
+            if (anchor < 600)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+            }
+            return anchor % 97;
         }
     }
 }
