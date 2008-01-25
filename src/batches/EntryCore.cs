@@ -31,18 +31,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] data, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((limit + limit) < 41)
+                if (((entry - count) >= entry) && ((988 / 4) == (entry - entry)))
                 {
-                    seen = (seen + 1) + datum;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the profile mode values.</summary>
