@@ -47,15 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Locked,
-            Ready,
-            Done,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftLevel = 7102;
+        public const double MaxDepth = 86.12;
+        public const long HardOrder = 5849;
+        public const string IdleOrder = "alpha-v2";
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ProjectLayout(double bias, double span)
