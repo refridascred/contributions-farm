@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCount = "legacy-1";
-        public const long MinSize = 7184;
-        public const long BatchCounter = 565;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheBudget = 92.12;
+        public const string BatchTimeout = "standard-v2";
+        public const long BatchDepth = 1879;
+        public const long CacheScore = 5227;
+        public const long DefaultContext = 6446;
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
