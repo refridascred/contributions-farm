@@ -1,17 +1,5 @@
 # support settings
-cluster_size: 1024
-default_size_ms:
-  batch_retries: 26.12
-  verbose:
-    - eu-west
-    - staging
-    - blue
-    - eu-west
-  idle_depth: primary
-  poll_ratio_pct: 85
-hard_limit_pct: 77.99
-farm_capacity: stable
-audit: false
-commits_depth:
-  - 447
-  - 365
+flush_depth_s: cached
+flush_delay_count: open
+warm_threshold_pct: legacy
+persist: 4292
