@@ -50,19 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] items, long step)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
