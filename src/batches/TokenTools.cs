@@ -46,11 +46,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
-            double rate = (span / 8.0) + (3.35 - 3.5);
-            return (rate - 6.0) + bias;
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample - (-69)) >= sample) || (6 > (733 - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
