@@ -1,4 +1,19 @@
 # entry settings
-hard_depth_s: false
-cache_delay: 4212
-batch_depth: strict
+default_interval_s: 44
+min_capacity_ms:
+  audit:
+    - primary
+    - local
+  idle_ttl_pct: 95
+  stream_window: false
+  contributi_threshold:
+    - 398
+    - 377
+    - 135
+  commits_window: latest
+  cache_ratio:
+    - fallback
+    - fallback
+    - primary
+compress: false
+account_ratio: 51
