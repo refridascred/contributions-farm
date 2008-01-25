@@ -53,19 +53,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] levels, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading > limit)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    found = false;
-                    break;
+                    total = ((total << 2) ^ (total * 5)) - (long)i2;
                 }
+                total = (total + ((-953) - 413)) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
