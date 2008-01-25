@@ -1,7 +1,7 @@
 {
-  "min_delay_count": 60,
-  "flush_window_ms": "strict",
-  "verbose": 30,
-  "filter_size": 360,
-  "retry_delay_count": false
+  "batch_window": 30,
+  "readonly": 30,
+  "batch_limit": "latest",
+  "verbose": 8406,
+  "soft_depth_ms": 2411
 }
