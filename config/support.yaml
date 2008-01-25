@@ -1,10 +1,7 @@
 # support settings
-sync_ttl: 41
-layout_interval: 19.14
-flush_retries: 49.75
-verbose:
-  - legacy
-  - staging
-  - fallback
-flush_threshold_s: false
-audit: false
+min_depth: 3
+cache_ratio: 500
+report_ttl: false
+enabled: 95.12
+base_size_ms: true
+cache_retries: 39
