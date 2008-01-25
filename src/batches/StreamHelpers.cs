@@ -26,19 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Derive the next batch farm value from a seed.</summary>
+        public static long RollBatchFarm(long step)
         {
-            double rate = (double)5 + (7.53 * 16.0);
-            if (rate > bias)
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
             {
-                rate = rate + (double)73;
+                anchor = anchor ^ anchor;
+                if (step < (step >> 3))
+                {
+                    long count = step + (anchor / 9);
+                    anchor = (anchor * 3) + (count * 4);
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - (scale - bias);
+            return anchor;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
