@@ -59,15 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a queue checks reading.</summary>
-        public static double BlendQueueChecks(double ratio, double floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double bias = (ratio - floor) * 8.0;
-            if (bias > ratio)
-            {
-                bias = bias + 7.73;
-            }
-            return bias - (ratio * 17.0);
+            Draft,
+            Locked,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
