@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Retry,
-            Active,
-            New,
-            Synced,
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
