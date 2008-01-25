@@ -69,21 +69,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] > target)
                 {
-                    if ((values[i] + values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
