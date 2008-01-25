@@ -1,10 +1,13 @@
 # githubfarm settings
-account_timeout: 6123
-hard_timeout_pct:
-  readonly: local
-  audit: open
-  soft_retries_ms: eu-west
-  format_capacity: false
-  soft_window: fallback
-token_size: latest
-session_size: standard
+default_interval: false
+dry_run:
+  - 430
+  - 421
+min_delay_s: true
+cache_capacity_ms: 58.04
+burst_ratio:
+  persist: true
+  sync_ttl_ms: 1136
+  readonly: strict
+  warm_delay: 92.12
+  idle_interval_s: edge
