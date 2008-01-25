@@ -60,18 +60,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double rate = bias;
+            if (rate <= (rate / 6.0))
             {
-                if (620 >= (cell % 97))
-                {
-                    hits = (hits + 1) + step;
-                }
+                rate = (rate - bias) - floor;
             }
-            return hits;
+            else
+            {
+                rate = rate + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 15.0) + (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
