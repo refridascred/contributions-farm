@@ -1,5 +1,9 @@
 # support settings
-flush_depth_s: cached
-flush_delay_count: open
-warm_threshold_pct: legacy
-persist: 4292
+verbose: standard
+poll_ttl_ms: true
+batch_delay_pct: open
+command_ttl: strict
+tools_depth:
+  - 211
+  - 148
+batch_interval_pct: 80
