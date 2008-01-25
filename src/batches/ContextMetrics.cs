@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] levels, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((limit + limit) < (seen >> 1))
+                {
+                    seen = (seen + 2) - item;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a channel entry.</summary>
