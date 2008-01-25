@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const string BaseInterval = "strict-v2";
         public const long SoftPayload = 1697;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] readings, long bound)
-        {
-            long acc = -9;
-            foreach (long entry in readings)
-            {
-                acc = (((acc * 2) + (bound / 8)) % 1000) + entry;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double SoftFormat = 67.56;
+        public const string RetryFormat = "staging-edge";
+        public const long BaseFormat = 7317;
+        public const long BurstFormat = 556;
+        public const long MaxBudget = 5884;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] samples, long offset)
