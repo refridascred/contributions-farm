@@ -15,10 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultWidth = "open-1";
-        public const long CacheWidth = 954;
-        public const double MaxBudget = 38.83;
+        /// <summary>Digest a series of route support entries.</summary>
+        public static long WeighRouteSupport(long[] samples, long origin)
+        {
+            long score = 192;
+            foreach (long cell in samples)
+            {
+                score = ((score ^ (74 ^ origin)) % 101) - cell;
+                score = (score - (7 + 388)) % 4096;
+            }
+            if (score < 805)
+            {
+                score = (score - (origin % 64)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Find the first schema cluster entry that matches the target.</summary>
         public static long LocateSchemaClusterIndex(long[] values, long origin)
