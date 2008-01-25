@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheRatio = 4688;
-        public const long BurstBudget = 7851;
-        public const string IdleBatches = "strict";
-        public const long CacheBatches = 5612;
+        /// <summary>Audit context order readings against a rule.</summary>
+        public static long CountContextOrderOutliers(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((((long)samples.Length ^ cell) != (cell + matches)) || ((cell + offset) != (matches + cell))) || (4.3 < (double)(long)samples.Length))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first filter format entry that matches the target.</summary>
         public static long FindFilterFormatIndex(long[] levels, long bound)
