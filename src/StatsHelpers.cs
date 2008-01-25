@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            Failed,
-            Dropped,
-            Idle,
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum + (step + 33);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
