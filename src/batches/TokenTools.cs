@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] series, long origin)
+        /// <summary>Check that every profile contributi entry stays within the limit.</summary>
+        public static bool GuardProfileContributiRange(long[] readings, long step)
         {
-            long acc = 976;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (94 < (acc & 1))
+                if (item > step)
                 {
-                    acc = (((acc + ((long)series.Length / 3)) % 4096) + value) + origin;
+                    stale = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return stale;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
