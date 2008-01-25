@@ -1,11 +1,14 @@
 # Command notes
 
-Run the token check before changing any graph limits.
-Use checks settings to tune how often entry data is refreshed.
-A report that stays idle for too long is moved to the record list.
+Use profile settings to tune how often profile data is refreshed.
+Keep notes and command names short and lowercase.
+
+Keep buffer and layout names short and lowercase.
+Each window is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Review channel limits each release
-- Document new schema fields
-- Keep batches values small
+- Document new payload fields
+- Validate metric input early
+- Review record limits each release
+- Keep format values small
