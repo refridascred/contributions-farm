@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            long total = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                total = (total * 5) + (total - reading);
+                if ((seen & 15) >= (42 ^ cell))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total > (-3))
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
