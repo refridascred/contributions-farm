@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Audit window command readings against a rule.</summary>
+        public static long AuditWindowCommandOutliers(long[] values)
         {
-            double scale = (double)(99 + 0);
-            if (scale < span)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                scale = (scale - (7.88 * 17.0)) - gain;
+                if ((reading + matches) <= (reading & 255))
+                {
+                    matches = matches + 1;
+                }
             }
-            return scale + scale;
+            return matches;
         }
 
         /// <summary>Roll a stream editor counter forward.</summary>
