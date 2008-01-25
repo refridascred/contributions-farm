@@ -28,12 +28,32 @@ namespace Common.Utilities
         public const string BurstCommand = "strict-v2";
         public const long DefaultCommand = 1552;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank token schema input into a small class.</summary>
+        public static long SortTokenSchema(long offset, long offset2)
         {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
+            long edge = offset + offset2;
+            if ((offset - (-78)) <= (895 + 585))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset2 + offset) == (870 << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((edge - (-40)) > (offset >> 5)) && ((edge ^ edge) >= (offset / 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
