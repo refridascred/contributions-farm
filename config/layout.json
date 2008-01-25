@@ -1,8 +1,18 @@
 {
-  "base_capacity": true,
-  "tools_ratio": "edge",
-  "strict": 79.93,
-  "tools_ttl": "strict",
-  "payload_delay": "cached",
-  "flush_retries_count": false
+  "support_depth": {
+    "compress": [373, 491, 4, 87],
+    "cluster_size": 26.27,
+    "soft_interval": 43.51,
+    "cache_window": 6818
+  },
+  "idle_retries": {
+    "burst_timeout_s": 61,
+    "context_timeout": "standard",
+    "layout_timeout": ["stable", "legacy"],
+    "max_threshold": "latest",
+    "cache_delay_ms": false,
+    "strict": ["edge", "fallback"]
+  },
+  "hard_ttl": 31.66,
+  "retry_limit_s": "green"
 }
