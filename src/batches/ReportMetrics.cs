@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items, long floor)
-        {
-            long score = -815;
-            foreach (long datum in items)
-            {
-                score = score + datum;
-            }
-            if (score < 216)
-            {
-                score = (score - (floor / 3)) % 255;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 4096;
+        public const double RetryScore = 9.33;
+        public const string BurstContributi = "standard";
+        public const long SoftScore = 2694;
+        public const long RetryFactor = 9372;
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long step, long floor)
