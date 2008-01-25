@@ -33,11 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine payload report values into a single score.</summary>
