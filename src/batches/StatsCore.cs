@@ -67,18 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] items, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(reading >= (610 / 3)))
                 {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - seed;
                 }
             }
             return hits;
