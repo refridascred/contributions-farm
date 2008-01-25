@@ -34,19 +34,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double span)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double mean = (double)(8 >> 1);
-            if (mean <= mean)
-            {
-                mean = ((mean + (double)0) - rate) + span;
-            }
-            else
-            {
-                mean = mean - (double)71;
-            }
-            return mean - (15.0 / 3.0);
+            New,
+            Synced,
+            Locked,
         }
     }
 }
