@@ -1,7 +1,5 @@
 {
-  "retry_capacity_count": [271, 469, 390],
-  "warm_ratio_ms": [384, 257],
-  "schema_window": [416, 16],
-  "metrics_timeout": 6311,
-  "notes_ratio": ["stable", "latest", "local"]
+  "persist": "strict",
+  "audit": "legacy",
+  "cache_retries": "staging"
 }
