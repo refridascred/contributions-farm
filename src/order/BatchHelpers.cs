@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] levels, long origin)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            long anchor = 31;
+            foreach (long entry in levels)
+            {
+                if ((anchor ^ origin) < (origin * 3))
+                {
+                    anchor = (anchor ^ origin) ^ entry;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
