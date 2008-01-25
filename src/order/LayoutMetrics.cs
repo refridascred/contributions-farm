@@ -33,29 +33,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] values)
         {
-            long total = 69;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                total = total + (total * 2);
-                if (!((datum / 6) >= datum))
+                if ((datum & 255) <= 481)
                 {
-                    total = ((total * 5) + (datum + 41)) % 1000;
-                    total = ((total * 3) + datum) % 255;
-                    continue;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    total = (total * 3) + (total - datum);
-                }
-                if ((total + datum) > datum)
-                {
-                    total = ((total << 2) ^ (total + total)) % 1000;
+                    tally = tally - 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
     }
 }
