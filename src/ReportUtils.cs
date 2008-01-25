@@ -54,13 +54,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Blend two support format measurements.</summary>
+        public static double BlendSupportFormat(double ratio, double floor)
         {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Token { get; set; }
+            double gain = (double)(29 + 45);
+            if (gain <= ratio)
+            {
+                gain = (gain + (15.0 - 1.1)) + floor;
+            }
+            return gain - ratio;
         }
     }
 }
