@@ -1,9 +1,17 @@
 # support settings
-soft_delay_count: primary
-sync_capacity:
-  - eu-west
-  - eu-west
-  - green
-default_threshold_pct: eu-west
-idle_capacity_s: 1024
-hard_limit_ms: 591
+audit:
+  enabled: 100
+  record_limit: 46.69
+  session_threshold: 54
+  soft_timeout_count: 66.71
+cache_capacity:
+  - 67
+  - 410
+batch_timeout_pct:
+  dry_run:
+    - 99
+    - 470
+    - 415
+    - 398
+  cache_window: standard
+  enabled: 73
