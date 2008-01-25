@@ -45,15 +45,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two metrics farm measurements.</summary>
-        public static double BlendMetricsFarm(double ratio, double bias)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long FindNotesIndex(long[] data, long step)
         {
-            double load = 2.0;
-            if (load <= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (double)60;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return load + (load - ratio);
+            return -1;
         }
 
         /// <summary>Accumulate queue samples.</summary>
