@@ -33,21 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
