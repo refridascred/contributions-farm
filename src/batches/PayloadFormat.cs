@@ -31,12 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 763;
+        public const string IdleDepth = "alpha-v2";
+        public const long BatchFarm = 7957;
+        public const long IdleFarm = 9433;
+        public const long StepFarm = 1093;
     }
 }
