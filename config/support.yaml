@@ -1,11 +1,13 @@
 # support settings
-filter_threshold: true
-checks_retries:
-  - primary
+checks_depth: 38
+dry_run: true
+cache_timeout_count:
   - blue
-enabled:
-  flush_depth_ms: 9220
-  hard_interval: edge
-  cache_timeout_ms: 250
-soft_interval_pct: staging
-idle_delay_count: 35.49
+  - edge
+default_threshold:
+  sync_retries_s:
+    - 384
+    - 345
+    - 78
+  persist: staging
+  poll_window_count: eu-west
