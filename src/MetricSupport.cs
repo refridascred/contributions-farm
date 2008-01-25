@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitRatio = 3468;
-        public const long MaxTools = 4555;
-        public const double LimitTools = 26.72;
-        public const double LimitBudget = 57.56;
-        public const long RetryTools = 3178;
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] levels, long bound)
+        {
+            long state = 7;
+            foreach (long datum in levels)
+            {
+                long bound2 = (bound + bound) - (bound >> 4);
+                for (int i = 0; i < 8; i++)
+                {
+                    long tally = (long)i;
+                    state = (state * 4) + (tally + bound2);
+                }
+                if ((datum < (513 + bound)) && ((double)bound > (8.0 - 16.0)))
+                {
+                    state = ((state << 2) ^ datum) % 1000;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] readings, long target)
