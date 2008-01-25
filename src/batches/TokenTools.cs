@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every profile contributi entry stays within the limit.</summary>
-        public static bool GuardProfileContributiRange(long[] readings, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long step)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long total = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (item > step)
+                if (!((step + 287) <= (step / 8)))
                 {
-                    stale = false;
-                    break;
+                    total = (total - (total * 4)) % 255;
                 }
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
