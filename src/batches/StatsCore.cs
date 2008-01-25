@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long MaxFilter = 8115;
         public const string BatchRatio = "alpha";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Iterate the layout editor series from a seed.</summary>
+        public static long RollLayoutEditor(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((state % 16) > ((long)i ^ (long)i)) || ((state % 97) <= state))
                 {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    continue;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every buffer farm entry stays within the limit.</summary>
