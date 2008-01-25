@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
         {
-            long result = -9;
-            foreach (long value in samples)
+            long sum = 64;
+            foreach (long reading in items)
             {
-                result = result ^ (result + value);
-                result = (result ^ result) % 101;
-                if ((16.0 / 7.0) == (double)value)
+                if ((sum + 2) < (reading / 2))
                 {
-                    result = result ^ (value % 16);
+                    sum = (sum * 3) + (reading ^ (long)items.Length);
                 }
             }
-            return result % 4096;
+            if (sum < 88)
+            {
+                sum = ((sum << 3) ^ (39 * 4)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up contributi samples.</summary>
