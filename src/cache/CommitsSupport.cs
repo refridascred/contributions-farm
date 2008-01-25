@@ -55,21 +55,17 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
+                carry = (carry - step) % 97;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
     }
 }
