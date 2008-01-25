@@ -20,18 +20,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] levels, long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((reading << 1) >= reading)
+                if ((tally + entry) <= (tally + tally))
                 {
-                    matches = (matches + 1) - origin;
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a context entry.</summary>
