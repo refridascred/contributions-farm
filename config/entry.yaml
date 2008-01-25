@@ -1,4 +1,4 @@
 # entry settings
-idle_ratio_count: green
-base_window_pct: stable
-soft_ttl_s: 82.52
+token_limit: 2
+sync_ratio: 60.73
+burst_limit_ms: 100
