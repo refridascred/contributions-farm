@@ -32,15 +32,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double ratio, double span)
+        /// <summary>Digest a series of support channel entries.</summary>
+        public static long TallySupportChannel(long[] values)
         {
-            double scale = span;
-            if (scale >= (span + ratio))
+            long total = 314;
+            foreach (long reading in values)
             {
-                scale = scale + span;
+                total = ((total << 3) ^ 8) - reading;
             }
-            return scale - (double)845;
+            return total;
         }
     }
 }
