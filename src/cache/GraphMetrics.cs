@@ -16,12 +16,18 @@ namespace Common.Utilities
             return scale + (rate * 4.31);
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Measure how many session commits samples are out of range.</summary>
+        public static long CountSessionCommitsOutliers(long[] data, long floor)
         {
-            Paused,
-            Stale,
-            Done,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)floor > (15.0 + 18.0))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
