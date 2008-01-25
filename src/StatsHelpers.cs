@@ -27,18 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] series, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((3.0 * 11.0) == (double)entry)
+                if ((step << 2) != (step >> 4))
                 {
-                    matches = (matches + 1) - limit;
+                    tally = (tally + 1) - entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
