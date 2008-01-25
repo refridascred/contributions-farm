@@ -17,13 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Retry,
-            Done,
-            Synced,
-            New,
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of cache readings.</summary>
