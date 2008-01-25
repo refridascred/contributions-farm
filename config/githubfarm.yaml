@@ -1,9 +1,8 @@
 # githubfarm settings
-cache_delay: 13.47
-strict:
-  - 473
-  - 290
-soft_threshold_ms:
+audit: 6938
+soft_timeout_s: 2674
+cache_limit:
+  - edge
   - eu-west
-  - cached
-flush_interval: 9942
+  - strict
+notes_depth: 31.54
