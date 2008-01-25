@@ -30,31 +30,12 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long origin, long target)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if ((origin + target) != (origin % 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((6.9 + 10.0) > (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)origin == (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the command counter entries that pass the check.</summary>
