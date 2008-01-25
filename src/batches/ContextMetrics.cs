@@ -21,32 +21,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long target, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long gap = target + offset;
-            if ((target % 64) <= (offset % 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (gap >= (gap & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((gap + target) > (gap & 31)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Combine order values into a single score.</summary>
