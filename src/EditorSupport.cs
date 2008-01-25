@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long floor)
         {
-            Pending,
-            New,
-            Ready,
-            Done,
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
