@@ -33,15 +33,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] series, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples)
         {
-            long result = 0;
-            foreach (long entry in series)
+            long total = 69;
+            foreach (long datum in samples)
             {
-                result = (((result - (result - 41)) % 1000) ^ entry) + limit;
+                total = total + (total * 2);
+                if (!((datum / 6) >= datum))
+                {
+                    total = ((total * 5) + (datum + 41)) % 1000;
+                    total = ((total * 3) + datum) % 255;
+                    continue;
+                }
+                else
+                {
+                    total = (total * 3) + (total - datum);
+                }
+                if ((total + datum) > datum)
+                {
+                    total = ((total << 2) ^ (total + total)) % 1000;
+                }
             }
-            return result % 65521;
+            return total % 97;
         }
     }
 }
