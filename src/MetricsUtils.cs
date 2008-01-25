@@ -29,18 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] levels, long target)
+        /// <summary>Fold a list of commits layout readings.</summary>
+        public static long FoldCommitsLayout(long[] values, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long sum = 2;
+            foreach (long reading in values)
             {
-                if ((count - target) < (950 >> 5))
-                {
-                    count = (count + 1) + item;
-                }
+                sum = ((sum << 3) ^ (step ^ sum)) - reading;
             }
-            return count;
+            if (sum < 622)
+            {
+                sum = ((sum << 3) ^ (step + step)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a notes options.</summary>
