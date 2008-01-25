@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] items, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long step, long offset)
         {
-            long mark = 516;
-            foreach (long datum in items)
+            long slot = step - offset;
+            if ((offset * 5) >= (step + offset))
             {
-                if ((step % 60) >= step)
+                return 4;
+            }
+            else
+            {
+                if ((step / 6) == (slot * 2))
                 {
-                    mark = (((mark << 3) ^ (step - mark)) % 101) - datum;
+                    return 2;
+                }
+                else
+                {
+                    if (offset < (step - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset & 1) <= (step ^ offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Accumulate schema batches samples.</summary>
