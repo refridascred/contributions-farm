@@ -1,7 +1,18 @@
 {
-  "enabled": "local",
-  "compress": 49.03,
-  "idle_delay": "primary",
-  "readonly": 30,
-  "session_interval": 8985
+  "base_delay_s": 34.42,
+  "readonly": {
+    "burst_size_count": 63,
+    "flush_window": 6670,
+    "profile_timeout": {
+      "account_interval": 3713,
+      "verbose": ["eu-west", "fallback", "local"],
+      "burst_capacity_count": 92,
+      "dry_run": 1.92,
+      "checks_retries": 4821
+    }
+  },
+  "base_size": 100,
+  "cluster_limit": 60,
+  "retry_window_s": false,
+  "sync_capacity_pct": "legacy"
 }
