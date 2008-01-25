@@ -1,4 +1,12 @@
 # entry settings
-layout_retries: true
-retry_capacity_count: false
-max_capacity: standard
+burst_depth_ms: true
+hard_capacity_count: 22.19
+checks_window:
+  cache_interval: false
+  warm_limit: true
+  hard_limit_pct:
+    base_interval_s: 250
+    base_depth: 66.77
+    burst_interval: cached
+    soft_capacity: false
+    min_ratio: 5505
