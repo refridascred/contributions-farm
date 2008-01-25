@@ -35,10 +35,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 1572;
-        public const string IdleCount = "stable";
-        public const string LimitInterval = "fallback-edge";
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] data)
