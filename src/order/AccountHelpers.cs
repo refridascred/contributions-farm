@@ -44,12 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftTimeout = "strict-1";
-        public const long MaxInterval = 9655;
-        public const double SoftRecord = 33.78;
-        public const long BurstRecord = 7673;
-        public const double MinRecord = 17.18;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((seen * 5) <= 99) || (((seen + seen) == (35 + seen)) && (1.0 > (double)sample)))
+                {
+                    seen = (seen + 2) - origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
