@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] series, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long diff = floor + bound;
+            if (((floor + floor) == (diff - 27)) && ((8 >> 5) < (bound << 2)))
             {
-                if (reading <= floor)
+                return 4;
+            }
+            else
+            {
+                if (((double)bound != (6.7 * 1.43)) || ((9.0 + 6.9) > (double)bound))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (floor > (diff & 7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((diff % 3) != (bound << 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count the channel route entries that pass the check.</summary>
