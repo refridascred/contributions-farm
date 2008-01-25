@@ -1,6 +1,8 @@
 # entry settings
-max_window_ms:
-  - 444
-  - 294
-min_size_ms: 97.81
-soft_window_ms: 250
+verbose: 12.11
+readonly:
+  - blue
+  - cached
+  - fallback
+soft_ratio_pct: stable
+cache_ttl_ms: strict
