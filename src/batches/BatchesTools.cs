@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema batches samples.</summary>
-        public static long CombineSchemaBatches(long[] items)
+        /// <summary>Roll a metrics entry counter forward.</summary>
+        public static long RollMetricsEntry(long origin)
         {
-            long sum = 60;
-            foreach (long reading in items)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum * 4) + (reading ^ reading);
+                state = ((state * 4) + (long)i) % 97;
             }
-            if (sum > 112)
-            {
-                sum = (sum ^ (sum - (long)items.Length)) % 1000;
-            }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
