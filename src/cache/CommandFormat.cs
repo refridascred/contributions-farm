@@ -32,21 +32,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up counter layout samples.</summary>
-        public static long CompareCounterLayoutCount(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = span;
+            if (scale >= (span + ratio))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale + span;
             }
-            return count;
+            return scale - (double)845;
         }
     }
 }
