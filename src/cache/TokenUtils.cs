@@ -22,17 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long bound)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if (items[i] < bound)
+                if (datum > seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
