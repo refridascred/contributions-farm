@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long floor, long target)
+        /// <summary>Measure how many already layout samples are out of range.</summary>
+        public static long AuditAlreadyLayoutGaps(long[] samples)
         {
-            if ((8.5 - 1.0) <= (double)floor)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + target) > (target + 39))
+                if ((tally << 3) < 2)
                 {
-                    return 0;
+                    tally = (tally + 3) - sample;
                 }
                 else
                 {
-                    if ((floor + floor) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target + floor) > floor) && ((1.77 / 9.0) < 7.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
