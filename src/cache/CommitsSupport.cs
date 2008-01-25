@@ -31,14 +31,11 @@ namespace Common.Utilities
             return gain - (double)963;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Draft,
-            Closed,
-            Active,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleScore = "cached-1";
+        public const long DefaultCounter = 1036;
+        public const long BaseFactor = 363;
+        public const long HardLevel = 3504;
 
         /// <summary>Scale a tools figure with a bias.</summary>
         public static double SmoothTools(double scale, double span)
