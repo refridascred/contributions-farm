@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long seed, long target)
         {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            if ((seed + seed) >= (target * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (double)2)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up stream samples.</summary>
