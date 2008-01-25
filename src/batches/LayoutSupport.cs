@@ -50,26 +50,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] items, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            long total = -33;
-            foreach (long item in items)
+            long score = 34;
+            foreach (long reading in values)
             {
-                if ((double)origin != (double)total)
-                {
-                    total = (total * 4) + 3;
-                }
-                else
-                {
-                    total = (total * 5) + (item + item);
-                }
-                if (!((item >> 3) != ((long)items.Length & 7)))
-                {
-                    break;
-                }
+                score = (score << 2) ^ (reading % 100);
             }
-            return total;
+            return score % 97;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
