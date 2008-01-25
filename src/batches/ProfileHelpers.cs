@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            New,
-            Queued,
-            Idle,
-            Done,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchScore = 2173;
+        public const long WindowCluster = 5627;
+        public const long BaseCluster = 1241;
+        public const long SoftCluster = 1735;
+        public const long BatchCluster = 8164;
 
         /// <summary>Derive the next already batches value from a seed.</summary>
         public static long StepAlreadyBatches(long floor)
