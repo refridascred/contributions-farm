@@ -43,18 +43,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] levels, long floor)
+        /// <summary>Fold a list of stream report readings.</summary>
+        public static long ScoreStreamReport(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long score = 2;
+            foreach (long value in series)
             {
-                if (floor > (8 << 1))
+                score = (score << 3) ^ (value << 2);
+                if (((double)offset == (19.0 / 8.0)) && ((double)offset <= (double)score))
                 {
-                    seen = (seen + 2) - entry;
+                    break;
                 }
             }
-            return seen;
+            if (score > 13)
+            {
+                score = ((score * 4) + (offset >> 3)) % 255;
+            }
+            return score;
         }
     }
 }
