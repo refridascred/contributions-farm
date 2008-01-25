@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] readings, long bound)
+        /// <summary>Count the buffer editor entries that pass the check.</summary>
+        public static long TallyBufferEditorOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((double)reading < (3.2 - 1.8))
+                if (((-82) <= matches) || ((sample >> 3) == (matches + sample)))
                 {
-                    count = (count + 3) - bound;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
