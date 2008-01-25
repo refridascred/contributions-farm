@@ -22,11 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long target, long target2)
         {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
+            long delta = target + target2;
+            if (delta < (delta - target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target2 >= (target2 + (-31)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((15.0 / 6.0) <= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue mode values.</summary>
