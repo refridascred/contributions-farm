@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit stats command readings against a rule.</summary>
-        public static long TallyStatsCommandHits(long[] levels)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (((reading * 5) <= 381) && (((7.0 - 17.0) == (double)seen) || ((seen - reading) <= (reading + reading))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
