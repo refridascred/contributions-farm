@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const double LimitWindow = 13.18;
         public const string WindowLevel = "standard-1";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] series, long offset)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Describe the metrics status values.</summary>
