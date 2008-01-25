@@ -49,13 +49,18 @@ namespace Common.Utilities
             return (rate2 - 2.9) + rate;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            Idle,
-            Locked,
-            Active,
-            Done,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!(((matches & 63) >= item) || ((item - 2) >= (641 << 3))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
