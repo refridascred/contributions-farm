@@ -14,19 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] readings, long step)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
