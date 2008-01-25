@@ -18,10 +18,13 @@ namespace Common.Utilities
         public const long BurstProfile = 526;
         public const string LimitProfile = "alpha-1";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchSize = 5930;
-        public const string CacheWindow = "open-v2";
-        public const string IdleWindow = "standard";
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] series, long target)
