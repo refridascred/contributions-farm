@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long seed, long seed2)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] values, long limit)
         {
-            if ((seed2 / 6) >= seed2)
+            long anchor = 553;
+            foreach (long datum in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)seed2 != (3.5 - 17.0))
+                if ((limit ^ limit) < 165)
                 {
-                    return 0;
+                    anchor = (anchor ^ (limit - 19)) % 255;
                 }
                 else
                 {
-                    if ((seed2 - seed) > (seed + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((827 >> 2) == (seed2 - seed2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    anchor = (anchor << 2) ^ datum;
                 }
             }
+            if (anchor < (-52))
+            {
+                anchor = (anchor + (anchor + limit)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
