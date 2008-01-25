@@ -76,19 +76,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] items, long floor)
         {
-            long carry = 6;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - item) % 97;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > (-27))
-            {
-                carry = (carry ^ 60) % 4096;
-            }
-            return carry % 4096;
+            return -1;
         }
     }
 }
