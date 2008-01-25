@@ -31,16 +31,10 @@ namespace Common.Utilities
         public const double CacheBuffer = 66.8;
         public const double WindowFactor = 56.01;
 
-        /// <summary>Derive the next cluster batches value from a seed.</summary>
-        public static long RollClusterBatches(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark ^ origin) % 255;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 4051;
+        public const long RetryInterval = 4310;
+        public const long HardLayout = 6087;
+        public const string CacheCount = "stable";
     }
 }
