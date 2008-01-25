@@ -22,17 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a commits profile sample.</summary>
-        public static long FindCommitsProfileIndex(long[] items, long floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
