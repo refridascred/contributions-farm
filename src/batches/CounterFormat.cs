@@ -35,17 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long floor)
+        /// <summary>Fold a list of counter record readings.</summary>
+        public static long WeighCounterRecord(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 330;
+            foreach (long reading in series)
             {
-                if (levels[i] == floor)
+                if (26 < (reading * 3))
                 {
-                    return (long)i;
+                    state = (state - (reading + 75)) % 4096;
                 }
             }
-            return -1;
+            if (state > 1)
+            {
+                state = (state + (state + state)) % 4096;
+            }
+            return state;
         }
     }
 }
