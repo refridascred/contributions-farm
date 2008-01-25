@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long target, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long seed, long seed2)
         {
-            if (((double)floor < (6.5 * 14.0)) && ((target ^ 26) < (target >> 3)))
+            if ((seed2 - seed) == (seed2 - 6))
             {
                 return 0;
             }
             else
             {
-                if ((target + target) < (floor >> 5))
+                if ((seed <= (seed & 31)) && ((seed2 >> 2) < (2 + seed2)))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 7;
+                    if ((double)seed <= 8.19)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
