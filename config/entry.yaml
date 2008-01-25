@@ -1,7 +1,7 @@
 # entry settings
-base_ttl_ms: 3166
-warm_retries_s: 28
-dry_run: 94.11
-hard_threshold: 49.56
-soft_depth: 10.07
-min_window_pct: eu-west
+command_ratio: stable
+sync_timeout: true
+order_retries: 41
+poll_threshold_s: primary
+idle_capacity_ms: strict
+base_ttl: 8966
