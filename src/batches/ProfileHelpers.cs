@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up already stats samples.</summary>
-        public static long PairAlreadyStatsCount(long[] readings)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark * 4) + entry;
             }
-            return count;
+            if (mark < 4)
+            {
+                mark = (mark - (0 - mark)) % 255;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
