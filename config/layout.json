@@ -1,5 +1,15 @@
 {
-  "persist": "strict",
-  "audit": "legacy",
-  "cache_retries": "staging"
+  "strict": true,
+  "batch_depth_ms": true,
+  "sync_delay_count": [402, 432],
+  "metric_capacity": "eu-west",
+  "poll_limit": {
+    "idle_ttl_pct": 41.61,
+    "warm_retries": 60,
+    "min_timeout_ms": 77,
+    "idle_limit_s": ["open", "cached", "staging"],
+    "buffer_limit": false,
+    "stats_window": false
+  },
+  "support_ratio": ["open", "strict"]
 }
