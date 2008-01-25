@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] levels, long seed)
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (4.0 <= (double)sample)
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the account phase values.</summary>
