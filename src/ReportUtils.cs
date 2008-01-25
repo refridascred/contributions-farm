@@ -62,13 +62,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Failed,
-            Idle,
-            Dropped,
-            Locked,
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
