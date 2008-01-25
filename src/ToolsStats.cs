@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry * 4) < entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            double weight = bias;
+            return (weight - 19.0) + scale;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
