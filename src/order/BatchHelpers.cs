@@ -34,19 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheDepth = 4279;
+        public const double WindowWidth = 92.89;
+        public const double SoftInterval = 2.41;
+        public const string WindowOrder = "local-1";
+        public const double RetryDepth = 18.81;
     }
 }
