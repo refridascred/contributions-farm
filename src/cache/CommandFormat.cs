@@ -30,12 +30,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
             Done,
-            Failed,
-            Closed,
+            Pending,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
