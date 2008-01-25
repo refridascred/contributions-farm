@@ -1,9 +1,7 @@
-id,score,level,weight,owner
-1,25.84,82.72,75.0,14.53
-2,open,957,71,62.49
-3,299,standard,712,edge
-4,412,local,979,legacy
-5,90.62,37.41,20.59,primary
-6,959,eu-west,171,131
-7,210,112,0,77.58
-8,cached,primary,210,24.93
+id,ratio,owner
+1,edge,29.14
+2,518,85.24
+3,605,blue
+4,primary,strict
+5,eu-west,eu-west
+6,green,289
