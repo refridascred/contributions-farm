@@ -1,15 +1,10 @@
 # entry settings
-stream_size:
-  - green
+soft_ratio_s:
+  - eu-west
+  - eu-west
+  - primary
   - blue
-  - staging
-  - cached
-batch_retries_ms: false
-githubfarm_size:
-  - legacy
-  - staging
-  - latest
-  - local
-buffer_capacity: local
-retry_limit_ms: eu-west
-verbose: 10.71
+verbose: green
+enabled:
+  - green
+  - fallback
