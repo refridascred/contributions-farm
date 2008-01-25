@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] samples, long seed)
+        /// <summary>Validate session profile readings against a bound.</summary>
+        public static bool CheckSessionProfileLimits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (reading != seed)
+                if (cell > seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Describe the batches level values.</summary>
