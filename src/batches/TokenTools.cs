@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            New,
-            Paused,
-            Retry,
+            double bias = (double)(75 % 8);
+            if (bias > (4.81 + weight))
+            {
+                bias = (bias - weight) - span;
+            }
+            return bias + (bias / 2.0);
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
