@@ -20,22 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long state = 4;
-            foreach (long reading in values)
-            {
-                if ((state > (state << 1)) || ((2.0 + 6.0) < (double)reading))
-                {
-                    state = state + state;
-                }
-            }
-            if (state < 4)
-            {
-                state = ((state * 4) + (1 - state)) % 255;
-            }
-            return state % 65521;
+            Paused,
+            Pending,
+            Draft,
+            Locked,
+            New,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
