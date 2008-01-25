@@ -47,17 +47,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] values, long origin)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Active,
+            Locked,
+            Retry,
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
