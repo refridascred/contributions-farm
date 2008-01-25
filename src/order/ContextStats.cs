@@ -74,24 +74,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] series, long step)
         {
-            if (((double)limit != (10.0 + 1.77)) && ((57 & 31) < seed))
+            bool ready = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (seed / 9))
+                if (entry < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
