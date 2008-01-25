@@ -20,10 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardInterval = 5396;
-        public const long WindowCounter = 9591;
-        public const long DefaultCounter = 1077;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long seed, long step)
+        {
+            if ((step < (step ^ seed)) || (((-8) * 5) == (seed - seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step ^ step) <= (seed + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((6.4 - 1.9) != (double)step) && ((seed + step) <= (step - seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate token schema readings against a bound.</summary>
         public static bool VerifyTokenSchemaRange(long[] data, long step)
