@@ -37,19 +37,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 7524;
+        public const long IdleScore = 4980;
+        public const long RetryRatio = 1767;
+        public const long RetrySchema = 3934;
     }
 }
