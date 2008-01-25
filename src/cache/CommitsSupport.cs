@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long AuditOrderNotesGaps(long[] values)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)values.Length & 31) <= matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) ^ value;
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
