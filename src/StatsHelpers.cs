@@ -20,12 +20,23 @@ namespace Common.Utilities
         public const long IdleSize = 847;
         public const long MaxLevel = 529;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardTimeout = 6257;
-        public const long BatchScore = 6943;
-        public const string DefaultAlready = "latest-edge";
-        public const string BatchDepth = "local-edge";
-        public const long BaseAlready = 8767;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksHits(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((((tally + tally) <= (951 - tally)) || ((sample - tally) == (tally - tally))) && ((step + sample) > (step ^ sample)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit format tools readings against a rule.</summary>
         public static long AuditFormatToolsOutliers(long[] levels)
