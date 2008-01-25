@@ -45,15 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support route readings.</summary>
-        public static long CombineSupportRoute(long[] samples, long target)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long TallySessionGithubfarmGaps(long[] levels)
         {
-            long mark = 72;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mark = (mark - (target >> 2)) + reading;
+                if ((9.83 + 2.0) > (double)datum)
+                {
+                    count = count + 1;
+                }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
