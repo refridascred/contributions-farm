@@ -41,15 +41,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a entry notes figure with a bias.</summary>
-        public static double BlendEntryNotes(double ratio, double bias)
+        /// <summary>Rank cache metric input into a small class.</summary>
+        public static long SortCacheMetric(long origin, long limit)
         {
-            double gain = bias;
-            for (int i = 0; i < 3; i++)
+            if ((916 ^ origin) >= (limit + origin))
             {
-                gain = ((gain - 7.58) - (double)(long)i) + ratio;
+                return 7;
             }
-            return gain - (double)963;
+            else
+            {
+                if (5.0 < (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 3) > origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.0 * 15.0) > (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
