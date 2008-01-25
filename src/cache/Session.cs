@@ -28,11 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many notes report samples are out of range.</summary>
+        public static long AuditNotesReportMatches(long[] samples)
         {
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count / 5) >= sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window record.</summary>
