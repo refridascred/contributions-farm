@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a checks entry counter forward.</summary>
-        public static long SeriesChecksEntry(long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total ^ 0) % 255;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
