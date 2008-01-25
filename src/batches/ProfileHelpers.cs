@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchScore = 2173;
-        public const long WindowCluster = 5627;
-        public const long BaseCluster = 1241;
-        public const long SoftCluster = 1735;
-        public const long BatchCluster = 8164;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next already batches value from a seed.</summary>
         public static long StepAlreadyBatches(long floor)
