@@ -23,11 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Adjust a payload batch reading.</summary>
+        public static double SmoothPayloadBatch(double weight, double bias)
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            double mean = weight;
+            return (mean + mean) + bias;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
