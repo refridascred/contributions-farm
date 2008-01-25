@@ -41,19 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] series, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= offset)
+                if (levels[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
