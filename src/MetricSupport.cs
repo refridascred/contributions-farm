@@ -26,18 +26,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue support entries that pass the check.</summary>
-        public static long TallyQueueSupportOutliers(long[] samples, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(-9) == (double)seed)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            New,
+            Locked,
+            Active,
         }
     }
 }
