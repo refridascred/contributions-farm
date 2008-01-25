@@ -65,22 +65,38 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Combine graph session values into a single score.</summary>
-        public static long FoldGraphSession(long[] values, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long limit, long step)
         {
-            long mix = 5;
-            foreach (long reading in values)
+            if ((limit + limit) <= limit)
             {
-                if (reading < (reading - mix))
+                return 8;
+            }
+            else
+            {
+                if (!((limit + limit) < (limit - step)))
                 {
-                    mix = (((mix << 3) ^ 42) % 255) - offset;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit - step) > (step & 63))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step < limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mix > 3)
-            {
-                mix = ((mix << 3) ^ (mix & 3)) % 65521;
-            }
-            return mix;
         }
     }
 }
