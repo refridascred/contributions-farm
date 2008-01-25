@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] levels, long floor)
+        /// <summary>Validate report session readings against a bound.</summary>
+        public static bool GuardReportSessionLimits(long[] readings, long origin)
         {
             bool ok = true;
-            foreach (long cell in levels)
+            foreach (long value in readings)
             {
-                if (cell != floor)
+                if (value > origin)
                 {
                     ok = false;
                     break;
