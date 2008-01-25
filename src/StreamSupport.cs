@@ -40,14 +40,26 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] levels, long seed)
         {
-            Retry,
-            Idle,
-            New,
-            Paused,
-            Closed,
+            long result = 9;
+            foreach (long item in levels)
+            {
+                if ((item > (result + 73)) || ((6 + seed) != (item + (long)levels.Length)))
+                {
+                    result = (result * 3) + (63 % 2);
+                }
+                if (((item % 16) < (seed % 12)) || ((item - item) != (seed + result)))
+                {
+                    break;
+                }
+            }
+            if (result < 11)
+            {
+                result = result + (result % 7);
+            }
+            return result;
         }
     }
 }
