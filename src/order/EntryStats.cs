@@ -31,21 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] levels)
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long CountBatchesLayoutMatches(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading <= (double)(-6))
                 {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
