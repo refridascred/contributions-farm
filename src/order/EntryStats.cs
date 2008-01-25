@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long BaseAccount = 8609;
         public const long IdleSize = 674;
 
-        /// <summary>Look up the position of a batch token sample.</summary>
-        public static long LookupBatchTokenIndex(long[] levels, long limit)
+        /// <summary>Derive the next githubfarm commits value from a seed.</summary>
+        public static long RollGithubfarmCommits(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = result - ((long)i + (long)i);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Adjust a cache reading.</summary>
