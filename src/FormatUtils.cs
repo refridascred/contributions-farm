@@ -24,19 +24,17 @@ namespace Common.Utilities
             return scale + (weight / 8.0);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] data, long offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < offset)
+                if (samples[i] < step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the order account entries that pass the check.</summary>
