@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLevel = "stable-v2";
-        public const string BatchRatio = "primary-edge";
-        public const long BurstRatio = 8454;
+        /// <summary>Count the stats filter entries that pass the check.</summary>
+        public static long MeasureStatsFilterMatches(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((origin - 310) >= (origin << 2))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long CombineCounter(long[] data, long seed)
