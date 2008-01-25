@@ -39,21 +39,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 21;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((long)values.Length < (35 ^ floor))
                 {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result - floor) % 101) + entry;
                 }
             }
-            return tally;
+            if (result < 92)
+            {
+                result = ((result * 4) + (result ^ 0)) % 4096;
+            }
+            return result;
         }
     }
 }
