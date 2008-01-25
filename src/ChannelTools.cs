@@ -24,21 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value <= floor)
                 {
-                    if ((items[i] + items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
