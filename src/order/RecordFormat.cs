@@ -12,11 +12,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double gain, double offset)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
+            double load = offset;
+            return (load - (offset - 2.01)) + gain;
         }
 
         /// <summary>Hold a support snapshot.</summary>
