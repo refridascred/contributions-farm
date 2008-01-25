@@ -22,25 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long floor)
+        /// <summary>Look up the position of a counter command sample.</summary>
+        public static long SeekCounterCommandIndex(long[] levels, long offset)
         {
-            long edge = step + floor;
-            if (edge < (62 + step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((479 + 864) <= (69 ^ floor)) || (floor < step))
+                if ((levels[i] <= offset) && ((levels[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
