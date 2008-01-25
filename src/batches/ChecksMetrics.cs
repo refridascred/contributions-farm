@@ -32,16 +32,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next counter route value from a seed.</summary>
-        public static long IterateCounterRoute(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                total = (total << 2) ^ (total - origin);
-                total = ((total * 3) + (long)i) % 101;
+                if ((hits << 1) == (425 % 7))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
