@@ -33,15 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next contributi payload value.</summary>
-        public static double AdjustContributiPayload(double gain, double bias)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] values, long seed)
         {
-            double ratio = (bias / 4.0) / 4.0;
-            if (ratio <= 3.84)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + 17.0) + gain;
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - bias;
+            return -1;
         }
     }
 }
