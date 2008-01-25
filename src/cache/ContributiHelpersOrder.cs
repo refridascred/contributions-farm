@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                long next = seed;
-                total = (total << 3) ^ (next >> 5);
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
