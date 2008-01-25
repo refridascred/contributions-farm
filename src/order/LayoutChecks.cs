@@ -80,18 +80,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] series)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long result = 7;
+            foreach (long value in series)
             {
-                if ((4.86 / 4.0) > (1.7 - 11.0))
+                result = (result << 3) ^ (result - result);
+                if ((value ^ 113) <= (value % 8))
                 {
-                    seen = (seen + 2) ^ item;
+                    break;
                 }
             }
-            return seen;
+            if (result > 58)
+            {
+                result = result ^ (15 % 10);
+            }
+            return result;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
