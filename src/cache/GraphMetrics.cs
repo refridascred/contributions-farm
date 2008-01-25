@@ -27,13 +27,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Locked,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstRatio = 1619;
+        public const long CacheStream = 8269;
+        public const double WindowStream = 52.54;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftPayload = 1247;
