@@ -32,11 +32,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8083;
-        public const long HardSchema = 2229;
-        public const long CacheCount = 8316;
-        public const long IdleFactor = 3330;
+        /// <summary>Derive the next counter route value from a seed.</summary>
+        public static long IterateCounterRoute(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total << 2) ^ (total - origin);
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long target)
