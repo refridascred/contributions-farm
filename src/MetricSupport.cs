@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitTimeout = "legacy-1";
-        public const long MaxChannel = 7758;
-        public const string WindowChannel = "strict-1";
-        public const string BatchDepth = "alpha-1";
-        public const long SoftSize = 8700;
+        /// <summary>Derive the next commits already value from a seed.</summary>
+        public static long IterateCommitsAlready(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long OverlapBatchesCount(long[] levels)
