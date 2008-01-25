@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double scale, double offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            double scale2 = scale;
-            if (scale2 < 13.0)
-            {
-                scale2 = scale2 + (scale2 - scale2);
-            }
-            return scale2 - offset;
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
