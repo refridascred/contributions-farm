@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] levels, long floor)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long seed, long bound)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long slot = seed - bound;
+            if ((16.0 / 8.0) <= (double)bound)
             {
-                if (reading != floor)
+                return 4;
+            }
+            else
+            {
+                if (((bound << 1) > (bound ^ slot)) && ((double)bound != (8.08 / 9.0)))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((seed - seed) < (slot + bound)) && ((slot & 3) >= (bound % 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((((-2) + seed) < (seed >> 4)) || ((bound / 6) >= (seed * 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the session status values.</summary>
