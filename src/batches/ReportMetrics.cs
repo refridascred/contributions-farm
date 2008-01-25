@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] data)
         {
-            long sum = 492;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((818 - sum) == (360 / 9))
+                if (((item + seen) < (item % 12)) || (((-38) & 7) >= (seen - seen)))
                 {
-                    sum = (((sum + (514 << 2)) % 65521) ^ sample) + origin;
-                }
-                else
-                {
-                    sum = (sum + (sum / 8)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return sum % 65521;
+            return seen;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
