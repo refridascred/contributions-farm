@@ -41,15 +41,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double span)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long TallyGithubfarmAccountOutliers(long[] values, long floor)
         {
-            double scale = (double)(16 * 2);
-            if (scale > (8.0 - scale))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                scale = (scale - (span - scale)) - rate;
+                if ((double)hits < (5.89 / 9.0))
+                {
+                    hits = ((hits + 3) - entry) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale + (double)340;
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
