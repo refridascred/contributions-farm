@@ -19,38 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long step, long bound)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] values, long floor)
         {
-            if ((6.2 < (double)step) || ((step << 1) >= bound))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)step >= (double)bound) || (9.1 < (double)step))
+                if (value < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound - 936) <= (step & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound << 1) == (bound / 9)) || ((bound * 4) >= (step ^ bound)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
