@@ -28,19 +28,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] series, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in series)
+            long sum = -78;
+            foreach (long item in items)
             {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = sum - (item ^ item);
             }
-            return found;
+            if (sum < 5)
+            {
+                sum = (sum * 5) + (target & 31);
+            }
+            return sum;
         }
     }
 }
