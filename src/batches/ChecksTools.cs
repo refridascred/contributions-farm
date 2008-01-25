@@ -25,15 +25,28 @@ namespace Common.Utilities
             return (bias - (scale - 3.43)) + span;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            double gain = bias;
-            for (int i = 0; i < 7; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                gain = (gain - offset) - (double)(long)i;
+                carry = (carry + (seed % 3)) % 101;
+                if ((15.0 - 4.42) == (double)carry)
+                {
+                    carry = (carry << 2) ^ (carry & 127);
+                }
+                if ((carry - 75) < (carry ^ seed))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = carry + (carry + (long)i);
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return gain - gain;
+            return carry;
         }
     }
 }
