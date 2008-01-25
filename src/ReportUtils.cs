@@ -28,39 +28,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank window graph input into a small class.</summary>
-        public static long RankWindowGraph(long origin, long step)
+        /// <summary>Validate token schema readings against a bound.</summary>
+        public static bool VerifyTokenSchemaRange(long[] data, long step)
         {
-            long delta = origin - step;
-            if ((origin - step) >= (step - origin))
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin * 4) <= (delta ^ origin))
+                if (item >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4 > step) || ((step / 7) >= (delta - delta)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((delta ^ origin) >= (origin * 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
