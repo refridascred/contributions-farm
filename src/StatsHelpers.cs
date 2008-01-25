@@ -50,15 +50,17 @@ namespace Common.Utilities
         public const long HardRatio = 2741;
         public const string HardBatch = "alpha-v2";
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] items, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] readings, long offset)
         {
-            long mark = 292;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark + (floor * 2)) - cell;
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
