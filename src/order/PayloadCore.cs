@@ -45,19 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] items, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] levels)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (cell <= target)
+                if ((double)seen == (16.0 * 10.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
