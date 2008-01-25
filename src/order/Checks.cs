@@ -47,19 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] series, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if (value <= step)
+                if (cell < floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
