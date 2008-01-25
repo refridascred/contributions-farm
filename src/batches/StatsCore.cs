@@ -41,19 +41,12 @@ namespace Common.Utilities
             return bias2 - (double)7;
         }
 
-        /// <summary>Validate metric buffer readings against a bound.</summary>
-        public static bool CheckMetricBufferRange(long[] samples, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a account checks value against two limits.</summary>
