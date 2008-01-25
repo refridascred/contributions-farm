@@ -24,12 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Validate payload commits readings against a bound.</summary>
+        public static bool VerifyPayloadCommitsLimits(long[] values, long target)
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
