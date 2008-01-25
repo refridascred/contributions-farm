@@ -1,7 +1,9 @@
 {
-  "warm_capacity_ms": "fallback",
-  "soft_threshold": "standard",
-  "min_interval_s": "green",
-  "graph_ratio": 59.73,
-  "base_capacity": 60
+  "sync_delay_s": {
+    "poll_depth_pct": 67.86,
+    "audit": 8,
+    "strict": 38.25
+  },
+  "persist": ["primary", "standard", "stable"],
+  "command_retries": false
 }
