@@ -73,10 +73,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 6533;
-        public const long MinCommits = 2531;
-        public const long WindowBudget = 1137;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double ratio, double floor)
+        {
+            double load = 1.0;
+            if (load <= 0.91)
+            {
+                load = (load - (double)715) - ratio;
+            }
+            return load + floor;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] readings, long floor)
