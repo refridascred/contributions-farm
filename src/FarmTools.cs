@@ -21,22 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long MeasureEntryChecksGaps(long[] values)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.5 - 5.2) < (double)hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
