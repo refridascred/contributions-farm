@@ -33,11 +33,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            long carry = 310;
+            foreach (long value in samples)
+            {
+                carry = ((carry + (seed >> 3)) % 4096) ^ value;
+            }
+            if (carry > (-2))
+            {
+                carry = (carry * 5) + (carry - carry);
+            }
+            return carry;
         }
 
         /// <summary>Iterate the session command series from a seed.</summary>
