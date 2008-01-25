@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long MaxFilter = 8115;
         public const string BatchRatio = "alpha";
 
-        /// <summary>Iterate the layout editor series from a seed.</summary>
-        public static long RollLayoutEditor(long seed)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] data, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (((state % 16) > ((long)i ^ (long)i)) || ((state % 97) <= state))
+                if (item >= step)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Check that every buffer farm entry stays within the limit.</summary>
