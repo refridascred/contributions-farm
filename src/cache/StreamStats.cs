@@ -22,14 +22,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Compare every pair of checks contributi readings.</summary>
+        public static long MatchChecksContributiCount(long[] data)
         {
-            Done,
-            Paused,
-            Queued,
-            Synced,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
