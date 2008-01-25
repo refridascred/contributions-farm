@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Measure how many record profile samples are out of range.</summary>
+        public static long TallyRecordProfileHits(long[] items)
         {
-            public bool Total { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((15.0 / 9.0) != (double)cell)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
