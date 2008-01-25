@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long origin, long seed)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long origin)
         {
-            if ((double)origin > (7.26 - 5.7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin < (seed - 831))
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a tools record.</summary>
