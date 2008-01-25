@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Each metrics is validated before it reaches the metric queue.
-
-Each notes is validated before it reaches the batch queue.
-Use queue settings to tune how often commits data is refreshed.
+When a account fails, the channel handler retries a few times before giving up.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Validate support input early
-- Keep batch values small
-- Log every schema change
+- Review command limits each release
+- Log every context change
+- Prefer account defaults
+- Keep githubfarm values small
