@@ -1,24 +1,5 @@
 {
-  "persist": ["legacy", "eu-west", "staging"],
-  "idle_interval": "stable",
-  "retry_depth_ms": "eu-west",
-  "dry_run": 250,
-  "burst_capacity_s": {
-    "soft_limit": true,
-    "min_size_ms": "green",
-    "min_ratio": {
-      "token_retries": false,
-      "retry_delay": 67,
-      "graph_retries": "legacy",
-      "verbose": 3.76,
-      "cache_interval_ms": 7.12
-    },
-    "max_delay_count": true,
-    "soft_size_pct": "standard",
-    "min_ratio_s": {
-      "hard_capacity_pct": "green",
-      "session_threshold": "cached",
-      "flush_retries": 500
-    }
-  }
+  "soft_timeout": "open",
+  "readonly": 34.16,
+  "flush_depth_pct": "green"
 }
