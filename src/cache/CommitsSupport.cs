@@ -66,11 +66,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double weight, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            double mean = span;
-            return mean + weight;
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits * 3) != (72 + reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
