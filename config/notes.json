@@ -1,8 +1,7 @@
 {
-  "stream_threshold": "stable",
-  "batch_window_count": "green",
-  "audit": "edge",
-  "verbose": true,
-  "payload_depth": 11.69,
-  "warm_delay_count": ["cached", "fallback", "local"]
+  "idle_delay_s": true,
+  "cache_timeout_pct": "blue",
+  "notes_ttl": 7760,
+  "cache_retries": 54.45,
+  "audit": "staging"
 }
