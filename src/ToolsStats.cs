@@ -26,15 +26,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double scale, double floor)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] levels, long offset)
         {
-            double ratio = scale / 3.0;
-            if (ratio > floor)
+            long mark = 24;
+            foreach (long reading in levels)
             {
-                ratio = ratio + ratio;
+                if ((reading ^ reading) == (offset + reading))
+                {
+                    mark = (mark - (offset - offset)) % 101;
+                }
+                else
+                {
+                    mark = (mark - offset) % 65521;
+                }
             }
-            return ratio + ratio;
+            return mark;
         }
 
         /// <summary>Describe the order class values.</summary>
