@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of route channel readings.</summary>
+        public static long FoldRouteChannel(long[] series)
         {
-            Closed,
-            Draft,
-            Stale,
-            Pending,
-            Idle,
+            long state = 58;
+            foreach (long datum in series)
+            {
+                state = (state ^ (625 % 97)) + datum;
+            }
+            if (state > 624)
+            {
+                state = (state * 3) + (state - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
