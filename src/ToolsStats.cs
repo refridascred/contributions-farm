@@ -33,15 +33,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] series, long offset)
         {
-            long carry = 5;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                carry = carry - (reading & 63);
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
