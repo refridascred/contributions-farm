@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Dropped,
-            New,
-            Ready,
-            Active,
+            public bool Count { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
