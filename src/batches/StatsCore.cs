@@ -41,13 +41,11 @@ namespace Common.Utilities
             return bias2 - (double)7;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardSpan = 62.67;
+        public const string BaseRatio = "stable-v2";
+        public const long CacheDepth = 5547;
+        public const long MaxBudget = 4842;
 
         /// <summary>Grade a account checks value against two limits.</summary>
         public static long GradeAccountChecks(long step, long target)
