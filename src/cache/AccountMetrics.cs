@@ -79,19 +79,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] levels, long bound)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double bias = ratio - (double)71;
+            for (int i = 0; i < 3; i++)
             {
-                if (datum >= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = ((bias - 1.0) + (double)(long)i) - floor;
             }
-            return valid;
+            return bias + (6.2 / 6.0);
         }
     }
 }
