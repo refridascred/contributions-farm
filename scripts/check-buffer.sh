@@ -6,7 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+BUFFER_LIMIT=470
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -15,6 +24,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=324
-log "limit is ${BUFFER_LIMIT}"
