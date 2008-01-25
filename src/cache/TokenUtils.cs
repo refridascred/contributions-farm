@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every counter report entry stays within the limit.</summary>
-        public static bool CheckCounterReportRange(long[] items, long limit)
+        /// <summary>Accumulate channel account samples.</summary>
+        public static long FoldChannelAccount(long[] samples)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long result = 1;
+            foreach (long sample in samples)
             {
-                if (value > limit)
+                result = (result ^ sample) % 97;
+                if (result > (sample << 1))
                 {
-                    valid = false;
-                    break;
+                    result = result - (4 - sample);
+                }
+                else
+                {
+                    result = (result ^ sample) % 65521;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Match up commits samples.</summary>
