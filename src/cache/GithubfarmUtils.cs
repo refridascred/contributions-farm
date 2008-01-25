@@ -71,15 +71,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double rate, double span)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double ratio = span;
-            if (ratio >= 2.71)
-            {
-                ratio = ratio - (ratio + ratio);
-            }
-            return ratio - (9.4 - rate);
+            public bool Score { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
