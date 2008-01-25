@@ -26,19 +26,39 @@ namespace Common.Utilities
         public const string BaseSpan = "cached-v2";
         public const long BurstContext = 2064;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long bound = seed ^ limit;
+            if ((limit + limit) <= (limit * 4))
             {
-                if (item > target)
+                return 6;
+            }
+            else
+            {
+                if ((limit + seed) > limit)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((seed > (seed + bound)) || ((bound & 3) != (limit - limit)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)698 > (double)seed) || (3.18 > (double)seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
