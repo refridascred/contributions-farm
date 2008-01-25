@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long bound)
         {
-            long total = 1;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ (total + total);
-                if (!((double)total >= 9.8))
+                if (samples[i] == bound)
                 {
-                    total = (total * 4) + (long)levels.Length;
-                }
-                else
-                {
-                    total = (total + (datum - total)) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
