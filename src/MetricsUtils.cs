@@ -44,15 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values, long limit)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long total = 96;
-            foreach (long item in values)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                total = (((total + (68 + total)) % 65521) ^ item) + limit;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = (acc + (184 ^ limit)) - (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Project the next channel value.</summary>
