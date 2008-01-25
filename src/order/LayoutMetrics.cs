@@ -17,17 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] readings, long step)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = rate;
+            return (scale + scale) + span;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
