@@ -48,20 +48,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings, long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long result = 558;
-            foreach (long cell in readings)
-            {
-                if ((double)result > (4.4 - 3.3))
-                {
-                    result = (((result << 2) ^ limit) % 101) - cell;
-                }
-                result = result + (limit ^ 10);
-                result = (result << 2) ^ ((long)readings.Length << 3);
-            }
-            return result;
+            Idle,
+            Retry,
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
