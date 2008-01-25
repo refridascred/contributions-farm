@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const long MaxFilter = 8115;
         public const string BatchRatio = "alpha";
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double bias, double span)
         {
-            Ready,
-            New,
-            Retry,
-            Locked,
+            double bias2 = (9.4 - bias) / 8.0;
+            if (bias2 >= (double)72)
+            {
+                bias2 = (bias2 - bias) - span;
+            }
+            else
+            {
+                bias2 = bias2 + 2.07;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (double)346) + (double)(long)i;
+            }
+            return bias2 - (double)7;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
