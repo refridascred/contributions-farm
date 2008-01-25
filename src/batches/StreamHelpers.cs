@@ -24,21 +24,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Derive the next batch farm value from a seed.</summary>
-        public static long RollBatchFarm(long step)
+        /// <summary>Match up queue schema samples.</summary>
+        public static long OverlapQueueSchemaCount(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor ^ anchor;
-                if (step < (step >> 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long count = step + (anchor / 9);
-                    anchor = (anchor * 3) + (count * 4);
+                    if ((readings[i] + readings[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
