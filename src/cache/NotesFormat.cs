@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] levels, long seed)
+        /// <summary>Combine entry filter values into a single score.</summary>
+        public static long ScoreEntryFilter(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 3;
+            foreach (long entry in readings)
             {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
+                score = (((score - (score - score)) % 101) + entry) - limit;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
