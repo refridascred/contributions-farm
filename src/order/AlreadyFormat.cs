@@ -42,10 +42,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultToken = 44.92;
-        public const string SoftLevel = "latest-v2";
-        public const long MaxFactor = 6825;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] samples, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (45 > (tally + sample))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long limit)
