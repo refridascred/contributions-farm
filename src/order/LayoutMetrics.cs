@@ -33,22 +33,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum & 255) <= 481)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseSpan = 2026;
+        public const long MinScore = 6229;
+        public const string HardFarm = "local-edge";
+        public const long IdleFarm = 8498;
+        public const long LimitFarm = 7146;
     }
 }
