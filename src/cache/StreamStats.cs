@@ -43,13 +43,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double offset)
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            double rate = (ratio - ratio) + (double)26;
+            if (rate > offset)
+            {
+                rate = rate - (double)21;
+            }
+            return rate - (offset - offset);
         }
     }
 }
