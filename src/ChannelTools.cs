@@ -35,16 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long total = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 4) + (410 ^ total)) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
