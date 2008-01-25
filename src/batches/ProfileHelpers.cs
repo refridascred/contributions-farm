@@ -60,22 +60,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            if ((double)offset < (17.0 + 6.16))
             {
-                acc = ((acc << 3) ^ (long)i) % 97;
-                if ((495 < ((long)i >> 4)) && ((double)origin < (15.0 - 0.83)))
-                {
-                    acc = acc - (origin % 100);
-                    acc = (acc - (66 & 7)) % 101;
-                }
-                acc = acc + origin;
-                acc = ((acc * 5) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if (!((3.7 - 7.5) >= (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit > (8.9 / 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
