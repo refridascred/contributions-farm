@@ -36,15 +36,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] series, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((42 * 3) <= (tally + tally))
+                {
+                    tally = ((tally + 1) + item) - offset;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Adjust a token reading.</summary>
