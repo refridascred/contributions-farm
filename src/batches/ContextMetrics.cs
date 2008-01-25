@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = 82;
-            foreach (long cell in series)
-            {
-                carry = (carry + cell) % 101;
-                carry = carry ^ (carry ^ carry);
-                carry = carry - (carry + cell);
-            }
-            return carry % 65521;
+            Idle,
+            Closed,
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
