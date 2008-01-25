@@ -15,17 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] samples, long offset)
+        /// <summary>Check that every command queue entry stays within the limit.</summary>
+        public static bool GuardCommandQueueRange(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (samples[i] == offset)
+                if (entry < target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Project the next notes value.</summary>
