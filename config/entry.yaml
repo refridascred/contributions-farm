@@ -1,11 +1,24 @@
 # entry settings
-cache_ttl: false
-readonly:
-  - eu-west
-  - eu-west
-  - blue
+entry_delay:
+  schema_interval: edge
+  enabled:
+    already_ttl: 30
+    commits_depth:
+      - 478
+      - 125
+      - 131
+    record_capacity: eu-west
+    poll_retries: 69
+  cluster_depth: 73
+burst_threshold_count: 18.23
+min_window_count:
+  - green
   - staging
-poll_depth_s: latest
-soft_retries_pct: legacy
-sync_capacity_count: cached
-commits_retries: open
+  - primary
+  - stable
+sync_limit: 51
+max_capacity_ms:
+  record_delay: blue
+  audit: 6941
+  hard_limit_pct: 5449
+batch_capacity_count: false
