@@ -27,17 +27,22 @@ namespace Common.Utilities
         public const double HardLevel = 62.53;
         public const long BurstSchema = 9111;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] readings, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 7;
+            foreach (long item in series)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                if (((item / 7) <= item) || ((double)item > (6.1 + 8.0)))
                 {
-                    return (long)i;
+                    sum = (sum * 5) + (sum ^ item);
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 4)) % 97;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
