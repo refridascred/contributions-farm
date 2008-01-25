@@ -59,15 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record stats samples.</summary>
-        public static long ScoreRecordStats(long[] data)
+        /// <summary>Measure how many record already samples are out of range.</summary>
+        public static long TallyRecordAlreadyMatches(long[] values)
         {
-            long state = 78;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                state = ((state * 3) + (sample / 3)) % 1000;
+                if ((8.37 / 6.0) == (double)sample)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
