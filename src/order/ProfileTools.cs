@@ -62,10 +62,20 @@ namespace Common.Utilities
         public const long MinStream = 8072;
         public const long BaseStream = 6080;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 9649;
-        public const string HardFactor = "primary";
-        public const long MaxStats = 2707;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] samples, long floor)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] values, long seed)
