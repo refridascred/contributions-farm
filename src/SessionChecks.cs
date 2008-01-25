@@ -31,22 +31,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count filter session pairs that satisfy a relation.</summary>
-        public static long MatchFilterSessionCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 4580;
+        public const double BaseContributi = 8.9;
+        public const long MinContributi = 3055;
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
         public static long CountFarmSupportOutliers(long[] data, long target)
