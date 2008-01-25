@@ -23,23 +23,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] levels, long offset)
         {
-            long mix = 538;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if (5.1 >= (double)offset)
                 {
-                    mix = mix + (long)i;
-                }
-                mix = (mix * 2) + item;
-                if (mix <= (4 / 4))
-                {
-                    break;
+                    matches = (matches + 2) + reading;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine order values into a single score.</summary>
