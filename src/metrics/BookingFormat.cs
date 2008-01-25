@@ -45,31 +45,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long floor, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] data, long floor)
         {
-            if ((offset + floor) != (offset - offset))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((6.07 - 2.0) < (double)offset)
+                if ((count + count) == (count << 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset > (5.3 * 9.5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = ((count + 1) + value) - floor;
                 }
             }
+            return count;
         }
     }
 }
