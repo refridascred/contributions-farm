@@ -41,19 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double floor)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double ratio = bias;
-            if (ratio <= (floor / 5.0))
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + ratio;
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a order counter forward.</summary>
