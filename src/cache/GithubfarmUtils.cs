@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleFactor = 34.89;
-        public const long CacheDepth = 9482;
-        public const long SoftSchema = 8214;
-        public const string DefaultSize = "cached-edge";
-        public const long CacheSchema = 1283;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((entry + (long)series.Length) > (entry >> 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
