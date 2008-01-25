@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 6112;
-        public const long DefaultDepth = 1817;
-        public const long BatchCommand = 4119;
-        public const double SoftCommand = 43.02;
-        public const long WindowBudget = 635;
+        /// <summary>Combine tools contributi values into a single score.</summary>
+        public static long DigestToolsContributi(long[] series)
+        {
+            long score = 22;
+            foreach (long reading in series)
+            {
+                if (!(score <= (reading - 479)))
+                {
+                    score = ((score * 5) + (score / 8)) % 97;
+                }
+                else
+                {
+                    score = (score << 3) ^ ((long)series.Length << 2);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
