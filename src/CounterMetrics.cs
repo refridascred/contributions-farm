@@ -38,14 +38,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Pending,
-            Ready,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchSize = 5930;
+        public const string CacheWindow = "open-v2";
+        public const string IdleWindow = "standard";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] series, long target)
