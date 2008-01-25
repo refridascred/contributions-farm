@@ -1,6 +1,5 @@
 {
-  "readonly": false,
-  "batch_retries": 2144,
-  "max_retries_count": 10,
-  "flush_limit_s": "green"
+  "tools_threshold": 21.71,
+  "hard_delay": true,
+  "idle_delay": ["fallback", "open", "strict", "green"]
 }
