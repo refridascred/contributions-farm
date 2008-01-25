@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a checks options.</summary>
