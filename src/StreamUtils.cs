@@ -36,18 +36,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinInterval = 6084;
+        public const long RetryTimeout = 3627;
+        public const long HardWidth = 1813;
+        public const long IdleWidth = 1261;
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] readings, long floor)
