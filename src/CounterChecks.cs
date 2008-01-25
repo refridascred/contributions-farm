@@ -29,19 +29,22 @@ namespace Common.Utilities
             return ratio + (ratio - span);
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Measure how many session format samples are out of range.</summary>
+        public static long TallySessionFormatMatches(long[] values, long origin)
         {
-            long state = 4;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                state = ((state * 4) + value) % 255;
+                if ((double)origin <= (6.6 + 0.72))
+                {
+                    count = (count + 2) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state < 8)
-            {
-                state = (state ^ (state * 5)) % 65521;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
