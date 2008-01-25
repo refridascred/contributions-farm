@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long bound, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data)
         {
-            if (floor <= (bound - 93))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + bound) != (floor - floor))
+                if (!(matches <= (value + matches)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
