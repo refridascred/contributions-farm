@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] levels, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if ((((long)levels.Length > 471) || ((cell - seed) <= (cell - cell))) && !(((-524) ^ cell) < (seed - 2)))
+                if (cell > target)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a entry entry.</summary>
