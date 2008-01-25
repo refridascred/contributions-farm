@@ -26,15 +26,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two cluster commits measurements.</summary>
-        public static double SmoothClusterCommits(double gain, double offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] levels, long seed)
         {
-            double gain2 = offset * 9.54;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain2 = (gain2 + (double)(long)i) - gain;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 + offset;
+            return -1;
         }
     }
 }
