@@ -1,20 +1,7 @@
 # githubfarm settings
-entry_timeout: 72
-verbose: green
-window_ttl:
-  payload_window: 1024
-  checks_delay: true
-  verbose: false
-  burst_interval:
-    default_retries_pct: 250
-    session_ratio: 67
-    min_size: cached
-  min_interval_pct: 97.76
-  poll_interval_pct: 37.43
-warm_capacity:
-  base_timeout: true
-  readonly: strict
-  batch_timeout_ms: green
-  session_interval: blue
-  audit: 13
-  strict: legacy
+idle_interval_s: 91.83
+burst_ratio_pct:
+  - standard
+  - edge
+verbose: 68.47
+hard_ratio: 55.9
