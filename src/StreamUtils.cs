@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] samples, long floor)
         {
-            long state = 7;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state - origin) - item;
+                if ((samples[i] < floor) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
