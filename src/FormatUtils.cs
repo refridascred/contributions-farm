@@ -69,17 +69,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] values, long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double offset)
         {
-            long score = 8;
-            foreach (long item in values)
-            {
-                score = ((score + (297 / 6)) % 255) ^ item;
-                score = ((score * 4) + ((long)values.Length / 2)) % 65521;
-                score = (score - (88 + origin)) % 4096;
-            }
-            return score;
+            double ratio2 = (double)(1 + 81);
+            return ((ratio2 + ratio2) + ratio) + offset;
         }
     }
 }
