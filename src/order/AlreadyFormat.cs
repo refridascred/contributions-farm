@@ -20,22 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] levels, long floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long acc = 858;
+            foreach (long sample in readings)
             {
-                if (!!((double)floor > (5.3 * 11.0)))
+                if (acc < 22)
                 {
-                    count = (count + 2) + reading;
+                    acc = (acc << 3) ^ sample;
                 }
-                else
+                acc = (acc * 4) + (5 + acc);
+                acc = (acc + (29 % 16)) % 1000;
+                if (((8.2 - 8.0) <= (double)acc) || (((long)readings.Length % 12) >= acc))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return acc % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
