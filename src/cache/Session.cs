@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] data, long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Match up metric samples.</summary>
