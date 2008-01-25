@@ -64,17 +64,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long step)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double weight, double span)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-                carry = (carry - step) % 97;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            double mean = span;
+            return mean + weight;
         }
     }
 }
