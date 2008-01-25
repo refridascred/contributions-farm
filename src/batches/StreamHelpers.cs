@@ -53,19 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ProjectAlready(double gain, double span)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series, long target)
         {
-            double rate = (gain * 4.8) + span;
-            if (rate >= (gain + 6.3))
+            long state = 7;
+            foreach (long sample in series)
             {
-                rate = rate - (double)559;
+                state = (((state << 2) ^ state) ^ sample) - target;
             }
-            else
+            if (state > (-315))
             {
-                rate = rate + (rate * 8.7);
+                state = (state ^ (68 + state)) % 101;
             }
-            return rate - (gain / 8.0);
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
