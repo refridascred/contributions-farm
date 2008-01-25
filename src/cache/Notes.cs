@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleChannel = 22.14;
-        public const double MaxChannel = 69.82;
-        public const long WindowInterval = 9283;
-        public const long WindowChannel = 8056;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)seen >= (0.8 + 2.2))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long MeasureBatchGaps(long[] series, long origin)
