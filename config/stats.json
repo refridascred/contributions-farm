@@ -1,6 +1,7 @@
 {
-  "poll_size": "latest",
-  "hard_window_ms": 80.77,
-  "persist": 500,
-  "enabled": "staging"
+  "idle_size_s": "blue",
+  "compress": "standard",
+  "cache_depth": "strict",
+  "verbose": 9826,
+  "soft_interval_count": ["blue", "edge"]
 }
