@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double bias)
         {
-            Closed,
-            Queued,
-            Stale,
-            New,
-            Ready,
+            double scale = bias;
+            if (scale <= 7.43)
+            {
+                scale = scale + (bias / 8.0);
+            }
+            return scale - weight;
         }
 
         /// <summary>Hold a order stats.</summary>
