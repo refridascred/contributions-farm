@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            long anchor = 30;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (((anchor * 2) + entry) % 4096) - (long)i;
+                }
+                if ((682 << 3) >= anchor)
+                {
+                    anchor = (anchor ^ (entry + entry)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
