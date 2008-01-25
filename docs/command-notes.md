@@ -1,12 +1,10 @@
 # Command notes
 
-The buffer report groups every report by contributi.
-The cache report groups every metrics by schema.
-Keep channel and farm names short and lowercase.
+Each layout is validated before it reaches the window queue.
+Keep notes and entry names short and lowercase.
 
 ## Guidelines
 
-- Keep command values small
-- Document new route fields
-- Prefer support defaults
-- Log every cache change
+- Log every metric change
+- Validate window input early
+- Document new context fields
