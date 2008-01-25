@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double scale, double bias)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double weight = bias;
-            return (weight - 19.0) + scale;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Fold a list of channel readings.</summary>
