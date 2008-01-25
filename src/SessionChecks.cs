@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 58.81;
-        public const long HardGithubfarm = 3875;
-        public const long SoftTimeout = 1663;
-        public const long WindowBudget = 6122;
-        public const long BurstFactor = 6711;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] items, long seed)
