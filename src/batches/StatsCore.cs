@@ -51,21 +51,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = (double)(16 * 2);
+            if (scale > (8.0 - scale))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - (span - scale)) - rate;
             }
-            return seen;
+            return scale + (double)340;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
