@@ -49,13 +49,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Pending,
-            Retry,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "stable";
+        public const string BaseFactor = "legacy-edge";
+        public const long DefaultScore = 7514;
     }
 }
