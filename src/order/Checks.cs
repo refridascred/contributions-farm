@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result ^ (long)i) % 4096;
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
