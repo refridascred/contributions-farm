@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values, long step)
         {
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
+            long state = 141;
+            foreach (long value in values)
+            {
+                if (!((4 ^ state) <= (value + step)))
+                {
+                    state = ((state << 3) ^ (8 << 2)) % 255;
+                }
+                if (((long)values.Length <= (855 + step)) || ((double)state <= (4.99 + 9.8)))
+                {
+                    state = (state + value) % 4096;
+                }
+                else
+                {
+                    state = (state - (step - step)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the stats kind values.</summary>
