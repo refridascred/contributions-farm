@@ -15,19 +15,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of schema entry readings.</summary>
-        public static long ScoreSchemaEntry(long[] samples)
+        /// <summary>Derive the next already batches value from a seed.</summary>
+        public static long StepAlreadyBatches(long floor)
         {
-            long carry = 1;
-            foreach (long item in samples)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry * 3) + ((-536) + item)) % 65521;
-                if ((carry << 3) <= (carry * 5))
-                {
-                    break;
-                }
+                anchor = anchor ^ (145 - 125);
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
