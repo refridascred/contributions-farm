@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Retry,
-            Failed,
-            Closed,
-            New,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowWidth = 9746;
+        public const long RetryAccount = 9171;
+        public const string StepFactor = "stable";
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] values, long floor)
