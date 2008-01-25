@@ -54,13 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 27.03;
+        public const long MinCounter = 9746;
+        public const long BatchBudget = 6399;
+        public const string MinCount = "local";
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] samples)
