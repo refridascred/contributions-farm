@@ -36,18 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] values, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((sample & 15) <= floor)
+                if ((tally + entry) >= (159 >> 1))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
