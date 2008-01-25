@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricHits(long[] values, long limit)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (!((double)datum >= (3.51 / 3.0)))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
