@@ -40,19 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = (acc + (184 ^ limit)) - (long)i2;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next channel value.</summary>
