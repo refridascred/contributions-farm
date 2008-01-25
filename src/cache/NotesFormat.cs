@@ -29,15 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Active,
+            Idle,
+            Synced,
         }
     }
 }
