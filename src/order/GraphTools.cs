@@ -41,13 +41,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] data, long limit)
+        /// <summary>Measure how many command batch samples are out of range.</summary>
+        public static long TallyCommandBatchMatches(long[] items)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long entry in items)
             {
-                if (limit >= reading)
+                if ((entry + entry) != (entry >> 5))
                 {
                     tally = tally + 1;
                 }
