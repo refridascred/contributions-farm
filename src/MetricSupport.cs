@@ -32,15 +32,19 @@ namespace Common.Utilities
         public const long MinRatio = 9254;
         public const long BaseSupport = 2625;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            double ratio = span;
-            if (ratio < (ratio + span))
+            double weight = rate * 6.0;
+            if (weight > (rate * 8.3))
             {
-                ratio = ratio + (span / 5.0);
+                weight = (weight + (weight - rate)) - span;
             }
-            return ratio + bias;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight * 8.51)) + (double)(long)i;
+            }
+            return weight + (double)28;
         }
     }
 }
