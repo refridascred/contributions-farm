@@ -1,8 +1,6 @@
-id,weight,state,rank
-1,886,505,452
-2,723,1.12,33
-3,strict,581,701
-4,449,13.71,142
-5,767,19.11,cached
-6,43.84,latest,350
-7,846,179,standard
+id,rank,count
+1,57.6,eu-west
+2,178,latest
+3,open,standard
+4,979,601
+5,79.42,open
