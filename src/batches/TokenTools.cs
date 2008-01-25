@@ -45,12 +45,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
