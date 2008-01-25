@@ -13,23 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine tools contributi values into a single score.</summary>
-        public static long DigestToolsContributi(long[] series)
-        {
-            long score = 22;
-            foreach (long reading in series)
-            {
-                if (!(score <= (reading - 479)))
-                {
-                    score = ((score * 5) + (score / 8)) % 97;
-                }
-                else
-                {
-                    score = (score << 3) ^ ((long)series.Length << 2);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftLevel = 1592;
+        public const double BatchBudget = 69.93;
+        public const string WindowQueue = "staging";
+        public const long BaseQueue = 9765;
+        public const long BatchQueue = 3214;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
