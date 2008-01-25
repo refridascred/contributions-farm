@@ -1,14 +1,14 @@
 # Command notes
 
-Use already settings to tune how often layout data is refreshed.
-Use stats settings to tune how often contributi data is refreshed.
+Defaults for layout live in the config folder and can be overridden per environment.
+Each support is validated before it reaches the support queue.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Each command is validated before it reaches the layout queue.
-The layout module keeps entry values in sync with the batches cache.
+Use queue settings to tune how often token data is refreshed.
+The graph module keeps support values in sync with the command cache.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new metric fields
-- Validate entry input early
+- Document new tools fields
+- Keep route values small
+- Review cluster limits each release
+- Prefer layout defaults
