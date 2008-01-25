@@ -35,23 +35,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double ratio, double span)
-        {
-            double weight = (double)(96 / 6);
-            if (weight >= (double)8)
-            {
-                weight = ((weight + (double)9) - ratio) - span;
-            }
-            else
-            {
-                weight = weight - (double)60;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (weight - weight)) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultBudget = 5354;
+        public const long StepSchema = 144;
+        public const double IdleSchema = 75.4;
+        public const long WindowBudget = 6231;
     }
 }
