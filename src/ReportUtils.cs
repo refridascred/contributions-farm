@@ -23,12 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
             public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
