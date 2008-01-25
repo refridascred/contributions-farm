@@ -60,21 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
