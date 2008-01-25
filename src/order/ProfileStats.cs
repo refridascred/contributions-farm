@@ -26,11 +26,25 @@ namespace Common.Utilities
         public const long BurstFormat = 556;
         public const long MaxBudget = 5884;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 2471;
-        public const long BaseSpan = 6953;
-        public const double WindowWidth = 47.4;
-        public const string MinAccount = "open-edge";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long limit, long origin)
+        {
+            if ((limit * 5) == (limit << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!(origin >= 79))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
