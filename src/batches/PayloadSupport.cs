@@ -48,11 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double gain, double bias)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            double weight = 9.3 * 18.0;
+            if (weight >= (double)53)
+            {
+                weight = (weight + (bias * 0.6)) - gain;
+            }
+            else
+            {
+                weight = weight - 2.8;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - (double)9) + (double)(long)i;
+            }
+            return weight + (double)33;
         }
     }
 }
