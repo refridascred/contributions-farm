@@ -18,11 +18,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSize = 6776;
-        public const string MaxSpan = "cached-edge";
-        public const string HardSupport = "staging";
-        public const long MaxInterval = 1684;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double scale, double bias)
+        {
+            double scale2 = bias;
+            return (scale2 - (scale2 / 7.0)) + scale;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
