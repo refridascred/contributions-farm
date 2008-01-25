@@ -1,16 +1,9 @@
 # support settings
-sync_ratio_ms:
-  - 234
-  - 258
-  - 338
-base_delay_pct:
-  hard_retries: 6281
-  sync_window: 2621
-  warm_timeout_pct: 53.97
-min_size:
-  - 421
-  - 172
-  - 496
-  - 89
-max_interval_s: legacy
-burst_timeout: 8503
+max_capacity_ms: 500
+idle_delay: 9125
+already_ratio: fallback
+verbose: 92.98
+persist:
+  - edge
+  - staging
+  - cached
