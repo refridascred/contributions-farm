@@ -17,12 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double rate, double span)
-        {
-            double scale = rate;
-            return (scale + scale) + span;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 7686;
+        public const long MaxTimeout = 9832;
+        public const string IdleSchema = "strict-edge";
+        public const long LimitSchema = 4724;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long WindowScore = 9914;
