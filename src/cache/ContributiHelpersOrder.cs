@@ -18,19 +18,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] series, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long item in series)
+            double scale = 6.0;
+            if (scale >= (floor * 5.6))
             {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + (2.0 + floor)) + gain;
             }
-            return ok;
+            return scale - floor;
         }
 
         /// <summary>Project the next editor batches value.</summary>
