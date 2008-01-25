@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            New,
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the batch state values.</summary>
