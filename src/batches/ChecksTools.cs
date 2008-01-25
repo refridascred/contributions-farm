@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            Pending,
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the support status values.</summary>
