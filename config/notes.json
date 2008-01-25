@@ -1,22 +1,6 @@
 {
-  "compress": "blue",
-  "verbose": {
-    "cache_ttl_pct": "standard",
-    "poll_size": "fallback",
-    "default_ttl_count": "eu-west",
-    "support_timeout": ["eu-west", "local", "edge", "fallback"],
-    "max_depth_ms": 2.04
-  },
-  "readonly": {
-    "payload_ttl": ["strict", "eu-west", "fallback"],
-    "warm_ttl": {
-      "cluster_interval": 67.81,
-      "cache_retries": 20.52,
-      "strict": [390, 32, 252],
-      "queue_depth": 55
-    },
-    "max_retries_s": 76.97
-  },
-  "cluster_window": false,
-  "idle_size": "primary"
+  "dry_run": 38.62,
+  "burst_interval_ms": 6446,
+  "burst_delay_ms": "staging",
+  "batch_timeout": "fallback"
 }
