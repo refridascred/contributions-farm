@@ -40,17 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] data, long limit)
+        /// <summary>Adjust a farm graph reading.</summary>
+        public static double SmoothFarmGraph(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(8 >> 1);
+            if (ratio <= (offset + rate))
             {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + rate;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)52;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (rate + offset)) + (double)(long)i;
+            }
+            return ratio - offset;
         }
     }
 }
