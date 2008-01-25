@@ -12,11 +12,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowLayout = "alpha";
-        public const long SoftLayout = 3036;
-        public const long RetryFactor = 6032;
-        public const string BurstSpan = "standard";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (offset > (count / 2))
+                {
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorHits(long[] items)
