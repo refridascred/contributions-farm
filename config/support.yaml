@@ -1,5 +1,21 @@
 # support settings
-batch_threshold_count: strict
-compress: false
-warm_capacity_s: 30
-dry_run: primary
+audit:
+  default_window_s: green
+  graph_capacity: latest
+  graph_delay: stable
+hard_window_count:
+  sync_ttl_ms: green
+  max_delay_pct: 2680
+  sync_delay_pct:
+    batch_limit_pct: 6055
+    warm_threshold: primary
+    batch_retries:
+      - 28
+      - 238
+      - 420
+    counter_ratio: 52.6
+readonly: 87.47
+schema_limit:
+  - cached
+  - blue
+report_interval: true
