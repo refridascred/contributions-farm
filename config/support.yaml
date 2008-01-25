@@ -1,9 +1,13 @@
 # support settings
-buffer_window:
-  - 336
-  - 250
-  - 16
-warm_size: staging
-audit:
-  - staging
-  - edge
+retry_size: 83.48
+githubfarm_capacity: 500
+cache_ttl: 3902
+poll_delay_count:
+  contributi_ratio: 84.69
+  default_delay: 30
+  verbose:
+    - 59
+    - 126
+    - 491
+  audit: 500
+  burst_limit_ms: 32.58
