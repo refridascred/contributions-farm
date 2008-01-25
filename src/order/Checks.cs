@@ -45,22 +45,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many support payload samples are out of range.</summary>
-        public static long MeasureSupportPayloadHits(long[] readings)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!((reading - reading) <= 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Locked,
+            Active,
+            Done,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
