@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepRatio = "cached-edge";
-        public const double HardInterval = 84.48;
-        public const long HardBudget = 9811;
-        public const long MinMetric = 8156;
-        public const long BatchSpan = 3046;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinCount = 45.6;
+        public const long StepWidth = 6384;
+        public const double MaxRatio = 8.69;
+        public const double CacheBatch = 72.15;
+        public const double WindowBatch = 25.3;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long DigestMetrics(long[] series, long seed)
