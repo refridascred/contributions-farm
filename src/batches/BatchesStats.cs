@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string DefaultNotes = "local-edge";
         public const double IdleFactor = 93.16;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long floor)
         {
-            Stale,
-            Synced,
-            Idle,
-            Ready,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
