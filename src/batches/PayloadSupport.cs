@@ -15,19 +15,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 15; i++)
+            if (target > 66)
             {
-                if (!((anchor / 6) <= (limit + limit)))
-                {
-                    anchor = ((anchor * 2) + (long)i) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if (577 <= (target + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7.4 - 4.3) <= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target * 4) > target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next notes value.</summary>
