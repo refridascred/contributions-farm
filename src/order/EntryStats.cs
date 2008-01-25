@@ -16,16 +16,14 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Derive the next githubfarm commits value from a seed.</summary>
-        public static long RollGithubfarmCommits(long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                result = result - ((long)i + (long)i);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Paused,
+            Failed,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the schema phase values.</summary>
