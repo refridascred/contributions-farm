@@ -33,18 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks context readings against a rule.</summary>
-        public static long AuditChecksContextGaps(long[] items, long step)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!(step <= (sample >> 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the report phase values.</summary>
