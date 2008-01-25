@@ -64,38 +64,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long limit, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            if ((limit + limit) <= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit + limit) < (limit - step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - step) > (step & 63))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step < limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
