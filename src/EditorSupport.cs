@@ -45,13 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public double Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a queue checks reading.</summary>
