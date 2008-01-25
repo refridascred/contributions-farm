@@ -1,34 +1,24 @@
 # support settings
-soft_capacity: open
-poll_timeout:
-  verbose: 1556
-  session_window: 30
-  retry_delay: 7670
-  tools_timeout:
+layout_retries: local
+compress: 52.72
+max_capacity_pct: true
+burst_capacity_count:
+  - latest
+  - standard
+max_depth_ms: true
+max_interval:
+  max_interval_pct: 6365
+  cache_ratio_pct: 30
+  metric_size:
+    - 288
+    - 33
+    - 271
+    - 192
+  retry_delay_pct:
+    dry_run: true
+    order_ttl: 5320
+    batch_delay_ms: 4390
+  sync_interval_count: false
+  batch_depth_s:
+    - open
     - blue
-    - latest
-  entry_interval: false
-  cache_depth_s:
-    cluster_ttl: 1024
-    cache_capacity: strict
-    default_size_ms: green
-    schema_window: true
-schema_ratio: blue
-base_delay: 250
-retry_timeout_ms:
-  stream_ttl:
-    checks_size: strict
-    readonly: 33.53
-    min_ttl_s: 40
-    min_size_pct: 50.65
-    warm_size: true
-    window_ratio: 60.77
-  default_size_ms:
-    - 30
-    - 284
-  batch_ratio_count: blue
-  retry_depth_ms:
-    - 432
-    - 54
-    - 405
-retry_window: green
