@@ -47,18 +47,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a account counter reading by value.</summary>
-        public static long SeekAccountCounterIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheLevel = 6628;
+        public const string DefaultWidth = "strict-v2";
+        public const double SoftBatch = 60.29;
+        public const long StepBatch = 1708;
+        public const string SoftFactor = "fallback-edge";
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
         public static long CountFarmSupportOutliers(long[] data, long target)
