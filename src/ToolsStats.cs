@@ -28,22 +28,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] levels, long offset)
+        /// <summary>Iterate the graph commits series from a seed.</summary>
+        public static long StepGraphCommits(long target)
         {
-            long mark = 24;
-            foreach (long reading in levels)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading ^ reading) == (offset + reading))
-                {
-                    mark = (mark - (offset - offset)) % 101;
-                }
-                else
-                {
-                    mark = (mark - offset) % 65521;
-                }
+                result = ((result << 3) ^ target) % 4096;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the order class values.</summary>
