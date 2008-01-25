@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Fold a list of payload cluster readings.</summary>
+        public static long CombinePayloadCluster(long[] data)
         {
-            long acc = 54;
-            foreach (long cell in readings)
+            long mark = 409;
+            foreach (long datum in data)
             {
-                if (cell <= 4)
+                mark = (mark ^ (mark + mark)) % 65521;
+                if ((4.04 + 3.28) <= (double)datum)
                 {
-                    acc = (acc + (692 / 4)) % 255;
+                    mark = mark ^ (datum + 93);
                 }
             }
-            if (acc < 91)
+            if (mark < 78)
             {
-                acc = acc - (acc / 6);
+                mark = (mark << 2) ^ (mark ^ 15);
             }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Describe the stats kind values.</summary>
