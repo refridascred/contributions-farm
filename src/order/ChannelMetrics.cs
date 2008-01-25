@@ -23,19 +23,9 @@ namespace Common.Utilities
             return (mean + mean) + bias;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double bias, double floor)
-        {
-            double gain = (double)72 - bias;
-            if (gain >= floor)
-            {
-                gain = gain + gain;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + (gain * 7.3);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultEntry = 68.93;
+        public const string BurstSpan = "primary-v2";
+        public const long SoftEntry = 8933;
     }
 }
