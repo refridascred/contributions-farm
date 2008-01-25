@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=181
+CHANNEL_LIMIT=49
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in eu-west latest; do
+    log "checking ${item}"
+done
