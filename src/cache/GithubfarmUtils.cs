@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const double MinSize = 36.52;
         public const long BaseDepth = 3275;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "open-v2";
-        public const long MaxLevel = 8306;
-        public const long IdleLevel = 2834;
-        public const long RetryAccount = 8610;
-        public const string CacheInterval = "primary-edge";
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= origin) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterLimits(long[] values, long step)
