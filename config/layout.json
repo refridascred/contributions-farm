@@ -1,6 +1,7 @@
 {
-  "audit": 500,
-  "channel_interval": [447, 80, 301, 218],
-  "payload_timeout": 60,
-  "format_timeout": [12, 210, 253]
+  "flush_timeout_pct": false,
+  "cache_size": 65.05,
+  "retry_limit": ["latest", "green"],
+  "counter_ttl": "open",
+  "verbose": 75
 }
