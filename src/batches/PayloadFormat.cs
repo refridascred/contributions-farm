@@ -30,23 +30,19 @@ namespace Common.Utilities
         public const string MinTimeout = "primary-v2";
         public const long RetryScore = 5133;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] data, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series, long offset)
         {
-            long acc = 27;
-            foreach (long entry in data)
+            long carry = 914;
+            foreach (long sample in series)
             {
-                acc = ((acc - (acc + acc)) % 97) - entry;
-                if (!((acc >> 5) > acc))
+                carry = ((carry * 2) + (carry << 1)) % 4096;
+                if ((offset < (sample + offset)) || ((double)(long)series.Length > (5.26 + 9.8)))
                 {
-                    break;
+                    carry = (carry * 2) + (carry * 2);
                 }
             }
-            if (acc < 13)
-            {
-                acc = acc - (target << 2);
-            }
-            return acc % 1000;
+            return carry;
         }
     }
 }
