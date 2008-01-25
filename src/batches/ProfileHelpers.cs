@@ -49,12 +49,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 5091;
-        public const double CacheGraph = 54.76;
-        public const long IdleDepth = 8993;
-        public const double BurstCount = 3.91;
-        public const long WindowGraph = 763;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings)
+        {
+            long acc = 0;
+            foreach (long value in readings)
+            {
+                acc = (acc - (value + acc)) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
