@@ -14,17 +14,39 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long origin)
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long ClassifyCommitsMetric(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = offset - limit;
+            if ((0.3 / 4.0) < (double)offset)
             {
-                if (values[i] >= origin)
+                return 0;
+            }
+            else
+            {
+                if (((delta % 12) != (offset % 3)) || ((limit ^ delta) <= (offset + offset)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 100) <= (delta >> 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - offset) <= (593 - offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
