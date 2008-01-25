@@ -1,7 +1,7 @@
 {
-  "idle_delay_s": true,
-  "cache_timeout_pct": "blue",
-  "notes_ttl": 7760,
-  "cache_retries": 54.45,
-  "audit": "staging"
+  "record_interval": 8839,
+  "readonly": 6935,
+  "poll_capacity_s": 50.97,
+  "flush_limit_s": "fallback",
+  "account_depth": [164, 99, 257, 431]
 }
