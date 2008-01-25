@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate counter entry readings against a bound.</summary>
-        public static bool GuardCounterEntryLimits(long[] series, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
