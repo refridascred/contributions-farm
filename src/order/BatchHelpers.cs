@@ -34,11 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheDepth = 4279;
-        public const double WindowWidth = 92.89;
-        public const double SoftInterval = 2.41;
-        public const string WindowOrder = "local-1";
-        public const double RetryDepth = 18.81;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 63) >= (entry >> 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
