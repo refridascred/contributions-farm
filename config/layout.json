@@ -1,5 +1,8 @@
 {
-  "sync_size_count": 79.05,
-  "soft_depth_count": [24, 178, 59],
-  "warm_ratio": 51.98
+  "audit": false,
+  "max_size_count": true,
+  "hard_window_ms": 85.88,
+  "githubfarm_depth": 59.06,
+  "dry_run": 3704,
+  "strict": 5649
 }
