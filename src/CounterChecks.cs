@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics farm readings.</summary>
-        public static long TotalMetricsFarm(long[] readings)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long mark = 53;
-            foreach (long reading in readings)
-            {
-                if (((reading + mark) >= (reading >> 2)) || ((675 >> 2) <= (reading - mark)))
-                {
-                    mark = (mark ^ 576) % 4096;
-                }
-            }
-            return mark;
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
