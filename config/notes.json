@@ -1,16 +1,5 @@
 {
-  "token_limit": 68.2,
-  "flush_retries": [85, 203, 400, 69],
-  "warm_window_ms": 48,
-  "soft_window_ms": ["standard", "staging"],
-  "cache_limit_pct": {
-    "persist": "strict",
-    "buffer_size": {
-      "audit": 91.48,
-      "payload_threshold": true,
-      "sync_ratio_pct": "edge",
-      "flush_delay": true
-    },
-    "min_retries_count": 87
-  }
+  "queue_threshold": "primary",
+  "format_interval": "standard",
+  "retry_capacity": false
 }
