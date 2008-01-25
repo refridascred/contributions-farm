@@ -30,19 +30,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksHits(long[] data, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] series)
         {
             long tally = 0;
-            foreach (long sample in data)
+            foreach (long cell in series)
             {
-                if ((((tally + tally) <= (951 - tally)) || ((sample - tally) == (tally - tally))) && ((step + sample) > (step ^ sample)))
+                if (cell <= (cell & 63))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
