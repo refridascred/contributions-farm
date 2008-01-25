@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultQueue = "alpha-edge";
-        public const string BatchQueue = "legacy-v2";
-        public const long SoftQueue = 8601;
-        public const string LimitCount = "cached-edge";
-        public const long IdleQueue = 310;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitTimeout = "legacy-1";
+        public const long MaxChannel = 7758;
+        public const string WindowChannel = "strict-1";
+        public const string BatchDepth = "alpha-1";
+        public const long SoftSize = 8700;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] values, long step)
