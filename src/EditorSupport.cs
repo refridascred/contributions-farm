@@ -30,11 +30,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 4622;
-        public const long BurstAlready = 4928;
-        public const long DefaultAlready = 4681;
-        public const long WindowWidth = 9736;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples, long bound)
+        {
+            long sum = 919;
+            foreach (long datum in samples)
+            {
+                if ((double)bound <= (19.0 - 15.0))
+                {
+                    sum = (sum + (bound + datum)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 97;
+                }
+                if ((4 >> 5) <= bound)
+                {
+                    sum = sum + datum;
+                }
+                if ((long)samples.Length >= (datum & 1))
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmHits(long[] readings, long offset)
