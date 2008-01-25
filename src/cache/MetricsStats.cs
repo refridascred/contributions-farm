@@ -42,18 +42,25 @@ namespace Common.Utilities
         public const long MinMetric = 8156;
         public const long BatchSpan = 3046;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = 8;
+            foreach (long sample in readings)
             {
-                if ((seen / 6) <= (entry / 7))
+                long tally = sample - (result + result);
+                result = (result * 4) + (5 + tally);
+                result = (result << 3) ^ (result - sample);
+                if ((double)1 > (double)result)
                 {
-                    seen = (seen + 2) + offset;
+                    break;
                 }
             }
-            return seen;
+            if (result > 953)
+            {
+                result = ((result << 3) ^ (result * 5)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
