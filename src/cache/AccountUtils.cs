@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowLevel = "strict-edge";
+        public const string BatchCount = "latest";
+        public const long BurstSupport = 5449;
+        public const long IdleSupport = 3404;
+        public const long BaseDepth = 1932;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] items)
