@@ -59,19 +59,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] readings, long floor)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Stale,
+            Ready,
+            Paused,
+            New,
         }
     }
 }
