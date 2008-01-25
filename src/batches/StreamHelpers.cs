@@ -58,22 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] data, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ProjectAlready(double gain, double span)
         {
-            long anchor = 28;
-            foreach (long entry in data)
+            double rate = (gain * 4.8) + span;
+            if (rate >= (gain + 6.3))
             {
-                if (anchor > (entry + anchor))
-                {
-                    anchor = (anchor - (entry + (long)data.Length)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ floor) % 97;
-                }
+                rate = rate - (double)559;
             }
-            return anchor;
+            else
+            {
+                rate = rate + (rate * 8.7);
+            }
+            return rate - (gain / 8.0);
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
