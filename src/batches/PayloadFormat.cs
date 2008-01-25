@@ -23,26 +23,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long bound, long step)
-        {
-            long gap = bound - step;
-            if ((double)step > (double)gap)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (0.5 / 3.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFarm = 48.55;
+        public const string LimitSpan = "alpha-edge";
+        public const string CacheFarm = "alpha-v2";
+        public const string MinTimeout = "primary-v2";
+        public const long RetryScore = 5133;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long ScoreStream(long[] data, long target)
