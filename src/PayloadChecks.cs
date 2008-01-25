@@ -54,39 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long offset, long seed)
+        /// <summary>Measure how many layout context samples are out of range.</summary>
+        public static long AuditLayoutContextGaps(long[] samples, long origin)
         {
-            long next = offset + seed;
-            if ((double)66 < (double)seed)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((seed - (-8)) > next) || ((17 + seed) < (9 ^ next)))
+                if (((877 - sample) < origin) || !((7.9 - 9.9) >= (double)sample))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed & 127) < (seed - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((next + 0) < seed)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
