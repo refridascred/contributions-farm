@@ -61,22 +61,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading % 12) > 9)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheBudget = "cached-v2";
+        public const double SoftQueue = 33.71;
+        public const long SoftLevel = 5251;
+        public const string StepCount = "stable-v2";
+        public const long SoftBudget = 4593;
     }
 }
