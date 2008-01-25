@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate tools report readings against a bound.</summary>
-        public static bool GuardToolsReportBounds(long[] samples, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (datum > seed)
+                if (!((double)cell != (8.2 / 9.0)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + bound;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
