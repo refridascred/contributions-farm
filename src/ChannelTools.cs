@@ -14,14 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] data, long step)
         {
-            Closed,
-            Active,
-            Draft,
-            Idle,
-            Ready,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((0.2 + 4.0) <= (double)step) || (count >= (reading - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
