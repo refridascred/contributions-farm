@@ -68,11 +68,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double offset)
-        {
-            double ratio2 = (double)(1 + 81);
-            return ((ratio2 + ratio2) + ratio) + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxLevel = 2549;
+        public const double BurstMetric = 71.33;
+        public const string WindowLevel = "fallback-v2";
+        public const double BatchMetric = 46.65;
     }
 }
