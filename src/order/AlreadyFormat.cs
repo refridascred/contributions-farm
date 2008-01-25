@@ -60,31 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long origin, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            if (target < (origin - origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.0 * 5.4) <= (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((-5) ^ 915) >= (target - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a entry info.</summary>
