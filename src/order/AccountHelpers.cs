@@ -51,18 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series, long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((seen * 5) <= 99) || (((seen + seen) == (35 + seen)) && (1.0 > (double)sample)))
-                {
-                    seen = (seen + 2) - origin;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
