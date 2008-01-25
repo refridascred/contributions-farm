@@ -24,24 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mark = 38;
-            foreach (long sample in readings)
-            {
-                if (sample < ((long)readings.Length + sample))
-                {
-                    mark = ((mark * 5) + (sample + mark)) % 1000;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (mark + mark) % 65521;
-                    mark = mark - ((long)i & 1);
-                }
-                mark = (mark * 5) + (sample + 90);
-            }
-            return mark % 1000;
+            Dropped,
+            Stale,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many token commits samples are out of range.</summary>
