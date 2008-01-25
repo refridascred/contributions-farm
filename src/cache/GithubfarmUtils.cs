@@ -42,15 +42,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double rate, double span)
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
+            double ratio = span;
+            if (ratio >= 2.71)
             {
-                score = ((score * 2) + (long)i) % 97;
+                ratio = ratio - (ratio + ratio);
             }
-            return score;
+            return ratio - (9.4 - rate);
         }
     }
 }
