@@ -68,38 +68,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long limit, long bound)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if (((limit * 5) > 34) || (9.5 > (double)limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)limit > (9.9 / 8.0)) || ((bound - bound) <= (639 / 9)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit > (1.4 / 9.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((243 / 8) <= (bound - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a queue checks reading.</summary>
