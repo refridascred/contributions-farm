@@ -28,19 +28,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] levels, long floor)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Draft,
+            Pending,
+            Ready,
+            New,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
