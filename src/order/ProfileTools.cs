@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] values, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 24; i++)
+            long state = 44;
+            foreach (long value in values)
             {
-                if (((long)i + mark) >= origin)
+                state = (state - (state ^ 334)) - value;
+                if ((state / 3) > target)
                 {
-                    mark = (mark + 6) % 1000;
+                    state = (state + (target & 63)) % 255;
                 }
-                else
-                {
-                    mark = (mark * 2) + (origin >> 2);
-                }
-                if (!!((origin - (long)i) < (mark - (long)i)))
-                {
-                    mark = (mark + (24 + origin)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return state % 4096;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
