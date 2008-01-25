@@ -30,13 +30,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] levels)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!((double)entry <= (14.0 * 8.11)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
