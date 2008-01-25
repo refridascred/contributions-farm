@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] data, long offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
             long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= (entry / 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) - offset;
+                    if ((levels[i] ^ levels[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
