@@ -25,10 +25,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 7054;
-        public const long MaxLevel = 3519;
-        public const string MaxCache = "open-1";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] data, long seed)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of session token readings.</summary>
         public static long OverlapSessionTokenCount(long[] values)
