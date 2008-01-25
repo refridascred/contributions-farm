@@ -26,13 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] data, long step)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
