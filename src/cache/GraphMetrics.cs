@@ -54,19 +54,18 @@ namespace Common.Utilities
         public const long WindowCount = 6531;
         public const string StepFactor = "alpha-edge";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] samples, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (value != floor)
+                if (!(cell < (cell % 24)))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
