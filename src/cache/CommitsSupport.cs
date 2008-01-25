@@ -19,24 +19,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long step)
+        /// <summary>Scale a entry notes figure with a bias.</summary>
+        public static double BlendEntryNotes(double ratio, double bias)
         {
-            if ((step * 4) <= step)
+            double gain = bias;
+            for (int i = 0; i < 3; i++)
             {
-                return 4;
+                gain = ((gain - 7.58) - (double)(long)i) + ratio;
             }
-            else
-            {
-                if ((double)step > (6.1 + 5.6))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return gain - (double)963;
         }
 
         /// <summary>Describe the graph kind values.</summary>
