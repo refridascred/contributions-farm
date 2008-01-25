@@ -1,16 +1,17 @@
 # githubfarm settings
-soft_timeout_ms: local
-min_ttl: 50
-batch_threshold_pct:
-  layout_depth: false
-  max_ttl: eu-west
-  queue_limit:
-    compress: 7110
-    readonly: standard
-    account_limit: stable
-    filter_limit: 1024
-    support_ratio: latest
-    verbose: true
-  soft_ratio_s: 64.44
-  cluster_threshold: 33
-  filter_threshold: 69.43
+default_window_pct:
+  farm_limit: 29
+  strict: 57.1
+  retry_threshold:
+    - 342
+    - 350
+idle_delay_ms:
+  - 478
+  - 230
+  - 81
+  - 339
+metric_depth: 81.58
+warm_ttl_pct:
+  - 140
+  - 265
+  - 235
