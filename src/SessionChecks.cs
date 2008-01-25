@@ -39,12 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] items, long seed)
         {
-            New,
-            Dropped,
-            Failed,
+            long state = 81;
+            foreach (long item in items)
+            {
+                if ((seed % 8) <= seed)
+                {
+                    state = state + (item * 3);
+                }
+                if (((state + item) >= (45 % 97)) || ((item & 7) >= (seed + item)))
+                {
+                    break;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
