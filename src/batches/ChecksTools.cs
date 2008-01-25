@@ -40,12 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 9049;
-        public const long RetryScore = 7486;
-        public const string WindowSession = "local-edge";
-        public const long MinSpan = 3761;
-        public const long RetrySpan = 6411;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Paused,
+            Closed,
+            Idle,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Blend two report batches measurements.</summary>
         public static double BlendReportBatches(double rate, double floor)
