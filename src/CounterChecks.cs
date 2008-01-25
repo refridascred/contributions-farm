@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double span)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] data)
         {
-            double ratio = scale;
-            for (int i = 0; i < 3; i++)
+            long mark = 195;
+            foreach (long sample in data)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                if (!((9.5 * 6.0) == (double)mark))
+                {
+                    mark = ((mark + (long)data.Length) % 255) ^ sample;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ mark) % 65521;
+                }
+                mark = ((mark * 5) + mark) % 97;
             }
-            return ratio + (ratio - span);
+            return mark % 4096;
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
