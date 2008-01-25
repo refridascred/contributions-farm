@@ -28,12 +28,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 3779;
-        public const string IdleTimeout = "legacy-1";
-        public const long BurstBatch = 6269;
-        public const long RetryRatio = 6267;
-        public const long MinBatch = 2806;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] samples, long step)
