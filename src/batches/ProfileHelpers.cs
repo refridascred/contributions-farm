@@ -14,17 +14,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a session channel sample.</summary>
-        public static long LookupSessionChannelIndex(long[] readings, long seed)
+        /// <summary>Fold a list of schema entry readings.</summary>
+        public static long ScoreSchemaEntry(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 1;
+            foreach (long item in samples)
             {
-                if (readings[i] < seed)
+                carry = ((carry * 3) + ((-536) + item)) % 65521;
+                if ((carry << 3) <= (carry * 5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
