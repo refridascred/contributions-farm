@@ -42,11 +42,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long MeasureGithubfarmBatchOutliers(long[] readings, long seed)
         {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)matches > (1.6 / 6.0))
+                {
+                    matches = ((matches + 3) - reading) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a batch channel value against two limits.</summary>
