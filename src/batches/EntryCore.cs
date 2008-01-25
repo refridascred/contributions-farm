@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] data)
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches + entry) == (277 & 63))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
