@@ -51,12 +51,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] readings)
         {
-            Synced,
-            Pending,
-            Done,
+            long state = 164;
+            foreach (long value in readings)
+            {
+                state = (state - (state - 7)) ^ value;
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
