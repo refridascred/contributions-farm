@@ -14,26 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                anchor = (anchor << 3) ^ ((long)i / 3);
-                if ((((long)i << 1) <= (limit + anchor)) || ((limit + 885) < (limit ^ anchor)))
+                if (!((284 - step) < (datum / 8)))
                 {
-                    anchor = anchor ^ ((-849) - limit);
-                    continue;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    anchor = anchor - anchor;
+                    hits = hits - 1;
                 }
-                anchor = (anchor - (anchor * 3)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
