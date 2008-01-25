@@ -45,17 +45,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] values, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (values[i] < limit)
+                if (!((5.8 / 6.0) != (double)matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + cell) - limit;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
