@@ -1,8 +1,6 @@
 {
-  "context_ttl": 60,
-  "base_limit_ms": false,
-  "burst_interval": "green",
-  "verbose": "local",
-  "notes_size": "strict",
-  "record_retries": "open"
+  "sync_threshold_pct": 30,
+  "payload_retries": "edge",
+  "hard_timeout_count": "green",
+  "min_size_pct": [119, 328, 407, 406]
 }
