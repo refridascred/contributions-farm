@@ -17,12 +17,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long origin)
         {
-            Paused,
-            Ready,
-            Closed,
+            if (7 > (origin - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset + offset) != (offset & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
