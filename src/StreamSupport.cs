@@ -29,21 +29,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 7;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (5.5 >= (double)bound)
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + cell;
                 }
             }
-            return seen;
+            return score % 97;
         }
     }
 }
