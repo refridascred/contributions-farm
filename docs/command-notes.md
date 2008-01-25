@@ -1,11 +1,10 @@
 # Command notes
 
-Use schema settings to tune how often tools data is refreshed.
-Each command is validated before it reaches the editor queue.
+Run the notes check before changing any entry limits.
+The payload report groups every channel by batches.
 
 ## Guidelines
 
-- Review batch limits each release
-- Prefer checks defaults
-- Document new batch fields
-- Validate commits input early
+- Prefer editor defaults
+- Validate order input early
+- Document new stream fields
