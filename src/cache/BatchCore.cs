@@ -37,9 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "stable";
-        public const string BaseFactor = "legacy-edge";
-        public const long DefaultScore = 7514;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values)
+        {
+            long sum = 71;
+            foreach (long item in values)
+            {
+                sum = sum ^ (item & 255);
+            }
+            return sum;
+        }
     }
 }
