@@ -1,6 +1,6 @@
 # support settings
-flush_threshold: 88.7
-verbose: cached
-min_interval_count: 1024
-persist: primary
-soft_ratio_ms: 60
+default_threshold_ms: 70.86
+enabled: 9203
+batch_window: false
+idle_ttl_count: 50
+flush_threshold_ms: false
