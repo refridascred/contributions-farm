@@ -1,10 +1,9 @@
 # githubfarm settings
-strict:
-  - edge
-  - stable
-  - edge
-min_ttl_count: eu-west
-soft_capacity_s:
-  - fallback
-  - blue
+tools_capacity: stable
+support_delay: true
+sync_threshold_count:
   - cached
+  - edge
+  - blue
+commits_interval: 100
+flush_size_pct: 85
