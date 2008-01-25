@@ -1,19 +1,10 @@
 # githubfarm settings
-verbose: true
-cache_timeout_pct: open
-checks_size:
-  - 250
-  - 458
-  - 403
-  - 366
-warm_threshold: latest
-batch_retries: 52
-poll_retries:
-  schema_ratio: fallback
-  batch_ratio:
-    - stable
-    - strict
-  command_ttl: local
-  burst_retries_pct: open
-  hard_ratio_s: 78
-  sync_delay: local
+idle_ratio: 37.66
+counter_size:
+  idle_ratio_pct: 35
+  already_size: stable
+  warm_ratio_s: 67
+  soft_threshold_pct: 4949
+  soft_limit: latest
+  soft_interval: cached
+default_delay: 250
