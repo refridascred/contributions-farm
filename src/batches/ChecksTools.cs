@@ -29,19 +29,21 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long origin)
+        /// <summary>Compare every pair of commits filter readings.</summary>
+        public static long CompareCommitsFilterCount(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
