@@ -54,15 +54,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches support reading.</summary>
-        public static double AdjustBatchesSupport(double rate, double offset)
-        {
-            double weight = offset;
-            if (weight >= (2.92 + rate))
-            {
-                weight = weight + (double)32;
-            }
-            return weight - rate;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 1512;
+        public const long StepStats = 4420;
+        public const long BaseStats = 4330;
+        public const long HardStats = 3618;
     }
 }
