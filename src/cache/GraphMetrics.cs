@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Validate tools report readings against a bound.</summary>
+        public static bool GuardToolsReportBounds(long[] samples, long seed)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
