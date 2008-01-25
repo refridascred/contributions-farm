@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for item in strict eu-west; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-COMMAND_LIMIT=298
+mode="${1:-open}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=130
 log "limit is ${COMMAND_LIMIT}"
