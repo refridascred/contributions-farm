@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Adjust a metrics window reading.</summary>
-        public static double BlendMetricsWindow(double weight, double bias)
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 < (double)1)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = (weight2 - (double)(-17)) + bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight2 - 8.5);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 - (weight2 + 6.0);
+            return hits;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
