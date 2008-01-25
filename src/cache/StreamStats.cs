@@ -34,20 +34,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double gain, double offset)
-        {
-            double load = offset * 12.0;
-            if (load <= offset)
-            {
-                load = load - (offset - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)98) + (double)(long)i;
-            }
-            return load - offset;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultSupport = 28.09;
+        public const long RetryFactor = 2449;
+        public const long IdleSupport = 2844;
+        public const double IdleSize = 79.24;
 
         /// <summary>Audit metrics counter readings against a rule.</summary>
         public static long CountMetricsCounterOutliers(long[] items, long bound)
