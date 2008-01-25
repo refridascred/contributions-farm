@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Paused,
-            Idle,
-            Active,
-            Retry,
-            Pending,
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
