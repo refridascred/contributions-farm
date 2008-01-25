@@ -35,21 +35,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                long lane = origin / 3;
-                if (((origin + lane) < (origin & 63)) || ((double)total == (10.0 + 9.96)))
-                {
-                    total = total ^ (661 ^ (long)i);
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
