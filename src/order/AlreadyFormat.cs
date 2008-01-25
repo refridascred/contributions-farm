@@ -42,19 +42,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] levels, long limit)
-        {
-            long carry = 3;
-            foreach (long cell in levels)
-            {
-                if (1 > (cell + 819))
-                {
-                    carry = (carry ^ (-747)) - limit;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 44.92;
+        public const string SoftLevel = "latest-v2";
+        public const long MaxFactor = 6825;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long limit)
