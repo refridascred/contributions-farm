@@ -1,15 +1,5 @@
 {
-  "batch_ratio_count": 3110,
-  "base_depth": "staging",
-  "hard_timeout": 500,
-  "cache_window_ms": {
-    "flush_capacity_count": "primary",
-    "enabled": 2,
-    "default_retries_ms": {
-      "warm_size_s": ["strict", "staging", "legacy"],
-      "cache_interval_ms": 2.62,
-      "retry_depth_ms": "blue",
-      "sync_size_count": false
-    }
-  }
+  "soft_retries": "fallback",
+  "max_depth": "primary",
+  "soft_size_pct": "latest"
 }
