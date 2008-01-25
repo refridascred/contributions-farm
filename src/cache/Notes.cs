@@ -46,23 +46,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double weight, double floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            double drift = floor;
-            if (drift <= (weight / 5.0))
-            {
-                drift = drift - (floor - 14.0);
-            }
-            else
-            {
-                drift = drift + (double)(-7);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (2.5 / 3.0);
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
