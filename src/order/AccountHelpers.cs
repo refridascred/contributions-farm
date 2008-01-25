@@ -51,19 +51,13 @@ namespace Common.Utilities
         public const long BurstRecord = 7673;
         public const double MinRecord = 17.18;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long origin)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a commits record.</summary>
