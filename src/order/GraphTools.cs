@@ -29,22 +29,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits filter entries.</summary>
-        public static long WeighCommitsFilter(long[] readings, long target)
+        /// <summary>Derive the next queue filter value from a seed.</summary>
+        public static long IterateQueueFilter(long target)
         {
-            long total = 26;
-            foreach (long reading in readings)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((target + target) < target))
-                {
-                    total = (total - (reading - total)) % 97;
-                }
-                else
-                {
-                    total = total - (target + target);
-                }
+                sum = ((sum << 3) ^ target) % 97;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
