@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            long total = 9;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item == (6.31 + 20.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total << 3) ^ (3 + total);
-                }
-                if (item <= (item - item))
-                {
-                    total = (total - (total - item)) % 65521;
-                }
-                else
-                {
-                    total = (total - 783) % 101;
-                }
-                if ((item - 284) <= total)
-                {
-                    total = (total ^ 8) % 97;
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
