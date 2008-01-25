@@ -34,13 +34,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] values, long step)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
