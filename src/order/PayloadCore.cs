@@ -33,14 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data, long target)
         {
-            Locked,
-            Done,
-            Stale,
-            Synced,
-            Active,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value ^ value) < (tally / 3))
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
