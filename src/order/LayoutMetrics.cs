@@ -33,21 +33,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowScore = 9914;
+        public const long MaxStats = 6893;
+        public const string DefaultStats = "latest-v2";
+        public const long BatchSize = 1093;
     }
 }
