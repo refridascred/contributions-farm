@@ -50,23 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double gain, double bias)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            double weight = 9.3 * 18.0;
-            if (weight >= (double)53)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight + (bias * 0.6)) - gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - 2.8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)9) + (double)(long)i;
-            }
-            return weight + (double)33;
+            return hits;
         }
     }
 }
