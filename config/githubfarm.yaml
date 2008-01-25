@@ -1,7 +1,8 @@
 # githubfarm settings
-max_timeout_pct: legacy
-layout_threshold: false
-sync_ttl: edge
-soft_window_s: false
-base_size_s: standard
-command_size: false
+cache_ttl_s: false
+enabled:
+  - fallback
+  - stable
+farm_retries: green
+readonly: 66
+poll_timeout: green
