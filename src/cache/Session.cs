@@ -33,12 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Look up the position of a context record sample.</summary>
+        public static long LocateContextRecordIndex(long[] levels, long step)
         {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the buffer class values.</summary>
