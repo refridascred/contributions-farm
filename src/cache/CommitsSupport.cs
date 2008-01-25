@@ -39,19 +39,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double span)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double rate = (8.81 - span) / 8.0;
+            if (rate < (rate - span))
             {
-                if (cell < seed)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate + (double)3) + scale;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (double)806) + (double)(long)i;
+            }
+            return rate - span;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
