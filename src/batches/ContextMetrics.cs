@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] levels, long bound)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long limit)
         {
-            long total = 999;
-            foreach (long datum in levels)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (53 <= (total * 2))
-                {
-                    total = (((total + (0 % 10)) % 4096) ^ datum) - bound;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Hold a context entry.</summary>
