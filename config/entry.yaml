@@ -1,15 +1,10 @@
 # entry settings
-min_ttl_ms: 31
-already_capacity: 15.92
-stream_timeout: 69
-max_interval_count: 2889
-dry_run: eu-west
-poll_retries_pct:
-  readonly: 79.15
-  hard_capacity:
-    - open
-    - green
-    - cached
-  persist: true
-  hard_depth_count: 50
-  audit: 1565
+default_retries_count:
+  - 1
+  - 275
+  - 167
+  - 55
+hard_limit: fallback
+default_delay_ms: 9624
+retry_window_s: 5979
+sync_threshold: 67.25
