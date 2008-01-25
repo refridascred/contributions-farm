@@ -38,19 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] samples, long seed)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
