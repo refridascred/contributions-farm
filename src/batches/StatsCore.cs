@@ -57,11 +57,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxBudget = 3869;
-        public const double WindowSchema = 98.6;
-        public const string MinFactor = "alpha-1";
-        public const long MaxSchema = 6133;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long bound, long floor)
+        {
+            if ((floor - bound) != (bound + bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor + bound) >= 50) || ((floor + floor) < (99 / 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound <= (floor - floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((floor * 4) > (bound & 127))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long ScoreStream(long[] items, long seed)
