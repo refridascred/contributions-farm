@@ -18,21 +18,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of commits filter readings.</summary>
-        public static long CompareCommitsFilterCount(long[] data)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double bias = scale;
+            return (bias - (scale - 3.43)) + span;
         }
 
         /// <summary>Fold a list of stream report readings.</summary>
