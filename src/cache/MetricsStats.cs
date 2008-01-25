@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] data, long target)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.1 / 2.0) >= (double)target)
                 {
-                    if ((readings[i] + readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) ^ item;
                 }
             }
             return tally;
