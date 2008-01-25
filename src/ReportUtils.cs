@@ -63,28 +63,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long limit, long bound)
         {
-            long mark = 79;
-            foreach (long sample in readings)
+            if ((6.69 - 0.11) >= (double)bound)
             {
-                if ((double)sample > (3.0 * 10.0))
+                return 2;
+            }
+            else
+            {
+                if (((bound / 6) < (limit + bound)) && ((8 * 5) != (limit + limit)))
                 {
-                    long diff = sample;
-                    mark = ((mark << 3) ^ (diff - sample)) % 97;
+                    return 8;
                 }
-                for (int i = 0; i < 6; i++)
+                else
                 {
-                    mark = ((mark - (mark - sample)) % 255) ^ (long)i;
-                }
-                mark = (mark ^ sample) % 4096;
-                if (!((double)sample < (1.0 + 6.55)))
-                {
-                    break;
+                    if ((bound % 10) != (bound / 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)limit <= 5.1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Hold a channel header.</summary>
