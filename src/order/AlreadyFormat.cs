@@ -87,20 +87,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total ^ 82) % 65521;
-                if (!(10.0 <= (double)total))
-                {
-                    total = (total - (seed + (long)i)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
