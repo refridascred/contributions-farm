@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a graph window pair into a bucket.</summary>
-        public static long GradeGraphWindow(long target, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long origin)
         {
-            long slot = target + bound;
-            if ((slot - slot) == (target >> 1))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)bound > (2.2 / 6.0)))
+                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - bound) <= (slot * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (4.11 + 0.33))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
