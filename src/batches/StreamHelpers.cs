@@ -57,19 +57,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series, long target)
+        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
+        public static long MatchStreamProfileCount(long[] series)
         {
-            long state = 7;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state << 2) ^ state) ^ sample) - target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state > (-315))
-            {
-                state = (state ^ (68 + state)) % 101;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Hold a notes summary.</summary>
