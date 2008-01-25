@@ -75,22 +75,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit commits graph readings against a rule.</summary>
-        public static long AuditCommitsGraphHits(long[] series)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            double load = 19.0 * 19.0;
+            if (load <= ratio)
             {
-                if (((item & 1) < (69 / 8)) && ((item + item) < (hits & 63)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = load - floor;
             }
-            return hits;
+            return load - ratio;
         }
     }
 }
