@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long result = 8;
-            foreach (long reading in values)
-            {
-                if ((result * 5) != (975 - reading))
-                {
-                    result = ((result << 2) ^ reading) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result ^ reading);
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
