@@ -1,6 +1,21 @@
 {
-  "flush_ttl_ms": "standard",
-  "enabled": "fallback",
-  "idle_timeout_count": ["eu-west", "local", "strict", "cached"],
-  "cache_threshold": "fallback"
+  "max_threshold": 100,
+  "enabled": 62,
+  "idle_timeout_ms": {
+    "hard_limit_count": true,
+    "retry_ttl_ms": ["primary", "strict", "green", "local"],
+    "githubfarm_size": 8117
+  },
+  "retry_ratio_count": {
+    "counter_timeout": ["fallback", "strict", "cached", "open"],
+    "readonly": {
+      "profile_retries": false,
+      "batch_retries": 1024,
+      "poll_timeout_s": "green",
+      "min_delay_s": "standard"
+    },
+    "buffer_size": true
+  },
+  "base_depth": 100,
+  "default_capacity_pct": ["edge", "legacy", "green", "eu-west"]
 }
