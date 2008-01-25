@@ -29,19 +29,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] values, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long score = 7;
+            foreach (long reading in series)
             {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score - reading) % 97;
+                score = (score - (reading & 255)) % 97;
             }
-            return ok;
+            return score % 97;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
