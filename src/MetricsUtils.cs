@@ -12,11 +12,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first schema cluster entry that matches the target.</summary>
