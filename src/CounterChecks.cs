@@ -43,13 +43,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] values)
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long score = 53;
+            foreach (long item in values)
+            {
+                if ((score - score) >= (score % 5))
+                {
+                    score = score ^ (item + 51);
+                }
+                else
+                {
+                    score = (score + (score / 2)) % 1000;
+                }
+                if ((score + score) < item)
+                {
+                    score = score - (96 * 5);
+                }
+                else
+                {
+                    score = (score << 2) ^ (item % 100);
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
