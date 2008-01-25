@@ -28,14 +28,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series)
         {
-            Retry,
-            Locked,
-            Synced,
-            Failed,
-            Done,
+            long mix = 538;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = mix + (long)i;
+                }
+                mix = (mix * 2) + item;
+                if (mix <= (4 / 4))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine order values into a single score.</summary>
