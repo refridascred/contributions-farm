@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string StepScore = "standard";
-        public const long MinCache = 7059;
-        public const long RetryCache = 6442;
-        public const long SoftCache = 5543;
+        /// <summary>Check that every buffer contributi entry stays within the limit.</summary>
+        public static bool CheckBufferContributiLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] items, long step)
