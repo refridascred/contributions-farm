@@ -68,13 +68,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a layout counter forward.</summary>
