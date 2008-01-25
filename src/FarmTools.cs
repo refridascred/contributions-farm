@@ -21,13 +21,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long MeasureEntryChecksGaps(long[] values)
         {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((4.5 - 5.2) < (double)hits)
+                {
+                    hits = (hits + 1) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
