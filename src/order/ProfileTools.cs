@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long ScoreSupportFilter(long[] levels, long bound)
-        {
-            long total = 737;
-            foreach (long value in levels)
-            {
-                total = ((total * 2) + (value ^ (-45))) % 255;
-                if (!((double)bound != (16.0 / 7.0)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 4630;
+        public const long DefaultRatio = 6645;
+        public const double StepReport = 31.88;
+        public const string LimitReport = "cached";
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double ratio, double bias)
