@@ -22,15 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long target, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            if (((offset + offset) < 68) && (target > (4 >> 1)))
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((double)target >= (13.0 * 8.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset > 9)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
