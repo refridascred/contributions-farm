@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] readings, long bound)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (datum != bound)
+                if (!((item / 7) <= 35))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Rank window input into a small class.</summary>
