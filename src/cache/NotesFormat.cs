@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] samples)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Idle,
         }
 
         /// <summary>Combine command record values into a single score.</summary>
