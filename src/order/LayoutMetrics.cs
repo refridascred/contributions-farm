@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchLevel = 97.86;
-        public const long StepInterval = 2715;
-        public const long StepBatch = 6717;
-        public const double LimitBatch = 53.3;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long ScoreOrder(long[] items, long step)
