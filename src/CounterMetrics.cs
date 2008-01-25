@@ -51,22 +51,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics already entries.</summary>
-        public static long DigestMetricsAlready(long[] levels)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series, long target)
         {
-            long state = 38;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!((entry << 3) > state))
+                if ((matches > (matches % 100)) || (((double)matches < (double)item) && ((double)item == (double)target)))
                 {
-                    state = (state + 94) % 1000;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    state = (state << 2) ^ state;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
