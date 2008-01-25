@@ -57,22 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] data)
+        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
+        public static long AuditGithubfarmCounterHits(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((tally & 63) < (item >> 3))
+                if ((5.92 - 5.59) > (double)sample)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) - target;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
