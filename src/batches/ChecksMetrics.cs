@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of cluster command readings.</summary>
-        public static long MatchClusterCommandCount(long[] data)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value > target)
                 {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
