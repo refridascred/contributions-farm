@@ -1,4 +1,27 @@
 # githubfarm settings
-strict: true
-sync_threshold_s: 23
-compress: 45.9
+sync_capacity:
+  - 358
+  - 325
+  - 5
+default_interval_count: 49.16
+entry_depth:
+  - 403
+  - 50
+  - 117
+  - 128
+sync_ratio:
+  enabled: false
+  queue_size:
+    flush_interval_ms: false
+    burst_timeout_ms: 1024
+    report_timeout: eu-west
+    default_threshold: false
+    schema_size: true
+    verbose: 9373
+  max_threshold_pct:
+    - 219
+    - 324
+    - 324
+    - 367
+hard_interval_count: 87
+readonly: 15.27
