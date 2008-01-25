@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const double WindowWidth = 47.4;
         public const string MinAccount = "open-edge";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseFarm = "staging";
-        public const long MinFarm = 9161;
-        public const string StepWidth = "stable-edge";
-        public const long SoftSpan = 3516;
-        public const string HardFarm = "open-1";
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            New,
+            Synced,
+            Failed,
+        }
     }
 }
