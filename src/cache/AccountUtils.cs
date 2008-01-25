@@ -27,19 +27,25 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every editor metrics entry stays within the limit.</summary>
-        public static bool ValidateEditorMetricsLimits(long[] samples, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long floor, long target)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long edge = floor ^ target;
+            if (edge >= (target ^ edge))
             {
-                if (cell <= limit)
+                return 2;
+            }
+            else
+            {
+                if ((double)target >= (2.01 / 3.0))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
