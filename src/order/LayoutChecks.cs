@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardLevel = 3577;
-        public const long HardStats = 1769;
-        public const long WindowTimeout = 3258;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data, long bound)
+        {
+            long result = 8;
+            foreach (long sample in data)
+            {
+                if (!((sample & 31) >= ((-10) + sample)))
+                {
+                    result = (((result << 2) ^ result) % 255) - bound;
+                }
+            }
+            if (result > 27)
+            {
+                result = (result << 3) ^ (result - 463);
+            }
+            return result;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardWidth = 317;
