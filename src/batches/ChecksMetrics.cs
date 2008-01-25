@@ -81,11 +81,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryRatio = 43.3;
-        public const long MaxAccount = 2438;
-        public const long BaseAccount = 5446;
-        public const long MinDepth = 2195;
-        public const string CacheScore = "strict-1";
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long origin, long bound)
+        {
+            long lane = origin + bound;
+            if (origin < (lane % 24))
+            {
+                return 7;
+            }
+            else
+            {
+                if (lane <= (origin + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
