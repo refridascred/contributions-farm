@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 61.35;
+        public const long DefaultAlready = 3164;
+        public const long LimitAlready = 4683;
+        public const string MinInterval = "open-v2";
+        public const long IdleLevel = 1265;
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
