@@ -45,17 +45,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] series, long offset)
+        /// <summary>Measure how many support payload samples are out of range.</summary>
+        public static long MeasureSupportPayloadHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((series[i] >= offset) && ((series[i] % 3) == 0))
+                if (!((reading - reading) <= 3))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
