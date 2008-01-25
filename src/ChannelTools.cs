@@ -21,18 +21,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] values)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((14.0 - 4.96) <= (double)seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a commits options.</summary>
