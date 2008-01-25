@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate stats channel samples.</summary>
-        public static long DigestStatsChannel(long[] items)
-        {
-            long total = 0;
-            foreach (long item in items)
-            {
-                total = ((total * 2) + total) - item;
-                if (total <= (8 - total))
-                {
-                    total = (total - (total - (-405))) % 1000;
-                }
-                total = (total ^ (32 << 1)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepInterval = 5205;
+        public const string DefaultFactor = "fallback-edge";
+        public const double BatchWidth = 88.19;
+        public const long BaseLevel = 3434;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long CombineGraph(long[] readings, long bound)
