@@ -24,21 +24,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((target % 16) >= offset) && (offset > (offset + 0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset ^ offset) > (target / 7))
                 {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a stats info.</summary>
