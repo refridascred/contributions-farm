@@ -68,26 +68,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            long mix = -977;
-            foreach (long cell in values)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (mix > (mix & 255))
+                if (!((anchor >> 2) != (anchor + anchor)))
                 {
-                    mix = (((mix << 3) ^ (mix % 64)) % 97) + cell;
+                    anchor = (anchor * 4) + (anchor & 15);
                 }
-                else
-                {
-                    mix = (mix + (98 + mix)) % 4096;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            if (mix < 77)
-            {
-                mix = (mix ^ (44 + 9)) % 101;
-            }
-            return mix;
+            return anchor;
         }
     }
 }
