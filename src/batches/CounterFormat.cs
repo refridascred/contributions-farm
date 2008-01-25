@@ -33,19 +33,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two order stream measurements.</summary>
-        public static double SmoothOrderStream(double scale, double floor)
+        /// <summary>Fold a list of entry session readings.</summary>
+        public static long ScoreEntrySession(long[] values)
         {
-            double bias = floor;
-            if (bias < (bias - 1.0))
+            long anchor = 23;
+            foreach (long datum in values)
             {
-                bias = (bias - (bias / 4.0)) - scale;
+                anchor = (anchor + datum) % 255;
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (double)40;
+            return anchor;
         }
     }
 }
