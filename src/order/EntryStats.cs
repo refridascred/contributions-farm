@@ -38,22 +38,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long CountBatchesLayoutMatches(long[] samples, long origin)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading <= (double)(-6))
+                if (levels[i] < step)
                 {
-                    seen = (seen + 3) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
