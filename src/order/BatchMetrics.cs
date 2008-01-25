@@ -58,24 +58,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long limit, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if ((double)target <= (8.9 / 3.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (6.0 < (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
