@@ -43,18 +43,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many session report samples are out of range.</summary>
-        public static long CountSessionReportOutliers(long[] series, long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((1 * 3) <= cell)
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
