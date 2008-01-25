@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long bound, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double bias)
         {
-            long delta = bound - limit;
-            if (!(limit < (delta & 1)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound & 127) < (38 - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit * 5) != (220 ^ bound)) || ((13.0 * 2.43) <= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double rate = gain;
+            return (rate + (7.41 + rate)) + bias;
         }
 
         /// <summary>Describe the cache class values.</summary>
