@@ -55,11 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            Retry,
+            Stale,
+            Draft,
         }
     }
 }
