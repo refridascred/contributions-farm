@@ -1,9 +1,5 @@
 {
-  "sync_delay_s": {
-    "poll_depth_pct": 67.86,
-    "audit": 8,
-    "strict": 38.25
-  },
-  "persist": ["primary", "standard", "stable"],
-  "command_retries": false
+  "soft_ttl": "stable",
+  "hard_limit_s": 100,
+  "warm_ratio_ms": 1507
 }
