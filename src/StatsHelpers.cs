@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long step, long floor)
         {
-            Locked,
-            Active,
-            Pending,
+            long prev = step ^ floor;
+            if (prev >= ((-690) + prev))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((614 >> 2) < (floor << 3)) || (step < (-355)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step > 9.42)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (13.0 <= (double)floor)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
