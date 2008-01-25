@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long score = 89;
+            foreach (long cell in items)
             {
-                if (!(matches <= (value + matches)))
+                if (!((double)score >= (19.0 - 8.3)))
                 {
-                    matches = matches + 2;
+                    score = ((score - (cell << 1)) % 1000) - origin;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (score - cell)) % 1000;
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
