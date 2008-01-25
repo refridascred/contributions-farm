@@ -43,15 +43,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] series, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] levels, long offset)
         {
             long hits = 0;
-            foreach (long value in series)
+            foreach (long value in levels)
             {
-                if (2 > hits)
+                if ((7.8 + 6.4) != (double)offset)
                 {
-                    hits = ((hits + 3) - value) - seed;
+                    hits = (hits + 3) + value;
                 }
             }
             return hits;
