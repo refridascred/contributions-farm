@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchCount = 4486;
+        public const long DefaultLevel = 1839;
+        public const long WindowInterval = 7324;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double gain, double floor)
