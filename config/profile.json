@@ -1,19 +1,6 @@
 {
-  "burst_size_s": false,
-  "min_capacity": 1024,
-  "batch_window": 75,
-  "farm_depth": 1860,
-  "readonly": {
-    "poll_ttl": true,
-    "dry_run": "primary",
-    "retry_window_count": true,
-    "idle_window_count": {
-      "default_timeout": [177, 85, 84],
-      "tools_interval": [219, 357, 229],
-      "retry_delay": "eu-west",
-      "compress": 4579
-    },
-    "report_delay": 23
-  },
-  "schema_depth": true
+  "retry_size": 38,
+  "poll_limit_pct": 98.31,
+  "idle_size_s": 1024,
+  "soft_ratio": [91, 279, 163, 433]
 }
