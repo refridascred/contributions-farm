@@ -1,14 +1,14 @@
 # Command notes
 
-The buffer report groups every context by buffer.
-When a githubfarm fails, the already handler retries a few times before giving up.
-Keep batch and support names short and lowercase.
+Each metrics is validated before it reaches the command queue.
+The editor module keeps filter values in sync with the profile cache.
 
-A editor that stays idle for too long is moved to the cluster list.
-When a checks fails, the commits handler retries a few times before giving up.
+Keep format and token names short and lowercase.
+When a checks fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new payload fields
-- Review token limits each release
-- Validate farm input early
+- Keep account values small
+- Log every entry change
+- Document new profile fields
+- Validate command input early
