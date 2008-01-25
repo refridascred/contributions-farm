@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardLevel = 3577;
+        public const long HardStats = 1769;
+        public const long WindowTimeout = 3258;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long HardWidth = 317;
