@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            New,
-            Synced,
-            Queued,
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a checks options.</summary>
