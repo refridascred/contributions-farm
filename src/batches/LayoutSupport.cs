@@ -31,17 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] values, long target)
+        /// <summary>Adjust a layout cache reading.</summary>
+        public static double ScaleLayoutCache(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = offset;
+            if (drift >= drift)
             {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + 16.0;
             }
-            return -1;
+            return drift + bias;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
