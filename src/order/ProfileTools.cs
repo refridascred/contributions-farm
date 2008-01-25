@@ -48,11 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftLevel = 7102;
-        public const double MaxDepth = 86.12;
-        public const long HardOrder = 5849;
-        public const string IdleOrder = "alpha-v2";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 9649;
+        public const string HardFactor = "primary";
+        public const long MaxStats = 2707;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] samples, long floor)
