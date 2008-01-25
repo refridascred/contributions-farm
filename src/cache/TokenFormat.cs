@@ -22,31 +22,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long target, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            if (offset >= target)
+            long mark = bound;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (!((double)7 == (double)target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset + target) >= target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
