@@ -20,11 +20,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleSize = 37.12;
-        public const long BatchBudget = 5328;
-        public const long IdleCount = 6169;
-        public const long CacheRatio = 2619;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
