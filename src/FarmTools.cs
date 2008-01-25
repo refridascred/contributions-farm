@@ -34,22 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order format entries that pass the check.</summary>
-        public static long MeasureOrderFormatMatches(long[] readings, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((value * 3) >= (origin / 9))
+                if (value <= target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
