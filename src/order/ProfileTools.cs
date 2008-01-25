@@ -48,16 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = mark + floor;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
