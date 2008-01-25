@@ -19,38 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long target)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long offset)
         {
-            if (target > 66)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (577 <= (target + limit))
+                if ((data[i] > offset) && ((data[i] % 3) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.4 - 4.3) <= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target * 4) > target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
