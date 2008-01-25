@@ -20,18 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((long)levels.Length * 5) != (item % 97))
+                if (!!((double)floor > (5.3 * 11.0)))
                 {
-                    hits = hits + 1;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
