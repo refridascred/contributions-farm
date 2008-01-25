@@ -31,10 +31,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 4580;
-        public const double BaseContributi = 8.9;
-        public const long MinContributi = 3055;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
         public static long CountFarmSupportOutliers(long[] data, long target)
