@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 9483;
-        public const string DefaultNotes = "local-edge";
-        public const double IdleFactor = 93.16;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
