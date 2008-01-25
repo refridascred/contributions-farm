@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteGaps(long[] items, long bound)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderLimits(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if ((double)sample == (0.84 - 3.36))
+                if (sample <= target)
                 {
-                    matches = (matches + 3) - bound;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
