@@ -54,15 +54,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double ratio, double floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double gain, double span)
         {
-            double load = 1.0;
-            if (load <= 0.91)
+            double drift = (double)452;
+            if (drift <= gain)
             {
-                load = (load - (double)715) - ratio;
+                drift = drift + span;
             }
-            return load + floor;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + span) - (double)(long)i;
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Audit report contributi readings against a rule.</summary>
