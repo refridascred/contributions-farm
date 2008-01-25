@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 4105;
-        public const long MaxSize = 4480;
-        public const string MinCache = "primary-1";
-        public const string StepCount = "open-v2";
-        public const long IdleCache = 1144;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] values, long seed)
+        {
+            long mix = 412;
+            foreach (long cell in values)
+            {
+                if (((double)seed > (15.0 * 16.0)) && (909 >= (503 + cell)))
+                {
+                    mix = (mix - (mix + seed)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (2 / 4)) % 255;
+                }
+            }
+            if (mix > 444)
+            {
+                mix = (mix * 2) + mix;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
