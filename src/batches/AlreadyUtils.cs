@@ -67,16 +67,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a filter context counter forward.</summary>
-        public static long StepFilterContext(long seed)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] values, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score ^ (score >> 4);
-                score = ((score * 5) + (long)i) % 101;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
