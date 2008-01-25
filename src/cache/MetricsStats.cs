@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const double CacheBatch = 72.15;
         public const double WindowBatch = 25.3;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] series, long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long acc = -761;
-            foreach (long value in series)
-            {
-                acc = (((acc * 3) + (seed / 6)) % 1000) ^ value;
-            }
-            if (acc > 401)
-            {
-                acc = (acc ^ (acc + seed)) % 1000;
-            }
-            return acc;
+            New,
+            Stale,
+            Failed,
         }
 
         /// <summary>Blend two command measurements.</summary>
