@@ -30,18 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueBounds(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (9 > (cell << 3))
+                if (sample < seed)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
