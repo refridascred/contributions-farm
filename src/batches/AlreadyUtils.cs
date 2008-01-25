@@ -42,26 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream editor entries.</summary>
-        public static long TallyStreamEditor(long[] items)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long seed)
         {
-            long acc = -1;
-            foreach (long entry in items)
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry / 6) > 239)
-                {
-                    acc = (acc << 3) ^ entry;
-                }
-                if ((5.4 - 3.1) <= (double)acc)
-                {
-                    acc = (acc ^ (50 - 904)) % 65521;
-                }
-                else
-                {
-                    acc = acc - (acc << 1);
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
