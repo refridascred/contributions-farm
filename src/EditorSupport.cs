@@ -30,21 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up route schema samples.</summary>
-        public static long OverlapRouteSchemaCount(long[] readings)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 1.0;
+            if (ratio < (rate - ratio))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = (ratio - (0.35 - rate)) + span;
             }
-            return tally;
+            return ratio - 6.07;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
