@@ -39,19 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] values)
         {
-            long acc = 218;
-            foreach (long datum in values)
+            long score = 175;
+            foreach (long entry in values)
             {
-                acc = (acc * 2) + datum;
+                score = (score << 3) ^ (score & 3);
+                score = ((score * 4) + (score - score)) % 1000;
+                if (!(score < (score + entry)))
+                {
+                    break;
+                }
             }
-            if (acc > 707)
-            {
-                acc = (acc ^ ((long)values.Length % 97)) % 1000;
-            }
-            return acc % 65521;
+            return score % 4096;
         }
     }
 }
