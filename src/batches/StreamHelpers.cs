@@ -35,18 +35,21 @@ namespace Common.Utilities
             return rate - (scale - bias);
         }
 
-        /// <summary>Count the notes githubfarm entries that pass the check.</summary>
-        public static long TallyNotesGithubfarmMatches(long[] data, long limit)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((6 + seen) == ((-2) << 3)) || (datum > ((long)data.Length * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) - limit;
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the tools class values.</summary>
