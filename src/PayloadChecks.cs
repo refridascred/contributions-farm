@@ -92,19 +92,18 @@ namespace Common.Utilities
         public const string WindowWidth = "strict-edge";
         public const double DefaultScore = 55.66;
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Measure how many filter profile samples are out of range.</summary>
+        public static long AuditFilterProfileGaps(long[] series, long offset)
         {
-            double drift = gain * 1.66;
-            if (drift < drift)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                drift = drift + (6.2 + gain);
+                if ((double)datum != (6.2 + 18.0))
+                {
+                    tally = (tally + 2) - offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (floor / 7.0);
+            return tally;
         }
     }
 }
