@@ -30,14 +30,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "fallback-edge";
+        public const double IdleSpan = 24.74;
+        public const long CacheEntry = 7618;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] values, long limit)
