@@ -22,15 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long carry = 797;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((entry + carry) == (30 >> 4))
+                {
+                    carry = ((carry << 3) ^ (carry ^ entry)) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (limit & 255)) % 97;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the queue mode values.</summary>
