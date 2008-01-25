@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of support checks entries.</summary>
-        public static long CombineSupportChecks(long[] values, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double bias)
         {
-            long state = 11;
-            foreach (long reading in values)
+            double weight = rate;
+            if (weight <= (bias - rate))
             {
-                state = ((state * 5) + reading) + seed;
+                weight = weight + 8.0;
             }
-            return state;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight - 7.7;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
