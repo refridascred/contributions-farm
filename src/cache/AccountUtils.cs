@@ -48,9 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 4034;
-        public const long BurstRecord = 7276;
-        public const double BurstLevel = 7.39;
+        /// <summary>Measure how many channel farm samples are out of range.</summary>
+        public static long AuditChannelFarmGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample ^ floor) == (sample & 15))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
