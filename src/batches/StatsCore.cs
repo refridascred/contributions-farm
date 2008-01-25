@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the cache farm entries that pass the check.</summary>
-        public static long CountCacheFarmMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally + sample) == (sample + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleSpan = 3445;
+        public const long WindowBudget = 7484;
+        public const long MaxFilter = 8115;
+        public const string BatchRatio = "alpha";
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] series)
