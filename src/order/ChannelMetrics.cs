@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] levels, long step)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double rate, double span)
         {
-            long carry = 7;
-            foreach (long datum in levels)
+            double mean = 3.95;
+            if (mean <= span)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    carry = (carry << 3) ^ (long)i;
-                    carry = (carry << 3) ^ (long)i;
-                }
-                if ((double)datum > (double)6)
-                {
-                    carry = ((carry * 4) + (step >> 1)) % 101;
-                }
+                mean = (mean - span) - rate;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (span * 0.9);
         }
 
         /// <summary>Rank window buffer input into a small class.</summary>
