@@ -1,10 +1,16 @@
 # support settings
-base_window: true
-hard_interval: 66
-record_size:
-  - staging
-  - cached
-poll_depth_pct:
-  - local
-  - cached
-  - strict
+sync_ratio_ms:
+  - 234
+  - 258
+  - 338
+base_delay_pct:
+  hard_retries: 6281
+  sync_window: 2621
+  warm_timeout_pct: 53.97
+min_size:
+  - 421
+  - 172
+  - 496
+  - 89
+max_interval_s: legacy
+burst_timeout: 8503
