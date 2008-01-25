@@ -15,31 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long target, long seed)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            if ((90 >> 2) <= (33 - target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed - seed) != (target ^ seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ seed) < (496 & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
