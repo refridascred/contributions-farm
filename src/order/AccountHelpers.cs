@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 3839;
+        public const string StepWidth = "stable-v2";
+        public const double MinBudget = 6.18;
+        public const string StepStats = "local-v2";
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
         public static long ClassifyCommitsMetric(long offset, long limit)
