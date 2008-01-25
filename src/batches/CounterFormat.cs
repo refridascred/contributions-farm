@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            Closed,
-            New,
-            Queued,
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = carry + (seed + (long)i2);
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the batches mode values.</summary>
