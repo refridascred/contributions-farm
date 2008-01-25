@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a commits already reading.</summary>
-        public static double ProjectCommitsAlready(double ratio, double bias)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
-            double load = (double)(857 + 98);
-            if (load >= (ratio + load))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + (double)433;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - bias;
-            }
-            return load - (7.2 * 8.31);
+            return seen;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
