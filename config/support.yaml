@@ -1,9 +1,7 @@
 # support settings
-max_capacity_ms: 500
-idle_delay: 9125
-already_ratio: fallback
-verbose: 92.98
-persist:
-  - edge
-  - staging
-  - cached
+persist: 100
+min_limit_pct: open
+report_interval: 250
+verbose: blue
+max_timeout_s: standard
+dry_run: 58
