@@ -46,11 +46,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
+            double rate = (span / 8.0) + (3.35 - 3.5);
+            return (rate - 6.0) + bias;
         }
     }
 }
