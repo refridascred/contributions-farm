@@ -1,8 +1,5 @@
 {
-  "audit": false,
-  "max_size_count": true,
-  "hard_window_ms": 85.88,
-  "githubfarm_depth": 59.06,
-  "dry_run": 3704,
-  "strict": 5649
+  "retry_interval_s": 500,
+  "base_interval": 79,
+  "poll_threshold": 15.75
 }
