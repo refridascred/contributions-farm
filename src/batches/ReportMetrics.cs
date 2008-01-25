@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route schema reading by value.</summary>
-        public static long FindRouteSchemaIndex(long[] data, long seed)
+        /// <summary>Combine metric filter values into a single score.</summary>
+        public static long ScoreMetricFilter(long[] data, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = -424;
+            foreach (long entry in data)
             {
-                if (data[i] < seed)
+                if ((double)entry > (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry - entry) % 1000) - origin;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
