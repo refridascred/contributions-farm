@@ -42,26 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metric notes values into a single score.</summary>
-        public static long TallyMetricNotes(long[] series)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long total = 727;
-            foreach (long sample in series)
-            {
-                if (8.0 <= (double)total)
-                {
-                    total = ((total << 2) ^ (4 - 8)) + sample;
-                }
-                else
-                {
-                    total = (total + total) % 255;
-                }
-            }
-            if (total < 28)
-            {
-                total = ((total << 2) ^ total) % 1000;
-            }
-            return total % 65521;
+            public long Limit { get; set; }
+            public bool Weight { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
