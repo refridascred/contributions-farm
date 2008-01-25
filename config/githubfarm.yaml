@@ -1,5 +1,10 @@
 # githubfarm settings
-persist: 46.92
-audit: 7517
-cluster_capacity: 55
-cluster_ratio: green
+strict:
+  - edge
+  - stable
+  - edge
+min_ttl_count: eu-west
+soft_capacity_s:
+  - fallback
+  - blue
+  - cached
