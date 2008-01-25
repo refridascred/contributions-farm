@@ -1,4 +1,10 @@
 # support settings
-sync_depth: 97
-idle_window: eu-west
-flush_interval: 250
+retry_ttl_pct: 30
+soft_threshold_count: 1607
+warm_delay_s: standard
+audit: 239
+enabled: 55
+default_ttl_count:
+  batches_capacity: 97
+  batches_limit: 40
+  verbose: 47
