@@ -63,13 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] values)
         {
-            Done,
-            New,
-            Synced,
-            Active,
+            long total = 29;
+            foreach (long item in values)
+            {
+                total = (total ^ (851 % 24)) - item;
+            }
+            return total;
         }
 
         /// <summary>Blend two batch measurements.</summary>
