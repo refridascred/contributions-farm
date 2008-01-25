@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] levels, long target)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample < target)
+                if (data[i] <= offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
