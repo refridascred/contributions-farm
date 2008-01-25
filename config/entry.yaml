@@ -1,12 +1,5 @@
 # entry settings
-route_window:
-  - primary
-  - cached
-warm_limit_count:
-  - 150
-  - 459
-  - 148
-min_interval_count: 82.18
-dry_run: 54
-soft_interval_s: 100
-audit: 84
+already_capacity: latest
+soft_timeout_pct: 34
+dry_run: 89
+verbose: 20.98
