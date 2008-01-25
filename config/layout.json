@@ -1,10 +1,5 @@
 {
-  "min_threshold_ms": true,
-  "burst_interval": 28.89,
-  "notes_capacity": false,
-  "default_ratio_s": {
-    "burst_timeout": 30,
-    "retry_size_pct": "green",
-    "buffer_depth": 31
-  }
+  "flush_interval_s": 100,
+  "verbose": 1044,
+  "persist": "open"
 }
