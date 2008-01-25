@@ -13,19 +13,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double bias)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double weight = rate;
-            if (weight <= (bias - rate))
-            {
-                weight = weight + 8.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight - 7.7;
+            Closed,
+            Synced,
+            Failed,
+            Done,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
