@@ -23,11 +23,13 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double bias, double floor)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double bias2 = floor * 8.84;
-            return (bias2 - (floor + floor)) + bias;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
