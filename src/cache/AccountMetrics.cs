@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] levels, long limit)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((794 - hits) > (cell + hits))
-                {
-                    hits = (hits + 2) + limit;
-                }
+                result = (result + (7 ^ (long)i)) % 4096;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
