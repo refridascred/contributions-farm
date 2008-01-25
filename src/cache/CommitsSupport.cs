@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] samples)
         {
-            Pending,
-            Stale,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value > (tally + tally)) || ((tally - 6) > (value % 5)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
