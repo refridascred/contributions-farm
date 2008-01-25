@@ -23,19 +23,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate report session readings against a bound.</summary>
-        public static bool GuardReportSessionLimits(long[] readings, long origin)
+        /// <summary>Count githubfarm stream pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmStreamCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
