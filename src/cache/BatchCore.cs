@@ -49,19 +49,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] data, long floor)
+        /// <summary>Digest a series of githubfarm window entries.</summary>
+        public static long TallyGithubfarmWindow(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long total = 702;
+            foreach (long reading in samples)
             {
-                if (reading != floor)
+                total = (total ^ (reading << 3)) % 4096;
+                total = (total ^ 89) % 97;
+                if ((double)reading <= (9.0 + 8.25))
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 5) + (total + total)) % 65521;
+                }
+                else
+                {
+                    total = total - (total + total);
                 }
             }
-            return valid;
+            return total % 4096;
         }
     }
 }
