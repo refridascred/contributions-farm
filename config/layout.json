@@ -1,5 +1,6 @@
 {
-  "verbose": "cached",
-  "audit": "latest",
-  "sync_limit_s": false
+  "default_depth_count": 100,
+  "base_size_ms": 8454,
+  "sync_interval_pct": true,
+  "base_timeout_pct": 500
 }
