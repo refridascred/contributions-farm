@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] readings, long floor)
         {
-            Locked,
-            Draft,
-            Done,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)(long)readings.Length == (double)hits)
+                {
+                    hits = ((hits + 3) - item) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a entry notes figure with a bias.</summary>
