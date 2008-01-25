@@ -42,13 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] data, long seed)
         {
-            Pending,
-            Draft,
-            Active,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
