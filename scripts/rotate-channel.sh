@@ -7,12 +7,12 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
+mode="${1:-staging}"
 case "${mode}" in
     edge)
         log "fast path"
@@ -21,3 +21,6 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=237
+log "limit is ${CHANNEL_LIMIT}"
