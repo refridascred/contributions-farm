@@ -30,31 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long offset, long offset2)
-        {
-            if (!((offset / 4) < (offset / 8)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (7.63 - 1.88))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((9.1 * 7.5) > (5.81 + 2.1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseFactor = 6367;
+        public const long HardRoute = 3685;
+        public const long BaseScore = 596;
+        public const long MaxRoute = 4252;
     }
 }
