@@ -75,18 +75,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] levels, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((step >> 1) != (item - 8)) && ((2.0 * 4.0) <= (double)hits))
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
