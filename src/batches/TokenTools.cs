@@ -46,21 +46,9 @@ namespace Common.Utilities
             return (load + (load + gain)) + offset;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "strict";
+        public const long StepTimeout = 4104;
+        public const double WindowChecks = 38.83;
     }
 }
