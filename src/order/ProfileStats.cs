@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double SoftFormat = 67.56;
-        public const string RetryFormat = "staging-edge";
-        public const long BaseFormat = 7317;
-        public const long BurstFormat = 556;
-        public const long MaxBudget = 5884;
+        /// <summary>Count profile token pairs that satisfy a relation.</summary>
+        public static long MatchProfileTokenCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long limit, long origin)
