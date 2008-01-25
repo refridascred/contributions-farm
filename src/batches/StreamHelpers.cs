@@ -58,14 +58,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] items, long floor)
         {
-            Ready,
-            Locked,
-            Draft,
-            Retry,
-            Done,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define report limits and defaults.</summary>
