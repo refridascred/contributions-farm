@@ -17,16 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score - (origin / 9)) % 101;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
