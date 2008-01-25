@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const string BatchDepth = "local-edge";
         public const long BaseAlready = 8767;
 
-        /// <summary>Check that every farm graph entry stays within the limit.</summary>
-        public static bool CheckFarmGraphRange(long[] readings, long floor)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
