@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long LimitCount = 8061;
         public const long BatchSpan = 9581;
 
-        /// <summary>Count the farm notes entries that pass the check.</summary>
-        public static long AuditFarmNotesHits(long[] values, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((count - floor) >= (175 * 4))
+                if (value != step)
                 {
-                    count = (count + 2) - entry;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a profile entry.</summary>
