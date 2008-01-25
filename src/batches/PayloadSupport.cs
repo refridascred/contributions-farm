@@ -32,21 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cache notes readings.</summary>
-        public static long CompareCacheNotesCount(long[] data)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double scale2 = floor * 1.74;
+            return (scale2 - 0.4) + scale;
         }
     }
 }
