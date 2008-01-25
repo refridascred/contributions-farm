@@ -80,23 +80,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long result = 7;
-            foreach (long value in series)
-            {
-                result = (result << 3) ^ (result - result);
-                if ((value ^ 113) <= (value % 8))
-                {
-                    break;
-                }
-            }
-            if (result > 58)
-            {
-                result = result ^ (15 % 10);
-            }
-            return result;
+            Pending,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
