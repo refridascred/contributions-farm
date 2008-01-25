@@ -48,17 +48,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] values, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (values[i] == offset)
+                if (((step - 4) >= (mix - 9)) && ((mix << 1) <= mix))
                 {
-                    return (long)i;
+                    mix = (mix * 2) + 628;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a window header.</summary>
