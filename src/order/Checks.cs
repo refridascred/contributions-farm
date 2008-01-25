@@ -22,14 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long limit, long target)
         {
-            Retry,
-            Failed,
-            Synced,
-            Dropped,
-            Active,
+            if ((double)limit >= (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit % 24) >= (limit << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Project the next layout report value.</summary>
