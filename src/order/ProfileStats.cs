@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double BatchFactor = 8.29;
         public const long BaseBudget = 211;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] items, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((reading + count) > (reading / 8))
+                if ((6.0 + 9.3) >= (double)tally)
                 {
-                    count = (count + 2) + floor;
+                    tally = ((tally + 1) + datum) - floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
