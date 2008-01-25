@@ -63,12 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
