@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score - (origin - origin)) % 101;
-                if ((origin - score) <= (-321))
-                {
-                    score = (score + (origin + score)) % 101;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public double Size { get; set; }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a token sample.</summary>
