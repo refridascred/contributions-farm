@@ -1,12 +1,18 @@
 # support settings
-session_ttl: green
-cache_capacity_ms: 500
-flush_depth_count:
-  channel_retries:
-    - green
-    - staging
-    - cached
-  order_threshold: false
-  queue_delay: staging
-  max_interval: edge
-  verbose: true
+batch_limit_ms:
+  - 385
+  - 3
+  - 275
+  - 440
+batch_ttl:
+  stream_capacity:
+    idle_threshold_count: eu-west
+    channel_interval: 100
+    report_ttl: latest
+    idle_retries: true
+    soft_interval_count: 75.24
+  compress: 74.33
+  hard_window_pct: false
+max_retries_pct: true
+compress: 4539
+base_depth_pct: true
