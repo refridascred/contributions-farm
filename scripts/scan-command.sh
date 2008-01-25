@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in blue cached stable; do
+for item in edge cached; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=295
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-strict}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
