@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long IdleTimeout = 7187;
         public const long RetrySpan = 1243;
 
-        /// <summary>Audit profile stream readings against a rule.</summary>
-        public static long CountProfileStreamGaps(long[] items, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample <= (sample + step))
-                {
-                    matches = matches + 1;
-                }
+                acc = (acc * 4) + (acc + 9);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
