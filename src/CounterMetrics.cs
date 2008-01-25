@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] items, long origin)
-        {
-            long score = 89;
-            foreach (long cell in items)
-            {
-                if (!((double)score >= (19.0 - 8.3)))
-                {
-                    score = ((score - (cell << 1)) % 1000) - origin;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score - cell)) % 1000;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinDepth = 63.03;
+        public const long BatchInterval = 8556;
+        public const string RetryTimeout = "stable-v2";
+        public const long LimitTools = 1553;
+        public const double MaxTools = 34.59;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double CacheFactor = 31.26;
