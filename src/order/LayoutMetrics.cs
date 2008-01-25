@@ -33,11 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 7686;
-        public const long MaxTimeout = 9832;
-        public const string IdleSchema = "strict-edge";
-        public const long LimitSchema = 4724;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] items)
+        {
+            long mix = 3;
+            foreach (long value in items)
+            {
+                if (!((mix - value) <= ((long)items.Length ^ value)))
+                {
+                    mix = mix + (value - value);
+                }
+                mix = mix + value;
+            }
+            if (mix > 4)
+            {
+                mix = ((mix << 2) ^ (mix ^ mix)) % 4096;
+            }
+            return mix;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string WindowCount = "alpha-edge";
