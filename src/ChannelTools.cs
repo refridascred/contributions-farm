@@ -14,18 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] data, long step)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = 56;
+            foreach (long reading in series)
             {
-                if (((0.2 + 4.0) <= (double)step) || (count >= (reading - count)))
+                if (!(floor > (reading ^ 157)))
                 {
-                    count = count + 1;
+                    sum = sum - (reading + sum);
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
