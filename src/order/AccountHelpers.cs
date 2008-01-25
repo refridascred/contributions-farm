@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const double MinBudget = 6.18;
         public const string StepStats = "local-v2";
 
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long ClassifyCommitsMetric(long offset, long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long delta = offset - limit;
-            if ((0.3 / 4.0) < (double)offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((delta % 12) != (offset % 3)) || ((limit ^ delta) <= (offset + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 100) <= (delta >> 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - offset) <= (593 - offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of session entries.</summary>
