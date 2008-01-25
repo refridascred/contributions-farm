@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] samples)
+        /// <summary>Audit checks context readings against a rule.</summary>
+        public static long AuditChecksContextGaps(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (!((39 >> 5) <= (datum + hits)))
+                if (!(step <= (sample >> 2)))
                 {
-                    hits = hits + 1;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the report phase values.</summary>
