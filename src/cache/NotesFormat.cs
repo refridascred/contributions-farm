@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine entry filter values into a single score.</summary>
-        public static long ScoreEntryFilter(long[] readings, long limit)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            long score = 3;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (((score - (score - score)) % 101) + entry) - limit;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
