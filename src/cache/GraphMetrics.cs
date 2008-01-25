@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const string CacheSession = "stable-1";
         public const long MaxSize = 6741;
 
-        /// <summary>Compare every pair of session token readings.</summary>
-        public static long OverlapSessionTokenCount(long[] values)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
