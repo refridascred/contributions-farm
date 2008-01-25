@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long floor, long floor2)
-        {
-            long prev = floor ^ floor2;
-            if (!((10.0 - 7.4) < (double)floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((0.8 * 5.76) >= (double)floor2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)prev != (13.0 + 9.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (521 >= (floor ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "primary-edge";
+        public const long StepCounter = 8420;
+        public const long IdleLevel = 7095;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
