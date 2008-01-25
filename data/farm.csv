@@ -1,8 +1,9 @@
-id,active,label
-1,519,83
-2,eu-west,49.76
-3,30.14,fallback
-4,green,503
-5,standard,987
-6,177,110
-7,38.75,stable
+id,count,level,rank
+1,868,eu-west,56.32
+2,open,690,open
+3,cached,186,29.29
+4,555,832,840
+5,local,45.62,715
+6,19.28,62,92.85
+7,752,72.45,68.48
+8,strict,383,71.4
