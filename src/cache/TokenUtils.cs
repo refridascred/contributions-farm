@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every counter report entry stays within the limit.</summary>
+        public static bool CheckCounterReportRange(long[] items, long limit)
         {
-            Draft,
-            Active,
-            Failed,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
