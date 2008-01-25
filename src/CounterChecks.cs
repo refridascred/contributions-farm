@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] items, long origin)
         {
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 8;
+            foreach (long cell in items)
+            {
+                mark = (mark + (origin >> 4)) % 1000;
+                if ((cell >> 3) > mark)
+                {
+                    mark = ((mark * 4) + (mark & 127)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (origin + origin)) % 97;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
