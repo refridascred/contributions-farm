@@ -53,10 +53,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowCount = "staging-v2";
-        public const string WindowBatches = "staging-1";
-        public const double StepLevel = 74.66;
-        public const string StepBatches = "fallback";
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Dropped,
+            Queued,
+            Paused,
+            New,
+            Synced,
+        }
     }
 }
