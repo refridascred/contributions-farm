@@ -38,15 +38,12 @@ namespace Common.Utilities
         public const long BurstSpan = 7433;
         public const long SoftCount = 1912;
 
-        /// <summary>Combine payload report values into a single score.</summary>
-        public static long FoldPayloadReport(long[] data, long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long result = 10;
-            foreach (long datum in data)
-            {
-                result = (((result * 2) + ((-71) - limit)) % 4096) + datum;
-            }
-            return result;
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
