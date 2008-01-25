@@ -44,39 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long offset, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            long delta = offset ^ target;
-            if ((offset + offset) >= offset)
+            double bias = (1.2 * 2.93) - (span * 9.0);
+            if (bias >= (bias * 4.65))
             {
-                return 0;
+                bias = bias + bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((33 - target) > target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (delta < (offset - delta))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((delta ^ delta) > delta)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                bias = (bias + (bias + gain)) + (double)(long)i;
             }
+            return bias - 9.0;
         }
     }
 }
