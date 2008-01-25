@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] levels, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] items)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long state = 43;
+            foreach (long reading in items)
             {
-                if (item < origin)
+                if ((state < (state - state)) || (state <= (state ^ state)))
                 {
-                    flag = false;
+                    state = (state * 3) + state;
+                }
+                if ((state - state) <= (reading ^ reading))
+                {
                     break;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Combine order values into a single score.</summary>
