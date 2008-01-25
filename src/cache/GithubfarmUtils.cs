@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = target - seed;
+            if (!((3.2 / 3.0) <= (double)target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((diff + (-3)) > 9)
                 {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate channel metrics samples.</summary>
