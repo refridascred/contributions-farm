@@ -82,12 +82,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] levels, long offset)
         {
-            Closed,
-            Synced,
-            Paused,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((6.4 - 9.3) >= (double)hits) && ((462 + 665) > offset))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
