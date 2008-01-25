@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Grade a githubfarm order value against two limits.</summary>
+        public static long ClassifyGithubfarmOrder(long seed, long offset)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            if (((seed - offset) != (seed + 368)) && (seed > (offset / 7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) < (seed + seed)) && (((-427) & 7) >= (offset % 100)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset & 63) >= (offset - (-5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset > (offset + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session options.</summary>
