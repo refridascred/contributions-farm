@@ -23,13 +23,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
+        public static bool CheckGithubfarmStreamRange(long[] items, long target)
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a channel summary.</summary>
