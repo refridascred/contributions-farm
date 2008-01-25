@@ -55,21 +55,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = ((total << 2) ^ (total * 5)) - (long)i2;
-                }
-                total = (total + ((-953) - 413)) % 255;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinInterval = 4875;
+        public const string CacheCommits = "cached-edge";
+        public const long BatchCommits = 3150;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] data)
