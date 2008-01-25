@@ -34,24 +34,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] levels, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((target + target) < ((long)i / 2))
+                if (((double)hits < (5.5 / 9.0)) || (9.43 < (double)sample))
                 {
-                    mix = mix - (target + 0);
+                    hits = (hits + 1) - bound;
                 }
-                if (!((932 & 1) == (target % 5)))
+                else
                 {
-                    mix = (mix ^ (mix % 12)) % 101;
-                    mix = mix - (target - 7);
+                    hits = hits - 1;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
