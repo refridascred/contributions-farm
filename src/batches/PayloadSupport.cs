@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseInterval = "legacy-v2";
+        public const double CacheFarm = 62.54;
+        public const long MinFarm = 8920;
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long CompareSchemaCount(long[] samples)
