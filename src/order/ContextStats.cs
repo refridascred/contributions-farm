@@ -59,12 +59,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Validate batch githubfarm readings against a bound.</summary>
+        public static bool GuardBatchGithubfarmRange(long[] data, long target)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
