@@ -39,18 +39,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (value < (value >> 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Dropped,
+            Pending,
+            Done,
+            Failed,
         }
     }
 }
