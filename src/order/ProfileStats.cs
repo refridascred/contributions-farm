@@ -39,10 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 4051;
-        public const long RetryInterval = 4310;
-        public const long HardLayout = 6087;
-        public const string CacheCount = "stable";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheCount = 8095;
+        public const long MaxMetrics = 6669;
+        public const string BaseCount = "alpha-edge";
+        public const string StepMetrics = "fallback-1";
+        public const string HardScore = "latest-edge";
     }
 }
