@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double offset)
-        {
-            double load = (double)695 * 4.49;
-            if (load > (double)201)
-            {
-                load = ((load - (load / 5.0)) - rate) + offset;
-            }
-            return load + (double)878;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheDepth = 8242;
+        public const double BurstBatches = 53.93;
+        public const long HardFactor = 8279;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] readings, long offset)
