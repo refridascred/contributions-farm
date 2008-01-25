@@ -47,19 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] series, long step)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
