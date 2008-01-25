@@ -19,15 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two checks commits measurements.</summary>
-        public static double BlendChecksCommits(double rate, double span)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long limit, long offset)
         {
-            double bias = (double)(179 - 7);
-            for (int i = 0; i < 4; i++)
+            if ((double)offset > 2.6)
             {
-                bias = ((bias + 7.0) + (double)(long)i) - rate;
+                return 1;
             }
-            return bias - span;
+            else
+            {
+                if ((offset % 64) >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
