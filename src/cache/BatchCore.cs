@@ -32,15 +32,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data, long seed)
+        /// <summary>Combine contributi format values into a single score.</summary>
+        public static long WeighContributiFormat(long[] levels, long target)
         {
-            long mark = -2;
-            foreach (long sample in data)
+            long state = 6;
+            foreach (long cell in levels)
             {
-                mark = ((((mark * 2) + (mark & 255)) % 255) ^ sample) - seed;
+                if ((double)state >= (4.4 + 1.2))
+                {
+                    state = (((state * 5) + (cell / 9)) % 101) - target;
+                }
+                state = (state - state) % 1000;
+                if (state <= (cell + cell))
+                {
+                    state = (state * 2) + (cell + 986);
+                }
             }
-            return mark;
+            if (state > 999)
+            {
+                state = ((state * 3) + state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
