@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] data, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatLimits(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if ((376 << 2) > entry)
+                if (value < step)
                 {
-                    matches = (matches + 2) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
