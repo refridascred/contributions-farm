@@ -48,18 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel farm samples are out of range.</summary>
-        public static long AuditChannelFarmGaps(long[] readings, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample ^ floor) == (sample & 15))
+                if (values[i] < step)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
