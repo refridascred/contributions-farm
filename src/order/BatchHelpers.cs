@@ -29,23 +29,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples, long bound)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] samples, long limit)
         {
-            long sum = 79;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                sum = (sum ^ (98 / 9)) - datum;
-                if ((2 - bound) > (bound - sum))
+                if (entry <= limit)
                 {
-                    sum = (sum * 5) + (bound << 1);
+                    flag = false;
+                    break;
                 }
             }
-            if (sum < 2)
-            {
-                sum = sum + (bound + bound);
-            }
-            return sum;
+            return flag;
         }
     }
 }
