@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Count the filter support entries that pass the check.</summary>
+        public static long AuditFilterSupportOutliers(long[] values, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry * 2) + (24 % 60)) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (((2.52 * 5.0) >= (double)hits) || ((7.8 * 7.89) > (double)limit))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
