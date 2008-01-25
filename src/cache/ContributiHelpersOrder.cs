@@ -33,17 +33,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] values, long seed)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double ratio, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(96 / 6);
+            if (weight >= (double)8)
             {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
+                weight = ((weight + (double)9) - ratio) - span;
             }
-            return -1;
+            else
+            {
+                weight = weight - (double)60;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (weight - weight)) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
