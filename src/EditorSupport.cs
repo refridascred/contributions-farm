@@ -30,31 +30,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples, long bound)
+        /// <summary>Match up route schema samples.</summary>
+        public static long OverlapRouteSchemaCount(long[] readings)
         {
-            long sum = 919;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)bound <= (19.0 - 15.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + (bound + datum)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 97;
-                }
-                if ((4 >> 5) <= bound)
-                {
-                    sum = sum + datum;
-                }
-                if ((long)samples.Length >= (datum & 1))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
