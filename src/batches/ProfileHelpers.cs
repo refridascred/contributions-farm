@@ -49,15 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            long acc = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                acc = (acc - (value + acc)) % 97;
+                if (((cell << 2) == (4 * 3)) || ((cell ^ (-879)) > (209 ^ cell)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
