@@ -45,12 +45,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Count the command counter entries that pass the check.</summary>
+        public static long CountCommandCounterOutliers(long[] items, long target)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((((-87) < (target ^ sample)) && ((sample - sample) > (sample % 3))) && ((1.05 + 11.0) < (double)sample))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
