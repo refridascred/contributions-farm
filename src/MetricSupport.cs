@@ -32,11 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the queue support entries that pass the check.</summary>
+        public static long TallyQueueSupportOutliers(long[] samples, long seed)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)(-9) == (double)seed)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
     }
 }
