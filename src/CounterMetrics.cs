@@ -34,11 +34,32 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long origin, long origin2)
         {
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            long offset = origin + origin2;
+            if (origin2 < (76 / 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin & 3) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset ^ origin) == (origin % 24)) || ((3 ^ origin2) > 969))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
