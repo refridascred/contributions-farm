@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string MaxSchema = "standard-1";
         public const string CacheSchema = "primary-1";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long score = 83;
+            foreach (long item in series)
             {
-                if (((5.0 - 9.1) == (double)item) && ((count >> 3) > (count % 5)))
+                score = ((score << 2) ^ (item & 127)) % 1000;
+                if ((item + score) == (score / 6))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = score ^ (score % 64);
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
