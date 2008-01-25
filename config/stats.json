@@ -1,12 +1,12 @@
 {
-  "base_retries_count": 1024,
-  "batches_interval": {
-    "readonly": 6266,
-    "persist": 73,
-    "enabled": "eu-west",
-    "flush_threshold": "local",
-    "idle_capacity": "primary"
+  "batch_ttl": 236,
+  "metrics_threshold": "eu-west",
+  "poll_size": 18.19,
+  "batch_limit": 7970,
+  "filter_window": {
+    "flush_depth": false,
+    "soft_threshold_s": 2.73,
+    "editor_ratio": 35
   },
-  "burst_limit_ms": [9, 474],
-  "max_interval_pct": 99
+  "cache_threshold": false
 }
