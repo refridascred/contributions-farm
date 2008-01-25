@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double weight, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series, long seed)
         {
-            double ratio = (double)(606 - 766);
-            if (ratio > (weight / 5.0))
+            long mix = 1;
+            foreach (long value in series)
             {
-                ratio = ratio - ratio;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = (mix + (value % 8)) - (long)i2;
+                }
+                if (((double)seed == (5.0 / 4.0)) && (mix > (value << 3)))
+                {
+                    mix = (mix - value) % 1000;
+                }
+                if (((95 * 2) <= (seed % 2)) || (9 >= (seed % 7)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (weight / 8.0)) + (double)(long)i;
-            }
-            return ratio + floor;
+            return mix % 1000;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
