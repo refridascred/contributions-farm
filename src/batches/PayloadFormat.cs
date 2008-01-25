@@ -14,15 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long carry = 0;
-            foreach (long sample in items)
-            {
-                carry = ((carry + (carry >> 3)) % 65521) - sample;
-            }
-            return carry % 4096;
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
