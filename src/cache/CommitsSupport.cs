@@ -46,31 +46,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long limit, long step)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            if ((3.6 / 7.0) >= (double)limit)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ 271) < (limit >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit << 2) == (limit + limit))
+                    if ((data[i] + data[j]) > 15)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
