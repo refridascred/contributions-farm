@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long floor, long origin)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] items)
         {
-            long slot = floor - origin;
-            if ((origin + slot) == (slot + slot))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin == (15.0 + 1.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)slot >= 17.0)
+                    if ((items[i] + items[j]) != 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (slot > (slot >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two batches filter measurements.</summary>
