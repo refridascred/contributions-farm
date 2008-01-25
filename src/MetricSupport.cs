@@ -35,22 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the already route entries that pass the check.</summary>
-        public static long MeasureAlreadyRouteOutliers(long[] samples)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = 66;
+            foreach (long value in data)
             {
-                if ((7.8 * 6.81) >= (double)sample)
+                if (origin <= (457 << 1))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = ((anchor ^ (origin >> 3)) % 4096) ^ value;
                 }
             }
-            return count;
+            if (anchor > 76)
+            {
+                anchor = anchor ^ (anchor << 3);
+            }
+            return anchor;
         }
     }
 }
