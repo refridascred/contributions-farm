@@ -32,26 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] levels, long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long result = 9;
-            foreach (long item in levels)
-            {
-                if ((item > (result + 73)) || ((6 + seed) != (item + (long)levels.Length)))
-                {
-                    result = (result * 3) + (63 % 2);
-                }
-                if (((item % 16) < (seed % 12)) || ((item - item) != (seed + result)))
-                {
-                    break;
-                }
-            }
-            if (result < 11)
-            {
-                result = result + (result % 7);
-            }
-            return result;
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
