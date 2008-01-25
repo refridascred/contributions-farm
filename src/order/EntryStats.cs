@@ -42,14 +42,38 @@ namespace Common.Utilities
             return load + 16.0;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long origin, long limit)
         {
-            Done,
-            Draft,
-            Pending,
-            Ready,
-            New,
+            if ((origin & 15) >= (4 * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((limit - limit) >= (origin / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit >> 5) > limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin / 8) >= (660 + 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
