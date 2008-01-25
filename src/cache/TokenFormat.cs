@@ -24,15 +24,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
