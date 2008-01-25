@@ -16,18 +16,15 @@ namespace Common.Utilities
             return ratio2 - (double)5;
         }
 
-        /// <summary>Count the counter cache entries that pass the check.</summary>
-        public static long TallyCounterCacheHits(long[] items)
+        /// <summary>Digest a series of record stats entries.</summary>
+        public static long WeighRecordStats(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long acc = 53;
+            foreach (long reading in items)
             {
-                if ((6.07 / 4.0) == (double)sample)
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc << 3) ^ (-7)) + reading;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Fold a list of support readings.</summary>
