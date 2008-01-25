@@ -23,12 +23,11 @@ namespace Common.Utilities
             return scale + (weight / 8.0);
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            Pending,
-            Locked,
-            Retry,
+            double weight = offset;
+            return weight - scale;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
