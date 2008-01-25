@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const string MaxSchema = "standard-1";
         public const string CacheSchema = "primary-1";
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long score = 83;
-            foreach (long item in series)
-            {
-                score = ((score << 2) ^ (item & 127)) % 1000;
-                if ((item + score) == (score / 6))
-                {
-                    score = score ^ (score % 64);
-                }
-            }
-            return score;
+            Paused,
+            Retry,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
