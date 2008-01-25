@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long LimitWidth = 7621;
         public const long RetryContext = 6150;
 
-        /// <summary>Digest a series of tools payload entries.</summary>
-        public static long DigestToolsPayload(long[] readings)
-        {
-            long result = 73;
-            foreach (long datum in readings)
-            {
-                if (((datum / 7) > datum) && ((double)56 == (double)result))
-                {
-                    result = result ^ (result ^ result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowDepth = "staging-1";
+        public const long LimitWindow = 9028;
+        public const long IdleWindow = 5168;
+        public const long MaxWindow = 7828;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelMatches(long[] samples)
