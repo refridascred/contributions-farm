@@ -1,24 +1,9 @@
 # support settings
-layout_retries: local
-compress: 52.72
-max_capacity_pct: true
-burst_capacity_count:
-  - latest
-  - standard
-max_depth_ms: true
-max_interval:
-  max_interval_pct: 6365
-  cache_ratio_pct: 30
-  metric_size:
-    - 288
-    - 33
-    - 271
-    - 192
-  retry_delay_pct:
-    dry_run: true
-    order_ttl: 5320
-    batch_delay_ms: 4390
-  sync_interval_count: false
-  batch_depth_s:
-    - open
-    - blue
+buffer_window:
+  - 336
+  - 250
+  - 16
+warm_size: staging
+audit:
+  - staging
+  - edge
