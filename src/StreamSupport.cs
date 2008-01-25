@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context format samples.</summary>
-        public static long CombineContextFormat(long[] items, long bound)
+        /// <summary>Count the farm notes entries that pass the check.</summary>
+        public static long AuditFarmNotesHits(long[] values, long floor)
         {
-            long acc = 172;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((-639) & 15) > (acc & 63))
+                if ((count - floor) >= (175 * 4))
                 {
-                    acc = ((acc + acc) % 97) ^ sample;
-                }
-                if ((2 % 7) > (acc - bound))
-                {
-                    break;
+                    count = (count + 2) - entry;
                 }
             }
-            if (acc > 685)
-            {
-                acc = acc - (acc - bound);
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
