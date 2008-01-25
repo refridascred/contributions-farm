@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 3) + target) % 255;
-                if ((double)(long)i != (double)state)
-                {
-                    state = ((state * 5) + ((long)i - target)) % 1000;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state - ((long)i + 27)) % 101) - (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
