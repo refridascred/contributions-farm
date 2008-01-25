@@ -1,9 +1,6 @@
 # entry settings
-burst_retries_ms: 30
-warm_limit_pct:
-  - 210
-  - 392
-soft_limit_ms: 100
-entry_retries: 2.59
-session_retries: latest
-poll_capacity: green
+sync_interval_count: edge
+warm_depth: true
+hard_size_pct:
+  - 165
+  - 264
