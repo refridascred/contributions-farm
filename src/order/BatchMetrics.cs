@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftCount = 9169;
-        public const double BatchContext = 50.13;
-        public const long LimitContext = 503;
-        public const long HardContext = 1946;
-        public const long LimitScore = 6644;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Dropped,
+            Paused,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftLevel = 1592;
