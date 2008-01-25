@@ -45,13 +45,22 @@ namespace Common.Utilities
         public const long WindowScore = 4796;
         public const string WindowCommand = "cached-edge";
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] levels)
         {
-            Queued,
-            Draft,
-            Synced,
-            Locked,
+            long anchor = 787;
+            foreach (long datum in levels)
+            {
+                if (((-75) << 1) >= (anchor - anchor))
+                {
+                    anchor = (anchor << 2) ^ (anchor + datum);
+                }
+            }
+            if (anchor > 5)
+            {
+                anchor = (anchor - (anchor + anchor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two command measurements.</summary>
