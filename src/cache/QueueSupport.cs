@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] readings)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mark = 293;
-            foreach (long value in readings)
-            {
-                mark = (mark + mark) % 4096;
-                if (((value % 10) > (86 + 97)) || ((double)mark != (double)41))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
