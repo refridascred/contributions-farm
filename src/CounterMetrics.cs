@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long LimitTools = 1553;
         public const double MaxTools = 34.59;
 
-        /// <summary>Combine cache batch values into a single score.</summary>
-        public static long CombineCacheBatch(long[] levels, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            long acc = 6;
-            foreach (long cell in levels)
+            double gain2 = (double)(901 & 15);
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset - 8) == (469 + cell))
-                {
-                    acc = (acc - (offset - offset)) % 1000;
-                }
+                gain2 = (gain2 + (double)(long)i) - gain;
             }
-            return acc;
+            return gain2 + bias;
         }
 
         /// <summary>Hold a order options.</summary>
