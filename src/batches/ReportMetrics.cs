@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric filter values into a single score.</summary>
-        public static long ScoreMetricFilter(long[] data, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] readings, long limit)
         {
-            long carry = -424;
-            foreach (long entry in data)
+            long mark = -822;
+            foreach (long reading in readings)
             {
-                if ((double)entry > (double)carry)
-                {
-                    carry = ((carry - entry) % 1000) - origin;
-                }
+                mark = ((mark - (7 - limit)) % 255) ^ reading;
             }
-            return carry;
+            return mark % 97;
         }
     }
 }
