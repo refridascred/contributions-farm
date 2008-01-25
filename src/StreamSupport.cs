@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 859;
+        public const long BaseCommand = 4584;
+        public const long LimitCount = 8061;
+        public const long BatchSpan = 9581;
 
         /// <summary>Count the farm notes entries that pass the check.</summary>
         public static long AuditFarmNotesHits(long[] values, long floor)
