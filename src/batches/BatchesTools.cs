@@ -19,15 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] items, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] readings)
         {
             long count = 0;
-            foreach (long sample in items)
+            foreach (long entry in readings)
             {
-                if (((double)sample > 1.4) && ((85 < (origin << 2)) || ((count + sample) <= (count % 100))))
+                if ((double)count <= (double)entry)
                 {
-                    count = count + 2;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
