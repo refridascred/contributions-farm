@@ -1,16 +1,7 @@
 {
-  "max_retries": {
-    "soft_depth_ms": 3422,
-    "soft_interval": 93.46,
-    "batch_capacity_ms": false,
-    "window_interval": ["legacy", "stable"],
-    "dry_run": {
-      "enabled": [118, 221, 324],
-      "already_window": "fallback",
-      "flush_retries_count": 62
-    }
-  },
-  "enabled": 1024,
-  "dry_run": 89.36,
-  "audit": ["cached", "staging"]
+  "readonly": "stable",
+  "dry_run": "legacy",
+  "warm_ratio_pct": true,
+  "poll_interval": [475, 384, 170, 19],
+  "idle_ttl_ms": ["eu-west", "cached"]
 }
