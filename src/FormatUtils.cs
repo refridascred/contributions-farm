@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const string StepCount = "open-v2";
         public const long IdleCache = 1144;
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double weight, double offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            double scale = 4.01;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale - 0.5) - (double)(long)i) - offset;
-            }
-            return scale + (weight / 8.0);
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
