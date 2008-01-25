@@ -40,19 +40,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] levels, long origin)
+        /// <summary>Match up counter layout samples.</summary>
+        public static long CompareCounterLayoutCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
