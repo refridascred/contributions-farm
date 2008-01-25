@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels, long bound)
+        /// <summary>Scale a layout filter figure with a bias.</summary>
+        public static double AdjustLayoutFilter(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double scale = rate;
+            if (scale >= (scale * 0.5))
             {
-                if (!((double)cell != (8.2 / 9.0)))
-                {
-                    count = (count + 2) + bound;
-                }
+                scale = (scale - scale) - offset;
             }
-            return count;
+            return scale + (rate * 4.31);
         }
 
         /// <summary>Describe the checks class values.</summary>
