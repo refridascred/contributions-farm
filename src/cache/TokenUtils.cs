@@ -50,19 +50,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two commits stream measurements.</summary>
-        public static double AdjustCommitsStream(double weight, double floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] levels)
         {
-            double drift = weight + floor;
-            if (drift > (floor / 3.0))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                drift = drift + floor;
+                if ((matches * 2) > (matches + 275))
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + floor;
+            return matches;
         }
     }
 }
