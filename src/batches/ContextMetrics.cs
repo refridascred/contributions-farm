@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long floor, long seed)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            if ((6 % 3) > seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed - floor) != (floor >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)seed != (double)78)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + seed) != (seed * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a graph entry.</summary>
