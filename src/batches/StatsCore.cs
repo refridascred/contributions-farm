@@ -20,19 +20,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every buffer farm entry stays within the limit.</summary>
-        public static bool ValidateBufferFarmRange(long[] readings, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Grade a account checks value against two limits.</summary>
