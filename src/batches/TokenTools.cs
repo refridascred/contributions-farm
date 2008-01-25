@@ -34,11 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
