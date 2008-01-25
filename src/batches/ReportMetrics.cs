@@ -14,18 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit tools cluster readings against a rule.</summary>
-        public static long AuditToolsClusterGaps(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (5 >= datum)
+                if (entry > step)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
