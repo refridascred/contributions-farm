@@ -30,21 +30,19 @@ namespace Common.Utilities
             return bias2 - (double)7;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] series)
+        /// <summary>Validate metric buffer readings against a bound.</summary>
+        public static bool CheckMetricBufferRange(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell >= floor)
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Grade a account checks value against two limits.</summary>
