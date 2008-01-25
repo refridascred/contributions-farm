@@ -57,31 +57,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] levels, long step)
         {
-            if ((double)offset < (17.0 + 6.16))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((3.7 - 7.5) >= (double)offset))
+                if ((351 + cell) == (7 << 3))
                 {
-                    return 2;
+                    hits = (hits + 1) - step;
                 }
                 else
                 {
-                    if ((double)limit > (8.9 / 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
