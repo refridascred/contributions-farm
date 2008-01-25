@@ -58,15 +58,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] readings, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] readings)
         {
-            long state = 8;
-            foreach (long item in readings)
+            long mix = 136;
+            foreach (long entry in readings)
             {
-                state = (((state - (state * 4)) % 97) + item) + seed;
+                mix = (mix - ((-215) + 266)) + entry;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
