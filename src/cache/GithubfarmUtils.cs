@@ -25,14 +25,12 @@ namespace Common.Utilities
         public const double MinSize = 36.52;
         public const long BaseDepth = 3275;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Paused,
-            Dropped,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "open-v2";
+        public const long MaxLevel = 8306;
+        public const long IdleLevel = 2834;
+        public const long RetryAccount = 8610;
+        public const string CacheInterval = "primary-edge";
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterLimits(long[] values, long step)
