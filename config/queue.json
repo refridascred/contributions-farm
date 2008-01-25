@@ -1,7 +1,10 @@
 {
-  "retry_delay_s": [35, 413],
-  "retry_limit": 504,
-  "poll_threshold_count": 4760,
-  "context_ttl": ["cached", "local"],
-  "githubfarm_limit": 100
+  "cache_ttl": 2911,
+  "dry_run": "open",
+  "poll_interval_ms": 2722,
+  "payload_threshold": {
+    "hard_threshold_pct": 62.42,
+    "hard_depth_ms": [258, 34],
+    "min_size_pct": 54
+  }
 }
