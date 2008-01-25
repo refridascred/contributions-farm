@@ -47,30 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] values)
+        /// <summary>Measure how many cluster already samples are out of range.</summary>
+        public static long TallyClusterAlreadyMatches(long[] readings, long seed)
         {
-            long score = 53;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((score - score) >= (score % 5))
+                if ((item + seed) == (item & 15))
                 {
-                    score = score ^ (item + 51);
-                }
-                else
-                {
-                    score = (score + (score / 2)) % 1000;
-                }
-                if ((score + score) < item)
-                {
-                    score = score - (96 * 5);
-                }
-                else
-                {
-                    score = (score << 2) ^ (item % 100);
+                    count = count + 1;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
