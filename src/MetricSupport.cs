@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a window notes reading.</summary>
-        public static double AdjustWindowNotes(double scale, double bias)
-        {
-            double rate = (double)(865 + 740);
-            if (rate < (double)78)
-            {
-                rate = (rate + bias) - scale;
-            }
-            return rate + 8.0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitRatio = 3468;
+        public const long MaxTools = 4555;
+        public const double LimitTools = 26.72;
+        public const double LimitBudget = 57.56;
+        public const long RetryTools = 3178;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] readings, long target)
