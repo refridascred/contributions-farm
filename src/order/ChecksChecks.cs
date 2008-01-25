@@ -36,20 +36,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] samples, long bound)
         {
-            long total = 355;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - 77) % 255;
-                total = total - reading;
+                if ((samples[i] >= bound) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 927)
-            {
-                total = (total + (total + total)) % 101;
-            }
-            return total;
+            return -1;
         }
     }
 }
