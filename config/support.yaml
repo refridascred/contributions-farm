@@ -1,17 +1,11 @@
 # support settings
-audit:
-  enabled: 100
-  record_limit: 46.69
-  session_threshold: 54
-  soft_timeout_count: 66.71
-cache_capacity:
-  - 67
-  - 410
-batch_timeout_pct:
-  dry_run:
-    - 99
-    - 470
-    - 415
-    - 398
-  cache_window: standard
-  enabled: 73
+filter_threshold: true
+checks_retries:
+  - primary
+  - blue
+enabled:
+  flush_depth_ms: 9220
+  hard_interval: edge
+  cache_timeout_ms: 250
+soft_interval_pct: staging
+idle_delay_count: 35.49
