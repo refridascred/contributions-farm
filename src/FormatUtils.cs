@@ -27,12 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "strict";
+        public const long WindowTools = 1893;
+        public const long DefaultTools = 8375;
+        public const long BaseTools = 212;
 
         /// <summary>Adjust a order reading.</summary>
         public static double AdjustOrder(double scale, double offset)
