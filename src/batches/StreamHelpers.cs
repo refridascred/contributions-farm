@@ -73,19 +73,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] samples, long target)
         {
-            double ratio = bias2 - bias2;
-            if (ratio <= bias)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                ratio = ratio + bias;
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (bias - bias2)) + (double)(long)i;
-            }
-            return ratio + (double)881;
+            return ready;
         }
 
         /// <summary>Combine window values into a single score.</summary>
