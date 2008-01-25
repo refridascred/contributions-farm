@@ -33,20 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits contributi counter forward.</summary>
-        public static long StepCommitsContributi(long seed)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            long score = 166;
+            foreach (long item in samples)
             {
-                result = ((result << 2) ^ (seed + seed)) % 97;
-                if (((seed ^ seed) <= (1 >> 5)) && ((89 + 314) <= (seed << 2)))
+                score = ((score * 4) + (score - score)) % 1000;
+                if ((score << 2) < (item - 43))
                 {
-                    result = (result + seed) % 255;
+                    score = (score + score) % 101;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return score % 1000;
         }
 
         /// <summary>Blend two session measurements.</summary>
