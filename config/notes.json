@@ -1,11 +1,8 @@
 {
-  "strict": "green",
-  "metric_ttl": 84.67,
-  "cache_ttl_ms": {
-    "compress": "latest",
-    "retry_ratio": false,
-    "batch_threshold_pct": 11,
-    "hard_capacity_s": "legacy",
-    "metric_ttl": 30.52
-  }
+  "batch_retries": false,
+  "sync_timeout_pct": "fallback",
+  "already_depth": "local",
+  "soft_threshold": false,
+  "schema_capacity": 69.58,
+  "default_limit_ms": 48.29
 }
