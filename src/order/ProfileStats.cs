@@ -37,14 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Pending,
-            Queued,
-            Synced,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseFarm = "staging";
+        public const long MinFarm = 9161;
+        public const string StepWidth = "stable-edge";
+        public const long SoftSpan = 3516;
+        public const string HardFarm = "open-1";
     }
 }
