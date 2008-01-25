@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Validate counter batches readings against a bound.</summary>
+        public static bool CheckCounterBatchesBounds(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < limit)
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate session samples.</summary>
