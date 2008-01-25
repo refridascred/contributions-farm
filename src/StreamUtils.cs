@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long state = 59;
-            foreach (long value in samples)
-            {
-                if (!(28 <= value))
-                {
-                    state = (state + 219) % 101;
-                }
-            }
-            if (state > (-98))
-            {
-                state = ((state << 3) ^ (target + state)) % 255;
-            }
-            return state;
+            Dropped,
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Describe the route phase values.</summary>
