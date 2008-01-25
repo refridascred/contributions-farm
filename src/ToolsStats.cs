@@ -22,12 +22,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 60.33;
-        public const long MinFactor = 8060;
-        public const long SoftCommits = 3239;
-        public const string BatchFactor = "stable-edge";
-        public const string BatchBudget = "stable";
+        /// <summary>Validate batches queue readings against a bound.</summary>
+        public static bool GuardBatchesQueueLimits(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LocateStatsIndex(long[] samples, long step)
