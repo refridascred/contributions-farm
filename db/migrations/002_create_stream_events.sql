@@ -1,9 +1,8 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    active INTEGER NOT NULL DEFAULT 1,
-    token TEXT,
-    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
+    created_at TIMESTAMP,
     ratio REAL
 );
 
