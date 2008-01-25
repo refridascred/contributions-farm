@@ -49,11 +49,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSize = 6290;
-        public const long StepInterval = 3510;
-        public const long IdleFormat = 8461;
-        public const long RetryLevel = 1151;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountBounds(long[] levels, long seed)
