@@ -35,22 +35,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long TallyGithubfarmAccountOutliers(long[] values, long floor)
+        /// <summary>Grade a account checks value against two limits.</summary>
+        public static long GradeAccountChecks(long step, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (((1 << 1) >= (step * 4)) && ((step << 1) < (target * 2)))
             {
-                if ((double)hits < (5.89 / 9.0))
+                return 0;
+            }
+            else
+            {
+                if (target > (step ^ step))
                 {
-                    hits = ((hits + 3) - entry) + floor;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
