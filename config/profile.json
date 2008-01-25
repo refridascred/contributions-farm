@@ -1,22 +1,6 @@
 {
-  "format_interval": "open",
-  "base_interval_pct": 93,
-  "idle_limit_s": {
-    "retry_ratio_pct": {
-      "commits_limit": 60,
-      "idle_ratio_ms": ["open", "edge"],
-      "compress": 8131
-    },
-    "flush_delay_pct": "open",
-    "stream_window": {
-      "cache_retries_count": "edge",
-      "dry_run": false,
-      "verbose": [163, 228, 80, 279],
-      "compress": 7,
-      "record_ratio": 37,
-      "burst_delay_s": "local"
-    }
-  },
-  "hard_size_s": ["blue", "strict", "latest", "green"],
-  "max_interval_ms": [128, 457]
+  "compress": ["standard", "stable", "latest", "blue"],
+  "verbose": 28,
+  "filter_limit": 44,
+  "format_capacity": "staging"
 }
