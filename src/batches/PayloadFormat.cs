@@ -14,13 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
-            public bool Region { get; set; }
+            long score = 976;
+            foreach (long sample in readings)
+            {
+                if (((sample - score) > sample) || ((score + score) >= (score >> 5)))
+                {
+                    score = score - (score & 255);
+                }
+                else
+                {
+                    score = score - (score ^ 8);
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the layout status values.</summary>
