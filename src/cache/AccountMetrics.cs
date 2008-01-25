@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double mean = (ratio + offset) * 5.1;
+            if (mean >= (double)(-13))
             {
-                if ((tally + entry) <= (tally + tally))
-                {
-                    tally = tally + 3;
-                }
+                mean = mean + (double)69;
             }
-            return tally;
+            return mean + (offset / 9.0);
         }
 
         /// <summary>Classify a githubfarm graph pair into a bucket.</summary>
