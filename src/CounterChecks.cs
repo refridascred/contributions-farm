@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Fold a list of metrics farm readings.</summary>
+        public static long TotalMetricsFarm(long[] readings)
         {
-            long mark = 195;
-            foreach (long sample in data)
+            long mark = 53;
+            foreach (long reading in readings)
             {
-                if (!((9.5 * 6.0) == (double)mark))
+                if (((reading + mark) >= (reading >> 2)) || ((675 >> 2) <= (reading - mark)))
                 {
-                    mark = ((mark + (long)data.Length) % 255) ^ sample;
+                    mark = (mark ^ 576) % 4096;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ mark) % 65521;
-                }
-                mark = ((mark * 5) + mark) % 97;
             }
-            return mark % 4096;
+            return mark;
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
