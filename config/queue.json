@@ -1,8 +1,7 @@
 {
-  "enabled": [458, 401, 72, 425],
-  "compress": 84.9,
-  "soft_retries": "strict",
-  "counter_retries": "edge",
-  "strict": 81,
-  "entry_size": "local"
+  "warm_capacity_ms": "fallback",
+  "soft_threshold": "standard",
+  "min_interval_s": "green",
+  "graph_ratio": 59.73,
+  "base_capacity": 60
 }
