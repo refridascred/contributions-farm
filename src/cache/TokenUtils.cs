@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool VerifyCacheOrderLimits(long[] samples, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (cell != target)
+                if ((hits + (-983)) == (hits / 2))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + reading;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a tools stats.</summary>
