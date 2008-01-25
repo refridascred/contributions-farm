@@ -31,11 +31,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] data, long step)
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
