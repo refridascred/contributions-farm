@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Grade a counter contributi value against two limits.</summary>
+        public static long BucketCounterContributi(long offset, long offset2)
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            if ((offset - 910) >= (-623))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset % 16) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset2 + offset) > (offset2 % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset / 6) > (offset2 * 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
