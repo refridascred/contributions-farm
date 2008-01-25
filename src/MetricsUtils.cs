@@ -29,17 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema cluster entry that matches the target.</summary>
-        public static long LocateSchemaClusterIndex(long[] values, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteGaps(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (values[i] < origin)
+                if ((count - target) < (950 >> 5))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
