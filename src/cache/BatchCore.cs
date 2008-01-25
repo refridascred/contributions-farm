@@ -20,13 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the filter order entries that pass the check.</summary>
+        public static long MeasureFilterOrderGaps(long[] values)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally >= datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
