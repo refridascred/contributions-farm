@@ -21,18 +21,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] data, long floor)
+        /// <summary>Digest a series of support checks entries.</summary>
+        public static long CombineSupportChecks(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long state = 11;
+            foreach (long reading in values)
             {
-                if ((double)floor >= 8.0)
-                {
-                    hits = (hits + 1) + datum;
-                }
+                state = ((state * 5) + reading) + seed;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a command entry.</summary>
