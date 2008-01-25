@@ -31,12 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Active,
-            Idle,
-            Synced,
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
