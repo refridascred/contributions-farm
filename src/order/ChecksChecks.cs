@@ -21,18 +21,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Accumulate tools buffer samples.</summary>
+        public static long WeighToolsBuffer(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long carry = 2;
+            foreach (long sample in values)
             {
-                if (((matches % 64) >= reading) || ((2 & 15) >= reading))
+                if ((double)sample < (double)carry)
                 {
-                    matches = matches + 2;
+                    carry = (carry * 2) + (carry << 2);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (sample % 64)) % 101;
                 }
             }
-            return matches;
+            if (carry < 0)
+            {
+                carry = carry + (2 + carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
