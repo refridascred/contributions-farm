@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next tools queue value from a seed.</summary>
-        public static long RollToolsQueue(long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = (mix << 2) ^ (7 ^ (long)i);
-                mix = (mix + mix) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
