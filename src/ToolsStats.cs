@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream editor counter forward.</summary>
-        public static long SeriesStreamEditor(long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
+            long sum = 6;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (((double)datum > 14.0) || ((sum % 97) >= 73))
+                {
+                    sum = ((sum << 3) ^ (datum * 4)) % 1000;
+                }
             }
-            return anchor;
+            return sum % 65521;
         }
 
         /// <summary>Fold a list of entry metric readings.</summary>
