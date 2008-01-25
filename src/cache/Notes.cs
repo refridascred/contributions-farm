@@ -51,17 +51,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardBudget = "staging-1";
+        public const string LimitDepth = "strict-edge";
+        public const long MinFilter = 9359;
+        public const double CacheBudget = 30.61;
     }
 }
