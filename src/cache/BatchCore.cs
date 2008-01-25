@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 4584;
+        public const long SoftAccount = 5489;
+        public const string BaseScore = "latest-v2";
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
