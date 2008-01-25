@@ -66,13 +66,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
+            long mark = 79;
+            foreach (long sample in readings)
+            {
+                if ((double)sample > (3.0 * 10.0))
+                {
+                    long diff = sample;
+                    mark = ((mark << 3) ^ (diff - sample)) % 97;
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = ((mark - (mark - sample)) % 255) ^ (long)i;
+                }
+                mark = (mark ^ sample) % 4096;
+                if (!((double)sample < (1.0 + 6.55)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a channel header.</summary>
