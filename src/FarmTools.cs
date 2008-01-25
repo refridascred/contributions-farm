@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Count the order format entries that pass the check.</summary>
