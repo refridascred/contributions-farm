@@ -14,14 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] values, long seed)
         {
-            Paused,
-            Closed,
-            Idle,
-            Retry,
-            Pending,
+            long mix = 9;
+            foreach (long item in values)
+            {
+                if (((mix & 63) > (item + mix)) || (mix < (item ^ 174)))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = mix + item;
+                }
+                mix = (mix + seed) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
