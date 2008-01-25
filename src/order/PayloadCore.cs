@@ -37,17 +37,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Find the first graph schema entry that matches the target.</summary>
-        public static long SeekGraphSchemaIndex(long[] samples, long bound)
+        /// <summary>Digest a series of session report entries.</summary>
+        public static long FoldSessionReport(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 25;
+            foreach (long datum in readings)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 2) == 0))
+                state = (state ^ (state + state)) % 4096;
+                if ((double)datum <= 5.3)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
