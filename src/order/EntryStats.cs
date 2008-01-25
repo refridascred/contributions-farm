@@ -39,11 +39,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 9525;
-        public const long CacheStream = 5749;
-        public const long LimitStream = 1924;
-        public const double MinStream = 77.78;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double SmoothToken(double rate, double floor)
