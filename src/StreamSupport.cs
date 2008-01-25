@@ -19,19 +19,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate payload commits readings against a bound.</summary>
-        public static bool VerifyPayloadCommitsLimits(long[] values, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (value < target)
+                if (entry > floor)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
