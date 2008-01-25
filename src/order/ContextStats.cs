@@ -43,18 +43,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] items)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell / 8) == (cell / 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Queued,
+            Retry,
+            Pending,
         }
     }
 }
