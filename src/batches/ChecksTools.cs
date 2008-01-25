@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long origin)
+        /// <summary>Locate a farm layout reading by value.</summary>
+        public static long FindFarmLayoutIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] == origin) && ((samples[i] % 3) != 0))
+                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
