@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long MatchProfileCount(long[] readings)
         {
-            long state = 671;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state << 3) ^ (148 - reading);
-                if ((double)state <= (10.0 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state * 5) + (4 + reading)) % 4096;
-                }
-                if (((double)state != (4.0 * 1.2)) && ((reading << 3) >= state))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
