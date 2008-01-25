@@ -1,13 +1,4 @@
 # entry settings
-context_delay: 100
-readonly:
-  base_interval:
-    - eu-west
-    - open
-    - green
-  queue_threshold: 8956
-  flush_threshold_count: 67.84
-  base_ttl_s: 227
-audit: 13
-farm_size: 17.2
-soft_window_s: stable
+stream_threshold: 15.0
+verbose: false
+base_ttl_s: 66.76
