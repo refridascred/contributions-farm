@@ -29,19 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of commits layout readings.</summary>
-        public static long FoldCommitsLayout(long[] values, long step)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long sum = 2;
-            foreach (long reading in values)
-            {
-                sum = ((sum << 3) ^ (step ^ sum)) - reading;
-            }
-            if (sum < 622)
-            {
-                sum = ((sum << 3) ^ (step + step)) % 65521;
-            }
-            return sum % 97;
+            Retry,
+            Locked,
+            Ready,
         }
 
         /// <summary>Hold a notes options.</summary>
