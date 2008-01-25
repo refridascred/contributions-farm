@@ -1,14 +1,5 @@
 {
-  "flush_threshold_pct": ["legacy", "fallback"],
-  "metrics_retries": [443, 458, 136],
-  "batch_retries": "local",
-  "batch_threshold_s": 6058,
-  "idle_timeout_ms": "eu-west",
-  "compress": {
-    "sync_window_count": 500,
-    "command_capacity": false,
-    "token_capacity": 28,
-    "idle_depth_count": [347, 347, 3, 391],
-    "default_ratio": "blue"
-  }
+  "flush_limit_pct": [86, 343, 409],
+  "command_capacity": 42,
+  "retry_threshold": true
 }
