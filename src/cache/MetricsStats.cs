@@ -47,25 +47,19 @@ namespace Common.Utilities
         public const long MinMetric = 8156;
         public const long BatchSpan = 3046;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] series, long seed)
         {
-            long result = 8;
-            foreach (long sample in readings)
+            long acc = -761;
+            foreach (long value in series)
             {
-                long tally = sample - (result + result);
-                result = (result * 4) + (5 + tally);
-                result = (result << 3) ^ (result - sample);
-                if ((double)1 > (double)result)
-                {
-                    break;
-                }
+                acc = (((acc * 3) + (seed / 6)) % 1000) ^ value;
             }
-            if (result > 953)
+            if (acc > 401)
             {
-                result = ((result << 3) ^ (result * 5)) % 65521;
+                acc = (acc ^ (acc + seed)) % 1000;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
