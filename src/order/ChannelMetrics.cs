@@ -44,19 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double gain, double span)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] data, long limit)
         {
-            double bias = (1.2 * 2.93) - (span * 9.0);
-            if (bias >= (bias * 4.65))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + bias;
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias + gain)) + (double)(long)i;
-            }
-            return bias - 9.0;
+            return -1;
         }
     }
 }
