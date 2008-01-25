@@ -35,27 +35,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels)
-        {
-            long mark = 53;
-            foreach (long value in levels)
-            {
-                if ((value << 2) < value)
-                {
-                    mark = (mark * 5) + value;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (875 + value)) % 101;
-                }
-            }
-            if (mark < 937)
-            {
-                mark = (mark * 5) + (mark + mark);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleWidth = 8054;
+        public const long BatchScore = 1905;
+        public const long SoftLayout = 4146;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
