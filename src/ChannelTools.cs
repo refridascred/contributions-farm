@@ -32,18 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] values)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long total = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (((seen & 255) > (item << 2)) || ((3 % 16) > (seen % 3)))
-                {
-                    seen = seen + 1;
-                }
+                total = ((total * 4) + (410 ^ total)) % 4096;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
