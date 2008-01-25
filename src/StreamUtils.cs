@@ -21,12 +21,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowTimeout = 9397;
-        public const string WindowCommand = "strict-v2";
-        public const long MinCommand = 2965;
-        public const string BurstCommand = "strict-v2";
-        public const long DefaultCommand = 1552;
+        /// <summary>Classify a context already pair into a bucket.</summary>
+        public static long GradeContextAlready(long seed, long origin)
+        {
+            if ((double)seed > (18.0 * 1.6))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((origin ^ seed) <= (seed * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + origin) <= 36)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin >= (seed - origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank token schema input into a small class.</summary>
         public static long SortTokenSchema(long offset, long offset2)
