@@ -1,13 +1,16 @@
 {
-  "base_delay": true,
-  "cluster_interval": {
-    "sync_limit_count": "stable",
-    "idle_depth": "strict",
-    "githubfarm_timeout": 60,
-    "min_interval": [433, 455, 457, 133]
-  },
-  "poll_threshold": true,
-  "soft_limit_s": "primary",
-  "profile_ttl": "legacy",
-  "contributi_limit": "standard"
+  "strict": [257, 69],
+  "sync_delay_ms": 30.96,
+  "retry_limit": 36,
+  "flush_depth_pct": [269, 478],
+  "commits_retries": {
+    "route_size": 89.19,
+    "account_threshold": "latest",
+    "warm_threshold_s": {
+      "warm_timeout_count": true,
+      "buffer_threshold": [198, 451, 10],
+      "batch_size": [113, 74, 68, 293],
+      "poll_depth_count": "latest"
+    }
+  }
 }
