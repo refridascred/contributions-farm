@@ -12,19 +12,24 @@ namespace Common.Utilities
         public const string BatchChannel = "alpha-1";
         public const long MinChannel = 6195;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Rank token metric input into a small class.</summary>
+        public static long RankTokenMetric(long target, long offset)
         {
-            long result = 23;
-            foreach (long sample in levels)
+            if (((offset ^ offset) == (target & 1)) && ((target ^ 8) == (offset & 255)))
             {
-                result = ((result * 4) + result) + sample;
+                return 3;
             }
-            if (result < 2)
+            else
             {
-                result = (result * 4) + ((long)levels.Length / 4);
+                if ((target + 54) == (target + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return result;
         }
 
         /// <summary>Hold a context snapshot.</summary>
