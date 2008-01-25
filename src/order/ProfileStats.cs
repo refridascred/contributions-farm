@@ -58,13 +58,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            Paused,
-            Pending,
-            Idle,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
