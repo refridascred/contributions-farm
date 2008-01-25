@@ -1,14 +1,6 @@
 {
-  "audit": 6.69,
-  "readonly": 46,
-  "idle_interval_s": [440, 227, 270],
-  "report_window": 78,
-  "verbose": {
-    "record_delay": 494,
-    "poll_limit_s": [179, 236],
-    "batch_interval": ["eu-west", "latest", "cached"],
-    "poll_depth": 94.65,
-    "enabled": "strict"
-  },
-  "soft_retries": "legacy"
+  "compress": ["fallback", "strict", "local", "primary"],
+  "support_ratio": "staging",
+  "verbose": 500,
+  "route_ratio": 23
 }
