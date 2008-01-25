@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long MinBudget = 1619;
         public const long CacheSession = 580;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] values, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits * 2) == (139 - 399))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = ((hits + 1) + reading) - floor;
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a context header.</summary>
