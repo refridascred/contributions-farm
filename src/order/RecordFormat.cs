@@ -45,11 +45,33 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultScore = 20.07;
-        public const long CacheChannel = 4953;
-        public const long LimitChannel = 2819;
-        public const long BaseWidth = 1535;
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long floor, long step)
+        {
+            long bound = floor ^ step;
+            if ((floor >= 62) || (3.25 < (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((1 >= (step + bound)) && ((step - floor) < 74))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + bound) <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsHits(long[] data)
