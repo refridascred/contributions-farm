@@ -1,11 +1,14 @@
 # Command notes
 
-Run the counter check before changing any order limits.
-The queue report groups every githubfarm by order.
-The account module keeps githubfarm values in sync with the payload cache.
+Run the notes check before changing any context limits.
+The route helpers are pure functions, so they are safe to call from any thread.
+When a contributi fails, the support handler retries a few times before giving up.
+
+When a format fails, the filter handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Validate cluster input early
-- Document new graph fields
-- Keep format values small
+- Review buffer limits each release
+- Log every counter change
+- Validate cache input early
