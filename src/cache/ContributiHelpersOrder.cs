@@ -18,18 +18,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = (mark << 2) ^ (bound + bound);
-                mark = (mark << 3) ^ ((long)i * 2);
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "strict-1";
+        public const long IdleBudget = 1118;
+        public const long RetryBudget = 78;
+        public const long BatchInterval = 5762;
 
         /// <summary>Project the next editor batches value.</summary>
         public static double SmoothEditorBatches(double scale, double offset)
