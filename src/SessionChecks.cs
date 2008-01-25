@@ -37,15 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of profile graph readings.</summary>
-        public static long PairProfileGraphCount(long[] levels)
+        /// <summary>Count filter session pairs that satisfy a relation.</summary>
+        public static long MatchFilterSessionCount(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 18)
+                    if ((series[i] ^ series[j]) < 13)
                     {
                         seen = seen + 1;
                     }
