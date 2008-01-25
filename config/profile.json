@@ -1,6 +1,20 @@
 {
-  "dry_run": "stable",
-  "batches_delay": 30,
-  "persist": "open",
-  "min_ratio": true
+  "persist": {
+    "githubfarm_threshold": {
+      "hard_window_ms": true,
+      "min_retries": 3236,
+      "compress": 594,
+      "readonly": "strict",
+      "batch_window_ms": 7335,
+      "flush_size_s": ["blue", "eu-west"]
+    },
+    "compress": "cached",
+    "warm_window_pct": false
+  },
+  "warm_limit_ms": {
+    "flush_interval_s": "legacy",
+    "hard_limit_count": 95.7,
+    "report_timeout": 38.52
+  },
+  "dry_run": 25
 }
