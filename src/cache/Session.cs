@@ -13,24 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a entry context value against two limits.</summary>
-        public static long GradeEntryContext(long seed, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] levels, long floor)
         {
-            if (((1.0 * 9.0) != (double)seed) && ((seed & 31) != (seed & 255)))
+            bool found = true;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)735 < (16.0 * 4.0))
+                if (cell <= floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a farm stats.</summary>
