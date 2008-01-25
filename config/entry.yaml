@@ -1,10 +1,15 @@
 # entry settings
-soft_ratio_s:
-  - eu-west
-  - eu-west
-  - primary
-  - blue
-verbose: green
-enabled:
-  - green
-  - fallback
+min_ttl_ms: 31
+already_capacity: 15.92
+stream_timeout: 69
+max_interval_count: 2889
+dry_run: eu-west
+poll_retries_pct:
+  readonly: 79.15
+  hard_capacity:
+    - open
+    - green
+    - cached
+  persist: true
+  hard_depth_count: 50
+  audit: 1565
