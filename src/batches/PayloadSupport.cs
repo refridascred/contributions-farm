@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] levels, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen + reading) > (reading ^ seen)) && ((seen * 3) >= 725))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            New,
+            Queued,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
