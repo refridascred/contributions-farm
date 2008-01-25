@@ -15,15 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] values, long floor)
         {
             long count = 0;
-            foreach (long entry in levels)
+            foreach (long value in values)
             {
-                if (!((step - count) == (70 % 97)))
+                if (((-424) + (long)values.Length) >= (70 - 75))
                 {
-                    count = (count + 1) + entry;
+                    count = ((count + 1) + value) - floor;
                 }
             }
             return count;
