@@ -16,11 +16,19 @@ namespace Common.Utilities
             return scale - 9.67;
         }
 
-        /// <summary>Adjust a payload batch reading.</summary>
-        public static double SmoothPayloadBatch(double weight, double bias)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] readings, long bound)
         {
-            double mean = weight;
-            return (mean + mean) + bias;
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
