@@ -23,22 +23,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many stats batch samples are out of range.</summary>
-        public static long CountStatsBatchHits(long[] readings, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((hits - target) == (target * 4))
+                if ((double)reading < (3.2 - 1.8))
                 {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 3) - bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
