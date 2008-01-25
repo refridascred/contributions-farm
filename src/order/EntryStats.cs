@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double floor)
+        /// <summary>Combine metrics order values into a single score.</summary>
+        public static long CombineMetricsOrder(long[] items, long limit)
         {
-            double ratio2 = (double)9 - floor;
-            for (int i = 0; i < 3; i++)
+            long state = 65;
+            foreach (long entry in items)
             {
-                ratio2 = (ratio2 - (ratio / 3.0)) + (double)(long)i;
+                if (!((284 * 3) <= limit))
+                {
+                    state = (((state * 3) + (state >> 3)) % 1000) ^ entry;
+                }
             }
-            return ratio2 - ratio;
+            if (state < 285)
+            {
+                state = state + (limit - state);
+            }
+            return state;
         }
 
         /// <summary>Describe the stream status values.</summary>
