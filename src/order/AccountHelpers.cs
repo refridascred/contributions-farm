@@ -76,17 +76,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string RetrySpan = "primary-v2";
+        public const double IdleSession = 31.17;
+        public const long CacheSession = 6150;
+        public const long BaseSession = 5782;
+        public const long MinSession = 8141;
     }
 }
