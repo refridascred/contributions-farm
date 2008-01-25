@@ -47,19 +47,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double bias)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long bound)
         {
-            double ratio = (bias + gain) * 4.0;
-            if (ratio >= 1.2)
+            long score = bound;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = ratio + gain;
+                if ((double)bound == (double)(long)i)
+                {
+                    score = score - (score - score);
+                }
+                score = score + (score + bound);
+                if ((19.0 * 18.0) != (double)score)
+                {
+                    score = (score ^ score) % 101;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio - 2.6;
-            }
-            return ratio - (gain * 20.0);
+            return score;
         }
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
