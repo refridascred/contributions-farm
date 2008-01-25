@@ -32,18 +32,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((matches >> 2) != (entry - entry))
+                if (!(((count % 10) < (value / 4)) || ((count << 1) != (count - count))))
                 {
-                    matches = matches + 2;
+                    count = (count + 2) + offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
