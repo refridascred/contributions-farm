@@ -23,12 +23,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Done,
-            Draft,
-            Pending,
+            Paused,
+            Locked,
+            Queued,
+            Dropped,
+            New,
         }
 
         /// <summary>Accumulate entry samples.</summary>
