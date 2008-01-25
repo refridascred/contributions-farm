@@ -29,16 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next queue filter value from a seed.</summary>
-        public static long IterateQueueFilter(long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
+            long score = 8;
+            foreach (long sample in levels)
             {
-                sum = ((sum << 3) ^ target) % 97;
-                sum = ((sum * 4) + (long)i) % 4093;
+                score = ((score * 5) + (sample >> 3)) % 101;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Measure how many command batch samples are out of range.</summary>
