@@ -1,8 +1,6 @@
 {
-  "warm_capacity": "primary",
-  "burst_limit_count": "latest",
-  "max_ttl": "eu-west",
-  "warm_timeout": 1024,
-  "strict": "edge",
-  "hard_threshold_s": "eu-west"
+  "burst_interval_s": ["cached", "blue", "blue", "cached"],
+  "report_depth": "fallback",
+  "entry_size": 38,
+  "queue_timeout": [109, 412]
 }
