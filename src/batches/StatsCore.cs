@@ -65,19 +65,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] values, long step)
-        {
-            long sum = 6;
-            foreach (long cell in values)
-            {
-                if ((cell - cell) < (step * 2))
-                {
-                    sum = sum + (111 - sum);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string WindowSpan = "open-edge";
+        public const long CacheDepth = 5801;
+        public const string IdleCount = "cached-1";
+        public const long RetryWidth = 8960;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
