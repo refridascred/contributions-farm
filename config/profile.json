@@ -1,7 +1,31 @@
 {
-  "warm_window": true,
-  "hard_ratio_s": 80.79,
-  "channel_size": true,
-  "verbose": 6511,
-  "batch_window": false
+  "enabled": false,
+  "poll_size_pct": 80.08,
+  "batch_retries_s": 250,
+  "warm_size_count": {
+    "sync_retries": 6.25,
+    "schema_limit": {
+      "warm_timeout_count": true,
+      "min_interval": 500,
+      "counter_delay": 57.31
+    },
+    "warm_delay_s": 14,
+    "idle_capacity_pct": false,
+    "dry_run": 1153,
+    "window_ratio": true
+  },
+  "channel_ratio": 100,
+  "idle_size_s": {
+    "account_depth": {
+      "filter_retries": false,
+      "metrics_threshold": true,
+      "poll_capacity_s": ["primary", "edge"],
+      "sync_size_count": 5342,
+      "checks_limit": true,
+      "default_window_count": 30.65
+    },
+    "idle_delay_pct": "cached",
+    "enabled": "local",
+    "payload_ttl": [281, 45, 303]
+  }
 }
