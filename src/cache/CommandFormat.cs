@@ -58,12 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] samples, long step)
         {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
