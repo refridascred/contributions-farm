@@ -40,13 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples, long target)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long score = 504;
+            foreach (long cell in samples)
+            {
+                if (((long)samples.Length + cell) < (long)samples.Length)
+                {
+                    score = ((score ^ (cell / 4)) % 255) - target;
+                }
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
