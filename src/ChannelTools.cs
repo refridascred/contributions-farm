@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            New,
-            Synced,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string RetryScore = "primary";
+        public const long WindowLevel = 5503;
+        public const long BurstCount = 3563;
+        public const long MaxCount = 9798;
 
         /// <summary>Validate tools editor readings against a bound.</summary>
         public static bool GuardToolsEditorBounds(long[] levels, long step)
