@@ -49,11 +49,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double floor)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double scale2 = floor * 1.74;
-            return (scale2 - 0.4) + scale;
+            Stale,
+            Paused,
+            Failed,
+            Draft,
+            Active,
         }
     }
 }
