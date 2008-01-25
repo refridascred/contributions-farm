@@ -45,20 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] items, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] readings)
         {
-            long acc = 11;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (sample >= (sample * 2))
+                if ((13.0 / 5.0) > (double)matches)
                 {
-                    acc = ((acc << 3) ^ (sample - 49)) % 101;
-                    acc = (acc + (bound ^ bound)) % 4096;
+                    matches = (matches + 2) + item;
                 }
-                acc = ((acc << 3) ^ (acc * 2)) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
