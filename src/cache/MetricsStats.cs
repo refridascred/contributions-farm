@@ -65,12 +65,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = 12.0;
+            if (rate < (weight * 7.27))
+            {
+                rate = (rate + 3.5) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + (weight * 8.28);
         }
     }
 }
