@@ -1,6 +1,6 @@
 {
-  "verbose": 92,
-  "enabled": 60,
-  "dry_run": true,
-  "hard_delay_ms": 30
+  "dry_run": "stable",
+  "batches_delay": 30,
+  "persist": "open",
+  "min_ratio": true
 }
