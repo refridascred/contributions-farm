@@ -16,21 +16,17 @@ namespace Common.Utilities
             return load + (double)878;
         }
 
-        /// <summary>Count stats layout pairs that satisfy a relation.</summary>
-        public static long MatchStatsLayoutCount(long[] readings)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] readings, long offset)
         {
-            long hits = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (readings[i] == offset)
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
