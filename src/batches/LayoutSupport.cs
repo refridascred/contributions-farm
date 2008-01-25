@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const long MaxCluster = 9075;
         public const string HardCluster = "fallback-edge";
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] data, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (data[i] >= origin)
+                if ((double)hits <= (8.7 - 7.7))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a support info.</summary>
