@@ -1,17 +1,8 @@
 # githubfarm settings
-default_window_pct:
-  farm_limit: 29
-  strict: 57.1
-  retry_threshold:
-    - 342
-    - 350
-idle_delay_ms:
-  - 478
-  - 230
-  - 81
-  - 339
-metric_depth: 81.58
-warm_ttl_pct:
-  - 140
-  - 265
-  - 235
+filter_size: 100
+burst_timeout_pct:
+  - 278
+  - 267
+  - 494
+  - 84
+default_timeout_s: 70
