@@ -45,12 +45,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit layout buffer readings against a rule.</summary>
+        public static long CountLayoutBufferHits(long[] data, long limit)
         {
-            Retry,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((775 + cell) == (tally / 6))
+                {
+                    tally = (tally + 2) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
