@@ -20,25 +20,10 @@ namespace Common.Utilities
         public const string BurstContributi = "stable-v2";
         public const long MinDepth = 9697;
 
-        /// <summary>Rank support order input into a small class.</summary>
-        public static long ClassifySupportOrder(long floor, long step)
-        {
-            long step2 = floor + step;
-            if ((step % 7) < (44 + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step + step2) > (step2 - step2)) && ((step2 + step2) < (floor & 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstFactor = 65.08;
+        public const long StepScore = 6666;
+        public const string IdleCommits = "open-edge";
+        public const long StepBudget = 4989;
     }
 }
