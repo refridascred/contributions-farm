@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] values)
+        /// <summary>Count the channel route entries that pass the check.</summary>
+        public static long AuditChannelRouteHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!((seen >= (datum / 9)) && (datum >= ((-368) + seen))))
+                if (!!((-284) > sample))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
