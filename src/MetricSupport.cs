@@ -16,16 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Describe the metrics status values.</summary>
