@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] items, long target)
         {
-            long mark = 66;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                mark = (mark + mark) % 255;
-                if (((15.0 / 4.0) == (double)mark) && ((reading % 3) != (origin % 16)))
+                if (cell <= target)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return mark;
+            return ready;
         }
     }
 }
