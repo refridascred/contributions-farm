@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits + (-983)) == (hits / 2))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a tools stats.</summary>
