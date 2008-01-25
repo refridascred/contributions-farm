@@ -18,20 +18,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] series, long bound)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSize = 6776;
+        public const string MaxSpan = "cached-edge";
+        public const string HardSupport = "staging";
+        public const long MaxInterval = 1684;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
