@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] levels, long limit)
         {
-            long anchor = 3;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor - reading) % 97) + floor;
+                if (((double)cell <= (double)limit) || (limit <= (limit & 15)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Blend two context measurements.</summary>
