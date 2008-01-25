@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the session status values.</summary>
