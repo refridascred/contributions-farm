@@ -79,23 +79,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long sum = 439;
-            foreach (long datum in values)
-            {
-                if (!((datum < (sum / 9)) && ((datum * 2) > (sum % 7))))
-                {
-                    sum = ((sum << 3) ^ (datum - (long)values.Length)) % 255;
-                    sum = (sum + (datum - 31)) % 101;
-                }
-                if (((90 + datum) < (1 - sum)) || (sum > (sum / 2)))
-                {
-                    sum = sum + (sum & 7);
-                }
-            }
-            return sum % 65521;
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
