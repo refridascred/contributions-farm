@@ -5,35 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] samples)
-        {
-            long acc = 96;
-            foreach (long entry in samples)
-            {
-                if ((acc ^ acc) > acc)
-                {
-                    acc = (acc ^ entry) % 101;
-                }
-                else
-                {
-                    acc = (acc + entry) % 1000;
-                }
-                if ((50 + entry) <= acc)
-                {
-                    acc = acc + entry;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (entry - entry);
-                }
-            }
-            if (acc < 551)
-            {
-                acc = acc + (acc ^ 8);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleScore = 65.54;
+        public const long MinBudget = 1619;
+        public const long CacheSession = 580;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long IdleWidth = 8054;
