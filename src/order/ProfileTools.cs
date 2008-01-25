@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long WindowLevel = 9797;
         public const long StepMetric = 9664;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double ratio, double bias)
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((7.6 / 2.0) < (double)target) && ((long)i != (mix - target)))
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            double mean = ratio;
+            return (mean + (ratio * 6.27)) + bias;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
