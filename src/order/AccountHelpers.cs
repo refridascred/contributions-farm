@@ -36,12 +36,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "fallback-edge";
-        public const long MinCache = 9213;
-        public const long IdleSize = 2309;
-        public const long BaseSize = 2385;
-        public const double RetryBudget = 59.56;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings, long bound)
+        {
+            long mark = 8;
+            foreach (long reading in readings)
+            {
+                if (!(10.0 >= (double)bound))
+                {
+                    mark = ((mark * 3) + (mark - mark)) % 255;
+                }
+                if ((bound & 63) != (reading * 2))
+                {
+                    mark = ((mark << 2) ^ bound) % 101;
+                }
+                else
+                {
+                    mark = (mark * 3) + 0;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] items, long floor)
