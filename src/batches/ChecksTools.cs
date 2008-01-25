@@ -46,11 +46,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Audit farm checks readings against a rule.</summary>
+        public static long TallyFarmChecksGaps(long[] data)
         {
-            double bias = scale;
-            return (bias - (scale - 3.43)) + span;
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (0.4 <= (double)(long)data.Length)
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
