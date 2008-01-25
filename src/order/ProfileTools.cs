@@ -20,18 +20,38 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many stats cluster samples are out of range.</summary>
-        public static long MeasureStatsClusterMatches(long[] series)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long seed, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            if ((6.81 + 2.44) > (double)floor)
             {
-                if ((((matches >> 1) < matches) || (datum >= matches)) || ((datum & 31) > matches))
+                return 5;
+            }
+            else
+            {
+                if ((786 % 100) < (seed % 100))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)seed == (9.9 + 3.54)) && ((6.0 + 1.0) <= (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4 < (seed - seed)) && ((16.0 - 4.55) > (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
