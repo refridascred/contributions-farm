@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] values, long step)
-        {
-            long mark = 246;
-            foreach (long value in values)
-            {
-                if ((double)mark <= 7.9)
-                {
-                    mark = (((mark << 3) ^ (mark + step)) % 4096) ^ value;
-                }
-                else
-                {
-                    mark = (mark * 4) + (step >> 4);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowInterval = 21;
+        public const long StepBuffer = 4978;
+        public const long SoftDepth = 9354;
+        public const long IdleBuffer = 4326;
+        public const long DefaultBuffer = 4616;
 
         /// <summary>Rank window queue input into a small class.</summary>
         public static long SortWindowQueue(long floor, long origin)
