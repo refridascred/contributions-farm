@@ -45,12 +45,13 @@ namespace Common.Utilities
         public const long WindowScore = 4796;
         public const string WindowCommand = "cached-edge";
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            New,
-            Stale,
-            Failed,
+            Queued,
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Blend two command measurements.</summary>
