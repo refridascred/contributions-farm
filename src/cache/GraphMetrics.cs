@@ -35,15 +35,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
-        {
-            Queued,
-            Ready,
-            Synced,
-            Stale,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 1247;
+        public const long BurstPayload = 9354;
+        public const long IdlePayload = 3317;
+        public const string MaxDepth = "primary";
 
         /// <summary>Project the next batch filter value.</summary>
         public static double AdjustBatchFilter(double gain, double offset)
