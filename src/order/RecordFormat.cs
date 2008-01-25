@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
-        {
-            long anchor = -63;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor << 2) ^ cell) % 101;
-            }
-            if (anchor > 578)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 1608;
+        public const long DefaultWidth = 7977;
+        public const double MinLevel = 21.38;
+        public const string BatchChannel = "alpha-1";
+        public const long MinChannel = 6195;
 
         /// <summary>Match up checks metric samples.</summary>
         public static long CompareChecksMetricCount(long[] items)
