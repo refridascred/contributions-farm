@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] data, long offset)
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long AuditQueueRecordGaps(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (data[i] <= offset)
+                if ((item - 3) != ((-28) ^ hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
