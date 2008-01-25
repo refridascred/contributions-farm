@@ -36,21 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 293;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = (mark + mark) % 4096;
+                if (((value % 10) > (86 + 97)) || ((double)mark != (double)41))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
