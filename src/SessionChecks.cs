@@ -12,31 +12,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long step, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] series)
         {
-            if ((step / 5) >= (step * 5))
+            long sum = 368;
+            foreach (long entry in series)
             {
-                return 4;
+                sum = ((sum << 3) ^ (sum + entry)) % 1000;
             }
-            else
-            {
-                if ((seed / 7) < (593 << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step - step) != (step - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
