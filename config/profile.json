@@ -1,7 +1,7 @@
 {
-  "strict": 30,
-  "already_interval": true,
-  "dry_run": 66,
-  "poll_size_pct": [212, 439, 116, 268],
-  "base_depth_count": [448, 176, 160]
+  "warm_window": true,
+  "hard_ratio_s": 80.79,
+  "channel_size": true,
+  "verbose": 6511,
+  "batch_window": false
 }
