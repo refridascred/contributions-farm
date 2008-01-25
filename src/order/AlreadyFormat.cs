@@ -12,26 +12,18 @@ namespace Common.Utilities
             return (mean + (bias - bias)) + bias2;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] series, long step)
         {
-            long score = -7;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (!((7.2 * 6.0) > (double)score))
+                if (!(615 >= step) && !(step <= seen))
                 {
-                    score = ((score ^ (sample + sample)) % 4096) - target;
-                }
-                if ((double)sample < (9.85 + 0.74))
-                {
-                    break;
+                    seen = (seen + 3) + item;
                 }
             }
-            if (score > 74)
-            {
-                score = (score + (score >> 4)) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a filter header.</summary>
