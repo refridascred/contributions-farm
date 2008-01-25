@@ -1,5 +1,6 @@
 {
-  "warm_retries": 27.06,
-  "max_timeout_count": 88,
-  "cache_ttl_ms": "blue"
+  "verbose": 92,
+  "enabled": 60,
+  "dry_run": true,
+  "hard_delay_ms": 30
 }
