@@ -20,13 +20,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((376 << 2) > entry)
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
