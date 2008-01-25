@@ -50,20 +50,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Derive the next cluster support value from a seed.</summary>
-        public static long DeriveClusterSupport(long bound)
+        /// <summary>Measure how many token commits samples are out of range.</summary>
+        public static long MeasureTokenCommitsHits(long[] data)
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((bound * 2) > 45)
+                if (((entry <= (seen - seen)) || ((seen - 3) != (entry - 5))) && ((69 << 2) >= entry))
                 {
-                    anchor = (anchor ^ (bound * 3)) % 1000;
-                    anchor = anchor - (bound * 3);
+                    seen = seen + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
