@@ -12,20 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] levels, long offset)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowLayout = "alpha";
+        public const long SoftLayout = 3036;
+        public const long RetryFactor = 6032;
+        public const string BurstSpan = "standard";
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long CountEditorHits(long[] items)
