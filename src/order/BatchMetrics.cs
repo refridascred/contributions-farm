@@ -46,16 +46,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                score = (score ^ (target & 7)) % 4096;
-                score = ((score * 4) + (long)i) % 4093;
+                if ((double)count <= (2.9 - 6.0))
+                {
+                    count = (count + 3) ^ item;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
