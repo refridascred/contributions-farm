@@ -51,9 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleTimeout = 5978;
-        public const double BatchLevel = 87.4;
-        public const long SoftTimeout = 1256;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 3476;
+        public const double LimitSupport = 98.59;
+        public const string BaseSupport = "open-1";
+        public const long IdleSupport = 2186;
+        public const long MinDepth = 787;
     }
 }
