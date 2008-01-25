@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit context order readings against a rule.</summary>
-        public static long CountContextOrderOutliers(long[] samples, long offset)
+        /// <summary>Compare every pair of batch metric readings.</summary>
+        public static long CompareBatchMetricCount(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((((long)samples.Length ^ cell) != (cell + matches)) || ((cell + offset) != (matches + cell))) || (4.3 < (double)(long)samples.Length))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first filter format entry that matches the target.</summary>
