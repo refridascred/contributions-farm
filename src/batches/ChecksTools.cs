@@ -14,23 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] values, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            long mix = 9;
-            foreach (long item in values)
+            double rate = floor;
+            if (rate < (floor + floor))
             {
-                if (((mix & 63) > (item + mix)) || (mix < (item ^ 174)))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = mix + item;
-                }
-                mix = (mix + seed) % 97;
+                rate = rate + ratio;
             }
-            return mix;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + rate;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
