@@ -33,14 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Blend two order stream measurements.</summary>
+        public static double SmoothOrderStream(double scale, double floor)
         {
-            Closed,
-            Queued,
-            Idle,
-            Locked,
-            Ready,
+            double bias = floor;
+            if (bias < (bias - 1.0))
+            {
+                bias = (bias - (bias / 4.0)) - scale;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (double)40;
         }
     }
 }
