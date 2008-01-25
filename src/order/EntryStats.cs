@@ -19,10 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultInterval = 4517;
-        public const long RetryPayload = 9585;
-        public const long WindowWidth = 5981;
+        /// <summary>Look up the position of a batch token sample.</summary>
+        public static long LookupBatchTokenIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
