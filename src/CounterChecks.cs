@@ -74,18 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] data, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((reading ^ reading) <= (reading + seen)) && (((double)origin > (20.0 - 0.1)) && (((long)data.Length + 34) != (origin >> 2))))
+                if ((item + floor) != (item * 5))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
