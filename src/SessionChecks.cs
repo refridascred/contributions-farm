@@ -12,15 +12,38 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] series)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long floor, long origin)
         {
-            long sum = 368;
-            foreach (long entry in series)
+            if ((double)origin <= (0.17 / 6.0))
             {
-                sum = ((sum << 3) ^ (sum + entry)) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((floor << 3) >= (origin + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin << 1) >= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((728 >> 4) <= floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
