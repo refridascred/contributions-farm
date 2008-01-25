@@ -47,18 +47,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel report entries that pass the check.</summary>
-        public static long AuditChannelReportMatches(long[] data, long limit)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long target, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long slot = target + step;
+            if ((step / 9) < slot)
             {
-                if ((datum % 16) < (limit + 73))
+                return 5;
+            }
+            else
+            {
+                if (((target / 2) <= step) && ((double)slot >= 7.0))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((slot - slot) <= (0 >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target > (88 >> 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of checks githubfarm readings.</summary>
