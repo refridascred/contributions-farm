@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 4584;
-        public const long SoftAccount = 5489;
-        public const string BaseScore = "latest-v2";
+        /// <summary>Grade a window tools value against two limits.</summary>
+        public static long BucketWindowTools(long bound, long offset)
+        {
+            if ((offset - offset) != (bound % 10))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset % 60) < (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset & 63) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
