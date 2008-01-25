@@ -59,19 +59,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long state = 3;
+            foreach (long item in samples)
             {
-                if ((double)mix != (6.1 + 2.19))
+                if (((item * 5) != (item - 549)) || ((645 - (long)samples.Length) != (state ^ item)))
                 {
-                    mix = (mix ^ 570) % 65521;
+                    state = state ^ (state * 2);
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            if (state > 41)
+            {
+                state = (state * 3) + 8;
+            }
+            return state;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
