@@ -68,32 +68,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank stats report input into a small class.</summary>
-        public static long SortStatsReport(long step, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long slot = step + bound;
-            if ((double)728 <= (double)slot)
+            long carry = 140;
+            foreach (long datum in readings)
             {
-                return 1;
+                carry = ((carry << 3) ^ (carry + carry)) ^ datum;
             }
-            else
-            {
-                if (14.0 >= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((3.7 / 6.0) < (double)slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the graph phase values.</summary>
