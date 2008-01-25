@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Ready,
-            Synced,
-            New,
+            Failed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
