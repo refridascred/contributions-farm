@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
-        {
-            Pending,
-            Stale,
-            Idle,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleCount = 44.74;
+        public const long CacheBatch = 8839;
+        public const long BatchScore = 1161;
+        public const string MaxBatch = "open";
 
         /// <summary>Project the next githubfarm value.</summary>
         public static double AdjustGithubfarm(double ratio, double floor)
