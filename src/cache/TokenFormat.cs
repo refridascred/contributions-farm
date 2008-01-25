@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long origin, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin / 9) > origin)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((0.62 - 1.8) < (16.0 - 16.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((origin >> 3) > origin)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate channel samples.</summary>
