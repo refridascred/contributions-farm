@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Closed,
-            Active,
-            Dropped,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 9483;
+        public const string DefaultNotes = "local-edge";
+        public const double IdleFactor = 93.16;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
