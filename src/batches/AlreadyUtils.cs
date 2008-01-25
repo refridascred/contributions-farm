@@ -34,19 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] data, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (cell != seed)
+                if (((item - 7) <= tally) && (((item + (long)samples.Length) != (405 + item)) || ((444 + item) <= (item / 5))))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
