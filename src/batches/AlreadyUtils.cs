@@ -42,15 +42,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long step, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            if (((step + target) >= target) || ((3.8 / 4.0) < (double)target))
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((step - target) != (target * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target << 3) > (target >> 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5 % 16) >= (target + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
