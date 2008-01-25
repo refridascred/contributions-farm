@@ -12,25 +12,21 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-1";
         public const long SoftSize = 8700;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + seed) % 1000;
-                if ((score + seed) > (seed << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score - (score >> 4)) % 97;
-                    continue;
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (((1 - (long)i) > (seed + 391)) && ((6 - score) > (score + seed)))
-                {
-                    score = (score ^ (score & 3)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
