@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const long LimitStream = 1924;
         public const double MinStream = 77.78;
 
-        /// <summary>Validate token entry readings against a bound.</summary>
-        public static bool CheckTokenEntryBounds(long[] samples, long bound)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            double gain = (double)((-369) - (-304));
+            if (gain > (double)8)
             {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain - gain) - floor;
             }
-            return ready;
+            else
+            {
+                gain = gain + (gain + rate);
+            }
+            return gain + (double)12;
         }
     }
 }
