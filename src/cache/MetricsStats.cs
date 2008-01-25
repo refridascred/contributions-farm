@@ -40,10 +40,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 5965;
-        public const long WindowScore = 4796;
-        public const string WindowCommand = "cached-edge";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] levels)
