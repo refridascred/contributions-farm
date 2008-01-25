@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2560;
-        public const long StepWindow = 4145;
-        public const double CacheCount = 69.3;
-        public const long CacheWindow = 3263;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
