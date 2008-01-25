@@ -26,10 +26,20 @@ namespace Common.Utilities
         public const string BaseSpan = "cached-v2";
         public const long BurstContext = 2064;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleFactor = 4122;
-        public const long SoftDepth = 8376;
-        public const double BatchSpan = 54.6;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long OverlapEditorCount(long[] items)
