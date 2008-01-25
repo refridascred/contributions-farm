@@ -40,19 +40,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((total << 3) <= floor))
-                {
-                    total = ((total << 2) ^ (floor + (long)i)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Paused,
+            Draft,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
