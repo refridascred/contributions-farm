@@ -34,14 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] values, long target)
         {
-            Draft,
-            Failed,
-            Queued,
-            Retry,
-            Ready,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((target + datum) <= (count << 1)) || ((target < count) || ((double)datum > (1.6 * 1.2))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
