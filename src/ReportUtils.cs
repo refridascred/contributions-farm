@@ -54,15 +54,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two support format measurements.</summary>
-        public static double BlendSupportFormat(double ratio, double floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            double gain = (double)(29 + 45);
-            if (gain <= ratio)
-            {
-                gain = (gain + (15.0 - 1.1)) + floor;
-            }
-            return gain - ratio;
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
     }
 }
