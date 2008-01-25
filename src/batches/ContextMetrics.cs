@@ -16,14 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] levels, long origin)
         {
-            Dropped,
-            Closed,
-            Failed,
-            Locked,
-            Pending,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate filter samples.</summary>
