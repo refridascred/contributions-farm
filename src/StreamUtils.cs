@@ -84,22 +84,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] readings, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] readings, long bound)
         {
-            long sum = 171;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((entry & 1) <= (81 & 63))
+                if ((hits ^ bound) >= (bound + hits))
                 {
-                    sum = ((sum << 2) ^ (entry - 686)) % 65521;
-                }
-                else
-                {
-                    sum = (sum ^ (7 + floor)) % 1000;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
