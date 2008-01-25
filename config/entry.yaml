@@ -1,10 +1,17 @@
 # entry settings
-default_retries_count:
-  - 1
-  - 275
-  - 167
-  - 55
-hard_limit: fallback
-default_delay_ms: 9624
-retry_window_s: 5979
-sync_threshold: 67.25
+support_retries: 20.3
+idle_delay_pct:
+  strict: 2078
+  batch_ratio_ms: 4
+  metrics_capacity:
+    soft_limit_s: blue
+    burst_capacity_ms: legacy
+    burst_limit_ms: true
+    dry_run: false
+    cache_limit: 6295
+  retry_size: 100
+  hard_interval: true
+  cache_timeout_pct: standard
+flush_ttl_ms: 48
+default_ttl_ms: 2588
+dry_run: legacy
