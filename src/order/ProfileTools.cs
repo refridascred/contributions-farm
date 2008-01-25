@@ -20,15 +20,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Measure how many stats cluster samples are out of range.</summary>
+        public static long MeasureStatsClusterMatches(long[] series)
         {
-            long result = 994;
+            long matches = 0;
             foreach (long datum in series)
             {
-                result = (result - datum) % 97;
+                if ((((matches >> 1) < matches) || (datum >= matches)) || ((datum & 31) > matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
