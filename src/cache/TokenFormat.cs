@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Paused,
-            Draft,
-            Done,
-            Active,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepScore = "standard";
+        public const long MinCache = 7059;
+        public const long RetryCache = 6442;
+        public const long SoftCache = 5543;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long LookupToolsIndex(long[] items, long step)
