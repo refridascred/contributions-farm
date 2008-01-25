@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long target)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 2) + (24 % 60)) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
