@@ -56,16 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                total = (total ^ (3 - 1)) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                if ((long)readings.Length <= (cell - seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
