@@ -19,19 +19,19 @@ namespace Common.Utilities
             return (mean + mean) + bias;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double bias, double floor)
         {
-            double bias = (span / 5.0) - rate;
-            if (bias < bias)
+            double gain = (double)72 - bias;
+            if (gain >= floor)
             {
-                bias = bias + (double)60;
+                gain = gain + gain;
             }
             else
             {
-                bias = bias + (double)90;
+                gain = gain + gain;
             }
-            return bias - (double)31;
+            return gain + (gain * 7.3);
         }
     }
 }
