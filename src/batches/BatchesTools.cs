@@ -19,18 +19,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings, long limit)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((-5) < (limit ^ 842))
+                if (((double)sample > 1.4) && ((85 < (origin << 2)) || ((count + sample) <= (count % 100))))
                 {
-                    hits = (hits + 3) ^ cell;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the filter level values.</summary>
