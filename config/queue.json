@@ -1,11 +1,17 @@
 {
-  "checks_limit": {
-    "batch_threshold": 54.44,
-    "flush_ttl_ms": "green",
-    "strict": 98,
-    "readonly": "standard"
+  "enabled": {
+    "editor_delay": 22.59,
+    "burst_interval_count": false,
+    "burst_size": ["stable", "staging", "latest", "strict"],
+    "dry_run": 9787,
+    "cache_interval_ms": {
+      "editor_retries": "local",
+      "hard_delay_ms": false,
+      "max_window": 48,
+      "strict": "edge"
+    }
   },
-  "default_timeout_pct": 3.73,
-  "strict": "local",
-  "poll_capacity": 71.83
+  "burst_limit": "standard",
+  "warm_ratio": 250,
+  "sync_timeout_s": "standard"
 }
