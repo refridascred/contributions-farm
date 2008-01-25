@@ -45,18 +45,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format tools readings against a rule.</summary>
-        public static long AuditFormatToolsOutliers(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 630;
+            foreach (long datum in levels)
             {
-                if (2.71 >= (double)matches)
+                if ((double)datum < (16.0 + 6.3))
                 {
-                    matches = (matches + 2) + value;
+                    score = score ^ (datum + datum);
+                }
+                if (502 >= (floor - score))
+                {
+                    score = score - 18;
+                }
+                else
+                {
+                    score = (score ^ floor) % 255;
                 }
             }
-            return matches;
+            if (score > (-40))
+            {
+                score = score ^ (floor - 5);
+            }
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
