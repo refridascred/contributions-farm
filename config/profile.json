@@ -1,8 +1,19 @@
 {
-  "verbose": "edge",
-  "burst_window_ms": "cached",
-  "strict": "latest",
-  "batch_window": 48,
-  "entry_window": "edge",
-  "enabled": 80.65
+  "record_interval": ["standard", "standard", "blue", "legacy"],
+  "default_delay": {
+    "retry_limit_ms": 30,
+    "command_timeout": {
+      "sync_timeout_pct": true,
+      "soft_threshold_count": "legacy",
+      "batch_threshold": 500,
+      "max_depth_count": 7469,
+      "flush_capacity_s": 56.63
+    },
+    "soft_retries_count": 250,
+    "base_limit": "cached",
+    "sync_capacity_ms": ["staging", "strict", "strict"]
+  },
+  "warm_window": [343, 16, 257],
+  "min_window": "legacy",
+  "verbose": "eu-west"
 }
