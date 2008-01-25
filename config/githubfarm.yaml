@@ -1,7 +1,38 @@
 # githubfarm settings
-idle_ratio: blue
-account_threshold: green
-max_window_pct: 3546
-batch_ttl_ms: 3729
-enabled: 59
-sync_ttl: false
+warm_limit_pct: 30
+report_ratio:
+  - 466
+  - 403
+command_depth: strict
+verbose: 60
+soft_size: local
+soft_interval:
+  audit:
+    - 264
+    - 196
+    - 53
+    - 254
+  retry_ttl:
+    retry_size: open
+    flush_size_count: blue
+    hard_threshold_count:
+      - green
+      - eu-west
+      - blue
+  poll_ttl_pct: eu-west
+  filter_threshold:
+    base_interval:
+      - 112
+      - 451
+      - 293
+      - 184
+    base_timeout_ms:
+      - blue
+      - eu-west
+    batch_threshold_count: false
+    sync_ttl_count:
+      - 108
+      - 38
+      - 447
+      - 110
+    persist: stable
