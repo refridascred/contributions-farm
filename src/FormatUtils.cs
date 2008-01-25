@@ -38,22 +38,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the order account entries that pass the check.</summary>
-        public static long MeasureOrderAccountOutliers(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((reading / 6) != (tally & 7))
+                if ((long)readings.Length <= ((long)readings.Length & 3))
                 {
-                    tally = tally + 1;
+                    matches = ((matches + 1) ^ datum) + seed;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
