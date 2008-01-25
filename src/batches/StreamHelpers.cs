@@ -24,10 +24,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 2791;
-        public const double StepFactor = 24.81;
-        public const string MaxToken = "latest-edge";
+        /// <summary>Validate graph token readings against a bound.</summary>
+        public static bool GuardGraphTokenRange(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long TallySchemaMatches(long[] series, long seed)
