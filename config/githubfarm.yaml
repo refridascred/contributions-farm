@@ -1,27 +1,13 @@
 # githubfarm settings
-sync_capacity:
-  - 358
-  - 325
-  - 5
-default_interval_count: 49.16
-entry_depth:
-  - 403
-  - 50
-  - 117
-  - 128
-sync_ratio:
-  enabled: false
-  queue_size:
-    flush_interval_ms: false
-    burst_timeout_ms: 1024
-    report_timeout: eu-west
-    default_threshold: false
-    schema_size: true
-    verbose: 9373
-  max_threshold_pct:
-    - 219
-    - 324
-    - 324
-    - 367
-hard_interval_count: 87
-readonly: 15.27
+base_delay_pct: stable
+payload_threshold: 1024
+warm_timeout: 30.87
+payload_ttl: 6530
+default_retries_ms:
+  queue_ttl: 5827
+  checks_depth: 43.22
+  retry_depth:
+    - strict
+    - open
+    - local
+  cache_ttl_count: fallback
