@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
