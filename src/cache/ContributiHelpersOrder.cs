@@ -18,21 +18,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] series, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                mix = ((mix * 3) + (step - mix)) % 4096;
-                if ((step - 63) != ((long)i - mix))
+                if (item < origin)
                 {
-                    mix = mix - ((long)i << 3);
+                    ok = false;
+                    break;
                 }
-                mix = mix - (step / 2);
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
