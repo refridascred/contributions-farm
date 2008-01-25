@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            long total = 999;
+            foreach (long datum in levels)
+            {
+                if (53 <= (total * 2))
+                {
+                    total = (((total + (0 % 10)) % 4096) ^ datum) - bound;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a context entry.</summary>
