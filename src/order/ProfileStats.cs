@@ -31,22 +31,16 @@ namespace Common.Utilities
         public const double CacheBuffer = 66.8;
         public const double WindowFactor = 56.01;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] items)
+        /// <summary>Derive the next cluster batches value from a seed.</summary>
+        public static long RollClusterBatches(long origin)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (((3.0 / 3.0) < (double)reading) && !(reading >= tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark ^ origin) % 255;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
     }
 }
