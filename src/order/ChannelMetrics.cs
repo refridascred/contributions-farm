@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long RetryProfile = 5963;
         public const long WindowTimeout = 313;
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool CheckGithubfarmStreamRange(long[] items, long target)
+        /// <summary>Rank window buffer input into a small class.</summary>
+        public static long BucketWindowBuffer(long target, long target2)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            if ((target2 % 10) > (target2 * 3))
             {
-                if (sample <= target)
+                return 3;
+            }
+            else
+            {
+                if ((target >= (target2 + target)) || (2.0 >= (double)target))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a channel summary.</summary>
