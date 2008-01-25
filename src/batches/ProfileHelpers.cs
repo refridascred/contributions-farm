@@ -58,19 +58,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Grade a tools contributi value against two limits.</summary>
+        public static long GradeToolsContributi(long bound, long limit)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            if (!((limit + 704) >= limit))
             {
-                if (!((anchor >> 2) != (anchor + anchor)))
-                {
-                    anchor = (anchor * 4) + (anchor & 15);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((bound < 356) || ((double)limit < 0.3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= (71 << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (870 >= (bound ^ 9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
