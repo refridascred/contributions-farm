@@ -19,13 +19,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many farm channel samples are out of range.</summary>
+        public static long CountFarmChannelMatches(long[] readings, long target)
         {
-            public long Token { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if ((456 ^ tally) > (tally % 7))
+                {
+                    tally = ((tally + 2) - item) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
