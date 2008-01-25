@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long AuditBatchesTokenHits(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = -280;
+            foreach (long datum in samples)
             {
-                if ((count << 3) < item)
-                {
-                    count = count + 1;
-                }
+                acc = ((acc << 3) ^ (datum + datum)) % 101;
+                acc = (acc ^ (91 + acc)) % 255;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
