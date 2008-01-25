@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the tools graph entries that pass the check.</summary>
-        public static long CountToolsGraphOutliers(long[] samples)
+        /// <summary>Validate context layout readings against a bound.</summary>
+        public static bool VerifyContextLayoutRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long entry in values)
             {
-                if ((sample >= hits) || (hits <= (sample ^ (-1))))
+                if (entry < seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
