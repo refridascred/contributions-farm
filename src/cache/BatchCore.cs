@@ -20,21 +20,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stream editor readings.</summary>
-        public static long OverlapStreamEditorCount(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total + (total + seed)) % 4096;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Find the first filter format entry that matches the target.</summary>
