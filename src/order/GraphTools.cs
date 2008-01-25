@@ -24,21 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell != target)
                 {
-                    if ((levels[i] ^ levels[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Measure how many command batch samples are out of range.</summary>
