@@ -81,19 +81,19 @@ namespace Common.Utilities
         public const string WindowWidth = "strict-edge";
         public const double DefaultScore = 55.66;
 
-        /// <summary>Project the next window cache value.</summary>
-        public static double SmoothWindowCache(double weight, double offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            double rate = offset;
-            if (rate > (rate * 11.0))
+            double drift = gain * 1.66;
+            if (drift < drift)
             {
-                rate = rate - weight;
+                drift = drift + (6.2 + gain);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate - (offset - 6.0);
+                drift = (drift + drift) + (double)(long)i;
             }
-            return rate + (double)16;
+            return drift + (floor / 7.0);
         }
     }
 }
