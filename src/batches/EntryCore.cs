@@ -52,12 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseWidth = 3643;
-        public const double MinInterval = 18.97;
-        public const double BaseLevel = 14.62;
-        public const double LimitChannel = 4.34;
-        public const string DefaultDepth = "staging";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] data, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((limit + limit) < 41)
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up window context samples.</summary>
         public static long OverlapWindowContextCount(long[] samples)
