@@ -19,11 +19,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowCount = "cached-edge";
-        public const long StepStats = 8247;
-        public const double DefaultStats = 39.76;
-        public const double SoftStats = 68.36;
-        public const long HardCount = 4994;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Closed,
+            Draft,
+            Ready,
+            Failed,
+            Active,
+        }
     }
 }
