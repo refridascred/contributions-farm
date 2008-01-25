@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            long diff = origin - step;
+            if ((diff + 365) >= (origin + diff))
             {
-                mark = (mark * 3) + target;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((origin >> 5) >= origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin < (double)diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a commits contributi counter forward.</summary>
