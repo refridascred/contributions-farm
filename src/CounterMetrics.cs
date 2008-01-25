@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] items)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry < (hits & 127)) || ((4.8 - 0.4) >= (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
