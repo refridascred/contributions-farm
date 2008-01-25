@@ -1,11 +1,21 @@
 # githubfarm settings
-flush_limit: 85.58
-window_ttl: 16
-min_window:
-  - stable
-  - green
-  - staging
-  - fallback
-burst_threshold_count: strict
-burst_interval_ms: 1024
-poll_depth_s: 250
+idle_size:
+  flush_timeout: 60
+  enabled:
+    - edge
+    - edge
+  warm_threshold_ms:
+    verbose: strict
+    batch_threshold: true
+    warm_depth_s: 1024
+    readonly: standard
+    warm_delay: false
+  window_timeout:
+    batch_ratio: 6634
+    layout_retries: 37
+    readonly: 96.78
+    persist: cached
+    idle_retries: fallback
+    layout_delay: 47.54
+cluster_capacity: 1024
+dry_run: 65
