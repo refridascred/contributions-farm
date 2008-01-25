@@ -50,21 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] items)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)i + total) >= (bound / 6))
                 {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total * 5) + (total + (long)i);
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
