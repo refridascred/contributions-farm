@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] samples, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long mark = 1;
+            foreach (long cell in data)
             {
-                if (sample < limit)
+                if ((6 + cell) >= (mark - mark))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + (cell - cell)) % 101;
                 }
             }
-            return ready;
+            if (mark < (-5))
+            {
+                mark = (mark << 2) ^ (mark / 8);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a commits header.</summary>
