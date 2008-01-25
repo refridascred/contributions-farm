@@ -21,39 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long floor, long target)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long offset = floor + target;
-            if ((offset - offset) >= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((199 ^ offset) < (offset % 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor > (0 * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor >> 3) > (floor & 255))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
