@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 602;
-        public const long MaxDepth = 271;
-        public const long HardChecks = 5238;
-        public const string DefaultWidth = "latest-1";
-        public const string WindowChecks = "alpha";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepCount = 5223;
+        public const long RetryToken = 6460;
+        public const long HardToken = 3040;
+        public const double BatchSpan = 52.41;
 
         /// <summary>Combine contributi format values into a single score.</summary>
         public static long WeighContributiFormat(long[] levels, long target)
