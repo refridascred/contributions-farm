@@ -23,15 +23,31 @@ namespace Common.Utilities
             return weight - (gain * 7.98);
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long offset)
         {
-            long mix = 1;
-            foreach (long value in data)
+            if ((floor > (offset * 3)) || (offset <= (offset + offset)))
             {
-                mix = ((mix * 2) + (value - offset)) % 101;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (((offset - offset) <= (floor % 12)) && ((5.71 / 4.0) <= (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (10.0 >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
