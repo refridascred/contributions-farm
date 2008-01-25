@@ -28,26 +28,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items, long seed)
+        /// <summary>Compare every pair of window graph readings.</summary>
+        public static long OverlapWindowGraphCount(long[] values)
         {
-            long carry = 9;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seed != (double)item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry + (item + 0);
-                }
-                else
-                {
-                    carry = (carry ^ item) % 1000;
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 61)
-            {
-                carry = ((carry << 3) ^ seed) % 97;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a checks summary.</summary>
