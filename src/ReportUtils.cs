@@ -62,38 +62,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long limit, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((6.69 - 0.11) >= (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound / 6) < (limit + bound)) && ((8 * 5) != (limit + limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound % 10) != (bound / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)limit <= 5.1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Hold a channel header.</summary>
