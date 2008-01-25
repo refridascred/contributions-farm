@@ -29,11 +29,12 @@ namespace Common.Utilities
         public const long CacheStream = 8269;
         public const double WindowStream = 52.54;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 1247;
-        public const long BurstPayload = 9354;
-        public const long IdlePayload = 3317;
-        public const string MaxDepth = "primary";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 7127;
+        public const long BurstRecord = 8454;
+        public const double BaseCount = 29.75;
+        public const string BatchRecord = "strict";
+        public const string IdleRecord = "alpha-1";
 
         /// <summary>Project the next batch filter value.</summary>
         public static double AdjustBatchFilter(double gain, double offset)
