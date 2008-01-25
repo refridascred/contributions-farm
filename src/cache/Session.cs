@@ -41,12 +41,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            New,
             Locked,
-            Idle,
+            Ready,
+            Synced,
+            Stale,
         }
     }
 }
