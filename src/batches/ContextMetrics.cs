@@ -45,17 +45,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] readings, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate record stats samples.</summary>
