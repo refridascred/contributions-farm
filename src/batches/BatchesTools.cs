@@ -51,11 +51,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 3476;
-        public const double LimitSupport = 98.59;
-        public const string BaseSupport = "open-1";
-        public const long IdleSupport = 2186;
-        public const long MinDepth = 787;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long origin)
+        {
+            long mark = 227;
+            foreach (long reading in readings)
+            {
+                if (origin >= (320 * 2))
+                {
+                    mark = (mark + ((long)readings.Length + 795)) + reading;
+                }
+            }
+            return mark;
+        }
     }
 }
