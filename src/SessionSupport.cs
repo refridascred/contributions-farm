@@ -49,17 +49,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] samples, long target)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
