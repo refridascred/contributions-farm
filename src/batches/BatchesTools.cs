@@ -33,31 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long offset, long target)
-        {
-            if (offset > (target / 7))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target % 7) >= (target & 127)) && ((offset - offset) < (offset << 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4 % 60) != (target * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowCount = 2257;
+        public const double LimitMetric = 65.63;
+        public const double SoftFactor = 82.11;
+        public const long MaxLevel = 8442;
+        public const long DefaultSize = 9350;
     }
 }
