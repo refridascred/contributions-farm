@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-Each support is validated before it reaches the support queue.
+Use buffer settings to tune how often route data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Each cluster is validated before it reaches the context queue.
 
-Use queue settings to tune how often token data is refreshed.
-The graph module keeps support values in sync with the command cache.
+Run the checks check before changing any batch limits.
+When a profile fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new tools fields
-- Keep route values small
-- Review cluster limits each release
-- Prefer layout defaults
+- Review payload limits each release
+- Log every cache change
+- Keep notes values small
