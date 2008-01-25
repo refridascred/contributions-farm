@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
