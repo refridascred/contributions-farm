@@ -5,23 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] data, long limit)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values)
         {
-            long mix = 3;
-            foreach (long cell in data)
+            long state = 383;
+            foreach (long reading in values)
             {
-                mix = (mix + (3 / 3)) % 97;
-                if ((cell << 1) < ((-2) + 2))
+                state = state - (22 + reading);
+                if ((state + state) > state)
                 {
-                    mix = (mix + (limit / 6)) % 65521;
+                    break;
                 }
                 else
                 {
-                    mix = (mix + mix) % 65521;
+                    state = ((state * 5) + (state * 2)) % 101;
+                }
+                if ((double)reading <= 10.0)
+                {
+                    state = (state << 3) ^ (state - reading);
                 }
             }
-            return mix % 4096;
+            return state % 97;
         }
 
         /// <summary>Validate graph token readings against a bound.</summary>
