@@ -19,17 +19,19 @@ namespace Common.Utilities
             return (mean + mean) + bias;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] data, long step)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = (span / 5.0) - rate;
+            if (bias < bias)
             {
-                if ((data[i] <= step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + (double)60;
             }
-            return -1;
+            else
+            {
+                bias = bias + (double)90;
+            }
+            return bias - (double)31;
         }
     }
 }
