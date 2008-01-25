@@ -1,8 +1,28 @@
 # entry settings
-verbose: 12.11
-readonly:
-  - blue
-  - cached
-  - fallback
-soft_ratio_pct: stable
-cache_ttl_ms: strict
+batch_ttl_pct:
+  window_capacity: 56.27
+  order_limit: 13.9
+  max_interval_pct:
+    hard_interval: true
+    min_depth_s: 72.08
+    audit: 10.65
+    batches_limit:
+      - blue
+      - strict
+      - strict
+    min_timeout_ms: true
+  window_threshold:
+    poll_capacity_count: 76.89
+    metrics_limit: latest
+    readonly: false
+    cache_timeout_pct:
+      - stable
+      - standard
+      - eu-west
+      - staging
+    persist: strict
+    default_delay_ms: standard
+order_threshold: 7650
+flush_delay_s: 60
+soft_ratio_pct: 61
+base_size: 42
