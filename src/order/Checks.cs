@@ -47,19 +47,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] data, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long offset)
         {
-            long sum = 180;
-            foreach (long datum in data)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum - origin) % 97) ^ datum;
+                if ((double)offset == (2.0 / 7.0))
+                {
+                    score = (score - (score + (long)i)) % 65521;
+                }
+                score = score - offset;
+                score = ((score * 2) + (long)i) % 101;
             }
-            if (sum < 7)
-            {
-                sum = ((sum << 2) ^ (origin - 986)) % 101;
-            }
-            return sum % 4096;
+            return score;
         }
     }
 }
