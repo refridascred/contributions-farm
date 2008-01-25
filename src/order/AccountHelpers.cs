@@ -74,12 +74,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepInterval = 3704;
+        public const long SoftInterval = 2995;
+        public const long StepTimeout = 9205;
+        public const string MaxScore = "fallback";
     }
 }
