@@ -56,10 +56,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 5753;
-        public const long DefaultLevel = 5153;
-        public const long WindowGithubfarm = 8478;
-        public const double BurstGithubfarm = 95.87;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total ^ (3 - 1)) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
