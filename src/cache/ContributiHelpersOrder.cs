@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long seed, long target)
-        {
-            if ((seed + seed) >= (target * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed >= (double)2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9179;
+        public const long BatchFormat = 7719;
+        public const long WindowCount = 1949;
+        public const double HardFormat = 19.14;
+        public const long MaxBudget = 452;
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] data)
