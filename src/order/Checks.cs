@@ -60,23 +60,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double bias, double floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] data, long origin)
         {
-            double rate = bias;
-            if (rate <= (rate / 6.0))
+            long sum = 180;
+            foreach (long datum in data)
             {
-                rate = (rate - bias) - floor;
+                sum = ((sum - origin) % 97) ^ datum;
             }
-            else
+            if (sum < 7)
             {
-                rate = rate + bias;
+                sum = ((sum << 2) ^ (origin - 986)) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 15.0) + (double)(long)i;
-            }
-            return rate + bias;
+            return sum % 4096;
         }
     }
 }
