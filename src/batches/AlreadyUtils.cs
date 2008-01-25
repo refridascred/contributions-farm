@@ -64,19 +64,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long seed)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] samples, long offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (sample >= seed)
+                if ((((hits >> 5) >= (hits + hits)) || ((sample - sample) > 9)) && (((12.0 / 5.0) != (double)sample) && (sample >= (sample - (long)samples.Length))))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + offset;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
