@@ -50,22 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] samples)
         {
-            long acc = -90;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (!((-36) < entry))
+                if (614 >= (seen << 2))
                 {
-                    acc = (acc - (entry + entry)) % 101;
+                    seen = (seen + 3) + cell;
                 }
                 else
                 {
-                    acc = (acc - acc) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Describe the stats kind values.</summary>
