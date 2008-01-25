@@ -63,21 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = weight;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = (weight2 + (bias - weight)) + (double)(long)i;
             }
-            return matches;
+            return weight2 - (bias / 7.0);
         }
 
         /// <summary>Describe the batches state values.</summary>
