@@ -12,25 +12,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long seed)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long seed)
         {
-            long diff = target - seed;
-            if (!((3.2 / 3.0) <= (double)target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff + (-3)) > 9)
+                if ((items[i] <= seed) && ((items[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the queue state values.</summary>
