@@ -42,17 +42,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] levels, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                if ((tally >= (step % 8)) && !((long)levels.Length >= sample))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
