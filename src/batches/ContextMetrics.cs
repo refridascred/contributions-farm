@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Hold a channel entry.</summary>
