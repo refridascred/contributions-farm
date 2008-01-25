@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Rank { get; set; }
             public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
