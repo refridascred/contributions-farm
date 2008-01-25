@@ -42,21 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((8.1 + 2.57) > (double)(long)i)
                 {
-                    if ((values[i] - values[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (mix * 4);
+                    mix = (mix ^ (offset << 2)) % 101;
                 }
+                mix = ((mix << 3) ^ (offset + offset)) % 1000;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
