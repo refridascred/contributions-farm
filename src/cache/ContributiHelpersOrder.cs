@@ -24,19 +24,21 @@ namespace Common.Utilities
         public const long MinLevel = 8264;
         public const string SoftWidth = "stable-1";
 
-        /// <summary>Project the next editor batches value.</summary>
-        public static double SmoothEditorBatches(double scale, double offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] series)
         {
-            double ratio = scale * 18.0;
-            if (ratio > (offset + 5.22))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (ratio / 5.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + offset) + (double)(long)i;
-            }
-            return ratio + (scale - scale);
+            return seen;
         }
     }
 }
