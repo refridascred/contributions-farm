@@ -43,10 +43,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 5697;
-        public const long BaseScore = 5664;
-        public const long WindowMetric = 8829;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] samples)
