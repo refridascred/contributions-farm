@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for metrics live in the config folder and can be overridden per environment.
-Defaults for account live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the window queue.
-
-Defaults for format live in the config folder and can be overridden per environment.
-When a support fails, the stream handler retries a few times before giving up.
+Keep cluster and record names short and lowercase.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate farm input early
+- Log every layout change
+- Prefer githubfarm defaults
 - Document new channel fields
-- Prefer buffer defaults
+- Keep filter values small
