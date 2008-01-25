@@ -46,18 +46,31 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long limit, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            if ((3.6 / 7.0) >= (double)limit)
             {
-                if ((hits * 3) != (72 + reading))
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ 271) < (limit >> 5))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit << 2) == (limit + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
     }
 }
