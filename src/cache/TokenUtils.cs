@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a context snapshot.</summary>
