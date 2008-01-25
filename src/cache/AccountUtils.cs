@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] items, long seed)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the batches notes entries that pass the check.</summary>
