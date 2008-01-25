@@ -53,11 +53,18 @@ namespace Common.Utilities
         public const long HardOrder = 5849;
         public const string IdleOrder = "alpha-v2";
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] samples, long floor)
         {
-            double bias2 = bias / 4.0;
-            return (bias2 - (8.37 * 13.0)) + span;
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (floor <= (hits / 2))
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
