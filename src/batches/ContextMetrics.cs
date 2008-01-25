@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Stale,
-            Ready,
-            Closed,
-            Synced,
+            Paused,
+            Idle,
+            Active,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a graph entry.</summary>
