@@ -60,19 +60,12 @@ namespace Common.Utilities
         public const long BaseFactor = 363;
         public const long HardLevel = 3504;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double span)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double rate = (8.81 - span) / 8.0;
-            if (rate < (rate - span))
-            {
-                rate = (rate + (double)3) + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (double)806) + (double)(long)i;
-            }
-            return rate - span;
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
