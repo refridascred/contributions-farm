@@ -1,5 +1,8 @@
 {
-  "default_window": false,
-  "cache_timeout": "staging",
-  "hard_threshold": "green"
+  "base_capacity": true,
+  "tools_ratio": "edge",
+  "strict": 79.93,
+  "tools_ttl": "strict",
+  "payload_delay": "cached",
+  "flush_retries_count": false
 }
