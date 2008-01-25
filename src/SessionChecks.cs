@@ -12,38 +12,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long floor, long origin)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double span)
         {
-            if ((double)origin <= (0.17 / 6.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor << 3) >= (origin + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin << 1) >= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((728 >> 4) <= floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double bias = (span + span) / 3.0;
+            return (bias - (span / 2.0)) + scale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
