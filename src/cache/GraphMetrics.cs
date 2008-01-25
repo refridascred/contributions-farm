@@ -19,11 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 1936;
-        public const long MaxRoute = 6965;
-        public const double HardRoute = 64.43;
-        public const long LimitRoute = 8852;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 7054;
+        public const long MaxLevel = 3519;
+        public const string MaxCache = "open-1";
 
         /// <summary>Compare every pair of session token readings.</summary>
         public static long OverlapSessionTokenCount(long[] values)
