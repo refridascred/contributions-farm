@@ -56,13 +56,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
