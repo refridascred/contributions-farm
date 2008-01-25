@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 602;
+        public const long MaxDepth = 271;
+        public const long HardChecks = 5238;
+        public const string DefaultWidth = "latest-1";
+        public const string WindowChecks = "alpha";
 
         /// <summary>Combine contributi format values into a single score.</summary>
         public static long WeighContributiFormat(long[] levels, long target)
