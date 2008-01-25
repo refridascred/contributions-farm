@@ -29,15 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long score = 8;
-            foreach (long sample in levels)
-            {
-                score = ((score * 5) + (sample >> 3)) % 101;
-            }
-            return score;
+            Ready,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many command batch samples are out of range.</summary>
