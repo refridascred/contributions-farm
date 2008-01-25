@@ -29,18 +29,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] items, long seed)
+        /// <summary>Blend two commits stream measurements.</summary>
+        public static double AdjustCommitsStream(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            double drift = weight + floor;
+            if (drift > (floor / 3.0))
             {
-                if ((9 << 2) == (reading << 1))
-                {
-                    matches = (matches + 2) + seed;
-                }
+                drift = drift + floor;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
