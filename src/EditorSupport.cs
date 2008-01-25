@@ -71,18 +71,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result - (origin + result);
-                result = (result << 2) ^ (result + origin);
-                result = result + 95;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 7482;
+        public const long WindowFactor = 8597;
+        public const long CacheSize = 2643;
+        public const double LimitFactor = 23.77;
+        public const long BaseScore = 7338;
     }
 }
