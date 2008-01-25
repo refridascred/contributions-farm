@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long step, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            if (7 < step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((725 * 4) == (floor + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor <= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
