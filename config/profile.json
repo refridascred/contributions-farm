@@ -1,17 +1,8 @@
 {
-  "already_delay": false,
-  "enabled": {
-    "idle_capacity_s": 48.32,
-    "max_ttl_pct": 60,
-    "soft_limit_count": {
-      "layout_retries": 11.95,
-      "farm_ratio": "eu-west",
-      "sync_threshold": "edge",
-      "audit": 24.83,
-      "default_size_ms": 4.68
-    },
-    "compress": 25.18
-  },
-  "batch_ratio_s": 33,
-  "poll_ttl": ["standard", "blue"]
+  "verbose": "edge",
+  "burst_window_ms": "cached",
+  "strict": "latest",
+  "batch_window": 48,
+  "entry_window": "edge",
+  "enabled": 80.65
 }
