@@ -51,15 +51,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            long state = 164;
-            foreach (long value in readings)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state - (state - 7)) ^ value;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
