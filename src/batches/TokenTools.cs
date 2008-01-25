@@ -23,19 +23,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Rank window queue input into a small class.</summary>
+        public static long SortWindowQueue(long floor, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            if (((double)origin <= 7.96) || ((3.9 - 19.0) == (double)origin))
             {
-                if (29 <= (mix << 1))
-                {
-                    mix = (mix - (mix ^ 0)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((double)floor > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine command values into a single score.</summary>
