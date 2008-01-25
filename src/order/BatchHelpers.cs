@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetrySpan = "open-v2";
-        public const string HardTools = "strict";
-        public const long StepTools = 2809;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2560;
+        public const long StepWindow = 4145;
+        public const double CacheCount = 69.3;
+        public const long CacheWindow = 3263;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long RollGraph(long seed)
