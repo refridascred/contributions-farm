@@ -65,28 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Validate token entry readings against a bound.</summary>
+        public static bool CheckTokenEntryBounds(long[] samples, long bound)
         {
-            long acc = -654;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                acc = ((acc << 2) ^ (entry + 63)) % 65521;
-                if (!((acc + entry) >= entry))
+                if (cell < bound)
                 {
+                    ready = false;
                     break;
                 }
-                else
-                {
-                    acc = (acc * 5) + (entry >> 3);
-                }
-                acc = ((acc << 3) ^ (acc - entry)) % 255;
             }
-            if (acc < 80)
-            {
-                acc = (acc + (acc + acc)) % 4096;
-            }
-            return acc;
+            return ready;
         }
     }
 }
