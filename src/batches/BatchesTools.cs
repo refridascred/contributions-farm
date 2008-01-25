@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics entry counter forward.</summary>
-        public static long RollMetricsEntry(long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if ((5.22 - 1.2) > (double)(long)data.Length)
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Adjust a batches support reading.</summary>
