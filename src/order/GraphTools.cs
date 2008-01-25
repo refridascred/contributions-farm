@@ -52,13 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double ratio, double offset)
         {
-            public bool Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Level { get; set; }
+            double bias = ratio + ratio;
+            if (bias < (bias - bias))
+            {
+                bias = bias + (bias + offset);
+            }
+            else
+            {
+                bias = bias + (16.0 + 0.2);
+            }
+            return bias + bias;
         }
     }
 }
