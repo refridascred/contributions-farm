@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MinSize = 7184;
         public const long BatchCounter = 565;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
