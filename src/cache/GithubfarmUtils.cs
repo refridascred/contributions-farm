@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] samples, long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
