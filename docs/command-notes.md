@@ -1,14 +1,14 @@
 # Command notes
 
-Use buffer settings to tune how often route data is refreshed.
-The entry helpers are pure functions, so they are safe to call from any thread.
-Each cluster is validated before it reaches the context queue.
+The contributi module keeps batches values in sync with the stats cache.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
 
-Run the checks check before changing any batch limits.
-When a profile fails, the order handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Each stream is validated before it reaches the already queue.
 
 ## Guidelines
 
-- Review payload limits each release
-- Log every cache change
-- Keep notes values small
+- Prefer route defaults
+- Keep cluster values small
+- Document new session fields
