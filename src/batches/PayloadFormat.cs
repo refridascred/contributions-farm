@@ -32,14 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many stream schema samples are out of range.</summary>
+        public static long AuditStreamSchemaMatches(long[] series)
         {
-            Paused,
-            Locked,
-            Queued,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((reading + tally) > (reading * 5)) || !((reading ^ reading) >= 35))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate entry samples.</summary>
