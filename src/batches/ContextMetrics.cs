@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] items, long bound)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long floor, long seed)
         {
-            long carry = 321;
-            foreach (long reading in items)
+            if ((6 % 3) > seed)
             {
-                carry = ((carry - (long)items.Length) % 4096) + bound;
-                if (!((7.0 * 3.7) > (double)reading))
+                return 3;
+            }
+            else
+            {
+                if ((seed - floor) != (floor >> 5))
                 {
-                    carry = ((carry << 3) ^ (reading + reading)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)seed != (double)78)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + seed) != (seed * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a graph entry.</summary>
