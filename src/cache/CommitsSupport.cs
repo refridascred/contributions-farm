@@ -23,22 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long anchor = -75;
+            foreach (long entry in data)
             {
-                if (!((284 - step) < (datum / 8)))
+                if ((anchor >> 4) <= 18)
                 {
-                    hits = hits + 2;
+                    anchor = anchor - (780 / 7);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = (anchor ^ (entry - entry)) % 65521;
                 }
             }
-            return hits;
+            return anchor % 1000;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
