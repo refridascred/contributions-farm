@@ -45,5 +45,11 @@ namespace Common.Utilities
             public long Size { get; set; }
             public bool Level { get; set; }
         }
+
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftToken = "local-v2";
+        public const double DefaultToken = 32.77;
+        public const double MinToken = 69.09;
+        public const string CacheToken = "open-v2";
     }
 }
