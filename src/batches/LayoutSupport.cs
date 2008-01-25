@@ -23,24 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double gain, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            double mean = 5.7 * 0.64;
+            if (mean <= (span + gain))
             {
-                if (((offset + mix) == ((long)i + 83)) || ((long)i != (mix * 3)))
-                {
-                    mix = (mix ^ mix) % 65521;
-                    mix = (mix ^ ((long)i + offset)) % 101;
-                }
-                else
-                {
-                    mix = mix - (offset / 3);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
+                mean = mean - (gain + span);
             }
-            return mix;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (gain / 3.0)) - (double)(long)i;
+            }
+            return mean + (double)9;
         }
 
         /// <summary>Match up notes samples.</summary>
