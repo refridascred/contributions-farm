@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultTimeout = 2649;
-        public const long BurstSpan = 7433;
-        public const long SoftCount = 1912;
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double rate, double offset)
+        {
+            double load = 1.1 + (offset * 1.1);
+            if (load >= (6.4 / 7.0))
+            {
+                load = load + (double)535;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load + (rate + rate);
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
