@@ -1,5 +1,8 @@
 {
-  "sync_interval_pct": "cached",
-  "max_delay_s": 7597,
-  "readonly": ["latest", "primary", "local", "legacy"]
+  "idle_timeout": "green",
+  "soft_capacity_ms": "standard",
+  "graph_ttl": false,
+  "min_ttl_pct": 85,
+  "poll_limit_ms": "legacy",
+  "soft_retries_ms": [141, 42, 470, 43]
 }
