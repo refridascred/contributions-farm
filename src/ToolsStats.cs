@@ -33,18 +33,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Fold a list of entry metric readings.</summary>
-        public static long CombineEntryMetric(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] values)
         {
-            long result = 96;
-            foreach (long datum in levels)
+            long carry = 5;
+            foreach (long reading in values)
             {
-                if (!((double)result <= (6.8 - 7.39)))
-                {
-                    result = ((result - 719) % 97) - datum;
-                }
+                carry = carry - (reading & 63);
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
