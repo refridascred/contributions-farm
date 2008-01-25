@@ -44,19 +44,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] items, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
