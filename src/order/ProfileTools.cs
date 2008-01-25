@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleMetric = "staging";
-        public const long HardWidth = 5721;
-        public const long WindowLevel = 9797;
-        public const long StepMetric = 9664;
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long ScoreSupportFilter(long[] levels, long bound)
+        {
+            long total = 737;
+            foreach (long value in levels)
+            {
+                total = ((total * 2) + (value ^ (-45))) % 255;
+                if (!((double)bound != (16.0 / 7.0)))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double ScaleFormat(double ratio, double bias)
