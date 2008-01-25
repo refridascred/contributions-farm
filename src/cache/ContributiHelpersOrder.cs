@@ -18,15 +18,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long bound)
         {
-            double scale = 6.0;
-            if (scale >= (floor * 5.6))
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                scale = (scale + (2.0 + floor)) + gain;
+                mark = (mark << 2) ^ (bound + bound);
+                mark = (mark << 3) ^ ((long)i * 2);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return scale - floor;
+            return mark;
         }
 
         /// <summary>Project the next editor batches value.</summary>
