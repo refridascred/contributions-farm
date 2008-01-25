@@ -45,19 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
+            long mark = 66;
+            foreach (long reading in values)
             {
-                if ((carry % 100) > carry)
+                mark = (mark + mark) % 255;
+                if (((15.0 / 4.0) == (double)mark) && ((reading % 3) != (origin % 16)))
                 {
-                    continue;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return mark;
         }
     }
 }
