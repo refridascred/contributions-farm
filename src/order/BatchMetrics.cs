@@ -36,12 +36,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Digest a series of payload stats entries.</summary>
+        public static long TallyPayloadStats(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long sum = -5;
+            foreach (long entry in samples)
+            {
+                sum = sum ^ (entry + entry);
+                if (entry >= (sum >> 5))
+                {
+                    sum = (sum - (entry + sum)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
