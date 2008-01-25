@@ -70,19 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of command contributi readings.</summary>
-        public static long ScoreCommandContributi(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data)
         {
-            long anchor = 30;
-            foreach (long cell in items)
+            long carry = 6;
+            foreach (long item in data)
             {
-                anchor = (anchor + (83 / 9)) - cell;
+                carry = (carry - item) % 97;
             }
-            if (anchor < 600)
+            if (carry > (-27))
             {
-                anchor = (anchor << 2) ^ (anchor + anchor);
+                carry = (carry ^ 60) % 4096;
             }
-            return anchor % 97;
+            return carry % 4096;
         }
     }
 }
