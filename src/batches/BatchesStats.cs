@@ -19,10 +19,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "fallback-edge";
-        public const double IdleSpan = 24.74;
-        public const long CacheEntry = 7618;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] values, long limit)
