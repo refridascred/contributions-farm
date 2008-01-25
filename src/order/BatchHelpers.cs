@@ -28,15 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mix = 5;
-            foreach (long sample in samples)
-            {
-                mix = (mix + sample) % 255;
-            }
-            return mix % 4096;
+            New,
+            Draft,
+            Closed,
         }
     }
 }
