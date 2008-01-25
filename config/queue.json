@@ -1,24 +1,5 @@
 {
-  "compress": 10,
-  "idle_interval": "open",
-  "default_capacity_count": "local",
-  "token_delay": {
-    "base_ratio_ms": true,
-    "strict": {
-      "notes_capacity": 3454,
-      "base_limit_ms": false,
-      "strict": true,
-      "burst_capacity_s": false,
-      "readonly": 40.77
-    },
-    "compress": ["eu-west", "latest", "edge"],
-    "hard_window_count": 40,
-    "githubfarm_threshold": 16.63,
-    "batch_timeout_ms": false
-  },
-  "cache_window_count": {
-    "farm_delay": ["green", "latest", "local"],
-    "persist": [188, 434],
-    "soft_ttl": "legacy"
-  }
+  "idle_retries": ["primary", "green", "stable", "cached"],
+  "min_depth_pct": 60,
+  "sync_size": 45
 }
