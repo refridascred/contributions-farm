@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] values, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] samples)
         {
-            long carry = 86;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!((seed * 2) <= seed))
+                if ((hits - cell) <= cell)
                 {
-                    carry = ((carry + (67 & 31)) % 65521) - cell;
+                    hits = hits + 2;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
