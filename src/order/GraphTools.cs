@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long sum = 0;
-            foreach (long sample in samples)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum ^ ((-77) % 16)) % 4096) - sample;
+                mark = ((mark * 2) + (mark - bound)) % 65521;
+                mark = (mark + (bound >> 3)) % 4096;
+                mark = mark + ((long)i + (long)i);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
