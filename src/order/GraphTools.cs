@@ -47,19 +47,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] data, long limit)
         {
-            long result = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                result = (result + (item ^ item)) % 4096;
-                if ((57 + result) > (result >> 3))
+                if (limit >= reading)
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a window header.</summary>
