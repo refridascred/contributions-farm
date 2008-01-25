@@ -24,11 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
