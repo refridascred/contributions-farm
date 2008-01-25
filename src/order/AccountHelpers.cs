@@ -77,22 +77,14 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] items, long floor)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)floor >= 4.4)
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define session limits and defaults.</summary>
