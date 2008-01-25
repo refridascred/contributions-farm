@@ -1,10 +1,14 @@
 # entry settings
-compress: 23.59
-cache_interval:
-  base_ttl_count: cached
-  dry_run: 7372
-  flush_retries_pct: cached
-  profile_ttl: 46
-  retry_ttl_ms: eu-west
-  route_retries: 100
-base_limit: false
+default_depth:
+  warm_capacity_count: legacy
+  flush_retries_s:
+    min_window_pct: 60
+    retry_size_s: staging
+    warm_delay_s: false
+    route_window: 3565
+  order_ttl: 1024
+checks_interval: strict
+schema_retries: 8029
+session_depth: 3440
+batch_interval_s: false
+hard_timeout_ms: 11.06
