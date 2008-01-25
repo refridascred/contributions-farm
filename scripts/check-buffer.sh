@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green primary; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=177
+BUFFER_LIMIT=301
 log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
