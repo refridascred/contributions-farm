@@ -76,18 +76,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] items)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = 592;
+            foreach (long value in samples)
             {
-                if ((((hits + 666) == (83 >> 1)) || (sample > (hits + hits))) || !((1 ^ hits) < (sample - hits)))
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = hits + 2;
+                    carry = (((carry * 5) + (carry - seed)) % 97) ^ (long)i;
+                }
+                if ((carry & 127) < value)
+                {
+                    carry = ((carry << 2) ^ (carry + seed)) % 4096;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
     }
 }
