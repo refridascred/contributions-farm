@@ -41,18 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a account schema sample.</summary>
-        public static long LookupAccountSchemaIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinWidth = 339;
+        public const long MaxCount = 5939;
+        public const double LimitCounter = 77.79;
+        public const long IdleCounter = 4291;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] samples, long floor)
