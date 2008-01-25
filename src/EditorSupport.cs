@@ -16,18 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] data)
+        /// <summary>Check that every buffer window entry stays within the limit.</summary>
+        public static bool VerifyBufferWindowBounds(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((reading - (long)data.Length) <= (count % 5))
+                if (item != bound)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Project the next filter value.</summary>
