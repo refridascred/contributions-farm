@@ -24,10 +24,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstRatio = 1619;
-        public const long CacheStream = 8269;
-        public const double WindowStream = 52.54;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + 251) <= count)
+                {
+                    count = (count + 3) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] samples)
