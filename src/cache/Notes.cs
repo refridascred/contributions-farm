@@ -45,13 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] items, long bound)
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long acc = 11;
+            foreach (long sample in items)
+            {
+                if (sample >= (sample * 2))
+                {
+                    acc = ((acc << 3) ^ (sample - 49)) % 101;
+                    acc = (acc + (bound ^ bound)) % 4096;
+                }
+                acc = ((acc << 3) ^ (acc * 2)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
