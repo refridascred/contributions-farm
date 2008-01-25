@@ -1,14 +1,14 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Use already settings to tune how often layout data is refreshed.
+Use stats settings to tune how often contributi data is refreshed.
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The report module keeps counter values in sync with the counter cache.
-The channel report groups every profile by stats.
+Defaults for profile live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the layout queue.
+The layout module keeps entry values in sync with the batches cache.
 
 ## Guidelines
 
-- Validate notes input early
-- Log every schema change
-- Keep cache values small
+- Keep commits values small
+- Document new metric fields
+- Validate entry input early
