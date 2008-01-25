@@ -31,14 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] values)
         {
-            Paused,
-            Synced,
-            Stale,
-            Locked,
-            Queued,
+            long acc = 218;
+            foreach (long datum in values)
+            {
+                acc = (acc * 2) + datum;
+            }
+            if (acc > 707)
+            {
+                acc = (acc ^ ((long)values.Length % 97)) % 1000;
+            }
+            return acc % 65521;
         }
     }
 }
