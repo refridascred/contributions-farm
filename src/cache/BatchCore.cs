@@ -37,21 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] values)
+        /// <summary>Find the first filter format entry that matches the target.</summary>
+        public static long FindFilterFormatIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the support status values.</summary>
