@@ -1,4 +1,15 @@
 # entry settings
-graph_delay: 82
-default_delay_s: 81.89
-cache_size_ms: true
+stream_size:
+  - green
+  - blue
+  - staging
+  - cached
+batch_retries_ms: false
+githubfarm_size:
+  - legacy
+  - staging
+  - latest
+  - local
+buffer_capacity: local
+retry_limit_ms: eu-west
+verbose: 10.71
