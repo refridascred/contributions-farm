@@ -48,15 +48,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Idle,
-            Retry,
-            Pending,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstLevel = "standard-v2";
+        public const long RetryStats = 7127;
+        public const long BaseRatio = 6967;
+        public const long MaxCount = 2772;
 
         /// <summary>Grade a tools contributi value against two limits.</summary>
         public static long GradeToolsContributi(long bound, long limit)
