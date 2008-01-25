@@ -36,14 +36,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long target)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Idle,
-            Synced,
+            long mix = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((target + target) < ((long)i / 2))
+                {
+                    mix = mix - (target + 0);
+                }
+                if (!((932 & 1) == (target % 5)))
+                {
+                    mix = (mix ^ (mix % 12)) % 101;
+                    mix = mix - (target - 7);
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
