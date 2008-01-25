@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] values)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value / 2) > 882)
-                {
-                    hits = hits + 3;
-                }
+                mark = (mark * 3) + target;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Roll a commits contributi counter forward.</summary>
