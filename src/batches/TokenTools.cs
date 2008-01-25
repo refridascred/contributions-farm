@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double load = gain * 0.2;
-            return (load + (load + gain)) + offset;
+            Stale,
+            Paused,
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
