@@ -27,31 +27,22 @@ namespace Common.Utilities
             return weight - (gain * 7.98);
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] samples, long target)
         {
-            if ((floor > (offset * 3)) || (offset <= (offset + offset)))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((offset - offset) <= (floor % 12)) && ((5.71 / 4.0) <= (double)offset))
+                if ((74 >> 2) < (datum / 7))
                 {
-                    return 0;
+                    hits = (hits + 3) + target;
                 }
                 else
                 {
-                    if (10.0 >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many layout context samples are out of range.</summary>
