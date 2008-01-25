@@ -28,12 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long limit)
         {
-            New,
-            Draft,
-            Closed,
+            long result = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result ^ limit;
+                result = ((result << 3) ^ (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
