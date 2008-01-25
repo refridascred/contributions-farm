@@ -34,22 +34,11 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series, long target)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches > (matches % 100)) || (((double)matches < (double)item) && ((double)item == (double)target)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
