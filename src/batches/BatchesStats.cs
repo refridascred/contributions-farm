@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] samples, long target)
+        /// <summary>Project the next context support value.</summary>
+        public static double BlendContextSupport(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double ratio2 = bias;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = ((ratio2 + (double)(-548)) - (double)(long)i) + ratio;
             }
-            return stale;
+            return ratio2 - (double)5;
         }
 
         /// <summary>Count the counter cache entries that pass the check.</summary>
