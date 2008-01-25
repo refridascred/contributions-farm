@@ -5,31 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long floor, long origin)
         {
-            long mix = 9;
-            foreach (long reading in values)
+            long slot = floor - origin;
+            if ((origin + slot) == (slot + slot))
             {
-                if ((mix - reading) > mix)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin == (15.0 + 1.0))
                 {
-                    mix = ((mix << 2) ^ reading) % 65521;
-                    mix = (mix - reading) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    mix = (mix + (94 & 7)) % 255;
-                }
-                if ((reading < (reading - (long)values.Length)) || ((mix + (long)values.Length) != (reading / 8)))
-                {
-                    mix = mix ^ (reading % 12);
-                }
-                if (reading < (mix - 313))
-                {
-                    break;
+                    if ((double)slot >= 17.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (slot > (slot >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
