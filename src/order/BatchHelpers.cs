@@ -20,18 +20,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long origin)
+        /// <summary>Check that every cache farm entry stays within the limit.</summary>
+        public static bool CheckCacheFarmBounds(long[] readings, long offset)
         {
-            long anchor = 31;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((anchor ^ origin) < (origin * 3))
+                if (datum > offset)
                 {
-                    anchor = (anchor ^ origin) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
