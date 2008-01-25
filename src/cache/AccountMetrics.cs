@@ -32,11 +32,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Classify a githubfarm graph pair into a bucket.</summary>
+        public static long SortGithubfarmGraph(long target, long target2)
         {
-            public long Owner { get; set; }
-            public double Total { get; set; }
+            if ((target2 <= (target2 + target2)) || ((2.75 * 2.8) != (double)target))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(753 <= target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((target2 + target2) > 211) && ((8 ^ target2) <= (target2 - 971)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target & 7) < (target2 ^ target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a format reading by value.</summary>
