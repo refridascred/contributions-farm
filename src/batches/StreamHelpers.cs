@@ -41,21 +41,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (2 > hits)
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 3) - value) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next already value.</summary>
