@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many record profile samples are out of range.</summary>
-        public static long TallyRecordProfileHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((15.0 / 9.0) != (double)cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 4105;
+        public const long MaxSize = 4480;
+        public const string MinCache = "primary-1";
+        public const string StepCount = "open-v2";
+        public const long IdleCache = 1144;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double BlendCluster(double weight, double offset)
