@@ -21,12 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowTimeout = 9397;
+        public const string WindowCommand = "strict-v2";
+        public const long MinCommand = 2965;
+        public const string BurstCommand = "strict-v2";
+        public const long DefaultCommand = 1552;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
