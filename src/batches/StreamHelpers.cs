@@ -73,19 +73,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] samples, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
