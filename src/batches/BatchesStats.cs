@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next context support value.</summary>
-        public static double BlendContextSupport(double ratio, double bias)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double rate, double floor)
         {
-            double ratio2 = bias;
-            for (int i = 0; i < 3; i++)
+            double gain = (double)21 - (rate * 7.0);
+            if (gain >= floor)
             {
-                ratio2 = ((ratio2 + (double)(-548)) - (double)(long)i) + ratio;
+                gain = gain + (8.44 + floor);
             }
-            return ratio2 - (double)5;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + 8.55;
         }
 
         /// <summary>Digest a series of record stats entries.</summary>
