@@ -42,15 +42,21 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] readings)
         {
-            long score = 34;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score << 2) ^ (reading % 100);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
