@@ -1,12 +1,11 @@
 {
-  "cluster_interval": 46,
-  "batches_size": {
-    "buffer_ttl": 8321,
-    "default_timeout": "staging",
-    "hard_retries": 91.99,
-    "notes_ratio": 79,
-    "poll_ttl": true
-  },
-  "compress": 93.87,
-  "format_ratio": 1711
+  "strict": "green",
+  "metric_ttl": 84.67,
+  "cache_ttl_ms": {
+    "compress": "latest",
+    "retry_ratio": false,
+    "batch_threshold_pct": 11,
+    "hard_capacity_s": "legacy",
+    "metric_ttl": 30.52
+  }
 }
