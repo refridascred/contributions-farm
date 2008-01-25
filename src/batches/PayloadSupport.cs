@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next payload record value.</summary>
-        public static double BlendPayloadRecord(double bias, double floor)
+        /// <summary>Audit already metrics readings against a rule.</summary>
+        public static long TallyAlreadyMetricsMatches(long[] series)
         {
-            double weight = (double)(51 * 3);
-            if (weight < (double)328)
+            long count = 0;
+            foreach (long entry in series)
             {
-                weight = (weight - (bias * 6.1)) + floor;
+                if (entry > count)
+                {
+                    count = count + 3;
+                }
             }
-            return weight - 5.0;
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
