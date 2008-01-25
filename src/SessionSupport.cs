@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] levels, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long state = -7;
+            foreach (long entry in levels)
             {
-                mark = (mark - origin) % 97;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((state - 40) > (state + 11))
+                {
+                    state = (((state * 3) + (state ^ seed)) % 101) + entry;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (long)levels.Length) % 65521;
+                }
             }
-            return mark;
+            if (state > 542)
+            {
+                state = (state << 2) ^ (56 + 965);
+            }
+            return state;
         }
 
         /// <summary>Hold a route stats.</summary>
