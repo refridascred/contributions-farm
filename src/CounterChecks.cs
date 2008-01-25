@@ -75,18 +75,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] samples, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)sample <= 9.4) || ((double)sample != (5.15 + 4.5)))
-                {
-                    matches = (matches + 3) + offset;
-                }
-            }
-            return matches;
+            Active,
+            Stale,
+            New,
+            Dropped,
         }
     }
 }
