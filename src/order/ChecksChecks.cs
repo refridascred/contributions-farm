@@ -36,13 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items, long offset)
         {
-            Active,
-            Failed,
-            Paused,
-            Ready,
+            long acc = 2;
+            foreach (long reading in items)
+            {
+                acc = (acc ^ acc) % 255;
+                if ((reading + acc) >= 853)
+                {
+                    acc = (acc << 2) ^ (offset * 5);
+                }
+            }
+            return acc;
         }
     }
 }
