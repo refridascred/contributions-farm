@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const double BurstBatches = 53.93;
         public const long HardFactor = 8279;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] == offset)
+                carry = carry - offset;
+                if (offset <= (offset << 1))
                 {
-                    return (long)i;
+                    long tally = carry;
+                    carry = (carry + tally) % 255;
+                    continue;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
