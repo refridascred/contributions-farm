@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long limit)
+        /// <summary>Audit commits payload readings against a rule.</summary>
+        public static long TallyCommitsPayloadOutliers(long[] items, long offset)
         {
-            if ((15.0 * 0.7) <= (double)step)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.9 * 2.0) > (double)limit)
+                if (!((offset >= (matches * 2)) || ((24 >> 1) < (offset / 5))))
                 {
-                    return 8;
+                    matches = (matches + 2) ^ sample;
                 }
                 else
                 {
-                    if ((limit / 2) >= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
