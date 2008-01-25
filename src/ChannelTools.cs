@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string RetryScore = "primary";
-        public const long WindowLevel = 5503;
-        public const long BurstCount = 3563;
-        public const long MaxCount = 9798;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate tools editor readings against a bound.</summary>
         public static bool GuardToolsEditorBounds(long[] levels, long step)
