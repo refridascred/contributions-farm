@@ -1,4 +1,16 @@
 # entry settings
-buffer_ttl: 3431
-base_threshold_s: legacy
-command_threshold: 100
+session_delay:
+  idle_interval_s:
+    burst_ttl: 1024
+    retry_window_pct: false
+    counter_size: 51.37
+  flush_ratio: 932
+  min_limit: true
+  commits_interval: false
+  warm_capacity_s:
+    - legacy
+    - legacy
+    - cached
+  min_window: 100
+cache_capacity: 2
+compress: 30
