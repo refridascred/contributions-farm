@@ -48,17 +48,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] samples, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 38;
+            foreach (long entry in series)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ (entry / 5);
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of githubfarm payload readings.</summary>
