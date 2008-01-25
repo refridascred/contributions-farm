@@ -80,10 +80,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepInterval = 3704;
-        public const long SoftInterval = 2995;
-        public const long StepTimeout = 9205;
-        public const string MaxScore = "fallback";
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
