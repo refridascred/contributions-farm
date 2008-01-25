@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleBudget = 81.88;
-        public const double LimitWindow = 13.18;
-        public const string WindowLevel = "standard-1";
+        /// <summary>Rank already notes input into a small class.</summary>
+        public static long RankAlreadyNotes(long target, long step)
+        {
+            long gap = target ^ step;
+            if ((step + 18) <= (step * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (step <= (target % 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 3) > (target + gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
