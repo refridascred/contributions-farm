@@ -34,39 +34,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long origin, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long step = origin - target;
-            if (((step << 1) >= (target ^ step)) && (step < target))
+            long carry = 719;
+            foreach (long datum in samples)
             {
-                return 7;
+                carry = carry ^ datum;
             }
-            else
-            {
-                if (!(origin < (step - step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)4 <= (double)step) || ((origin - 2) < step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((31 + step) <= 7) || (95 > (target ^ origin)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
