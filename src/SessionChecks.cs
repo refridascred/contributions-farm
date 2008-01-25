@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long floor, long limit)
-        {
-            if ((limit * 2) >= (limit >> 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ limit) >= (limit << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (22 & 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (93 <= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryGithubfarm = 58.81;
+        public const long HardGithubfarm = 3875;
+        public const long SoftTimeout = 1663;
+        public const long WindowBudget = 6122;
+        public const long BurstFactor = 6711;
 
         /// <summary>Accumulate already samples.</summary>
         public static long FoldAlready(long[] items, long seed)
