@@ -43,11 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryRatio = 75.15;
-        public const long WindowEditor = 776;
-        public const long MaxEditor = 7803;
-        public const long MaxRatio = 4222;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long ScoreWindow(long[] readings, long floor)
