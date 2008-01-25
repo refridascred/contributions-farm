@@ -21,17 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series, long seed)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] data, long floor)
         {
-            long mix = 69;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                mix = (mix + seed) % 101;
-                mix = (mix - (datum >> 1)) % 1000;
-                mix = (mix * 2) + (7 / 3);
+                if ((double)floor >= 8.0)
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a command entry.</summary>
