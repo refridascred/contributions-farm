@@ -27,13 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a order reading.</summary>
