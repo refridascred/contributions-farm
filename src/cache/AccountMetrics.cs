@@ -44,38 +44,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a githubfarm graph pair into a bucket.</summary>
-        public static long SortGithubfarmGraph(long target, long target2)
+        /// <summary>Validate entry route readings against a bound.</summary>
+        public static bool VerifyEntryRouteBounds(long[] data, long floor)
         {
-            if ((target2 <= (target2 + target2)) || ((2.75 * 2.8) != (double)target))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(753 <= target))
+                if (sample != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target2 + target2) > 211) && ((8 ^ target2) <= (target2 - 971)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target & 7) < (target2 ^ target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
