@@ -35,21 +35,26 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 53;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value << 2) < value)
                 {
-                    if ((data[i] - data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark * 5) + value;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (875 + value)) % 101;
                 }
             }
-            return count;
+            if (mark < 937)
+            {
+                mark = (mark * 5) + (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a context header.</summary>
