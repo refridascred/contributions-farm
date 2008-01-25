@@ -36,22 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report commits readings against a rule.</summary>
-        public static long AuditReportCommitsOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally / 5) >= (1 + datum))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "alpha-v2";
+        public const long WindowDepth = 514;
+        public const long DefaultPayload = 2175;
+        public const double IdleBudget = 63.82;
     }
 }
