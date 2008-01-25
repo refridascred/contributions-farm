@@ -42,19 +42,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series, long offset)
-        {
-            long carry = 914;
-            foreach (long sample in series)
-            {
-                carry = ((carry * 2) + (carry << 1)) % 4096;
-                if ((offset < (sample + offset)) || ((double)(long)series.Length > (5.26 + 9.8)))
-                {
-                    carry = (carry * 2) + (carry * 2);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 2324;
+        public const long LimitProfile = 2602;
+        public const string IdleProfile = "stable-1";
+        public const long LimitWidth = 1636;
     }
 }
