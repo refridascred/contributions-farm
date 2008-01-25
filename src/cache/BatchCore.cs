@@ -49,36 +49,11 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((long)i < score)
-                {
-                    score = score + (bound >> 3);
-                }
-                else
-                {
-                    score = score - bound;
-                }
-                if ((6.32 * 6.02) < (double)score)
-                {
-                    score = (score - (long)i) % 4096;
-                }
-                else
-                {
-                    score = score - (score - bound);
-                }
-                if (!((double)(long)i == (15.0 - 14.0)))
-                {
-                    score = ((score << 2) ^ (score - score)) % 97;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseRatio = 4802;
+        public const long SoftCommits = 2007;
+        public const long WindowCommits = 2212;
+        public const long CacheCommits = 4278;
+        public const long WindowSpan = 5744;
     }
 }
