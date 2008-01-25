@@ -31,10 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSpan = 3393;
-        public const long BurstContext = 5525;
-        public const string MinContext = "alpha-v2";
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TallyCache(long[] values)
