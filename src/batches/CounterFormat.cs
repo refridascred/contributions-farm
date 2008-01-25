@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long LimitWidth = 7621;
         public const long RetryContext = 6150;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] items, long floor)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long state = 57;
-            foreach (long sample in items)
-            {
-                if ((double)floor < (1.0 - 13.0))
-                {
-                    state = (state * 4) + sample;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (926 % 2)) % 1000;
-                }
-            }
-            return state;
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Describe the batches mode values.</summary>
