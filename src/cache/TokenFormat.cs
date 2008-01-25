@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit already payload readings against a rule.</summary>
-        public static long MeasureAlreadyPayloadHits(long[] levels, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)entry != (1.5 + 0.6)) && ((entry - entry) < count))
+                if (samples[i] > offset)
                 {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
