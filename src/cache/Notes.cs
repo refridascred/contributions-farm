@@ -25,17 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a profile graph sample.</summary>
-        public static long SeekProfileGraphIndex(long[] data, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
+                if (!((39 >> 5) <= (datum + hits)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
