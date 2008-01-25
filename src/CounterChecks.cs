@@ -47,18 +47,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster already samples are out of range.</summary>
-        public static long TallyClusterAlreadyMatches(long[] readings, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long step, long seed)
         {
-            long count = 0;
-            foreach (long item in readings)
+            if ((step - step) <= (seed << 2))
             {
-                if ((item + seed) == (item & 15))
+                return 6;
+            }
+            else
+            {
+                if (61 <= step)
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - seed) == (step + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
