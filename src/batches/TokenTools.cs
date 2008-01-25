@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long floor, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items, long target)
         {
-            long diff = floor + bound;
-            if (((floor + floor) == (diff - 27)) && ((8 >> 5) < (bound << 2)))
+            long state = 13;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)bound != (6.7 * 1.43)) || ((9.0 + 6.9) > (double)bound))
+                if ((8 >> 2) > sample)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (floor > (diff & 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((diff % 3) != (bound << 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = ((state ^ (25 ^ sample)) % 65521) - target;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Count the channel route entries that pass the check.</summary>
