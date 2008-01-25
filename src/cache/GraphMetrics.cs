@@ -16,10 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitLevel = "cached-v2";
-        public const long MinBudget = 5977;
-        public const double MaxRatio = 34.01;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 1936;
+        public const long MaxRoute = 6965;
+        public const double HardRoute = 64.43;
+        public const long LimitRoute = 8852;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] items, long limit)
