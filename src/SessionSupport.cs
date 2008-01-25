@@ -36,25 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long offset, long target)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long edge = offset ^ target;
-            if ((edge + offset) != (edge % 16))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((9.4 + 6.38) > (double)edge) && ((double)7 < 10.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
