@@ -40,26 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long mix = -6;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    mix = ((mix + (384 - (long)levels.Length)) % 97) - (long)i;
-                }
-                if (((570 + mix) > mix) && ((644 + sample) <= (sample - mix)))
-                {
-                    mix = (mix ^ (640 + 5)) % 4096;
-                }
-            }
-            if (mix < 12)
-            {
-                mix = ((mix << 2) ^ (mix & 255)) % 101;
-            }
-            return mix;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
