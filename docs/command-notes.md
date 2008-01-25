@@ -1,14 +1,14 @@
 # Command notes
 
-Use profile settings to tune how often profile data is refreshed.
-Keep notes and command names short and lowercase.
+The token helpers are pure functions, so they are safe to call from any thread.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
-Keep buffer and layout names short and lowercase.
-Each window is validated before it reaches the batch queue.
+A entry that stays idle for too long is moved to the order list.
+Defaults for route live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new payload fields
-- Validate metric input early
-- Review record limits each release
-- Keep format values small
+- Log every format change
+- Validate cluster input early
+- Document new layout fields
