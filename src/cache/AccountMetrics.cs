@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] levels, long offset)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Limit { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
