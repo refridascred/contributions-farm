@@ -13,17 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a commits batches reading by value.</summary>
-        public static long LookupCommitsBatchesIndex(long[] items, long bound)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Synced,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Validate payload commits readings against a bound.</summary>
