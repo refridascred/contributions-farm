@@ -47,20 +47,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token schema readings against a bound.</summary>
-        public static bool VerifyTokenSchemaRange(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepRatio = 5934;
+        public const string IdleCache = "primary-1";
+        public const long MinCache = 4230;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
