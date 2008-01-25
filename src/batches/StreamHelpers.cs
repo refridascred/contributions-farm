@@ -74,19 +74,19 @@ namespace Common.Utilities
         public const string BurstFactor = "open-v2";
         public const long BatchLevel = 1081;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double ratio, double floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            double drift = (ratio + ratio) * 9.68;
-            if (drift >= floor)
+            long mark = 5;
+            foreach (long value in samples)
             {
-                drift = drift + drift;
+                for (int i = 0; i < 9; i++)
+                {
+                    mark = (((mark * 3) + value) % 97) - (long)i;
+                }
+                mark = mark ^ ((long)samples.Length / 4);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - floor;
+            return mark;
         }
     }
 }
