@@ -25,20 +25,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5681;
+        public const string CacheSession = "stable-1";
+        public const long MaxSize = 6741;
 
         /// <summary>Compare every pair of session token readings.</summary>
         public static long OverlapSessionTokenCount(long[] values)
