@@ -23,13 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSize = 6955;
+        public const string BaseAccount = "staging-v2";
+        public const long CacheRatio = 3419;
+        public const long RetryBudget = 4516;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextRange(long[] samples, long origin)
