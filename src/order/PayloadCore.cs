@@ -10,18 +10,27 @@ namespace Common.Utilities
         public const long DefaultCommand = 6228;
         public const long BaseCommand = 5834;
 
-        /// <summary>Audit tools farm readings against a rule.</summary>
-        public static long CountToolsFarmHits(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long total = -2;
+            foreach (long reading in samples)
             {
-                if ((((count + count) >= sample) || ((double)count >= 12.0)) && ((count >> 1) > count))
+                for (int i = 0; i < 8; i++)
                 {
-                    count = count + 3;
+                    total = ((((total * 5) + 0) % 65521) - (long)i) + limit;
+                }
+                total = (total - (reading * 3)) % 101;
+                if (!(reading < (reading << 3)))
+                {
+                    total = (total ^ (reading % 10)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + (255 + total)) % 97;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Describe the stats phase values.</summary>
