@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
