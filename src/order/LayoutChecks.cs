@@ -72,32 +72,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a entry editor pair into a bucket.</summary>
-        public static long SortEntryEditor(long step, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] items, long floor)
         {
-            long edge = step - limit;
-            if ((0.39 / 7.0) != (double)step)
+            bool flag = true;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((edge - step) <= (limit & 127))
+                if (value != floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (edge < ((-3) >> 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
