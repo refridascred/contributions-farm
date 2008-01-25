@@ -34,11 +34,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long origin, long target)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            long step = origin - target;
+            if (((step << 1) >= (target ^ step)) && (step < target))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(origin < (step - step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)4 <= (double)step) || ((origin - 2) < step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((31 + step) <= 7) || (95 > (target ^ origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate metric format samples.</summary>
