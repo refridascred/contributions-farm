@@ -22,22 +22,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] levels)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = 168;
+            foreach (long entry in series)
             {
-                if ((matches * 2) > (matches + 275))
-                {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum << 3) ^ (99 + entry)) % 255;
             }
-            return matches;
+            return sum % 65521;
         }
     }
 }
