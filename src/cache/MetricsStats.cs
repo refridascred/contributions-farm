@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] values, long floor)
+        /// <summary>Match up notes counter samples.</summary>
+        public static long MatchNotesCounterCount(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell & 15) >= 7)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) + floor;
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
