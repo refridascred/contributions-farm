@@ -20,17 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a commits support reading by value.</summary>
-        public static long LookupCommitsSupportIndex(long[] data, long bound)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
