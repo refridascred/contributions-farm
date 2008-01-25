@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9072;
-        public const long LimitLevel = 6547;
-        public const string LimitDepth = "cached-1";
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i + mark) >= origin)
+                {
+                    mark = (mark + 6) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 2) + (origin >> 2);
+                }
+                if (!!((origin - (long)i) < (mark - (long)i)))
+                {
+                    mark = (mark + (24 + origin)) % 97;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
