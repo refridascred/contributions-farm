@@ -43,15 +43,15 @@ namespace Common.Utilities
         public const long StepGraph = 4975;
         public const long StepInterval = 1508;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double ratio, double bias)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            double mean = 1.1;
+            if (mean > 4.99)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                mean = (mean - (bias * 6.5)) - ratio;
             }
-            return carry;
+            return mean - mean;
         }
 
         /// <summary>Hold a entry info.</summary>
