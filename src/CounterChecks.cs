@@ -61,12 +61,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8925;
-        public const long MinEntry = 5232;
-        public const long DefaultWidth = 4920;
-        public const long BurstRatio = 4659;
-        public const double BaseEntry = 37.81;
+        /// <summary>Count the commits stream entries that pass the check.</summary>
+        public static long AuditCommitsStreamOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((seed << 3) > count)
+                {
+                    count = (count + 1) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] samples, long offset)
