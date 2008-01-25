@@ -15,22 +15,37 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long step, long target)
         {
-            if ((seed << 3) > seed)
+            long offset = step - target;
+            if (((offset - offset) < (510 + offset)) && ((target * 2) < target))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (((double)seed <= (7.0 - 9.3)) && ((12 + origin) != (origin - seed)))
+                if (!((target + 73) < (target * 2)))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 0;
+                    if (((0.48 + 0.65) != (double)step) || (target >= (target / 9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.67 / 8.0) < 7.9)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
