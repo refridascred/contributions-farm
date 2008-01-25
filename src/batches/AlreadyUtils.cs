@@ -12,10 +12,19 @@ namespace Common.Utilities
         public const long IdleTimeout = 7187;
         public const long RetrySpan = 1243;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseScore = 9089;
-        public const double BatchDepth = 53.21;
-        public const long BatchRecord = 3384;
+        /// <summary>Audit profile stream readings against a rule.</summary>
+        public static long CountProfileStreamGaps(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample <= (sample + step))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsOutliers(long[] samples)
