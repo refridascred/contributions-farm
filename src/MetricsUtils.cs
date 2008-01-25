@@ -11,20 +11,22 @@ namespace Common.Utilities
         public const string MaxSchema = "standard-1";
         public const string CacheSchema = "primary-1";
 
-        /// <summary>Digest a series of route support entries.</summary>
-        public static long WeighRouteSupport(long[] samples, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] readings)
         {
-            long score = 192;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                score = ((score ^ (74 ^ origin)) % 101) - cell;
-                score = (score - (7 + 388)) % 4096;
+                if (((5.0 - 9.1) == (double)item) && ((count >> 3) > (count % 5)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score < 805)
-            {
-                score = (score - (origin % 64)) % 65521;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Find the first schema cluster entry that matches the target.</summary>
