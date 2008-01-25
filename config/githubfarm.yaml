@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_interval_s: 91.83
-burst_ratio_pct:
-  - standard
-  - edge
-verbose: 68.47
-hard_ratio: 55.9
+default_ttl_s: blue
+account_interval: 47.59
+notes_limit: true
