@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long LimitSpan = 6247;
         public const long MaxWidth = 4688;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] series, long step)
         {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
