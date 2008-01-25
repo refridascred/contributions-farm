@@ -1,12 +1,12 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Use metrics settings to tune how often stream data is refreshed.
-Keep checks and schema names short and lowercase.
+The metric report groups every report by entry.
+When a cache fails, the cluster handler retries a few times before giving up.
+Keep token and counter names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Keep support values small
-- Review route limits each release
-- Validate cluster input early
+- Prefer checks defaults
+- Validate checks input early
+- Review counter limits each release
+- Log every buffer change
