@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepCount = 5223;
-        public const long RetryToken = 6460;
-        public const long HardToken = 3040;
-        public const double BatchSpan = 52.41;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Combine contributi format values into a single score.</summary>
         public static long WeighContributiFormat(long[] levels, long target)
