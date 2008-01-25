@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] series)
         {
-            long result = 743;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((79 % 16) > (long)series.Length)
+                if (!((6.98 + 9.52) >= (double)count))
                 {
-                    result = ((result << 3) ^ (value % 3)) % 97;
+                    count = (count + 1) + item;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Scale a account session figure with a bias.</summary>
