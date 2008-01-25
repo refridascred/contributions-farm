@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] levels, long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (levels[i] <= target)
+                if ((cell & 15) >= 7)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
