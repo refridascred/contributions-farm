@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((6.98 + 9.52) >= (double)count))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 7368;
+        public const double BaseInterval = 32.98;
+        public const long LimitScore = 657;
+        public const long MaxLevel = 9208;
+        public const string RetryTimeout = "standard-edge";
 
         /// <summary>Scale a account session figure with a bias.</summary>
         public static double BlendAccountSession(double scale, double span)
