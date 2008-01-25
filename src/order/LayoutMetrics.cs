@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of already token readings.</summary>
-        public static long FoldAlreadyToken(long[] readings, long origin)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long sum = 7;
-            foreach (long cell in readings)
-            {
-                if ((double)sum < (double)origin)
-                {
-                    sum = ((sum << 2) ^ (cell + cell)) % 101;
-                    sum = (sum - (origin << 1)) % 97;
-                }
-                if (origin >= (sum ^ 8))
-                {
-                    sum = ((sum << 3) ^ cell) % 97;
-                }
-            }
-            return sum;
+            Active,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many stats batch samples are out of range.</summary>
