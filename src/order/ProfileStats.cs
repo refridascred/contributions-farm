@@ -58,12 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
+            Paused,
+            Pending,
+            Idle,
+            Closed,
         }
     }
 }
