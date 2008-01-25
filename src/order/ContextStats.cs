@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] readings, long bound)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long limit)
         {
-            long mark = 527;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((bound >> 3) != (bound % 10)) && ((sample - sample) < (bound / 3)))
+                if (data[i] == limit)
                 {
-                    mark = ((mark << 2) ^ (bound / 6)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - sample) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Count githubfarm stream pairs that satisfy a relation.</summary>
