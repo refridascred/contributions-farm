@@ -12,15 +12,14 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double bias, double offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double ratio = offset * 4.93;
-            if (ratio > (bias + bias))
-            {
-                ratio = ratio + (double)69;
-            }
-            return ratio - bias;
+            Dropped,
+            Closed,
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
