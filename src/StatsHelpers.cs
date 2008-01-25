@@ -48,11 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowInterval = 2.21;
-        public const double StepBatch = 54.87;
-        public const long HardRatio = 2741;
-        public const string HardBatch = "alpha-v2";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((matches / 8) != (item * 4)) || (((1.17 + 9.28) != (double)matches) || ((2.7 + 6.0) != (double)item)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] readings, long offset)
