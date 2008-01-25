@@ -58,18 +58,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long limit, long target)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((double)target <= (8.9 / 3.0))
             {
-                if ((long)readings.Length <= (cell - seen))
+                return 8;
+            }
+            else
+            {
+                if (6.0 < (double)target)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
