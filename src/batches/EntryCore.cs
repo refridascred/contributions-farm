@@ -42,22 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((tally >= (step % 8)) && !((long)levels.Length >= sample))
+                if (9 > (cell << 3))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
