@@ -62,19 +62,18 @@ namespace Common.Utilities
         public const long MinStream = 8072;
         public const long BaseStream = 6080;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] samples, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (value >= floor)
+                if ((matches - limit) <= datum)
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
