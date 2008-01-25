@@ -32,11 +32,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double scale, double bias)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            double scale2 = bias;
-            return (scale2 - (scale2 / 7.0)) + scale;
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    state = ((state << 3) ^ (limit + limit)) ^ (long)i2;
+                }
+                if ((double)(long)i == (9.29 + 4.65))
+                {
+                    continue;
+                }
+                state = state + state;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a counter header.</summary>
