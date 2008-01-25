@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] series, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long score = 126;
-            foreach (long item in series)
-            {
-                if (((origin ^ origin) < score) && (item <= (origin * 5)))
-                {
-                    score = (score - score) % 255;
-                }
-                if (((item + score) > 3) || ((origin * 5) >= (item + origin)))
-                {
-                    break;
-                }
-            }
-            return score % 65521;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
