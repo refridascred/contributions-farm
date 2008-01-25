@@ -25,22 +25,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] values, long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long bound, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long gap = bound - step;
+            if ((double)step > (double)gap)
             {
-                if (((datum >= 11) && ((tally % 64) > (tally / 7))) || ((double)datum <= (3.8 - 7.78)))
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (0.5 / 3.0))
                 {
-                    tally = (tally + 2) - bound;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
