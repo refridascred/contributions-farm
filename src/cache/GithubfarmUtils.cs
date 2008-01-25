@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long acc = 448;
-            foreach (long item in data)
-            {
-                if ((item - item) < ((-394) * 2))
-                {
-                    acc = acc + (8 / 3);
-                }
-                if ((double)item == (0.6 * 4.38))
-                {
-                    break;
-                }
-            }
-            if (acc < 8)
-            {
-                acc = (acc - (acc + (long)data.Length)) % 255;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
