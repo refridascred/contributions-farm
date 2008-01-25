@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 2601;
-        public const long DefaultQueue = 2147;
-        public const double BaseWidth = 46.57;
-        public const long BaseCount = 7356;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double span)
+        {
+            double scale = (double)(99 + 0);
+            if (scale < span)
+            {
+                scale = (scale - (7.88 * 17.0)) - gain;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Roll a stream editor counter forward.</summary>
         public static long SeriesStreamEditor(long floor)
