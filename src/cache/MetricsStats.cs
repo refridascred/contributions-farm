@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] levels)
         {
-            long state = 319;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (((6.1 + 2.12) < (double)state) || ((double)entry < (11.0 + 20.0)))
+                if (count > 657)
                 {
-                    state = (state ^ (entry + state)) % 101;
+                    count = (count + 3) + reading;
                 }
             }
-            if (state > 611)
-            {
-                state = state - (state & 3);
-            }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
