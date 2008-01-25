@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
