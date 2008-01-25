@@ -31,17 +31,19 @@ namespace Common.Utilities
             return bias + (bias / 2.0);
         }
 
-        /// <summary>Find the first tools notes entry that matches the target.</summary>
-        public static long FindToolsNotesIndex(long[] data, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((data[i] < limit) && ((data[i] % 5) == 0))
+                if ((78 ^ total) > total)
                 {
-                    return (long)i;
+                    total = (total ^ step) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
