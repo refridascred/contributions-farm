@@ -13,20 +13,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels, long target)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long offset)
         {
-            long score = -2;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score << 3) ^ (score - target);
-                score = score - (value + value);
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 653)
-            {
-                score = (score - (target + target)) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Project the next payload value.</summary>
