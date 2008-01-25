@@ -65,17 +65,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -654;
+            foreach (long entry in levels)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
+                acc = ((acc << 2) ^ (entry + 63)) % 65521;
+                if (!((acc + entry) >= entry))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    acc = (acc * 5) + (entry >> 3);
+                }
+                acc = ((acc << 3) ^ (acc - entry)) % 255;
             }
-            return -1;
+            if (acc < 80)
+            {
+                acc = (acc + (acc + acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
