@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] readings, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                long next = (long)i - (target - target);
-                if ((target << 1) <= 348)
+                if (((14.0 / 2.0) < (double)(long)readings.Length) && (tally <= (tally + tally)))
                 {
-                    next = (next + (mix + target)) % 4096;
+                    tally = ((tally + 2) + sample) + bound;
                 }
-                if ((double)next != (7.02 - 5.0))
-                {
-                    next = (next * 2) + (mix % 7);
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of order entries.</summary>
