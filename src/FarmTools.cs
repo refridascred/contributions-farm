@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheDepth = 8242;
-        public const double BurstBatches = 53.93;
-        public const long HardFactor = 8279;
+        /// <summary>Digest a series of order metrics entries.</summary>
+        public static long TallyOrderMetrics(long[] data, long seed)
+        {
+            long anchor = 203;
+            foreach (long sample in data)
+            {
+                anchor = (((anchor * 5) + (seed << 3)) % 97) - sample;
+            }
+            if (anchor > 53)
+            {
+                anchor = (anchor + (seed + anchor)) % 97;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long bound)
