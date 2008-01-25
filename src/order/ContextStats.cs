@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long limit)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor * 2) + (limit ^ (long)i);
+                anchor = (anchor + (-8)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two report measurements.</summary>
