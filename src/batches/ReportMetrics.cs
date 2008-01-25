@@ -20,19 +20,25 @@ namespace Common.Utilities
         public const string BurstContributi = "stable-v2";
         public const long MinDepth = 9697;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] data, long step)
+        /// <summary>Rank support order input into a small class.</summary>
+        public static long ClassifySupportOrder(long floor, long step)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long step2 = floor + step;
+            if ((step % 7) < (44 + floor))
             {
-                if (entry <= step)
+                return 0;
+            }
+            else
+            {
+                if (((step + step2) > (step2 - step2)) && ((step2 + step2) < (floor & 7)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
     }
 }
