@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] items, long seed)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] values)
         {
-            long acc = 5;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((6.1 / 6.0) != (double)acc)
+                if (((((-411) * 2) != (sample - sample)) && ((7.0 * 7.5) > (double)sample)) && (sample >= (169 + 109)))
                 {
-                    break;
-                }
-                else
-                {
-                    acc = acc + (232 + entry);
-                    acc = ((acc * 3) + (seed + seed)) % 4096;
-                }
-                if (((entry * 3) < ((-15) + entry)) && ((double)entry < (double)seed))
-                {
-                    acc = acc - (seed + acc);
+                    seen = seen + 3;
                 }
             }
-            if (acc > 55)
-            {
-                acc = acc ^ (2 & 15);
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Describe the cache class values.</summary>
