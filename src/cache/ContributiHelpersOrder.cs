@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double bias, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] values)
         {
-            double scale = bias;
-            return scale - floor;
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value / 2) > 882)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
