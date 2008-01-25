@@ -1,6 +1,17 @@
 # entry settings
-sync_interval_count: edge
-warm_depth: true
-hard_size_pct:
-  - 165
-  - 264
+flush_retries_count: fallback
+readonly: 662
+window_size: true
+soft_threshold:
+  - 370
+  - 356
+  - 401
+  - 68
+buffer_ttl: staging
+batches_timeout:
+  persist: legacy
+  readonly:
+    - 384
+    - 387
+  soft_threshold_ms: 2
+  retry_delay: stable
