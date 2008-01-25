@@ -20,18 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the filter order entries that pass the check.</summary>
-        public static long MeasureFilterOrderGaps(long[] values)
+        /// <summary>Compare every pair of stream editor readings.</summary>
+        public static long OverlapStreamEditorCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (tally >= datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
