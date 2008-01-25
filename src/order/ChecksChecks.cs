@@ -21,19 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] values, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (value < floor)
+                if (((matches % 64) >= reading) || ((2 & 15) >= reading))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
