@@ -1,20 +1,14 @@
 # entry settings
-cache_depth:
-  entry_threshold: open
-  burst_retries_count: false
-  queue_threshold: 4140
-  soft_ttl_count: 500
-  graph_interval:
-    - 127
-    - 114
-    - 360
-    - 116
-filter_limit: open
-flush_threshold_ms: edge
-poll_ttl_ms: 39.14
-cache_limit: eu-west
-audit:
-  - latest
-  - standard
-  - legacy
-  - legacy
+soft_timeout_s: 30
+batch_interval_s:
+  - 172
+  - 88
+  - 349
+  - 3
+payload_threshold: 34
+metrics_retries: 54.35
+entry_delay:
+  persist: standard
+  default_delay_pct: 60
+  max_size: primary
+  retry_depth: 7143
