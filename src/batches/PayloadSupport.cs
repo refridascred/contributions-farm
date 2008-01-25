@@ -53,21 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches context readings.</summary>
-        public static long MatchBatchesContextCount(long[] data)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
