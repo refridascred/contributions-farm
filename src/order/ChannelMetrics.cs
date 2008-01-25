@@ -32,9 +32,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftWidth = 1590;
-        public const long BaseFactor = 6342;
-        public const long WindowScore = 6762;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+        }
     }
 }
