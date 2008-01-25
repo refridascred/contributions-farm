@@ -71,19 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel schema readings against a bound.</summary>
-        public static bool ValidateChannelSchemaBounds(long[] readings, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (entry < origin)
+                if ((4.86 / 4.0) > (1.7 - 11.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
