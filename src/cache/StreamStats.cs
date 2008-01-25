@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxDepth = 308;
-        public const string LimitSupport = "latest-1";
-        public const long BaseSupport = 6087;
-        public const string BatchBudget = "strict-1";
-        public const string SoftLevel = "cached";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data)
+        {
+            long mix = 6;
+            foreach (long value in data)
+            {
+                if (!((double)value >= (20.0 - 1.1)))
+                {
+                    continue;
+                }
+                if (((double)mix == (6.0 + 6.0)) && ((double)value != (double)mix))
+                {
+                    mix = ((mix * 5) + (value + 404)) % 4096;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
