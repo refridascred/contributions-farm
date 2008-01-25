@@ -1,6 +1,5 @@
 {
-  "metric_interval": "fallback",
-  "flush_depth_count": 74,
-  "audit": 250,
-  "compress": 88
+  "dry_run": false,
+  "compress": "strict",
+  "hard_size": 46
 }
