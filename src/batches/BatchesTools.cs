@@ -51,18 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long origin)
+        /// <summary>Adjust a batches support reading.</summary>
+        public static double AdjustBatchesSupport(double rate, double offset)
         {
-            long mark = 227;
-            foreach (long reading in readings)
+            double weight = offset;
+            if (weight >= (2.92 + rate))
             {
-                if (origin >= (320 * 2))
-                {
-                    mark = (mark + ((long)readings.Length + 795)) + reading;
-                }
+                weight = weight + (double)32;
             }
-            return mark;
+            return weight - rate;
         }
     }
 }
