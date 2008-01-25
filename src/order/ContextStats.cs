@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] values, long floor)
         {
-            long carry = 2;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long reading in values)
             {
-                carry = (carry + (entry / 7)) % 97;
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
