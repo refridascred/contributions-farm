@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long origin)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings)
         {
-            long mark = 8;
-            foreach (long cell in items)
+            long sum = 143;
+            foreach (long value in readings)
             {
-                mark = (mark + (origin >> 4)) % 1000;
-                if ((cell >> 3) > mark)
-                {
-                    mark = ((mark * 4) + (mark & 127)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (origin + origin)) % 97;
-                }
+                sum = (((sum * 3) + sum) % 65521) ^ value;
             }
-            return mark % 65521;
+            return sum;
         }
 
         /// <summary>Measure how many session format samples are out of range.</summary>
