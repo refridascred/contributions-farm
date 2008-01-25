@@ -38,17 +38,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] levels, long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many filter route samples are out of range.</summary>
