@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const string BatchChannel = "alpha-1";
         public const long MinChannel = 6195;
 
-        /// <summary>Match up checks metric samples.</summary>
-        public static long CompareChecksMetricCount(long[] items)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 23;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 4) + result) + sample;
             }
-            return seen;
+            if (result < 2)
+            {
+                result = (result * 4) + ((long)levels.Length / 4);
+            }
+            return result;
         }
 
         /// <summary>Hold a context snapshot.</summary>
