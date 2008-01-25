@@ -87,19 +87,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] levels, long offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
     }
 }
