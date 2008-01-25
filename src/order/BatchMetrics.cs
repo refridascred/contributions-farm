@@ -34,12 +34,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
