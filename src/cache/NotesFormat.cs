@@ -14,30 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine command record values into a single score.</summary>
-        public static long TallyCommandRecord(long[] levels, long bound)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] items)
         {
-            long sum = 727;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9 >> 2) != (datum - bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum * 2) + ((long)levels.Length & 7)) % 65521;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum + (903 * 5)) + (long)i;
-                }
-                if ((double)sum != (1.0 + 3.53))
-                {
-                    sum = (sum + ((long)levels.Length - datum)) % 65521;
+                    if ((items[i] + items[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 4)
-            {
-                sum = ((sum * 5) + (bound << 3)) % 1000;
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Describe the queue mode values.</summary>
