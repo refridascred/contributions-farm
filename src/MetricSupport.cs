@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] values, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            New,
+            Failed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define support limits and defaults.</summary>
