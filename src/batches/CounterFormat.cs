@@ -27,22 +27,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter record readings.</summary>
-        public static long WeighCounterRecord(long[] series)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long floor, long step)
         {
-            long state = 330;
-            foreach (long reading in series)
+            long next = floor + step;
+            if ((0 << 1) > (next - floor))
             {
-                if (26 < (reading * 3))
+                return 2;
+            }
+            else
+            {
+                if (step > (step ^ 6))
                 {
-                    state = (state - (reading + 75)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + step) > 0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state > 1)
-            {
-                state = (state + (state + state)) % 4096;
-            }
-            return state;
         }
     }
 }
