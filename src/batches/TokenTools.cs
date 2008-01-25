@@ -26,19 +26,21 @@ namespace Common.Utilities
             return (load + (load + gain)) + offset;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((78 ^ total) > total)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total ^ step) % 4096;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
     }
 }
