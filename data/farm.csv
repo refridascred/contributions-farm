@@ -1,9 +1,6 @@
-id,count,level,rank
-1,868,eu-west,56.32
-2,open,690,open
-3,cached,186,29.29
-4,555,832,840
-5,local,45.62,715
-6,19.28,62,92.85
-7,752,72.45,68.48
-8,strict,383,71.4
+id,count,token,weight,level
+1,1.15,45.96,50.06,41.79
+2,local,462,377,61.2
+3,13.23,718,primary,strict
+4,417,331,legacy,standard
+5,965,413,798,4.55
