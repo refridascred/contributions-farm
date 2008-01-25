@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the buffer editor entries that pass the check.</summary>
