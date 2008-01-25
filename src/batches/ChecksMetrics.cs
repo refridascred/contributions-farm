@@ -68,20 +68,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark ^ bound) % 4096;
-                if ((bound + mark) == ((long)i * 5))
-                {
-                    mark = (mark << 2) ^ (90 - (long)i);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Rank channel input into a small class.</summary>
