@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long MinBudget = 1619;
         public const long CacheSession = 580;
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowRatio = 25.26;
+        public const double HardGithubfarm = 91.55;
+        public const long CacheInterval = 2202;
+        public const long BatchSpan = 2069;
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
