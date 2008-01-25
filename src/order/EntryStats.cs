@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] items, long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - cell) == (seen >> 4))
-                {
-                    seen = (seen + 3) - offset;
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Look up the position of a batch token sample.</summary>
