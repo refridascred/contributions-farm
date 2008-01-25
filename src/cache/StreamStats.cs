@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of payload cluster readings.</summary>
-        public static long CombinePayloadCluster(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long step)
         {
-            long mark = 409;
-            foreach (long datum in data)
+            if (!((34 * 2) >= (bound - bound)))
             {
-                mark = (mark ^ (mark + mark)) % 65521;
-                if ((4.04 + 3.28) <= (double)datum)
+                return 0;
+            }
+            else
+            {
+                if (!((step >> 3) < bound))
                 {
-                    mark = mark ^ (datum + 93);
+                    return 5;
+                }
+                else
+                {
+                    if (((bound >> 1) < (step - step)) || ((bound + bound) != (557 % 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (mark < 78)
-            {
-                mark = (mark << 2) ^ (mark ^ 15);
-            }
-            return mark % 1000;
         }
 
         /// <summary>Describe the stats kind values.</summary>
