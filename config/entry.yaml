@@ -1,24 +1,13 @@
 # entry settings
-entry_delay:
-  schema_interval: edge
-  enabled:
-    already_ttl: 30
-    commits_depth:
-      - 478
-      - 125
-      - 131
-    record_capacity: eu-west
-    poll_retries: 69
-  cluster_depth: 73
-burst_threshold_count: 18.23
-min_window_count:
-  - green
-  - staging
-  - primary
-  - stable
-sync_limit: 51
-max_capacity_ms:
-  record_delay: blue
-  audit: 6941
-  hard_limit_pct: 5449
-batch_capacity_count: false
+soft_interval_ms: stable
+batch_threshold:
+  verbose: 10.17
+  hard_interval: stable
+  route_threshold: true
+  hard_window: 91.25
+  batch_limit_count: 26
+batches_threshold:
+  - 435
+  - 5
+  - 479
+  - 94
