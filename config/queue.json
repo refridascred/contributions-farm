@@ -1,5 +1,18 @@
 {
-  "soft_ttl": "stable",
-  "hard_limit_s": 100,
-  "warm_ratio_ms": 1507
+  "hard_depth": 4380,
+  "burst_limit": true,
+  "metrics_window": {
+    "batch_delay": {
+      "soft_window": true,
+      "hard_ttl_ms": 30,
+      "cluster_limit": 67.4,
+      "batch_delay_ms": 19,
+      "metric_limit": 9782
+    },
+    "poll_window_count": true,
+    "poll_ttl": true
+  },
+  "poll_timeout_count": 8230,
+  "min_capacity_s": ["blue", "green", "open"],
+  "stream_ttl": 9429
 }
