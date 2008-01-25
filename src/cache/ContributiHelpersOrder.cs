@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long seed)
         {
-            long diff = origin - step;
-            if ((diff + 365) >= (origin + diff))
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                long next = seed;
+                total = (total << 3) ^ (next >> 5);
+                total = ((total * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin >> 5) >= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin < (double)diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of command readings.</summary>
