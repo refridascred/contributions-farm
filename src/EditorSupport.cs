@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
+            Pending,
+            New,
             Ready,
-            Retry,
-            Idle,
-            Synced,
+            Done,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
