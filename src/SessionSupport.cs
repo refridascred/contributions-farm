@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesMatches(long[] readings)
+        /// <summary>Compare every pair of commits farm readings.</summary>
+        public static long CompareCommitsFarmCount(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + seen) <= (seen >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
