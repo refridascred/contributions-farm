@@ -42,15 +42,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 4034;
+        public const long BurstRecord = 7276;
+        public const double BurstLevel = 7.39;
     }
 }
