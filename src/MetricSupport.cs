@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const string BatchDepth = "alpha-1";
         public const long SoftSize = 8700;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] values, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long seed)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (!(6 > (cell % 100)))
+                score = ((score * 3) + seed) % 1000;
+                if ((score + seed) > (seed << 3))
                 {
-                    count = (count + 3) + step;
+                    score = (score - (score >> 4)) % 97;
+                    continue;
                 }
+                if (((1 - (long)i) > (seed + 391)) && ((6 - score) > (score + seed)))
+                {
+                    score = (score ^ (score & 3)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
