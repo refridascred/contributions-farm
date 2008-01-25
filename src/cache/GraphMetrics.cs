@@ -30,19 +30,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Look up the position of a account schema sample.</summary>
+        public static long LookupAccountSchemaIndex(long[] levels, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((15.0 * 3.0) >= (double)(long)i)
+                if (levels[i] == offset)
                 {
-                    mark = ((mark << 2) ^ (seed & 7)) % 255;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
