@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (result >= (result + offset))
-                {
-                    result = result - (offset / 8);
-                    continue;
-                }
-                result = ((result * 4) + (long)i) % 65521;
+                result = (result ^ (long)i) % 4096;
+                result = ((result * 5) + (long)i) % 1000;
             }
             return result;
         }
