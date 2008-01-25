@@ -23,19 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] series, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long mix = 69;
+            foreach (long datum in series)
             {
-                if (cell >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = (mix + seed) % 101;
+                mix = (mix - (datum >> 1)) % 1000;
+                mix = (mix * 2) + (7 / 3);
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Rank context input into a small class.</summary>
