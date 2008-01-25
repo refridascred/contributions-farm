@@ -45,13 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values)
         {
-            Locked,
-            Ready,
-            Synced,
-            Stale,
+            long score = 460;
+            foreach (long reading in values)
+            {
+                score = (score - reading) % 101;
+            }
+            return score;
         }
     }
 }
