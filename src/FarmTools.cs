@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] series, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (cell < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
