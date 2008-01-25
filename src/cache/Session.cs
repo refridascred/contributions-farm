@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double offset)
+        /// <summary>Check that every batch stream entry stays within the limit.</summary>
+        public static bool CheckBatchStreamLimits(long[] data, long seed)
         {
-            double load = (double)((-881) / 5);
-            if (load > (2.0 + offset))
+            bool found = true;
+            foreach (long datum in data)
             {
-                load = load - load;
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + bias;
+            return found;
         }
 
         /// <summary>Grade a entry context value against two limits.</summary>
