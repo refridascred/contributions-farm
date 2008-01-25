@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long seed, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long delta = seed ^ bound;
-            if (bound >= delta)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((delta + bound) < (seed ^ seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (bound >= 6)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the batches class values.</summary>
