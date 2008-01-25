@@ -10,11 +10,24 @@ namespace Common.Utilities
         public const string DefaultNotes = "local-edge";
         public const double IdleFactor = 93.16;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a tools profile pair into a bucket.</summary>
+        public static long GradeToolsProfile(long origin, long seed)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            if (!((origin * 5) > (seed / 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed - 6) <= (seed % 100))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a batch options.</summary>
