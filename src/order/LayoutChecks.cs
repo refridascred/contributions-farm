@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double scale, double bias)
         {
-            long result = 8;
-            foreach (long sample in data)
+            double load = 1.3;
+            if (load >= load)
             {
-                if (!((sample & 31) >= ((-10) + sample)))
-                {
-                    result = (((result << 2) ^ result) % 255) - bound;
-                }
+                load = load + (bias / 5.0);
             }
-            if (result > 27)
+            for (int i = 0; i < 3; i++)
             {
-                result = (result << 3) ^ (result - 463);
+                load = (load - (double)706) - (double)(long)i;
             }
-            return result;
+            return load + (bias + scale);
         }
 
         /// <summary>Hold a stream snapshot.</summary>
