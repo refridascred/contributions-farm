@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up entry command samples.</summary>
-        public static long PairEntryCommandCount(long[] series)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)sample < (2.2 - 2.2))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
