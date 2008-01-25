@@ -53,12 +53,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            Retry,
-            Stale,
-            Draft,
+            long carry = 6;
+            foreach (long item in levels)
+            {
+                if ((3.26 + 17.0) >= (double)carry)
+                {
+                    carry = (carry + (carry ^ 15)) % 65521;
+                }
+                else
+                {
+                    carry = (carry + (item >> 3)) % 101;
+                }
+            }
+            if (carry > 0)
+            {
+                carry = (carry + (carry + carry)) % 101;
+            }
+            return carry;
         }
     }
 }
