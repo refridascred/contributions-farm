@@ -35,12 +35,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Project the next contributi payload value.</summary>
+        public static double AdjustContributiPayload(double gain, double bias)
         {
-            New,
-            Paused,
-            Pending,
+            double ratio = (bias / 4.0) / 4.0;
+            if (ratio <= 3.84)
+            {
+                ratio = (ratio + 17.0) + gain;
+            }
+            return ratio - bias;
         }
     }
 }
