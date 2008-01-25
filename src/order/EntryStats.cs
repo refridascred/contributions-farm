@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double scale, double offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double rate = scale;
-            if (rate >= (scale / 7.0))
-            {
-                rate = rate + (scale * 8.2);
-            }
-            else
-            {
-                rate = rate - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (1.2 / 9.0)) - (double)(long)i;
-            }
-            return rate + rate;
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Digest a series of metric entries.</summary>
