@@ -22,25 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long step, long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long next = step ^ offset;
-            if (!((double)offset > (9.4 * 5.9)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step > (next ^ next))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((readings[i] + readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
