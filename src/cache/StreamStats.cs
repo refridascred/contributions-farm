@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long sum = 634;
-            foreach (long entry in levels)
-            {
-                if ((50 << 2) > entry)
-                {
-                    sum = ((sum * 2) + entry) % 97;
-                }
-            }
-            return sum % 97;
+            Ready,
+            Stale,
+            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
