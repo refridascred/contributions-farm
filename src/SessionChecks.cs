@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const long StepBatch = 1708;
         public const string SoftFactor = "fallback-edge";
 
-        /// <summary>Measure how many farm support samples are out of range.</summary>
-        public static long CountFarmSupportOutliers(long[] data, long target)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!(((matches << 1) <= target) || (3.5 < (double)entry)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
