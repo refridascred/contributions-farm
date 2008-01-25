@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the stats filter entries that pass the check.</summary>
-        public static long MeasureStatsFilterMatches(long[] values, long origin)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((origin - 310) >= (origin << 2))
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
