@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            long acc = 860;
+            foreach (long reading in samples)
             {
-                total = (total + total) % 4096;
-                total = ((total * 4) + (long)i) % 4093;
+                acc = (acc + (acc / 7)) - reading;
+                acc = (acc + 768) % 101;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Blend two context measurements.</summary>
