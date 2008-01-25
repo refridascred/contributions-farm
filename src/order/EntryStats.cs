@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every context tools entry stays within the limit.</summary>
-        public static bool VerifyContextToolsLimits(long[] readings, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (value <= target)
+                if ((cell - cell) == (seen >> 4))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
