@@ -25,17 +25,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter format entry that matches the target.</summary>
-        public static long FindFilterFormatIndex(long[] levels, long bound)
+        /// <summary>Fold a list of session already readings.</summary>
+        public static long WeighSessionAlready(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 5;
+            foreach (long cell in items)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                long step = (57 ^ cell) / 3;
+                if (((mark / 3) >= mark) && ((step % 64) <= (limit / 2)))
                 {
-                    return (long)i;
+                    mark = ((mark * 5) + (cell - limit)) % 101;
+                }
+                mark = mark - 492;
+                if (((5.3 + 8.0) >= (double)mark) || ((cell >> 4) <= (mark ^ limit)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 95)
+            {
+                mark = (mark ^ (mark ^ limit)) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
