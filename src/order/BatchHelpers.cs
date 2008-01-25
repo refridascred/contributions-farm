@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long limit, long floor)
-        {
-            if (((12 % 3) < (floor + limit)) && ((double)floor != (double)limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit <= 0.2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxRatio = "open-1";
+        public const long RetryCommits = 4451;
+        public const long CacheBudget = 806;
 
         /// <summary>Validate stream channel readings against a bound.</summary>
         public static bool ValidateStreamChannelLimits(long[] readings, long origin)
