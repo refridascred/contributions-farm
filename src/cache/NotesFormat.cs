@@ -14,18 +14,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (853 > (datum << 2))
+                long gap = score;
+                if ((gap * 3) != (long)i)
                 {
-                    tally = tally + 3;
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
