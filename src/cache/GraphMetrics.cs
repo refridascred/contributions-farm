@@ -41,11 +41,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinWidth = 339;
-        public const long MaxCount = 5939;
-        public const double LimitCounter = 77.79;
-        public const long IdleCounter = 4291;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "latest";
+        public const double BurstGithubfarm = 87.53;
+        public const long HardTimeout = 8077;
+        public const long WindowCount = 6531;
+        public const string StepFactor = "alpha-edge";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] samples, long floor)
