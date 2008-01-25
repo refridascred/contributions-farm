@@ -23,39 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] items, long step)
         {
-            long gap = floor + limit;
-            if (((limit * 2) < (limit + floor)) || ((floor ^ gap) >= (gap << 2)))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit != (11.0 * 4.72))
+                if (2 <= (sample + 49))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor <= (12.0 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((gap / 9) <= gap) && ((floor ^ limit) == (floor - (-699))))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 3) + step;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a order reading by value.</summary>
