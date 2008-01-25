@@ -49,22 +49,13 @@ namespace Common.Utilities
         public const long WindowFactor = 7662;
         public const double HardTimeout = 69.48;
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] levels)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long anchor = 787;
-            foreach (long datum in levels)
-            {
-                if (((-75) << 1) >= (anchor - anchor))
-                {
-                    anchor = (anchor << 2) ^ (anchor + datum);
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor - (anchor + anchor)) % 101;
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Match up profile samples.</summary>
