@@ -59,18 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command notes entries that pass the check.</summary>
-        public static long AuditCommandNotesMatches(long[] levels, long floor)
+        /// <summary>Accumulate record stats samples.</summary>
+        public static long ScoreRecordStats(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = 78;
+            foreach (long sample in data)
             {
-                if (4 <= (hits << 2))
-                {
-                    hits = ((hits + 1) ^ datum) - floor;
-                }
+                state = ((state * 3) + (sample / 3)) % 1000;
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
