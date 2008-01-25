@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] values, long step)
         {
-            long state = 13;
-            foreach (long sample in items)
+            long mark = 246;
+            foreach (long value in values)
             {
-                if ((8 >> 2) > sample)
+                if ((double)mark <= 7.9)
                 {
-                    state = ((state ^ (25 ^ sample)) % 65521) - target;
+                    mark = (((mark << 3) ^ (mark + step)) % 4096) ^ value;
+                }
+                else
+                {
+                    mark = (mark * 4) + (step >> 4);
                 }
             }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
