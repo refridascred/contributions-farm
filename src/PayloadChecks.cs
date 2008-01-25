@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long acc = 860;
-            foreach (long reading in samples)
-            {
-                acc = (acc + (acc / 7)) - reading;
-                acc = (acc + 768) % 101;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two context measurements.</summary>
