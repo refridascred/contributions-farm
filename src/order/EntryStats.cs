@@ -33,18 +33,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many filter route samples are out of range.</summary>
-        public static long AuditFilterRouteOutliers(long[] series, long seed)
+        /// <summary>Validate format metrics readings against a bound.</summary>
+        public static bool CheckFormatMetricsRange(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((565 * 5) <= (tally / 5))
+                if (reading > seed)
                 {
-                    tally = ((tally + 3) - reading) - seed;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Validate token entry readings against a bound.</summary>
