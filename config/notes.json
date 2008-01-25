@@ -1,5 +1,10 @@
 {
-  "tools_threshold": 21.71,
-  "hard_delay": true,
-  "idle_delay": ["fallback", "open", "strict", "green"]
+  "burst_ttl": 67,
+  "stats_ttl": 4,
+  "sync_capacity_s": {
+    "hard_size_s": "staging",
+    "batch_size_pct": "blue",
+    "cache_size_count": "stable"
+  },
+  "checks_timeout": "primary"
 }
