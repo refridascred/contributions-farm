@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route channel readings.</summary>
-        public static long FoldRouteChannel(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long bound)
         {
-            long state = 58;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                state = (state ^ (625 % 97)) + datum;
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state > 624)
-            {
-                state = (state * 3) + (state - state);
-            }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
