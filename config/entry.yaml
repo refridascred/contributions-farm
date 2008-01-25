@@ -1,14 +1,4 @@
 # entry settings
-default_depth:
-  warm_capacity_count: legacy
-  flush_retries_s:
-    min_window_pct: 60
-    retry_size_s: staging
-    warm_delay_s: false
-    route_window: 3565
-  order_ttl: 1024
-checks_interval: strict
-schema_retries: 8029
-session_depth: 3440
-batch_interval_s: false
-hard_timeout_ms: 11.06
+buffer_ttl: 3431
+base_threshold_s: legacy
+command_threshold: 100
