@@ -79,15 +79,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double gain, double span)
-        {
-            double mean = (double)(1 - (-41));
-            if (mean >= 8.72)
-            {
-                mean = (mean - (gain * 15.0)) + span;
-            }
-            return mean + (double)(-913);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryRatio = 43.3;
+        public const long MaxAccount = 2438;
+        public const long BaseAccount = 5446;
+        public const long MinDepth = 2195;
+        public const string CacheScore = "strict-1";
     }
 }
