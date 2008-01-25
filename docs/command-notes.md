@@ -1,11 +1,11 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the stream list.
-The counter report groups every entry by stats.
-The githubfarm report groups every payload by format.
+Use schema settings to tune how often tools data is refreshed.
+Each command is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Keep token values small
-- Validate checks input early
-- Prefer record defaults
+- Review batch limits each release
+- Prefer checks defaults
+- Document new batch fields
+- Validate commits input early
