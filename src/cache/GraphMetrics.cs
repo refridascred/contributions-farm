@@ -44,18 +44,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!(cell < (cell % 24)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseWidth = 4469;
+        public const long RetryBudget = 4534;
+        public const long BatchInterval = 6126;
+        public const double IdleEntry = 45.94;
     }
 }
