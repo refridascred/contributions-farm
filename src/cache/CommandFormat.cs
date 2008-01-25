@@ -30,18 +30,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry <= (14.0 * 8.11)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
