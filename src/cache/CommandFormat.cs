@@ -28,39 +28,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long target)
-        {
-            if ((target + target) >= (offset + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset >> 4) != (offset & 127))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (398 < (offset - 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset / 5) <= (offset % 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 3779;
+        public const string IdleTimeout = "legacy-1";
+        public const long BurstBatch = 6269;
+        public const long RetryRatio = 6267;
+        public const long MinBatch = 2806;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryRange(long[] samples, long step)
