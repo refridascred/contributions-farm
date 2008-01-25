@@ -57,18 +57,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] values)
+        /// <summary>Fold a list of githubfarm payload readings.</summary>
+        public static long CombineGithubfarmPayload(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = 0;
+            foreach (long sample in readings)
             {
-                if ((double)datum <= (3.88 + 16.0))
+                if (!((95 - 991) >= sample))
                 {
-                    matches = matches + 3;
+                    mark = (mark ^ (mark / 5)) % 101;
+                }
+                if ((25 + mark) < (mark & 31))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark > 27)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a order record.</summary>
