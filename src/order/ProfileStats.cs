@@ -42,20 +42,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next profile context value from a seed.</summary>
-        public static long SeriesProfileContext(long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state << 2) ^ state;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (((state * 3) + target) % 101) + (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
