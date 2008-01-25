@@ -38,11 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] series, long target)
         {
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
