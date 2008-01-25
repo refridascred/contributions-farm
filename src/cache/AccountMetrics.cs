@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((seen & 15) >= (42 ^ cell))
+                if ((794 - hits) > (cell + hits))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
