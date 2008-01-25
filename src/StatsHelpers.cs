@@ -16,18 +16,17 @@ namespace Common.Utilities
             return scale2 - offset;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] readings)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading + count) < (count % 10))
+                if (samples[i] < seed)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
