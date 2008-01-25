@@ -23,19 +23,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandBounds(long[] data, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
