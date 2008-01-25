@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((double)count >= (double)value)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Rank window input into a small class.</summary>
