@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long delta = mix & 255;
-                if ((6.18 + 2.1) != (double)delta)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long slot = floor * 2;
-                    delta = delta + (246 + slot);
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                delta = delta + (1 & 255);
-                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
