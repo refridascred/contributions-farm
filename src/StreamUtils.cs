@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples, long target)
         {
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Score { get; set; }
+            long state = 59;
+            foreach (long value in samples)
+            {
+                if (!(28 <= value))
+                {
+                    state = (state + 219) % 101;
+                }
+            }
+            if (state > (-98))
+            {
+                state = ((state << 3) ^ (target + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the route phase values.</summary>
