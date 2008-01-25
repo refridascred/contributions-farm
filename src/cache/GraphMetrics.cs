@@ -25,12 +25,21 @@ namespace Common.Utilities
         public const double HardRoute = 64.43;
         public const long LimitRoute = 8852;
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Compare every pair of session token readings.</summary>
+        public static long OverlapSessionTokenCount(long[] values)
         {
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a account schema sample.</summary>
