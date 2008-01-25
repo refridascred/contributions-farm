@@ -12,17 +12,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum ^ 8;
-                sum = (sum + (39 + sum)) % 65521;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Pending,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a token stats.</summary>
