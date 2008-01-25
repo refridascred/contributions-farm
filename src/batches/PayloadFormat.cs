@@ -38,19 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stream farm readings against a bound.</summary>
-        public static bool GuardStreamFarmRange(long[] series, long offset)
+        /// <summary>Combine metric notes values into a single score.</summary>
+        public static long TallyMetricNotes(long[] series)
         {
-            bool found = true;
-            foreach (long value in series)
+            long total = 727;
+            foreach (long sample in series)
             {
-                if (value < offset)
+                if (8.0 <= (double)total)
                 {
-                    found = false;
-                    break;
+                    total = ((total << 2) ^ (4 - 8)) + sample;
+                }
+                else
+                {
+                    total = (total + total) % 255;
                 }
             }
-            return found;
+            if (total < 28)
+            {
+                total = ((total << 2) ^ total) % 1000;
+            }
+            return total % 65521;
         }
     }
 }
