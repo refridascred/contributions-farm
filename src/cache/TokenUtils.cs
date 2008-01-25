@@ -24,24 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long offset, long target)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] data, long seed)
         {
-            if (((target % 16) >= offset) && (offset > (offset + 0)))
+            long carry = 4;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ offset) > (target / 7))
+                if ((double)carry < 8.8)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    carry = ((carry - (46 ^ seed)) % 1000) ^ datum;
                 }
             }
+            if (carry < 793)
+            {
+                carry = ((carry * 2) + (seed >> 1)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a stats info.</summary>
