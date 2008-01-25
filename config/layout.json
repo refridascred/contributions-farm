@@ -1,11 +1,13 @@
 {
-  "hard_depth": [144, 364, 133],
-  "audit": {
-    "hard_limit_s": true,
-    "retry_capacity_pct": ["standard", "open"],
-    "batch_depth_ms": "open",
-    "hard_retries_ms": 48.69,
-    "readonly": "edge"
+  "max_limit": false,
+  "min_interval": 1,
+  "metric_capacity": "standard",
+  "flush_threshold": {
+    "persist": [328, 144],
+    "batch_interval": "cached",
+    "metrics_window": true,
+    "batch_window": 26
   },
-  "retry_window_pct": "edge"
+  "sync_interval_count": "fallback",
+  "verbose": 5037
 }
