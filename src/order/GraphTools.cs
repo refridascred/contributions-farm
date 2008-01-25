@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] series, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (mark - bound)) % 65521;
-                mark = (mark + (bound >> 3)) % 4096;
-                mark = mark + ((long)i + (long)i);
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((series[i] <= floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
