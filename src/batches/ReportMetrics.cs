@@ -43,15 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] items, long bound)
         {
-            long mark = -822;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                mark = ((mark - (7 - limit)) % 255) ^ reading;
+                if ((double)sample == (0.84 - 3.36))
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
