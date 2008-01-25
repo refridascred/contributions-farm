@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            Retry,
-            Locked,
-            Active,
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
