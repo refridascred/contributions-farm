@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long state = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)item != (4.8 * 8.0))
-                {
-                    seen = (seen + 1) - step;
-                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Match up contributi samples.</summary>
