@@ -29,14 +29,17 @@ namespace Common.Utilities
         public const string BatchFactor = "stable-edge";
         public const string BatchBudget = "stable";
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] samples, long step)
         {
-            Locked,
-            Closed,
-            New,
-            Queued,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
