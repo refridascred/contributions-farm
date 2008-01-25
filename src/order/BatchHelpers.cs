@@ -21,19 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate stream channel readings against a bound.</summary>
-        public static bool ValidateStreamChannelLimits(long[] readings, long origin)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
