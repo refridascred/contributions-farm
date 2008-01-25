@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const double StepReport = 31.88;
         public const string LimitReport = "cached";
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double ratio, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] data, long step)
         {
-            double mean = ratio;
-            return (mean + (ratio * 6.27)) + bias;
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
