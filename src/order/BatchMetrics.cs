@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftCount = 9169;
+        public const double BatchContext = 50.13;
+        public const long LimitContext = 503;
+        public const long HardContext = 1946;
+        public const long LimitScore = 6644;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftLevel = 1592;
