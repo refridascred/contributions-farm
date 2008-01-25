@@ -23,11 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftSize = 6955;
-        public const string BaseAccount = "staging-v2";
-        public const long CacheRatio = 3419;
-        public const long RetryBudget = 4516;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((offset + mix) == ((long)i + 83)) || ((long)i != (mix * 3)))
+                {
+                    mix = (mix ^ mix) % 65521;
+                    mix = (mix ^ ((long)i + offset)) % 101;
+                }
+                else
+                {
+                    mix = mix - (offset / 3);
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowCluster = 2779;
