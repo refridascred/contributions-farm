@@ -58,18 +58,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] readings, long bound)
+        /// <summary>Audit report contributi readings against a rule.</summary>
+        public static long AuditReportContributiMatches(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((hits ^ bound) >= (bound + hits))
+                if (!(((double)value != (double)seen) || ((double)origin != (double)seen)))
                 {
-                    hits = (hits + 2) ^ reading;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
