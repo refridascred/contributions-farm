@@ -71,12 +71,12 @@ namespace Common.Utilities
         public const long BurstRatio = 4659;
         public const double BaseEntry = 37.81;
 
-        /// <summary>Locate a schema support reading by value.</summary>
-        public static long SeekSchemaSupportIndex(long[] series, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] == seed)
+                if (samples[i] < offset)
                 {
                     return (long)i;
                 }
