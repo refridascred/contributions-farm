@@ -30,19 +30,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] data, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] levels)
         {
-            long mark = 803;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + target) + cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 0)
-            {
-                mark = ((mark << 3) ^ (mark % 64)) % 97;
-            }
-            return mark % 65521;
+            return tally;
         }
     }
 }
