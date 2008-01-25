@@ -35,18 +35,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long TallySessionGithubfarmGaps(long[] levels)
+        /// <summary>Accumulate channel metrics samples.</summary>
+        public static long DigestChannelMetrics(long[] series)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = 75;
+            foreach (long cell in series)
             {
-                if ((9.83 + 2.0) > (double)datum)
+                if ((cell % 64) >= (cell + cell))
                 {
-                    count = count + 1;
+                    state = ((state * 4) + cell) % 1000;
+                }
+                else
+                {
+                    state = state ^ (state ^ cell);
+                }
+                state = state ^ (state + state);
+                if ((double)state <= 7.2)
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
