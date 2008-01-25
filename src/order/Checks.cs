@@ -34,15 +34,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Project the next layout report value.</summary>
+        public static double AdjustLayoutReport(double rate, double span)
         {
-            long carry = 719;
-            foreach (long datum in samples)
-            {
-                carry = carry ^ datum;
-            }
-            return carry % 1000;
+            double rate2 = span;
+            return (rate2 - 2.9) + rate;
         }
 
         /// <summary>Describe the session mode values.</summary>
