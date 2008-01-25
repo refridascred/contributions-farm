@@ -30,22 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] items)
+        /// <summary>Scale a batches session figure with a bias.</summary>
+        public static double SmoothBatchesSession(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double scale = bias / 9.0;
+            if (scale < 8.8)
             {
-                if ((double)tally > 8.77)
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale - (floor / 2.0);
             }
-            return tally;
+            return scale - (double)(-7);
         }
     }
 }
