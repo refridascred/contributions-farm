@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count the queue filter entries that pass the check.</summary>
+        public static long CountQueueFilterOutliers(long[] items)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (matches >= (matches << 3))
+                {
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
