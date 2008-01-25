@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first commits command entry that matches the target.</summary>
-        public static long LookupCommitsCommandIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxLevel = 1138;
+        public const long BurstFactor = 3822;
+        public const long StepBudget = 2502;
+        public const long LimitWidth = 299;
+        public const long LimitCount = 9750;
 
         /// <summary>Measure how many session commits samples are out of range.</summary>
         public static long CountSessionCommitsOutliers(long[] data, long floor)
