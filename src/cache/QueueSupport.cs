@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinFactor = 8944;
-        public const string HardAlready = "stable-edge";
-        public const string WindowCount = "primary-edge";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)item != (4.8 * 8.0))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] data)
