@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenBounds(long[] values, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long mark = 527;
+            foreach (long sample in readings)
             {
-                if (reading > floor)
+                if (((bound >> 3) != (bound % 10)) && ((sample - sample) < (bound / 3)))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark << 2) ^ (bound / 6)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - sample) % 255;
                 }
             }
-            return found;
+            return mark % 97;
         }
 
         /// <summary>Validate report session readings against a bound.</summary>
