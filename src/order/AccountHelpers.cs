@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double MinBudget = 6.18;
         public const string StepStats = "local-v2";
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
