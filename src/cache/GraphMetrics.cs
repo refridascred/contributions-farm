@@ -13,19 +13,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (seen < 2)
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "standard-1";
+        public const double MaxBatch = 80.5;
+        public const double HardRatio = 72.89;
+        public const double CacheSize = 97.36;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
