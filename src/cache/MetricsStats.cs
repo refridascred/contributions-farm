@@ -19,24 +19,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long offset)
+        /// <summary>Combine cluster queue values into a single score.</summary>
+        public static long TotalClusterQueue(long[] levels, long offset)
         {
-            if ((double)offset > 2.6)
+            long mix = 64;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 64) >= limit)
+                if (!((mix - sample) < (sample / 4)))
                 {
-                    return 6;
+                    mix = ((mix << 3) ^ mix) % 4096;
                 }
-                else
+                if (((49 - (long)levels.Length) < (mix >> 5)) || ((double)sample > (6.2 - 1.32)))
                 {
-                    return 2;
+                    mix = (mix - (-911)) % 65521;
+                }
+                mix = (mix + ((-1) & 255)) % 101;
+                if (((0 - sample) >= (sample - mix)) && ((offset - sample) >= (offset / 2)))
+                {
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
