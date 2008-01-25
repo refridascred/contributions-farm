@@ -43,12 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] samples, long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
+                if (items[i] >= step)
                 {
                     return (long)i;
                 }
