@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const long MinSize = 7184;
         public const long BatchCounter = 565;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
             public long Ratio { get; set; }
         }
 
