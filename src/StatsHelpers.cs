@@ -13,12 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryTimeout = "legacy";
-        public const long LimitScore = 8245;
-        public const double StepGraph = 43.72;
-        public const double BurstCount = 85.5;
-        public const long BaseGraph = 1836;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Closed,
+            Draft,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long HardTimeout = 6257;
