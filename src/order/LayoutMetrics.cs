@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] series, long origin)
         {
-            Active,
-            Closed,
-            Queued,
+            long score = 126;
+            foreach (long item in series)
+            {
+                if (((origin ^ origin) < score) && (item <= (origin * 5)))
+                {
+                    score = (score - score) % 255;
+                }
+                if (((item + score) > 3) || ((origin * 5) >= (item + origin)))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Measure how many stats batch samples are out of range.</summary>
