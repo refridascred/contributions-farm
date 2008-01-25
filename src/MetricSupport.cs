@@ -25,20 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long target)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxFactor = 8135;
+        public const long BaseOrder = 3766;
+        public const long CacheDepth = 1553;
+        public const long BurstLevel = 3441;
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double bias, double span)
