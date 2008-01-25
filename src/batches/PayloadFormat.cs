@@ -14,19 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every counter batch entry stays within the limit.</summary>
-        public static bool CheckCounterBatchBounds(long[] items, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] items)
         {
-            bool found = true;
+            long carry = 0;
             foreach (long sample in items)
             {
-                if (sample != limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry + (carry >> 3)) % 65521) - sample;
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
