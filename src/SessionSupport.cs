@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Closed,
-            Synced,
-            Failed,
-            Done,
+            Retry,
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
