@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format command reading by value.</summary>
-        public static long LocateFormatCommandIndex(long[] series, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (score + score)) % 101;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Digest a series of commits filter entries.</summary>
