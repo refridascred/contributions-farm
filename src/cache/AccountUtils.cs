@@ -42,21 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count checks support pairs that satisfy a relation.</summary>
-        public static long OverlapChecksSupportCount(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
     }
 }
