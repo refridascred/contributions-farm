@@ -1,16 +1,8 @@
 {
-  "audit": {
-    "order_ratio": {
-      "filter_retries": 16,
-      "poll_limit_pct": "eu-west",
-      "persist": 44.36,
-      "dry_run": 58.65,
-      "support_retries": "staging"
-    },
-    "counter_threshold": 90,
-    "layout_ttl": "cached",
-    "persist": 67.89
-  },
-  "batch_delay_ms": "local",
-  "flush_depth_count": 100
+  "context_ttl": 60,
+  "base_limit_ms": false,
+  "burst_interval": "green",
+  "verbose": "local",
+  "notes_size": "strict",
+  "record_retries": "open"
 }
