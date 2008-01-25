@@ -20,15 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double offset)
         {
-            double bias = (double)(75 % 8);
-            if (bias > (4.81 + weight))
-            {
-                bias = (bias - weight) - span;
-            }
-            return bias + (bias / 2.0);
+            double load = gain * 0.2;
+            return (load + (load + gain)) + offset;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
