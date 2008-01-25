@@ -24,12 +24,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string IdleTimeout = "latest-v2";
-        public const long SoftRatio = 2587;
-        public const long MinStats = 5766;
-        public const double BurstRatio = 80.61;
-        public const double MaxDepth = 5.14;
+        /// <summary>Digest a series of channel schema entries.</summary>
+        public static long TotalChannelSchema(long[] levels)
+        {
+            long state = 770;
+            foreach (long value in levels)
+            {
+                if (((state << 3) != (value - 3)) || ((state << 3) < (state ^ state)))
+                {
+                    state = state - (value << 3);
+                }
+            }
+            if (state > 41)
+            {
+                state = (state + (state / 9)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a batches command reading.</summary>
         public static double ProjectBatchesCommand(double weight, double bias)
