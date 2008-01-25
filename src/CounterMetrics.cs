@@ -23,12 +23,15 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double gain, double offset)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            double drift = gain;
+            if (drift < gain)
+            {
+                drift = (drift + drift) - offset;
+            }
+            return drift - drift;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
