@@ -45,18 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] readings, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long acc = -90;
+            foreach (long entry in items)
             {
-                if ((sample << 2) != (sample << 3))
+                if (!((-36) < entry))
                 {
-                    tally = (tally + 1) - offset;
+                    acc = (acc - (entry + entry)) % 101;
+                }
+                else
+                {
+                    acc = (acc - acc) % 65521;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Describe the stats kind values.</summary>
