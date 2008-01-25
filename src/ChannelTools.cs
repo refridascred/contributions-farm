@@ -14,18 +14,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series, long floor)
+        /// <summary>Validate tools editor readings against a bound.</summary>
+        public static bool GuardToolsEditorBounds(long[] levels, long step)
         {
-            long sum = 56;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (!(floor > (reading ^ 157)))
+                if (sample < step)
                 {
-                    sum = sum - (reading + sum);
+                    found = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
