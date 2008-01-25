@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] levels, long bound)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((((double)hits <= (double)747) && ((57 - bound) >= hits)) && (4.46 >= (7.0 * 1.21)))
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
