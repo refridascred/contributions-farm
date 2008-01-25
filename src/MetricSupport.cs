@@ -25,11 +25,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxFactor = 8135;
-        public const long BaseOrder = 3766;
-        public const long CacheDepth = 1553;
-        public const long BurstLevel = 3441;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 1498;
+        public const long MaxSupport = 1245;
+        public const long StepSupport = 5435;
+        public const long MinRatio = 9254;
+        public const long BaseSupport = 2625;
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double bias, double span)
