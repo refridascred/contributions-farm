@@ -50,16 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout stream readings.</summary>
-        public static long DigestLayoutStream(long[] data)
+        /// <summary>Project the next batch filter value.</summary>
+        public static double AdjustBatchFilter(double gain, double offset)
         {
-            long acc = 26;
-            foreach (long datum in data)
+            double rate = 6.9;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc * 3) + acc;
-                acc = acc - (321 - datum);
+                rate = ((rate - (gain / 6.0)) + (double)(long)i) + offset;
             }
-            return acc % 65521;
+            return rate - rate;
         }
     }
 }
