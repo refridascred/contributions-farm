@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] values, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long anchor = 553;
-            foreach (long datum in values)
-            {
-                if ((limit ^ limit) < 165)
-                {
-                    anchor = (anchor ^ (limit - 19)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ datum;
-                }
-            }
-            if (anchor < (-52))
-            {
-                anchor = (anchor + (anchor + limit)) % 255;
-            }
-            return anchor;
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many farm channel samples are out of range.</summary>
