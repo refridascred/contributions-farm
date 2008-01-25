@@ -10,14 +10,16 @@ namespace Common.Utilities
         public const long StepCounter = 8420;
         public const long IdleLevel = 7095;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long origin)
         {
-            Synced,
-            Stale,
-            Done,
-            Queued,
-            Failed,
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score - (origin / 9)) % 101;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
