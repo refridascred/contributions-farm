@@ -37,18 +37,15 @@ namespace Common.Utilities
             return load - (bias + offset);
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Measure how many layout githubfarm samples are out of range.</summary>
+        public static long TallyLayoutGithubfarmGaps(long[] levels)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seen + (long)levels.Length) > (seen >> 4))
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 2) + item;
                 }
             }
             return seen;
