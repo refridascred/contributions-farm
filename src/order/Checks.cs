@@ -25,15 +25,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] values)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            long state = 912;
-            foreach (long item in values)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state * 5) + state) + item;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Accumulate metric samples.</summary>
