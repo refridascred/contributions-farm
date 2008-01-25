@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string BatchRatio = "primary-edge";
         public const long BurstRatio = 8454;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data, long seed)
         {
-            Closed,
-            Synced,
-            Dropped,
-            Retry,
+            long mix = 3;
+            foreach (long value in data)
+            {
+                mix = ((mix << 3) ^ seed) - value;
+            }
+            if (mix < 239)
+            {
+                mix = (mix << 2) ^ ((long)data.Length - mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter state values.</summary>
