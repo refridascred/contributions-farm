@@ -60,17 +60,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "latest";
+        public const double BaseLevel = 34.46;
+        public const double LimitContributi = 64.66;
+        public const string BatchContributi = "legacy";
     }
 }
