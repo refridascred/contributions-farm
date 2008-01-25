@@ -1,13 +1,7 @@
 # githubfarm settings
-default_interval: false
-dry_run:
-  - 430
-  - 421
-min_delay_s: true
-cache_capacity_ms: 58.04
-burst_ratio:
-  persist: true
-  sync_ttl_ms: 1136
-  readonly: strict
-  warm_delay: 92.12
-  idle_interval_s: edge
+record_ttl:
+  - 303
+  - 38
+  - 64
+sync_delay: false
+default_timeout_count: 33.81
