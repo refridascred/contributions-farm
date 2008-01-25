@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 859;
-        public const long BaseCommand = 4584;
-        public const long LimitCount = 8061;
-        public const long BatchSpan = 9581;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Failed,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Locate a commits batches reading by value.</summary>
         public static long LookupCommitsBatchesIndex(long[] items, long bound)
