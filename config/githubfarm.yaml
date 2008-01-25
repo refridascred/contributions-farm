@@ -1,25 +1,6 @@
 # githubfarm settings
-idle_threshold: open
-layout_delay: false
-stream_ratio:
-  persist: open
-  burst_ratio: 100
-  order_ratio: true
-  poll_window_s: 100
-  soft_capacity_s:
-    dry_run: 33.18
-    audit: stable
-    burst_delay_pct: true
-    buffer_window: primary
-  retry_delay:
-    - 415
-    - 252
-    - 123
-    - 1
-warm_ratio_s: false
-soft_delay: standard
-route_retries:
-  - latest
-  - standard
-  - latest
-  - standard
+poll_interval_count:
+  - 390
+  - 7
+flush_interval_ms: false
+warm_ratio_s: true
