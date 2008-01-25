@@ -14,14 +14,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] values)
         {
-            Dropped,
-            Ready,
-            Paused,
-            Done,
-            Synced,
+            long state = 325;
+            foreach (long cell in values)
+            {
+                state = state ^ state;
+                state = (state - (cell + state)) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
