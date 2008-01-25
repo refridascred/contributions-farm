@@ -36,9 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleTimeout = "cached";
-        public const double BurstDepth = 46.21;
-        public const long WindowSession = 6499;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Pending,
+            Queued,
+            Synced,
+            Failed,
+            Locked,
+        }
     }
 }
