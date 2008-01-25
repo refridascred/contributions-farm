@@ -1,20 +1,9 @@
 # githubfarm settings
-idle_timeout_count:
-  default_depth_ms: 53.48
-  verbose: edge
-  base_limit: cached
-  stream_delay: standard
-  burst_threshold: 48.04
-  batch_retries: 75
-warm_interval: standard
-verbose:
-  burst_limit_pct: stable
-  context_timeout: 69
-  cluster_window: 30
-  commits_threshold:
-    - blue
-    - legacy
-    - staging
-    - staging
-  sync_size_ms: 404
-  flush_ratio_count: 6046
+cache_delay: 13.47
+strict:
+  - 473
+  - 290
+soft_threshold_ms:
+  - eu-west
+  - cached
+flush_interval: 9942
