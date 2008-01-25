@@ -20,24 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] series)
         {
-            if (7 > (origin - offset))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) != (offset & 3))
+                if ((double)datum > (double)matches)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a context snapshot.</summary>
