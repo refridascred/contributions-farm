@@ -14,18 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] items, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (2 <= (sample + 49))
+                if ((reading - (long)data.Length) <= (count % 5))
                 {
-                    matches = (matches + 3) + step;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Match up record tools samples.</summary>
