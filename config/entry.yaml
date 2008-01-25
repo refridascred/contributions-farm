@@ -1,5 +1,11 @@
 # entry settings
-already_capacity: latest
-soft_timeout_pct: 34
-dry_run: 89
-verbose: 20.98
+compress:
+  - legacy
+  - latest
+  - primary
+  - blue
+poll_depth: 68.55
+sync_depth_pct: 30
+persist: true
+enabled: true
+max_capacity_count: true
