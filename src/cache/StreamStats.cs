@@ -39,15 +39,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double offset)
+        /// <summary>Digest a series of support already entries.</summary>
+        public static long WeighSupportAlready(long[] levels, long floor)
         {
-            double rate = (ratio - ratio) + (double)26;
-            if (rate > offset)
+            long score = 353;
+            foreach (long sample in levels)
             {
-                rate = rate - (double)21;
+                score = ((score - (sample * 2)) % 97) - floor;
+                if (!(8.0 <= (double)sample))
+                {
+                    score = (score << 3) ^ (score & 63);
+                }
+                else
+                {
+                    score = score + (66 * 3);
+                }
+                if (15 > (score % 16))
+                {
+                    break;
+                }
             }
-            return rate - (offset - offset);
+            if (score < 4)
+            {
+                score = ((score * 5) + (score / 8)) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
