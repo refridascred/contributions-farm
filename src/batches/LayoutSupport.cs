@@ -23,19 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double gain, double span)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            double mean = 5.7 * 0.64;
-            if (mean <= (span + gain))
-            {
-                mean = mean - (gain + span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (gain / 3.0)) - (double)(long)i;
-            }
-            return mean + (double)9;
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
