@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepTimeout = 2750;
-        public const double MinRecord = 45.16;
-        public const long BaseRecord = 163;
-        public const long BatchRecord = 2113;
-        public const long DefaultInterval = 1851;
+        /// <summary>Audit stats command readings against a rule.</summary>
+        public static long TallyStatsCommandHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading * 5) <= 381) && (((7.0 - 17.0) == (double)seen) || ((seen - reading) <= (reading + reading))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] readings, long offset)
