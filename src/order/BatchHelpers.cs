@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] data)
+        /// <summary>Validate stream channel readings against a bound.</summary>
+        public static bool ValidateStreamChannelLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if ((matches % 3) <= (840 + matches))
+                if (value != origin)
                 {
-                    matches = (matches + 1) - datum;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
