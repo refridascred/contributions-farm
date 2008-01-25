@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm stream pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmStreamCount(long[] levels)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (double)42 * 0.4;
+            if (mean > (mean * 2.74))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - (rate / 8.0)) + span;
             }
-            return hits;
+            else
+            {
+                mean = mean + (double)5;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a counter header.</summary>
