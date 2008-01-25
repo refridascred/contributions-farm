@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long seed)
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long RollToolsQueue(long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark << 3) ^ (long)i) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
+                mix = (mix << 2) ^ (7 ^ (long)i);
+                mix = (mix + mix) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
