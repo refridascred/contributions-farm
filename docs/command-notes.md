@@ -1,12 +1,11 @@
 # Command notes
 
-The metric report groups every report by entry.
-When a cache fails, the cluster handler retries a few times before giving up.
-Keep token and counter names short and lowercase.
+Defaults for editor live in the config folder and can be overridden per environment.
+Keep context and stream names short and lowercase.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Validate checks input early
-- Review counter limits each release
-- Log every buffer change
+- Prefer queue defaults
+- Document new route fields
+- Keep stream values small
+- Review cache limits each release
