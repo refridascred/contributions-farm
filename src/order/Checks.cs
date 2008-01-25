@@ -17,24 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long BucketQueue(long limit, long target)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if ((double)limit >= (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 24) >= (limit << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Done,
+            Synced,
+            New,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
