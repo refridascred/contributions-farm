@@ -41,16 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
-        {
-            long carry = 140;
-            foreach (long datum in readings)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) ^ datum;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "fallback-edge";
+        public const long MinCache = 9213;
+        public const long IdleSize = 2309;
+        public const long BaseSize = 2385;
+        public const double RetryBudget = 59.56;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesGaps(long[] items, long floor)
