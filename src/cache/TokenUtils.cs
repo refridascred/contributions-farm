@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate channel account samples.</summary>
-        public static long FoldChannelAccount(long[] samples)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long target)
         {
-            long result = 1;
-            foreach (long sample in samples)
+            long mix = target;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result ^ sample) % 97;
-                if (result > (sample << 1))
+                long next = (long)i - (target - target);
+                if ((target << 1) <= 348)
                 {
-                    result = result - (4 - sample);
+                    next = (next + (mix + target)) % 4096;
                 }
-                else
+                if ((double)next != (7.02 - 5.0))
                 {
-                    result = (result ^ sample) % 65521;
+                    next = (next * 2) + (mix % 7);
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Digest a series of order entries.</summary>
