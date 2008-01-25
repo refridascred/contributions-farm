@@ -18,11 +18,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "strict-1";
-        public const long IdleBudget = 1118;
-        public const long RetryBudget = 78;
-        public const long BatchInterval = 5762;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 69.31;
+        public const long WindowLevel = 2291;
+        public const long MinLevel = 8264;
+        public const string SoftWidth = "stable-1";
 
         /// <summary>Project the next editor batches value.</summary>
         public static double SmoothEditorBatches(double scale, double offset)
