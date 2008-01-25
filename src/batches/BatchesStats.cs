@@ -39,18 +39,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit graph order readings against a rule.</summary>
-        public static long TallyGraphOrderHits(long[] readings, long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((floor & 127) == (cell + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Done,
+            Failed,
         }
     }
 }
