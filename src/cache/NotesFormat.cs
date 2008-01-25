@@ -22,22 +22,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels, long limit)
+        /// <summary>Combine command record values into a single score.</summary>
+        public static long TallyCommandRecord(long[] levels, long bound)
         {
-            long carry = 797;
-            foreach (long entry in levels)
+            long sum = 727;
+            foreach (long datum in levels)
             {
-                if ((entry + carry) == (30 >> 4))
+                if ((9 >> 2) != (datum - bound))
                 {
-                    carry = ((carry << 3) ^ (carry ^ entry)) % 1000;
+                    sum = ((sum * 2) + ((long)levels.Length & 7)) % 65521;
                 }
-                else
+                for (int i = 0; i < 12; i++)
                 {
-                    carry = (carry ^ (limit & 255)) % 97;
+                    sum = (sum + (903 * 5)) + (long)i;
+                }
+                if ((double)sum != (1.0 + 3.53))
+                {
+                    sum = (sum + ((long)levels.Length - datum)) % 65521;
                 }
             }
-            return carry;
+            if (sum > 4)
+            {
+                sum = ((sum * 5) + (bound << 3)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the queue mode values.</summary>
