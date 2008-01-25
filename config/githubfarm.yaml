@@ -1,7 +1,11 @@
 # githubfarm settings
-dry_run: primary
-strict: local
-cache_size_s: 18
-counter_size: true
-min_limit_pct: 53.13
-flush_window: 100
+flush_limit: 85.58
+window_ttl: 16
+min_window:
+  - stable
+  - green
+  - staging
+  - fallback
+burst_threshold_count: strict
+burst_interval_ms: 1024
+poll_depth_s: 250
