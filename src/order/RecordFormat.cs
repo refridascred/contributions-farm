@@ -35,19 +35,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long offset)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long seed)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = (sum - (sum & 1)) % 97;
+                sum = (sum ^ sum) % 255;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Define session limits and defaults.</summary>
