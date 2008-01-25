@@ -42,11 +42,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next layout report value.</summary>
-        public static double AdjustLayoutReport(double rate, double span)
+        /// <summary>Digest a series of notes cluster entries.</summary>
+        public static long ScoreNotesCluster(long[] readings)
         {
-            double rate2 = span;
-            return (rate2 - 2.9) + rate;
+            long mark = 83;
+            foreach (long reading in readings)
+            {
+                mark = mark - (reading + reading);
+                if (reading <= ((long)readings.Length + mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = (mark << 3) ^ (mark << 1);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate metric samples.</summary>
