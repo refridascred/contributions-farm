@@ -36,18 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account support readings against a rule.</summary>
-        public static long TallyAccountSupportMatches(long[] series)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long diff = step + step2;
+            if ((step >> 2) < diff)
             {
-                if (((-4) + 236) <= (cell & 255))
+                return 3;
+            }
+            else
+            {
+                if (step >= (diff + diff))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (((step2 + diff) >= step2) && ((double)step2 > (2.1 - 6.6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a layout summary.</summary>
