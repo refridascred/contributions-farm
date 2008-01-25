@@ -20,26 +20,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of support graph readings.</summary>
-        public static long WeighSupportGraph(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long total = -943;
-            foreach (long reading in levels)
+            long state = 4;
+            foreach (long reading in values)
             {
-                if (!((total - total) == (total & 255)))
+                if ((state > (state << 1)) || ((2.0 + 6.0) < (double)reading))
                 {
-                    total = (total + reading) % 4096;
-                }
-                else
-                {
-                    total = (total - (total << 2)) % 101;
-                }
-                if (((total + total) < (reading / 5)) && (total > (66 << 2)))
-                {
-                    break;
+                    state = state + state;
                 }
             }
-            return total;
+            if (state < 4)
+            {
+                state = ((state * 4) + (1 - state)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
