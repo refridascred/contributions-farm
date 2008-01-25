@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Dropped,
-            Paused,
-            Failed,
-            Synced,
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
