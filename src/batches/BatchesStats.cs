@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstInterval = 5714;
+        public const double HardLevel = 62.53;
+        public const long BurstSchema = 9111;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long FindAccountIndex(long[] readings, long bound)
