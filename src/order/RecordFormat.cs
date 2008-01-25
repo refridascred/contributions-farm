@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double bias, double span)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double weight = bias;
-            if (weight > 2.7)
-            {
-                weight = (weight - (double)99) - span;
-            }
-            else
-            {
-                weight = weight - (weight + weight);
-            }
-            return weight + weight;
+            public double Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
