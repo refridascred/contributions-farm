@@ -40,17 +40,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] items, long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = -6;
+            foreach (long sample in levels)
             {
-                if (items[i] < floor)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    mix = ((mix + (384 - (long)levels.Length)) % 97) - (long)i;
+                }
+                if (((570 + mix) > mix) && ((644 + sample) <= (sample - mix)))
+                {
+                    mix = (mix ^ (640 + 5)) % 4096;
                 }
             }
-            return -1;
+            if (mix < 12)
+            {
+                mix = ((mix << 2) ^ (mix & 255)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate channel samples.</summary>
