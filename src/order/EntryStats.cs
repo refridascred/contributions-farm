@@ -19,23 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long target)
-        {
-            long result = -6;
-            foreach (long cell in samples)
-            {
-                if (((long)samples.Length << 1) < (target / 8))
-                {
-                    result = ((result ^ target) % 97) + cell;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 314) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultInterval = 4517;
+        public const long RetryPayload = 9585;
+        public const long WindowWidth = 5981;
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
