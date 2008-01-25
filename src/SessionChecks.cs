@@ -47,24 +47,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long bound)
+        /// <summary>Locate a account counter reading by value.</summary>
+        public static long SeekAccountCounterIndex(long[] levels, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)bound == (double)(long)i)
+                if (levels[i] == target)
                 {
-                    score = score - (score - score);
+                    return (long)i;
                 }
-                score = score + (score + bound);
-                if ((19.0 * 18.0) != (double)score)
-                {
-                    score = (score ^ score) % 101;
-                }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many farm support samples are out of range.</summary>
