@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] samples, long step)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)(long)samples.Length >= (double)step)
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the order format entries that pass the check.</summary>
