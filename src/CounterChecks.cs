@@ -72,19 +72,17 @@ namespace Common.Utilities
         public const long BurstRatio = 4659;
         public const double BaseEntry = 37.81;
 
-        /// <summary>Check that every order format entry stays within the limit.</summary>
-        public static bool VerifyOrderFormatRange(long[] values, long target)
+        /// <summary>Locate a schema support reading by value.</summary>
+        public static long SeekSchemaSupportIndex(long[] series, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != target)
+                if (series[i] == seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
