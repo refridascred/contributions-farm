@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples)
+        /// <summary>Compare every pair of cluster command readings.</summary>
+        public static long MatchClusterCommandCount(long[] data)
         {
-            long acc = -280;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc << 3) ^ (datum + datum)) % 101;
-                acc = (acc ^ (91 + acc)) % 255;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
