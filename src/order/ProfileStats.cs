@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const long BurstFormat = 556;
         public const long MaxBudget = 5884;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!(((count % 10) < (value / 4)) || ((count << 1) != (count - count))))
-                {
-                    count = (count + 2) + offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 2471;
+        public const long BaseSpan = 6953;
+        public const double WindowWidth = 47.4;
+        public const string MinAccount = "open-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BaseFarm = "staging";
