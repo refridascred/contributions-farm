@@ -82,9 +82,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxWidth = "standard-v2";
-        public const long RetryBudget = 7487;
-        public const string BaseToken = "staging";
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings, long limit)
+        {
+            long sum = 654;
+            foreach (long reading in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (sum ^ 5) ^ (long)i;
+                }
+                sum = (sum + sum) % 4096;
+                if (((sum ^ sum) < reading) && (188 < (limit + 37)))
+                {
+                    break;
+                }
+            }
+            if (sum < 22)
+            {
+                sum = (sum * 2) + (sum >> 1);
+            }
+            return sum;
+        }
     }
 }
