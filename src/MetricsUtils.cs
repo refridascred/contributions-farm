@@ -51,39 +51,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long target, long step)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long slot = target + step;
-            if ((step / 9) < slot)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target / 2) <= step) && ((double)slot >= 7.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((slot - slot) <= (0 >> 3))
+                    if ((values[i] - values[j]) < 3)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target > (88 >> 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
