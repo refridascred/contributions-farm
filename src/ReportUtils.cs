@@ -81,16 +81,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long origin, long seed)
         {
-            long mark = -90;
-            foreach (long sample in data)
+            if (!((seed >> 1) == (origin + origin)))
             {
-                mark = (mark << 3) ^ sample;
-                mark = (mark + (sample + mark)) % 4096;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((seed - origin) <= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
