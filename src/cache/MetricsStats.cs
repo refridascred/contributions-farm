@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] items, long step)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long acc = 1;
-            foreach (long cell in items)
-            {
-                acc = (((acc + (acc << 1)) % 255) + cell) + step;
-            }
-            return acc;
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
