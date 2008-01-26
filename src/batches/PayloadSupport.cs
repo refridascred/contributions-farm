@@ -14,13 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            Failed,
-            Idle,
-            Queued,
-            Locked,
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i >> 4) > (target / 6))
+                {
+                    mark = (mark + 40) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry info.</summary>
