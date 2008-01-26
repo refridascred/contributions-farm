@@ -48,12 +48,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long limit, long step)
         {
-            public double Mode { get; set; }
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            if (step < (39 + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)limit <= (0.61 + 8.8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Adjust a support reading.</summary>
