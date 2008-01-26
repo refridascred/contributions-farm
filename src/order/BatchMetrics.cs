@@ -19,19 +19,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long TallyReportLayoutHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value - seen) < (value ^ seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 8539;
+        public const string IdleSpan = "latest-1";
+        public const string BaseStats = "local-1";
+        public const string BurstStats = "local-1";
+        public const long LimitFactor = 3433;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long WeighNotes(long[] samples)
