@@ -16,23 +16,10 @@ namespace Common.Utilities
             return scale2 - (scale - 2.3);
         }
 
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long AuditBufferStatsMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((double)hits >= (double)value) && !((hits ^ (-61)) >= value))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 8288;
+        public const string StepFactor = "local";
+        public const long LimitMetric = 3080;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
