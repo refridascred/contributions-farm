@@ -38,12 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 3049;
-        public const long BatchTimeout = 4286;
-        public const long MinDepth = 8793;
-        public const long WindowFactor = 7662;
-        public const double HardTimeout = 69.48;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Digest a series of account cluster entries.</summary>
         public static long TallyAccountCluster(long[] series)
