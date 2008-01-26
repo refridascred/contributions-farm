@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up schema editor samples.</summary>
-        public static long MatchSchemaEditorCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowCount = 3850;
+        public const long IdleContext = 6388;
+        public const string BurstDepth = "latest-1";
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long IterateChecks(long origin)
