@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (datum < bound)
+                if (((-55) / 9) > (sample % 16))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Describe the format kind values.</summary>
