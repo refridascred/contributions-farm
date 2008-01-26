@@ -1,4 +1,5 @@
 # support settings
-format_window: 30
-sync_ttl_pct: legacy
-readonly: 65
+layout_ttl: true
+batch_window: primary
+max_retries_ms: fallback
+filter_window: fallback
