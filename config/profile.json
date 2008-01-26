@@ -1,8 +1,13 @@
 {
-  "soft_ratio_pct": 3794,
-  "sync_ratio_pct": 8004,
-  "record_window": 100,
-  "dry_run": [267, 127],
-  "retry_threshold_pct": [282, 156],
-  "graph_threshold": 15
+  "buffer_window": 75.58,
+  "commits_delay": "standard",
+  "default_ttl": 250,
+  "report_ratio": {
+    "stats_interval": "cached",
+    "commits_interval": 90.01,
+    "flush_timeout_count": "standard",
+    "cache_threshold_pct": "local",
+    "batch_window": 250
+  },
+  "hard_depth_s": 23.39
 }
