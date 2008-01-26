@@ -1,12 +1,9 @@
 # support settings
-idle_size_s:
-  - 431
-  - 407
-  - 36
-  - 106
-readonly:
-  - 398
-  - 301
-  - 326
-  - 133
-flush_depth: 58.0
+flush_capacity_s: 66.37
+stats_retries: blue
+batches_timeout:
+  - 377
+  - 442
+hard_delay_pct: true
+strict: open
+flush_window_s: false
