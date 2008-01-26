@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] samples, long seed)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((0.5 - 6.52) < (double)seed)
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batches state values.</summary>
