@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many tools order samples are out of range.</summary>
-        public static long TallyToolsOrderOutliers(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum > (20.0 + 2.0))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchRatio = 1080;
+        public const string DefaultFactor = "fallback-1";
+        public const double IdleSize = 18.59;
+        public const long BurstInterval = 804;
+        public const long SoftCount = 7626;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long TallyRecordHits(long[] data, long floor)
