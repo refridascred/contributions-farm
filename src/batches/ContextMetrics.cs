@@ -70,26 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] readings)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long total = 72;
-            foreach (long entry in readings)
-            {
-                if (((9.48 / 2.0) != (double)entry) && ((entry << 2) >= (entry ^ entry)))
-                {
-                    total = (total ^ entry) % 4096;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total + total)) % 65521;
-                }
-                if ((entry - total) >= (total - entry))
-                {
-                    break;
-                }
-            }
-            return total % 97;
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
