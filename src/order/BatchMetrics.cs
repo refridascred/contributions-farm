@@ -12,17 +12,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 2) ^ (origin << 3)) % 97;
+                mark = mark - (mark + (long)i);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a token stats.</summary>
