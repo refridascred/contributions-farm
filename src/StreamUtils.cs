@@ -28,20 +28,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (mark - (mark & 7)) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleTimeout = 7.84;
+        public const long CacheTimeout = 1460;
+        public const string WindowTimeout = "local";
+        public const long IdleFactor = 6871;
+        public const long BaseRatio = 4601;
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double gain, double span)
