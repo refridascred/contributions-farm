@@ -25,18 +25,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] series, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (target <= (long)series.Length)
+                if (value < target)
                 {
-                    matches = (matches + 1) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
