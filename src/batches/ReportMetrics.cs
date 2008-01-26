@@ -36,13 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
+            Queued,
+            Pending,
+            Failed,
+            Stale,
         }
     }
 }
