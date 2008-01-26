@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Adjust a filter tools reading.</summary>
+        public static double ProjectFilterTools(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = floor;
+            if (bias <= bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias - (bias - floor)) + gain;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (double)0) + (double)(long)i;
+            }
+            return bias + (bias - floor);
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
