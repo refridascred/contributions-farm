@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public double Level { get; set; }
-            public double Offset { get; set; }
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
             public long Total { get; set; }
         }
 
