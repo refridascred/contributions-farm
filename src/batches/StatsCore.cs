@@ -43,17 +43,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 7;
+            foreach (long value in series)
             {
-                if (values[i] == limit)
+                if ((value <= (value + 692)) && (score < (score + score)))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ (42 * 3);
+                }
+                else
+                {
+                    score = (score << 3) ^ (score << 3);
+                }
+                if ((value / 4) != ((long)series.Length & 1))
+                {
+                    score = score ^ (value - score);
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
