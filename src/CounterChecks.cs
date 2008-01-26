@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next order account value from a seed.</summary>
-        public static long RollOrderAccount(long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long bound)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long score = bound;
+            for (int i = 0; i < 19; i++)
             {
-                result = ((result * 5) + result) % 97;
-                result = ((result << 3) ^ ((long)i + result)) % 255;
-                result = ((result * 2) + (long)i) % 1000;
+                score = (score ^ (score + score)) % 255;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Find the first entry session entry that matches the target.</summary>
