@@ -46,12 +46,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultCount = 4572;
-        public const long StepBatch = 4168;
-        public const long BaseBatch = 3789;
-        public const double MaxBatch = 13.95;
-        public const long DefaultBatch = 4712;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = (mark - (mark & 7)) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double ScaleSupport(double gain, double span)
