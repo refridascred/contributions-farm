@@ -24,22 +24,25 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Iterate the checks entry series from a seed.</summary>
+        public static long DeriveChecksEntry(long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((long)levels.Length & 31) >= hits) && (hits < (sample % 3)))
+                sum = (sum * 4) + (seed >> 1);
+                if (seed >= 92)
                 {
-                    hits = hits + 1;
+                    sum = ((sum << 3) ^ (seed + seed)) % 97;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = (sum - (sum + seed)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
