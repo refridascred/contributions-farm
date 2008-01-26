@@ -16,15 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Locked,
-            Active,
-            Draft,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardFarm = 34.27;
+        public const long LimitFarm = 571;
+        public const double MinBudget = 27.14;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long SeekFilterIndex(long[] samples, long bound)
