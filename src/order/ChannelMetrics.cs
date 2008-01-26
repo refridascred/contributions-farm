@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cache commits samples are out of range.</summary>
-        public static long TallyCacheCommitsGaps(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((origin - origin) > (origin - count))
-                {
-                    count = (count + 2) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxDepth = 1077;
+        public const double MinCount = 88.37;
+        public const double IdleSize = 25.7;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
