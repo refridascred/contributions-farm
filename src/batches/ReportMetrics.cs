@@ -10,16 +10,21 @@ namespace Common.Utilities
         public const long SoftTimeout = 8787;
         public const double BurstScore = 33.51;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark - (origin + (long)i);
-                mark = ((mark * 3) + (long)i) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
