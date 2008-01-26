@@ -36,21 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((48 - 625) < ((long)values.Length << 3))
                 {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 2) + entry) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the counter channel series from a seed.</summary>
