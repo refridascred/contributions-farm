@@ -41,13 +41,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 3245;
         public const long LimitRoute = 1660;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Closed,
-            Idle,
+            Stale,
             New,
-            Locked,
+            Dropped,
         }
     }
 }
