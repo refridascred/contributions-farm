@@ -45,12 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "open-1";
-        public const long HardSpan = 8714;
-        public const string IdleStream = "open-1";
-        public const long MaxStream = 3830;
-        public const string MinStream = "fallback";
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double weight, double floor)
+        {
+            double scale = (double)((-6) % 8);
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale - weight) + (double)(long)i) - floor;
+            }
+            return scale - (double)0;
+        }
 
         /// <summary>Validate already buffer readings against a bound.</summary>
         public static bool VerifyAlreadyBufferRange(long[] levels, long step)
