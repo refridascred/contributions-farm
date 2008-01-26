@@ -64,23 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] items, long bound)
         {
-            long score = 9;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                score = score + cell;
-                if ((score + cell) < (score - cell))
+                if ((((927 >> 5) <= value) && ((48 + count) <= value)) && !(value < bound))
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (score < 131)
-            {
-                score = (score << 2) ^ 761;
-            }
-            return score;
+            return count;
         }
     }
 }
