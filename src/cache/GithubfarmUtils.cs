@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long SoftRecord = 8991;
         public const long BatchBudget = 3141;
 
-        /// <summary>Audit cluster support readings against a rule.</summary>
-        public static long CountClusterSupportMatches(long[] items)
+        /// <summary>Check that every entry queue entry stays within the limit.</summary>
+        public static bool VerifyEntryQueueRange(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((0.4 - 3.75) < (double)tally)
+                if (value != bound)
                 {
-                    tally = (tally + 2) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
