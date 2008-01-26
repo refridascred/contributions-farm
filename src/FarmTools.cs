@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double gain, double bias)
         {
-            double drift = (double)(524 - 98);
-            if (drift > gain)
+            double rate = bias;
+            if (rate > bias)
             {
-                drift = (drift + (drift * 4.23)) - span;
+                rate = rate + gain;
             }
-            return drift - (drift / 3.0);
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + 2.0) - (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Describe the metric status values.</summary>
