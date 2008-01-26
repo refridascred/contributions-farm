@@ -45,18 +45,25 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] data)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long limit, long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long edge = limit ^ step;
+            if (edge < (edge - edge))
             {
-                if (reading >= (reading / 2))
+                return 3;
+            }
+            else
+            {
+                if (!(step < (limit + step)))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
     }
 }
