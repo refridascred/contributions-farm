@@ -47,19 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double offset)
         {
-            long acc = -6;
-            foreach (long cell in series)
+            double gain = (double)((-449) - 93);
+            if (gain < scale)
             {
-                acc = ((acc << 3) ^ (cell + (-46))) % 101;
+                gain = gain + (scale / 2.0);
             }
-            if (acc < 0)
-            {
-                acc = (acc - (acc % 8)) % 65521;
-            }
-            return acc;
+            return gain + (offset + scale);
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
