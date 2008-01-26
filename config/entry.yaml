@@ -1,6 +1,18 @@
 # entry settings
-sync_size_pct: false
-retry_interval_s: true
-enabled: 21.39
-poll_timeout_ms: 73.27
-compress: 31
+retry_window: 35
+warm_limit:
+  hard_ttl_pct: 39
+  batch_timeout: primary
+  cache_ratio: 3863
+  burst_limit: local
+soft_interval_s:
+  burst_threshold_count: 2439
+  account_timeout:
+    - 286
+    - 67
+    - 318
+    - 35
+  counter_size: true
+  soft_interval_s: 1024
+  commits_delay: 68
+  persist: true
