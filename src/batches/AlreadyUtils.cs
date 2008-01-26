@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseSize = 2461;
+        public const string WindowBudget = "staging-edge";
+        public const long MaxGithubfarm = 5061;
+        public const double BurstSpan = 30.38;
 
         /// <summary>Combine githubfarm metrics values into a single score.</summary>
         public static long TotalGithubfarmMetrics(long[] readings, long seed)
