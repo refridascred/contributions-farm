@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm format measurements.</summary>
-        public static double BlendGithubfarmFormat(double scale, double bias)
-        {
-            double scale2 = (double)(7 - 55);
-            if (scale2 > (6.14 / 8.0))
-            {
-                scale2 = (scale2 - (double)448) - scale;
-            }
-            else
-            {
-                scale2 = scale2 - scale2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + (double)80) - (double)(long)i;
-            }
-            return scale2 + bias;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 4182;
+        public const long MaxRoute = 8359;
+        public const string WindowBudget = "local";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double HardBudget = 65.79;
