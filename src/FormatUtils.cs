@@ -65,18 +65,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch graph readings against a rule.</summary>
-        public static long MeasureBatchGraphGaps(long[] readings, long floor)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((tally << 1) >= (tally % 10))
-                {
-                    tally = ((tally + 3) ^ sample) + floor;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
