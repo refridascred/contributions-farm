@@ -32,9 +32,12 @@ namespace Common.Utilities
         public const double WindowCache = 96.98;
         public const long DefaultScore = 6726;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "legacy-1";
-        public const string WindowCommand = "primary";
-        public const long SoftFactor = 1349;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Failed,
+            Synced,
+            Dropped,
+        }
     }
 }
