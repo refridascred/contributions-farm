@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] items, long bound)
+        /// <summary>Roll a batches record counter forward.</summary>
+        public static long SeriesBatchesRecord(long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((3.94 - 6.39) <= (double)tally)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    tally = ((tally + 1) ^ cell) + bound;
+                    mix = ((mix * 4) + (mix % 3)) + (long)i2;
                 }
+                if (((mix + mix) >= (mix + step)) || (((long)i << 1) > (mix ^ step)))
+                {
+                    mix = ((mix * 2) + mix) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the report mode values.</summary>
