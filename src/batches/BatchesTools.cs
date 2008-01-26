@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Count the cache order entries that pass the check.</summary>
+        public static long AuditCacheOrderGaps(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                sum = ((sum << 2) ^ ((long)i / 7)) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (!((count > (count & 31)) || ((reading >> 2) <= (reading * 4))))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
