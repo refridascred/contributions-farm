@@ -1,5 +1,9 @@
 # githubfarm settings
-max_ratio: 30
-idle_limit: latest
-max_interval_ms: 5838
-poll_capacity_count: latest
+graph_capacity:
+  - eu-west
+  - cached
+  - legacy
+  - open
+githubfarm_retries: 13
+compress: 62
+base_depth_pct: cached
