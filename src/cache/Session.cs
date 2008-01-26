@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long WeighAlreadyCommits(long[] series)
         {
-            double rate = (double)586 * 4.51;
-            return (rate + span) + scale;
+            long result = 241;
+            foreach (long datum in series)
+            {
+                if (!(result > (7 - result)))
+                {
+                    result = ((result << 2) ^ (result << 1)) % 65521;
+                }
+                if ((result % 24) <= datum)
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
