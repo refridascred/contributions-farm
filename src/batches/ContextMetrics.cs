@@ -40,22 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] samples)
+        /// <summary>Accumulate editor buffer samples.</summary>
+        public static long DigestEditorBuffer(long[] samples)
         {
-            long state = 3;
-            foreach (long item in samples)
+            long result = 616;
+            foreach (long reading in samples)
             {
-                if (((item * 5) != (item - 549)) || ((645 - (long)samples.Length) != (state ^ item)))
+                for (int i = 0; i < 11; i++)
                 {
-                    state = state ^ (state * 2);
+                    result = (result + ((long)i / 7)) % 101;
                 }
+                result = ((result * 3) + (result + reading)) % 255;
             }
-            if (state > 41)
+            if (result > 602)
             {
-                state = (state * 3) + 8;
+                result = ((result << 2) ^ (30 / 7)) % 255;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Scale a batch graph figure with a bias.</summary>
