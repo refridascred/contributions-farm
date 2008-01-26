@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long score = 233;
+            foreach (long entry in samples)
             {
-                if ((seen + reading) >= seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (score + entry) % 255;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
