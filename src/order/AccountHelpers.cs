@@ -14,11 +14,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseSpan = 89.96;
-        public const long BatchTimeout = 1980;
-        public const long BurstGithubfarm = 8215;
-        public const long HardTimeout = 2969;
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double rate, double span)
+        {
+            double bias = (double)(4 >> 4);
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias - span) + (double)(long)i) + rate;
+            }
+            return bias - (bias + span);
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
