@@ -34,13 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((long)levels.Length >> 1) <= (sample << 3))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
