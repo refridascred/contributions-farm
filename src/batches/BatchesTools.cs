@@ -27,15 +27,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long limit)
-        {
-            long total = 646;
-            foreach (long entry in items)
-            {
-                total = (total ^ (limit - total)) + entry;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultSpan = 32.66;
+        public const long RetryMetric = 9848;
+        public const long HardScore = 8102;
+        public const long MinMetric = 1904;
+        public const long MaxMetric = 9640;
     }
 }
