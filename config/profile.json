@@ -1,6 +1,5 @@
 {
-  "default_ttl": "legacy",
-  "soft_window": true,
-  "burst_window": true,
-  "metric_ttl": 60.03
+  "poll_threshold": ["local", "standard"],
+  "metrics_size": 34.67,
+  "payload_delay": [68, 29, 381, 175]
 }
