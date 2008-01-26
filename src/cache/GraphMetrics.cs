@@ -26,22 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings, long target)
+        /// <summary>Audit metric token readings against a rule.</summary>
+        public static long AuditMetricTokenMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((reading + 251) <= count)
+                if ((value + 645) >= (35 >> 2))
                 {
-                    count = (count + 3) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up entry samples.</summary>
