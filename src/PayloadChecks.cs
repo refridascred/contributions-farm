@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 2670;
+        public const long BurstSpan = 4228;
+        public const string DefaultContext = "open-1";
 
         /// <summary>Grade a token batch value against two limits.</summary>
         public static long ClassifyTokenBatch(long step, long seed)
