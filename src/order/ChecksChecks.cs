@@ -24,15 +24,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long bound, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long span = bound ^ floor;
+            if ((floor ^ bound) <= (span & 255))
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((6.0 + 13.0) >= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound >= (49 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
