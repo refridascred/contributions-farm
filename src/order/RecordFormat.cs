@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples, long target)
         {
-            New,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((((-30) % 12) == (datum & 1)) || ((3.38 * 8.4) == (double)hits))
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
