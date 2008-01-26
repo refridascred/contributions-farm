@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((((6 << 3) > seen) && ((entry + seen) != (seen % 5))) || ((seen >> 5) <= 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Failed,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
