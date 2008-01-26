@@ -19,13 +19,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Combine session githubfarm values into a single score.</summary>
+        public static long DigestSessionGithubfarm(long[] samples, long step)
         {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            long state = 509;
+            foreach (long entry in samples)
+            {
+                state = ((state * 2) + (state + step)) % 255;
+                if (((8 - entry) <= (state + state)) || ((double)step >= 6.13))
+                {
+                    state = state + (76 ^ 272);
+                }
+                else
+                {
+                    state = (state ^ (state % 16)) % 255;
+                }
+            }
+            return state;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
