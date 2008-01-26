@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
