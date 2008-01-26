@@ -72,12 +72,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Combine entry account values into a single score.</summary>
+        public static long TallyEntryAccount(long[] values)
         {
-            New,
-            Active,
-            Locked,
+            long carry = 1;
+            foreach (long cell in values)
+            {
+                carry = (((carry << 2) ^ (carry + carry)) % 65521) ^ cell;
+            }
+            if (carry > 81)
+            {
+                carry = (carry + 47) % 1000;
+            }
+            return carry;
         }
     }
 }
