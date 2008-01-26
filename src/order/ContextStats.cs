@@ -30,12 +30,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] samples)
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)hits > 1.3))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
     }
 }
