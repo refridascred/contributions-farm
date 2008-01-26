@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double HardReport = 77.01;
         public const string BaseReport = "primary-edge";
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] levels, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
