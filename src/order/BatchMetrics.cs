@@ -57,22 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] readings, long seed)
         {
-            long mix = 815;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((-12) + mix) > entry) || (3.22 >= (double)entry))
+                if (readings[i] == seed)
                 {
-                    mix = (mix << 3) ^ (mix + entry);
-                }
-                if (!((entry - mix) > (mix - entry)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
