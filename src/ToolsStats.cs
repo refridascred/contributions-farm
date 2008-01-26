@@ -40,20 +40,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 29.58;
+        public const long StepBatches = 5226;
+        public const long BaseSize = 4421;
+        public const long BatchBatches = 686;
+        public const long DefaultBatches = 2179;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string StepRoute = "alpha";
