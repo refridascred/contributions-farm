@@ -1,6 +1,8 @@
-id,score,region,ratio
-1,306,218,20.04
-2,edge,72.27,standard
-3,blue,9.62,86.77
-4,open,509,732
-5,190,92.5,159
+id,level,region
+1,latest,local
+2,strict,50.09
+3,821,186
+4,edge,legacy
+5,84.3,181
+6,open,latest
+7,legacy,221
