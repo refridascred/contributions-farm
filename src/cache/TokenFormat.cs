@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterGaps(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally - reading) >= 64)
+                {
+                    tally = (tally + 3) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
