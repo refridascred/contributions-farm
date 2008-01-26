@@ -1,4 +1,11 @@
 # support settings
-warm_ratio_ms: 47
-githubfarm_ratio: 59.12
-flush_ttl_pct: 32
+session_delay:
+  - legacy
+  - open
+  - green
+  - cached
+soft_ttl: false
+report_threshold: 40.39
+entry_capacity: 1.7
+queue_retries: stable
+idle_retries: 48
