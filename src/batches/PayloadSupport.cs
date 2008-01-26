@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseWidth = 5284;
-        public const double CacheSchema = 83.06;
-        public const string IdleSchema = "primary-edge";
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Failed,
+            Idle,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
