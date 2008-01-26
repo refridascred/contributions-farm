@@ -1,5 +1,5 @@
 {
-  "idle_timeout_pct": true,
-  "commits_interval": 30,
-  "retry_capacity": 100
+  "flush_retries_ms": 526,
+  "retry_ttl": "edge",
+  "hard_ttl_count": 58.12
 }
