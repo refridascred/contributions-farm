@@ -36,17 +36,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] data, long origin)
+        /// <summary>Measure how many notes batches samples are out of range.</summary>
+        public static long CountNotesBatchesHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (data[i] == origin)
+                if ((hits + (-315)) != (hits % 24))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
