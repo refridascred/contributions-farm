@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] readings, long bound)
+        /// <summary>Accumulate checks queue samples.</summary>
+        public static long FoldChecksQueue(long[] items)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = 436;
+            foreach (long entry in items)
             {
-                if (!((count < (sample << 1)) && ((double)bound >= (double)sample)))
+                if ((double)(long)items.Length < (double)mark)
                 {
-                    count = count + 2;
+                    mark = ((mark + (mark << 2)) % 4096) ^ entry;
                 }
             }
-            return count;
+            if (mark < (-74))
+            {
+                mark = mark - (0 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
