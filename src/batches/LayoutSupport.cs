@@ -26,11 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "stable-1";
-        public const string RetryBatch = "fallback-edge";
-        public const double MinDepth = 45.8;
-        public const string WindowBatch = "standard";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (value <= (count & 31))
+                {
+                    count = (count + 2) - seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long WeighContributi(long[] readings)
