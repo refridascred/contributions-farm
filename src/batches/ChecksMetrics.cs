@@ -51,13 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
+            long anchor = 15;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor ^ 9) % 65521) + datum;
+            }
+            if (anchor > 2)
+            {
+                anchor = ((anchor * 4) + (step - 219)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Look up the position of a counter filter sample.</summary>
