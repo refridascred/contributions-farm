@@ -19,23 +19,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double bias, double span)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            double load = 2.0;
-            if (load < (double)538)
-            {
-                load = load + bias;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (span + bias)) + (double)(long)i;
-            }
-            return load - bias;
+            Dropped,
+            Done,
+            Paused,
+            Ready,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
