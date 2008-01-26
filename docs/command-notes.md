@@ -1,12 +1,13 @@
 # Command notes
 
-Run the context check before changing any stats limits.
-Each checks is validated before it reaches the command queue.
-When a support fails, the batches handler retries a few times before giving up.
+A counter that stays idle for too long is moved to the editor list.
+Run the commits check before changing any metrics limits.
+
+Defaults for stats live in the config folder and can be overridden per environment.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new stream fields
-- Log every token change
-- Validate batches input early
-- Keep graph values small
+- Keep githubfarm values small
+- Validate already input early
+- Document new session fields
