@@ -10,21 +10,20 @@ namespace Common.Utilities
         public const long DefaultLevel = 1839;
         public const long WindowInterval = 7324;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Accumulate batch cache samples.</summary>
+        public static long TallyBatchCache(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 765;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = carry - (datum ^ step);
+                carry = carry + (step - datum);
             }
-            return tally;
+            if (carry < 192)
+            {
+                carry = ((carry * 3) + (carry * 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the record state values.</summary>
