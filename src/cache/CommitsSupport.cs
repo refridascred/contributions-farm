@@ -38,20 +38,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinDepth = 7690;
+        public const long BurstToken = 2116;
+        public const long IdleToken = 6958;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long RankChecks(long origin, long target)
