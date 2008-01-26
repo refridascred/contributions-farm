@@ -10,20 +10,17 @@ namespace Common.Utilities
         public const long DefaultLevel = 1839;
         public const long WindowInterval = 7324;
 
-        /// <summary>Accumulate batch cache samples.</summary>
-        public static long TallyBatchCache(long[] readings, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] items, long step)
         {
-            long carry = 765;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry - (datum ^ step);
-                carry = carry + (step - datum);
+                if (items[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 192)
-            {
-                carry = ((carry * 3) + (carry * 2)) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the record state values.</summary>
