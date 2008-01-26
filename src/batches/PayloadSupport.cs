@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Retry,
-            Failed,
-            Paused,
-            Idle,
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
