@@ -58,18 +58,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long MeasureCacheTokenGaps(long[] series)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((matches & 63) > (reading - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Paused,
+            Ready,
+            Stale,
+            Active,
         }
     }
 }
