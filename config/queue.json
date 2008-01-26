@@ -1,12 +1,15 @@
 {
-  "persist": 26.96,
-  "retry_capacity_s": 32.96,
-  "burst_threshold": "primary",
-  "burst_threshold_pct": [115, 260, 400, 134],
-  "command_ratio": "edge",
-  "audit": {
-    "default_interval": "staging",
-    "batch_timeout": 6479,
-    "burst_size_s": 42
+  "idle_size_count": ["local", "latest", "standard"],
+  "warm_timeout_pct": 53.12,
+  "base_interval": 16.35,
+  "idle_threshold": ["stable", "staging"],
+  "audit": "green",
+  "readonly": {
+    "tools_retries": 9283,
+    "strict": 100,
+    "persist": ["fallback", "edge", "eu-west"],
+    "base_delay_ms": 94.74,
+    "githubfarm_interval": 90.74,
+    "audit": "stable"
   }
 }
