@@ -28,11 +28,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a filter stats.</summary>
