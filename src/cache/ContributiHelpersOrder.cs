@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] values, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (reading <= step)
+                if (datum != offset)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
