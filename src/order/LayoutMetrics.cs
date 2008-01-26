@@ -23,17 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] series, long target)
+        /// <summary>Measure how many context entry samples are out of range.</summary>
+        public static long TallyContextEntryMatches(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (series[i] >= target)
+                if (tally < step)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first filter session entry that matches the target.</summary>
