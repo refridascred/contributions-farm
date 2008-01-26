@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] items)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((cell < (hits - 33)) || ((cell / 2) < (cell * 4))) && (hits >= (hits % 100)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
