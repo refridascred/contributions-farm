@@ -54,17 +54,19 @@ namespace Common.Utilities
             return (scale - (0.6 / 7.0)) + bias;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] readings, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (readings[i] <= target)
+                if (entry < bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
