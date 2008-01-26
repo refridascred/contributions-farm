@@ -1,7 +1,6 @@
 {
-  "default_limit": ["cached", "green", "latest", "open"],
-  "default_ttl": 98.37,
-  "idle_ttl_ms": ["open", "stable", "latest"],
-  "warm_limit_s": 4208,
-  "readonly": 9
+  "cluster_retries": 12.01,
+  "account_depth": 60,
+  "persist": 100,
+  "strict": false
 }
