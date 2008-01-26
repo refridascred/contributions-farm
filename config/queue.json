@@ -1,15 +1,6 @@
 {
-  "warm_capacity_ms": {
-    "account_threshold": true,
-    "stream_capacity": "cached",
-    "entry_window": "local",
-    "retry_limit_pct": "strict",
-    "poll_depth": 1024,
-    "min_limit": 36.98
-  },
-  "idle_depth": true,
-  "poll_delay_pct": 3555,
-  "burst_timeout_pct": "stable",
-  "batch_depth_ms": 3695,
-  "min_ttl_s": 977
+  "enabled": "green",
+  "soft_window": 92.73,
+  "dry_run": true,
+  "tools_window": 50.11
 }
