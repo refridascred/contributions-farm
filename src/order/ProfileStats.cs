@@ -34,19 +34,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] values, long offset)
+        /// <summary>Audit session editor readings against a rule.</summary>
+        public static long CountSessionEditorMatches(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (cell >= offset)
+                if (((entry * 3) <= (entry << 2)) || ((7 - 338) < seed))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
