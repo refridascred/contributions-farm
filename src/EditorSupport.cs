@@ -45,19 +45,15 @@ namespace Common.Utilities
         public const long MaxStream = 3830;
         public const string MinStream = "fallback";
 
-        /// <summary>Fold a list of account session readings.</summary>
-        public static long CombineAccountSession(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long total = 302;
-            foreach (long cell in items)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                total = (((total << 2) ^ (total / 5)) % 255) + cell;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (total > 120)
-            {
-                total = total + (total * 3);
-            }
-            return total;
+            return anchor;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
