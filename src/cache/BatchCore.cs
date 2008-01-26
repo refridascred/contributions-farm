@@ -30,26 +30,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] levels)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long total = 93;
-            foreach (long item in levels)
-            {
-                if (((7.0 * 7.7) < (double)total) || ((long)levels.Length <= total))
-                {
-                    total = (((total << 2) ^ total) % 97) + item;
-                }
-                else
-                {
-                    total = ((total * 4) + ((-922) / 3)) % 4096;
-                }
-            }
-            if (total < 47)
-            {
-                total = total - total;
-            }
-            return total % 65521;
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a buffer header.</summary>
