@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string HardSize = "stable-1";
         public const string MaxScore = "primary-edge";
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] samples, long target)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a channel notes figure with a bias.</summary>
