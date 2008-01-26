@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] readings, long floor)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (reading <= seen)
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a account reading by value.</summary>
