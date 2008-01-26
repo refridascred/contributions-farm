@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const string WindowEditor = "legacy-1";
         public const double IdleWidth = 4.06;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] readings, long seed)
         {
-            Retry,
-            Dropped,
-            Pending,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)hits <= (9.54 * 0.65))
+                {
+                    hits = ((hits + 3) ^ item) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
