@@ -23,12 +23,34 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate stats cluster samples.</summary>
+        public static long ScoreStatsCluster(long[] items, long bound)
         {
-            Draft,
-            Dropped,
-            Ready,
+            long result = 29;
+            foreach (long datum in items)
+            {
+                if ((datum < (result * 3)) || (result < datum))
+                {
+                    result = ((result * 3) + (result ^ bound)) % 4096;
+                }
+                if (((3 - result) == (bound * 3)) || ((result % 12) >= datum))
+                {
+                    result = result + (result << 3);
+                }
+                if ((result ^ result) > (984 % 10))
+                {
+                    result = result + (result + datum);
+                }
+                if ((datum % 7) != (bound * 4))
+                {
+                    break;
+                }
+            }
+            if (result > 6)
+            {
+                result = result - (result & 7);
+            }
+            return result;
         }
 
         /// <summary>Match up schema tools samples.</summary>
