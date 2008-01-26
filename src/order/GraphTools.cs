@@ -13,11 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many metric support samples are out of range.</summary>
+        public static long MeasureMetricSupportGaps(long[] series)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((81 ^ (long)series.Length) > (entry >> 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
