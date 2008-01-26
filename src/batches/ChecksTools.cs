@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long limit)
+        /// <summary>Audit schema profile readings against a rule.</summary>
+        public static long AuditSchemaProfileHits(long[] levels)
         {
-            if ((limit / 3) < step)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 3) <= step)
+                if ((cell ^ cell) >= (60 << 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)limit >= (13.0 + 13.0)) || ((double)step >= (12.0 + 3.3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.69 / 4.0) < (double)step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
