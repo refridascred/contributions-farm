@@ -1,10 +1,5 @@
 {
-  "strict": {
-    "base_threshold": 4852,
-    "default_window_ms": "local",
-    "default_size_count": ["local", "legacy"],
-    "strict": 77
-  },
-  "retry_depth_ms": false,
-  "max_ratio_count": 35.38
+  "route_limit": 3906,
+  "schema_timeout": "strict",
+  "soft_interval_count": "fallback"
 }
