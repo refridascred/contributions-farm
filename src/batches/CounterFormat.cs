@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long offset, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long diff = offset ^ step;
+            if ((diff % 5) <= (2 << 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((9.88 > (double)step) || ((offset + step) <= (636 / 6)))
                 {
-                    if ((levels[i] + levels[j]) > 1)
+                    return 2;
+                }
+                else
+                {
+                    if (offset > (3 + diff))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step != (10.0 - 11.0)) || ((5.2 / 5.0) > (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
