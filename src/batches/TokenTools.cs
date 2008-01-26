@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCount = 7420;
-        public const string MaxSize = "local-edge";
-        public const long MaxScore = 806;
-        public const long CacheLevel = 233;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 73.66;
+        public const long CacheBudget = 8149;
+        public const long BurstDepth = 1870;
+        public const long SoftProfile = 7926;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] values)
