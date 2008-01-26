@@ -34,12 +34,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstNotes = "latest-1";
-        public const long HardScore = 6988;
-        public const string CacheNotes = "cached-1";
-        public const long IdleNotes = 1619;
-        public const string BaseNotes = "fallback-v2";
+        /// <summary>Fold a list of batches editor readings.</summary>
+        public static long TotalBatchesEditor(long[] items)
+        {
+            long score = 5;
+            foreach (long datum in items)
+            {
+                if ((datum & 1) < datum)
+                {
+                    score = ((score * 3) + ((-1) + datum)) % 101;
+                }
+            }
+            if (score > 8)
+            {
+                score = (score + (score / 3)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
