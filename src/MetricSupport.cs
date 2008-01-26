@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchBudget = 3158;
+        public const long MaxRatio = 18;
+        public const long BatchContext = 1657;
 
         /// <summary>Match up stream editor samples.</summary>
         public static long MatchStreamEditorCount(long[] data)
