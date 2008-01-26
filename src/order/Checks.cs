@@ -37,14 +37,11 @@ namespace Common.Utilities
         public const long DefaultDepth = 3705;
         public const string MaxCommand = "primary";
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Synced,
-            Stale,
-            Ready,
-            Paused,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepBudget = "open-1";
+        public const string HardSpan = "staging-edge";
+        public const long SoftRatio = 29;
+        public const double StepCommand = 37.67;
+        public const long MinSpan = 2151;
     }
 }
