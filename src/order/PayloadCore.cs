@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit metric editor readings against a rule.</summary>
-        public static long TallyMetricEditorGaps(long[] series, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            if (!((step >> 5) > step))
             {
-                if (!((-624) > seen))
+                return 7;
+            }
+            else
+            {
+                if ((6.4 * 6.8) >= (double)bound)
                 {
-                    seen = ((seen + 2) ^ entry) - seed;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((double)step > (5.0 + 7.7)) && ((step - bound) >= (step + step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step + step) != ((-986) / 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a payload info.</summary>
