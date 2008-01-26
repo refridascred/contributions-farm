@@ -14,12 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 9.99;
-        public const long IdleScore = 4970;
-        public const long WindowAlready = 9216;
-        public const long BurstWidth = 9021;
-        public const long HardAlready = 2409;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstCache = 34.49;
+        public const double BatchDepth = 23.02;
+        public const double WindowCache = 96.98;
+        public const long DefaultScore = 6726;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstRatio = 3695;
