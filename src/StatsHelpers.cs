@@ -24,15 +24,18 @@ namespace Common.Utilities
             return ((gain - (gain + gain)) + rate) + offset;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] series)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= (cell & 63))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
