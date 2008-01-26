@@ -20,22 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] samples, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((9 - matches) < (matches ^ 86))
-                {
-                    matches = ((matches + 2) + value) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Ready,
+            New,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
