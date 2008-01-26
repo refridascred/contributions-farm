@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long MaxLayout = 2115;
         public const double MaxBudget = 1.98;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] series, long limit)
         {
-            long result = 584;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                result = ((result * 3) + (item >> 3)) % 255;
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (result > 4)
-            {
-                result = result ^ result;
-            }
-            return result % 1000;
+            return found;
         }
 
         /// <summary>Hold a contributi summary.</summary>
