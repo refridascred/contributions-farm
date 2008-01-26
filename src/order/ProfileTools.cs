@@ -64,15 +64,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] readings, long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = 899;
-            foreach (long cell in readings)
-            {
-                anchor = ((anchor ^ anchor) + cell) + limit;
-            }
-            return anchor;
+            Paused,
+            New,
+            Queued,
+            Idle,
         }
     }
 }
