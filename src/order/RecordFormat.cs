@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((-30) % 12) == (datum & 1)) || ((3.38 * 8.4) == (double)hits))
-                {
-                    hits = (hits + 3) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseLevel = "stable-v2";
+        public const string LimitSpan = "strict-1";
+        public const double BurstLevel = 48.65;
+        public const long BaseCluster = 1915;
+        public const long StepBudget = 326;
 
         /// <summary>Fold a list of session channel readings.</summary>
         public static long WeighSessionChannel(long[] samples, long origin)
