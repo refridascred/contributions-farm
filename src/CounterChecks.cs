@@ -42,17 +42,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batches payload sample.</summary>
-        public static long SeekBatchesPayloadIndex(long[] values, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
