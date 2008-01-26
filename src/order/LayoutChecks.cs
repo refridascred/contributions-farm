@@ -54,21 +54,39 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long edge = origin + offset;
+            if ((offset << 1) == ((-85) + edge))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((0.4 - 1.94) <= (double)edge)
                 {
-                    if ((series[i] - series[j]) != 0)
+                    return 5;
+                }
+                else
+                {
+                    if (((origin + edge) > (edge ^ edge)) && ((85 * 4) >= (offset - (-330))))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) <= (edge + edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
