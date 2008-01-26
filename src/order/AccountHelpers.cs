@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8215;
         public const long HardTimeout = 2969;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (((double)1 > (double)item) && ((double)origin != (double)item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 5505;
+        public const long DefaultChannel = 8867;
+        public const long BaseScore = 7273;
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] levels)
