@@ -58,37 +58,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long origin, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long origin, long origin2)
         {
-            long gap = origin + target;
-            if ((origin >> 1) < (origin + origin))
+            if (origin <= origin2)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((origin + 40) < (gap / 6))
+                if ((origin2 - origin) <= (origin2 - origin2))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if (!((gap + origin) == (75 - 9)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((gap > (origin + target)) || ((-67) > (gap / 9)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
