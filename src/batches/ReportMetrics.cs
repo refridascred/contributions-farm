@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] data, long origin)
+        /// <summary>Check that every metrics notes entry stays within the limit.</summary>
+        public static bool GuardMetricsNotesRange(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (((entry % 60) <= (entry >> 2)) && (((hits + origin) >= (origin ^ hits)) || (hits < (hits / 6))))
+                if (item <= bound)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
