@@ -24,11 +24,17 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinBudget = "cached-edge";
-        public const long CacheCommits = 2609;
-        public const long LimitRatio = 8693;
-        public const double LimitWidth = 19.93;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings, long step)
+        {
+            long anchor = 24;
+            foreach (long entry in readings)
+            {
+                anchor = (anchor << 3) ^ (49 - entry);
+                anchor = (anchor - (entry + step)) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
