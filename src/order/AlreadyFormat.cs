@@ -38,19 +38,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            double bias2 = (double)162 * 0.2;
-            if (bias2 > 8.1)
+            long mark = 7;
+            foreach (long datum in readings)
             {
-                bias2 = ((bias2 + bias2) + bias) - floor;
+                mark = (mark + (mark * 5)) + datum;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias2 + 13.0)) + (double)(long)i;
-            }
-            return bias2 + bias2;
+            return mark;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
