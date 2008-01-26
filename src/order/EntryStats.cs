@@ -59,18 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] samples, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            long sum = 55;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (limit > (limit >> 1))
+                if (seen <= datum)
                 {
-                    sum = ((sum - (sum % 3)) % 4096) + sample;
+                    seen = seen + 2;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
