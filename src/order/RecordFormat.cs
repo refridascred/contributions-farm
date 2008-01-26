@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Locked,
-            Stale,
-            Retry,
+            New,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
