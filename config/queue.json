@@ -1,20 +1,6 @@
 {
-  "enabled": "local",
-  "max_ttl_count": {
-    "min_ratio": {
-      "verbose": 45,
-      "min_retries_count": 82.85,
-      "commits_limit": ["edge", "blue"],
-      "sync_ttl_pct": 19
-    },
-    "burst_limit": ["edge", "cached", "local"],
-    "soft_limit": 4417,
-    "account_capacity": 9788,
-    "warm_delay": "local",
-    "githubfarm_window": 7
-  },
-  "readonly": "strict",
-  "batch_delay_count": true,
-  "compress": "fallback",
-  "default_capacity_count": 500
+  "retry_timeout": "staging",
+  "payload_ttl": [457, 408, 253, 227],
+  "metrics_interval": 30,
+  "sync_depth_pct": 60
 }
