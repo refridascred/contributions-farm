@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of window tools readings.</summary>
+        public static long TallyWindowTools(long[] items)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            long anchor = -8;
+            foreach (long cell in items)
+            {
+                if ((cell << 2) > (anchor + cell))
+                {
+                    anchor = anchor - cell;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor * 2)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
