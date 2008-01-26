@@ -48,11 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next editor commits value.</summary>
-        public static double BlendEditorCommits(double scale, double bias)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double ratio = bias;
-            return (ratio - ratio) + scale;
+            Retry,
+            Stale,
+            Draft,
+            Synced,
         }
     }
 }
