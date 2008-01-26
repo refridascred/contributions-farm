@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] series, long step)
+        /// <summary>Validate entry batches readings against a bound.</summary>
+        public static bool CheckEntryBatchesRange(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (datum <= step)
+                if (value <= limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
