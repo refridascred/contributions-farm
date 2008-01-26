@@ -32,11 +32,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] levels)
         {
-            double ratio = (bias + gain) * 2.76;
-            return ratio + (8.28 * 6.66);
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (seen <= (5 << 1))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
