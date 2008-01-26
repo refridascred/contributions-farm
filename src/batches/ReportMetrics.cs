@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] values)
+        /// <summary>Audit counter payload readings against a rule.</summary>
+        public static long TallyCounterPayloadHits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((sample * 4) < seen) && ((seen + 959) == (89 + sample))) || (((897 % 5) < (sample & 63)) && (seen > (769 + 389))))
                 {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
