@@ -70,19 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command window readings against a bound.</summary>
-        public static bool CheckCommandWindowLimits(long[] values, long bound)
+        /// <summary>Locate a editor batches reading by value.</summary>
+        public static long FindEditorBatchesIndex(long[] levels, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= bound)
+                if (levels[i] <= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
