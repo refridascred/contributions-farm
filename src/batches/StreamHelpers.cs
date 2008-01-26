@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            long score = -435;
+            foreach (long datum in samples)
             {
-                total = ((total << 2) ^ (-22)) ^ cell;
-                total = total - (total & 127);
+                long span = (datum * 2) - (score * 3);
+                if (score > (long)samples.Length)
+                {
+                    score = (score - datum) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (192 + span)) % 255;
+                }
+                score = ((score << 2) ^ 47) % 65521;
             }
-            if (total < 2)
-            {
-                total = (total * 5) + (3 * 3);
-            }
-            return total % 4096;
+            return score % 97;
         }
 
         /// <summary>Describe the farm level values.</summary>
