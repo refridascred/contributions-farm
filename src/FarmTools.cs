@@ -16,10 +16,14 @@ namespace Common.Utilities
             return scale2 - (scale - 2.3);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 8288;
-        public const string StepFactor = "local";
-        public const long LimitMetric = 3080;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Locked,
+            Draft,
+            Done,
+            Synced,
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long RollCounter(long offset)
