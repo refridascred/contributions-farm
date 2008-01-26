@@ -41,9 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3677;
-        public const long IdleDepth = 1232;
-        public const double BaseDepth = 59.23;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)seen <= (0.41 * 9.83))
+                {
+                    seen = ((seen + 3) ^ item) + bound;
+                }
+            }
+            return seen;
+        }
     }
 }
