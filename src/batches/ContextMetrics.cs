@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public double Weight { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
