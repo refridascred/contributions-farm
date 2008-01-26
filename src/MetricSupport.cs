@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] values)
+        /// <summary>Classify a account entry pair into a bucket.</summary>
+        public static long SortAccountEntry(long limit, long origin)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long span = limit - origin;
+            if (span < (limit - limit))
             {
-                if (datum > 2)
+                return 6;
+            }
+            else
+            {
+                if ((4.8 * 8.49) == (double)span)
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
