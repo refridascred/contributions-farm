@@ -1,9 +1,23 @@
 # githubfarm settings
-graph_capacity:
-  - eu-west
-  - cached
-  - legacy
-  - open
-githubfarm_retries: 13
-compress: 62
-base_depth_pct: cached
+verbose: false
+retry_depth_ms: 73.85
+poll_capacity_count:
+  dry_run:
+    max_retries: 100
+    hard_interval_s: stable
+    max_size: 3358
+    retry_threshold_ms: 60
+  sync_ttl_ms: 76.92
+  max_depth_ms: 5.68
+  flush_size_pct: 91
+  burst_capacity_pct: latest
+  already_capacity:
+    verbose: 80.46
+    batch_timeout_count: 60
+    soft_capacity_count:
+      - 115
+      - 251
+      - 279
+    default_ttl_pct: 85
+report_size: standard
+cluster_timeout: strict
