@@ -26,31 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long origin, long origin2)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            if (origin > (origin2 ^ origin2))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((origin >> 5) < origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin2 > (origin2 / 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
