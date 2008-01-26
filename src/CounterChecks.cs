@@ -12,15 +12,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double gain, double bias)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double ratio = bias;
-            if (ratio < (bias - 13.0))
-            {
-                ratio = (ratio - ratio) - gain;
-            }
-            return ratio - (bias / 3.0);
+            public string Stamp { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
