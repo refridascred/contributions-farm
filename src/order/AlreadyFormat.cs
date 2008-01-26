@@ -62,18 +62,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsOutliers(long[] values)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)cell >= (5.99 - 1.0))
-                {
-                    matches = matches + 3;
-                }
+                score = ((score << 3) ^ ((long)i ^ floor)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
