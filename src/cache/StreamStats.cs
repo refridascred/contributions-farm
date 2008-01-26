@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 6689;
+        public const long BurstStats = 9996;
+        public const string BatchStats = "latest-1";
+        public const double SoftStats = 98.94;
+        public const double StepTimeout = 50.98;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] data)
