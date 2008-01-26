@@ -69,39 +69,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] samples, long floor)
         {
-            long span = step ^ origin;
-            if ((span + step) <= (16 % 5))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((span - 88) > (span / 7))
+                if (samples[i] == floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin - origin) != (8 / 6))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(span >= (4 - (-79))))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
