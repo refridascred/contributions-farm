@@ -42,11 +42,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheInterval = 91.02;
-        public const string MinInterval = "legacy-edge";
-        public const double StepCluster = 41.56;
-        public const string HardSpan = "cached-edge";
+        /// <summary>Combine entry stats values into a single score.</summary>
+        public static long ScoreEntryStats(long[] series)
+        {
+            long acc = -920;
+            foreach (long cell in series)
+            {
+                if ((cell - acc) >= ((long)series.Length + acc))
+                {
+                    acc = ((acc << 2) ^ (acc * 2)) % 4096;
+                }
+                else
+                {
+                    acc = acc - (acc + 55);
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long BucketTools(long offset, long step)
