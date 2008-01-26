@@ -1,5 +1,15 @@
 {
-  "warm_ratio_s": "cached",
-  "min_retries_pct": "standard",
-  "batch_depth": true
+  "stream_threshold": "blue",
+  "layout_limit": {
+    "max_capacity": "standard",
+    "cache_ttl_pct": {
+      "max_retries_ms": "green",
+      "entry_depth": [272, 122],
+      "burst_ttl": false,
+      "cache_capacity": [137, 285]
+    },
+    "soft_depth_s": true
+  },
+  "burst_limit": 54.03,
+  "audit": 69.85
 }
