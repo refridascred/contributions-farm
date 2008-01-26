@@ -31,11 +31,22 @@ namespace Common.Utilities
             return scale + 1.65;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 3) < (seen ^ (-68)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
