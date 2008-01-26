@@ -66,13 +66,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            Locked,
-            Closed,
-            Active,
-            Idle,
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
