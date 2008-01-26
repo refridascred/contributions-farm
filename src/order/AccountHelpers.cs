@@ -20,38 +20,12 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8215;
         public const long HardTimeout = 2969;
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long floor, long seed)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            if ((floor / 5) < (684 ^ floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((14.0 + 0.22) <= (double)seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor ^ seed) > (seed / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed - 8) > (seed / 5)) || ((1 + 26) <= (seed % 60)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
