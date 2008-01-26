@@ -20,15 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long step, long offset)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long diff = step ^ offset;
+            if (diff <= (step - step))
             {
-                state = ((state * 4) + (long)i) % 101;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((149 % 100) >= step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset ^ diff) == (6 ^ offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)diff > (12.0 + 16.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
