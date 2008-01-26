@@ -1,5 +1,34 @@
 # support settings
-max_limit: 23.9
-soft_window_s: 1024
-default_retries_pct: true
-verbose: 60
+sync_retries_ms: strict
+filter_ttl: true
+retry_ttl:
+  githubfarm_delay:
+    contributi_retries: false
+    verbose: 1856
+    cache_ratio: 60
+    format_timeout:
+      - 262
+      - 451
+      - 230
+      - 446
+    soft_interval:
+      - cached
+      - primary
+      - staging
+    cache_timeout: 9575
+  checks_limit:
+    counter_window: 30
+    sync_interval:
+      - open
+      - blue
+      - fallback
+    warm_depth: 8955
+    min_capacity_pct:
+      - 322
+      - 53
+      - 484
+      - 247
+    dry_run: 563
+    max_retries: 48
+  compress: eu-west
+cache_capacity_s: fallback
