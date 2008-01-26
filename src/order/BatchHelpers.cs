@@ -19,11 +19,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryCount = "local-v2";
-        public const double BaseFilter = 90.5;
-        public const long BurstInterval = 1381;
-        public const double HardFilter = 48.83;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] readings, long offset)
+        {
+            long carry = 845;
+            foreach (long reading in readings)
+            {
+                if (!((reading * 4) >= 686))
+                {
+                    carry = (carry * 4) + (offset + carry);
+                }
+            }
+            if (carry > (-89))
+            {
+                carry = (carry - (offset << 2)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
