@@ -25,21 +25,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                long cur = (long)i;
-                if (((long)i > (704 - offset)) || (offset >= (cur >> 4)))
-                {
-                    total = (total ^ (total & 3)) % 97;
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
