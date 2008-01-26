@@ -24,11 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
             public double Total { get; set; }
-            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
