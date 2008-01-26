@@ -47,18 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Audit notes order readings against a rule.</summary>
+        public static long CountNotesOrderHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (((cell << 2) == (4 * 3)) || ((cell ^ (-879)) > (209 ^ cell)))
+                if (((double)reading <= (double)matches) && ((double)matches >= 6.48))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
