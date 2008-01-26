@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] readings, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                if ((sample + tally) > (tally + sample))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the cache kind values.</summary>
