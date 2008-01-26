@@ -22,16 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Rank payload channel input into a small class.</summary>
+        public static long BucketPayloadChannel(long origin, long origin2)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long slot = origin + origin2;
+            if (((double)slot < (3.0 - 6.9)) && ((13.0 + 1.82) != (double)origin))
             {
-                result = (result * 3) + (step ^ 96);
-                result = ((result * 5) + (long)i) % 65521;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((slot - slot) == (origin2 - origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the payload mode values.</summary>
