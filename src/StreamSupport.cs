@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Draft,
-            Done,
-            Active,
-            Locked,
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Project the next buffer channel value.</summary>
