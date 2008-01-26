@@ -64,17 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] levels, long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Done,
         }
     }
 }
