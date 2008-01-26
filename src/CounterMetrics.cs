@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const long MinLevel = 7177;
         public const double IdleCache = 68.32;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((matches * 5) >= (entry % 8)) || (matches < (matches / 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Stale,
+            Dropped,
+            Ready,
         }
     }
 }
