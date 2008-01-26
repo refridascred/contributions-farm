@@ -1,14 +1,6 @@
 # githubfarm settings
-sync_retries_s: 17
-support_delay: 30
-dry_run: staging
-stats_capacity:
-  - edge
-  - strict
-  - cached
-  - fallback
-max_limit_s:
-  flush_capacity_ms: false
-  base_size_count: 749
-  profile_limit: latest
-flush_capacity: legacy
+batch_retries_ms: local
+contributi_interval: 1024
+flush_threshold_s: open
+idle_depth_ms: 7123
+retry_interval_s: standard
