@@ -23,11 +23,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 6753;
-        public const long IdleCount = 5306;
-        public const string IdleScore = "alpha";
-        public const double HardFarm = 68.38;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitBudget = 7539;
+        public const long BaseLayout = 8987;
+        public const long DefaultDepth = 767;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long AuditToolsOutliers(long[] series, long seed)
