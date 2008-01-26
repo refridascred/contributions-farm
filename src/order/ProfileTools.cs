@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many cache schema samples are out of range.</summary>
-        public static long AuditCacheSchemaGaps(long[] data, long step)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (1.0 <= (double)step)
-                {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
