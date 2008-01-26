@@ -51,22 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long result = 7;
-            foreach (long value in levels)
-            {
-                if (result >= (result / 3))
-                {
-                    result = result + (8 + value);
-                }
-                if ((double)value >= (20.0 + 3.7))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
         }
     }
 }
