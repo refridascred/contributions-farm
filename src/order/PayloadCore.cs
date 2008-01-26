@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Audit metric editor readings against a rule.</summary>
+        public static long TallyMetricEditorGaps(long[] series, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                score = (score + score) % 4096;
-                score = ((score * 2) + (long)i) % 97;
+                if (!((-624) > seen))
+                {
+                    seen = ((seen + 2) ^ entry) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
