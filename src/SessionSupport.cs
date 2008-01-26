@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Done,
-            Draft,
+            New,
+            Ready,
+            Dropped,
             Retry,
+            Locked,
         }
 
         /// <summary>Describe the tools state values.</summary>
