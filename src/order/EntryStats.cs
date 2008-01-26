@@ -29,22 +29,11 @@ namespace Common.Utilities
             return load + 16.0;
         }
 
-        /// <summary>Count context account pairs that satisfy a relation.</summary>
-        public static long MatchContextAccountCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 3105;
+        public const long BurstRoute = 300;
+        public const long CacheRoute = 9401;
+        public const string HardRoute = "standard-v2";
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long limit)
