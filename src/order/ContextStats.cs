@@ -30,18 +30,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] items, long origin)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long target)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (3.98 < (double)origin)
-                {
-                    hits = (hits + 1) + entry;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a already snapshot.</summary>
