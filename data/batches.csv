@@ -1,8 +1,6 @@
-id,level,region
-1,latest,local
-2,strict,50.09
-3,821,186
-4,edge,legacy
-5,84.3,181
-6,open,latest
-7,legacy,221
+id,state,owner
+1,local,blue
+2,7.71,585
+3,standard,23.75
+4,69.13,cached
+5,9.9,118
