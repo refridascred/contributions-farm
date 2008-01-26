@@ -48,19 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] data, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
     }
 }
