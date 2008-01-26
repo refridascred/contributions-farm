@@ -43,21 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] levels)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
