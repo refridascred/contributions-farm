@@ -43,10 +43,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleCount = 8288;
-        public const long LimitFactor = 4814;
-        public const long MinDepth = 4181;
-        public const long WindowInterval = 5196;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
