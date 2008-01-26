@@ -27,11 +27,22 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] values, long offset)
         {
-            public double Offset { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((datum & 63) >= (datum ^ datum))
+                {
+                    count = (count + 1) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the editor phase values.</summary>
