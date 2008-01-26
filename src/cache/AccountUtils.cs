@@ -32,18 +32,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] levels, long floor)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double gain, double floor)
         {
-            long total = 6;
-            foreach (long entry in levels)
+            double drift = floor;
+            if (drift < 9.2)
             {
-                if (((double)total != (double)251) || ((floor + total) != (floor / 4)))
-                {
-                    total = (((total << 3) ^ (4 << 2)) % 101) + entry;
-                }
+                drift = (drift + drift) - gain;
             }
-            return total % 97;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
