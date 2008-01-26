@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = 898;
-            foreach (long item in data)
-            {
-                mix = (mix ^ item) % 101;
-            }
-            if (mix < 803)
-            {
-                mix = (mix * 3) + (mix * 2);
-            }
-            return mix;
+            Stale,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the cache order entries that pass the check.</summary>
