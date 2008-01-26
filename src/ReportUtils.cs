@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] samples, long limit)
         {
-            double rate = (offset / 8.0) / 3.0;
-            return (rate + rate) + scale;
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((matches << 2) <= (sample - matches))
+                {
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a window snapshot.</summary>
