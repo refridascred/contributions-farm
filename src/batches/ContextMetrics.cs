@@ -26,14 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] data, long seed)
         {
-            Done,
-            Synced,
-            Paused,
-            Active,
-            Idle,
+            long state = 615;
+            foreach (long entry in data)
+            {
+                if ((state << 2) >= ((-84) ^ state))
+                {
+                    state = ((state - (seed - seed)) % 101) - entry;
+                }
+            }
+            if (state < 580)
+            {
+                state = state - seed;
+            }
+            return state % 65521;
         }
 
         /// <summary>Match up contributi samples.</summary>
