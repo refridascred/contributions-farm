@@ -77,25 +77,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long seed2)
+        /// <summary>Combine cluster graph values into a single score.</summary>
+        public static long CombineClusterGraph(long[] data)
         {
-            long diff = seed - seed2;
-            if (!((4 ^ seed2) > seed))
+            long sum = 9;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff + 720) <= seed2)
+                sum = (sum - (value + (-98))) % 101;
+                if ((56 + sum) > (long)data.Length)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
