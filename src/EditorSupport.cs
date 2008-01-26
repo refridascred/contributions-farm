@@ -77,18 +77,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] series)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = 40;
+            foreach (long datum in levels)
             {
-                if ((tally >> 5) <= tally)
+                if ((sum / 3) >= sum)
                 {
-                    tally = (tally + 2) ^ datum;
+                    sum = ((sum * 3) + (datum / 4)) % 101;
                 }
             }
-            return tally;
+            return sum % 97;
         }
     }
 }
