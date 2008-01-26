@@ -74,11 +74,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string RetrySpan = "primary-v2";
-        public const double IdleSession = 31.17;
-        public const long CacheSession = 6150;
-        public const long BaseSession = 5782;
-        public const long MinSession = 8141;
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
