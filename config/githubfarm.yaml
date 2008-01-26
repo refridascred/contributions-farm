@@ -1,8 +1,4 @@
 # githubfarm settings
-verbose:
-  min_ratio: 6977
-  sync_ttl: 41.09
-  burst_ttl_pct: 85
-cluster_ttl: 1024
-route_capacity: blue
-max_delay_count: 63.12
+support_ratio: 46.65
+min_window_pct: 250
+readonly: green
