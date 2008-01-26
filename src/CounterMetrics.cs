@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const double BatchBudget = 94.38;
         public const double MinSpan = 43.82;
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long state = step;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state ^ (state & 3)) % 1000) - (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit context metric readings against a rule.</summary>
