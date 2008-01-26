@@ -28,10 +28,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 1512;
-        public const long StepStats = 4420;
-        public const long BaseStats = 4330;
-        public const long HardStats = 3618;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFarm = "stable-edge";
+        public const double SoftFarm = 25.36;
+        public const long MinDepth = 1975;
     }
 }
