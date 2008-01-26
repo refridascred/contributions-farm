@@ -64,18 +64,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value >> 4) < value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double WindowLevel = 37.5;
+        public const long LimitDepth = 7126;
+        public const double RetryRatio = 90.81;
+        public const long BatchScore = 310;
     }
 }
