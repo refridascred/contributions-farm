@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstTimeout = 56.66;
-        public const long StepWindow = 6191;
-        public const long DefaultWindow = 1256;
-        public const long BurstRatio = 8058;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] data, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ reading) < matches)
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
