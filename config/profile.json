@@ -1,6 +1,20 @@
 {
-  "persist": 22,
-  "hard_interval_count": 56.32,
-  "retry_limit": 100,
-  "poll_ttl_ms": 44.35
+  "max_window_ms": 4289,
+  "stats_interval": [426, 154, 226],
+  "contributi_limit": [309, 31, 486],
+  "stats_window": {
+    "warm_retries": "latest",
+    "poll_limit": 77.8,
+    "flush_ratio_pct": 86,
+    "readonly": true,
+    "hard_capacity_ms": {
+      "default_depth_count": true,
+      "stats_depth": 67.37,
+      "min_depth": false,
+      "poll_limit": "edge"
+    },
+    "cache_window_count": 100
+  },
+  "verbose": 10,
+  "commits_capacity": "edge"
 }
