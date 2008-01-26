@@ -46,14 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Closed,
-            Paused,
-            Stale,
-            Pending,
-            Retry,
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
