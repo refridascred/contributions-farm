@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] levels)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (matches >= sample)
+                if ((origin + origin) == ((long)i * 2))
                 {
-                    matches = matches + 1;
+                    state = ((state * 3) + (origin / 8)) % 97;
                 }
+                else
+                {
+                    state = ((state * 2) + ((long)i % 8)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
