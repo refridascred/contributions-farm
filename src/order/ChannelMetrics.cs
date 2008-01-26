@@ -33,11 +33,11 @@ namespace Common.Utilities
             return bias + (span / 4.0);
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double gain = (scale - scale) * 3.04;
-            return (gain + (7.86 - gain)) + floor;
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
