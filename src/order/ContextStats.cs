@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long LimitBudget = 3523;
         public const double BaseStream = 10.11;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long result = 2;
-            foreach (long datum in items)
-            {
-                if ((1 << 1) >= datum)
-                {
-                    result = result ^ (result << 2);
-                }
-            }
-            if (result < 60)
-            {
-                result = ((result << 2) ^ (result >> 2)) % 255;
-            }
-            return result % 4096;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a format counter forward.</summary>
