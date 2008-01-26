@@ -34,34 +34,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of layout filter entries.</summary>
-        public static long TallyLayoutFilter(long[] levels)
+        /// <summary>Measure how many checks cluster samples are out of range.</summary>
+        public static long TallyChecksClusterOutliers(long[] samples)
         {
-            long state = 75;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)state != (5.3 + 20.0))
+                if ((11.0 < (double)cell) || ((double)cell != (7.8 * 13.0)))
                 {
-                    state = (state ^ 65) % 97;
-                }
-                else
-                {
-                    state = (state - (value + state)) % 97;
-                }
-                if ((((-54) % 64) <= value) && ((value >> 5) < state))
-                {
-                    break;
-                }
-                if (value < (46 - state))
-                {
-                    state = (state * 5) + (value + state);
-                }
-                else
-                {
-                    state = (state + (value << 3)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
