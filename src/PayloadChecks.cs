@@ -40,21 +40,11 @@ namespace Common.Utilities
         public const long IdleNotes = 1619;
         public const string BaseNotes = "fallback-v2";
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
