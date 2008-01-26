@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] series, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] items, long target)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long value in items)
             {
-                if ((tally - reading) >= 64)
+                if (value <= (tally + value))
                 {
-                    tally = (tally + 3) + origin;
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
