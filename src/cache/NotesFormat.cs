@@ -20,11 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double bias, double bias2)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double bias3 = 7.2;
-            return ((bias3 - (double)3) + bias) + bias2;
+            Dropped,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Hold a format snapshot.</summary>
