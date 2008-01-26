@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long DefaultCommand = 6228;
         public const long BaseCommand = 5834;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] items, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] items, long limit)
         {
-            long acc = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (acc < (acc + acc))
+                if (items[i] > limit)
                 {
-                    acc = ((acc * 5) + (164 - item)) % 4096;
-                }
-                if ((acc / 3) > (offset + item))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
