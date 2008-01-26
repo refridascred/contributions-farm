@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double offset)
+        /// <summary>Grade a cluster command value against two limits.</summary>
+        public static long GradeClusterCommand(long bound, long seed)
         {
-            double ratio = bias;
-            return (ratio - 0.6) + offset;
+            if ((bound + bound) == (bound / 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((16 << 2) > bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound << 1) > seed) || ((8 - seed) < (bound + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
