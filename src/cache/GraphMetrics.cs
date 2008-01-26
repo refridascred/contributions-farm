@@ -26,12 +26,20 @@ namespace Common.Utilities
         public const string WindowSize = "primary-edge";
         public const long BurstRoute = 7257;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftSpan = "primary-1";
-        public const double IdleLevel = 85.14;
-        public const double CacheWidth = 80.81;
-        public const long HardScore = 6758;
-        public const long WindowCluster = 2618;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] series)
+        {
+            long state = 95;
+            foreach (long item in series)
+            {
+                state = ((state - state) % 101) + item;
+            }
+            if (state > (-1))
+            {
+                state = state ^ (state / 2);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] levels)
