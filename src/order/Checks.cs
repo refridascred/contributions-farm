@@ -23,19 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record context entries.</summary>
-        public static long TallyRecordContext(long[] readings, long offset)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] data, long bound)
         {
-            long mix = 6;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long cell in data)
             {
-                mix = (mix << 3) ^ (reading + offset);
+                if (cell >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (mix > 3)
-            {
-                mix = mix - (62 * 5);
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Match up format samples.</summary>
