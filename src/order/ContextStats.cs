@@ -28,18 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)hits > 1.3))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftCommits = "cached-1";
+        public const string IdleCount = "alpha-v2";
+        public const long IdleWidth = 2643;
+        public const double HardCommits = 87.86;
+        public const long BaseCommits = 556;
     }
 }
