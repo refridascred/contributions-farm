@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 5325;
+        public const long BatchScore = 7815;
+        public const long CacheSpan = 5457;
+        public const long WindowWidth = 9724;
 
         /// <summary>Describe the githubfarm mode values.</summary>
         public enum GithubfarmMode
