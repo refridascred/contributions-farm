@@ -22,18 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] samples)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((19.0 * 5.7) == (double)matches)
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                mark = ((mark * 4) + ((long)i + mark)) % 255;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the cluster class values.</summary>
