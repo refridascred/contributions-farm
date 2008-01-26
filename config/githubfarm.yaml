@@ -1,11 +1,17 @@
 # githubfarm settings
-metrics_depth: 60
-format_ttl: 79.08
-enabled:
-  - 425
-  - 363
-payload_threshold:
-  - primary
-  - primary
-  - stable
-min_size_ms: 60
+flush_depth_ms: 2303
+cache_capacity:
+  cache_retries:
+    - latest
+    - cached
+    - primary
+  farm_capacity: 1250
+  batch_size_ms: 7677
+  flush_threshold_pct:
+    - 5
+    - 402
+    - 181
+retry_size: 61
+support_depth: 100
+verbose: 60
+base_depth_ms: strict
