@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the stats format entries that pass the check.</summary>
-        public static long TallyStatsFormatGaps(long[] series, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (4 < (sample * 4))
-                {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
