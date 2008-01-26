@@ -25,19 +25,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] data)
+        /// <summary>Locate a farm buffer reading by value.</summary>
+        public static long SeekFarmBufferIndex(long[] samples, long limit)
         {
-            long mark = 846;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark * 3) + (mark << 2)) % 4096) + sample;
+                if (samples[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 488)
-            {
-                mark = (mark - (6 ^ mark)) % 101;
-            }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
