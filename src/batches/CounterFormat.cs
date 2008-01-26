@@ -43,21 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((seen - seen) != (value % 5)))
                 {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
