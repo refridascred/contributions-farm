@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long seed, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = seed - offset;
+            if ((seed & 3) <= 44)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (span < offset)
                 {
-                    if ((values[i] + values[j]) > 20)
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 60) <= span)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
