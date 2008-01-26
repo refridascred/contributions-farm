@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            if (((double)step < (8.0 + 12.0)) && ((5 >> 5) != (floor + step)))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)797 > (double)step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (2.08 * 0.18))
+                    if ((readings[i] + readings[j]) == 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor * 3) <= floor)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the account state values.</summary>
