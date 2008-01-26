@@ -71,11 +71,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryDepth = 5413;
-        public const long MaxProfile = 354;
-        public const long RetryProfile = 703;
-        public const long DefaultCount = 5875;
-        public const double DefaultInterval = 32.88;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Stale,
+            Idle,
+            Locked,
+            Failed,
+        }
     }
 }
