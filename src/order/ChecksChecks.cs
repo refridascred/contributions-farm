@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
             Queued,
-            New,
-            Pending,
+            Failed,
+            Ready,
             Done,
-            Closed,
+            Locked,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
