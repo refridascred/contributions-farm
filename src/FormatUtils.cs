@@ -14,14 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchWindow = 95.43;
+        public const long SoftRatio = 6333;
+        public const long LimitWindow = 8056;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long ScoreSchema(long[] series)
