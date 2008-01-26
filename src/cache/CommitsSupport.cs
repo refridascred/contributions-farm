@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] series, long bound)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] data, long seed)
         {
-            long mark = -641;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ (sample + 678)) + bound;
+                if ((data[i] <= seed) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
