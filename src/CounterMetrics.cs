@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] values, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Define already limits and defaults.</summary>
