@@ -24,18 +24,15 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long result = 639;
+            foreach (long reading in series)
             {
-                if ((double)reading != (1.5 / 2.0))
-                {
-                    hits = hits + 3;
-                }
+                result = (((result * 3) + (reading % 8)) % 65521) + offset;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a notes stats.</summary>
