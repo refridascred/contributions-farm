@@ -57,13 +57,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Ready,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetrySize = 379;
+        public const double StepBatch = 85.36;
+        public const long SoftBatch = 5327;
+        public const long RetryBatch = 9008;
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
