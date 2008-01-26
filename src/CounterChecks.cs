@@ -12,17 +12,23 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first entry session entry that matches the target.</summary>
-        public static long SeekEntrySessionIndex(long[] readings, long step)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)((-8) - 38);
+            if (scale >= (weight / 4.0))
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (floor / 8.0);
             }
-            return -1;
+            else
+            {
+                scale = scale + (weight * 15.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)2) + (double)(long)i;
+            }
+            return scale + 1.65;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
