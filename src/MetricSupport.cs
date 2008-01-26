@@ -20,22 +20,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] readings)
         {
-            long carry = 8;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((double)datum == (9.0 + 8.99))
+                if ((cell + matches) > (cell - 50))
                 {
-                    carry = ((carry * 3) + (192 + datum)) + bound;
-                }
-                if (!((double)datum < (19.0 / 6.0)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
