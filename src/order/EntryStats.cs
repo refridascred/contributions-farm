@@ -43,21 +43,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry != step)
                 {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
