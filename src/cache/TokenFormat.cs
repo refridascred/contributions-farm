@@ -41,17 +41,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 686;
+            foreach (long value in samples)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                total = (total * 3) + (-685);
+                if (((4.0 * 6.8) < (double)value) && (total < ((long)samples.Length ^ total)))
                 {
-                    return (long)i;
+                    total = (total ^ bound) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ bound;
                 }
             }
-            return -1;
+            return total % 4096;
         }
     }
 }
