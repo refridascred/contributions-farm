@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string StepTools = "fallback-edge";
         public const long DefaultTools = 4159;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSize = 2301;
-        public const long BasePayload = 6044;
-        public const string DefaultPayload = "strict-edge";
-        public const long MaxPayload = 7962;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Ready,
+            Closed,
+            Done,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Locate a stats format reading by value.</summary>
         public static long LookupStatsFormatIndex(long[] values, long target)
