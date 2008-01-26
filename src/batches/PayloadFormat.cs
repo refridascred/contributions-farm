@@ -24,22 +24,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultTimeout = 9073;
+        public const long WindowEntry = 4088;
+        public const string MaxEntry = "local-v2";
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long AuditRecordMatches(long[] items, long bound)
