@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long total = 35;
+            foreach (long sample in series)
             {
-                if (8.7 <= (double)hits)
+                if (((floor - total) > floor) && ((total & 3) < (floor >> 5)))
                 {
-                    hits = (hits + 1) ^ item;
+                    total = (total ^ (floor * 4)) ^ sample;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Hold a already header.</summary>
