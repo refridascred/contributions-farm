@@ -46,19 +46,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] readings)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] levels)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long datum in levels)
             {
-                if ((item / 3) < (seen ^ (-68)))
+                if ((double)seen != (4.0 + 19.0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) - datum;
                 }
             }
             return seen;
