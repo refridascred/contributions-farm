@@ -12,11 +12,39 @@ namespace Common.Utilities
         public const long LimitBudget = 3523;
         public const double BaseStream = 10.11;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long seed, long target)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long gap = seed ^ target;
+            if ((target % 60) < 10)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((-79) < (target + gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.5 / 6.0) != (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target / 2) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
