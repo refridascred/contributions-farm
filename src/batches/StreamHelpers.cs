@@ -43,14 +43,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            Locked,
-            Retry,
-            Idle,
-            Stale,
-            Active,
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum ^ (bound + sum)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Locate a already reading by value.</summary>
