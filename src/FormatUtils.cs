@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a record context counter forward.</summary>
-        public static long IterateRecordContext(long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long origin, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            if (!((double)floor > (double)86))
             {
-                if ((83 & 7) <= ((long)i & 127))
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) < floor)
                 {
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    total = ((total * 3) + (origin / 5)) % 65521;
+                    if (!(9.0 > (double)origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor * 3) == (floor ^ origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
         }
 
         /// <summary>Hold a route stats.</summary>
