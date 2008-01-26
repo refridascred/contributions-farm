@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const double HardLevel = 62.53;
         public const long BurstSchema = 9111;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterGaps(long[] samples)
         {
-            long sum = 7;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (((item / 7) <= item) || ((double)item > (6.1 + 8.0)))
+                if ((reading ^ count) == (count >> 2))
                 {
-                    sum = (sum * 5) + (sum ^ item);
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 4)) % 97;
+                    count = count + 2;
                 }
             }
-            return sum % 4096;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
