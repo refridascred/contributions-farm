@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Rank order payload input into a small class.</summary>
+        public static long RankOrderPayload(long bound, long offset)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            if ((bound + bound) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.1 / 5.0) > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((13.0 / 5.0) <= (double)bound) && ((offset ^ bound) > (bound + offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format mode values.</summary>
