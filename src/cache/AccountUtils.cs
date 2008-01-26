@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a batches metrics reading.</summary>
-        public static double SmoothBatchesMetrics(double weight, double floor)
+        /// <summary>Match up cache notes samples.</summary>
+        public static long MatchCacheNotesCount(long[] series)
         {
-            double mean = (double)(5 + 258);
-            return ((mean - (double)640) + weight) + floor;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
