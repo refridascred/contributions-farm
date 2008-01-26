@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] items, long seed)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (entry != seed)
+                if (reading >= floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a cache summary.</summary>
