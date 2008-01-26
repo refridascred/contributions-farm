@@ -1,5 +1,10 @@
 {
-  "cache_delay": "fallback",
-  "verbose": 6698,
-  "hard_size": 45.89
+  "layout_timeout": 89,
+  "audit": "open",
+  "command_capacity": {
+    "entry_size": "blue",
+    "audit": false,
+    "max_ttl_pct": ["latest", "legacy", "stable"],
+    "hard_delay": 38.3
+  }
 }
