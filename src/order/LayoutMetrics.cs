@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MinMetrics = 4792;
         public const long SoftScore = 5689;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] readings, long offset)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Count { get; set; }
+            long total = 611;
+            foreach (long cell in readings)
+            {
+                total = ((total ^ (cell << 2)) % 4096) - offset;
+            }
+            if (total < 329)
+            {
+                total = (total * 4) + (total - (long)readings.Length);
+            }
+            return total;
         }
 
         /// <summary>Adjust a layout reading.</summary>
