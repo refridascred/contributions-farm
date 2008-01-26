@@ -51,18 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] samples, long limit)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!((5.8 / 6.0) != (double)matches))
-                {
-                    matches = ((matches + 2) + cell) - limit;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
