@@ -25,20 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                long matches = acc;
-                if (!(((long)i / 5) == (546 - matches)))
-                {
-                    acc = ((acc * 3) + (matches >> 5)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Paused,
+            Locked,
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
