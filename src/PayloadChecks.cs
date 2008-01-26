@@ -37,12 +37,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
