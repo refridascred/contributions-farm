@@ -43,16 +43,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] data)
-        {
-            long carry = 893;
-            foreach (long sample in data)
-            {
-                carry = (carry << 3) ^ (4 + sample);
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "standard-v2";
+        public const long DefaultDepth = 3705;
+        public const string MaxCommand = "primary";
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
