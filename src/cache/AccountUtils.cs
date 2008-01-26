@@ -22,25 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long floor, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] levels, long floor)
         {
-            long edge = floor ^ target;
-            if (edge >= (target ^ edge))
+            long total = 6;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target >= (2.01 / 3.0))
+                if (((double)total != (double)251) || ((floor + total) != (floor / 4)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    total = (((total << 3) ^ (4 << 2)) % 101) + entry;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
