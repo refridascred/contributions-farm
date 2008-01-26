@@ -36,14 +36,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] samples, long floor)
         {
-            Queued,
-            Failed,
-            Dropped,
-            Locked,
-            Draft,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two channel measurements.</summary>
