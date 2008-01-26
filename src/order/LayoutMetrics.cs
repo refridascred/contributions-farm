@@ -25,11 +25,9 @@ namespace Common.Utilities
         public const double WindowCache = 96.98;
         public const long DefaultScore = 6726;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double gain, double floor)
-        {
-            double ratio = floor;
-            return (ratio + floor) + gain;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 4037;
+        public const long MaxProfile = 4883;
+        public const long WindowProfile = 9301;
     }
 }
