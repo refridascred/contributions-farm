@@ -34,13 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
