@@ -42,12 +42,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "open";
-        public const long BaseLayout = 1378;
-        public const string StepInterval = "strict";
-        public const string BurstLayout = "alpha-1";
-        public const string BaseWidth = "local";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
