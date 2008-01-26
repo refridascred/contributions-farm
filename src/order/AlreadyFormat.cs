@@ -55,22 +55,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (((item * 2) <= tally) && ((item - item) != (target ^ 5)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 80.46;
+        public const double RetryWidth = 28.9;
+        public const long HardRatio = 5328;
     }
 }
