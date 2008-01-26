@@ -16,13 +16,11 @@ namespace Common.Utilities
             return ratio + (offset * 5.66);
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Closed,
-            Idle,
-            Queued,
-            Failed,
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
