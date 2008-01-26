@@ -19,19 +19,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long target, long origin)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            if ((1.19 * 20.0) >= (double)target)
             {
-                if (sample < bound)
+                return 7;
+            }
+            else
+            {
+                if ((target - 11) < (origin + target))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
     }
 }
