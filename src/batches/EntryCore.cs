@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] samples, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long carry = 359;
+            foreach (long sample in series)
             {
-                if ((entry & 15) > entry)
-                {
-                    tally = (tally + 1) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = (carry + sample) % 65521;
             }
-            return tally;
+            if (carry < 10)
+            {
+                carry = ((carry * 4) + (target + 85)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
