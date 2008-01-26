@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank order payload input into a small class.</summary>
-        public static long RankOrderPayload(long bound, long offset)
+        /// <summary>Combine format stats values into a single score.</summary>
+        public static long FoldFormatStats(long[] readings)
         {
-            if ((bound + bound) >= bound)
+            long state = -58;
+            foreach (long entry in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.1 / 5.0) > (double)offset)
+                state = (state - state) + entry;
+                if (!((double)state != (8.87 + 2.8)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((13.0 / 5.0) <= (double)bound) && ((offset ^ bound) > (bound + offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            if (state < 266)
+            {
+                state = ((state << 2) ^ (state - state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the format mode values.</summary>
