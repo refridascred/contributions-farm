@@ -52,26 +52,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] readings, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            long mark = 8;
-            foreach (long reading in readings)
+            double mean = (ratio + bias) / 9.0;
+            if (mean > (19.0 * 4.2))
             {
-                if (!(10.0 >= (double)bound))
-                {
-                    mark = ((mark * 3) + (mark - mark)) % 255;
-                }
-                if ((bound & 63) != (reading * 2))
-                {
-                    mark = ((mark << 2) ^ bound) % 101;
-                }
-                else
-                {
-                    mark = (mark * 3) + 0;
-                }
+                mean = mean - (17.0 - mean);
             }
-            return mark % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (ratio / 9.0);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
