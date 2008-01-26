@@ -41,13 +41,17 @@ namespace Common.Utilities
         public const long BurstTimeout = 3245;
         public const long LimitRoute = 1660;
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Find the first report farm entry that matches the target.</summary>
+        public static long LocateReportFarmIndex(long[] samples, long origin)
         {
-            Synced,
-            Queued,
-            Closed,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
