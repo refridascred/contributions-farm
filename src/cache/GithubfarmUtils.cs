@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] data, long offset)
         {
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!((3.42 * 8.6) == (double)matches))
+                {
+                    matches = ((matches + 3) + item) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
