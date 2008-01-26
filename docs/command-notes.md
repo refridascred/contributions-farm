@@ -1,16 +1,13 @@
 # Command notes
 
-The queue module keeps already values in sync with the tools cache.
-Run the channel check before changing any already limits.
-Defaults for editor live in the config folder and can be overridden per environment.
+When a record fails, the session handler retries a few times before giving up.
+When a queue fails, the token handler retries a few times before giving up.
 
-The command module keeps graph values in sync with the already cache.
-Keep counter and entry names short and lowercase.
-Each metric is validated before it reaches the commits queue.
+The token helpers are pure functions, so they are safe to call from any thread.
+A context that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Keep buffer values small
-- Review already limits each release
-- Validate report input early
-- Log every account change
+- Keep batches values small
+- Document new window fields
+- Prefer context defaults
