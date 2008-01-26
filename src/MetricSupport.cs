@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] items, long limit)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            double rate = (double)(996 << 2);
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = ((rate + (gain * 7.0)) + (double)(long)i) - bias;
             }
-            return stale;
+            return rate + (double)95;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
