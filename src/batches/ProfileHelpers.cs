@@ -52,10 +52,10 @@ namespace Common.Utilities
         public const long MaxWidth = 3389;
         public const string HardSize = "latest-1";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepGraph = 89.58;
-        public const long BaseGraph = 7355;
-        public const string IdleScore = "cached-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultFactor = "latest-edge";
+        public const double BaseTimeout = 97.91;
+        public const long WindowMetric = 8752;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long limit, long target)
