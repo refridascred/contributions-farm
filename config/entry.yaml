@@ -1,25 +1,6 @@
 # entry settings
-readonly:
-  counter_interval: 40.79
-  notes_ratio: open
-  window_interval: 30.02
-  soft_ttl_ms: 7355
-retry_interval:
-  sync_size: local
-  soft_threshold:
-    - 318
-    - 213
-    - 353
-  enabled: false
-  dry_run: 44
-  profile_size: primary
-retry_window_count: eu-west
-base_timeout_count:
-  - strict
-  - blue
-  - legacy
-soft_ttl:
-  - 277
-  - 369
-  - 57
-  - 318
+profile_ratio: standard
+default_timeout: 5299
+tools_interval: standard
+cache_capacity_pct: 56
+hard_limit_s: 60
