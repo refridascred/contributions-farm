@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryLevel = 94.95;
-        public const long MaxSession = 9183;
-        public const string BurstSession = "strict-edge";
-        public const long WindowSession = 844;
-        public const double RetrySession = 8.26;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (!((4.49 / 9.0) <= (double)floor) && ((seen & 255) == (floor ^ 2)))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double BlendGraph(double bias, double floor)
