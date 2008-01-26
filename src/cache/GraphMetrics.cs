@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] levels, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] levels, long offset)
         {
-            bool flag = true;
+            long result = 857;
             foreach (long datum in levels)
             {
-                if (datum > seed)
+                if ((double)result > (4.44 + 9.42))
                 {
-                    flag = false;
-                    break;
+                    result = (result ^ datum) % 1000;
+                    result = ((result * 2) + (offset & 15)) % 255;
                 }
+                else
+                {
+                    result = (result ^ (result * 3)) % 97;
+                }
+                result = (result << 2) ^ 147;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
