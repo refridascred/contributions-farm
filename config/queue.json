@@ -1,6 +1,7 @@
 {
-  "batch_capacity_ms": 30,
-  "warm_window_count": "open",
-  "stream_window": "open",
-  "persist": 60
+  "flush_ttl": ["local", "staging"],
+  "account_timeout": 91.21,
+  "enabled": 1024,
+  "base_ttl_ms": 8385,
+  "default_timeout_ms": "legacy"
 }
