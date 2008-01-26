@@ -1,14 +1,7 @@
 # support settings
-editor_delay: edge
-soft_capacity: local
-githubfarm_depth:
-  cache_interval: staging
-  retry_size: 74
-  compress: 4472
-  idle_size: 6321
-persist: 74
-route_depth: 3
-warm_window_pct:
-  - latest
-  - eu-west
-  - eu-west
+audit: false
+batch_delay: green
+poll_capacity_s:
+  soft_retries_s: 100
+  burst_ttl_ms: latest
+  batch_ratio: false
