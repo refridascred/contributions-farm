@@ -31,14 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit already commits readings against a rule.</summary>
+        public static long AuditAlreadyCommitsGaps(long[] samples, long bound)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Failed,
-            Synced,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (3.27 >= (double)bound)
+                {
+                    hits = (hits + 2) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format class values.</summary>
