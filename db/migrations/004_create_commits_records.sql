@@ -2,13 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    weight REAL,
     level INTEGER,
-    rank INTEGER,
-    active INTEGER NOT NULL DEFAULT 1
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_active ON commits_records (active);
+CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
 
-INSERT INTO commits_records (owner, weight, level, rank, active) VALUES ('latest', 80.51, 39, 32, 56);
-INSERT INTO commits_records (owner, weight, level, rank, active) VALUES ('stable', 59.89, 47, 34, 35);
+INSERT INTO commits_records (owner, level, weight) VALUES ('legacy', 60, 7.04);
+INSERT INTO commits_records (owner, level, weight) VALUES ('stable', 3, 87.33);
+INSERT INTO commits_records (owner, level, weight) VALUES ('cached', 29, 21.85);
