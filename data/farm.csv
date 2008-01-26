@@ -1,6 +1,9 @@
-id,active,ratio,owner
-1,78.17,open,70.76
-2,36.42,cached,160
-3,95.82,legacy,45
-4,strict,720,850
-5,legacy,latest,green
+id,ratio,owner,weight,rank
+1,162,791,868,primary
+2,702,527,510,387
+3,391,edge,961,637
+4,primary,149,eu-west,99
+5,486,80.21,eu-west,37.85
+6,58.56,690,82.15,77.2
+7,479,680,90.42,92.8
+8,legacy,567,921,969
