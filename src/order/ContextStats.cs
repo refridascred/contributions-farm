@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftRatio = 1162;
-        public const long MaxScore = 7501;
-        public const double DefaultSize = 31.17;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 2660;
+        public const long BurstCommand = 813;
+        public const long MaxTimeout = 5906;
+        public const double SoftScore = 22.82;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long floor)
