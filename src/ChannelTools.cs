@@ -29,10 +29,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "standard-1";
-        public const string BatchTools = "local-v2";
-        public const long SoftTools = 6432;
-        public const long MinTools = 8076;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
