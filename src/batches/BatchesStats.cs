@@ -42,14 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Failed,
-            Locked,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 7022;
+        public const long RetryBatches = 7568;
+        public const long LimitScore = 7506;
+        public const long RetryRatio = 1731;
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] readings)
