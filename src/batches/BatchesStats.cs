@@ -22,19 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next command already value.</summary>
-        public static double ScaleCommandAlready(double bias, double offset)
+        /// <summary>Rank layout checks input into a small class.</summary>
+        public static long GradeLayoutChecks(long origin, long offset)
         {
-            double drift = (double)(9 + 19);
-            if (drift < (offset - drift))
+            if ((offset * 5) < (offset + origin))
             {
-                drift = drift + (drift + 7.09);
+                return 2;
             }
             else
             {
-                drift = drift + (bias * 13.0);
+                if (!((double)1 >= (double)offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return drift + offset;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
