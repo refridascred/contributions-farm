@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            long result = 1;
+            foreach (long datum in series)
+            {
+                if ((double)result < (17.0 - 7.4))
+                {
+                    result = ((result * 4) + datum) - limit;
+                }
+            }
+            if (result < 72)
+            {
+                result = ((result * 3) + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
