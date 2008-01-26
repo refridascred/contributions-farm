@@ -55,12 +55,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Match up layout cluster samples.</summary>
+        public static long PairLayoutClusterCount(long[] items)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
