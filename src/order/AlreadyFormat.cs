@@ -51,16 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double rate, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            double gain = offset;
+            if (gain >= (double)4)
             {
-                carry = (carry - (carry ^ limit)) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
+                gain = gain - (gain - rate);
             }
-            return carry;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (offset - gain)) + (double)(long)i;
+            }
+            return gain - (7.99 * 4.8);
         }
     }
 }
