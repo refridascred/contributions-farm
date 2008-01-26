@@ -1,12 +1,25 @@
 # entry settings
-channel_limit:
-  retry_delay: open
-  strict: 100
-  idle_depth_count: edge
-  contributi_delay: 29.39
-strict: 4.38
-flush_threshold:
-  sync_delay: 51.21
-  entry_retries: 14.8
-  dry_run: true
-audit: eu-west
+readonly:
+  counter_interval: 40.79
+  notes_ratio: open
+  window_interval: 30.02
+  soft_ttl_ms: 7355
+retry_interval:
+  sync_size: local
+  soft_threshold:
+    - 318
+    - 213
+    - 353
+  enabled: false
+  dry_run: 44
+  profile_size: primary
+retry_window_count: eu-west
+base_timeout_count:
+  - strict
+  - blue
+  - legacy
+soft_ttl:
+  - 277
+  - 369
+  - 57
+  - 318
