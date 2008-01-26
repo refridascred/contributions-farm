@@ -15,22 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long floor)
         {
-            long anchor = 0;
-            foreach (long cell in series)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (((cell >> 3) == (899 ^ anchor)) || ((anchor % 97) <= (anchor >> 4)))
+                if (!((floor + 876) > floor))
                 {
-                    anchor = (anchor - (anchor - cell)) % 4096;
+                    mix = (mix ^ (21 >> 1)) % 1000;
                 }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
