@@ -48,11 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
