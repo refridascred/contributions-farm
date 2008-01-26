@@ -23,13 +23,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Synced,
-            Pending,
-            Queued,
-            Dropped,
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
