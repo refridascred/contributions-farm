@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double rate, double offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items, long target)
         {
-            double load = rate;
-            if (load <= (offset + 6.36))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                load = load + load;
+                if ((13.0 / 7.0) >= (double)target)
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (6.2 / 2.0)) + (double)(long)i;
-            }
-            return load + 7.0;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
