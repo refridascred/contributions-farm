@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheTimeout = 8644;
-        public const string RetrySpan = "cached-edge";
-        public const long StepStream = 230;
-        public const long LimitBudget = 3523;
-        public const double BaseStream = 10.11;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long seed, long target)
