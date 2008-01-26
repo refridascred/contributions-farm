@@ -47,14 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] values, long seed)
         {
-            Ready,
-            Dropped,
-            Closed,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((11 + seed) > (seed + hits)) || ((hits * 2) > (seed + sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batches stats.</summary>
