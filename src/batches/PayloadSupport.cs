@@ -38,13 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double rate, double offset)
         {
-            public double Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
+            double rate2 = (7.1 * 16.0) + (double)1;
+            if (rate2 >= (double)2)
+            {
+                rate2 = rate2 + (offset + rate);
+            }
+            return rate2 + (rate / 2.0);
         }
     }
 }
