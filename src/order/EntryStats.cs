@@ -14,15 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] items, long bound)
         {
-            long mark = 1;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + (bound + bound)) + sample;
+                if ((items[i] < bound) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank order stream input into a small class.</summary>
