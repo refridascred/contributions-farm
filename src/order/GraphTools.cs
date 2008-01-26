@@ -37,38 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long target, long floor)
+        /// <summary>Check that every already layout entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLayoutRange(long[] items, long bound)
         {
-            if (((target * 5) > target) && ((target % 3) >= target))
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target >> 4) == (floor * 4))
+                if (item <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (45 < (floor << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (2.2 - 13.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
