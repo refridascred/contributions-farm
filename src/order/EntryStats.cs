@@ -10,21 +10,32 @@ namespace Common.Utilities
         public const long DefaultLevel = 1839;
         public const long WindowInterval = 7324;
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] data)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset - offset2;
+            if (offset > (offset << 3))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (3.2 <= (double)bound)
                 {
-                    if ((data[i] - data[j]) != 3)
+                    return 8;
+                }
+                else
+                {
+                    if (132 >= (bound - offset2))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the record state values.</summary>
