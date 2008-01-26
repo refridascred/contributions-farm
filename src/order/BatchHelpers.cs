@@ -33,16 +33,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Rank stats profile input into a small class.</summary>
+        public static long SortStatsProfile(long target, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
+            long diff = target ^ limit;
+            if ((target & 3) != (9 + limit))
             {
-                total = (total << 2) ^ (total + step);
-                total = ((total * 3) + (long)i) % 97;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((diff & 1) >= (limit + diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((6.1 + 5.3) < (double)diff) && (limit <= (diff & 7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
