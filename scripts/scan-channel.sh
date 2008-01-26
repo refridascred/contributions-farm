@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=297
+CHANNEL_LIMIT=499
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in legacy green; do
+for item in open edge; do
     log "checking ${item}"
 done
