@@ -33,12 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double span)
         {
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            double drift = span - (rate * 7.2);
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + rate) + (double)(long)i;
+            }
+            return drift - (drift - rate);
         }
 
         /// <summary>Hold a tools summary.</summary>
