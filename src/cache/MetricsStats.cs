@@ -13,10 +13,16 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryWidth = 2219;
-        public const long BurstSize = 957;
-        public const long IdleDepth = 8986;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double AdjustEditor(double bias, double offset)
+        {
+            double gain = (bias - bias) - (offset + bias);
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + 3.9) + (double)(long)i;
+            }
+            return gain - (bias / 9.0);
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string MinBudget = "cached-edge";
