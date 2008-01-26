@@ -51,22 +51,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long score = 0;
-            foreach (long value in values)
-            {
-                if (((value + value) != (4 + score)) || ((value / 7) <= value))
-                {
-                    score = (score - (244 + score)) % 4096;
-                }
-            }
-            if (score < 98)
-            {
-                score = (score * 5) + (score - score);
-            }
-            return score;
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
