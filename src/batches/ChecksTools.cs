@@ -63,16 +63,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] series, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry ^ (target % 100)) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((series[i] > target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
