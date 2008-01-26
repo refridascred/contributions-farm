@@ -16,19 +16,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value >= tally) && ((tally >> 5) < value))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 7463;
+        public const string DefaultEntry = "open";
+        public const long BaseEntry = 7432;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LocateCommitsIndex(long[] values, long step)
