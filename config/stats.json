@@ -1,5 +1,11 @@
 {
-  "checks_ratio": 37,
-  "sync_threshold_s": "blue",
-  "persist": ["staging", "blue"]
+  "editor_delay": 30,
+  "min_ttl": false,
+  "enabled": "green",
+  "audit": {
+    "warm_capacity": 27,
+    "sync_timeout": 64,
+    "audit": "stable"
+  },
+  "flush_interval": 2844
 }
