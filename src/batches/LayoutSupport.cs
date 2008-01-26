@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 6868;
-        public const double IdleFilter = 56.51;
-        public const long CacheFilter = 9898;
-        public const string BatchScore = "open-edge";
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Size { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricRange(long[] levels, long floor)
