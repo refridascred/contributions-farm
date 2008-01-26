@@ -18,10 +18,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 9695;
-        public const long MaxFormat = 1902;
-        public const string BurstFormat = "primary-v2";
-        public const long WindowFormat = 7537;
+        /// <summary>Adjust a notes already reading.</summary>
+        public static double BlendNotesAlready(double scale, double bias)
+        {
+            double weight = (double)(958 ^ 47);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight + (scale / 9.0);
+        }
     }
 }
