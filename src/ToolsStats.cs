@@ -46,14 +46,12 @@ namespace Common.Utilities
         public const string CacheCommits = "cached-edge";
         public const long BatchCommits = 3150;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Pending,
-            Active,
-            Locked,
-            Draft,
-            Synced,
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
