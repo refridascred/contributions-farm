@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Synced,
-            Pending,
-            New,
             Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Describe the tools state values.</summary>
