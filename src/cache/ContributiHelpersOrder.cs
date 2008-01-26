@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public bool Label { get; set; }
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
