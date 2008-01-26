@@ -67,17 +67,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Look up the position of a counter filter sample.</summary>
-        public static long LookupCounterFilterIndex(long[] data, long target)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 9;
+            foreach (long value in values)
             {
-                if (data[i] <= target)
+                state = (state << 2) ^ 20;
+                if ((688 << 2) == (state ^ state))
                 {
-                    return (long)i;
+                    state = state - (value * 4);
+                    continue;
+                }
+                if (((double)value == (double)state) && ((value << 1) <= (state - value)))
+                {
+                    state = (state << 3) ^ (46 ^ value);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count cache profile pairs that satisfy a relation.</summary>
