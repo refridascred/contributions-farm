@@ -22,17 +22,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] values, long offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
