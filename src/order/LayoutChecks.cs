@@ -68,31 +68,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long target, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            if ((4.32 - 15.0) > (double)target)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (4.6 >= (double)bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-11) ^ target) < (target % 2))
+                    if ((series[i] - series[j]) != 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
