@@ -19,22 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer filter samples.</summary>
-        public static long CompareBufferFilterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseDepth = 17.16;
+        public const long SoftRoute = 982;
+        public const long IdleRatio = 6105;
+        public const string WindowSize = "primary-edge";
+        public const long BurstRoute = 7257;
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
