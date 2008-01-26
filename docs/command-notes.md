@@ -1,13 +1,12 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the editor list.
-Run the commits check before changing any metrics limits.
-
-Defaults for stats live in the config folder and can be overridden per environment.
-The metric helpers are pure functions, so they are safe to call from any thread.
+Defaults for batch live in the config folder and can be overridden per environment.
+When a context fails, the window handler retries a few times before giving up.
+When a stream fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Validate already input early
-- Document new session fields
+- Keep schema values small
+- Log every buffer change
+- Document new notes fields
+- Review filter limits each release
