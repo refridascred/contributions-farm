@@ -1,6 +1,8 @@
 {
-  "persist": 45.3,
-  "order_ttl": 250,
-  "burst_retries_pct": 9212,
-  "dry_run": 88
+  "soft_ratio_pct": 3794,
+  "sync_ratio_pct": 8004,
+  "record_window": 100,
+  "dry_run": [267, 127],
+  "retry_threshold_pct": [282, 156],
+  "graph_threshold": 15
 }
