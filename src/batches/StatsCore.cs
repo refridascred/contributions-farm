@@ -86,17 +86,18 @@ namespace Common.Utilities
             return rate - (rate + rate);
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] series, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 2;
+            foreach (long sample in series)
             {
-                if (series[i] == target)
+                if (anchor < (sample - anchor))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + (seed << 3)) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
