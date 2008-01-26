@@ -34,19 +34,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double gain, double bias)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] values, long bound)
         {
-            double mean = bias;
-            if (mean <= (mean * 9.84))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - (gain - bias);
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - (gain / 5.0);
+            return -1;
         }
 
         /// <summary>Digest a series of cache session entries.</summary>
