@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] items)
         {
-            double gain = offset;
-            return (gain - (3.2 - 7.0)) + scale;
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches % 10) > (546 >> 2))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
