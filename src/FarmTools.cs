@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long seed, long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] levels)
         {
-            long gap = seed + floor;
-            if (((1.3 * 6.0) <= (double)gap) && (38 >= (858 + seed)))
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (3.23 >= (6.61 - 2.7))
+                if ((4.1 <= (double)tally) && (((entry - tally) >= (entry / 2)) || (entry <= (entry / 7))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
