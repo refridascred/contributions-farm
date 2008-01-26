@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 2660;
-        public const long BurstCommand = 813;
-        public const long MaxTimeout = 5906;
-        public const double SoftScore = 22.82;
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
+        {
+            Ready,
+            Draft,
+            New,
+            Synced,
+        }
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long floor)
