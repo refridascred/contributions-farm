@@ -1,9 +1,6 @@
-id,count,token,owner,rank
-1,blue,eu-west,stable,43.79
-2,207,primary,183,49.21
-3,678,822,fallback,eu-west
-4,951,306,35.13,26.63
-5,628,581,primary,fallback
-6,63,77.19,97.4,88.9
-7,474,16.61,standard,92.07
-8,476,107,98,594
+id,ratio,weight,count,rank
+1,35.7,65.55,3.65,49.68
+2,977,45,977,8.02
+3,94.89,996,9.98,838
+4,fallback,edge,74.76,strict
+5,46.02,strict,40.22,98.38
