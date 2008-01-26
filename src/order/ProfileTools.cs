@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Done,
+            Idle,
+            Stale,
+            Draft,
         }
 
         /// <summary>Locate a schema reading by value.</summary>
