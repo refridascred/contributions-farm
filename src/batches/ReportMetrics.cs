@@ -14,11 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleContributi = "alpha";
-        public const string IdleDepth = "stable-v2";
-        public const string BurstContributi = "stable-v2";
-        public const long MinDepth = 9697;
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels)
+        {
+            long result = 12;
+            foreach (long entry in levels)
+            {
+                if (result < (entry + entry))
+                {
+                    result = (result << 2) ^ (entry + result);
+                    result = (result + (entry >> 1)) % 1000;
+                }
+                if ((853 / 9) <= (9 + result))
+                {
+                    result = (result ^ (entry ^ entry)) % 65521;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double BurstFactor = 65.08;
