@@ -1,6 +1,6 @@
-id,state
-1,35.93
-2,60.19
-3,748
-4,fallback
-5,open
+id,active,ratio,owner
+1,78.17,open,70.76
+2,36.42,cached,160
+3,95.82,legacy,45
+4,strict,720,850
+5,legacy,latest,green
