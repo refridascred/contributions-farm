@@ -27,15 +27,17 @@ namespace Common.Utilities
             return gain2 + bias;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double gain, double offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] items, long offset)
         {
-            double drift = gain;
-            if (drift < gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = (drift + drift) - offset;
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
