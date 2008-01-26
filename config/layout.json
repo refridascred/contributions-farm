@@ -1,8 +1,8 @@
 {
-  "default_delay_s": true,
-  "window_timeout": "edge",
-  "batch_retries": 6220,
-  "min_retries": 61,
-  "retry_threshold_pct": 34,
-  "enabled": [169, 461, 279]
+  "batch_limit": ["edge", "blue"],
+  "account_ttl": [211, 317, 168],
+  "batch_capacity_ms": false,
+  "metric_depth": 1.69,
+  "enabled": "edge",
+  "dry_run": "open"
 }
