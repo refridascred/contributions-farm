@@ -42,15 +42,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double offset)
+        /// <summary>Look up the position of a batches payload sample.</summary>
+        public static long SeekBatchesPayloadIndex(long[] values, long seed)
         {
-            double gain = (double)((-449) - 93);
-            if (gain < scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (scale / 2.0);
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain + (offset + scale);
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
