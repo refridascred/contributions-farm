@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items, long offset)
-        {
-            long mix = 81;
-            foreach (long cell in items)
-            {
-                if ((cell << 2) < cell)
-                {
-                    mix = (mix ^ mix) + offset;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = mix ^ (mix + 4);
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BatchOrder = 97.96;
+        public const double LimitOrder = 88.15;
+        public const long StepSpan = 7923;
+        public const long HardSize = 469;
+        public const long SoftOrder = 6115;
 
         /// <summary>Measure how many context entry samples are out of range.</summary>
         public static long TallyContextEntryMatches(long[] items, long step)
