@@ -1,32 +1,11 @@
 # support settings
-channel_size: cached
-default_threshold_pct:
-  sync_limit_s: 53
-  enabled:
-    soft_interval: 11.45
-    session_threshold: 64.51
-    dry_run:
-      - 301
-      - 110
-      - 166
-    verbose: true
-    poll_ttl: 250
-  burst_ratio: 4369
-  default_timeout_s:
-    profile_size:
-      - cached
-      - green
-      - local
-      - eu-west
-    soft_capacity_pct: 7015
-    poll_timeout_count:
-      - 215
-      - 376
-    verbose: 6.69
-default_interval:
-  audit: staging
-  base_timeout_pct: 46.66
-  sync_interval_count: true
-  profile_threshold: 60
-poll_limit: staging
-default_interval_count: eu-west
+idle_depth_s: 5358
+commits_interval:
+  readonly: cached
+  cache_capacity: true
+  githubfarm_timeout: 500
+  compress: 30
+  commits_interval: standard
+  verbose: false
+strict: 66.2
+profile_capacity: 75
