@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] series, long floor)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long offset, long step)
         {
-            long total = 35;
-            foreach (long sample in series)
+            long gap = offset + step;
+            if (!((19 ^ step) != ((-1) ^ gap)))
             {
-                if (((floor - total) > floor) && ((total & 3) < (floor >> 5)))
+                return 3;
+            }
+            else
+            {
+                if (((offset ^ offset) > offset) || ((double)gap > (double)(-3)))
                 {
-                    total = (total ^ (floor * 4)) ^ sample;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Hold a already header.</summary>
