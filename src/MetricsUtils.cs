@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 4182;
-        public const long MaxRoute = 8359;
-        public const string WindowBudget = "local";
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public double Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long TallyCacheMatches(long[] series, long target)
