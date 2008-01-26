@@ -42,16 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxStats = 2206;
+        public const long LimitTimeout = 7360;
+        public const string RetryStats = "alpha-v2";
+        public const long DefaultStats = 6043;
 
         /// <summary>Check that every filter graph entry stays within the limit.</summary>
         public static bool GuardFilterGraphLimits(long[] items, long target)
