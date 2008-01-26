@@ -12,23 +12,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double gain, double bias)
         {
-            double scale = (double)((-8) - 38);
-            if (scale >= (weight / 4.0))
+            double ratio = bias;
+            if (ratio < (bias - 13.0))
             {
-                scale = scale - (floor / 8.0);
+                ratio = (ratio - ratio) - gain;
             }
-            else
-            {
-                scale = scale + (weight * 15.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (double)2) + (double)(long)i;
-            }
-            return scale + 1.65;
+            return ratio - (bias / 3.0);
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
