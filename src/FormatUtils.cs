@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long origin, long floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if (!((double)floor > (double)86))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) < floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(9.0 > (double)origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor * 3) == (floor ^ origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a route stats.</summary>
