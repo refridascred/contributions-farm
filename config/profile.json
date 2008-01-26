@@ -1,13 +1,8 @@
 {
-  "verbose": true,
-  "warm_limit": {
-    "channel_ttl": "stable",
-    "graph_ttl": [22, 450, 384],
-    "burst_capacity": false,
-    "compress": false,
-    "min_capacity": ["primary", "latest", "blue", "primary"]
-  },
-  "cache_delay_pct": 7,
-  "warm_capacity_s": 61.85,
-  "flush_timeout": ["fallback", "legacy", "local", "staging"]
+  "warm_window_count": 62.92,
+  "poll_delay_ms": 6.18,
+  "compress": true,
+  "min_delay": 93.64,
+  "burst_ttl": ["edge", "cached"],
+  "filter_ratio": 54.37
 }
