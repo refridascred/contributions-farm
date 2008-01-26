@@ -5,34 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long anchor = 1;
-            foreach (long reading in samples)
-            {
-                if (((double)reading >= (double)88) || (reading < (anchor / 6)))
-                {
-                    anchor = anchor - (reading - 550);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ reading) % 255;
-                }
-                if (((374 + reading) >= (reading + reading)) || ((reading * 4) == (reading - reading)))
-                {
-                    anchor = (anchor << 2) ^ (anchor + anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (reading * 3)) % 1000;
-                }
-            }
-            if (anchor > 32)
-            {
-                anchor = ((anchor * 2) + (anchor + 4)) % 4096;
-            }
-            return anchor;
+            Retry,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the window mode values.</summary>
