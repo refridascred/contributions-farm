@@ -20,13 +20,12 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
