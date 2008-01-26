@@ -23,14 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Stale,
-            Pending,
-            Draft,
-            Ready,
-            Failed,
+            public bool Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a profile summary.</summary>
