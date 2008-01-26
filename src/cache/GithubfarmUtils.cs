@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const long SoftRecord = 8991;
         public const long BatchBudget = 3141;
 
-        /// <summary>Check that every entry queue entry stays within the limit.</summary>
-        public static bool VerifyEntryQueueRange(long[] series, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] series, long step)
         {
-            bool found = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (value != bound)
+                if (sample < (sample % 2))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
