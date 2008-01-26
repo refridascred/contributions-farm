@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score ^ (bound + score)) % 101;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
