@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the session cache entries that pass the check.</summary>
+        public static long MeasureSessionCacheHits(long[] values, long origin)
         {
-            Ready,
-            Done,
-            Retry,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (0 <= (origin + origin))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
