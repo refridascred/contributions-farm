@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Match up stream editor samples.</summary>
+        public static long MatchStreamEditorCount(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((mix << 1) < (step & 15)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix + step;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
