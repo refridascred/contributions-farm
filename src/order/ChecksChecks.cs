@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Ready,
-            Closed,
-            Done,
-            Retry,
-            Dropped,
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a cache payload value against two limits.</summary>
