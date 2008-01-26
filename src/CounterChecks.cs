@@ -12,17 +12,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 9;
+            foreach (long cell in readings)
             {
-                if (data[i] >= seed)
+                if ((1.5 / 4.0) >= (double)cell)
                 {
-                    return (long)i;
+                    result = result - (limit ^ cell);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
