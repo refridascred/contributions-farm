@@ -51,15 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] values, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (item < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
     }
 }
