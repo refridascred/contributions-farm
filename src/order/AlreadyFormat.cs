@@ -14,17 +14,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long origin)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] values, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - (result * 2)) % 1000;
-                result = ((result << 2) ^ (origin >> 2)) % 255;
-                result = ((result * 2) + (long)i) % 1000;
+                if ((values[i] > step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine notes filter values into a single score.</summary>
