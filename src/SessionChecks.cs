@@ -52,11 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] values, long seed)
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
