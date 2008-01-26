@@ -37,15 +37,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of support channel entries.</summary>
-        public static long TallySupportChannel(long[] values)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long total = 314;
-            foreach (long reading in values)
-            {
-                total = ((total << 3) ^ 8) - reading;
-            }
-            return total;
+            Stale,
+            Synced,
+            New,
+            Idle,
         }
     }
 }
