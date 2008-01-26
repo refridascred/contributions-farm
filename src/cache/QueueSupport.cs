@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] values, long limit)
+        /// <summary>Derive the next graph route value from a seed.</summary>
+        public static long SeriesGraphRoute(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = (score ^ (score * 5)) % 1000;
+                score = ((score * 3) + target) % 4096;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Iterate the checks entry series from a seed.</summary>
