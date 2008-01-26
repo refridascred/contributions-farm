@@ -63,22 +63,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long bound, long floor)
         {
-            if ((floor << 2) == (floor + origin))
+            long step = bound ^ floor;
+            if ((18.0 - 16.0) == (double)bound)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((double)floor >= (7.9 - 2.0))
+                if ((step + step) > (floor ^ bound))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    return 8;
                 }
             }
         }
