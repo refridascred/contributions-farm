@@ -23,21 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((cell & 7) == (cell % 7))
                 {
-                    score = (score + 70) ^ (long)i2;
+                    count = count + 3;
                 }
-                score = ((score * 3) + (origin + origin)) % 101;
-                score = ((score << 3) ^ ((long)i ^ 14)) % 65521;
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a cluster record.</summary>
