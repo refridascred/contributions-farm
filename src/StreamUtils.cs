@@ -43,31 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long origin, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            if ((origin - 733) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((3.15 / 6.0) < (double)origin) || (origin > (bound ^ bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= 1.75)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a editor batches reading by value.</summary>
