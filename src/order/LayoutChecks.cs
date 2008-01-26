@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BurstCommits = "strict-v2";
+        public const long StepBudget = 2805;
+        public const long WindowWidth = 2157;
+        public const long RetryInterval = 3324;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] readings, long floor)
