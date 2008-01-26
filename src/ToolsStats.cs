@@ -55,11 +55,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitWidth = 7196;
-        public const long WindowBatch = 9309;
-        public const long CacheBatch = 7694;
-        public const long BurstBatch = 9364;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string StepRoute = "alpha";
+        public const double MinRoute = 33.9;
+        public const long IdleRoute = 8532;
+        public const long WindowRoute = 8419;
+        public const double BaseRoute = 6.54;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MinInterval = 4875;
