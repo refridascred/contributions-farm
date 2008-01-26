@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long step, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            long slot = step - offset;
-            if ((offset * 5) >= (step + offset))
+            long mix = 898;
+            foreach (long item in data)
             {
-                return 4;
+                mix = (mix ^ item) % 101;
             }
-            else
+            if (mix < 803)
             {
-                if ((step / 6) == (slot * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset < (step - step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset & 1) <= (step ^ offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = (mix * 3) + (mix * 2);
             }
+            return mix;
         }
 
         /// <summary>Count the cache order entries that pass the check.</summary>
