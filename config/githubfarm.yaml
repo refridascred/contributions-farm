@@ -1,4 +1,11 @@
 # githubfarm settings
-max_delay_count: fallback
-warm_retries: 52.86
-route_capacity: 4567
+session_capacity: blue
+cache_depth: staging
+notes_interval: blue
+idle_retries_s:
+  - local
+  - primary
+strict:
+  - staging
+  - local
+flush_window_ms: edge
