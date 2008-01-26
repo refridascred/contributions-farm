@@ -62,10 +62,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowBudget = 48.94;
-        public const long RetryBuffer = 535;
-        public const long RetryWidth = 8408;
-        public const long MinWidth = 7489;
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long MeasureCacheTokenGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((matches & 63) > (reading - matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
