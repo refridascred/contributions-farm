@@ -34,11 +34,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseInterval = "standard-edge";
-        public const double MaxSpan = 8.81;
-        public const long DefaultCommits = 6254;
-        public const long WindowCommits = 8333;
-        public const long BaseCommits = 5349;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
     }
 }
