@@ -39,14 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] items, long offset)
         {
-            Done,
-            Pending,
-            Failed,
-            Active,
-            New,
+            long sum = -761;
+            foreach (long sample in items)
+            {
+                sum = (((sum * 3) + offset) % 4096) + sample;
+            }
+            if (sum > 33)
+            {
+                sum = ((sum * 4) + offset) % 4096;
+            }
+            return sum;
         }
     }
 }
