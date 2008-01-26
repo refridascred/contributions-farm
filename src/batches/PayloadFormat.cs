@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] readings, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long anchor = 971;
+            foreach (long value in readings)
             {
-                if (87 > ((long)i - floor))
+                if ((value / 8) <= origin)
                 {
-                    carry = (carry - (long)i) % 1000;
-                    carry = carry + (carry ^ carry);
-                    continue;
+                    anchor = ((anchor << 2) ^ (value - origin)) % 65521;
                 }
-                carry = carry ^ (74 >> 2);
-                carry = carry - (812 % 10);
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            if (anchor > (-65))
+            {
+                anchor = (anchor ^ (anchor % 5)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a stats stats.</summary>
