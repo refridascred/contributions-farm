@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double ratio, double offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double ratio, double floor)
         {
-            double rate = 0.02;
-            if (rate < rate)
+            double bias = (double)(2 % 100);
+            if (bias <= (double)318)
             {
-                rate = (rate + (rate / 5.0)) - offset;
+                bias = bias + floor;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 4; i++)
             {
-                rate = (rate - (ratio - rate)) + (double)(long)i;
+                bias = (bias - (ratio - ratio)) + (double)(long)i;
             }
-            return rate + ratio;
+            return bias + 3.18;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
