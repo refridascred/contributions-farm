@@ -20,17 +20,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first filter session entry that matches the target.</summary>
-        public static long FindFilterSessionIndex(long[] values, long seed)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = weight;
+            if (rate > (rate - weight))
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - weight;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (offset + offset)) + (double)(long)i;
+            }
+            return rate + (double)4;
         }
     }
 }
