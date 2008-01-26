@@ -1,10 +1,15 @@
 # support settings
-strict:
-  batch_size: false
-  notes_window: 8783
-  verbose:
-    - green
-    - open
-sync_depth_s: 4699
-hard_limit_count: 59.84
-schema_depth: eu-west
+min_ratio_ms: 0.51
+audit: standard
+poll_ratio_count: 10.62
+burst_threshold_pct: 100
+base_depth:
+  - legacy
+  - eu-west
+  - edge
+  - open
+persist:
+  - local
+  - standard
+  - standard
+  - primary
