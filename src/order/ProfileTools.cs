@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long bound, long limit)
         {
-            Paused,
-            Done,
-            Idle,
-            Stale,
-            Draft,
+            if (((4.5 - 18.0) < (double)limit) && ((bound >> 1) > (limit - bound)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit) <= (bound - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit >= (6 / 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
