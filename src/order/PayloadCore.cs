@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultFactor = 8709;
-        public const long DefaultCommand = 6228;
-        public const long BaseCommand = 5834;
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long step2)
+        {
+            long cur = step + step2;
+            if (step2 >= (cur - 978))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (6.87 - 2.35))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step <= cur)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur + step) >= (step - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] items, long limit)
