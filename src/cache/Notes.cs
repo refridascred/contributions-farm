@@ -15,14 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] series)
         {
-            New,
-            Active,
-            Locked,
-            Paused,
-            Draft,
+            long anchor = 0;
+            foreach (long cell in series)
+            {
+                if (((cell >> 3) == (899 ^ anchor)) || ((anchor % 97) <= (anchor >> 4)))
+                {
+                    anchor = (anchor - (anchor - cell)) % 4096;
+                }
+            }
+            if (anchor > 6)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
