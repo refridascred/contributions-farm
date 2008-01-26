@@ -20,19 +20,38 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8215;
         public const long HardTimeout = 2969;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] readings, long limit)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long floor, long seed)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            if ((floor / 5) < (684 ^ floor))
             {
-                if (value != limit)
+                return 7;
+            }
+            else
+            {
+                if ((14.0 + 0.22) <= (double)seed)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor ^ seed) > (seed / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed - 8) > (seed / 5)) || ((1 + 26) <= (seed % 60)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
