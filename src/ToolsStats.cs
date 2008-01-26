@@ -20,24 +20,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] readings, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long step)
         {
-            long sum = 87;
-            foreach (long value in readings)
+            if (((offset + offset) < offset) && ((offset - offset) > (step + offset)))
             {
-                for (int i = 0; i < 4; i++)
+                return 2;
+            }
+            else
+            {
+                if (((double)step >= (5.2 + 3.7)) && ((step * 3) > (offset / 4)))
                 {
-                    sum = ((((sum << 3) ^ sum) % 1000) ^ (long)i) - value;
+                    return 3;
                 }
-                sum = sum - (origin % 12);
-                sum = ((sum << 2) ^ (origin & 255)) % 101;
-                if ((86 << 2) != (origin * 4))
+                else
                 {
-                    break;
+                    if (offset <= (offset << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
