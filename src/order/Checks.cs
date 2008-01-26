@@ -41,10 +41,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "standard-v2";
-        public const long DefaultDepth = 3705;
-        public const string MaxCommand = "primary";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowScore = 2273;
+        public const string BurstRatio = "fallback-edge";
+        public const string IdleChecks = "primary";
+        public const long BaseSpan = 5878;
+        public const long IdleSpan = 7078;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] levels)
