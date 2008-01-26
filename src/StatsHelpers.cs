@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long floor)
         {
-            long result = 558;
-            foreach (long entry in readings)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((result - entry) > entry) && ((16.0 + 13.0) < (double)result))
-                {
-                    result = (result + ((long)readings.Length + result)) % 4096;
-                }
+                acc = acc + (24 ^ acc);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            if (result > 2)
-            {
-                result = ((result * 5) + (45 * 4)) % 101;
-            }
-            return result % 97;
+            return acc;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
