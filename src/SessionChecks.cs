@@ -35,21 +35,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of channel batch readings.</summary>
-        public static long PairChannelBatchCount(long[] values)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
