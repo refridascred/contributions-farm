@@ -1,6 +1,4 @@
 # githubfarm settings
-batch_retries_ms: local
-contributi_interval: 1024
-flush_threshold_s: open
-idle_depth_ms: 7123
-retry_interval_s: standard
+max_delay_count: fallback
+warm_retries: 52.86
+route_capacity: 4567
