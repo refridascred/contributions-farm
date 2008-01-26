@@ -44,17 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] series, long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = gain * 11.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                scale = ((scale - (scale + 7.0)) + (double)(long)i) - bias;
             }
-            return -1;
+            return scale + (double)7;
         }
     }
 }
