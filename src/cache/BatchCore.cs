@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a payload editor figure with a bias.</summary>
-        public static double ScalePayloadEditor(double scale, double offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] items)
         {
-            double gain = (scale / 8.0) - (double)(-110);
-            if (gain > (5.7 / 2.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain - scale;
+            return count;
         }
 
         /// <summary>Describe the context status values.</summary>
