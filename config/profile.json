@@ -1,8 +1,5 @@
 {
-  "audit": "edge",
-  "poll_capacity": 1836,
-  "entry_threshold": 500,
-  "max_ttl_s": false,
-  "flush_retries_count": 60,
-  "hard_window": "strict"
+  "cache_delay": "fallback",
+  "verbose": 6698,
+  "hard_size": 45.89
 }
