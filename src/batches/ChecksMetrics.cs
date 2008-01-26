@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long SoftSpan = 5760;
         public const long WindowChannel = 4469;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] readings)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (reading < (tally + tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
