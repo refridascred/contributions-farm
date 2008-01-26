@@ -26,16 +26,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next already githubfarm value from a seed.</summary>
-        public static long DeriveAlreadyGithubfarm(long limit)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = (mix - mix) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Locked,
+            Retry,
+            Draft,
+            Synced,
         }
     }
 }
