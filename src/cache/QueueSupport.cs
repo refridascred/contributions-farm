@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] readings, long bound)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 3140;
+        public const long MaxBudget = 15;
+        public const long DefaultSession = 486;
+        public const long SoftSession = 8223;
 
         /// <summary>Match up layout cluster samples.</summary>
         public static long PairLayoutClusterCount(long[] items)
