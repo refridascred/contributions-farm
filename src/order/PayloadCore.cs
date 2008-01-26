@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] items, long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Failed,
+            Closed,
+            Idle,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
