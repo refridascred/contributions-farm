@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftBudget = 6583;
-        public const long MaxInterval = 1271;
-        public const long CacheSpan = 9304;
-        public const double StepContributi = 74.11;
-        public const string BaseContributi = "strict-edge";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            Failed,
+            Pending,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Look up the position of a payload filter sample.</summary>
         public static long LookupPayloadFilterIndex(long[] data, long step)
