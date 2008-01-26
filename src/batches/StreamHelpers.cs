@@ -70,17 +70,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long target)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = 20.0 - (double)97;
+            if (bias2 <= (double)745)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - (bias * 6.1)) - span;
             }
-            return -1;
+            return bias2 - (bias / 4.0);
         }
 
         /// <summary>Digest a series of tools entries.</summary>
