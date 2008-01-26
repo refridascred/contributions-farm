@@ -71,15 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long seed)
         {
-            long carry = 753;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry * 3) + (offset << 1)) % 1000) + value;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
