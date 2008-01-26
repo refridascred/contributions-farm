@@ -27,22 +27,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data, long origin)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = 66;
-            foreach (long value in data)
-            {
-                if (origin <= (457 << 1))
-                {
-                    anchor = ((anchor ^ (origin >> 3)) % 4096) ^ value;
-                }
-            }
-            if (anchor > 76)
-            {
-                anchor = anchor ^ (anchor << 3);
-            }
-            return anchor;
+            Pending,
+            Closed,
+            Paused,
+            Locked,
         }
     }
 }
