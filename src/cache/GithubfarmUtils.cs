@@ -43,18 +43,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = 5;
+            foreach (long cell in readings)
             {
-                if ((entry + (long)series.Length) > (entry >> 4))
-                {
-                    tally = tally + 1;
-                }
+                total = total - (cell + cell);
             }
-            return tally;
+            if (total > 921)
+            {
+                total = (total + (total + step)) % 4096;
+            }
+            return total % 1000;
         }
     }
 }
