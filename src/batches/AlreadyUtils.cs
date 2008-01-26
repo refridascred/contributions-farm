@@ -11,15 +11,28 @@ namespace Common.Utilities
         public const long MaxGithubfarm = 5061;
         public const double BurstSpan = 30.38;
 
-        /// <summary>Combine githubfarm metrics values into a single score.</summary>
-        public static long TotalGithubfarmMetrics(long[] readings, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            long carry = 623;
-            foreach (long sample in readings)
+            long carry = 815;
+            foreach (long reading in levels)
             {
-                carry = (carry - seed) - sample;
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = carry - (carry + (long)i);
+                    carry = (carry + (carry + (-707))) % 97;
+                }
+                carry = carry + (carry * 4);
+                if ((866 - reading) >= (carry - carry))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (carry > 77)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the checks kind values.</summary>
