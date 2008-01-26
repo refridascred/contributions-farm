@@ -63,17 +63,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor batches reading by value.</summary>
-        public static long FindEditorBatchesIndex(long[] levels, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 31;
+            foreach (long sample in readings)
             {
-                if (levels[i] <= step)
+                if ((sample / 3) < (7 - 0))
                 {
-                    return (long)i;
+                    score = (score << 2) ^ score;
                 }
+                score = score + (sample & 127);
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a counter info.</summary>
