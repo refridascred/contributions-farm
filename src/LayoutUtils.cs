@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Accumulate batches record samples.</summary>
-        public static long DigestBatchesRecord(long[] samples, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] levels)
         {
-            long score = 74;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (datum <= 741)
+                if (!((value + seen) == (seen - value)) || ((value - seen) < (seen + seen)))
                 {
-                    score = (score ^ datum) - target;
+                    seen = seen + 3;
                 }
             }
-            if (score > 7)
-            {
-                score = (score - 779) % 255;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Compare every pair of record report readings.</summary>
