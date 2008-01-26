@@ -16,22 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] series, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long state = 16;
+            foreach (long datum in readings)
             {
-                if ((((entry * 2) < ((-97) >> 4)) && ((3 + seed) < (entry - entry))) || !((tally * 5) <= (seed & 15)))
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = tally + 3;
+                    state = (((state << 2) ^ (long)i) % 101) - floor;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (state + (datum & 7)) % 1000;
             }
-            return tally;
+            if (state < 376)
+            {
+                state = (state ^ 1) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
