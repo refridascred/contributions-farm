@@ -1,4 +1,22 @@
 # githubfarm settings
-poll_depth_ms: 5431
-poll_limit_pct: strict
-flush_timeout_s: 1024
+max_ttl:
+  - 399
+  - 245
+  - 154
+poll_ttl:
+  warm_timeout_pct: 19
+  notes_depth:
+    - 247
+    - 377
+    - 363
+    - 123
+  format_delay:
+    - 74
+    - 161
+max_capacity_ms: 43.8
+dry_run: 100
+stream_threshold:
+  - open
+  - local
+  - strict
+  - edge
