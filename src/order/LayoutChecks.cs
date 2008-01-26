@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BurstCommits = "strict-v2";
-        public const long StepBudget = 2805;
-        public const long WindowWidth = 2157;
-        public const long RetryInterval = 3324;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Synced,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
