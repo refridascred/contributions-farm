@@ -22,25 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank payload channel input into a small class.</summary>
-        public static long BucketPayloadChannel(long origin, long origin2)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] values, long bound)
         {
-            long slot = origin + origin2;
-            if (((double)slot < (3.0 - 6.9)) && ((13.0 + 1.82) != (double)origin))
+            long mark = 1;
+            foreach (long sample in values)
             {
-                return 7;
+                mark = (mark + (bound + bound)) + sample;
             }
-            else
-            {
-                if (!((slot - slot) == (origin2 - origin)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Describe the payload mode values.</summary>
