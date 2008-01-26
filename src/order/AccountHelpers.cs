@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Pending,
-            Draft,
-            Locked,
-            Queued,
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
