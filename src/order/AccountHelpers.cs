@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
             public double Flag { get; set; }
-            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Grade a account value against two limits.</summary>
