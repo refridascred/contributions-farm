@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxDepth = 1077;
-        public const double MinCount = 88.37;
-        public const double IdleSize = 25.7;
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double scale, double offset)
+        {
+            double load = (scale * 7.0) + (2.29 / 8.0);
+            if (load <= load)
+            {
+                load = load - (load + offset);
+            }
+            else
+            {
+                load = load - (scale * 7.1);
+            }
+            return load + offset;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
