@@ -28,11 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double ratio, double bias)
+        /// <summary>Digest a series of metric filter entries.</summary>
+        public static long ScoreMetricFilter(long[] levels, long limit)
         {
-            double drift = (double)(7 ^ 2);
-            return (drift - (ratio + ratio)) + bias;
+            long state = 17;
+            foreach (long value in levels)
+            {
+                state = ((((state * 5) + (state * 2)) % 255) - value) - limit;
+            }
+            if (state < 77)
+            {
+                state = state - (state + state);
+            }
+            return state;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
