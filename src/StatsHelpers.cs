@@ -39,21 +39,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up schema tools samples.</summary>
-        public static long PairSchemaToolsCount(long[] samples)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
