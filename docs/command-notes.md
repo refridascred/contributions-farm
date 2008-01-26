@@ -1,14 +1,13 @@
 # Command notes
 
-Keep cache and notes names short and lowercase.
-When a editor fails, the stats handler retries a few times before giving up.
+When a editor fails, the channel handler retries a few times before giving up.
+A payload that stays idle for too long is moved to the checks list.
 
-Run the commits check before changing any entry limits.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-The batches module keeps stats values in sync with the batch cache.
+Run the layout check before changing any stream limits.
+Run the account check before changing any layout limits.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Log every farm change
-- Validate stats input early
+- Review window limits each release
+- Keep layout values small
+- Document new batches fields
