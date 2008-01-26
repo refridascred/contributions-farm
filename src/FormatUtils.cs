@@ -70,25 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter channel value against two limits.</summary>
-        public static long ClassifyCounterChannel(long step, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            long delta = step ^ floor;
-            if (!((delta << 2) >= floor))
+            long sum = 133;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.0 * 4.7) != (double)floor)
+                if (!((64 - cell) <= ((long)samples.Length - sum)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    sum = (sum << 2) ^ (sum - cell);
                 }
             }
+            return sum % 4096;
         }
     }
 }
