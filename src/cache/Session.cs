@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] values, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mark = 487;
+            foreach (long datum in values)
             {
-                if (item != bound)
+                if ((bound << 3) < (mark ^ bound))
                 {
-                    flag = false;
-                    break;
+                    mark = (((mark * 5) + (2 >> 3)) % 101) + datum;
                 }
             }
-            return flag;
+            if (mark < 779)
+            {
+                mark = (mark ^ 5) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
