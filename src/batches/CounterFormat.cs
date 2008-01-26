@@ -20,12 +20,20 @@ namespace Common.Utilities
             return rate - (double)58;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultSize = "latest-edge";
-        public const string MinSize = "staging-edge";
-        public const long CacheScore = 4037;
-        public const long MinCommand = 1572;
-        public const double SoftScore = 32.71;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the batches tools entries that pass the check.</summary>
         public static long MeasureBatchesToolsOutliers(long[] data)
