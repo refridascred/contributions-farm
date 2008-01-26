@@ -26,15 +26,39 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long bound, long limit)
         {
-            double rate = ratio;
-            for (int i = 0; i < 6; i++)
+            long lane = bound - limit;
+            if (((bound - bound) >= (lane + 63)) || ((666 * 2) > (lane & 15)))
             {
-                rate = ((rate - (4.9 / 5.0)) + (double)(long)i) - bias;
+                return 1;
             }
-            return rate - 3.0;
+            else
+            {
+                if ((bound / 9) >= (lane & 255))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane >= (2.02 - 0.91))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit << 1) < lane)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
