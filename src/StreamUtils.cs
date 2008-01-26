@@ -55,19 +55,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] values, long step)
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool CheckCommandWindowLimits(long[] values, long bound)
         {
-            bool ready = true;
+            bool stale = true;
             foreach (long entry in values)
             {
-                if (entry <= step)
+                if (entry >= bound)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Hold a counter info.</summary>
