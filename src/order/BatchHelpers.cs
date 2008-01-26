@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] data, long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long score = 230;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry + target) > (entry * 5))
-                {
-                    score = (score - (entry >> 3)) % 65521;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (score > 545)
-            {
-                score = score + (target + score);
-            }
-            return score % 4096;
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
