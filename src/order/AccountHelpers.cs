@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double rate, double bias)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long step, long limit)
         {
-            double weight = 4.18;
-            return (weight + rate) + bias;
+            long gap = step - limit;
+            if ((step & 1) >= 952)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.0 <= (6.0 * 0.3)) && ((limit >> 2) > (gap >> 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + step) >= (gap << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((4 ^ (-9)) >= (limit - 9)) || ((step << 1) >= 97))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
