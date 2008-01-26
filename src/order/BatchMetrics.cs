@@ -26,21 +26,17 @@ namespace Common.Utilities
         public const long WindowSize = 7110;
         public const double MaxAccount = 93.17;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Find the first tools format entry that matches the target.</summary>
+        public static long LookupToolsFormatIndex(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (readings[i] <= target)
                 {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit farm session readings against a rule.</summary>
