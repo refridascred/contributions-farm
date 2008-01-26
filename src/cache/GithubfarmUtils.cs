@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of profile filter readings.</summary>
-        public static long CompareProfileFilterCount(long[] values)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < origin)
                 {
-                    if ((values[i] ^ values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
