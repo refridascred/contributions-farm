@@ -30,19 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            double rate = weight;
-            if (rate > (rate - weight))
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (offset + offset)) + (double)(long)i;
-            }
-            return rate + (double)4;
+            Closed,
+            Failed,
+            Locked,
+            Dropped,
         }
     }
 }
