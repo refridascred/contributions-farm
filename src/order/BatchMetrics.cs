@@ -35,21 +35,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = ratio;
+            if (load > (double)(-3))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load + ratio) - bias;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (6.21 * 15.0);
         }
 
         /// <summary>Validate route readings against a bound.</summary>
