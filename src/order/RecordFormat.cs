@@ -42,22 +42,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long carry = 58;
-            foreach (long cell in data)
-            {
-                if (carry >= (carry + cell))
-                {
-                    carry = (carry * 5) + 50;
-                }
-                else
-                {
-                    carry = carry ^ (cell / 8);
-                }
-            }
-            return carry;
+            New,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
