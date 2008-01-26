@@ -32,13 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] data)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 697;
+            foreach (long reading in data)
+            {
+                carry = carry ^ (carry / 9);
+                if (!((carry >> 3) > (reading & 15)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
