@@ -27,23 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double gain, double span)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            double scale = (double)53 / 8.0;
-            if (scale <= (scale / 8.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - gain) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (gain + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (gain * 16.0)) + (double)(long)i;
-            }
-            return scale - (double)4;
+            return matches;
         }
     }
 }
