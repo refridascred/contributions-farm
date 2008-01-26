@@ -46,22 +46,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of account cluster entries.</summary>
-        public static long TallyAccountCluster(long[] series)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long mix = 436;
-            foreach (long cell in series)
-            {
-                if ((4 / 5) == (cell << 3))
-                {
-                    mix = mix + (mix % 8);
-                }
-            }
-            if (mix > 501)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 65521;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
