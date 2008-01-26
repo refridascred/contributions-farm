@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "cached-v2";
-        public const long BaseTools = 2495;
-        public const double RetryScore = 36.93;
-        public const string StepTools = "fallback-edge";
-        public const long DefaultTools = 4159;
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Stale,
+            Queued,
+            Closed,
+            Active,
+        }
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
