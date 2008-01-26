@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long step = seed - seed2;
+            if (seed >= 626)
             {
-                if ((13.0 / 7.0) >= (double)target)
+                return 1;
+            }
+            else
+            {
+                if (5 >= (step + step))
                 {
-                    hits = (hits + 1) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if (!((26 - seed) == (79 - 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
