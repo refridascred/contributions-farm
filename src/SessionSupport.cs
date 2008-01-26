@@ -15,14 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Paused,
-            Dropped,
-            Failed,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 4888;
+        public const long LimitFilter = 5709;
+        public const double MinFilter = 55.93;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
