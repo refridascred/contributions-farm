@@ -34,21 +34,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= offset)
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the profile class values.</summary>
