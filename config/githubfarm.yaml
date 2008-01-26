@@ -1,4 +1,5 @@
 # githubfarm settings
-support_ratio: 46.65
-min_window_pct: 250
-readonly: green
+default_timeout_count: 69.05
+metric_delay: 5368
+retry_capacity: 48
+filter_depth: eu-west
