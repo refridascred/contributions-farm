@@ -28,11 +28,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long offset, long offset2)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            if ((offset2 - offset) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((2.08 / 4.0) >= (double)offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
