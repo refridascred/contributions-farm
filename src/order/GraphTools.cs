@@ -37,10 +37,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardScore = 5241;
-        public const long RetryBuffer = 6482;
-        public const double MinSize = 86.36;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long target, long floor)
+        {
+            if (((target * 5) > target) && ((target % 3) >= target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target >> 4) == (floor * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (45 < (floor << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (2.2 - 13.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
