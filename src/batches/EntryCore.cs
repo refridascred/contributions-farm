@@ -15,11 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Iterate the format stats series from a seed.</summary>
+        public static long IterateFormatStats(long step)
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor * 4) + (long)i;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
