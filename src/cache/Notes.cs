@@ -15,19 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((floor + 876) > floor))
-                {
-                    mix = (mix ^ (21 >> 1)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
+            Ready,
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
