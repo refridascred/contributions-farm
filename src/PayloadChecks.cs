@@ -49,18 +49,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit report tools readings against a rule.</summary>
-        public static long CountReportToolsGaps(long[] levels)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.33 - 6.2) >= (double)value)
+                if (values[i] <= floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
