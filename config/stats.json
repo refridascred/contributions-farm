@@ -1,7 +1,7 @@
 {
-  "context_retries": "open",
-  "strict": "staging",
-  "audit": false,
-  "burst_ttl": ["strict", "staging", "staging"],
-  "compress": ["local", "stable", "stable", "edge"]
+  "cache_retries_pct": ["green", "latest", "eu-west", "staging"],
+  "warm_ttl_ms": false,
+  "editor_delay": 50,
+  "base_limit": "latest",
+  "sync_timeout_ms": 250
 }
