@@ -1,4 +1,14 @@
 # githubfarm settings
-compress: true
-flush_ttl_count: 8.3
-base_delay: staging
+soft_window_count: 97.42
+cache_ttl:
+  burst_depth_s: 30
+  buffer_depth:
+    - 464
+    - 288
+  commits_limit: 3742
+  min_size_s: true
+cache_threshold:
+  - 191
+  - 299
+  - 130
+  - 30
