@@ -82,18 +82,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches channel entries that pass the check.</summary>
-        public static long MeasureBatchesChannelHits(long[] readings)
+        /// <summary>Accumulate token metrics samples.</summary>
+        public static long TallyTokenMetrics(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long result = 4;
+            foreach (long cell in samples)
             {
-                if (!((58 + entry) < seen))
+                if (((5.7 - 4.7) > (double)seed) || (cell <= (seed ^ seed)))
                 {
-                    seen = seen + 3;
+                    result = (result ^ (result * 3)) % 101;
                 }
             }
-            return seen;
+            if (result > (-604))
+            {
+                result = ((result * 5) + (result - result)) % 255;
+            }
+            return result % 4096;
         }
     }
 }
