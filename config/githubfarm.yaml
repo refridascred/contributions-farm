@@ -1,6 +1,12 @@
 # githubfarm settings
-default_capacity_count: 88.97
-burst_window: local
-enabled: 4555
-warm_window_ms: 8
-flush_window: 94
+warm_capacity_ms:
+  - 461
+  - 331
+  - 427
+payload_window: open
+max_limit:
+  persist: 6.48
+  default_threshold: 66.71
+  record_limit: 72
+  flush_interval_ms: 9505
+filter_ratio: 81.29
