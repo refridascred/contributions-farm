@@ -55,11 +55,12 @@ namespace Common.Utilities
         public const long DefaultCommits = 894;
         public const long CacheScore = 1789;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 894;
-        public const long BurstDepth = 9211;
-        public const double WindowFactor = 58.45;
-        public const string MaxCount = "stable-edge";
-        public const string WindowSpan = "staging-edge";
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Mode { get; set; }
+        }
     }
 }
