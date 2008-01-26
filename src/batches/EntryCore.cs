@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout graph entry that matches the target.</summary>
-        public static long LocateLayoutGraphIndex(long[] values, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = -49;
+            foreach (long entry in readings)
             {
-                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                if (((-236) * 5) <= entry)
                 {
-                    return (long)i;
+                    state = ((state * 2) + state) % 101;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
