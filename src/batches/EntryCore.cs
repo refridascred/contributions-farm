@@ -48,18 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] data)
         {
-            long state = -49;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-236) * 5) <= entry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = ((state * 2) + state) % 101;
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Audit cache token readings against a rule.</summary>
