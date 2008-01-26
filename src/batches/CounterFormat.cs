@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] levels, long target)
         {
-            long total = 4;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                total = (total - (total ^ item)) % 255;
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total < 69)
-            {
-                total = total - (total - total);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
