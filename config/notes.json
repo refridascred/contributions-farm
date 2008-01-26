@@ -1,7 +1,17 @@
 {
-  "cache_timeout_count": "latest",
-  "account_threshold": false,
-  "sync_capacity": true,
-  "default_window_pct": 45.59,
-  "account_ttl": false
+  "soft_limit_ms": ["open", "cached", "green"],
+  "batch_window_pct": 8508,
+  "persist": 55.15,
+  "metric_threshold": 42,
+  "sync_size_pct": {
+    "strict": {
+      "soft_ratio_s": 100,
+      "retry_window_pct": 79,
+      "default_ttl": "open"
+    },
+    "checks_ratio": true,
+    "verbose": 1411,
+    "batch_size_ms": "standard"
+  },
+  "base_limit_count": "legacy"
 }
