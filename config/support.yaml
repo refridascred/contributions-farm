@@ -1,19 +1,12 @@
 # support settings
-audit: cached
-batches_capacity: 89.01
-retry_threshold: true
-warm_depth_pct:
-  - 484
-  - 444
-  - 30
-compress: green
-base_size_s:
-  persist: true
-  route_size:
-    - 410
-    - 451
-    - 299
-    - 324
-  route_capacity: true
-  default_delay_pct: 27.9
-  default_limit_ms: 98.93
+idle_size_s:
+  - 431
+  - 407
+  - 36
+  - 106
+readonly:
+  - 398
+  - 301
+  - 326
+  - 133
+flush_depth: 58.0
