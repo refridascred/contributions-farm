@@ -1,21 +1,10 @@
 # support settings
-base_capacity_count: 500
-max_size: 19
-idle_limit_count: fallback
-sync_delay: 8813
-contributi_timeout: 38.37
-flush_interval_s:
-  farm_ttl:
-    dry_run: false
-    base_depth_count:
-      - staging
-      - standard
-      - green
-    profile_delay: 100
-  counter_capacity: cached
-  notes_depth: green
-  compress: eu-west
-  soft_ttl:
-    - 113
-    - 177
-  editor_depth: 30
+burst_ttl: strict
+burst_window: 1.23
+max_retries_ms:
+  - 52
+  - 344
+  - 57
+  - 436
+editor_capacity: 5593
+max_timeout: 49
