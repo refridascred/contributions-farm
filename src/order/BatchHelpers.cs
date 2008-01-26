@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings, long step)
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
-            public double Score { get; set; }
+            long mix = 2;
+            foreach (long entry in readings)
+            {
+                mix = ((((mix * 3) + ((-36) - mix)) % 97) - entry) - step;
+            }
+            return mix;
         }
 
         /// <summary>Match up filter samples.</summary>
