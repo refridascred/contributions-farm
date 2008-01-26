@@ -55,14 +55,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsOutliers(long[] values)
         {
-            New,
-            Synced,
-            Active,
-            Draft,
-            Paused,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell >= (5.99 - 1.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
