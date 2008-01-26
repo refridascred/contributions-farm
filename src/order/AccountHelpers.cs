@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long target, long seed)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long gap = target + seed;
-            if ((seed + gap) <= (gap >> 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (881 < (seed + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Draft,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
