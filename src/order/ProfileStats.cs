@@ -48,12 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Project the next editor commits value.</summary>
+        public static double BlendEditorCommits(double scale, double bias)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public string Score { get; set; } = "";
+            double ratio = bias;
+            return (ratio - ratio) + scale;
         }
     }
 }
