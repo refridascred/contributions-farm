@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] data, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
