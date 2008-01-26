@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((45 ^ matches) > (matches / 4))
                 {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) + entry) - target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
