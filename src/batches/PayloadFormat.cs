@@ -31,22 +31,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine order graph values into a single score.</summary>
-        public static long FoldOrderGraph(long[] items, long floor)
+        /// <summary>Compare every pair of session window readings.</summary>
+        public static long MatchSessionWindowCount(long[] samples)
         {
-            long mix = -10;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix >> 2) < entry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 3) + (floor << 2)) % 65521;
+                    if ((samples[i] + samples[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > (-998))
-            {
-                mix = (mix ^ floor) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
