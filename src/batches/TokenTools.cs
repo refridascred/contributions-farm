@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long MaxScore = 806;
         public const long CacheLevel = 233;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double weight, double bias)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] values)
         {
-            double load = weight;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                load = (load - (load - bias)) - (double)(long)i;
+                if ((double)value > (16.0 * 1.6))
+                {
+                    matches = matches + 2;
+                }
             }
-            return load + (double)3;
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
