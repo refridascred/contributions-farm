@@ -45,13 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Done,
-            New,
-            Paused,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleRatio = 4916;
+        public const double LimitSpan = 53.97;
+        public const long MaxStream = 8777;
+        public const double MaxWidth = 85.14;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long WeighBuffer(long[] readings)
