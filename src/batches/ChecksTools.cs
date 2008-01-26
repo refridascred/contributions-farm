@@ -71,19 +71,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] readings, long origin)
         {
-            long mix = 652;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = mix + (item + 822);
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 25)
-            {
-                mix = (mix << 3) ^ (mix + 8);
-            }
-            return mix;
+            return -1;
         }
     }
 }
