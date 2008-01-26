@@ -60,22 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            long mix = 7;
-            foreach (long sample in levels)
+            double load = (double)(8 ^ (-532));
+            if (load < rate)
             {
-                if ((mix ^ sample) < (4 << 1))
-                {
-                    mix = mix + mix;
-                }
-                if ((sample - 8) >= (533 ^ sample))
-                {
-                    break;
-                }
+                load = (load + (double)575) - bias;
             }
-            return mix;
+            else
+            {
+                load = load - rate;
+            }
+            return load - (double)88;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
