@@ -82,12 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            Draft,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)sample != (1.39 * 0.7)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
