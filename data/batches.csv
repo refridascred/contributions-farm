@@ -1,6 +1,8 @@
-id,state,owner
-1,local,blue
-2,7.71,585
-3,standard,23.75
-4,69.13,cached
-5,9.9,118
+id,owner,score,active
+1,263,blue,64.48
+2,15.84,196,3.55
+3,28.16,577,96.36
+4,legacy,91.45,928
+5,618,872,green
+6,742,109,standard
+7,standard,66.63,45
