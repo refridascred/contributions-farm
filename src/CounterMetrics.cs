@@ -20,21 +20,26 @@ namespace Common.Utilities
         public const double BurstAlready = 30.24;
         public const long BatchAlready = 2210;
 
-        /// <summary>Match up counter format samples.</summary>
-        public static long OverlapCounterFormatCount(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 71;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading % 60) <= ((long)levels.Length & 3))
                 {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 3) ^ (reading & 31)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (reading & 15);
+                }
+                if (sum >= (reading / 4))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Describe the commits phase values.</summary>
