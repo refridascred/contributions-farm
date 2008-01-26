@@ -31,21 +31,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of session window readings.</summary>
-        public static long MatchSessionWindowCount(long[] samples)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = -595;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = (mix * 3) + mix;
+                if ((90 - origin) >= reading)
                 {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix * 2) + (reading - origin);
                 }
             }
-            return count;
+            if (mix < 68)
+            {
+                mix = (mix << 3) ^ 26;
+            }
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
