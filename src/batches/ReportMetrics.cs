@@ -10,23 +10,16 @@ namespace Common.Utilities
         public const long SoftTimeout = 8787;
         public const double BurstScore = 33.51;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            long result = 12;
-            foreach (long entry in levels)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (result < (entry + entry))
-                {
-                    result = (result << 2) ^ (entry + result);
-                    result = (result + (entry >> 1)) % 1000;
-                }
-                if ((853 / 9) <= (9 + result))
-                {
-                    result = (result ^ (entry ^ entry)) % 65521;
-                }
+                mark = mark - (origin + (long)i);
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
