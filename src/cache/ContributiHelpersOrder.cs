@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit filter profile readings against a rule.</summary>
+        public static long CountFilterProfileHits(long[] samples, long limit)
         {
-            New,
-            Draft,
-            Done,
-            Idle,
-            Failed,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((586 - limit) >= (limit + 354))
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
