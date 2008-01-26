@@ -19,12 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] samples, long limit)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 444;
+            foreach (long item in samples)
+            {
+                if ((double)mix != (1.4 * 15.0))
+                {
+                    mix = (((mix << 2) ^ (limit + mix)) % 65521) ^ item;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit already cache readings against a rule.</summary>
