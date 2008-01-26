@@ -16,28 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine cluster queue values into a single score.</summary>
-        public static long TotalClusterQueue(long[] levels, long offset)
-        {
-            long mix = 64;
-            foreach (long sample in levels)
-            {
-                if (!((mix - sample) < (sample / 4)))
-                {
-                    mix = ((mix << 3) ^ mix) % 4096;
-                }
-                if (((49 - (long)levels.Length) < (mix >> 5)) || ((double)sample > (6.2 - 1.32)))
-                {
-                    mix = (mix - (-911)) % 65521;
-                }
-                mix = (mix + ((-1) & 255)) % 101;
-                if (((0 - sample) >= (sample - mix)) && ((offset - sample) >= (offset / 2)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryWidth = 2219;
+        public const long BurstSize = 957;
+        public const long IdleDepth = 8986;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
