@@ -60,22 +60,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] data, long floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long mix = 7;
+            foreach (long sample in levels)
             {
-                if ((seen * 2) != (22 + (-11)))
+                if ((mix ^ sample) < (4 << 1))
                 {
-                    seen = ((seen + 1) ^ entry) + floor;
+                    mix = mix + mix;
                 }
-                else
+                if ((sample - 8) >= (533 ^ sample))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
