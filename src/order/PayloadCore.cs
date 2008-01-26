@@ -36,15 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Measure how many batches layout samples are out of range.</summary>
+        public static long MeasureBatchesLayoutGaps(long[] items, long target)
         {
             long matches = 0;
-            foreach (long entry in readings)
+            foreach (long reading in items)
             {
-                if ((double)matches != (6.57 - 7.98))
+                if (reading >= matches)
                 {
-                    matches = (matches + 1) + entry;
+                    matches = (matches + 3) - target;
                 }
             }
             return matches;
