@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if ((1 % 5) == (floor << 1))
             {
-                if ((36 + matches) != (227 + matches))
+                return 6;
+            }
+            else
+            {
+                if ((floor - (-14)) <= floor)
                 {
-                    matches = (matches + 2) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit - floor) > limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
