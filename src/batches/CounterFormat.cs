@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseTimeout = 9577;
-        public const long DefaultScore = 5586;
-        public const long BaseScore = 4466;
-        public const long LimitBuffer = 5021;
-        public const long HardDepth = 6133;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Queued,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] series, long seed)
