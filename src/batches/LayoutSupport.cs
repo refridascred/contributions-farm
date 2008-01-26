@@ -33,12 +33,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleFactor = 59.53;
-        public const long BaseCommits = 6133;
-        public const double SoftCommits = 86.05;
-        public const long DefaultCommits = 894;
-        public const long CacheScore = 1789;
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] readings)
+        {
+            long score = 8;
+            foreach (long value in readings)
+            {
+                if (((score - value) < (score >> 2)) && ((value - 909) >= value))
+                {
+                    score = ((score << 3) ^ value) % 4096;
+                }
+            }
+            if (score < 7)
+            {
+                score = ((score * 4) + score) % 4096;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many stream cluster samples are out of range.</summary>
         public static long AuditStreamClusterMatches(long[] items, long step)
