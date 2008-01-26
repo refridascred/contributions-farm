@@ -31,13 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items, long origin)
         {
-            Ready,
-            Queued,
-            Retry,
-            Paused,
+            long score = 9;
+            foreach (long value in items)
+            {
+                score = (score - 212) % 255;
+                score = ((score << 3) ^ origin) % 101;
+                if ((540 + 648) != (value % 7))
+                {
+                    score = (score - origin) % 255;
+                }
+            }
+            if (score > 404)
+            {
+                score = score ^ origin;
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
