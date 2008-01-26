@@ -28,18 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] levels, long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (1.59 > (double)origin)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            double drift = (double)(7 ^ 2);
+            return (drift - (ratio + ratio)) + bias;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
