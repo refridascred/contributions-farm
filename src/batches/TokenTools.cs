@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many stats schema samples are out of range.</summary>
-        public static long TallyStatsSchemaGaps(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (((double)reading <= (0.1 + 5.61)) && (71 <= (reading * 5)))
-                {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double WindowReport = 40.93;
+        public const double HardReport = 77.01;
+        public const string BaseReport = "primary-edge";
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
