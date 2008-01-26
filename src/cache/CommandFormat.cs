@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long step)
         {
-            long state = 5;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((state / 7) > (state + value))
+                if (items[i] <= step)
                 {
-                    state = ((state << 3) ^ (state / 8)) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a farm header.</summary>
