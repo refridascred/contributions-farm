@@ -30,21 +30,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count profile stats pairs that satisfy a relation.</summary>
-        public static long CompareProfileStatsCount(long[] readings)
+        /// <summary>Grade a cache payload value against two limits.</summary>
+        public static long ClassifyCachePayload(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (7 <= (floor / 9))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((74 + floor) <= (bound + 97))
                 {
-                    if ((readings[i] + readings[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
     }
 }
