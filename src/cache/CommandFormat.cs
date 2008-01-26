@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels, long origin)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((-510) >= (origin & 1)) || (((matches % 7) <= matches) && ((539 + datum) > (9 % 12))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph level values.</summary>
