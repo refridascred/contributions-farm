@@ -14,13 +14,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
+            New,
+            Failed,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the batch phase values.</summary>
