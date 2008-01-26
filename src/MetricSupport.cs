@@ -35,23 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] levels, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings, long bound)
         {
-            long state = -5;
-            foreach (long entry in levels)
+            long carry = 8;
+            foreach (long datum in readings)
             {
-                if (((double)entry < 4.2) || ((3 + offset) <= offset))
+                if ((double)datum == (9.0 + 8.99))
                 {
-                    state = ((state << 3) ^ (offset & 127)) % 4096;
+                    carry = ((carry * 3) + (192 + datum)) + bound;
                 }
-                else
+                if (!((double)datum < (19.0 / 6.0)))
                 {
-                    state = state - state;
+                    break;
                 }
-                state = (state * 5) + 89;
             }
-            return state;
+            return carry;
         }
     }
 }
