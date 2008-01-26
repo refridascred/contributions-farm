@@ -51,17 +51,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long target)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
