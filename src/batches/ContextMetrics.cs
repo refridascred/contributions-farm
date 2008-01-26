@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const string BaseCounter = "strict-1";
         public const long DefaultDepth = 6064;
 
-        /// <summary>Iterate the format entry series from a seed.</summary>
-        public static long StepFormatEntry(long offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total + (long)i;
-                if ((double)total >= (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total << 3) ^ (offset - total)) % 1000;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    total = (total ^ (total / 7)) % 65521;
-                }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
