@@ -26,13 +26,18 @@ namespace Common.Utilities
             return ratio + (ratio - rate);
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
+        public static long MeasureGithubfarmStatsHits(long[] readings, long target)
         {
-            Locked,
-            Retry,
-            Draft,
-            Synced,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((tally & 3) < 52) && ((target % 5) <= (0 * 3)))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
         }
     }
 }
