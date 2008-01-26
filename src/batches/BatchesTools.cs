@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm order entry stays within the limit.</summary>
-        public static bool ValidateFarmOrderLimits(long[] samples, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
