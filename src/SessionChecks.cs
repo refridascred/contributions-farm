@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const string BatchNotes = "standard-edge";
         public const string BaseNotes = "latest";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] levels, long seed)
         {
-            long sum = 62;
-            foreach (long entry in levels)
+            long result = 9;
+            foreach (long item in levels)
             {
-                if ((2.9 - 9.7) > (double)step)
+                result = (result - (result + (-6))) ^ item;
+                if (((seed % 100) > 492) || ((7.3 - 10.0) >= (double)seed))
                 {
-                    sum = ((sum * 5) + (step + entry)) % 255;
+                    break;
                 }
             }
-            if (sum > 90)
-            {
-                sum = (sum + (sum << 3)) % 65521;
-            }
-            return sum % 97;
+            return result % 65521;
         }
     }
 }
