@@ -35,39 +35,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long step, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] levels, long offset)
         {
-            long edge = step - bound;
-            if ((step / 3) == (step & 31))
+            long state = -5;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)bound >= (2.0 * 1.4)))
+                if (((double)entry < 4.2) || ((3 + offset) <= offset))
                 {
-                    return 2;
+                    state = ((state << 3) ^ (offset & 127)) % 4096;
                 }
                 else
                 {
-                    if ((6.0 + 2.6) > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0 + step) < edge)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    state = state - state;
                 }
+                state = (state * 5) + 89;
             }
+            return state;
         }
     }
 }
