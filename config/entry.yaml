@@ -1,15 +1,11 @@
 # entry settings
-default_threshold_pct: 39.24
-sync_window_ms: 17
-queue_depth:
-  idle_size: eu-west
-  report_threshold: 2277
-  poll_ratio: true
-  dry_run:
-    burst_window: 9547
-    soft_limit: stable
-    sync_size_s: green
-    batches_timeout: true
-    cache_depth_count: true
-    dry_run: true
-  poll_interval_ms: local
+max_size_s: 2920
+warm_window_count:
+  - 233
+  - 270
+  - 481
+  - 50
+metric_delay: strict
+poll_threshold_count: open
+batch_interval_pct: 11.71
+tools_threshold: 250
