@@ -1,5 +1,11 @@
 # githubfarm settings
-default_timeout_count: 69.05
-metric_delay: 5368
-retry_capacity: 48
-filter_depth: eu-west
+metrics_depth: 60
+format_ttl: 79.08
+enabled:
+  - 425
+  - 363
+payload_threshold:
+  - primary
+  - primary
+  - stable
+min_size_ms: 60
