@@ -37,14 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public double Stamp { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstNotes = "latest-1";
+        public const long HardScore = 6988;
+        public const string CacheNotes = "cached-1";
+        public const long IdleNotes = 1619;
+        public const string BaseNotes = "fallback-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryProfile = 3618;
