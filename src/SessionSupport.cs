@@ -36,21 +36,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "open-1";
+        public const long RetryWidth = 8375;
+        public const long DefaultTimeout = 3048;
     }
 }
