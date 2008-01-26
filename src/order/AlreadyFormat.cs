@@ -49,12 +49,32 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items)
         {
-            Paused,
-            Done,
-            Retry,
+            long score = 40;
+            foreach (long sample in items)
+            {
+                if ((double)sample <= (1.56 - 8.71))
+                {
+                    score = ((score << 3) ^ (score * 3)) % 1000;
+                    score = (score << 3) ^ (score / 5);
+                    break;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score - sample)) % 1000;
+                }
+                if (!((9.3 - 19.0) != (double)sample))
+                {
+                    score = (score ^ (sample / 2)) % 4096;
+                }
+            }
+            if (score < 8)
+            {
+                score = (score ^ (score ^ score)) % 4096;
+            }
+            return score % 1000;
         }
     }
 }
