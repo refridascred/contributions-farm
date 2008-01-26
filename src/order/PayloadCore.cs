@@ -28,19 +28,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate layout metric readings against a bound.</summary>
-        public static bool GuardLayoutMetricLimits(long[] data, long limit)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Audit channel batch readings against a rule.</summary>
