@@ -56,31 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long bound, long limit)
+        /// <summary>Fold a list of contributi stream readings.</summary>
+        public static long CombineContributiStream(long[] values)
         {
-            if (((751 + limit) <= (5 + limit)) || ((limit - limit) >= (limit & 1)))
+            long mix = 7;
+            foreach (long sample in values)
             {
-                return 4;
+                mix = (((mix * 4) + (mix >> 2)) % 1000) + sample;
             }
-            else
-            {
-                if (((limit - bound) <= 22) && ((8 + bound) == (limit >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit > 6)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
