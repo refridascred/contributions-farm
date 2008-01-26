@@ -1,18 +1,7 @@
 {
-  "max_retries_pct": "open",
-  "min_timeout_s": {
-    "already_interval": 0.84,
-    "sync_ratio": {
-      "warm_retries_count": "fallback",
-      "poll_size_s": "eu-west",
-      "counter_size": 250,
-      "min_retries_pct": "green",
-      "token_depth": ["fallback", "open"]
-    },
-    "batch_delay_pct": "latest",
-    "cache_delay": ["staging", "blue", "staging", "strict"]
-  },
-  "checks_retries": 8040,
-  "hard_retries": 500,
-  "sync_timeout": 5761
+  "dry_run": 94.01,
+  "farm_delay": 4347,
+  "metric_depth": ["fallback", "open", "stable", "open"],
+  "batch_threshold_s": "strict",
+  "persist": "cached"
 }
