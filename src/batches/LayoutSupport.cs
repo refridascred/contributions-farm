@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long target)
-        {
-            long edge = floor + target;
-            if (((floor / 8) >= floor) && ((floor + edge) <= (84 + target)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target % 8) <= (edge ^ edge))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((edge + floor) > (20 + target)) || ((double)edge <= (2.63 / 8.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 6868;
+        public const double IdleFilter = 56.51;
+        public const long CacheFilter = 9898;
+        public const string BatchScore = "open-edge";
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double SmoothContext(double rate, double span)
