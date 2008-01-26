@@ -43,12 +43,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long bound)
         {
-            Dropped,
-            Retry,
-            Idle,
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = (acc - (acc & 63)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
