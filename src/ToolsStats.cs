@@ -13,15 +13,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Iterate the already profile series from a seed.</summary>
-        public static long RollAlreadyProfile(long offset)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double offset)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            double scale = (gain / 5.0) / 9.0;
+            if (scale < scale)
             {
-                result = ((result * 2) + (long)i) % 97;
+                scale = scale - (double)(-665);
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (offset - gain);
         }
 
         /// <summary>Project the next batches value.</summary>
