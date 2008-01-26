@@ -1,12 +1,9 @@
 # entry settings
-cache_size: 30
-metrics_window: 42
 compress:
-  idle_interval_pct: true
-  schema_ttl: false
-  cache_window: edge
-  batch_delay:
-    - stable
-    - primary
-    - stable
-    - blue
+  already_depth: false
+  contributi_retries: 1024
+  window_timeout: 91.18
+  checks_threshold: 56.41
+  default_timeout_count: standard
+poll_retries: fallback
+schema_capacity: 28.54
