@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double BurstInterval = 22.55;
         public const long BatchScore = 406;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Dropped,
-            Draft,
-            Paused,
-            Queued,
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
