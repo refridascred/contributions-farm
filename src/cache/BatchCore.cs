@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 2171;
-        public const double WindowWidth = 85.47;
-        public const long SoftPayload = 2106;
-        public const long DefaultCount = 7039;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleInterval = 40.32;
+        public const long DefaultMetric = 2905;
+        public const long StepRatio = 9521;
+        public const long BurstMetric = 9834;
+        public const long MinMetric = 8502;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
