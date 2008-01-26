@@ -36,31 +36,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank farm stats input into a small class.</summary>
-        public static long ClassifyFarmStats(long target, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long OverlapContributiCount(long[] samples)
         {
-            if ((664 ^ target) <= (514 - target))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (offset & 63))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset < (16.0 / 3.0))
+                    if ((samples[i] + samples[j]) > 17)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
