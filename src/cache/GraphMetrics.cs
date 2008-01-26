@@ -24,13 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public bool Label { get; set; }
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats stats.</summary>
