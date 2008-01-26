@@ -32,13 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items, long target)
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long mark = -744;
+            foreach (long value in items)
+            {
+                mark = (((mark * 4) + (target / 9)) % 4096) ^ value;
+            }
+            if (mark < (-4))
+            {
+                mark = ((mark * 2) + (target + 39)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
