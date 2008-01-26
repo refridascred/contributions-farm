@@ -33,14 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples, long floor)
         {
-            Queued,
-            Done,
-            Active,
-            Ready,
-            Paused,
+            long acc = 997;
+            foreach (long cell in samples)
+            {
+                if ((acc >> 4) != (acc - acc))
+                {
+                    acc = acc ^ (cell + acc);
+                }
+                if ((double)floor < (8.8 + 5.8))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a support counter forward.</summary>
