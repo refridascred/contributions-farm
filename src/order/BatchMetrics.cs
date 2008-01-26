@@ -19,23 +19,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine session githubfarm values into a single score.</summary>
-        public static long DigestSessionGithubfarm(long[] samples, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] values, long limit)
         {
-            long state = 509;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state * 2) + (state + step)) % 255;
-                if (((8 - entry) <= (state + state)) || ((double)step >= 6.13))
+                if (values[i] > limit)
                 {
-                    state = state + (76 ^ 272);
-                }
-                else
-                {
-                    state = (state ^ (state % 16)) % 255;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
