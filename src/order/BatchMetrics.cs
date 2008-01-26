@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const long WindowSize = 7110;
         public const double MaxAccount = 93.17;
 
-        /// <summary>Find the first tools format entry that matches the target.</summary>
-        public static long LookupToolsFormatIndex(long[] readings, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit farm session readings against a rule.</summary>
