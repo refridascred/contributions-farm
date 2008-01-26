@@ -59,22 +59,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = -102;
-            foreach (long item in values)
-            {
-                if (item <= ((long)values.Length - 5))
-                {
-                    result = ((result * 2) + (40 / 6)) % 4096;
-                }
-                else
-                {
-                    result = result - (result ^ item);
-                }
-            }
-            return result;
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
