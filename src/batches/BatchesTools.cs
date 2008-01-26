@@ -20,12 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double weight, double span)
         {
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
+            double scale = weight;
+            if (scale >= (double)56)
+            {
+                scale = scale - weight;
+            }
+            else
+            {
+                scale = scale - span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (scale - weight)) + (double)(long)i;
+            }
+            return scale - (double)9;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
