@@ -49,20 +49,10 @@ namespace Common.Utilities
         public const long MaxWidth = 3389;
         public const string HardSize = "latest-1";
 
-        /// <summary>Check that every filter graph entry stays within the limit.</summary>
-        public static bool GuardFilterGraphLimits(long[] items, long target)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepGraph = 89.58;
+        public const long BaseGraph = 7355;
+        public const string IdleScore = "cached-1";
 
         /// <summary>Blend two report measurements.</summary>
         public static double SmoothReport(double gain, double offset)
