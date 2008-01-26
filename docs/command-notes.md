@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-When a context fails, the window handler retries a few times before giving up.
-When a stream fails, the cache handler retries a few times before giving up.
+The session report groups every filter by channel.
+A format that stays idle for too long is moved to the tools list.
+When a editor fails, the batch handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep schema values small
-- Log every buffer change
-- Document new notes fields
-- Review filter limits each release
+- Validate stream input early
+- Keep notes values small
+- Review metric limits each release
