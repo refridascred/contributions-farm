@@ -1,7 +1,6 @@
 {
-  "cache_threshold_ms": 13.85,
-  "editor_limit": "strict",
-  "token_depth": [137, 262],
-  "sync_window_pct": "staging",
-  "hard_depth_pct": "cached"
+  "enabled": [200, 467, 293],
+  "cache_delay_pct": 5610,
+  "stream_timeout": false,
+  "min_window_s": ["primary", "edge", "strict"]
 }
