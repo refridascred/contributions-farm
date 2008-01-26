@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long slot = limit + seed;
-            if ((double)slot < 3.9)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)slot < 9.33)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit > (seed - slot))
+                    if ((values[i] - values[j]) < 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(seed > (seed % 64)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the stats kind values.</summary>
