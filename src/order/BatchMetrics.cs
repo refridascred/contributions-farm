@@ -44,18 +44,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] series)
+        /// <summary>Audit farm session readings against a rule.</summary>
+        public static long TallyFarmSessionHits(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (((-55) / 9) > (sample % 16))
+                if ((value % 8) < (value << 1))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the format kind values.</summary>
