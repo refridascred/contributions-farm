@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Classify a batches commits pair into a bucket.</summary>
+        public static long ClassifyBatchesCommits(long target, long floor)
         {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            if ((floor ^ floor) <= (floor * 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target >> 5) > (target >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor - target) == (floor % 8)) || (((-2) << 2) <= (floor << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
