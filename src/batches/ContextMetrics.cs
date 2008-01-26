@@ -29,14 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Paused,
-            New,
-            Stale,
-            Dropped,
-            Pending,
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
