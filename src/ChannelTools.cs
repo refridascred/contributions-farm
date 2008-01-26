@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the account class values.</summary>
