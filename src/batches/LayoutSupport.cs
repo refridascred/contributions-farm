@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long state = 4;
-            foreach (long sample in readings)
-            {
-                if (!((double)sample >= (19.0 - 1.81)))
-                {
-                    state = (state + (-655)) % 255;
-                }
-                else
-                {
-                    state = state + (state + state);
-                }
-            }
-            return state % 65521;
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
