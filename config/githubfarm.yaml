@@ -1,10 +1,7 @@
 # githubfarm settings
-idle_ratio: 37.66
-counter_size:
-  idle_ratio_pct: 35
-  already_size: stable
-  warm_ratio_s: 67
-  soft_threshold_pct: 4949
-  soft_limit: latest
-  soft_interval: cached
-default_delay: 250
+readonly: standard
+flush_threshold: 3759
+stream_size: true
+route_delay: 10
+idle_retries_ms: false
+batch_window_pct: 23
