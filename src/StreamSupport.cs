@@ -35,26 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] series, long seed)
         {
-            long state = 41;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 2; i++)
+                if ((seed >> 1) > seed)
                 {
-                    state = ((state - state) % 101) - (long)i;
-                }
-                if ((double)reading <= (double)208)
-                {
-                    state = (state * 3) + (815 * 5);
-                }
-                if ((reading + state) <= (4 * 2))
-                {
-                    break;
+                    count = (count + 2) + sample;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
