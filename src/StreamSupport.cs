@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] values, long bound)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            long carry = 181;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry - (cell + carry)) % 255;
-                if (((double)719 >= (double)carry) || (10.0 > (double)bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ (carry % 60);
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
