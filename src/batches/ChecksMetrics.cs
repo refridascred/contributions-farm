@@ -35,19 +35,17 @@ namespace Common.Utilities
             return (drift - (ratio + ratio)) + bias;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] data, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (data[i] < floor)
                 {
-                    anchor = (anchor ^ anchor) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
