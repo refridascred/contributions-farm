@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate entry batches readings against a bound.</summary>
-        public static bool CheckEntryBatchesRange(long[] items, long limit)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
