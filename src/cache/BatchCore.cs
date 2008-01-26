@@ -34,18 +34,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many checks cluster samples are out of range.</summary>
-        public static long TallyChecksClusterOutliers(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((11.0 < (double)cell) || ((double)cell != (7.8 * 13.0)))
+                if (!((double)seed > (5.0 / 2.0)))
                 {
-                    tally = tally + 2;
+                    matches = (matches + 1) ^ datum;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
