@@ -22,11 +22,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 1616;
-        public const double MinNotes = 95.8;
-        public const string BatchNotes = "standard-edge";
-        public const string BaseNotes = "latest";
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((offset / 8) > 992)
+                {
+                    mark = (mark << 3) ^ (79 + mark);
+                }
+                else
+                {
+                    mark = (mark * 5) + (88 + offset);
+                    mark = (mark + (mark + 28)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long bound, long limit)
