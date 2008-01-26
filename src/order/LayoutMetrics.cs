@@ -40,15 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double ratio, double span)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            double weight = 0.96 - (ratio - ratio);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = ((weight + (9.03 - ratio)) + (double)(long)i) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight - 4.3;
+            return count;
         }
     }
 }
