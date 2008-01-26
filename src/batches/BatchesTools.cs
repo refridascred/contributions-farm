@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long seed2)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long floor)
         {
-            long step = seed - seed2;
-            if (seed >= 626)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (5 >= (step + step))
+                if ((double)floor > (4.0 + 0.99))
                 {
-                    return 7;
+                    seen = (seen + 3) + reading;
                 }
                 else
                 {
-                    if (!((26 - seed) == (79 - 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a session order pair into a bucket.</summary>
