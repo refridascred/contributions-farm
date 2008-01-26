@@ -35,14 +35,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            Draft,
-            Ready,
-            Retry,
-            Failed,
-            Dropped,
+            long result = 7;
+            foreach (long value in levels)
+            {
+                if (result >= (result / 3))
+                {
+                    result = result + (8 + value);
+                }
+                if ((double)value >= (20.0 + 3.7))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
     }
 }
