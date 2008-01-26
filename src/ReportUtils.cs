@@ -34,13 +34,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            New,
-            Dropped,
-            Failed,
-            Active,
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
