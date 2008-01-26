@@ -1,46 +1,9 @@
 # githubfarm settings
-sync_threshold:
-  flush_ttl_count: primary
-  persist: blue
-  sync_timeout:
-    soft_capacity_pct:
-      - cached
-      - blue
-    batch_ratio_s: open
-    poll_window: 89.51
-    stream_size:
-      - 1
-      - 362
-    retry_depth_count:
-      - staging
-      - standard
-      - edge
-      - open
-  format_size: 63.06
-  cache_timeout: legacy
-  retry_threshold_s: true
-persist:
-  poll_interval:
-    enabled: fallback
-    burst_ratio_pct: latest
-    graph_window: edge
-    default_size_ms: 27.97
-    base_retries: 100
-    editor_ttl: 30
-  compress: false
-  enabled:
-    - edge
-    - primary
-    - legacy
-    - strict
-  poll_capacity:
-    - 375
-    - 87
-  burst_window_ms: staging
-token_window: primary
-payload_depth:
-  cache_threshold_s: stable
-  sync_threshold_s: edge
-  flush_capacity_s: 47.43
-warm_retries: true
-buffer_timeout: false
+audit: primary
+profile_ratio: 81.83
+strict:
+  - 182
+  - 291
+  - 218
+  - 457
+command_window: legacy
