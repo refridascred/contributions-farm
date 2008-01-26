@@ -1,9 +1,4 @@
 # githubfarm settings
-audit: primary
-profile_ratio: 81.83
-strict:
-  - 182
-  - 291
-  - 218
-  - 457
-command_window: legacy
+poll_depth_ms: 5431
+poll_limit_pct: strict
+flush_timeout_s: 1024
