@@ -26,11 +26,11 @@ namespace Common.Utilities
         public const double WindowCache = 96.98;
         public const long DefaultScore = 6726;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFactor = 3619;
-        public const long StepLevel = 7300;
-        public const string RetryFilter = "stable-1";
-        public const string SoftFilter = "standard";
-        public const long LimitFilter = 5753;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double gain, double floor)
+        {
+            double ratio = floor;
+            return (ratio + floor) + gain;
+        }
     }
 }
