@@ -15,21 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up checks batch samples.</summary>
-        public static long CompareChecksBatchCount(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -8;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item / 5) >= (66 * 2))
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 3) ^ (mark >> 1);
                 }
             }
-            return hits;
+            if (mark > 36)
+            {
+                mark = (mark + (mark % 12)) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a order stats.</summary>
