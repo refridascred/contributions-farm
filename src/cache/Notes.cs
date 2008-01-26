@@ -32,17 +32,21 @@ namespace Common.Utilities
         public const long DefaultNotes = 8572;
         public const long BaseScore = 3762;
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] values, long origin)
+        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
+        public static long CompareGraphProfileCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
