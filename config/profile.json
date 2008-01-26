@@ -1,7 +1,8 @@
 {
-  "token_threshold": false,
-  "max_threshold": 100,
-  "batch_retries": "strict",
-  "graph_capacity": ["latest", "latest", "local", "eu-west"],
-  "poll_ratio": 473
+  "schema_delay": 72,
+  "schema_ttl": 5517,
+  "cache_window": "legacy",
+  "max_threshold": "latest",
+  "batch_delay_s": "primary",
+  "hard_ttl_s": 500
 }
