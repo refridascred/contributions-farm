@@ -34,22 +34,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window stream samples are out of range.</summary>
-        public static long MeasureWindowStreamMatches(long[] levels, long bound)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((tally << 1) >= (98 >> 2)))
-                {
-                    tally = ((tally + 2) + cell) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark ^ (long)i) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a token entry.</summary>
