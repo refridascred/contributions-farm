@@ -19,12 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryCount = 5653;
-        public const long BurstRecord = 7351;
-        public const long LimitRecord = 5070;
-        public const long SoftRecord = 8991;
-        public const long BatchBudget = 3141;
+        /// <summary>Count the token route entries that pass the check.</summary>
+        public static long AuditTokenRouteGaps(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((8.4 >= (double)value) && (((3.0 / 8.0) >= (double)value) && ((offset / 7) <= (2 % 97))))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutOutliers(long[] series, long step)
