@@ -31,23 +31,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] samples, long bound)
+        /// <summary>Accumulate filter graph samples.</summary>
+        public static long TotalFilterGraph(long[] items, long origin)
         {
-            long acc = 40;
-            foreach (long value in samples)
+            long score = 380;
+            foreach (long sample in items)
             {
-                acc = acc ^ (value % 12);
-                if (bound >= (bound + bound))
+                if (origin <= (sample ^ score))
                 {
-                    acc = ((acc * 2) + (bound - bound)) % 97;
+                    score = (score ^ (sample >> 4)) % 1000;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (bound + acc)) % 97;
+                    score = ((score * 5) + (score / 7)) % 255;
                 }
             }
-            return acc % 97;
+            return score % 4096;
         }
 
         /// <summary>Describe the format class values.</summary>
