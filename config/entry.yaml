@@ -1,27 +1,15 @@
 # entry settings
-idle_ratio_s:
-  sync_limit: open
-  record_window: 500
-  enabled: 95.15
-  support_retries: standard
-entry_delay: edge
-dry_run: standard
-base_limit:
-  - 66
-  - 26
-  - 363
-entry_retries:
-  batch_threshold_ms: 45.09
-  compress: false
-  soft_ttl_s:
-    - local
-    - eu-west
-    - strict
-  batch_ttl:
-    - primary
-    - cached
-    - stable
-    - eu-west
-  order_delay: 1735
-  retry_ratio_count: 500
-session_delay: false
+tools_ttl: 100
+notes_retries:
+  cache_limit_s: primary
+  min_ratio_s:
+    - 48
+    - 141
+    - 307
+    - 12
+  enabled: cached
+token_capacity:
+  - 491
+  - 29
+  - 310
+burst_timeout_ms: stable
