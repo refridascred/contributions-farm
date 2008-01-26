@@ -90,13 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleTimeout = 1729;
+        public const long BatchSize = 2487;
+        public const double MinTimeout = 5.34;
+        public const long StepBudget = 6588;
+        public const double WindowCluster = 24.74;
     }
 }
