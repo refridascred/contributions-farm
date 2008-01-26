@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Check that every command tools entry stays within the limit.</summary>
+        public static bool GuardCommandToolsLimits(long[] series, long seed)
         {
-            Closed,
-            Draft,
-            Ready,
-            Retry,
-            Idle,
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
