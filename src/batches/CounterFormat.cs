@@ -22,16 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] data, long target)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                mark = ((mark * 4) + ((long)i + mark)) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((reading << 2) != (reading / 7))
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the cluster class values.</summary>
