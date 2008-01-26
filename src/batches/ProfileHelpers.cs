@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mark = 0;
-            foreach (long entry in values)
-            {
-                mark = (mark * 4) + entry;
-            }
-            if (mark < 4)
-            {
-                mark = (mark - (0 - mark)) % 255;
-            }
-            return mark % 4096;
+            Idle,
+            Dropped,
+            Paused,
+            Failed,
+            Queued,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
