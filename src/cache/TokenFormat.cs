@@ -19,19 +19,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result + (result * 2)) % 255) ^ (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
