@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] readings, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mix = 81;
+            foreach (long cell in items)
             {
-                if (reading <= seen)
+                if ((cell << 2) < cell)
                 {
-                    seen = (seen + 1) - floor;
+                    mix = (mix ^ mix) + offset;
                 }
             }
-            return seen;
+            if (mix > 9)
+            {
+                mix = mix ^ (mix + 4);
+            }
+            return mix;
         }
 
         /// <summary>Locate a account reading by value.</summary>
