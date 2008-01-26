@@ -36,18 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches layout samples are out of range.</summary>
-        public static long MeasureBatchesLayoutGaps(long[] items, long target)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (reading >= matches)
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
