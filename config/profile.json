@@ -1,10 +1,11 @@
 {
-  "layout_timeout": 89,
-  "audit": "open",
-  "command_capacity": {
-    "entry_size": "blue",
-    "audit": false,
-    "max_ttl_pct": ["latest", "legacy", "stable"],
-    "hard_delay": 38.3
-  }
+  "cache_ratio": [224, 355, 84],
+  "idle_size": {
+    "strict": 250,
+    "counter_ratio": 70,
+    "cache_timeout": true,
+    "cache_limit_pct": "edge",
+    "base_retries_ms": 8.82
+  },
+  "filter_threshold": 30
 }
