@@ -1,34 +1,11 @@
 # support settings
-sync_retries_ms: strict
-filter_ttl: true
-retry_ttl:
-  githubfarm_delay:
-    contributi_retries: false
-    verbose: 1856
-    cache_ratio: 60
-    format_timeout:
-      - 262
-      - 451
-      - 230
-      - 446
-    soft_interval:
-      - cached
-      - primary
-      - staging
-    cache_timeout: 9575
-  checks_limit:
-    counter_window: 30
-    sync_interval:
-      - open
-      - blue
-      - fallback
-    warm_depth: 8955
-    min_capacity_pct:
-      - 322
-      - 53
-      - 484
-      - 247
-    dry_run: 563
-    max_retries: 48
-  compress: eu-west
-cache_capacity_s: fallback
+min_window: 53.17
+farm_capacity:
+  - eu-west
+  - eu-west
+  - fallback
+profile_size:
+  - primary
+  - fallback
+  - strict
+  - stable
