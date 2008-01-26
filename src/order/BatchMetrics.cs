@@ -19,17 +19,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] items, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ (score >> 3)) % 255;
-                score = score ^ (score + (long)i);
-                score = ((score * 4) + (long)i) % 1000;
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
