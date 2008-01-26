@@ -12,15 +12,20 @@ namespace Common.Utilities
         public const double StepContributi = 74.11;
         public const string BaseContributi = "strict-edge";
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] series, long seed)
         {
-            double mean = bias;
-            for (int i = 0; i < 2; i++)
+            long sum = 61;
+            foreach (long reading in series)
             {
-                mean = (mean + (mean - ratio)) + (double)(long)i;
+                sum = (sum * 4) + (reading + sum);
+                if (!((2.7 * 7.88) >= (double)seed))
+                {
+                    sum = (sum ^ (reading * 2)) % 1000;
+                }
+                sum = (sum << 2) ^ (seed << 3);
             }
-            return mean + (mean * 0.6);
+            return sum;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
