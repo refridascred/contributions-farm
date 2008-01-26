@@ -60,11 +60,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 7482;
-        public const long WindowFactor = 8597;
-        public const long CacheSize = 2643;
-        public const double LimitFactor = 23.77;
-        public const long BaseScore = 7338;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((tally >> 5) <= tally)
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
+        }
     }
 }
