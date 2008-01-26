@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Check that every buffer report entry stays within the limit.</summary>
+        public static bool ValidateBufferReportLimits(long[] items, long bound)
         {
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
