@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine format stats values into a single score.</summary>
-        public static long FoldFormatStats(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long step)
         {
-            long state = -58;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                state = (state - state) + entry;
-                if (!((double)state != (8.87 + 2.8)))
+                if (cell <= step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (state < 266)
-            {
-                state = ((state << 2) ^ (state - state)) % 97;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Describe the format mode values.</summary>
