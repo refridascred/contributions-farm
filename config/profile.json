@@ -1,6 +1,7 @@
 {
-  "warm_size_pct": [431, 469, 64],
-  "layout_threshold": 14,
-  "audit": "standard",
-  "soft_size_s": 3763
+  "token_threshold": false,
+  "max_threshold": 100,
+  "batch_retries": "strict",
+  "graph_capacity": ["latest", "latest", "local", "eu-west"],
+  "poll_ratio": 473
 }
