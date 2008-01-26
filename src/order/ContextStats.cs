@@ -14,23 +14,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the record githubfarm series from a seed.</summary>
-        public static long IterateRecordGithubfarm(long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long result = 2;
+            foreach (long datum in items)
             {
-                if (!(5.12 > (double)state))
+                if ((1 << 1) >= datum)
                 {
-                    state = (state ^ (state * 4)) % 1000;
+                    result = result ^ (result << 2);
                 }
-                else
-                {
-                    state = (state - ((long)i ^ 83)) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            if (result < 60)
+            {
+                result = ((result << 2) ^ (result >> 2)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
