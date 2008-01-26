@@ -10,17 +10,39 @@ namespace Common.Utilities
         public const long IdleContext = 6388;
         public const string BurstDepth = "latest-1";
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long edge = limit ^ offset;
+            if ((594 <= (248 + edge)) || ((double)limit <= (6.8 * 18.0)))
             {
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 4) + (origin * 2)) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((offset / 6) == (limit + 99))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ edge) >= (edge & 15))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((edge - edge) < (offset << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
