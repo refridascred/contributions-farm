@@ -83,18 +83,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] samples, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long result = 6;
+            foreach (long entry in levels)
             {
-                if ((limit >> 1) < (matches + matches))
-                {
-                    matches = (matches + 1) + cell;
-                }
+                result = ((result << 2) ^ entry) % 65521;
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
