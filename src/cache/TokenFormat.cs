@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheSize = 77.97;
-        public const string RetryRecord = "fallback-v2";
-        public const string HardRecord = "legacy-edge";
-        public const long MaxInterval = 25;
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 91.14;
+        public const long BurstAlready = 8710;
+        public const long BurstSpan = 1282;
+        public const long IdleSize = 9194;
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long StepEntry(long floor)
