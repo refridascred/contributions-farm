@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] readings, long offset)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Done,
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Hold a notes header.</summary>
