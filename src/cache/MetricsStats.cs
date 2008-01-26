@@ -24,11 +24,18 @@ namespace Common.Utilities
             return gain - (bias / 9.0);
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double bias)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] readings)
         {
-            double weight2 = (double)(7 + 5);
-            return (weight2 + (bias - 5.0)) + weight;
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (1.5 / 2.0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes stats.</summary>
