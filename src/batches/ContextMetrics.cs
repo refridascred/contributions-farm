@@ -36,18 +36,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] levels, long offset)
+        /// <summary>Rank farm stats input into a small class.</summary>
+        public static long ClassifyFarmStats(long target, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if ((664 ^ target) <= (514 - target))
             {
-                if (5.1 >= (double)offset)
+                return 7;
+            }
+            else
+            {
+                if (offset > (offset & 63))
                 {
-                    matches = (matches + 2) + reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset < (16.0 / 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
