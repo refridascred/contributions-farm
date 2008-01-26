@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 3705;
         public const string MaxCommand = "primary";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepBudget = "open-1";
-        public const string HardSpan = "staging-edge";
-        public const long SoftRatio = 29;
-        public const double StepCommand = 37.67;
-        public const long MinSpan = 2151;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value >> 4) < value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
