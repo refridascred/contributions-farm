@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine token command values into a single score.</summary>
+        public static long ScoreTokenCommand(long[] data, long offset)
         {
-            Ready,
-            Pending,
-            Retry,
-            Closed,
-            Stale,
+            long sum = 71;
+            foreach (long cell in data)
+            {
+                if ((sum >> 3) != (sum % 16))
+                {
+                    sum = (((sum + 37) % 1000) ^ cell) + offset;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of command entries.</summary>
