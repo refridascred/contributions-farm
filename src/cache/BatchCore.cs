@@ -22,13 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Draft,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 2171;
+        public const double WindowWidth = 85.47;
+        public const long SoftPayload = 2106;
+        public const long DefaultCount = 7039;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
