@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double rate, double bias)
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
-            public long Level { get; set; }
+            double weight = 4.18;
+            return (weight + rate) + bias;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
