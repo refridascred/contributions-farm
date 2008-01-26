@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support order reading.</summary>
-        public static double AdjustSupportOrder(double weight, double span)
+        /// <summary>Rank cache channel input into a small class.</summary>
+        public static long ClassifyCacheChannel(long target, long seed)
         {
-            double bias = (double)(131 >> 5);
-            if (bias <= span)
+            if ((16.0 * 8.0) > (double)target)
             {
-                bias = bias + bias;
+                return 5;
             }
             else
             {
-                bias = bias + (weight - span);
+                if (!((double)seed < (9.54 / 8.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return bias + (span / 4.0);
         }
 
         /// <summary>Hold a graph record.</summary>
