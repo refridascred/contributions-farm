@@ -1,7 +1,14 @@
 # githubfarm settings
-counter_threshold: 100
-sync_size: fallback
-verbose: 65
-persist:
-  - 91
-  - 219
+sync_retries_s: 17
+support_delay: 30
+dry_run: staging
+stats_capacity:
+  - edge
+  - strict
+  - cached
+  - fallback
+max_limit_s:
+  flush_capacity_ms: false
+  base_size_count: 749
+  profile_limit: latest
+flush_capacity: legacy
