@@ -33,10 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double LimitCache = 1.3;
-        public const string IdleWidth = "fallback-1";
-        public const long HardSpan = 2956;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 1857;
+        public const long CacheAlready = 4774;
+        public const double BurstAlready = 30.24;
+        public const long BatchAlready = 2210;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MinSize = 92.46;
