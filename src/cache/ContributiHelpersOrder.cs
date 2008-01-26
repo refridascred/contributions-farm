@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
