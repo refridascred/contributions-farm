@@ -27,19 +27,31 @@ namespace Common.Utilities
             return (scale - (0.6 / 7.0)) + bias;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] series, long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long origin, long floor)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            if ((origin - floor) == (origin ^ floor))
             {
-                if (entry < bound)
+                return 5;
+            }
+            else
+            {
+                if ((origin + (-7)) > (floor >> 2))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)84 <= (5.47 - 0.36))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
