@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 6050;
-        public const double MaxWidth = 77.79;
-        public const long CacheCount = 3544;
-        public const long HardTimeout = 5174;
-        public const long IdleSession = 9211;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] readings, long bound)
