@@ -20,12 +20,18 @@ namespace Common.Utilities
             return scale - (double)59;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] series, long offset)
         {
-            Idle,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count + count) != (5 + value))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
