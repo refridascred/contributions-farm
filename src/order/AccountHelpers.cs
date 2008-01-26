@@ -20,10 +20,20 @@ namespace Common.Utilities
         public const long BurstGithubfarm = 8215;
         public const long HardTimeout = 2969;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5505;
-        public const long DefaultChannel = 8867;
-        public const long BaseScore = 7273;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long TallySchema(long[] levels)
