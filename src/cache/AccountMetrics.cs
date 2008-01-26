@@ -31,22 +31,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already commits readings against a rule.</summary>
-        public static long AuditAlreadyCommitsGaps(long[] samples, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long acc = 40;
+            foreach (long value in samples)
             {
-                if (3.27 >= (double)bound)
+                acc = acc ^ (value % 12);
+                if (bound >= (bound + bound))
                 {
-                    hits = (hits + 2) ^ item;
+                    acc = ((acc * 2) + (bound - bound)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = ((acc * 4) + (bound + acc)) % 97;
                 }
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Describe the format class values.</summary>
