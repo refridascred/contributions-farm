@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string WindowRecord = "alpha";
-        public const string CacheRecord = "local-v2";
-        public const long BatchInterval = 9984;
-        public const double DefaultSize = 5.1;
-        public const long StepRecord = 2438;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] series, long bound)
