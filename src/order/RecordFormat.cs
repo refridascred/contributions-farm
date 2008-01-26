@@ -42,22 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine entry stats values into a single score.</summary>
-        public static long ScoreEntryStats(long[] series)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = -920;
-            foreach (long cell in series)
-            {
-                if ((cell - acc) >= ((long)series.Length + acc))
-                {
-                    acc = ((acc << 2) ^ (acc * 2)) % 4096;
-                }
-                else
-                {
-                    acc = acc - (acc + 55);
-                }
-            }
-            return acc % 97;
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
