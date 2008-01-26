@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Blend two payload counter measurements.</summary>
+        public static double BlendPayloadCounter(double scale, double bias)
         {
-            long anchor = 26;
-            foreach (long value in readings)
+            double gain = (double)16 - bias;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (((anchor * 4) + anchor) % 65521) - value;
+                gain = (gain - (scale + 12.0)) - (double)(long)i;
             }
-            return anchor;
+            return gain + bias;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
