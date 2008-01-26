@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Dropped,
-            Locked,
-            Closed,
-            New,
-            Active,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the record phase values.</summary>
