@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a batches record counter forward.</summary>
-        public static long SeriesBatchesRecord(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mix = ((mix * 4) + (mix % 3)) + (long)i2;
-                }
-                if (((mix + mix) >= (mix + step)) || (((long)i << 1) > (mix ^ step)))
-                {
-                    mix = ((mix * 2) + mix) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultBudget = 79.05;
+        public const long StepSpan = 8245;
+        public const long IdleTools = 4141;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string DefaultScore = "standard";
