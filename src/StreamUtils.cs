@@ -83,19 +83,18 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileLimits(long[] samples, long bound)
+        /// <summary>Combine metric layout values into a single score.</summary>
+        public static long DigestMetricLayout(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long mark = 24;
+            foreach (long cell in samples)
             {
-                if (sample > bound)
+                if (!((-90) < limit))
                 {
-                    valid = false;
-                    break;
+                    mark = (((mark * 4) + mark) % 65521) ^ cell;
                 }
             }
-            return valid;
+            return mark;
         }
     }
 }
