@@ -70,22 +70,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support window entries that pass the check.</summary>
-        public static long TallySupportWindowMatches(long[] samples)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long span = step ^ origin;
+            if ((span + step) <= (16 % 5))
             {
-                if ((cell / 2) == (11 - 3))
+                return 1;
+            }
+            else
+            {
+                if ((span - 88) > (span / 7))
                 {
-                    seen = seen + 2;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((origin - origin) != (8 / 6))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(span >= (4 - (-79))))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
