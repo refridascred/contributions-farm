@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Measure how many payload batches samples are out of range.</summary>
+        public static long CountPayloadBatchesHits(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                sum = (sum ^ (long)i) % 97;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (!((tally << 1) <= (-554)))
+                {
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
