@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many editor command samples are out of range.</summary>
-        public static long MeasureEditorCommandHits(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((9 % 7) == (datum & 127))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many metric support samples are out of range.</summary>
