@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable legacy eu-west; do
+for item in edge fallback blue eu-west; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=22
-log "limit is ${RECORD_LIMIT}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
