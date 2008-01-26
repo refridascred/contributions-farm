@@ -25,18 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] data, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= (matches * 2))
+                long matches = acc;
+                if (!(((long)i / 5) == (546 - matches)))
                 {
-                    matches = (matches + 3) + bound;
+                    acc = ((acc * 3) + (matches >> 5)) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
