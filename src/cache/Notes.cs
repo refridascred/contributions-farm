@@ -49,17 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] data, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (data[i] < step)
+                if (floor > (value >> 1))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
