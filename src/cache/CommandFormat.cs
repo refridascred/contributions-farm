@@ -33,14 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Done,
-            Pending,
-            Retry,
-            Active,
-            New,
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of support channel entries.</summary>
