@@ -1,8 +1,10 @@
 {
-  "support_ratio": true,
-  "max_timeout": 86.05,
-  "batch_window_pct": true,
-  "min_capacity_ms": "green",
-  "idle_size_s": true,
-  "route_retries": false
+  "batch_timeout_count": {
+    "idle_size_s": "green",
+    "profile_delay": "primary",
+    "poll_interval": "stable",
+    "hard_retries_ms": [275, 283, 127]
+  },
+  "context_depth": "primary",
+  "poll_ttl": [86, 121, 82, 311]
 }
