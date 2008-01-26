@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            Retry,
-            Ready,
-            Paused,
-            Closed,
-            Synced,
+            public string Label { get; set; } = "";
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the farm phase values.</summary>
