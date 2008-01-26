@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double offset)
+        /// <summary>Measure how many tools order samples are out of range.</summary>
+        public static long TallyToolsOrderOutliers(long[] readings)
         {
-            double drift = (offset + offset) + (rate / 3.0);
-            if (drift > rate)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                drift = drift + (2.59 * 7.85);
+                if ((double)datum > (20.0 + 2.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift - (double)683;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
