@@ -71,18 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long carry = 753;
+            foreach (long value in levels)
             {
-                if (!((double)sample != (1.39 * 0.7)))
-                {
-                    tally = tally + 1;
-                }
+                carry = (((carry * 3) + (offset << 1)) % 1000) + value;
             }
-            return tally;
+            return carry;
         }
     }
 }
