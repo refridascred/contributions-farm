@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] levels, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long state = 73;
-            foreach (long datum in levels)
-            {
-                if (!((datum + 565) > datum))
-                {
-                    state = (((state << 2) ^ (datum - state)) % 255) - limit;
-                    break;
-                }
-                state = (state ^ state) % 1000;
-            }
-            return state % 1000;
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a metric options.</summary>
