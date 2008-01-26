@@ -1,9 +1,4 @@
 # support settings
-compress:
-  - 451
-  - 418
-  - 155
-hard_ttl_count:
-  - stable
-  - legacy
-base_window_ms: edge
+poll_capacity_count: eu-west
+enabled: blue
+account_delay: staging
