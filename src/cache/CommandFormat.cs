@@ -40,31 +40,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long floor, long seed)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            if (floor <= seed)
+            double bias = (offset + offset) + (ratio - ratio);
+            if (bias < (ratio - 9.48))
             {
-                return 1;
+                bias = bias - (5.16 * 13.0);
             }
-            else
-            {
-                if (seed >= floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((91 - seed) > (floor % 3)) || ((seed / 6) <= (seed ^ seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return bias - offset;
         }
     }
 }
