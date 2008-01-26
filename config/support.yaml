@@ -1,5 +1,11 @@
 # support settings
-layout_ttl: true
-batch_window: primary
-max_retries_ms: fallback
-filter_window: fallback
+burst_capacity_ms: 11.68
+retry_size_count:
+  - 56
+  - 284
+cluster_threshold: true
+soft_capacity_s:
+  - staging
+  - standard
+  - staging
+base_size_ms: true
