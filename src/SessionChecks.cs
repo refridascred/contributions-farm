@@ -20,14 +20,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 1616;
+        public const double MinNotes = 95.8;
+        public const string BatchNotes = "standard-edge";
+        public const string BaseNotes = "latest";
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] levels, long step)
