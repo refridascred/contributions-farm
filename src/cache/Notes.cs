@@ -24,12 +24,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Token { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultTimeout = "cached-v2";
+        public const long DefaultNotes = 8572;
+        public const long BaseScore = 3762;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] values, long origin)
