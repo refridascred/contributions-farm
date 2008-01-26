@@ -31,13 +31,13 @@ namespace Common.Utilities
         public const string CacheWindow = "staging-1";
         public const double MinDepth = 13.09;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
             Locked,
-            Pending,
-            Done,
-            Idle,
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
