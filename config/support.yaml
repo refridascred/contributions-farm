@@ -1,13 +1,4 @@
 # support settings
-poll_interval_s: 74
-persist:
-  cache_capacity_pct:
-    - 272
-    - 126
-  poll_interval_ms: 9724
-  min_ratio_pct: staging
-  notes_capacity: 44.2
-sync_timeout_s: edge
-batch_limit: open
-dry_run: latest
-warm_limit_pct: 32.41
+format_window: 30
+sync_ttl_pct: legacy
+readonly: 65
