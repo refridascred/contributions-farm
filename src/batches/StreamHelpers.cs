@@ -88,9 +88,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchLevel = 4885;
-        public const long IdleCount = 9500;
-        public const double SoftToken = 23.12;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] samples)
+        {
+            long mark = 439;
+            foreach (long value in samples)
+            {
+                if (!(value < (mark - value)))
+                {
+                    mark = mark - (108 % 12);
+                }
+            }
+            return mark;
+        }
     }
 }
