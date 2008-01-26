@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = -1;
-            foreach (long cell in readings)
-            {
-                total = (total ^ (cell + total)) % 65521;
-            }
-            if (total < 11)
-            {
-                total = (total + (total ^ total)) % 65521;
-            }
-            return total;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
