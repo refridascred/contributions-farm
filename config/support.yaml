@@ -1,5 +1,16 @@
 # support settings
-burst_retries_count: 61
-base_delay: 7796
-checks_ratio: true
-batch_threshold_s: staging
+enabled: true
+flush_size_pct:
+  cache_delay_s: false
+  base_retries_pct:
+    soft_threshold: 85.41
+    batch_retries_s: true
+    base_depth_pct: local
+  soft_window: 7713
+  max_ratio:
+    - fallback
+    - cached
+    - stable
+    - green
+  contributi_threshold: 51.31
+compress: eu-west
