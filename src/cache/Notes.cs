@@ -24,21 +24,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of window graph readings.</summary>
-        public static long OverlapWindowGraphCount(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long offset, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long delta = offset + seed;
+            if ((seed << 2) < (delta - seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset ^ delta) != (delta - 46))
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
