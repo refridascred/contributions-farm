@@ -16,11 +16,12 @@ namespace Common.Utilities
             return scale2 - (scale - 2.3);
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            Paused,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
