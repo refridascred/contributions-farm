@@ -35,18 +35,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] readings, long seed)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((((53 - seed) < ((-953) + seen)) && ((seed / 9) == (seed & 63))) || (37 <= seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            Draft,
+            Ready,
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
