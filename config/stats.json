@@ -1,17 +1,12 @@
 {
-  "contributi_capacity": "legacy",
-  "compress": "cached",
-  "enabled": 5,
-  "sync_capacity_pct": {
-    "context_size": ["blue", "latest", "fallback"],
-    "payload_ttl": {
-      "dry_run": "latest",
-      "idle_ratio_count": [224, 432],
-      "sync_threshold_ms": true,
-      "poll_limit_ms": 11.9
-    },
-    "hard_delay_ms": "strict",
-    "default_delay_ms": [242, 252]
+  "max_depth": "staging",
+  "default_ratio_count": 52.8,
+  "order_size": {
+    "compress": [96, 357, 188],
+    "readonly": 30,
+    "dry_run": "primary",
+    "audit": false,
+    "hard_timeout": 54.91
   },
-  "farm_ttl": 1042
+  "soft_timeout_pct": false
 }
