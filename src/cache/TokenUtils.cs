@@ -47,19 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] readings, long bound)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
