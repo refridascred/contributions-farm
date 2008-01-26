@@ -33,19 +33,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] samples, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long carry = 82;
+            foreach (long value in series)
             {
-                if (entry != step)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry ^ (value << 1)) % 65521;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Fold a list of contributi stream readings.</summary>
