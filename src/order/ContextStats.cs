@@ -19,13 +19,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Match up cache channel samples.</summary>
+        public static long MatchCacheChannelCount(long[] items)
         {
-            Dropped,
-            Done,
-            Paused,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
