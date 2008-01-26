@@ -43,18 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Audit entry account readings against a rule.</summary>
+        public static long CountEntryAccountOutliers(long[] readings)
         {
-            long mark = 5;
+            long matches = 0;
             foreach (long datum in readings)
             {
-                if (884 <= mark)
+                if (datum < (datum / 7))
                 {
-                    mark = (mark - (datum / 6)) % 1000;
+                    matches = matches + 1;
                 }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
