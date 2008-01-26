@@ -1,7 +1,14 @@
 {
-  "strict": 60,
-  "cache_window_ms": "local",
-  "cache_timeout_ms": ["cached", "stable", "open"],
-  "min_window": 500,
-  "base_delay_s": 52.04
+  "editor_ttl": 46.27,
+  "base_ratio_count": 31,
+  "strict": {
+    "idle_depth_pct": 39,
+    "burst_size": 56,
+    "default_size_pct": false,
+    "stats_window": 94,
+    "payload_timeout": "strict"
+  },
+  "batch_limit_count": "open",
+  "flush_ttl_pct": true,
+  "min_threshold_s": 69.08
 }
