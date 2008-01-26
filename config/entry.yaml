@@ -1,6 +1,25 @@
 # entry settings
-profile_ratio: standard
-default_timeout: 5299
-tools_interval: standard
-cache_capacity_pct: 56
-hard_limit_s: 60
+min_ratio: staging
+poll_threshold_count: blue
+compress: cached
+cache_size_ms: fallback
+warm_capacity: strict
+sync_window_ms:
+  strict:
+    - 464
+    - 335
+  tools_limit:
+    filter_capacity: 21.81
+    batches_size: 250
+    strict: latest
+    githubfarm_ttl: 88
+    sync_interval_s: 60
+    session_timeout: 93
+  cache_ratio_count: edge
+  readonly: true
+  enabled:
+    flush_limit_s: 67.58
+    poll_limit_s: standard
+    burst_depth: open
+    dry_run: false
+    idle_window: false
