@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseTimeout = 9577;
+        public const long DefaultScore = 5586;
+        public const long BaseScore = 4466;
+        public const long LimitBuffer = 5021;
+        public const long HardDepth = 6133;
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] series, long seed)
