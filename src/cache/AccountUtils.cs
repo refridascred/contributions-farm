@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Find the first batch payload entry that matches the target.</summary>
+        public static long SeekBatchPayloadIndex(long[] levels, long bound)
         {
-            Paused,
-            Idle,
-            Done,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
