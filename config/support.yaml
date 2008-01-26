@@ -1,4 +1,5 @@
 # support settings
-audit: primary
-already_delay: 2679
-flush_delay: fallback
+audit: staging
+batch_size: 100
+tools_delay: eu-west
+base_delay: latest
