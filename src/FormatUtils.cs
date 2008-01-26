@@ -57,12 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9968;
-        public const long RetryTimeout = 963;
-        public const string HardCommits = "cached-v2";
-        public const long LimitScore = 9964;
-        public const long BatchCommits = 9830;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a counter channel value against two limits.</summary>
         public static long ClassifyCounterChannel(long step, long floor)
