@@ -35,18 +35,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] series, long seed)
+        /// <summary>Derive the next already githubfarm value from a seed.</summary>
+        public static long DeriveAlreadyGithubfarm(long limit)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((seed >> 1) > seed)
-                {
-                    count = (count + 2) + sample;
-                }
+                mix = (mix - mix) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
