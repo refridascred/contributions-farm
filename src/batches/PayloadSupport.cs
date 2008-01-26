@@ -29,19 +29,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long offset)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
